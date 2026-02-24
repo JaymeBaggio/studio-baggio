@@ -33,6 +33,7 @@
   --dim-dark: #5A5A5A;
   --divider-light: rgba(255,255,255,0.08);
 
+  --bg-newsletter: #F5F4F0;
   --accent: #4A6CF7;
   --nav-height: 70px;
   --max-width: 1280px;
@@ -835,9 +836,9 @@ img {
    NEWSLETTER — ISSUE CARDS + LIGHTBOX
    ============================================ */
 .newsletter {
-  background: var(--bg-light);
+  background: var(--bg-newsletter);
   color: var(--text-dark);
-  padding: clamp(60px, 8vw, 100px) 0 0;
+  padding: var(--section-pad) 0;
 }
 
 .newsletter-header {
@@ -871,7 +872,7 @@ img {
 
 /* Issue cards — windowed carousel */
 .issues-window {
-  max-width: 720px;
+  max-width: 1060px;
   margin: 0 auto;
   position: relative;
   padding: 0 clamp(24px, 4vw, 60px);
@@ -915,7 +916,7 @@ img {
 }
 
 .issue-card {
-  flex: 0 0 calc(40% - 8px);
+  flex: 0 0 calc(28% - 10px);
   scroll-snap-align: start;
   cursor: pointer;
   position: relative;
@@ -946,7 +947,7 @@ img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-dark);
-  background: var(--bg-light);
+  background: var(--bg-newsletter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -963,9 +964,63 @@ img {
   color: var(--text-dark);
 }
 
+/* Newsletter nav arrows */
+.issues-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.issues-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.issues-arrow:hover {
+  border-color: var(--text-dark);
+  background: rgba(0,0,0,0.03);
+}
+
+/* Section divider */
+.section-divider {
+  max-width: 120px;
+  height: 1px;
+  background: rgba(0,0,0,0.12);
+  margin: 0 auto;
+}
+
+/* GSAP animation initial states */
+.playbooks-header,
+.newsletter-header {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.playbook-card,
+.issue-card {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
 @media (max-width: 768px) {
   .issue-card {
     flex: 0 0 calc(55% - 8px);
+  }
+  .issues-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }
 
@@ -1422,7 +1477,7 @@ img {
      ========================================== -->
 <section class="playbooks" id="playbooks">
   <div class="container">
-    <div class="playbooks-header reveal">
+    <div class="playbooks-header">
       <h2>Playbooks</h2>
       <p class="playbooks-sub">Frameworks we use. Yours to keep.</p>
     </div>
@@ -1480,12 +1535,14 @@ img {
   </div>
 </section>
 
+<div class="section-divider"></div>
+
 <!-- ==========================================
      NEWSLETTER — ISSUE CARDS + LIGHTBOX
      ========================================== -->
 <section class="newsletter" id="newsletter">
   <div class="container">
-    <div class="newsletter-header reveal">
+    <div class="newsletter-header">
       <h2 class="newsletter-title">Rough Cut</h2>
       <p class="newsletter-sub-title">The Newsletter</p>
       <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works.</p>
@@ -1529,6 +1586,11 @@ img {
         <div class="issues-progress-fill" id="issuesProgressFill"></div>
       </div>
     </div>
+  </div>
+
+  <div class="issues-nav">
+    <button class="issues-arrow" id="issuesPrev" aria-label="Previous">&larr;</button>
+    <button class="issues-arrow" id="issuesNext" aria-label="Next">&rarr;</button>
   </div>
 
   <div class="subscribe-row">
@@ -1703,6 +1765,82 @@ img {
       });
     });
 
+    /* -----------------------------------------
+       GSAP — Parallax section titles
+       ----------------------------------------- */
+    gsap.to('.playbooks-header h2', {
+      yPercent: -30,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.playbooks',
+        start: 'top bottom',
+        end: 'top top',
+        scrub: true
+      }
+    });
+
+    gsap.to('.newsletter-header .newsletter-title', {
+      yPercent: -30,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.newsletter',
+        start: 'top bottom',
+        end: 'top top',
+        scrub: true
+      }
+    });
+
+    /* -----------------------------------------
+       GSAP — Header fade-ins
+       ----------------------------------------- */
+    gsap.fromTo('.playbooks-header',
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: '.playbooks-header', start: 'top 88%', once: true }
+      }
+    );
+
+    gsap.fromTo('.newsletter-header',
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: '.newsletter-header', start: 'top 88%', once: true }
+      }
+    );
+
+    /* -----------------------------------------
+       GSAP — Staggered card reveals
+       ----------------------------------------- */
+    gsap.fromTo('.playbook-card',
+      { opacity: 0, y: 32 },
+      {
+        opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.12,
+        scrollTrigger: { trigger: '.playbooks-window', start: 'top 80%', once: true }
+      }
+    );
+
+    gsap.fromTo('.issue-card',
+      { opacity: 0, y: 32 },
+      {
+        opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1,
+        scrollTrigger: { trigger: '.issues-window', start: 'top 80%', once: true }
+      }
+    );
+
+    /* -----------------------------------------
+       GSAP — Carousel frame subtle parallax
+       ----------------------------------------- */
+    gsap.to('.playbooks-frame', {
+      yPercent: -4, ease: 'none',
+      scrollTrigger: { trigger: '.playbooks', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+
+    gsap.to('.issues-frame', {
+      yPercent: -4, ease: 'none',
+      scrollTrigger: { trigger: '.newsletter', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+
   } else {
     // If reduced motion, show everything immediately
     document.querySelectorAll('.hero-stagger').forEach(function(el) {
@@ -1711,6 +1849,10 @@ img {
     });
     document.querySelectorAll('.reveal').forEach(function(el) {
       el.classList.add('visible');
+    });
+    document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .newsletter-header').forEach(function(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
     });
   }
 
@@ -1840,6 +1982,28 @@ img {
         issuesProgressFill.style.marginLeft = leftPos + '%';
       }
     }, { passive: true });
+
+    // Newsletter arrow handlers
+    var issuesPrev = document.getElementById('issuesPrev');
+    var issuesNext = document.getElementById('issuesNext');
+
+    function getIssueCardWidth() {
+      var card = issuesStripEl.querySelector('.issue-card');
+      if (!card) return 200;
+      return card.offsetWidth + 16;
+    }
+
+    if (issuesPrev) {
+      issuesPrev.addEventListener('click', function() {
+        issuesStripEl.scrollBy({ left: -getIssueCardWidth(), behavior: 'smooth' });
+      });
+    }
+
+    if (issuesNext) {
+      issuesNext.addEventListener('click', function() {
+        issuesStripEl.scrollBy({ left: getIssueCardWidth(), behavior: 'smooth' });
+      });
+    }
   }
 
   /* -----------------------------------------
