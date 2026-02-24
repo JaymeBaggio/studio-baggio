@@ -841,35 +841,6 @@ img {
   padding: var(--section-pad) 0;
 }
 
-.newsletter-header {
-  text-align: center;
-  margin-bottom: clamp(32px, 4vw, 48px);
-}
-
-.newsletter-title {
-  font-weight: 600;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--text-dark);
-}
-
-.newsletter-sub-title {
-  font-weight: 300;
-  font-size: 1rem;
-  color: var(--dim-light);
-  margin-top: 4px;
-}
-
-.newsletter-desc {
-  font-weight: 300;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: var(--dim-light);
-  max-width: 420px;
-  margin: 12px auto 0;
-}
-
 /* Issue cards — windowed carousel */
 .issues-window {
   max-width: 1060px;
@@ -1015,20 +986,20 @@ img {
   max-width: 520px;
 }
 
-.section-cover-label {
-  font-weight: 300;
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--dim-dark);
-  margin-bottom: 16px;
-}
-
 .section-cover-title {
   font-weight: 600;
   font-size: clamp(2.4rem, 5vw, 4rem);
   letter-spacing: -0.03em;
   line-height: 1.1;
+}
+
+.section-cover-sub {
+  font-weight: 300;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim-dark);
+  margin-top: 10px;
 }
 
 .section-cover-rule {
@@ -1051,23 +1022,36 @@ img {
   z-index: 2;
 }
 
-/* Parallax window effect on carousel images */
-@supports (animation-timeline: view(x)) {
-  @keyframes card-parallax {
-    from { transform: scale(1.15) translateX(8%); }
-    to { transform: scale(1.15) translateX(-8%); }
+/* Parallax window effect — images slide within cards as they scroll */
+@supports (animation-timeline: view()) {
+  @keyframes carousel-parallax {
+    from { transform: scale(1.2) translateX(8%); }
+    to   { transform: scale(1.2) translateX(-8%); }
   }
 
-  .playbook-card-img,
+  .playbook-card {
+    view-timeline-name: --playbook-card;
+    view-timeline-axis: inline;
+  }
+  .playbook-card-img {
+    animation: carousel-parallax linear both;
+    animation-timeline: --playbook-card;
+    animation-range: cover;
+  }
+
+  .issue-card {
+    view-timeline-name: --issue-card;
+    view-timeline-axis: inline;
+  }
   .issue-card img {
-    animation: card-parallax linear both;
-    animation-timeline: view(x);
+    animation: carousel-parallax linear both;
+    animation-timeline: --issue-card;
+    animation-range: cover;
   }
 }
 
 /* GSAP animation initial states */
-.playbooks-header,
-.newsletter-header {
+.playbooks-header {
   opacity: 0;
   transform: translateY(24px);
 }
@@ -1610,8 +1594,8 @@ img {
 
   <div class="section-cover">
     <div class="section-cover-content">
-      <p class="section-cover-label">Up Next</p>
       <h2 class="section-cover-title">Rough Cut</h2>
+      <p class="section-cover-sub">The Newsletter</p>
       <div class="section-cover-rule"></div>
       <p class="section-cover-desc">AI strategy, tools, and honest takes on what actually works — delivered to your inbox.</p>
     </div>
@@ -1621,13 +1605,6 @@ img {
        NEWSLETTER — ISSUE CARDS + LIGHTBOX
        ========================================== -->
   <section class="newsletter" id="newsletter">
-  <div class="container">
-    <div class="newsletter-header">
-      <h2 class="newsletter-title">Rough Cut</h2>
-      <p class="newsletter-sub-title">The Newsletter</p>
-      <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works.</p>
-    </div>
-  </div>
 
   <!-- Windowed carousel -->
   <div class="issues-window">
@@ -1861,13 +1838,13 @@ img {
       }
     });
 
-    gsap.to('.newsletter-header .newsletter-title', {
-      yPercent: -30,
+    gsap.to('.section-cover-title', {
+      yPercent: -20,
       ease: 'none',
       scrollTrigger: {
-        trigger: '.newsletter',
+        trigger: '.section-cover',
         start: 'top bottom',
-        end: 'top top',
+        end: 'bottom top',
         scrub: true
       }
     });
@@ -1894,13 +1871,6 @@ img {
       }
     );
 
-    gsap.fromTo('.newsletter-header',
-      { opacity: 0, y: 24 },
-      {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: '.newsletter-header', start: 'top 88%', once: true }
-      }
-    );
 
     /* -----------------------------------------
        GSAP — Staggered card reveals
@@ -1943,7 +1913,7 @@ img {
     document.querySelectorAll('.reveal').forEach(function(el) {
       el.classList.add('visible');
     });
-    document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .newsletter-header, .section-cover-content').forEach(function(el) {
+    document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .section-cover-content').forEach(function(el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
