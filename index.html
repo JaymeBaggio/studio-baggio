@@ -646,6 +646,32 @@ img {
   color: var(--text-dark);
   padding: var(--section-pad) 0;
   border-top: 1px solid var(--divider-dark);
+  position: relative;
+}
+.playbooks::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, var(--bg-light), var(--bg-newsletter));
+  pointer-events: none;
+}
+
+/* Section divider between Playbooks & Newsletter */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--bg-newsletter);
+}
+.section-divider-line {
+  width: 120px;
+  height: 1px;
+  background: var(--divider-dark);
+  transform: scaleX(0);
 }
 
 .playbooks-header {
@@ -994,10 +1020,13 @@ img {
 }
 
 /* GSAP animation initial states */
-.playbooks-header,
-.newsletter-header {
+.playbooks-header {
   opacity: 0;
   transform: translateY(24px);
+}
+.newsletter-header {
+  opacity: 0;
+  transform: translateY(48px) scale(0.97);
 }
 
 .playbook-card,
@@ -1528,6 +1557,10 @@ img {
   </div>
 </section>
 
+<div class="section-divider">
+  <div class="section-divider-line"></div>
+</div>
+
 <!-- ==========================================
      NEWSLETTER — ISSUE CARDS + LIGHTBOX
      ========================================== -->
@@ -1793,9 +1826,9 @@ img {
     );
 
     gsap.fromTo('.newsletter-header',
-      { opacity: 0, y: 24 },
+      { opacity: 0, y: 48, scale: 0.97 },
       {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+        opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power2.out',
         scrollTrigger: { trigger: '.newsletter-header', start: 'top 88%', once: true }
       }
     );
@@ -1815,7 +1848,7 @@ img {
     gsap.fromTo('.issue-card',
       { opacity: 0, y: 32 },
       {
-        opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1,
+        opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', stagger: 0.15,
         scrollTrigger: { trigger: '.issues-window', start: 'top 80%', once: true }
       }
     );
@@ -1833,6 +1866,20 @@ img {
       scrollTrigger: { trigger: '.newsletter', start: 'top bottom', end: 'bottom top', scrub: true }
     });
 
+    /* -----------------------------------------
+       GSAP — Section divider line draw
+       ----------------------------------------- */
+    gsap.to('.section-divider-line', {
+      scaleX: 1,
+      duration: 0.8,
+      ease: 'power2.inOut',
+      scrollTrigger: {
+        trigger: '.section-divider',
+        start: 'top 85%',
+        once: true
+      }
+    });
+
   } else {
     // If reduced motion, show everything immediately
     document.querySelectorAll('.hero-stagger').forEach(function(el) {
@@ -1845,6 +1892,9 @@ img {
     document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .newsletter-header').forEach(function(el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
+    });
+    document.querySelectorAll('.section-divider-line').forEach(function(el) {
+      el.style.transform = 'scaleX(1)';
     });
   }
 
