@@ -963,95 +963,39 @@ img {
   background: rgba(0,0,0,0.03);
 }
 
-/* Section cover — sticky dark band between Playbooks & Newsletter */
-.newsletter-reveal {
-  position: relative;
-}
-
-.section-cover {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: var(--bg-dark);
-  color: var(--text-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Newsletter section header (restored) */
+.newsletter-header {
   text-align: center;
-  min-height: 50vh;
-  padding: clamp(60px, 8vw, 120px) 24px;
+  margin-bottom: clamp(32px, 4vw, 48px);
 }
 
-.section-cover-content {
-  max-width: 520px;
-}
-
-.section-cover-title {
+.newsletter-title {
   font-weight: 600;
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-dark);
 }
 
-.section-cover-sub {
+.newsletter-sub-title {
   font-weight: 300;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dim-dark);
-  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--dim-light);
+  margin-top: 4px;
 }
 
-.section-cover-rule {
-  width: 40px;
-  height: 1px;
-  background: rgba(255,255,255,0.15);
-  margin: 20px auto;
-}
-
-.section-cover-desc {
+.newsletter-desc {
   font-weight: 300;
   font-size: 0.85rem;
-  color: var(--dim-dark);
   line-height: 1.6;
-}
-
-/* Newsletter scrolls OVER the cover */
-.newsletter {
-  position: relative;
-  z-index: 2;
-}
-
-/* Parallax window effect — images slide within cards as they scroll */
-@supports (animation-timeline: view()) {
-  @keyframes carousel-parallax {
-    from { transform: scale(1.2) translateX(8%); }
-    to   { transform: scale(1.2) translateX(-8%); }
-  }
-
-  .playbook-card {
-    view-timeline-name: --playbook-card;
-    view-timeline-axis: inline;
-  }
-  .playbook-card-img {
-    animation: carousel-parallax linear both;
-    animation-timeline: --playbook-card;
-    animation-range: cover;
-  }
-
-  .issue-card {
-    view-timeline-name: --issue-card;
-    view-timeline-axis: inline;
-  }
-  .issue-card img {
-    animation: carousel-parallax linear both;
-    animation-timeline: --issue-card;
-    animation-range: cover;
-  }
+  color: var(--dim-light);
+  max-width: 420px;
+  margin: 12px auto 0;
 }
 
 /* GSAP animation initial states */
-.playbooks-header {
+.playbooks-header,
+.newsletter-header {
   opacity: 0;
   transform: translateY(24px);
 }
@@ -1060,11 +1004,6 @@ img {
 .issue-card {
   opacity: 0;
   transform: translateY(32px);
-}
-
-.section-cover-content {
-  opacity: 0;
-  transform: translateY(20px);
 }
 
 @media (max-width: 768px) {
@@ -1589,22 +1528,17 @@ img {
   </div>
 </section>
 
-<!-- Wrapper keeps cover sticky while newsletter scrolls over -->
-<div class="newsletter-reveal">
-
-  <div class="section-cover">
-    <div class="section-cover-content">
-      <h2 class="section-cover-title">Rough Cut</h2>
-      <p class="section-cover-sub">The Newsletter</p>
-      <div class="section-cover-rule"></div>
-      <p class="section-cover-desc">AI strategy, tools, and honest takes on what actually works — delivered to your inbox.</p>
+<!-- ==========================================
+     NEWSLETTER — ISSUE CARDS + LIGHTBOX
+     ========================================== -->
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-header">
+      <h2 class="newsletter-title">Rough Cut</h2>
+      <p class="newsletter-sub-title">The Newsletter</p>
+      <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works.</p>
     </div>
   </div>
-
-  <!-- ==========================================
-       NEWSLETTER — ISSUE CARDS + LIGHTBOX
-       ========================================== -->
-  <section class="newsletter" id="newsletter">
 
   <!-- Windowed carousel -->
   <div class="issues-window">
@@ -1657,8 +1591,6 @@ img {
     </form>
   </div>
 </section>
-
-</div><!-- /.newsletter-reveal -->
 
 <!-- Lightbox overlay -->
 <div class="lightbox" id="lightbox">
@@ -1838,27 +1770,16 @@ img {
       }
     });
 
-    gsap.to('.section-cover-title', {
-      yPercent: -20,
+    gsap.to('.newsletter-header .newsletter-title', {
+      yPercent: -30,
       ease: 'none',
       scrollTrigger: {
-        trigger: '.section-cover',
+        trigger: '.newsletter',
         start: 'top bottom',
-        end: 'bottom top',
+        end: 'top top',
         scrub: true
       }
     });
-
-    /* -----------------------------------------
-       GSAP — Section cover reveal
-       ----------------------------------------- */
-    gsap.fromTo('.section-cover-content',
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1, y: 0, duration: 1, ease: 'power2.out',
-        scrollTrigger: { trigger: '.section-cover', start: 'top 70%', once: true }
-      }
-    );
 
     /* -----------------------------------------
        GSAP — Header fade-ins
@@ -1868,6 +1789,14 @@ img {
       {
         opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
         scrollTrigger: { trigger: '.playbooks-header', start: 'top 88%', once: true }
+      }
+    );
+
+    gsap.fromTo('.newsletter-header',
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: '.newsletter-header', start: 'top 88%', once: true }
       }
     );
 
@@ -1913,7 +1842,7 @@ img {
     document.querySelectorAll('.reveal').forEach(function(el) {
       el.classList.add('visible');
     });
-    document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .section-cover-content').forEach(function(el) {
+    document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .newsletter-header').forEach(function(el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
