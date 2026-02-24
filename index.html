@@ -545,6 +545,26 @@ img {
   color: var(--dim-dark);
 }
 
+.product-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.product-link:hover {
+  border-color: var(--text-light);
+}
+
 .product-visual {
   aspect-ratio: 16/10;
   border-radius: 8px;
@@ -1305,6 +1325,7 @@ img {
               <span class="dot live"></span>
               <span class="status-text">Live</span>
             </div>
+            <a href="https://calmauthority.ai/" target="_blank" rel="noopener" class="product-link">Visit Site &rarr;</a>
           </div>
           <div class="product-visual">
             <img src="assets/products/calm-authority.png" alt="Calm Authority" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
@@ -1323,6 +1344,7 @@ img {
               <span class="dot live"></span>
               <span class="status-text">Live</span>
             </div>
+            <a href="https://last30days.app/" target="_blank" rel="noopener" class="product-link">Visit Site &rarr;</a>
           </div>
           <div class="product-visual">
             <img src="assets/products/last30days.png" alt="/Last30Days" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
