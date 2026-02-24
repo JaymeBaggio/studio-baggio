@@ -641,11 +641,19 @@ img {
 /* ============================================
    PLAYBOOKS — RESOURCES SECTION
    ============================================ */
+/* Sticky section stacking wrapper */
+.sections-stack {
+  position: relative;
+}
+
 .playbooks {
   background: var(--bg-light);
   color: var(--text-dark);
   padding: var(--section-pad) 0;
   border-top: 1px solid var(--divider-dark);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .playbooks-header {
@@ -839,6 +847,11 @@ img {
   background: var(--bg-newsletter);
   color: var(--text-dark);
   padding: var(--section-pad) 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -12px 40px rgba(0,0,0,0.08);
 }
 
 /* Issue cards — windowed carousel */
@@ -1465,6 +1478,9 @@ img {
   </div>
 </section>
 
+<!-- Sticky stacking wrapper — sections slide over each other -->
+<div class="sections-stack">
+
 <!-- ==========================================
      PLAYBOOKS — FREE RESOURCES
      ========================================== -->
@@ -1591,6 +1607,8 @@ img {
     </form>
   </div>
 </section>
+
+</div><!-- /.sections-stack -->
 
 <!-- Lightbox overlay -->
 <div class="lightbox" id="lightbox">
@@ -1831,6 +1849,22 @@ img {
     gsap.to('.issues-frame', {
       yPercent: -4, ease: 'none',
       scrollTrigger: { trigger: '.newsletter', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+
+    /* -----------------------------------------
+       GSAP — Playbooks recedes as Newsletter slides over
+       ----------------------------------------- */
+    gsap.to('.playbooks', {
+      scale: 0.95,
+      filter: 'blur(2px)',
+      opacity: 0.6,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.newsletter',
+        start: 'top bottom',
+        end: 'top 20%',
+        scrub: true
+      }
     });
 
   } else {
