@@ -992,12 +992,77 @@ img {
   background: rgba(0,0,0,0.03);
 }
 
-/* Section divider */
-.section-divider {
-  max-width: 120px;
+/* Section cover — sticky dark band between Playbooks & Newsletter */
+.newsletter-reveal {
+  position: relative;
+}
+
+.section-cover {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 50vh;
+  padding: clamp(60px, 8vw, 120px) 24px;
+}
+
+.section-cover-content {
+  max-width: 520px;
+}
+
+.section-cover-label {
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim-dark);
+  margin-bottom: 16px;
+}
+
+.section-cover-title {
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.section-cover-rule {
+  width: 40px;
   height: 1px;
-  background: rgba(0,0,0,0.12);
-  margin: 0 auto;
+  background: rgba(255,255,255,0.15);
+  margin: 20px auto;
+}
+
+.section-cover-desc {
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--dim-dark);
+  line-height: 1.6;
+}
+
+/* Newsletter scrolls OVER the cover */
+.newsletter {
+  position: relative;
+  z-index: 2;
+}
+
+/* Parallax window effect on carousel images */
+@supports (animation-timeline: view(x)) {
+  @keyframes card-parallax {
+    from { transform: scale(1.15) translateX(8%); }
+    to { transform: scale(1.15) translateX(-8%); }
+  }
+
+  .playbook-card-img,
+  .issue-card img {
+    animation: card-parallax linear both;
+    animation-timeline: view(x);
+  }
 }
 
 /* GSAP animation initial states */
@@ -1011,6 +1076,11 @@ img {
 .issue-card {
   opacity: 0;
   transform: translateY(32px);
+}
+
+.section-cover-content {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 @media (max-width: 768px) {
@@ -1535,12 +1605,22 @@ img {
   </div>
 </section>
 
-<div class="section-divider"></div>
+<!-- Wrapper keeps cover sticky while newsletter scrolls over -->
+<div class="newsletter-reveal">
 
-<!-- ==========================================
-     NEWSLETTER — ISSUE CARDS + LIGHTBOX
-     ========================================== -->
-<section class="newsletter" id="newsletter">
+  <div class="section-cover">
+    <div class="section-cover-content">
+      <p class="section-cover-label">Up Next</p>
+      <h2 class="section-cover-title">Rough Cut</h2>
+      <div class="section-cover-rule"></div>
+      <p class="section-cover-desc">AI strategy, tools, and honest takes on what actually works — delivered to your inbox.</p>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       NEWSLETTER — ISSUE CARDS + LIGHTBOX
+       ========================================== -->
+  <section class="newsletter" id="newsletter">
   <div class="container">
     <div class="newsletter-header">
       <h2 class="newsletter-title">Rough Cut</h2>
@@ -1600,6 +1680,8 @@ img {
     </form>
   </div>
 </section>
+
+</div><!-- /.newsletter-reveal -->
 
 <!-- Lightbox overlay -->
 <div class="lightbox" id="lightbox">
@@ -1791,6 +1873,17 @@ img {
     });
 
     /* -----------------------------------------
+       GSAP — Section cover reveal
+       ----------------------------------------- */
+    gsap.fromTo('.section-cover-content',
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+        scrollTrigger: { trigger: '.section-cover', start: 'top 70%', once: true }
+      }
+    );
+
+    /* -----------------------------------------
        GSAP — Header fade-ins
        ----------------------------------------- */
     gsap.fromTo('.playbooks-header',
@@ -1850,7 +1943,7 @@ img {
     document.querySelectorAll('.reveal').forEach(function(el) {
       el.classList.add('visible');
     });
-    document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .newsletter-header').forEach(function(el) {
+    document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .newsletter-header, .section-cover-content').forEach(function(el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
