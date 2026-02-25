@@ -46,6 +46,20 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Desktop: vertical section snap */
+@media (min-width: 769px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+  .hero,
+  .divisions,
+  .playbooks,
+  .newsletter,
+  .footer {
+    scroll-snap-align: start;
+  }
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 300;
@@ -650,42 +664,19 @@ img {
 }
 
 .playbooks-pin {
-  overflow: clip;
-  height: 100vh;
+  overflow: visible;
+  height: auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--bg-light);
+  padding: clamp(60px, 8vw, 100px) 0;
 }
 .playbooks-pin .container,
 .newsletter-pin .container {
   width: 100%;
-}
-.playbooks::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(to bottom, var(--bg-light), var(--bg-newsletter));
-  pointer-events: none;
-}
-
-/* Section divider between Playbooks & Newsletter */
-.section-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background: var(--bg-newsletter);
-}
-.section-divider-line {
-  width: 120px;
-  height: 1px;
-  background: var(--divider-dark);
-  transform: scaleX(0);
 }
 
 .playbooks-header {
@@ -905,13 +896,15 @@ img {
 }
 
 .newsletter-pin {
-  overflow: clip;
-  height: 100vh;
+  overflow: visible;
+  height: auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--bg-newsletter);
+  padding: clamp(60px, 8vw, 100px) 0;
 }
 
 /* Issue cards — windowed carousel */
@@ -1605,17 +1598,12 @@ img {
       </div>
     </div>
   </div>
-  </div><!-- /playbooks-pin -->
-
   <div class="playbooks-nav">
     <button class="playbooks-arrow" id="playbooksPrev" aria-label="Previous">&larr;</button>
     <button class="playbooks-arrow" id="playbooksNext" aria-label="Next">&rarr;</button>
   </div>
+  </div><!-- /playbooks-pin -->
 </section>
-
-<div class="section-divider">
-  <div class="section-divider-line"></div>
-</div>
 
 <!-- ==========================================
      NEWSLETTER — ISSUE CARDS + LIGHTBOX
@@ -1666,19 +1654,17 @@ img {
       </div>
     </div>
   </div>
-  </div><!-- /newsletter-pin -->
-
   <div class="issues-nav">
     <button class="issues-arrow" id="issuesPrev" aria-label="Previous">&larr;</button>
     <button class="issues-arrow" id="issuesNext" aria-label="Next">&rarr;</button>
   </div>
-
   <div class="subscribe-row">
     <form class="subscribe-form" onsubmit="return false;">
       <input type="email" class="subscribe-input" placeholder="Your email address" aria-label="Email address" required>
       <button type="submit" class="subscribe-btn">Subscribe &rarr;</button>
     </form>
   </div>
+  </div><!-- /newsletter-pin -->
 </section>
 
 <!-- Lightbox overlay -->
@@ -1829,83 +1815,6 @@ img {
         });
       });
 
-      /* -----------------------------------------
-         GSAP — Playbooks horizontal pin scroll
-         ----------------------------------------- */
-      var pbPinEl = document.querySelector('.playbooks-pin');
-      var pbStrip = document.querySelector('.playbooks-strip');
-      var pbFrame = document.querySelector('.playbooks-frame');
-      var pbProgressFill = document.getElementById('playbooksProgressFill');
-
-      if (pbPinEl && pbStrip && pbFrame) {
-        requestAnimationFrame(function() {
-          var scrollDist = pbStrip.scrollWidth - pbFrame.clientWidth;
-          // Lock strip for GSAP transform rendering
-          pbStrip.style.overflow = 'visible';
-          pbStrip.style.scrollSnapType = 'none';
-          if (scrollDist > 0) {
-            pbProgressFill.style.width = '0%';
-            pbProgressFill.style.marginLeft = '0';
-
-            gsap.to(pbStrip, {
-              x: -scrollDist,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: pbPinEl,
-                pin: true,
-                scrub: 0.3,
-                anticipatePin: 1,
-                end: '+=' + (scrollDist * 1.5),
-                invalidateOnRefresh: true,
-                onUpdate: function(self) {
-                  if (pbProgressFill) {
-                    pbProgressFill.style.width = (self.progress * 100) + '%';
-                  }
-                }
-              }
-            });
-          }
-        });
-      }
-
-      /* -----------------------------------------
-         GSAP — Newsletter horizontal pin scroll
-         ----------------------------------------- */
-      var nlPinEl = document.querySelector('.newsletter-pin');
-      var nlStrip = document.querySelector('.issues-strip');
-      var nlFrame = document.querySelector('.issues-frame');
-      var nlProgressFill = document.getElementById('issuesProgressFill');
-
-      if (nlPinEl && nlStrip && nlFrame) {
-        requestAnimationFrame(function() {
-          var scrollDist = nlStrip.scrollWidth - nlFrame.clientWidth;
-          // Lock strip for GSAP transform rendering
-          nlStrip.style.overflow = 'visible';
-          nlStrip.style.scrollSnapType = 'none';
-          if (scrollDist > 0) {
-            nlProgressFill.style.width = '0%';
-            nlProgressFill.style.marginLeft = '0';
-
-            gsap.to(nlStrip, {
-              x: -scrollDist,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: nlPinEl,
-                pin: true,
-                scrub: 0.3,
-                anticipatePin: 1,
-                end: '+=' + (scrollDist * 1.5),
-                invalidateOnRefresh: true,
-                onUpdate: function(self) {
-                  if (nlProgressFill) {
-                    nlProgressFill.style.width = (self.progress * 100) + '%';
-                  }
-                }
-              }
-            });
-          }
-        });
-      }
     }
 
     /* -----------------------------------------
@@ -2000,19 +1909,6 @@ img {
       });
     }
 
-    /* -----------------------------------------
-       GSAP — Section divider line draw
-       ----------------------------------------- */
-    gsap.to('.section-divider-line', {
-      scaleX: 1,
-      duration: 0.8,
-      ease: 'power2.inOut',
-      scrollTrigger: {
-        trigger: '.section-divider',
-        start: 'top 85%',
-        once: true
-      }
-    });
 
   } else {
     // If reduced motion, show everything immediately and disable pins
@@ -2026,17 +1922,6 @@ img {
     document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .newsletter-header').forEach(function(el) {
       el.style.opacity = '1';
       el.style.transform = 'none';
-    });
-    document.querySelectorAll('.section-divider-line').forEach(function(el) {
-      el.style.transform = 'scaleX(1)';
-    });
-    // Disable pin containers for reduced motion — keep strips scrollable
-    document.querySelectorAll('.playbooks-pin, .newsletter-pin').forEach(function(el) {
-      el.style.overflow = 'visible';
-      el.style.height = 'auto';
-    });
-    document.querySelectorAll('.playbooks-strip, .issues-strip').forEach(function(el) {
-      el.style.overflowX = 'auto';
     });
   }
 
