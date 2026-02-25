@@ -46,25 +46,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Desktop: vertical section snap */
-@media (min-width: 769px) {
-  html {
-    scroll-snap-type: y mandatory;
-  }
-  .hero,
-  .divisions,
-  .playbooks,
-  .newsletter,
-  .footer {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-  /* Prevent GSAP pin spacers from interfering with snap */
-  .pin-spacer {
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-  }
-}
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -664,25 +645,8 @@ img {
 .playbooks {
   background: var(--bg-light);
   color: var(--text-dark);
-  padding: 0;
+  padding: var(--section-pad) 0;
   border-top: 1px solid var(--divider-dark);
-  position: relative;
-}
-
-.playbooks-pin {
-  overflow: visible;
-  height: auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-light);
-  padding: clamp(60px, 8vw, 100px) 0;
-}
-.playbooks-pin .container,
-.newsletter-pin .container {
-  width: 100%;
 }
 
 .playbooks-header {
@@ -852,7 +816,7 @@ img {
   cursor: default;
 }
 
-/* Desktop: GSAP drives horizontal scroll */
+/* Desktop: native horizontal scroll (trackpad/mousewheel) */
 @media (min-width: 769px) {
   .playbooks-window,
   .issues-window {
@@ -871,11 +835,6 @@ img {
 }
 
 @media (max-width: 768px) {
-  .playbooks-pin,
-  .newsletter-pin {
-    overflow: visible;
-    height: auto;
-  }
   .playbook-card {
     flex: 0 0 calc(85% - 10px);
   }
@@ -898,19 +857,7 @@ img {
 .newsletter {
   background: var(--bg-newsletter);
   color: var(--text-dark);
-  padding: 0;
-}
-
-.newsletter-pin {
-  overflow: visible;
-  height: auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-newsletter);
-  padding: clamp(60px, 8vw, 100px) 0;
+  padding: var(--section-pad) 0;
 }
 
 /* Issue cards — windowed carousel */
@@ -1553,13 +1500,13 @@ img {
      PLAYBOOKS — FREE RESOURCES
      ========================================== -->
 <section class="playbooks" id="playbooks">
-  <div class="playbooks-pin">
   <div class="container">
     <div class="playbooks-header">
       <h2>Playbooks</h2>
       <p class="playbooks-sub">Frameworks we use. Yours to keep.</p>
     </div>
   </div>
+
   <div class="playbooks-window">
     <div class="playbooks-frame">
       <div class="playbooks-strip" id="playbooksStrip">
@@ -1608,21 +1555,19 @@ img {
     <button class="playbooks-arrow" id="playbooksPrev" aria-label="Previous">&larr;</button>
     <button class="playbooks-arrow" id="playbooksNext" aria-label="Next">&rarr;</button>
   </div>
-  </div><!-- /playbooks-pin -->
 </section>
 
 <!-- ==========================================
      NEWSLETTER — ISSUE CARDS + LIGHTBOX
      ========================================== -->
 <section class="newsletter" id="newsletter">
-  <!-- Windowed carousel -->
-  <div class="newsletter-pin">
   <div class="container">
     <div class="newsletter-header">
       <h2 class="newsletter-title">Newsletter</h2>
       <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works.</p>
     </div>
   </div>
+
   <div class="issues-window">
     <div class="issues-frame">
       <div class="issues-strip" id="issuesStrip">
@@ -1670,7 +1615,6 @@ img {
       <button type="submit" class="subscribe-btn">Subscribe &rarr;</button>
     </form>
   </div>
-  </div><!-- /newsletter-pin -->
 </section>
 
 <!-- Lightbox overlay -->
