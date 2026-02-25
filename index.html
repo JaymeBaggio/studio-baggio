@@ -852,11 +852,6 @@ img {
 
 /* Desktop: GSAP drives horizontal scroll */
 @media (min-width: 769px) {
-  .playbooks-strip,
-  .issues-strip {
-    overflow: visible;
-    scroll-snap-type: none;
-  }
   .playbooks-window,
   .issues-window {
     width: 100%;
@@ -1842,6 +1837,9 @@ img {
       if (pbPinEl && pbStrip && pbFrame) {
         requestAnimationFrame(function() {
           var scrollDist = pbStrip.scrollWidth - pbFrame.clientWidth;
+          // Lock strip for GSAP transform rendering
+          pbStrip.style.overflow = 'visible';
+          pbStrip.style.scrollSnapType = 'none';
           if (scrollDist > 0) {
             pbProgressFill.style.width = '0%';
             pbProgressFill.style.marginLeft = '0';
@@ -1878,6 +1876,9 @@ img {
       if (nlPinEl && nlStrip && nlFrame) {
         requestAnimationFrame(function() {
           var scrollDist = nlStrip.scrollWidth - nlFrame.clientWidth;
+          // Lock strip for GSAP transform rendering
+          nlStrip.style.overflow = 'visible';
+          nlStrip.style.scrollSnapType = 'none';
           if (scrollDist > 0) {
             nlProgressFill.style.width = '0%';
             nlProgressFill.style.marginLeft = '0';
