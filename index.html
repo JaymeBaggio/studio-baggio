@@ -644,7 +644,7 @@ img {
 .playbooks {
   background: var(--bg-light);
   color: var(--text-dark);
-  padding: var(--section-pad) 0 0;
+  padding: 0;
   border-top: 1px solid var(--divider-dark);
   position: relative;
 }
@@ -653,9 +653,14 @@ img {
   overflow: clip;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--bg-light);
+}
+.playbooks-pin .container,
+.newsletter-pin .container {
+  width: 100%;
 }
 .playbooks::after {
   content: '';
@@ -685,7 +690,7 @@ img {
 
 .playbooks-header {
   text-align: center;
-  margin-bottom: clamp(40px, 5vw, 64px);
+  margin-bottom: clamp(20px, 2.5vw, 32px);
 }
 
 .playbooks-header h2 {
@@ -896,13 +901,14 @@ img {
 .newsletter {
   background: var(--bg-newsletter);
   color: var(--text-dark);
-  padding: clamp(32px, 4vw, 56px) 0 0;
+  padding: 0;
 }
 
 .newsletter-pin {
   overflow: clip;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--bg-newsletter);
@@ -1033,7 +1039,7 @@ img {
 /* Newsletter section header (restored) */
 .newsletter-header {
   text-align: center;
-  margin-bottom: clamp(32px, 4vw, 48px);
+  margin-bottom: clamp(16px, 2vw, 28px);
 }
 
 .newsletter-title {
@@ -1548,15 +1554,13 @@ img {
      PLAYBOOKS — FREE RESOURCES
      ========================================== -->
 <section class="playbooks" id="playbooks">
+  <div class="playbooks-pin">
   <div class="container">
     <div class="playbooks-header">
       <h2>Playbooks</h2>
       <p class="playbooks-sub">Frameworks we use. Yours to keep.</p>
     </div>
-
   </div>
-
-  <div class="playbooks-pin">
   <div class="playbooks-window">
     <div class="playbooks-frame">
       <div class="playbooks-strip" id="playbooksStrip">
@@ -1617,15 +1621,14 @@ img {
      NEWSLETTER — ISSUE CARDS + LIGHTBOX
      ========================================== -->
 <section class="newsletter" id="newsletter">
+  <!-- Windowed carousel -->
+  <div class="newsletter-pin">
   <div class="container">
     <div class="newsletter-header">
       <h2 class="newsletter-title">Newsletter</h2>
       <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works.</p>
     </div>
   </div>
-
-  <!-- Windowed carousel -->
-  <div class="newsletter-pin">
   <div class="issues-window">
     <div class="issues-frame">
       <div class="issues-strip" id="issuesStrip">
