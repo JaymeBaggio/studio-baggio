@@ -871,12 +871,6 @@ img {
   .issues-nav {
     display: none;
   }
-  /* Cards visible immediately on desktop (scroll reveals them in frame) */
-  .playbook-card,
-  .issue-card {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1085,6 +1079,15 @@ img {
 .issue-card {
   opacity: 0;
   transform: translateY(32px);
+}
+
+/* Desktop: cards visible immediately (GSAP pin scrolls them, no stagger needed) */
+@media (min-width: 769px) {
+  .playbook-card,
+  .issue-card {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (max-width: 768px) {
