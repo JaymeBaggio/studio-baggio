@@ -434,7 +434,7 @@ img {
    PRODUCTS — HORIZONTAL PINNED SCROLL (DARK)
    ============================================ */
 .products-section {
-  padding: var(--section-pad) 0 0;
+  padding: var(--section-pad) 0;
   background: var(--bg-light);
   color: var(--text-dark);
 }
@@ -643,10 +643,20 @@ img {
    PLAYBOOKS — RESOURCES SECTION
    ============================================ */
 .playbooks {
+  position: relative;
   background: var(--bg-light);
   color: var(--text-dark);
   padding: var(--section-pad) 0;
-  border-top: 1px solid var(--divider-dark);
+}
+
+.playbooks::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.06), transparent);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .playbooks-header {
@@ -855,9 +865,20 @@ img {
    NEWSLETTER — ISSUE CARDS + LIGHTBOX
    ============================================ */
 .newsletter {
+  position: relative;
   background: var(--bg-newsletter);
   color: var(--text-dark);
   padding: var(--section-pad) 0;
+}
+
+.newsletter::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.03), transparent);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Issue cards — windowed carousel */
@@ -1229,7 +1250,6 @@ img {
    ============================================ */
 .footer {
   padding: 100px 0 60px;
-  border-top: 1px solid var(--divider-dark);
   background: var(--bg-light);
   color: var(--text-dark);
 }
@@ -1826,6 +1846,28 @@ img {
       }
     );
 
+    /* -----------------------------------------
+       GSAP — Content parallax (all viewports)
+       ----------------------------------------- */
+    gsap.to('.playbooks-window', {
+      yPercent: -6, ease: 'none',
+      scrollTrigger: { trigger: '.playbooks', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+
+    gsap.to('.issues-window', {
+      yPercent: -6, ease: 'none',
+      scrollTrigger: { trigger: '.newsletter', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+
+    gsap.to('.subscribe-row', {
+      yPercent: -8, ease: 'none',
+      scrollTrigger: { trigger: '.newsletter', start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+
+    gsap.to('.divisions', {
+      yPercent: -15, opacity: 0.7, ease: 'none',
+      scrollTrigger: { trigger: '.divisions', start: 'top 60%', end: 'bottom top', scrub: true }
+    });
 
     /* -----------------------------------------
        GSAP — Staggered card reveals (mobile only)
@@ -1847,16 +1889,6 @@ img {
         }
       );
 
-      /* Carousel frame subtle parallax (mobile only) */
-      gsap.to('.playbooks-frame', {
-        yPercent: -4, ease: 'none',
-        scrollTrigger: { trigger: '.playbooks', start: 'top bottom', end: 'bottom top', scrub: true }
-      });
-
-      gsap.to('.issues-frame', {
-        yPercent: -4, ease: 'none',
-        scrollTrigger: { trigger: '.newsletter', start: 'top bottom', end: 'bottom top', scrub: true }
-      });
     }
 
 
