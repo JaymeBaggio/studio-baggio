@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── BACK BUTTON ─── */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    font-size: 20px;
+    color: rgba(255,255,255,0.75);
+    opacity: 0.2;
+    text-decoration: none;
+    background: none;
+    padding: 2px 4px;
+    transition: opacity 0.2s, color 0.15s;
+    line-height: 1;
+  }
+  .back-btn:hover { opacity: 0.9; color: #fff; }
+
+  /* ─── HERO ─── */
+  .hero {
+    display: grid;
+    grid-template-columns: 42% 58%;
+    min-height: 100vh;
+    background: #000;
+  }
+
+  /* LEFT PANEL */
+  .hero-left {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 56px 80px 72px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* vertical rule divider */
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 12%;
+    bottom: 12%;
+    width: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(80px, 9.5vw, 160px);
+    font-weight: 900;
+    line-height: 0.87;
+    color: #fff;
+    letter-spacing: -0.025em;
+    margin-bottom: 44px;
+  }
+
+  .hero-rule {
+    width: 48px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    margin-bottom: 28px;
+  }
+
+  .hero-issue {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 18px;
+  }
+
+  .hero-tagline {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    margin-bottom: 48px;
+    max-width: 280px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #000;
+    background: #fff;
+    padding: 14px 28px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    align-self: flex-start;
+    border: 1px solid #fff;
+  }
+  .hero-cta:hover {
+    background: transparent;
+    color: #fff;
+  }
+
+  /* RIGHT PANEL — diagonal covers grid */
+  .hero-right {
+    background: #000;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .covers-wrap {
+    position: absolute;
+    inset: -20% -20% -20% -10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .covers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    transform: rotate(12deg) translateY(-3%);
+    transform-origin: center center;
+  }
+
+  .cover-card {
+    overflow: hidden;
+    background: #111;
+    box-shadow:
+      0 12px 48px rgba(0,0,0,0.7),
+      0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  .cover-card img {
+    width: 100%;
+    aspect-ratio: 0.72 / 1;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: #fff;
+    color: #000;
+    display: flex;
+    align-items: stretch;
+    border-top: 1px solid #000;
+  }
+
+  .stat-item {
+    flex: 1;
+    padding: 44px 52px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #000;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.4);
+  }
+
+  /* ─── STATEMENT ─── */
+  .statement {
+    background: #fff;
+    color: #000;
+    padding: 104px 88px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.3);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: rgba(0,0,0,0.2);
+    flex-shrink: 0;
+  }
+
+  .statement-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 3.8vw, 58px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    max-width: 900px;
+    color: #000;
+  }
+
+  .statement-quote strong {
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /* ─── ISSUES SECTION ─── */
+  .issues {
+    background: #fff;
+    padding: 80px 88px 104px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .issues-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-top: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .issues-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #000;
+  }
+
+  .issues-sub {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.35);
+  }
+
+  .issues-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 14px;
+  }
+
+  .issue-cover {
+    overflow: hidden;
+    background: #f5f5f5;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94),
+                box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .issue-cover:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.14);
+    z-index: 2;
+  }
+
+  .issue-cover img {
+    width: 100%;
+    aspect-ratio: 0.72 / 1;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  /* ─── SUBSCRIBE ─── */
+  .subscribe {
+    background: #000;
+    color: #fff;
+    padding: 104px 88px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 96px;
+    align-items: center;
+  }
+
+  .sub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 4.5vw, 68px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+
+  .sub-title em {
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .sub-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .sub-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.65;
+  }
+
+  .sub-input-row {
+    display: flex;
+  }
+
+  .sub-input {
+    flex: 1;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-right: none;
+    padding: 15px 20px;
+    font-size: 13px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .sub-input::placeholder { color: rgba(255,255,255,0.2); }
+  .sub-input:focus { border-color: rgba(255,255,255,0.3); }
+
+  .sub-btn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+    padding: 15px 26px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .sub-btn:hover {
+    background: transparent;
+    color: #fff;
+  }
+
+  .sub-fine {
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: #000;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 88px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-copy {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.18);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+    .hero-left {
+      padding: 64px 40px;
+    }
+    .hero-left::after { display: none; }
+    .hero-right {
+      height: 65vh;
+      min-height: 360px;
+    }
+    .stats-bar { flex-wrap: wrap; }
+    .stat-item {
+      min-width: 50%;
+      padding: 32px 36px;
+    }
+    .statement { padding: 72px 40px; }
+    .issues { padding: 64px 40px 80px; }
+    .issues-grid { grid-template-columns: repeat(4, 1fr); }
+    .subscribe { grid-template-columns: 1fr; gap: 48px; padding: 72px 40px; }
+    .footer { padding: 24px 40px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO: Forbes-style split -->
+  <section class="hero">
+
+    <!-- LEFT: black + serif headline -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">Rough Cut · Media Kit 2025</div>
+      <h1 class="hero-title">Rough<br>Cut.</h1>
+      <div class="hero-rule"></div>
+      <div class="hero-issue">Issue 007 · 2025</div>
+      <p class="hero-tagline">Sharp takes on film, media and the business of creative culture.</p>
+      <a href="#subscribe" class="hero-cta">Subscribe — Free</a>
+    </div>
+
+    <!-- RIGHT: diagonal covers grid -->
+    <div class="hero-right">
+      <div class="covers-wrap">
+        <div class="covers-grid">
+          <div class="cover-card"><img src="RC7.5/1.png" alt="Issue 7.5"></div>
+          <div class="cover-card"><img src="RC7/1.png" alt="Issue 7"></div>
+          <div class="cover-card"><img src="RC6/1.png" alt="Issue 6"></div>
+          <div class="cover-card"><img src="RC5/1.png" alt="Issue 5"></div>
+          <div class="cover-card"><img src="RC4/1.png" alt="Issue 4"></div>
+          <div class="cover-card"><img src="RC3/1.png" alt="Issue 3"></div>
+          <div class="cover-card"><img src="RC2/1.png" alt="Issue 2"></div>
+          <div class="cover-card"><img src="RC7.5/1.png" alt="Issue 7.5"></div>
+          <div class="cover-card"><img src="RC7/1.png" alt="Issue 7"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">12k</div>
+      <div class="stat-label">Subscribers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Issues Published</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0£</div>
+      <div class="stat-label">Always Free</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Monthly</div>
+      <div class="stat-label">Publishing Cadence</div>
+    </div>
+  </div>
+
+  <!-- STATEMENT -->
+  <section class="statement">
+    <div class="section-label">About Rough Cut</div>
+    <p class="statement-quote">
+      <strong>Sharp takes. Real intelligence. No fluff.</strong> The newsletter for people who actually work in the industry — and want to think more clearly about where it's going.
+    </p>
+  </section>
+
+  <!-- ALL ISSUES -->
+  <section class="issues" id="issues">
+    <div class="issues-header">
+      <div class="issues-title">The Archive</div>
+      <div class="issues-sub">7 issues · 2024–2025</div>
+    </div>
+    <div class="issues-grid">
+      <div class="issue-cover"><img src="RC2/1.png" alt="Issue 2"></div>
+      <div class="issue-cover"><img src="RC3/1.png" alt="Issue 3"></div>
+      <div class="issue-cover"><img src="RC4/1.png" alt="Issue 4"></div>
+      <div class="issue-cover"><img src="RC5/1.png" alt="Issue 5"></div>
+      <div class="issue-cover"><img src="RC6/1.png" alt="Issue 6"></div>
+      <div class="issue-cover"><img src="RC7/1.png" alt="Issue 7"></div>
+      <div class="issue-cover"><img src="RC7.5/1.png" alt="Issue 7.5"></div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section class="subscribe" id="subscribe">
+    <h2 class="sub-title">Stay sharp.<br><em>Stay free.</em></h2>
+    <div class="sub-form">
+      <p class="sub-desc">Monthly. No noise. Delivered to your inbox the first Tuesday of every month.</p>
+      <div class="sub-input-row">
+        <input type="email" class="sub-input" placeholder="your@email.com">
+        <button class="sub-btn">Subscribe</button>
+      </div>
+      <div class="sub-fine">Free forever · No spam · Unsubscribe anytime</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">Rough Cut.</div>
+    <div class="footer-copy">© 2025 · Monthly · Sharp · Essential</div>
+  </footer>
+
+  <!-- BACK BUTTON -->
+  <a href="index.html" class="back-btn" title="All concepts">←</a>
+
+</body>
+</html>

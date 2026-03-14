@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — Newsletter by Jayme Baggio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Josefin+Sans:wght@200;300;400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:  #fefefe;
+    --ink:    #0f0f0f;
+    --mid:    #7a7a7a;
+    --light:  #c0c0c0;
+    --pale:   #f5f3f0;
+    --rule:   rgba(15,15,15,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Josefin Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--ink); color: var(--white); }
+
+  /* ── ANNOUNCEMENT BAR ── */
+  .announce {
+    background: var(--ink);
+    color: var(--white);
+    text-align: center;
+    padding: 10px 24px;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .announce a {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s;
+  }
+  .announce a:hover { opacity: 0.6; }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    z-index: 100;
+  }
+  .header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 20px 48px;
+  }
+  .header-util {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    display: flex;
+    gap: 28px;
+  }
+  .header-util a {
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .header-util a:hover { color: var(--ink); }
+  .header-logo {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .header-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 28px;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    align-items: center;
+  }
+  .header-actions a {
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .header-actions a:hover { color: var(--ink); }
+  .header-sub-btn {
+    color: var(--white) !important;
+    background: var(--ink);
+    padding: 8px 20px;
+    letter-spacing: 0.3em;
+    transition: opacity 0.2s !important;
+  }
+  .header-sub-btn:hover { opacity: 0.7 !important; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 48px 72px;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .hero-label::before, .hero-label::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--light);
+  }
+
+  .hero-headline {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(52px, 8vw, 110px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-headline em {
+    font-style: normal;
+  }
+
+  .hero-rule {
+    width: 1px;
+    height: 48px;
+    background: var(--rule);
+    margin: 40px auto;
+  }
+
+  .hero-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--mid);
+    max-width: 520px;
+    margin: 0 auto 48px;
+    font-style: italic;
+  }
+  .hero-desc strong { color: var(--ink); font-style: normal; }
+
+  /* Subscribe form — hero */
+  .hero-form {
+    display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .hero-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 12px 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+    outline: none;
+  }
+  .hero-form input::placeholder {
+    color: var(--light);
+  }
+  .hero-form button {
+    background: transparent;
+    border: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink);
+    cursor: pointer;
+    padding: 12px 0 12px 16px;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .hero-form button:hover { opacity: 0.5; }
+  .hero-note {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-top: 16px;
+    font-weight: 300;
+    display: block;
+  }
+
+  /* ── FEATURED ISSUE ── */
+  .featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .feat-left {
+    background: var(--ink);
+    padding: 72px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 520px;
+    position: relative;
+    overflow: hidden;
+  }
+  .feat-left::before {
+    content: '7';
+    font-family: 'Bodoni Moda', serif;
+    font-size: 380px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    bottom: -60px;
+    right: -20px;
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+  .feat-tag {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(254,254,254,0.4);
+  }
+  .feat-content { position: relative; z-index: 2; }
+  .feat-issue {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(254,254,254,0.35);
+    margin-bottom: 20px;
+  }
+  .feat-headline {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.15;
+    color: var(--white);
+  }
+  .feat-body {
+    font-family: 'Crimson Pro', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(254,254,254,0.5);
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  .feat-right {
+    padding: 72px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 1px solid var(--rule);
+  }
+  .feat-r-tag {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    margin-bottom: 32px;
+  }
+  .feat-pullquote {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(22px, 2.8vw, 36px);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink);
+    position: relative;
+    padding-left: 24px;
+  }
+  .feat-pullquote::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: var(--ink);
+  }
+  .feat-attribution {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    margin-top: 24px;
+  }
+  .feat-read {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+    margin-top: 48px;
+  }
+  .feat-read:hover { opacity: 0.4; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 40px 48px 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sh-line { flex: 1; height: 1px; background: var(--rule); }
+  .sh-title {
+    font-size: 10px;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    white-space: nowrap;
+  }
+
+  /* ── ARCHIVE GRID ── */
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--rule);
+  }
+  .archive-card {
+    padding: 40px 40px 36px;
+    border-right: 1px solid var(--rule);
+    transition: background 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+  .archive-card:last-child { border-right: none; }
+  .archive-card:hover { background: var(--pale); }
+
+  .ac-tag {
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .ac-headline {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .ac-body {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--mid);
+    font-style: italic;
+  }
+  .ac-rule {
+    width: 24px;
+    height: 1px;
+    background: var(--light);
+    margin: 20px 0;
+    transition: width 0.3s;
+  }
+  .archive-card:hover .ac-rule { width: 48px; background: var(--ink); }
+
+  /* Second row of archive */
+  .archive-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .archive-card-wide {
+    padding: 40px 48px 36px;
+    border-right: 1px solid var(--rule);
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+  .archive-card-wide:last-child { border-right: none; }
+  .archive-card-wide:hover { background: var(--pale); }
+  .archive-card-wide .ac-headline {
+    font-size: clamp(20px, 2.2vw, 28px);
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    align-items: start;
+    border-bottom: 1px solid var(--rule);
+  }
+  .about-sidebar {
+    position: sticky;
+    top: 120px;
+  }
+  .about-tag {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    margin-top: 24px;
+    display: block;
+  }
+  .about-name {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .about-title {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+  .about-main {}
+  .about-pull {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .about-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .about-body p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--mid);
+    font-style: italic;
+  }
+  .about-body p strong { color: var(--ink); font-style: normal; }
+  .about-disclaimer {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--light);
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    display: block;
+  }
+
+  /* ── FINAL SUBSCRIBE ── */
+  .final-sub {
+    padding: 120px 48px;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .fs-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--mid);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .fs-eyebrow::before, .fs-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--light);
+  }
+  .fs-headline {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-top: 24px;
+  }
+  .fs-sub {
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--mid);
+    margin-bottom: 56px;
+  }
+  .fs-form {
+    display: flex;
+    max-width: 380px;
+    margin: 0 auto;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .fs-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 14px 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+    outline: none;
+  }
+  .fs-form input::placeholder { color: var(--light); }
+  .fs-form button {
+    background: transparent;
+    border: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink);
+    cursor: pointer;
+    padding: 14px 0 14px 16px;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .fs-form button:hover { opacity: 0.4; }
+  .fs-note {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-top: 20px;
+    font-weight: 300;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .ft-left {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--light);
+  }
+  .ft-center {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .ft-right {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--light);
+    text-align: right;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+                transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  Intelligence on AI in the workplace — Monthly, free, unfiltered &nbsp;·&nbsp; <a href="#subscribe">Subscribe Now</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-util">
+      <a href="#">Archive</a>
+      <a href="#">About</a>
+    </div>
+    <a href="#" class="header-logo">Rough Cut</a>
+    <div class="header-actions">
+      <a href="#">RC7.5</a>
+      <a href="#subscribe" class="header-sub-btn">Subscribe</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Intelligence Dispatch &nbsp;/&nbsp; By Jayme Baggio &nbsp;/&nbsp; Monthly</div>
+
+  <h1 class="hero-headline">
+    The unfiltered take<br>on AI in the workplace
+  </h1>
+
+  <div class="hero-rule"></div>
+
+  <p class="hero-desc">
+    Before the hype settles. Before the consultants arrive.<br>
+    <strong>This is the rough cut.</strong>
+  </p>
+
+  <form class="hero-form" onsubmit="return false" id="subscribe">
+    <input type="email" placeholder="Your email address">
+    <button type="submit">Subscribe</button>
+  </form>
+  <span class="hero-note">Free · Monthly · No noise</span>
+</section>
+
+<!-- FEATURED -->
+<section class="featured reveal">
+  <div class="feat-left">
+    <div class="feat-tag">Latest Issue &nbsp;/&nbsp; January 2026</div>
+    <div class="feat-content">
+      <div class="feat-issue">RC7.5 &nbsp;/&nbsp; 06 January 2026</div>
+      <h2 class="feat-headline">
+        I don't get asked<br>about AI much,<br>which still surprises me
+      </h2>
+      <p class="feat-body">
+        On being early — and what it means to actually use AI every day before everyone else figures it out.
+      </p>
+    </div>
+  </div>
+  <div class="feat-right">
+    <div class="feat-r-tag">From the issue</div>
+    <div>
+      <blockquote class="feat-pullquote">
+        "Your advantage in 2026 won't come from buying more tools. It will come from a real understanding of what AI can and can't do."
+      </blockquote>
+      <p class="feat-attribution">Jayme Baggio &nbsp;/&nbsp; Rough Cut RC7.5</p>
+      <a href="#" class="feat-read">Read the issue →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHIVE HEADER -->
+<div class="section-header">
+  <div class="sh-line"></div>
+  <span class="sh-title">The Archive &nbsp;/&nbsp; 7 Issues &nbsp;/&nbsp; 2025–2026</span>
+  <div class="sh-line"></div>
+</div>
+
+<!-- ARCHIVE ROW 1 -->
+<div class="archive-grid">
+  <div class="archive-card reveal">
+    <span class="ac-tag">RC7 &nbsp;/&nbsp; January 2026 &nbsp;/&nbsp; How-To</span>
+    <h3 class="ac-headline">ChatGPT for Business Owners: If you only do 6 things...</h3>
+    <div class="ac-rule"></div>
+    <p class="ac-body">Master prompts, Projects, Live Snapshots — the operating system mindset that separates real performers from pilots.</p>
+  </div>
+  <div class="archive-card reveal">
+    <span class="ac-tag">RC6 &nbsp;/&nbsp; December 2025 &nbsp;/&nbsp; Analysis</span>
+    <h3 class="ac-headline">AI at work in 2025. Lots of adoption. Not much effectiveness.</h3>
+    <div class="ac-rule"></div>
+    <p class="ac-body">90% of firms say they use AI. 75% are still in pilot mode. The data tax, shadow AI, and what high performers do differently.</p>
+  </div>
+  <div class="archive-card reveal">
+    <span class="ac-tag">RC5 &nbsp;/&nbsp; November 2025 &nbsp;/&nbsp; Briefing</span>
+    <h3 class="ac-headline">Gemini 3 has finally landed. Here's what you need to know.</h3>
+    <div class="ac-rule"></div>
+    <p class="ac-body">Text, links, images and video in one working thread. The multimodal moment that actually changes how you work.</p>
+  </div>
+</div>
+
+<!-- ARCHIVE ROW 2 -->
+<div class="archive-grid-2">
+  <div class="archive-card-wide reveal">
+    <span class="ac-tag">RC4 &nbsp;/&nbsp; October 2025 &nbsp;/&nbsp; Briefing</span>
+    <h3 class="ac-headline">ChatGPT Atlas launches. A major step in merging chat, search & execution.</h3>
+    <div class="ac-rule"></div>
+    <p class="ac-body">AI controlling the infrastructure of attention. The new SEO. What this means for businesses and creators building for the future.</p>
+  </div>
+  <div class="archive-card-wide reveal">
+    <span class="ac-tag">RC2 &nbsp;/&nbsp; September 2025 &nbsp;/&nbsp; Hardware</span>
+    <h3 class="ac-headline">Meta unveiled a new Ray-Ban Display. Wearable tech's pivotal moment.</h3>
+    <div class="ac-rule"></div>
+    <p class="ac-body">EEG devices, haptic wearables, gesture control. The operating system is moving off the screen into the ambient layer.</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-sidebar reveal">
+    <span class="about-tag">The Author</span>
+    <div class="about-name">Jayme<br>Baggio</div>
+    <div class="about-title">
+      Strategist &nbsp;/&nbsp; Advisor<br>
+      AI in the Workplace<br>
+      Views are my own
+    </div>
+  </div>
+  <div class="about-main">
+    <p class="about-pull reveal">
+      "Every newsletter on AI was either hype or fear. I wanted the real picture — raw, honest, early."
+    </p>
+    <div class="about-body reveal">
+      <p>
+        Rough Cut started in September 2025 with a simple premise: <strong>someone needs to write the newsletter that tells you what's actually happening with AI in the workplace</strong> — not what vendors want you to believe, not what analysts are paid to say.
+      </p>
+      <p>
+        Every month I synthesise the most important signals from research, product releases, and real practitioner experience. I'll tell you what high performers do differently. <strong>I'll give you the concrete action, not the vague insight.</strong> Views are my own. Always.
+      </p>
+    </div>
+    <span class="about-disclaimer reveal">No sponsored content &nbsp;·&nbsp; No affiliate links &nbsp;·&nbsp; No vendor relationships &nbsp;·&nbsp; The honest take</span>
+  </div>
+</section>
+
+<!-- FINAL SUBSCRIBE -->
+<section class="final-sub">
+  <div class="fs-eyebrow">Join the dispatch</div>
+  <h2 class="fs-headline reveal">
+    The rough cut,<br>every month.
+  </h2>
+  <p class="fs-sub reveal">Free. Honest. Before everyone else figures it out.</p>
+  <form class="fs-form reveal" onsubmit="return false">
+    <input type="email" placeholder="Your email address">
+    <button type="submit">Subscribe</button>
+  </form>
+  <span class="fs-note reveal">Monthly &nbsp;·&nbsp; Free &nbsp;·&nbsp; Unsubscribe anytime</span>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="ft-left">© 2026 &nbsp;·&nbsp; All issues archived</span>
+  <span class="ft-center">Rough Cut</span>
+  <span class="ft-right">Jayme Baggio &nbsp;·&nbsp; Views are my own</span>
+</footer>
+
+<script>
+const els = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
+els.forEach((el, i) => {
+  el.style.transitionDelay = (Math.floor(i / 3) % 4 * 0.06) + 's';
+  obs.observe(el);
+});
+</script>
+<a href="index.html" style="position:fixed;top:20px;left:20px;z-index:9999;font-size:20px;color:#888;opacity:0.2;text-decoration:none;background:none;padding:2px 4px;transition:opacity 0.2s;line-height:1;font-family:sans-serif" title="All concepts" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.2'">←</a></body>
+</html>

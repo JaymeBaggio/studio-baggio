@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — Design Explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a;
+  --paper: #f0ede6;
+  --mid: #555;
+  --yellow: #f0e040;
+  --gap: 2px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--paper); min-height: 100vh; }
+
+/* ── HEADER ── */
+header {
+  padding: 32px 40px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  color: var(--paper);
+}
+.logo-tag {
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-left: 14px;
+}
+.header-count {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+/* ── HERO TEXT ── */
+.hero-text {
+  padding: 56px 40px 52px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+.hero-text h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 112px);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  color: var(--paper);
+}
+.hero-text h1 em {
+  color: var(--yellow);
+  font-style: normal;
+}
+.hero-desc {
+  max-width: 320px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.hero-desc p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--mid);
+}
+
+/* ── GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  padding: var(--gap);
+}
+
+@media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px)  { .grid { grid-template-columns: 1fr; } }
+
+/* ── CARD ── */
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  background: #111;
+  aspect-ratio: 16 / 10;
+  cursor: pointer;
+}
+.card-preview {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.card-preview iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1440px;
+  height: 900px;
+  border: none;
+  transform: scale(0.278);
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+/* overlay on hover */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 24px;
+}
+.card:hover .card-overlay {
+  background: rgba(0,0,0,0.55);
+}
+.card-info {
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.card:hover .card-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+.card-sub {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 3px;
+}
+.card-arrow {
+  font-size: 22px;
+  color: var(--yellow);
+}
+
+/* number badge */
+.card-num {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.25);
+  z-index: 2;
+  transition: color 0.2s;
+}
+.card:hover .card-num { color: rgba(255,255,255,0.6); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <span class="logo">Rough Cut</span>
+    <span class="logo-tag">Design Explorations</span>
+  </div>
+  <div class="header-count">11 concepts</div>
+</header>
+
+<div class="hero-text">
+  <h1>Pick your<br><em>favourite.</em></h1>
+  <div class="hero-desc">
+    <p>Every concept is live. Click any card to open the full page — hover to preview.</p>
+  </div>
+</div>
+
+<div class="grid">
+
+  <a href="landing-v9.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v9.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Editorial</div><div class="card-sub">Full-bleed · Yellow</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="landing-v5-lando.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v5-lando.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Lando</div><div class="card-sub">Animated card fan</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="landing-v6-sheerluxe.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v6-sheerluxe.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Sheer Luxe</div><div class="card-sub">Fashion editorial</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="design-2-glassmorphism.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="design-2-glassmorphism.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Glassmorphic</div><div class="card-sub">Apple-style · Dark</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="landing-v7-bureau.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v7-bureau.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Bureau</div><div class="card-sub">Agency editorial</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="landing-v4-poster.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v4-poster.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Media Kit</div><div class="card-sub">Forbes-style · Split hero</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="landing-v3-thecut.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v3-thecut.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">The Cut</div><div class="card-sub">Magazine editorial split</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="landing-v2-signal.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v2-signal.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Signal</div><div class="card-sub">Dark minimal</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="landing-v12-brutalist.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v12-brutalist.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Brutalist</div><div class="card-sub">Broadsheet · Newsprint</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="landing-v1-filmroom.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="landing-v1-filmroom.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Film Room</div><div class="card-sub">Cinematic dark</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="design-4-cinematic.html" class="card" target="_blank">
+    <div class="card-preview"><iframe src="design-4-cinematic.html" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div><div class="card-label">Cinematic</div><div class="card-sub">Dark · Full-bleed</div></div>
+        <div class="card-arrow">↗</div>
+      </div>
+    </div>
+  </a>
+
+
+</div>
+</body>
+</html>

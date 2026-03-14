@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — V9 Hero Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111; font-family: 'Barlow', sans-serif; color: #fff; }
+
+h1 { text-align: center; padding: 40px 24px 8px; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; font-weight: 400; }
+p.sub { text-align: center; color: #444; font-size: 12px; padding-bottom: 40px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 0 32px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.option { position: relative; }
+.label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #555; margin-bottom: 10px; }
+
+/* Each hero card: fixed 16:9-ish portrait aspect */
+.hero-card {
+  position: relative;
+  aspect-ratio: 9/14;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* ── OPTION A: RC7.5/3.png full bleed + dark overlay ── */
+.option-a .hero-card {
+  background: url('RC7.5/3.png') center top / cover no-repeat;
+}
+.option-a .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.1) 0%,
+    rgba(0,0,0,0.3) 30%,
+    rgba(0,0,0,0.72) 60%,
+    rgba(0,0,0,0.88) 100%
+  );
+}
+
+/* ── OPTION B: RC6/3.png (mountain) + strong overlay ── */
+.option-b .hero-card {
+  background: url('RC6/3.png') center center / cover no-repeat;
+}
+.option-b .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(15,10,5,0.55) 0%,
+    rgba(180,60,20,0.18) 50%,
+    rgba(0,0,0,0.85) 100%
+  );
+}
+
+/* ── OPTION C: Bold colour block — no photo needed ── */
+.option-c .hero-card {
+  background: #0a0a0a;
+}
+.option-c .overlay {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 20%, rgba(224,53,32,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(224,53,32,0.12) 0%, transparent 60%);
+}
+
+/* Type on all options */
+.hero-content {
+  position: absolute;
+  inset: 0;
+  padding: 28px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.kicker {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.kicker-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: #e03520; flex-shrink: 0;
+}
+
+.big-type {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.big-type .line1 { font-size: clamp(48px, 6vw, 72px); color: #fff; display: block; }
+.big-type .line2 { font-size: clamp(48px, 6vw, 72px); color: #fff; display: block; }
+.big-type .line3 { font-size: clamp(48px, 6vw, 72px); color: #e03520; display: block; }
+
+.sub-copy {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  max-width: 260px;
+}
+
+.cta-row { display: flex; gap: 8px; align-items: center; }
+.cta-primary {
+  background: #e03520;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+}
+.cta-ghost {
+  color: rgba(255,255,255,0.55);
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Nav overlay */
+.hero-nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+.hero-nav .logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: #fff;
+}
+.hero-nav .subscribe-btn {
+  background: #e03520;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* Option labels below */
+.option-desc {
+  padding: 14px 4px 0;
+}
+.option-desc strong {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  margin-bottom: 4px;
+}
+.option-desc span {
+  font-size: 11px;
+  color: #555;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<h1>Rough Cut — V9 Hero Options</h1>
+<p class="sub">Three directions. Pick one to build.</p>
+
+<div class="grid">
+
+  <!-- OPTION A -->
+  <div class="option option-a">
+    <p class="label">Option A</p>
+    <div class="hero-card">
+      <div class="overlay"></div>
+      <div class="hero-nav">
+        <span class="logo">ROUGH CUT</span>
+        <a href="#" class="subscribe-btn">Subscribe</a>
+      </div>
+      <div class="hero-content">
+        <div class="kicker"><span class="kicker-dot"></span> RC-7.5 · Now Live</div>
+        <div class="big-type">
+          <span class="line1">Sharp</span>
+          <span class="line2">Signal.</span>
+          <span class="line3">No Noise.</span>
+        </div>
+        <p class="sub-copy">Weekly intelligence on AI tools, media shifts, and production workflows.</p>
+        <div class="cta-row">
+          <a href="#" class="cta-primary">Subscribe Free</a>
+          <a href="#" class="cta-ghost">Browse Issues →</a>
+        </div>
+      </div>
+    </div>
+    <div class="option-desc">
+      <strong>RC7.5 Portrait — Warm + Dark</strong>
+      <span>Uses your existing RC7.5/3.png. Warm amber portrait, dark gradient fade. Most editorial.</span>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="option option-b">
+    <p class="label">Option B</p>
+    <div class="hero-card">
+      <div class="overlay"></div>
+      <div class="hero-nav">
+        <span class="logo">ROUGH CUT</span>
+        <a href="#" class="subscribe-btn">Subscribe</a>
+      </div>
+      <div class="hero-content">
+        <div class="kicker"><span class="kicker-dot"></span> RC-7.5 · Now Live</div>
+        <div class="big-type">
+          <span class="line1">Sharp</span>
+          <span class="line2">Signal.</span>
+          <span class="line3">No Noise.</span>
+        </div>
+        <p class="sub-copy">Weekly intelligence on AI tools, media shifts, and production workflows.</p>
+        <div class="cta-row">
+          <a href="#" class="cta-primary">Subscribe Free</a>
+          <a href="#" class="cta-ghost">Browse Issues →</a>
+        </div>
+      </div>
+    </div>
+    <div class="option-desc">
+      <strong>RC6 Mountain — Moody + Cold</strong>
+      <span>Uses RC6/3.png mountain landscape. Cooler, more atmospheric feel.</span>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="option option-c">
+    <p class="label">Option C</p>
+    <div class="hero-card">
+      <div class="overlay"></div>
+      <div class="hero-nav">
+        <span class="logo">ROUGH CUT</span>
+        <a href="#" class="subscribe-btn">Subscribe</a>
+      </div>
+      <div class="hero-content">
+        <div class="kicker"><span class="kicker-dot"></span> RC-7.5 · Now Live</div>
+        <div class="big-type">
+          <span class="line1">Sharp</span>
+          <span class="line2">Signal.</span>
+          <span class="line3">No Noise.</span>
+        </div>
+        <p class="sub-copy">Weekly intelligence on AI tools, media shifts, and production workflows.</p>
+        <div class="cta-row">
+          <a href="#" class="cta-primary">Subscribe Free</a>
+          <a href="#" class="cta-ghost">Browse Issues →</a>
+        </div>
+      </div>
+    </div>
+    <div class="option-desc">
+      <strong>Pure Dark + Red Glow — No Photo</strong>
+      <span>No image needed. Bold typographic poster. Clean, confident, never outdated.</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

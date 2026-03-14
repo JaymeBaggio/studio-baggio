@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — Newsletter by Jayme Baggio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --amber: #E8A020;
+    --amber-dim: #8a5f12;
+    --cream: #f0e8d8;
+    --cream-dim: #9a8f7a;
+    --red: #c0392b;
+    --film-bg: #0f0d0a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Courier Prime', monospace;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--amber);
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, border-color 0.2s;
+    mix-blend-mode: difference;
+  }
+  .cursor-dot {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: var(--amber);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Film grain overlay */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    animation: grain 0.4s steps(1) infinite;
+  }
+  @keyframes grain {
+    0%,100% { transform: translate(0,0); }
+    10% { transform: translate(-2%,-1%); }
+    20% { transform: translate(1%,2%); }
+    30% { transform: translate(-1%,1%); }
+    40% { transform: translate(2%,-2%); }
+    50% { transform: translate(-1%,2%); }
+    60% { transform: translate(1%,-1%); }
+    70% { transform: translate(-2%,1%); }
+    80% { transform: translate(2%,2%); }
+    90% { transform: translate(-1%,-2%); }
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    border-bottom: 1px solid rgba(232,160,32,0.15);
+    background: linear-gradient(180deg, rgba(8,8,8,0.98) 0%, transparent 100%);
+    backdrop-filter: blur(4px);
+  }
+  .header-tag {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--amber);
+    text-transform: uppercase;
+  }
+  .header-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+  }
+  .header-issue {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+
+  /* ── FILM STRIP HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 40px 60px;
+  }
+
+  .film-strip-container {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.12;
+  }
+  .film-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    animation: filmScroll 25s linear infinite;
+    position: absolute;
+    width: 100%;
+  }
+  @keyframes filmScroll {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+  .film-row {
+    display: flex;
+    height: 90px;
+    border-top: 8px solid rgba(232,160,32,0.4);
+    border-bottom: 8px solid rgba(232,160,32,0.4);
+  }
+  .film-hole {
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px 4px;
+    background: rgba(0,0,0,0.3);
+    flex-shrink: 0;
+  }
+  .film-hole span {
+    width: 12px;
+    height: 10px;
+    background: rgba(232,160,32,0.3);
+    border-radius: 2px;
+    display: block;
+  }
+  .film-frame {
+    flex: 1;
+    background: linear-gradient(135deg, rgba(232,160,32,0.05) 0%, rgba(8,8,8,0.4) 100%);
+    border-right: 1px solid rgba(232,160,32,0.1);
+    border-left: 1px solid rgba(232,160,32,0.1);
+    margin: 0 6px;
+  }
+
+  /* Vignette */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(8,8,8,0.92) 100%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-top: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(100px, 18vw, 220px);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: var(--cream);
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+  .hero-title .cut-word {
+    color: var(--amber);
+    display: block;
+    -webkit-text-stroke: 2px var(--amber);
+    color: transparent;
+    position: relative;
+  }
+  .hero-title .cut-word::after {
+    content: 'CUT';
+    position: absolute;
+    inset: 0;
+    color: var(--amber);
+    clip-path: inset(0 60% 0 0);
+    animation: scanReveal 4s 1.5s ease-in-out infinite;
+  }
+  @keyframes scanReveal {
+    0%, 100% { clip-path: inset(0 60% 0 0); }
+    50% { clip-path: inset(0 0% 0 0); }
+  }
+
+  .hero-rule {
+    width: 100%;
+    max-width: 600px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    margin: 32px auto;
+    opacity: 0;
+    animation: fadeIn 0.8s 0.9s forwards;
+  }
+
+  .hero-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 26px);
+    line-height: 1.5;
+    text-align: center;
+    color: var(--cream-dim);
+    max-width: 580px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.1s forwards;
+  }
+  .hero-desc strong {
+    color: var(--cream);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.3s forwards;
+  }
+  .meta-item {
+    text-align: center;
+  }
+  .meta-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--amber);
+    line-height: 1;
+    display: block;
+  }
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+  .meta-sep {
+    width: 1px;
+    background: rgba(232,160,32,0.2);
+    align-self: stretch;
+  }
+
+  /* CTA */
+  .cta-section {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.5s forwards;
+  }
+  .cta-form {
+    display: flex;
+    gap: 0;
+    width: 100%;
+    max-width: 440px;
+    border: 1px solid rgba(232,160,32,0.3);
+    background: rgba(232,160,32,0.03);
+  }
+  .cta-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 14px 20px;
+    color: var(--cream);
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    outline: none;
+  }
+  .cta-form input::placeholder { color: var(--cream-dim); }
+  .cta-form button {
+    background: var(--amber);
+    color: var(--black);
+    border: none;
+    padding: 14px 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    cursor: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .cta-form button:hover { background: var(--cream); }
+  .cta-note {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 0.8s 2s forwards;
+  }
+  .scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--amber-dim);
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--amber), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ── SECTION: ABOUT ── */
+  .about-section {
+    position: relative;
+    padding: 120px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .about-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+  }
+  .about-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--cream-dim);
+    margin-top: 24px;
+  }
+  .about-text em {
+    color: var(--cream);
+    font-style: italic;
+  }
+
+  .quotes-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .quote-card {
+    border-left: 2px solid var(--amber);
+    padding: 20px 24px;
+    background: rgba(232,160,32,0.03);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .quote-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 100%;
+    background: rgba(232,160,32,0.05);
+    transition: width 0.4s ease;
+  }
+  .quote-card:hover::before { width: 100%; }
+  .quote-card:hover { border-color: var(--cream); }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+  .quote-issue {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-top: 10px;
+    display: block;
+  }
+
+  /* ── DIVIDER ── */
+  .film-divider {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+    height: 24px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--black) 0px,
+      var(--black) 20px,
+      rgba(232,160,32,0.15) 20px,
+      rgba(232,160,32,0.15) 22px,
+      var(--black) 22px,
+      var(--black) 42px,
+      var(--amber) 42px,
+      var(--amber) 60px,
+      var(--black) 60px,
+      var(--black) 80px
+    );
+  }
+
+  /* ── ISSUES SECTION ── */
+  .issues-section {
+    padding: 80px 40px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .issues-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    border-bottom: 1px solid rgba(232,160,32,0.15);
+    padding-top: 24px;
+  }
+  .issues-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--cream);
+    letter-spacing: 0.05em;
+  }
+  .issues-count {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+
+  .issues-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+  }
+  .issue-card {
+    background: rgba(255,255,255,0.02);
+    padding: 28px;
+    border: 1px solid rgba(232,160,32,0.06);
+    transition: background 0.3s, border-color 0.3s;
+    cursor: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .issue-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(232,160,32,0.08), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .issue-card:hover {
+    background: rgba(232,160,32,0.04);
+    border-color: rgba(232,160,32,0.2);
+  }
+  .issue-card:hover::after { opacity: 1; }
+  .issue-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .issue-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.3;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .issue-snippet {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--cream-dim);
+  }
+  .issue-date {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--amber-dim);
+    text-transform: uppercase;
+    margin-top: 16px;
+    display: block;
+    border-top: 1px solid rgba(232,160,32,0.1);
+    padding-top: 12px;
+  }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    text-align: center;
+    padding: 100px 40px 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: 'ROUGH CUT';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(100px, 20vw, 280px);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(232,160,32,0.03);
+    pointer-events: none;
+    letter-spacing: -0.02em;
+  }
+  .final-cta-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .final-cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    color: var(--cream);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .final-cta-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--cream-dim);
+    margin-bottom: 48px;
+  }
+  .final-form {
+    display: flex;
+    gap: 0;
+    max-width: 440px;
+    margin: 0 auto;
+    border: 1px solid rgba(232,160,32,0.3);
+  }
+  .final-form input {
+    flex: 1;
+    background: rgba(232,160,32,0.03);
+    border: none;
+    padding: 16px 20px;
+    color: var(--cream);
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    outline: none;
+  }
+  .final-form input::placeholder { color: var(--cream-dim); }
+  .final-form button {
+    background: var(--amber);
+    color: var(--black);
+    border: none;
+    padding: 16px 28px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    cursor: none;
+    transition: background 0.2s;
+  }
+  .final-form button:hover { background: var(--cream); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(232,160,32,0.1);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+  }
+  .footer-copy {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--cream-dim);
+  }
+  .footer-author {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--amber);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- HEADER -->
+<header>
+  <span class="header-tag">Newsletter</span>
+  <span class="header-logo">Rough Cut</span>
+  <span class="header-issue">By Jayme Baggio</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="film-strip-container">
+    <div class="film-strip" id="filmStrip"></div>
+  </div>
+  <div class="vignette"></div>
+
+  <p class="hero-eyebrow">Monthly intelligence dispatch</p>
+
+  <h1 class="hero-title">
+    ROUGH
+    <span class="cut-word">CUT</span>
+  </h1>
+
+  <div class="hero-rule"></div>
+
+  <p class="hero-desc">
+    <strong>Unfiltered takes on AI in the workplace.</strong><br>
+    Before the hype settles. Before the consultants arrive.<br>
+    This is the rough cut — raw, honest, early.
+  </p>
+
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-num">7</span>
+      <span class="meta-label">Issues</span>
+    </div>
+    <div class="meta-sep"></div>
+    <div class="meta-item">
+      <span class="meta-num">Monthly</span>
+      <span class="meta-label">Cadence</span>
+    </div>
+    <div class="meta-sep"></div>
+    <div class="meta-item">
+      <span class="meta-num">Free</span>
+      <span class="meta-label">Always</span>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <form class="cta-form" onsubmit="return false">
+      <input type="email" placeholder="your@email.com">
+      <button type="submit">Subscribe</button>
+    </form>
+    <span class="cta-note">No noise. Monthly. Unsubscribe anytime.</span>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- FILM DIVIDER -->
+<div class="film-divider"></div>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="reveal">
+    <span class="section-tag">// What this is</span>
+    <h2 class="about-heading">THE UNFILTERED<br>TAKE</h2>
+    <p class="about-text">
+      Every month, <em>Jayme Baggio</em> cuts through the noise on AI in the workplace. Not what vendors want you to believe. Not what analysts are paid to say.
+    </p>
+    <p class="about-text" style="margin-top:16px;">
+      The real picture. The <em>rough cut</em> — before the corporate polish, before the consultant jargon, before everyone else figures it out.
+    </p>
+    <p class="about-text" style="margin-top:16px;">
+      Views are my own.
+    </p>
+  </div>
+  <div class="quotes-stack reveal">
+    <div class="quote-card">
+      <p class="quote-text">"More than half of employees are using AI tools without formal approval. That is not automatically a problem. Often it is where the most useful experimentation lives."</p>
+      <span class="quote-issue">RC6 — December 2025</span>
+    </div>
+    <div class="quote-card">
+      <p class="quote-text">"AI isn't replacing humans. It'll be human plus AI. It'll become part of the operating system."</p>
+      <span class="quote-issue">RC7.5 — January 2026</span>
+    </div>
+    <div class="quote-card">
+      <p class="quote-text">"Your advantage in 2026 won't come from buying more tools. It will come from a real understanding of what AI can and can't do."</p>
+      <span class="quote-issue">RC7.5 — January 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILM DIVIDER -->
+<div class="film-divider"></div>
+
+<!-- ISSUES -->
+<section class="issues-section">
+  <div class="issues-header reveal">
+    <h2 class="issues-title">Past Issues</h2>
+    <span class="issues-count">7 Dispatches Filed</span>
+  </div>
+
+  <div class="issues-grid">
+    <div class="issue-card reveal">
+      <span class="issue-num">RC7.5</span>
+      <h3 class="issue-headline">I don't get asked about AI much, which still surprises me</h3>
+      <p class="issue-snippet">On being early, the honest take, and what it means to actually use AI every day.</p>
+      <span class="issue-date">January 2026</span>
+    </div>
+    <div class="issue-card reveal">
+      <span class="issue-num">RC7</span>
+      <h3 class="issue-headline">ChatGPT for Business Owners: If you only do 6 things...</h3>
+      <p class="issue-snippet">Master prompts, Projects, Live Snapshots, Custom GPTs — the operating system mindset.</p>
+      <span class="issue-date">January 2026</span>
+    </div>
+    <div class="issue-card reveal">
+      <span class="issue-num">RC6</span>
+      <h3 class="issue-headline">AI at work in 2025. Lots of adoption. Not much effectiveness.</h3>
+      <p class="issue-snippet">Around 90% of firms say they use AI. But 75% are still stuck in pilot mode. The gap is real.</p>
+      <span class="issue-date">December 2025</span>
+    </div>
+    <div class="issue-card reveal">
+      <span class="issue-num">RC5</span>
+      <h3 class="issue-headline">Gemini 3 has finally landed. Here's what you need to know.</h3>
+      <p class="issue-snippet">Text, links, images, video now sit in one working thread. The multimodal moment.</p>
+      <span class="issue-date">November 2025</span>
+    </div>
+    <div class="issue-card reveal">
+      <span class="issue-num">RC4</span>
+      <h3 class="issue-headline">ChatGPT Atlas launches — a major step in merging chat, search & execution.</h3>
+      <p class="issue-snippet">AI in the infrastructure of attention. The new SEO is AI controlling how audiences find you.</p>
+      <span class="issue-date">October 2025</span>
+    </div>
+    <div class="issue-card reveal">
+      <span class="issue-num">RC2</span>
+      <h3 class="issue-headline">Meta unveiled a new Ray-Ban Display. Wearable tech's pivotal moment.</h3>
+      <p class="issue-snippet">EEG devices and haptic wearables are getting real. The OS is moving off the screen.</p>
+      <span class="issue-date">September 2025</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <p class="final-cta-eyebrow reveal">// Join the dispatch</p>
+  <h2 class="final-cta-title reveal">Get the unfiltered take</h2>
+  <p class="final-cta-sub reveal">Monthly. Free. Before everyone else figures it out.</p>
+  <form class="final-form reveal" onsubmit="return false">
+    <input type="email" placeholder="your@email.com">
+    <button type="submit">Roll</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Rough Cut</span>
+  <span class="footer-copy">© 2026 — All issues archived</span>
+  <span class="footer-author">Jayme Baggio — Views are my own</span>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const dot = document.getElementById('cursorDot');
+let mouseX = 0, mouseY = 0;
+let curX = 0, curY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  dot.style.left = (mouseX - 2) + 'px';
+  dot.style.top = (mouseY - 2) + 'px';
+});
+
+function animateCursor() {
+  curX += (mouseX - curX) * 0.12;
+  curY += (mouseY - curY) * 0.12;
+  cursor.style.left = (curX - 10) + 'px';
+  cursor.style.top = (curY - 10) + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Build film strip
+const strip = document.getElementById('filmStrip');
+function buildStrip(count) {
+  let html = '';
+  for (let i = 0; i < count * 2; i++) {
+    html += `<div class="film-row">
+      <div class="film-hole"><span></span><span></span></div>
+      ${Array(12).fill('<div class="film-frame"></div>').join('')}
+      <div class="film-hole"><span></span><span></span></div>
+    </div>`;
+  }
+  return html;
+}
+strip.innerHTML = buildStrip(20);
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Stagger issue cards
+document.querySelectorAll('.issue-card').forEach((card, i) => {
+  card.style.transitionDelay = (i * 0.08) + 's';
+});
+</script>
+<a href="index.html" style="position:fixed;top:20px;left:20px;z-index:9999;font-size:20px;color:#888;opacity:0.2;text-decoration:none;background:none;padding:2px 4px;transition:opacity 0.2s;line-height:1;font-family:sans-serif" title="All concepts" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.2'">←</a></body>
+</html>

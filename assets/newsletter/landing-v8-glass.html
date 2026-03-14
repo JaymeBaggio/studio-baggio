@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — Sharp signal for creative professionals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ece9e2;
+  --ink: #1a1917;
+  --muted: #79766f;
+  --red: #e03520;
+  --r: 20px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Soft ambient gradient blobs */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 900px 700px at 15% 0%, rgba(238,160,80,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 700px 600px at 92% 8%, rgba(220,80,60,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 500px at 50% 100%, rgba(110,120,180,0.09) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glass card */
+.glass {
+  background: rgba(255,255,255,0.52);
+  border: 1px solid rgba(255,255,255,0.76);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    0 2px 24px rgba(0,0,0,0.07),
+    inset 0 1px 0 rgba(255,255,255,0.92);
+  border-radius: var(--r);
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: calc(100% - 48px);
+  max-width: 860px;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px 12px 24px;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.8);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border-radius: 100px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.09), inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+.nav-cta {
+  background: var(--red) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.88; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-inner { max-width: 800px; }
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.72);
+  backdrop-filter: blur(12px);
+  padding: 7px 16px;
+  border-radius: 100px;
+  margin-bottom: 44px;
+}
+
+.kicker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: blink 2.2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero-headline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(52px, 8.5vw, 100px);
+  line-height: 0.93;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.hero-headline em {
+  font-style: normal;
+  color: var(--red);
+}
+
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 520px;
+  margin: 0 auto 48px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 15px 34px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.87; }
+
+.btn-secondary {
+  background: rgba(255,255,255,0.52);
+  border: 1px solid rgba(255,255,255,0.76);
+  backdrop-filter: blur(12px);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 34px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.7); }
+
+.hero-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  background: rgba(255,255,255,0.48);
+  border: 1px solid rgba(255,255,255,0.72);
+  backdrop-filter: blur(16px);
+  border-radius: 100px;
+  padding: 14px 32px;
+}
+
+.stat { text-align: center; }
+
+.stat-val {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(0,0,0,0.09);
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 72px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
+/* ── FEATURED ── */
+.featured-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  min-height: 440px;
+}
+
+.featured-img {
+  overflow: hidden;
+  border-radius: 18px 0 0 18px;
+  margin: -1px 0 -1px -1px;
+}
+
+.featured-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.featured-body {
+  padding: 44px 44px 44px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.issue-tag {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+.featured-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.8vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.featured-excerpt {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.read-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+}
+
+/* ── ISSUES GRID ── */
+.issues-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.issue-card { overflow: hidden; }
+
+.issue-card-img {
+  height: 176px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  margin: -1px -1px 0;
+}
+
+.issue-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.issue-card-body { padding: 18px 20px 22px; }
+
+.issue-meta {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+}
+
+.issue-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: var(--red);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.issue-date {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.issue-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.issue-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* ── SUBSCRIBE ── */
+.subscribe-section {
+  text-align: center;
+  padding-bottom: 96px;
+}
+
+.subscribe-card {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 52px 44px;
+}
+
+.subscribe-headline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3.5vw, 38px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.subscribe-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 8px;
+  background: rgba(255,255,255,0.58);
+  border: 1px solid rgba(255,255,255,0.78);
+  backdrop-filter: blur(12px);
+  border-radius: 100px;
+  padding: 5px 5px 5px 18px;
+  margin-bottom: 14px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  min-width: 0;
+}
+.subscribe-form input::placeholder { color: var(--muted); }
+
+.subscribe-form button {
+  background: var(--red);
+  color: #fff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.subscribe-form button:hover { opacity: 0.88; }
+
+.subscribe-meta {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px 0;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--ink); }
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">ROUGH CUT</a>
+    <div class="nav-links">
+      <a href="#issues">Issues</a>
+      <a href="#about">About</a>
+      <a href="#subscribe" class="nav-cta">Subscribe Free</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">
+      <span class="kicker-dot"></span>
+      New issue live — RC-7.5
+    </div>
+    <h1 class="hero-headline">Sharp signal<br>for <em>creative</em><br>professionals</h1>
+    <p class="hero-sub">Weekly intelligence on AI tools, media industry shifts, and production workflows — without the hype.</p>
+    <div class="hero-actions">
+      <a href="#subscribe" class="btn-primary">Subscribe Free</a>
+      <a href="#issues" class="btn-secondary">Browse Issues →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-val">3,000+</span>
+        <span class="stat-label">Subscribers</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-val">RC 7.5</span>
+        <span class="stat-label">Latest Issue</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-val">Weekly</span>
+        <span class="stat-label">Cadence</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<section id="issues">
+  <div class="wrap">
+    <p class="section-label">Latest Dispatch</p>
+    <div class="glass featured-card">
+      <div class="featured-img">
+        <img src="RC7.5/1.png" alt="RC-7.5 Issue">
+      </div>
+      <div class="featured-body">
+        <span class="issue-tag">RC-7.5 · Mar 2026</span>
+        <h2 class="featured-title">The Model That Changed How We Think About Creative Work</h2>
+        <p class="featured-excerpt">Every week a new model drops. Every week someone declares it changes everything. This issue we actually test the claims — and find out which ones hold up in a real production environment.</p>
+        <a href="#" class="read-link">Read this issue →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT ISSUES -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Recent Issues</p>
+    <div class="issues-row">
+      <div class="glass issue-card">
+        <div class="issue-card-img">
+          <img src="RC7/1.png" alt="RC-7">
+        </div>
+        <div class="issue-card-body">
+          <div class="issue-meta">
+            <span class="issue-num">RC-7</span>
+            <span class="issue-date">Feb 2026</span>
+          </div>
+          <h3 class="issue-title">Automation at the Edit Suite</h3>
+          <a href="#" class="issue-link">Read issue →</a>
+        </div>
+      </div>
+      <div class="glass issue-card">
+        <div class="issue-card-img">
+          <img src="RC6/1.png" alt="RC-6">
+        </div>
+        <div class="issue-card-body">
+          <div class="issue-meta">
+            <span class="issue-num">RC-6</span>
+            <span class="issue-date">Jan 2026</span>
+          </div>
+          <h3 class="issue-title">Who Controls the Creative Stack?</h3>
+          <a href="#" class="issue-link">Read issue →</a>
+        </div>
+      </div>
+      <div class="glass issue-card">
+        <div class="issue-card-img">
+          <img src="RC5/1.png" alt="RC-5">
+        </div>
+        <div class="issue-card-body">
+          <div class="issue-meta">
+            <span class="issue-num">RC-5</span>
+            <span class="issue-date">Dec 2025</span>
+          </div>
+          <h3 class="issue-title">Generative Video Is Here — Now What?</h3>
+          <a href="#" class="issue-link">Read issue →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIBE -->
+<section id="subscribe" class="subscribe-section">
+  <div class="wrap">
+    <div class="glass subscribe-card">
+      <h2 class="subscribe-headline">Get the signal,<br>not the noise.</h2>
+      <p class="subscribe-sub">Free. Weekly. No filler. Unsubscribe any time.</p>
+      <div class="subscribe-form">
+        <input type="email" placeholder="your@email.com">
+        <button type="submit">Subscribe</button>
+      </div>
+      <p class="subscribe-meta">Free to read · No spam · Weekly cadence</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-inner">
+    <a href="#" class="footer-logo">ROUGH CUT</a>
+    <div class="footer-links">
+      <a href="#">Issues</a>
+      <a href="#">About</a>
+      <a href="#">Subscribe</a>
+    </div>
+    <span class="footer-copy">© 2026 Rough Cut</span>
+  </div>
+</footer>
+
+<a href="index.html" style="position:fixed;top:20px;left:20px;z-index:9999;font-size:20px;color:#888;opacity:0.2;text-decoration:none;background:none;padding:2px 4px;transition:opacity 0.2s;line-height:1;font-family:sans-serif" title="All concepts" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.2'">←</a></body>
+</html>

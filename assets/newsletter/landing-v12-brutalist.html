@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — Brutalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --paper: #f4f0e4;
+    --ink:   #0a0a0a;
+    --red:   #cc0000;
+    --mid:   #666;
+    --r1:    1px solid #0a0a0a;
+    --r2:    2px solid #0a0a0a;
+    --r4:    4px solid #0a0a0a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Courier Prime', monospace;
+    overflow-x: hidden;
+  }
+
+  /* ── BACK BTN ── */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    font-size: 20px;
+    color: var(--ink);
+    opacity: 0.2;
+    text-decoration: none;
+    background: none;
+    padding: 2px 4px;
+    transition: opacity 0.2s;
+    line-height: 1;
+  }
+  .back-btn:hover { opacity: 0.85; }
+
+  /* ── TOP TICKER ── */
+  .top-ticker {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--r4);
+  }
+  .tt-left {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+  .tt-right {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .tt-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: blink 1.8s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%,100% { opacity: 1; }
+    50%     { opacity: 0.2; }
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: var(--r2);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0;
+  }
+
+  .mast-meta {
+    padding: 12px 20px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    line-height: 1.7;
+    border-right: var(--r1);
+  }
+  .mast-meta-right {
+    text-align: right;
+    border-right: none;
+    border-left: var(--r1);
+  }
+
+  .mast-logo-wrap {
+    padding: 16px 40px;
+    text-align: center;
+  }
+  .mast-logo {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(52px, 7.5vw, 108px);
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.035em;
+    /* risograph offset shadow */
+    text-shadow: 5px 5px 0 var(--red);
+  }
+
+  /* ── EDITION BAR ── */
+  .edition-bar {
+    border-bottom: var(--r4);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow: hidden;
+  }
+  .eb-item {
+    flex: 1;
+    text-align: center;
+    padding: 6px 8px;
+    font-size: 8px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border-right: var(--r1);
+  }
+  .eb-item:last-child { border-right: none; }
+  .eb-item.accent { color: var(--red); font-weight: 700; }
+
+  /* ── HERO BAND ── */
+  .hero-band {
+    border-bottom: var(--r4);
+    display: grid;
+    grid-template-columns: 1fr 280px;
+  }
+
+  .hero-main {
+    padding: 32px 24px 28px;
+    border-right: var(--r2);
+  }
+
+  .hero-kicker {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-kicker::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .hero-hl {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(54px, 8.5vw, 130px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin-top: 24px;
+  }
+  .hero-hl .red   { color: var(--red); }
+  .hero-hl .ghost {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+
+  .hero-deck {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #333;
+    max-width: 560px;
+    border-top: var(--r1);
+    padding-top: 16px;
+  }
+
+  .hero-sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+  .hs-top {
+    flex: 1;
+    padding: 20px;
+    border-bottom: var(--r2);
+  }
+  .hs-label {
+    font-size: 8px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .hs-body {
+    font-size: 11px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .hs-cta {
+    display: block;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-decoration: none;
+    border: var(--r2);
+    transition: background 0.1s, border-color 0.1s;
+  }
+  .hs-cta:hover { background: var(--red); border-color: var(--red); }
+
+  .hs-bottom {
+    padding: 16px 20px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .hs-stat-row {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .hs-stat-num {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--paper);
+  }
+  .hs-stat-num .r { color: var(--red); }
+  .hs-stat-lbl {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── CONTENT COLUMNS ── */
+  .col-section {
+    border-bottom: var(--r4);
+  }
+  .col-section-label {
+    border-bottom: var(--r2);
+    padding: 5px 24px;
+    font-size: 8px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .col-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.15);
+  }
+
+  .col-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .col {
+    padding: 20px;
+    border-right: var(--r1);
+  }
+  .col:last-child { border-right: none; }
+
+  .col-num {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .col-arrow { color: var(--ink); opacity: 0; transition: opacity 0.15s, transform 0.15s; transform: translateX(-4px); }
+  .col:hover .col-arrow { opacity: 1; transform: translateX(0); }
+
+  .col-hl {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .col-body {
+    font-size: 11px;
+    line-height: 1.65;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  .col-tag {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border-top: var(--r1);
+    padding-top: 8px;
+  }
+
+  /* ── MANIFESTO STRIP ── */
+  .manifesto {
+    border-bottom: var(--r4);
+    display: grid;
+    grid-template-columns: 48px 1fr;
+  }
+  .mfst-vert {
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: var(--r2);
+  }
+  .mfst-vert span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 8px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--paper);
+  }
+  .mfst-body {
+    padding: 28px 32px;
+  }
+  .mfst-quote {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(22px, 3.2vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  .mfst-quote .ghost {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+  .mfst-quote .red { color: var(--red); }
+
+  /* ── SUBSCRIBE ── */
+  .subscribe {
+    border-bottom: var(--r4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .sub-left {
+    padding: 36px 28px;
+    border-right: var(--r2);
+  }
+  .sub-heading {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: clamp(44px, 6.5vw, 96px);
+    font-weight: 900;
+    line-height: 0.88;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+  }
+  .sub-heading .red   { color: var(--red); }
+  .sub-heading .ghost {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+  .sub-right {
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
+  .sub-desc {
+    font-size: 12px;
+    line-height: 1.7;
+    max-width: 380px;
+  }
+  .sub-row {
+    display: flex;
+  }
+  .sub-input {
+    flex: 1;
+    background: transparent;
+    border: var(--r2);
+    border-right: none;
+    padding: 13px 16px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--ink);
+    outline: none;
+  }
+  .sub-input::placeholder { color: #aaa; }
+  .sub-input:focus { border-color: var(--red); }
+  .sub-btn {
+    background: var(--ink);
+    color: var(--paper);
+    border: var(--r2);
+    padding: 13px 22px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.1s, border-color 0.1s;
+  }
+  .sub-btn:hover { background: var(--red); border-color: var(--red); }
+  .sub-small {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ft-logo {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 var(--red);
+  }
+  .ft-copy {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .masthead { grid-template-columns: 1fr; }
+    .mast-meta { border-right: none; border-bottom: var(--r1); }
+    .mast-meta-right { border-left: none; border-top: var(--r1); }
+    .hero-band { grid-template-columns: 1fr; }
+    .hero-main { border-right: none; border-bottom: var(--r2); }
+    .col-grid { grid-template-columns: 1fr 1fr; }
+    .col:nth-child(n+3) { border-top: var(--r1); }
+    .subscribe { grid-template-columns: 1fr; }
+    .sub-left { border-right: none; border-bottom: var(--r2); }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP TICKER -->
+<div class="top-ticker">
+  <div class="tt-left">Rough Cut — Free Monthly Dispatch — Est. 2025</div>
+  <div class="tt-right"><div class="tt-dot"></div> Issue 007 Publishing Now</div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="mast-meta">
+    The Independent<br>
+    Media Intelligence Briefing<br>
+    Est. 2025 · London
+  </div>
+  <div class="mast-logo-wrap">
+    <div class="mast-logo">ROUGH CUT</div>
+  </div>
+  <div class="mast-meta mast-meta-right">
+    Issue No. 007<br>
+    Monthly Edition<br>
+    Free to Read · Always
+  </div>
+</div>
+
+<!-- EDITION BAR -->
+<div class="edition-bar">
+  <div class="eb-item accent">● Live</div>
+  <div class="eb-item">Monthly</div>
+  <div class="eb-item">Sharp</div>
+  <div class="eb-item">Essential</div>
+  <div class="eb-item">No Noise</div>
+  <div class="eb-item">No Paywall</div>
+  <div class="eb-item">Since 2025</div>
+  <div class="eb-item">By Jayme Baggio</div>
+</div>
+
+<!-- HERO BAND -->
+<div class="hero-band">
+  <div class="hero-main">
+    <div class="hero-kicker">Intelligence Briefing · Issue 007</div>
+    <div class="hero-hl">
+      Sharp Takes.<br>
+      <span class="ghost">Real Intel.</span><br>
+      <span class="red">Unfiltered.</span>
+    </div>
+    <p class="hero-deck">
+      Jayme Baggio's Rough Cut is the monthly dispatch that cuts through the noise on AI adoption in the media industry. Not what vendors are selling. Not what analysts are paid to say. <strong>The real picture.</strong>
+    </p>
+  </div>
+  <div class="hero-sidebar">
+    <div class="hs-top">
+      <div class="hs-label">● This Issue</div>
+      <p class="hs-body">AI at work in 2025. Lots of adoption. Not much effectiveness. And the gap is widening — fast.</p>
+      <a href="#subscribe" class="hs-cta">Subscribe Free →</a>
+    </div>
+    <div class="hs-bottom">
+      <div class="hs-stat-row">
+        <div class="hs-stat-num">12<span class="r">k</span></div>
+        <div class="hs-stat-lbl">Subscribers</div>
+      </div>
+      <div class="hs-stat-row">
+        <div class="hs-stat-num">7<span class="r">+</span></div>
+        <div class="hs-stat-lbl">Issues Published</div>
+      </div>
+      <div class="hs-stat-row">
+        <div class="hs-stat-num">0<span class="r">£</span></div>
+        <div class="hs-stat-lbl">Cost to Read</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT COLUMNS -->
+<div class="col-section">
+  <div class="col-section-label">From the Archive // RC2 — RC7.5</div>
+  <div class="col-grid">
+    <div class="col">
+      <div class="col-num">RC7.5 <span class="col-arrow">→</span></div>
+      <div class="col-hl">I don't get asked about AI much, which still surprises me.</div>
+      <p class="col-body">A strange thing is happening in organisations. The tools are there. The cost is negligible. And yet the rooms are still silent.</p>
+      <div class="col-tag">Jan 2026 // Opinion</div>
+    </div>
+    <div class="col">
+      <div class="col-num">RC7 <span class="col-arrow">→</span></div>
+      <div class="col-hl">ChatGPT for Business Owners: If you only do 6 things...</div>
+      <p class="col-body">Not a listicle. A priority stack. The six interventions that actually compound over a quarter — ranked by leverage.</p>
+      <div class="col-tag">Jan 2026 // How-To</div>
+    </div>
+    <div class="col">
+      <div class="col-num">RC6 <span class="col-arrow">→</span></div>
+      <div class="col-hl">AI at work in 2025. Lots of adoption. Not much effectiveness.</div>
+      <p class="col-body">The gap between "we use AI" and "AI works for us" is widening. The data is clear. The reason is less obvious.</p>
+      <div class="col-tag">Dec 2025 // Analysis</div>
+    </div>
+    <div class="col">
+      <div class="col-num">RC5 <span class="col-arrow">→</span></div>
+      <div class="col-hl">Gemini 3 has finally landed. Here's what you need to know.</div>
+      <p class="col-body">Google's Gemini 3 is not a chatbot upgrade. It is a full restack of their search and discovery infrastructure.</p>
+      <div class="col-tag">Nov 2025 // Briefing</div>
+    </div>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="mfst-vert"><span>Manifesto</span></div>
+  <div class="mfst-body">
+    <div class="mfst-quote">
+      Not what vendors are selling.<br>
+      Not what analysts are <span class="red">paid to say.</span><br>
+      <span class="ghost">The real picture.</span>
+    </div>
+  </div>
+</div>
+
+<!-- SUBSCRIBE -->
+<div class="subscribe" id="subscribe">
+  <div class="sub-left">
+    <div class="sub-heading">
+      Stay<br>
+      <span class="red">Sharp.</span><br>
+      <span class="ghost">Stay Free.</span>
+    </div>
+  </div>
+  <div class="sub-right">
+    <p class="sub-desc">Monthly. No noise. First Tuesday of every month, direct to your inbox. Free forever — no paywall, no upsell, no agenda.</p>
+    <div class="sub-row">
+      <input type="email" class="sub-input" placeholder="your@email.com">
+      <button class="sub-btn">Subscribe</button>
+    </div>
+    <div class="sub-small">Free forever · No spam · Unsubscribe anytime</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="ft-logo">Rough Cut.</div>
+  <div class="ft-copy">© 2025 · Monthly · Sharp · Essential · Free</div>
+</footer>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn" title="All concepts">←</a>
+
+</body>
+</html>

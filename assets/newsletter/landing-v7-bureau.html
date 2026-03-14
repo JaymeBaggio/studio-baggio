@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — Intelligence Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f4f2ee;
+  --ink: #0f0f0f;
+  --red: #cc2200;
+  --grey: #e0ddd8;
+  --grey-mid: #9a9590;
+  --grey-dark: #444;
+  --bar-h: 34px;
+  --nav-h: 56px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── UTILITY ──────────────────────────────────────────── */
+.label {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+.label-red {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.rule { border: none; border-top: 1px solid var(--ink); }
+.rule-grey { border: none; border-top: 1px solid var(--grey); }
+
+/* ── 1. CLASSIFICATION BAR ────────────────────────────── */
+.class-bar {
+  height: var(--bar-h);
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.class-bar span {
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* ── 2. NAVIGATION ────────────────────────────────────── */
+.nav {
+  height: var(--nav-h);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 32px;
+  position: sticky;
+  top: var(--bar-h);
+  z-index: 90;
+  background: var(--bg);
+}
+.nav-wordmark {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-center { /* empty */ }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  justify-content: flex-end;
+}
+.nav-links a {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-links a:hover { color: var(--grey-dark); }
+
+/* ── 3. HERO ──────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 40fr 60fr;
+  border-bottom: 1px solid var(--ink);
+  min-height: 620px;
+  max-height: 860px;
+  height: calc(100vh - var(--bar-h) - var(--nav-h));
+}
+
+/* Hero left: text */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(36px, 5vh, 64px) 48px clamp(36px, 5vh, 64px) 40px;
+  border-right: 1px solid var(--ink);
+}
+.hero-text-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hero-featured-label {
+  margin-bottom: 28px;
+}
+.hero-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(42px, 6vw, 84px);
+  font-weight: 700;
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.hero-rule { border-top: 1px solid var(--ink); margin-bottom: 20px; }
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-bottom: 32px;
+}
+.hero-meta-item {
+  border-right: 1px solid var(--grey);
+  padding-right: 12px;
+  margin-right: 0;
+}
+.hero-meta-item:last-child { border-right: none; }
+.hero-meta-key {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  display: block;
+  margin-bottom: 3px;
+}
+.hero-meta-val {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: block;
+}
+.hero-deck {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--grey-dark);
+  margin-bottom: 0;
+}
+.hero-ctas {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.btn-fill {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--bg);
+  border: 1px solid var(--ink);
+  padding: 11px 24px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-fill:hover { background: var(--red); border-color: var(--red); }
+.btn-outline {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 11px 24px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-outline:hover { background: var(--ink); color: var(--bg); }
+
+/* Hero right: single full-bleed image */
+.hero-mosaic {
+  overflow: hidden;
+  display: block;
+}
+.hero-mosaic-main { height: 100%; overflow: hidden; }
+.hero-mosaic-sm { display: none; }
+.hero-mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── 4. INTELLIGENCE TICKER ────────────────────────────── */
+.ticker {
+  height: 46px;
+  background: var(--ink);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--ink);
+}
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: tickerScroll 40s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-inner {
+  display: flex;
+  align-items: center;
+  padding-right: 60px;
+}
+.ticker-item {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+.ticker-sep {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  color: var(--grey-mid);
+  margin: 0 20px;
+}
+
+/* ── 5. LATEST DISPATCHES ──────────────────────────────── */
+.section { padding: 0; }
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  border-bottom: 1px solid var(--ink);
+}
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.section-count {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+.issue-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--ink);
+}
+.issue-card {
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.issue-card:nth-child(3n) { border-right: none; }
+.issue-card:nth-child(4),
+.issue-card:nth-child(5),
+.issue-card:nth-child(6) { border-bottom: none; }
+.issue-card-img {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink);
+  flex-shrink: 0;
+}
+.issue-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.issue-card-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.issue-card-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.issue-card-meta span {
+  font-family: 'Barlow', sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+.issue-card-meta .meta-sep { color: var(--grey); }
+.issue-card-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.0;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.issue-card-read {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  text-decoration: none;
+  margin-top: 4px;
+  display: inline-block;
+}
+.issue-card-read:hover { color: var(--ink); }
+
+/* ── 6. ABOUT / BRIEF ──────────────────────────────────── */
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--ink);
+  margin: 0;
+  border-left: none;
+  border-right: none;
+}
+.about-left {
+  padding: 48px 40px 48px 32px;
+  border-right: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.about-stat {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(72px, 10vw, 120px);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--red);
+  display: block;
+}
+.about-stat-label {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  margin-top: 10px;
+  display: block;
+}
+.about-right {
+  padding: 48px 32px 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.about-heading {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.0;
+  color: var(--ink);
+}
+.about-body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--grey-dark);
+}
+
+/* ── 7. SUBSCRIBE BLOCK ────────────────────────────────── */
+.subscribe-section {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 52px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+.subscribe-heading {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.0;
+  color: var(--ink);
+}
+.subscribe-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--grey-mid);
+  max-width: 420px;
+}
+.subscribe-form {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  max-width: 520px;
+}
+.subscribe-input {
+  flex: 1;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--ink);
+  border-right: none;
+  background: var(--bg);
+  color: var(--ink);
+  padding: 12px 16px;
+  outline: none;
+}
+.subscribe-input::placeholder { color: var(--grey-mid); }
+.subscribe-btn {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--bg);
+  border: 1px solid var(--ink);
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.subscribe-btn:hover { background: var(--red); border-color: var(--red); }
+.subscribe-note {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+
+/* ── 8. ARCHIVE INDEX ──────────────────────────────────── */
+.archive-section { border-bottom: 1px solid var(--ink); }
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.archive-table thead tr {
+  border-bottom: 1px solid var(--ink);
+}
+.archive-table th {
+  font-family: 'Barlow', sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  text-align: left;
+  padding: 10px 16px;
+  border-right: 1px solid var(--grey);
+}
+.archive-table th:first-child { padding-left: 32px; }
+.archive-table th:last-child { border-right: none; padding-right: 32px; }
+.archive-table tbody tr {
+  border-bottom: 1px solid var(--grey);
+  transition: background 0.1s;
+}
+.archive-table tbody tr:last-child { border-bottom: none; }
+.archive-table tbody tr:hover { background: rgba(15,15,15,0.03); }
+.archive-table td {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink);
+  padding: 14px 16px;
+  border-right: 1px solid var(--grey);
+  vertical-align: middle;
+}
+.archive-table td:first-child { padding-left: 32px; }
+.archive-table td:last-child { border-right: none; padding-right: 32px; }
+.archive-ref {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+}
+.archive-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.archive-cat {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-dark);
+}
+.archive-date {
+  font-size: 11px;
+  color: var(--grey-mid);
+  white-space: nowrap;
+}
+.archive-read {
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.archive-read:hover { color: var(--red); }
+
+/* ── 9. FOOTER ─────────────────────────────────────────── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid var(--ink);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.footer-wordmark {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #fff;
+}
+.footer-nav {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+.footer-nav a {
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  text-decoration: none;
+}
+.footer-nav a:hover { color: #fff; }
+.footer-copy {
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-mid);
+  text-align: right;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── 1. CLASSIFICATION BAR ─────────────────────────────── -->
+<div class="class-bar">
+  <span>Rough Cut Intelligence &nbsp;//&nbsp; Vol. 7.5 &nbsp;//&nbsp; March 2026 &nbsp;//&nbsp; Creative Technology</span>
+</div>
+
+<!-- ── 2. NAVIGATION ──────────────────────────────────────── -->
+<nav class="nav">
+  <a href="#" class="nav-wordmark">Rough Cut</a>
+  <div class="nav-center"></div>
+  <div class="nav-links">
+    <a href="#dispatches">Issues</a>
+    <a href="#about">About</a>
+    <a href="#subscribe">Subscribe</a>
+  </div>
+</nav>
+
+<!-- ── 3. HERO ────────────────────────────────────────────── -->
+<section class="hero">
+  <!-- Left: text -->
+  <div class="hero-text">
+    <div class="hero-text-top">
+      <div class="hero-featured-label">
+        <span class="label-red">Featured Dispatch</span>
+      </div>
+      <h1 class="hero-headline">The Model That Changed How We Think About Creative Work</h1>
+      <div class="hero-rule"></div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-key">Category</span>
+          <span class="hero-meta-val">AI Tools</span>
+        </div>
+        <div class="hero-meta-item" style="padding-left:12px;">
+          <span class="hero-meta-key">Issue</span>
+          <span class="hero-meta-val">RC-7.5</span>
+        </div>
+        <div class="hero-meta-item" style="padding-left:12px;">
+          <span class="hero-meta-key">Date</span>
+          <span class="hero-meta-val">March 2026</span>
+        </div>
+      </div>
+      <p class="hero-deck">Every week a new model arrives with bigger claims. This issue we cut through the noise — tracking which tools are actually changing how creative studios work, and what that means for the people inside them.</p>
+    </div>
+    <div class="hero-ctas">
+      <a href="#subscribe" class="btn-fill">Subscribe Free</a>
+      <a href="#archive" class="btn-outline">Browse Issues</a>
+    </div>
+  </div>
+
+  <!-- Right: mosaic -->
+  <div class="hero-mosaic">
+    <div class="hero-mosaic-main">
+      <img src="RC7.5/1.png" alt="Rough Cut Issue 7.5">
+    </div>
+    <div class="hero-mosaic-sm">
+      <img src="RC7/1.png" alt="Rough Cut Issue 7">
+    </div>
+    <div class="hero-mosaic-sm">
+      <img src="RC6/1.png" alt="Rough Cut Issue 6">
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. INTELLIGENCE TICKER ─────────────────────────────── -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-inner">
+      <span class="ticker-item">AI Tools &middot; Issue 7.5</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">The Tools Are Not The Story</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Creative Intelligence Weekly</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Production Workflows &middot; March 2026</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">3,000+ Creative Professionals</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">AI &middot; Media &middot; Production &middot; Signal</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Not Hype. Just Signal.</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Dispatch RC-7.5 Now Available</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Industry Trends &middot; Studio Workflows</span>
+      <span class="ticker-sep">//</span>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-inner" aria-hidden="true">
+      <span class="ticker-item">AI Tools &middot; Issue 7.5</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">The Tools Are Not The Story</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Creative Intelligence Weekly</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Production Workflows &middot; March 2026</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">3,000+ Creative Professionals</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">AI &middot; Media &middot; Production &middot; Signal</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Not Hype. Just Signal.</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Dispatch RC-7.5 Now Available</span>
+      <span class="ticker-sep">//</span>
+      <span class="ticker-item">Industry Trends &middot; Studio Workflows</span>
+      <span class="ticker-sep">//</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── 5. LATEST DISPATCHES ───────────────────────────────── -->
+<section class="section" id="dispatches">
+  <div class="section-header">
+    <span class="section-title">Latest Dispatches</span>
+    <span class="section-count">06 Entries</span>
+  </div>
+  <div class="issue-grid">
+
+    <div class="issue-card">
+      <div class="issue-card-img">
+        <img src="RC7.5/2.png" alt="RC-7.5">
+      </div>
+      <div class="issue-card-body">
+        <div class="issue-card-meta">
+          <span>AI Tools</span>
+          <span class="meta-sep">//</span>
+          <span>Mar 2026</span>
+          <span class="meta-sep">//</span>
+          <span>Doc Ref: RC-7.5</span>
+        </div>
+        <div class="issue-card-headline">The Model That Changed Everything</div>
+        <a href="#" class="issue-card-read">Read →</a>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-img">
+        <img src="RC7/2.png" alt="RC-7">
+      </div>
+      <div class="issue-card-body">
+        <div class="issue-card-meta">
+          <span>Workflow</span>
+          <span class="meta-sep">//</span>
+          <span>Feb 2026</span>
+          <span class="meta-sep">//</span>
+          <span>Doc Ref: RC-7</span>
+        </div>
+        <div class="issue-card-headline">Automation at the Edit Suite</div>
+        <a href="#" class="issue-card-read">Read →</a>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-img">
+        <img src="RC6/2.png" alt="RC-6">
+      </div>
+      <div class="issue-card-body">
+        <div class="issue-card-meta">
+          <span>Industry</span>
+          <span class="meta-sep">//</span>
+          <span>Jan 2026</span>
+          <span class="meta-sep">//</span>
+          <span>Doc Ref: RC-6</span>
+        </div>
+        <div class="issue-card-headline">Who Controls the Creative Stack?</div>
+        <a href="#" class="issue-card-read">Read →</a>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-img">
+        <img src="RC5/1.png" alt="RC-5">
+      </div>
+      <div class="issue-card-body">
+        <div class="issue-card-meta">
+          <span>AI Tools</span>
+          <span class="meta-sep">//</span>
+          <span>Dec 2025</span>
+          <span class="meta-sep">//</span>
+          <span>Doc Ref: RC-5</span>
+        </div>
+        <div class="issue-card-headline">Generative Video Is Here — Now What?</div>
+        <a href="#" class="issue-card-read">Read →</a>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-img">
+        <img src="RC4/1.png" alt="RC-4">
+      </div>
+      <div class="issue-card-body">
+        <div class="issue-card-meta">
+          <span>Studio</span>
+          <span class="meta-sep">//</span>
+          <span>Nov 2025</span>
+          <span class="meta-sep">//</span>
+          <span>Doc Ref: RC-4</span>
+        </div>
+        <div class="issue-card-headline">The Shrinking Production Budget</div>
+        <a href="#" class="issue-card-read">Read →</a>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-card-img">
+        <img src="RC3/1.png" alt="RC-3">
+      </div>
+      <div class="issue-card-body">
+        <div class="issue-card-meta">
+          <span>Media</span>
+          <span class="meta-sep">//</span>
+          <span>Oct 2025</span>
+          <span class="meta-sep">//</span>
+          <span>Doc Ref: RC-3</span>
+        </div>
+        <div class="issue-card-headline">Media Brands That Got AI Right</div>
+        <a href="#" class="issue-card-read">Read →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 6. ABOUT / BRIEF ───────────────────────────────────── -->
+<section class="about-section" id="about">
+  <div class="about-left">
+    <span class="about-stat">3,000+</span>
+    <span class="about-stat-label">Subscribers</span>
+  </div>
+  <div class="about-right">
+    <div>
+      <span class="label" style="display:block; margin-bottom:10px;">Intelligence Brief</span>
+      <div class="about-heading">Sharp Signal for<br>Creative Professionals</div>
+    </div>
+    <p class="about-body">Rough Cut is a weekly intelligence brief covering AI tools, media industry shifts, and production workflows — written for creative directors, studios, and agencies who need to stay ahead. No hype. No noise. Just the signal that matters.</p>
+    <div>
+      <a href="#subscribe" class="btn-fill" style="display:inline-block;">Subscribe Free</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. SUBSCRIBE BLOCK ─────────────────────────────────── -->
+<section class="subscribe-section" id="subscribe">
+  <span class="label" style="color: var(--grey-mid);">Register for Intelligence Updates</span>
+  <h2 class="subscribe-heading">Get Rough Cut in<br>Your Inbox Weekly</h2>
+  <p class="subscribe-sub">Weekly intelligence on AI tools, creative technology, and industry shifts. Free. Every week. No filler.</p>
+  <form class="subscribe-form" onsubmit="return false;">
+    <input type="email" class="subscribe-input" placeholder="your@email.com">
+    <button type="submit" class="subscribe-btn">Subscribe</button>
+  </form>
+  <span class="subscribe-note">Free to read &nbsp;&middot;&nbsp; Unsubscribe anytime &nbsp;&middot;&nbsp; No spam</span>
+</section>
+
+<!-- ── 8. ARCHIVE INDEX ───────────────────────────────────── -->
+<section class="archive-section" id="archive">
+  <div class="section-header">
+    <span class="section-title">Archive // All Dispatches</span>
+    <span class="section-count">Full Index</span>
+  </div>
+  <table class="archive-table">
+    <thead>
+      <tr>
+        <th>Doc Ref</th>
+        <th>Dispatch Headline</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Access</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="archive-ref">RC-7.5</span></td>
+        <td><span class="archive-headline">The Model That Changed How We Think</span></td>
+        <td><span class="archive-cat">AI Tools</span></td>
+        <td><span class="archive-date">Mar 2026</span></td>
+        <td><a href="#" class="archive-read">Read →</a></td>
+      </tr>
+      <tr>
+        <td><span class="archive-ref">RC-7</span></td>
+        <td><span class="archive-headline">Automation at the Edit Suite</span></td>
+        <td><span class="archive-cat">Workflow</span></td>
+        <td><span class="archive-date">Feb 2026</span></td>
+        <td><a href="#" class="archive-read">Read →</a></td>
+      </tr>
+      <tr>
+        <td><span class="archive-ref">RC-6</span></td>
+        <td><span class="archive-headline">Who Controls the Creative Stack?</span></td>
+        <td><span class="archive-cat">Industry</span></td>
+        <td><span class="archive-date">Jan 2026</span></td>
+        <td><a href="#" class="archive-read">Read →</a></td>
+      </tr>
+      <tr>
+        <td><span class="archive-ref">RC-5</span></td>
+        <td><span class="archive-headline">Generative Video Is Here — Now What?</span></td>
+        <td><span class="archive-cat">AI Tools</span></td>
+        <td><span class="archive-date">Dec 2025</span></td>
+        <td><a href="#" class="archive-read">Read →</a></td>
+      </tr>
+      <tr>
+        <td><span class="archive-ref">RC-4</span></td>
+        <td><span class="archive-headline">The Shrinking Production Budget</span></td>
+        <td><span class="archive-cat">Studio</span></td>
+        <td><span class="archive-date">Nov 2025</span></td>
+        <td><a href="#" class="archive-read">Read →</a></td>
+      </tr>
+      <tr>
+        <td><span class="archive-ref">RC-3</span></td>
+        <td><span class="archive-headline">Media Brands That Got AI Right</span></td>
+        <td><span class="archive-cat">Media</span></td>
+        <td><span class="archive-date">Oct 2025</span></td>
+        <td><a href="#" class="archive-read">Read →</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ── 9. FOOTER ──────────────────────────────────────────── -->
+<footer>
+  <div class="footer-wordmark">Rough Cut</div>
+  <nav class="footer-nav">
+    <a href="#dispatches">Issues</a>
+    <a href="#about">About</a>
+    <a href="#subscribe">Subscribe</a>
+    <a href="#archive">Archive</a>
+  </nav>
+  <div class="footer-copy">© 2026 Rough Cut</div>
+</footer>
+
+<a href="index.html" style="position:fixed;top:20px;left:20px;z-index:9999;font-size:20px;color:#888;opacity:0.2;text-decoration:none;background:none;padding:2px 4px;transition:opacity 0.2s;line-height:1;font-family:sans-serif" title="All concepts" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.2'">←</a></body>
+</html>

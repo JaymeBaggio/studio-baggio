@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rough Cut — Cinematic Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #070707;
+      --bg2: #0C0C0C;
+      --amber: #FFB020;
+      --amber-dim: rgba(255,176,32,0.12);
+      --amber-glow: rgba(255,176,32,0.05);
+      --red: #8B0000;
+      --paper: #EDE0C4;
+      --paper-dim: rgba(237,224,196,0.65);
+      --dim: rgba(237,224,196,0.25);
+      --grain-size: 180px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--paper);
+      font-family: 'Courier Prime', monospace;
+      overflow-x: hidden;
+      cursor: none;
+      position: relative;
+    }
+
+    /* FILM GRAIN */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.09'/%3E%3C/svg%3E");
+      opacity: 0.6;
+      animation: grain 0.8s steps(2) infinite;
+    }
+
+    /* SCANLINES */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+    }
+
+    @keyframes grain {
+      0%, 100% { transform: translate(0,0); }
+      10% { transform: translate(-2%, -3%); }
+      20% { transform: translate(-5%, 2%); }
+      30% { transform: translate(3%, -1%); }
+      40% { transform: translate(-2%, 5%); }
+      50% { transform: translate(-4%, -2%); }
+      60% { transform: translate(2%, 4%); }
+      70% { transform: translate(-1%, -4%); }
+      80% { transform: translate(5%, 1%); }
+      90% { transform: translate(-3%, 3%); }
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      position: fixed;
+      width: 2px;
+      height: 18px;
+      background: var(--amber);
+      pointer-events: none;
+      z-index: 9997;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px var(--amber), 0 0 20px rgba(255,176,32,0.3);
+      animation: cursorBlink 1.2s step-end infinite;
+    }
+    @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* BOOT SEQUENCE */
+    #bootScreen {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 9990;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem;
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      color: var(--amber);
+      line-height: 1.8;
+      transition: opacity 0.8s;
+    }
+    #bootScreen.fade { opacity: 0; pointer-events: none; }
+    .boot-line { opacity: 0; }
+    .boot-line.show { opacity: 1; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--amber);
+      box-shadow: 0 4px 30px rgba(255,176,32,0.08);
+    }
+    .nav-brand {
+      padding: 1rem 2rem;
+      border-right: 1px solid rgba(255,176,32,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-brand-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      text-shadow: 0 0 20px rgba(255,176,32,0.5);
+      line-height: 1;
+    }
+    .nav-brand-sub {
+      font-family: 'VT323', monospace;
+      font-size: 0.7rem;
+      color: var(--dim);
+      letter-spacing: 0.2em;
+    }
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-scene {
+      padding: 0.75rem 1.5rem;
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      border-right: 1px solid rgba(255,176,32,0.08);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .nav-scene:hover, .nav-scene.active { color: var(--amber); }
+    .nav-right {
+      padding: 1rem 2rem;
+      border-left: 1px solid rgba(255,176,32,0.2);
+      font-family: 'VT323', monospace;
+      font-size: 0.8rem;
+      color: var(--dim);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 8px var(--amber);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      border-bottom: 1px solid rgba(255,176,32,0.2);
+    }
+
+    /* HERO LEFT */
+    .hero-left {
+      padding: 4rem 3rem;
+      border-right: 1px solid rgba(255,176,32,0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(ellipse at 20% 20%, rgba(255,176,32,0.04), transparent 60%);
+      pointer-events: none;
+    }
+    .hero-clapboard {
+      border: 2px solid var(--amber);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .hero-clapboard::before {
+      content: '▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄';
+      position: absolute;
+      top: -12px; left: -2px;
+      right: -2px;
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      background: var(--bg2);
+      padding: 0 0.5rem;
+    }
+    .clap-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .clap-row span { color: var(--amber); }
+    .hero-title-block {}
+    .hero-title-tag {
+      font-family: 'VT323', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.4em;
+      color: var(--amber);
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 14vw, 11rem);
+      line-height: 0.85;
+      letter-spacing: 0.02em;
+      color: var(--paper);
+      text-shadow: 0 0 60px rgba(255,176,32,0.1);
+    }
+    .hero-title .cut { color: var(--amber); text-shadow: 0 0 30px rgba(255,176,32,0.5); }
+    .hero-subtitle {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--paper-dim);
+      border-left: 2px solid var(--amber);
+      padding-left: 1.25rem;
+    }
+    .hero-meta-row {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 2.5rem;
+    }
+    .meta-item { }
+    .meta-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .meta-label {
+      font-family: 'VT323', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--dim);
+      text-transform: uppercase;
+    }
+
+    /* HERO RIGHT — ISSUE SELECTOR */
+    .hero-right {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .scene-header {
+      font-family: 'VT323', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.5em;
+      color: var(--dim);
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,176,32,0.1);
+      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .scene-header-right { color: var(--amber); }
+
+    /* SCENE CARDS */
+    .scene-card {
+      border: 1px solid rgba(255,176,32,0.15);
+      padding: 1.75rem;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.3s, background 0.3s;
+      overflow: hidden;
+    }
+    .scene-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--amber-dim), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .scene-card:hover { border-color: rgba(255,176,32,0.5); }
+    .scene-card:hover::before { opacity: 1; }
+    .scene-card.active { border-color: var(--amber); background: rgba(255,176,32,0.04); }
+    .scene-card.active::before { opacity: 1; }
+
+    .sc-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .sc-take {
+      font-family: 'VT323', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--amber);
+      background: rgba(255,176,32,0.1);
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(255,176,32,0.3);
+    }
+    .sc-date {
+      font-family: 'VT323', monospace;
+      font-size: 0.75rem;
+      color: var(--dim);
+      letter-spacing: 0.2em;
+    }
+    .sc-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      line-height: 0.9;
+      color: rgba(255,176,32,0.15);
+      position: absolute;
+      right: 1.5rem;
+      bottom: 1rem;
+    }
+    .sc-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      color: var(--paper);
+      margin-bottom: 0.6rem;
+      max-width: 80%;
+    }
+    .sc-deck {
+      font-size: 0.65rem;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--dim);
+    }
+
+    /* TIMELINE STRIP */
+    .timeline-section {
+      border-top: 1px solid rgba(255,176,32,0.1);
+      border-bottom: 1px solid rgba(255,176,32,0.1);
+      background: var(--bg2);
+      overflow: hidden;
+    }
+    .timeline-label {
+      padding: 0.75rem 3rem;
+      font-family: 'VT323', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      color: var(--dim);
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,176,32,0.08);
+    }
+    .timeline {
+      display: flex;
+      padding: 1.5rem 3rem;
+      gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: calc(1.5rem + 18px);
+      left: 3rem;
+      right: 3rem;
+      height: 1px;
+      background: linear-gradient(90deg, var(--amber), rgba(255,176,32,0.1));
+    }
+    .tl-item {
+      flex: 1;
+      cursor: pointer;
+      position: relative;
+      padding-top: 2.5rem;
+    }
+    .tl-dot {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: rgba(255,176,32,0.3);
+      border: 1px solid rgba(255,176,32,0.4);
+      transition: all 0.3s;
+    }
+    .tl-item:hover .tl-dot,
+    .tl-item.active .tl-dot {
+      background: var(--amber);
+      box-shadow: 0 0 12px var(--amber), 0 0 24px rgba(255,176,32,0.4);
+    }
+    .tl-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--dim);
+      transition: color 0.3s;
+    }
+    .tl-item:hover .tl-num, .tl-item.active .tl-num { color: var(--amber); }
+    .tl-date {
+      font-family: 'VT323', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--dim);
+      text-transform: uppercase;
+    }
+    .tl-title {
+      font-size: 0.6rem;
+      font-style: italic;
+      color: var(--dim);
+      margin-top: 0.3rem;
+      max-width: 8rem;
+    }
+
+    /* FULL ISSUES GRID */
+    .issues-section {
+      padding: 4rem 3rem;
+    }
+    .is-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .is-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+    }
+    .is-rule { flex: 1; height: 1px; background: rgba(255,176,32,0.1); }
+    .is-count {
+      font-family: 'VT323', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--dim);
+    }
+
+    .issues-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .issue-block {
+      border: 1px solid rgba(255,176,32,0.15);
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .issue-block:hover { border-color: rgba(255,176,32,0.5); }
+    .issue-block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top left, rgba(255,176,32,0.06), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .issue-block:hover::before { opacity: 1; }
+
+    /* CLAPBOARD STRIP */
+    .clap-strip {
+      display: flex;
+      background: var(--amber);
+    }
+    .clap-cell {
+      flex: 1;
+      height: 8px;
+      background: var(--amber);
+    }
+    .clap-cell:nth-child(even) { background: var(--bg); }
+
+    .ib-body { padding: 2rem; }
+    .ib-take-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .ib-take {
+      font-family: 'VT323', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--amber);
+      background: rgba(255,176,32,0.1);
+      border: 1px solid rgba(255,176,32,0.3);
+      padding: 0.15rem 0.6rem;
+    }
+    .ib-date {
+      font-family: 'VT323', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--dim);
+    }
+    .ib-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 6rem;
+      line-height: 1;
+      color: rgba(255,176,32,0.07);
+      margin-bottom: -1rem;
+    }
+    .ib-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+      color: var(--paper);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .ib-deck {
+      font-size: 0.68rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--dim);
+      margin-bottom: 1.5rem;
+    }
+    .ib-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ib-tags { display: flex; gap: 0.4rem; }
+    .ib-tag {
+      font-family: 'VT323', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border: 1px solid rgba(255,176,32,0.2);
+      color: var(--dim);
+    }
+    .ib-play {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .ib-play::before { content: '▶'; font-size: 0.5rem; }
+
+    /* QUOTE */
+    .quote-section {
+      padding: 5rem 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,176,32,0.1);
+      background: var(--bg2);
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-section::before {
+      content: '"';
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20rem;
+      color: rgba(255,176,32,0.02);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .quote-eyebrow {
+      font-family: 'VT323', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.5em;
+      color: var(--dim);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .quote-eyebrow::before, .quote-eyebrow::after {
+      content: '';
+      width: 3rem;
+      height: 1px;
+      background: rgba(255,176,32,0.3);
+      display: block;
+    }
+    blockquote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      max-width: 44rem;
+      margin: 0 auto 2rem;
+      color: var(--paper);
+      text-shadow: 0 0 40px rgba(255,176,32,0.1);
+    }
+    blockquote em {
+      color: var(--amber);
+      font-style: normal;
+      text-shadow: 0 0 20px rgba(255,176,32,0.5);
+    }
+    .quote-attr {
+      font-family: 'VT323', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      color: var(--dim);
+    }
+
+    /* READER */
+    .reader-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 800;
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .reader-overlay.open { opacity: 1; pointer-events: all; }
+    .reader-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(3px);
+    }
+    .reader-panel {
+      position: relative;
+      z-index: 1;
+      margin-left: auto;
+      width: min(720px, 100vw);
+      height: 100%;
+      background: var(--bg2);
+      border-left: 2px solid var(--amber);
+      box-shadow: -20px 0 60px rgba(255,176,32,0.08);
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reader-overlay.open .reader-panel { transform: translateX(0); }
+
+    /* READER HEADER — CLAPBOARD STYLE */
+    .rp-clapboard {
+      background: var(--amber);
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .rpc-cells {
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .rpc-cell {
+      width: 12px; height: 12px;
+      background: var(--bg);
+    }
+    .rpc-cell:nth-child(even) { background: var(--amber); }
+    .rp-close {
+      background: var(--bg);
+      color: var(--amber);
+      border: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .rp-close:hover { background: var(--red); color: var(--paper); }
+
+    .rp-header {
+      padding: 2.5rem 2.5rem 1.5rem;
+      border-bottom: 1px solid rgba(255,176,32,0.15);
+    }
+    .rp-take {
+      font-family: 'VT323', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+    .rp-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+      color: var(--paper);
+    }
+    .rp-body { padding: 2.5rem; }
+    .rp-content { font-size: 0.8rem; line-height: 2; color: var(--paper-dim); }
+    .rp-content h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--paper);
+      margin: 2.5rem 0 0.75rem;
+    }
+    .rp-content .pull {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+      color: var(--amber);
+      text-shadow: 0 0 15px rgba(255,176,32,0.3);
+      border-left: 3px solid var(--amber);
+      padding: 0.75rem 1.25rem;
+      margin: 1.5rem 0;
+      line-height: 1.2;
+    }
+    .rp-content .action {
+      background: rgba(255,176,32,0.05);
+      border: 1px solid rgba(255,176,32,0.2);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .rp-content .action strong {
+      display: block;
+      font-family: 'VT323', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid rgba(255,176,32,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg2);
+    }
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      text-shadow: 0 0 15px rgba(255,176,32,0.4);
+    }
+    .footer-mid {
+      font-family: 'VT323', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      color: var(--dim);
+    }
+    .back-link {
+      font-family: 'VT323', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--amber); }
+
+    /* GLITCH HOVER */
+    @keyframes glitch1 {
+      0%,100%{clip-path:inset(0 0 100% 0)}
+      10%{clip-path:inset(20% 0 40% 0); transform:translateX(-3px)}
+      20%{clip-path:inset(60% 0 20% 0); transform:translateX(3px)}
+      30%{clip-path:inset(40% 0 60% 0); transform:translateX(0)}
+    }
+    .issue-block:hover .ib-title::before {
+      content: attr(data-text);
+      position: absolute;
+      left: 0; top: 0;
+      color: var(--amber);
+      animation: glitch1 0.4s infinite;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .issues-grid { grid-template-columns: 1fr; }
+      .issues-section, footer, .quote-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      nav { flex-wrap: wrap; }
+      .nav-center { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cur"></div>
+
+  <!-- BOOT SCREEN -->
+  <div id="bootScreen">
+    <div class="boot-line" id="b0">ROUGH CUT // SYSTEM BOOT v2.6</div>
+    <div class="boot-line" id="b1">▶ Initialising archive database...</div>
+    <div class="boot-line" id="b2">▶ Loading issues RC3 through RC6...</div>
+    <div class="boot-line" id="b3">▶ Calibrating film grain engine...</div>
+    <div class="boot-line" id="b4">▶ Mounting reader interface...</div>
+    <div class="boot-line" id="b5" style="color:var(--paper);">▶ SYSTEM READY. ROLLING.</div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">
+      <div class="nav-brand-main">Rough Cut</div>
+      <div class="nav-brand-sub">Newsletter // AI & Creativity</div>
+    </div>
+    <div class="nav-center">
+      <div class="nav-scene active">Issues</div>
+      <div class="nav-scene">Archive</div>
+      <div class="nav-scene">About</div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-dot"></div>
+      ROLLING
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div>
+        <div class="hero-clapboard">
+          <div class="clap-row">PRODUCTION: <span>Rough Cut Newsletter</span></div>
+          <div class="clap-row">DIRECTOR: <span>Jayme Baggio</span></div>
+          <div class="clap-row">ISSUES: <span>RC3 — RC6</span></div>
+          <div class="clap-row">FORMAT: <span>AI · Creativity · Film</span></div>
+        </div>
+        <div class="hero-title-block">
+          <div class="hero-title-tag">// Transmission begins</div>
+          <h1 class="hero-title">ROUGH<br><span class="cut">CUT</span></h1>
+          <p class="hero-subtitle">From Agents to Animation — the next wave of AI isn't replacing creativity; it's rewriting what it means to be creative. Documented, issue by issue.</p>
+        </div>
+      </div>
+      <div class="hero-meta-row">
+        <div class="meta-item">
+          <div class="meta-val">4</div>
+          <div class="meta-label">// Issues</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-val">RC6</div>
+          <div class="meta-label">// Latest Cut</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-val">DEC</div>
+          <div class="meta-label">// Most Recent</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO RIGHT — SCENE CARDS -->
+    <div class="hero-right">
+      <div class="scene-header">
+        <span>// Select Scene</span>
+        <span class="scene-header-right">RC3–RC6</span>
+      </div>
+
+      <div class="scene-card" onclick="openReader('rc3')">
+        <div class="sc-top">
+          <div class="sc-take">TAKE · RC3</div>
+          <div class="sc-date">OCT 2025</div>
+        </div>
+        <div class="sc-num">03</div>
+        <div class="sc-title">OpenAI Dev Day, Sora 2 & The AI Actress</div>
+        <div class="sc-deck">ChatGPT becomes a platform. Sora 2 goes viral. Hollywood's first AI star sparks a firestorm.</div>
+      </div>
+
+      <div class="scene-card" onclick="openReader('rc4')">
+        <div class="sc-top">
+          <div class="sc-take">TAKE · RC4</div>
+          <div class="sc-date">OCT 2025</div>
+        </div>
+        <div class="sc-num">04</div>
+        <div class="sc-title">ChatGPT Atlas & Blueprint for AI Filmmaking</div>
+        <div class="sc-deck">OpenAI's first AI-native browser. Plus: a six-step framework for making studio-quality films with AI tools.</div>
+      </div>
+
+      <div class="scene-card" onclick="openReader('rc5')">
+        <div class="sc-top">
+          <div class="sc-take">TAKE · RC5</div>
+          <div class="sc-date">NOV 2025</div>
+        </div>
+        <div class="sc-num">05</div>
+        <div class="sc-title">Gemini 3, Pomelli & The Tutorial</div>
+        <div class="sc-deck">Google's multimodal leap. Pomelli's brand engine. Grimes shows what AI creativity looks like from the inside.</div>
+      </div>
+
+      <div class="scene-card" onclick="openReader('rc6')">
+        <div class="sc-top">
+          <div class="sc-take">TAKE · RC6</div>
+          <div class="sc-date">DEC 2025</div>
+        </div>
+        <div class="sc-num">06</div>
+        <div class="sc-title">Annual Report & 2026 Predictions</div>
+        <div class="sc-deck">90% adoption. 25% effectiveness. The real state of AI at work — plus 20 bold predictions for 2026.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <div class="timeline-section">
+    <div class="timeline-label">// Archive Timeline — All Issues</div>
+    <div class="timeline">
+      <div class="tl-item active" onclick="openReader('rc3')">
+        <div class="tl-dot"></div>
+        <div class="tl-num">RC3</div>
+        <div class="tl-date">Oct 2025</div>
+        <div class="tl-title">OpenAI Dev Day & Sora 2</div>
+      </div>
+      <div class="tl-item" onclick="openReader('rc4')">
+        <div class="tl-dot"></div>
+        <div class="tl-num">RC4</div>
+        <div class="tl-date">Oct 2025</div>
+        <div class="tl-title">Atlas & AI Filmmaking</div>
+      </div>
+      <div class="tl-item" onclick="openReader('rc5')">
+        <div class="tl-dot"></div>
+        <div class="tl-num">RC5</div>
+        <div class="tl-date">Nov 2025</div>
+        <div class="tl-title">Gemini 3 & Pomelli</div>
+      </div>
+      <div class="tl-item" onclick="openReader('rc6')">
+        <div class="tl-dot"></div>
+        <div class="tl-num">RC6</div>
+        <div class="tl-date">Dec 2025</div>
+        <div class="tl-title">Annual Report & Predictions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUES GRID -->
+  <section class="issues-section">
+    <div class="is-header">
+      <div class="is-title">// All Issues</div>
+      <div class="is-rule"></div>
+      <div class="is-count">4 Cuts Available</div>
+    </div>
+    <div class="issues-grid">
+
+      <div class="issue-block" onclick="openReader('rc3')">
+        <div class="clap-strip">
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+        </div>
+        <div class="ib-body">
+          <div class="ib-take-row">
+            <div class="ib-take">TAKE · RC3</div>
+            <div class="ib-date">OCT 2025</div>
+          </div>
+          <div class="ib-num">03</div>
+          <div class="ib-title" data-text="OpenAI Dev Day, Sora 2 & The AI Actress">OpenAI Dev Day, Sora 2 & The AI Actress</div>
+          <div class="ib-deck">ChatGPT becomes a platform. Sora 2 goes viral overnight. Hollywood meets its first AI star — with consequences nobody expected. The copyright debate blows wide open.</div>
+          <div class="ib-footer">
+            <div class="ib-tags"><span class="ib-tag">AI Tools</span><span class="ib-tag">Film</span></div>
+            <div class="ib-play">Read Cut</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-block" onclick="openReader('rc4')">
+        <div class="clap-strip">
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+        </div>
+        <div class="ib-body">
+          <div class="ib-take-row">
+            <div class="ib-take">TAKE · RC4</div>
+            <div class="ib-date">OCT 2025</div>
+          </div>
+          <div class="ib-num">04</div>
+          <div class="ib-title" data-text="ChatGPT Atlas & Blueprint for AI Filmmaking">ChatGPT Atlas & Blueprint for AI Filmmaking</div>
+          <div class="ib-deck">OpenAI's first AI-native browser challenges Google. Plus: a six-step framework for making studio-quality films with AI tools — from concept to final cut.</div>
+          <div class="ib-footer">
+            <div class="ib-tags"><span class="ib-tag">ChatGPT</span><span class="ib-tag">Workflow</span></div>
+            <div class="ib-play">Read Cut</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-block" onclick="openReader('rc5')">
+        <div class="clap-strip">
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+        </div>
+        <div class="ib-body">
+          <div class="ib-take-row">
+            <div class="ib-take">TAKE · RC5</div>
+            <div class="ib-date">NOV 2025</div>
+          </div>
+          <div class="ib-num">05</div>
+          <div class="ib-title" data-text="Gemini 3, Pomelli & The Tutorial">Gemini 3, Pomelli & The Tutorial</div>
+          <div class="ib-deck">Google's multimodal leap finally coheres. Pomelli turns your brand into a content engine. Grimes shows what AI creativity really looks like from the inside — in real time.</div>
+          <div class="ib-footer">
+            <div class="ib-tags"><span class="ib-tag">Gemini</span><span class="ib-tag">Marketing</span></div>
+            <div class="ib-play">Read Cut</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-block" onclick="openReader('rc6')">
+        <div class="clap-strip">
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+          <div class="clap-cell"></div><div class="clap-cell"></div><div class="clap-cell"></div>
+        </div>
+        <div class="ib-body">
+          <div class="ib-take-row">
+            <div class="ib-take">TAKE · RC6</div>
+            <div class="ib-date">DEC 2025</div>
+          </div>
+          <div class="ib-num">06</div>
+          <div class="ib-title" data-text="Annual Report & 2026 Predictions">Annual Report & 2026 Predictions</div>
+          <div class="ib-deck">90% adoption, 25% effectiveness. The brutal truth about AI at work — and 20 bold predictions for what 2026 actually brings to creative and business life.</div>
+          <div class="ib-footer">
+            <div class="ib-tags"><span class="ib-tag">Strategy</span><span class="ib-tag">Predictions</span></div>
+            <div class="ib-play">Read Cut</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <div class="quote-eyebrow">Transmission</div>
+    <blockquote>"The next wave of AI isn't replacing creativity — it's <em>rewriting</em> what it means to be creative."</blockquote>
+    <div class="quote-attr">// Jayme Baggio · Rough Cut · RC3</div>
+  </section>
+
+  <!-- READER -->
+  <div class="reader-overlay" id="readerOverlay">
+    <div class="reader-backdrop" onclick="closeReader()"></div>
+    <div class="reader-panel">
+      <div class="rp-clapboard">
+        <div class="rpc-cells">
+          <div class="rpc-cell"></div><div class="rpc-cell"></div><div class="rpc-cell"></div>
+          <div class="rpc-cell"></div><div class="rpc-cell"></div><div class="rpc-cell"></div>
+          <div class="rpc-cell"></div><div class="rpc-cell"></div>
+        </div>
+        <button class="rp-close" onclick="closeReader()">CUT ×</button>
+      </div>
+      <div class="rp-header">
+        <div class="rp-take" id="rpTake"></div>
+        <div class="rp-title" id="rpTitle"></div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-content" id="rpContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Rough Cut</div>
+    <a href="index.html" class="back-link">← All Designs</a>
+    <div class="footer-mid">// Jayme Baggio · Views are my own · RC3–RC6</div>
+  </footer>
+
+  <script>
+    // BOOT SEQUENCE
+    const bootLines = ['b0','b1','b2','b3','b4','b5'];
+    bootLines.forEach((id, i) => {
+      setTimeout(() => {
+        document.getElementById(id).classList.add('show');
+      }, 300 + i * 320);
+    });
+    setTimeout(() => {
+      document.getElementById('bootScreen').classList.add('fade');
+      setTimeout(() => document.getElementById('bootScreen').remove(), 900);
+    }, 300 + bootLines.length * 320 + 500);
+
+    // CURSOR
+    document.addEventListener('mousemove', e => {
+      document.getElementById('cur').style.left = e.clientX + 'px';
+      document.getElementById('cur').style.top = (e.clientY - 9) + 'px';
+    });
+
+    const issues = {
+      rc3: {
+        take:'TAKE // RC3 — October 2025',
+        title:'OpenAI Dev Day, Sora 2 & The AI Actress',
+        body:`<div class="pull">CHATGPT'S APP STORE MOMENT — WITH DISCOVERY BUILT IN</div>
+        <h3>OpenAI Dev Day: ChatGPT Becomes a Platform</h3>
+        <p>The biggest shift in the company's history. ChatGPT is now a platform where developers can build apps and agents directly inside the interface. With Agent Builder and the Apps SDK, developers no longer need websites or traffic. If their app solves a user's intent, ChatGPT will surface it. Early partners: Canva, Spotify, Coursera and Zillow plug straight into the chat experience.</p>
+        <div class="action"><strong>// Action</strong>If you run a brand, start designing for the chat economy. Being discoverable in the chat is the new SEO.</div>
+        <h3>Sora 2: The Video Generator That Went Viral</h3>
+        <p>Topped global app charts within 48 hours. Studio-quality videos from text prompts — syncing sound, motion and lighting indistinguishable from film. Sora 2 blew open the copyright debate. Following the backlash, OpenAI introduced new content disclosures and a revenue-share model for creators, framing Sora as "a new kind of interactive fan-fiction platform."</p>
+        <div class="action"><strong>// Action</strong>Learn to use these tools now. The limits are imagination, dedication and the ability to tell a strong story — not access or budget.</div>
+        <h3>Tilly Norwood: Hollywood's First AI Star</h3>
+        <p>An AI-generated actress promoted as Hollywood's first AI star — appearing on billboards, giving interviews, reportedly in talks with a major talent agency. SAG-AFTRA denounced the project. But Tilly was built by human writers, animators and producers. Like CGI icons before her, she's part of a natural creative evolution. Tools change. Storytelling remains human.</p>
+        <div class="pull">THE DEBATE WILL CONTINUE — AND THE TECHNOLOGY WILL KEEP ADVANCING</div>`
+      },
+      rc4: {
+        take:'TAKE // RC4 — October 2025',
+        title:'ChatGPT Atlas & Blueprint for AI Filmmaking',
+        body:`<div class="pull">BEING DISCOVERABLE IN THE CHAT IS THE NEW SEO</div>
+        <h3>ChatGPT Atlas Launches</h3>
+        <p>OpenAI's first AI-native browser — merging chat, search and execution into one interface. Built-in ChatGPT sidebar sees your active tab for live help and summaries. Memory across chats, browser and projects. Agent Mode takes actions across any logged-in tabs. This is the first real challenge to Google's dominance — Alphabet's stock slipped on launch day.</p>
+        <div class="action"><strong>// Action</strong>This shift is about AI controlling how audiences find, evaluate and buy. There's a new visibility strategy based on utility — not content — starting inside the chat window.</div>
+        <h3>Blueprint for AI Filmmaking: 6 Stages</h3>
+        <p><strong>Stage 1: Script.</strong> Your script drives everything. Even with Sora 2 doing the heavy lifting, weak writing produces weak content. Brainstorm in ChatGPT. Refine in Canvas or Google Docs. Use ChatGPT as a story editor until the final script is locked.</p>
+        <p><strong>Stage 2: Shotlist.</strong> Working image-first is faster and cheaper than text-to-video. Generate image prompts per scene. Build coverage: wide, mid, close-up of each setup.</p>
+        <p><strong>Stage 3: Visual Generation.</strong> DeeVid, InVideo or Reve.ai — up to 5 image references, multiple shot outputs. Drop frames into Figma or Google Sheets to build your storyboard.</p>
+        <p><strong>Stage 4: Animate in Veo 3.</strong> Upload stills, paste image prompt, add movement direction. Run final outputs through Enhancer.AI to restore texture and remove AI glow.</p>
+        <p><strong>Stage 5: Edit & Assemble.</strong> Veo 3 adds dialogue and sound automatically — replace if needed. Drop in music. Apply one global LUT to unify tone across all shots.</p>
+        <div class="pull">CONCEPT → SCRIPT → IMAGE → MOTION → EDIT → PUBLISH — SIX STAGES, ONE CREATOR, TALENT AT SCALE</div>`
+      },
+      rc5: {
+        take:'TAKE // RC5 — November 2025',
+        title:'Gemini 3, Pomelli & The Tutorial',
+        body:`<div class="pull">THE ADVANTAGE GOES TO THOSE WHO ARE DOING — NOT DEBATING</div>
+        <h3>Gemini 3 Has Landed</h3>
+        <p>Google released Gemini 3 across Search, Gemini app and AI Studio. Text, links, images and video now sit in one working thread. If you rely on mixed sources — clips, research, screenshots, web links — this is the first version that treats them as one input rather than separate tasks.</p>
+        <div class="action"><strong>// Opportunity</strong>One piece of content can produce a full set of outputs: Video → outline → diagram → article → script. This shortens the time from input to publishable material and creates more ways to reuse what you already have.</div>
+        <h3>Pomelli: Brand as Content Engine</h3>
+        <p>A Google Labs tool — enter your company URL, build a "Business DNA" profile, generate on-brand campaigns. Marketing assets for social posts, websites and ads in minutes, not days of briefing. If you work in marketing or advertising, this is a clear signal: a big slice of execution work can now be automated once the brand is defined.</p>
+        <div class="action"><strong>// Action</strong>Treat Pomelli as infrastructure, not a rival. Let it industrialise first-pass output, then use your expertise to decide what's sharp and what needs to be pushed further.</div>
+        <h3>Grimes × KNGMKR: "The Tutorial"</h3>
+        <p>Grimes and Matt Zien documenting an AI-driven music video process in real time — the tests, the failures, the revisions and the small breakthroughs. The first project in this space that treats AI creativity as a lived practice rather than a debate.</p>
+        <p>What Grimes demonstrates is a shift in agency. Instead of talking about AI from the sidelines, she's learning by using the tools every day, figuring it out as she goes and letting the audience watch the process unfold.</p>
+        <div class="pull">"YOU CAN WATCH THIS TO LEARN HOW TO MAKE AI FILMS — OR TO LEARN HOW AN ARTIST BRINGS A VISION TO LIFE"</div>
+        <div class="action"><strong>// Action</strong>Watch the clip. Identify one moment where Grimes' judgment changes the direction of the work. Then map the equivalent moment in your own workflow. That's where your value sits.</div>`
+      },
+      rc6: {
+        take:'TAKE // RC6 — December 2025',
+        title:'Annual Report & 2026 Predictions',
+        body:`<div class="pull">LOTS OF ADOPTION. NOT MUCH EFFECTIVENESS. WE'VE MOVED FROM HYPE TO FRICTION.</div>
+        <h3>AI at Work in 2025: The Real Picture</h3>
+        <p>Around 90% of firms say they use AI — but 75% are stuck in pilot mode. Lots of activity at the edges. Very little wired into the operating system. 75% say AI helps with innovation. Only 40% can see any impact on profit. The firms seeing financial impact have redesigned the work around what AI can do — not sprinkled it over existing steps.</p>
+        <div class="action"><strong>// Action</strong>Stop asking "where are we using AI?" Ask: "where is AI so embedded we would feel pain if we turned it off?" If you can't answer for even one area, you have experiments — not effective use.</div>
+        <p><strong>Shadow AI is ahead of your governance.</strong> More than half of employees are using AI tools without formal approval. Don't respond with a blanket ban — channel it. Run a high-trust audit, surface what's working, make it official.</p>
+        <h3>2026 Predictions</h3>
+        <p><strong>Google vs OpenAI: distribution beats IQ.</strong> Google claws back market share with frictionless integration — not a better model. The extra 5% intelligence won't matter to the average user.</p>
+        <p><strong>Anthropic wins the coding war.</strong> Becomes the destination for top 1% power users.</p>
+        <p><strong>Vibe coding's YouTube moment.</strong> We get our first non-technical multi-million £ apps. UI design becomes the #1 skill to master.</p>
+        <p><strong>AI-free becomes the new organic.</strong> "Made by humans" becomes a premium signal — not because it's better, but because people crave human imperfection.</p>
+        <p><strong>Death of the keyboard.</strong> Voice becomes primary input. Keyboards look archaic within 12 months.</p>
+        <p><strong>Human-in-the-loop as luxury.</strong> Customer support is 99% AI. Talking to a real human becomes a platinum-tier upsell.</p>
+        <p><strong>Entertainment goes infinite.</strong> Netflix lets you continue cancelled shows for yourself. AI generates new episodes based on your mood.</p>
+        <div class="action"><strong>// End-of-Year TLDR</strong>Your advantage in 2026 won't come from buying more tools. It will come from understanding what AI can and can't do well — and an operating-system-first mindset.</div>
+        <h3>Tools of the Year 2025</h3>
+        <p>ChatGPT · Perplexity · NotebookLM · Gemini + AI Studio · Figma · Krea.ai · Lovable.dev · Descript · Opus Clip · Gamma · WhisperFlow · Relay.app · Speechify · Canva · YouTube</p>`
+      }
+    };
+
+    function openReader(id) {
+      const d = issues[id];
+      document.getElementById('rpTake').textContent = d.take;
+      document.getElementById('rpTitle').textContent = d.title;
+      document.getElementById('rpContent').innerHTML = d.body;
+      document.getElementById('readerOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeReader() {
+      document.getElementById('readerOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if(e.key==='Escape') closeReader(); });
+  </script>
+<a href="index.html" style="position:fixed;top:24px;left:24px;z-index:9999;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,0.65);color:#fff;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:12px;font-weight:500;padding:8px 14px;border-radius:980px;text-decoration:none;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15);letter-spacing:0.02em;opacity:0.3;transition:opacity 0.2s,background 0.2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.3'">← All concepts</a></body>
+</html>

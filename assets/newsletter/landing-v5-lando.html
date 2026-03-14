@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rough Cut — Newsletter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f5f2e8;
+      --ink:   #0b0b0b;
+      --off:   #0e0e0e;
+      --blue:  #1a42f0;
+      --mid:   #888070;
+      --gap:   24px;
+      --r:     14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+
+    .blobs { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .blobs svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    /* ═══ CURTAIN ═══ */
+    #curtain {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0;
+      transition: transform 1.1s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    #curtain.lift { transform: translateY(-100%); pointer-events: none; }
+    .c-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: clamp(80px, 16vw, 175px);
+      line-height: 0.83; text-transform: uppercase; text-align: center;
+      color: var(--paper);
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    }
+    #curtain.show .c-logo { opacity: 1; transform: translateY(0); }
+    .c-sub {
+      font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(245,242,232,0.2); margin-top: 22px;
+      opacity: 0; transition: opacity 0.5s 0.25s ease;
+    }
+    #curtain.show .c-sub { opacity: 1; }
+
+    /* ═══ NAV ═══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.3s, backdrop-filter 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(245,242,232,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    nav.on-dark.scrolled {
+      background: rgba(11,11,11,0.88);
+      border-bottom-color: rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 18px; line-height: 0.88;
+      letter-spacing: 0.02em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none; transition: color 0.3s;
+    }
+    nav.on-dark .nav-logo { color: var(--paper); }
+    .nav-r { display: flex; align-items: center; gap: 12px; }
+    .pill {
+      background: var(--blue); color: #fff; border: none;
+      padding: 10px 22px; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 12px; letter-spacing: 0.03em;
+      cursor: pointer; text-decoration: none; transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .pill:hover { opacity: 0.82; }
+    .menu-btn {
+      width: 38px; height: 38px;
+      border: 1.5px solid rgba(0,0,0,0.16); border-radius: 100px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 14px; color: var(--ink);
+      transition: border-color 0.2s, color 0.3s;
+    }
+    nav.on-dark .menu-btn { border-color: rgba(255,255,255,0.2); color: var(--paper); }
+
+    /* ═══ HERO — dark split editorial ═══ */
+    .hero {
+      position: relative; height: 100vh; min-height: 680px;
+      background: var(--ink); overflow: hidden;
+      display: flex; align-items: stretch;
+    }
+    /* Left editorial panel */
+    .hero-left {
+      position: relative; z-index: 3;
+      width: 52%; display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 60px 92px 52px;
+    }
+    .hero-eyebrow {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(245,242,232,0.3); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0; animation: fadeUp 0.6s 1.1s both ease;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 22px; height: 1px; background: rgba(245,242,232,0.2);
+    }
+    .wm {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(88px, 14vw, 210px);
+      line-height: 0.82; text-transform: uppercase; letter-spacing: -0.02em;
+      color: var(--paper);
+    }
+    .wm span { display: block; overflow: hidden; }
+    .wm span b {
+      display: block; font-weight: inherit;
+      opacity: 0; animation: slideUp 1s both cubic-bezier(0.16,1,0.3,1);
+    }
+    .wm span:nth-child(1) b { animation-delay: 1.25s; }
+    .wm span:nth-child(2) b { animation-delay: 1.45s; }
+    .hero-tag {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(14px, 1.3vw, 17px);
+      color: rgba(245,242,232,0.32); margin-top: 22px; line-height: 1.75;
+      max-width: 400px;
+      opacity: 0; animation: fadeUp 0.7s 1.7s both ease;
+    }
+    .hero-cta-row {
+      margin-top: 36px; display: flex; align-items: center; gap: 22px;
+      opacity: 0; animation: fadeUp 0.7s 2.0s both ease;
+    }
+    .hero-issue-lbl {
+      font-size: 9px; color: rgba(245,242,232,0.2);
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    /* Right panel — cover image */
+    .hero-right {
+      position: absolute; right: 0; top: 72px; bottom: 32px;
+      width: 52%; overflow: hidden;
+    }
+    .hero-right::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 220px; z-index: 2; pointer-events: none;
+      background: linear-gradient(to right, var(--ink) 5%, transparent 100%);
+    }
+    .hero-right-img {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 100%;
+      display: flex; align-items: flex-end; justify-content: flex-end;
+    }
+    .hero-right-img img {
+      height: 100%; width: auto; object-fit: cover; object-position: top;
+      opacity: 0; animation: heroImgIn 1.4s 1.2s both cubic-bezier(0.16,1,0.3,1);
+    }
+    /* Bottom marquee ticker */
+    .hero-ticker {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 4;
+      height: 32px; overflow: hidden;
+      border-top: 1px solid rgba(245,242,232,0.05);
+      display: flex; align-items: center;
+    }
+    .hero-ticker-track {
+      display: flex; width: max-content;
+      animation: sLeft 24s linear infinite;
+    }
+    .hero-ticker-item {
+      font-size: 8px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(245,242,232,0.55);
+      white-space: nowrap; padding: 0 22px;
+    }
+    .hero-ticker-item.dot { color: var(--blue); padding: 0 10px; font-size: 6px; opacity: 0.8; }
+    @keyframes fadeUp    { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+    @keyframes slideUp   { from{opacity:0;transform:translateY(52px) skewY(1.5deg)} to{opacity:1;transform:none} }
+    @keyframes heroImgIn { from{opacity:0;transform:translateX(44px) scale(1.04)} to{opacity:1;transform:none} }
+
+    /* ═══ SCROLLER SECTION ═══ */
+    .scroller {
+      position: relative; background: var(--ink); overflow: hidden; padding: 0;
+    }
+    .scroll-rows { display: flex; flex-direction: column; padding: 80px 0; }
+    .srow { overflow: hidden; padding: 5px 0; }
+    .srow-track {
+      display: flex; width: max-content;
+      animation: sLeft 17s linear infinite;
+    }
+    .srow-track.rev { animation-name: sRight; animation-duration: 19s; }
+    .srow-item {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(72px, 11vw, 150px);
+      text-transform: uppercase; color: rgba(245,242,232,0.88);
+      letter-spacing: -0.01em; white-space: nowrap; padding: 0 28px; line-height: 0.9;
+    }
+    .srow-item.accent { color: var(--blue); padding: 0 16px; font-size: 0.45em; vertical-align: middle; }
+    @keyframes sLeft  { from{transform:translateX(0)}    to{transform:translateX(-50%)} }
+    @keyframes sRight { from{transform:translateX(-50%)} to{transform:translateX(0)}   }
+    .scroller-frame {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4; width: clamp(185px, 20vw, 295px);
+    }
+    .scroller-frame-inner {
+      border-radius: var(--r); overflow: hidden;
+      box-shadow: 0 28px 88px rgba(0,0,0,0.76);
+    }
+    .scroller-frame-inner img { width: 100%; }
+    .scroller-bio {
+      background: var(--ink); padding: 68px 60px;
+      text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .scroller-bio blockquote {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(17px, 2.1vw, 25px);
+      color: rgba(245,242,232,0.42); line-height: 1.65;
+      max-width: 560px; margin: 0 auto;
+    }
+    .scroller-bio cite {
+      display: block; margin-top: 16px;
+      font-family: 'DM Sans', sans-serif; font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      font-style: normal; color: rgba(26,66,240,0.5);
+    }
+
+    /* ═══ IMAGE GALLERY STRIP ═══ */
+    .gallery {
+      position: relative; background: #ece8de;
+      overflow: hidden; padding: 80px 0;
+    }
+    .gallery-head {
+      text-align: center; padding: 0 52px; margin-bottom: 52px;
+      position: relative; z-index: 2;
+    }
+    .gallery-head h2 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(48px, 7vw, 100px);
+      text-transform: uppercase; line-height: 0.88; color: var(--ink);
+    }
+    .gallery-head h2 em {
+      font-style: italic; font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; color: var(--mid);
+    }
+    .gallery-head p {
+      font-size: 12px; color: var(--mid); margin-top: 14px; font-weight: 300;
+    }
+    .g-strip { overflow: hidden; margin-bottom: 14px; }
+    .g-track {
+      display: flex; gap: 12px; width: max-content;
+      animation: sLeft 28s linear infinite;
+    }
+    .g-track.rev { animation-name: sRight; animation-duration: 32s; }
+    .g-img {
+      height: clamp(190px, 26vw, 340px); width: auto;
+      flex-shrink: 0; border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .g-img img { height: 100%; width: auto; object-fit: cover; display: block; }
+
+    /* ═══ FAN ═══ */
+    .fan {
+      position: relative; background: var(--paper);
+      padding: 100px 0 80px; overflow: hidden;
+    }
+    .fan-h { text-align: center; position: relative; z-index: 2; margin-bottom: 60px; }
+    .fan-h h2 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(42px, 6.5vw, 84px);
+      text-transform: uppercase; line-height: 0.9; color: var(--ink);
+    }
+    .fan-h h2 em {
+      font-style: italic; font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 0.88em;
+    }
+    .fan-h p { margin-top: 12px; font-size: 12px; color: var(--mid); font-weight: 300; }
+    .fan-stage {
+      position: relative; height: 700px;
+      display: flex; align-items: flex-end; justify-content: center;
+      margin-bottom: 100px;
+    }
+    /* fade out the very bottom of the fan so cards don't bleed into CTA */
+    .fan-stage::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: 0; right: 0;
+      height: 140px;
+      background: linear-gradient(to bottom, transparent 0%, var(--paper) 80%);
+      pointer-events: none;
+      z-index: 15;
+    }
+    .fc {
+      position: absolute; bottom: 0;
+      left: calc(50% - 120px); width: 240px;
+      border-radius: 20px; overflow: hidden;
+      transform-origin: bottom center; cursor: pointer;
+      box-shadow: 0 12px 44px rgba(0,0,0,0.16);
+      opacity: 0; transform: rotate(var(--rot, 0deg)) scale(0.88);
+      transition:
+        transform 0.65s cubic-bezier(0.23,1,0.32,1),
+        box-shadow 0.3s ease,
+        opacity 0.6s ease;
+    }
+    .fc img { width: 100%; pointer-events: none; display: block; }
+    /* wider spread — each card keeps its own --rot on hover */
+    .fan-open .fc:nth-child(1) { opacity:1; --rot:-58deg; transform:rotate(-58deg); z-index:1;  transition-delay:0ms; }
+    .fan-open .fc:nth-child(2) { opacity:1; --rot:-37deg; transform:rotate(-37deg); z-index:2;  transition-delay:55ms; }
+    .fan-open .fc:nth-child(3) { opacity:1; --rot:-19deg; transform:rotate(-19deg); z-index:3;  transition-delay:110ms; }
+    .fan-open .fc:nth-child(4) { opacity:1; --rot:0deg;   transform:rotate(0deg);   z-index:10; transition-delay:165ms; }
+    .fan-open .fc:nth-child(5) { opacity:1; --rot:19deg;  transform:rotate(19deg);  z-index:3;  transition-delay:110ms; }
+    .fan-open .fc:nth-child(6) { opacity:1; --rot:37deg;  transform:rotate(37deg);  z-index:2;  transition-delay:55ms; }
+    .fan-open .fc:nth-child(7) { opacity:1; --rot:58deg;  transform:rotate(58deg);  z-index:1;  transition-delay:0ms; }
+    /* lift at own angle — no jarring snap to 0 */
+    .fan-open .fc:hover {
+      transform: rotate(var(--rot, 0deg)) translateY(-70px) scale(1.1) !important;
+      box-shadow: 0 28px 60px rgba(0,0,0,0.28) !important;
+      z-index: 20 !important; transition-delay: 0ms !important;
+      transition-duration: 0.25s !important;
+    }
+    .fan-cta { text-align: center; position: relative; z-index: 5; padding-top: 20px; }
+    .fan-cta p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 16px; color: var(--mid); margin-bottom: 18px;
+    }
+
+    /* ═══ ARCHIVE — Lando-exact patterns ═══ */
+    .archive {
+      position: relative; background: var(--ink);
+      padding: 100px calc(var(--gap) * 2.2);
+    }
+    .arc-head {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: calc(var(--gap) * 2.5); position: relative; z-index: 2;
+    }
+    .arc-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(50px, 7vw, 100px);
+      text-transform: uppercase; line-height: 0.88; color: var(--paper);
+    }
+    .arc-title em { color: var(--blue); font-style: normal; }
+    .arc-sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 14px; color: rgba(245,242,232,0.25); padding-bottom: 8px;
+    }
+    /* 4-column grid */
+    .arc-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      column-gap: var(--gap); row-gap: var(--gap);
+      position: relative; z-index: 2;
+    }
+    /* Staggered vertical offsets per column — Lando's pattern */
+    .ic:nth-child(2) { margin-top: calc(var(--gap) * 1.8); }
+    .ic:nth-child(3) { margin-top: 0; }
+    .ic:nth-child(4) { margin-top: calc(var(--gap) * 3); }
+    .ic:nth-child(6) { margin-top: calc(var(--gap) * 1.2); }
+    .ic:nth-child(7) { margin-top: calc(var(--gap) * 2.4); }
+    /* Card */
+    .ic {
+      position: relative; aspect-ratio: 3 / 4; cursor: pointer;
+      border-radius: var(--r); background: #141414;
+      opacity: 0; transform: translateY(5rem);
+    }
+    .ic.in {
+      opacity: 1; transform: translateY(0);
+      transition:
+        opacity 0.75s cubic-bezier(0.65,0.05,0,1),
+        transform 0.75s cubic-bezier(0.65,0.05,0,1);
+    }
+    /* Base image layer */
+    .ic-img { position: absolute; inset: 0; border-radius: var(--r); overflow: hidden; }
+    .ic-img img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+      transition: transform 0.7s cubic-bezier(0.65,0.05,0,1);
+    }
+    .ic:hover .ic-img img { transform: scale(1.05); }
+    /* Hover reveal — opacity fade, Lando's bezier */
+    .ic-reveal {
+      position: absolute; inset: 0; border-radius: var(--r); overflow: hidden;
+      opacity: 0; transition: opacity 0.75s cubic-bezier(0.65,0.05,0,1);
+    }
+    .ic-reveal img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .ic:hover .ic-reveal { opacity: 1; }
+    /* SVG frame border with notch at bottom-right */
+    .ic-frame {
+      position: absolute; inset: 0; z-index: 10;
+      pointer-events: none; width: 100%; height: 100%;
+    }
+    /* Gradient fade at bottom for label legibility */
+    .ic-fade {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 88px; z-index: 5;
+      pointer-events: none; border-radius: 0 0 var(--r) var(--r);
+      background: linear-gradient(to top, rgba(11,11,11,0.95) 0%, transparent 100%);
+    }
+    /* Label */
+    .ic-lbl {
+      position: absolute; bottom: 15px; right: 15px;
+      z-index: 11; display: flex; align-items: center; gap: 6px;
+    }
+    .ic-lbl::before {
+      content: ''; width: 20px; height: 1px;
+      background: rgba(245,242,232,0.2); flex-shrink: 0;
+    }
+    .ic-name {
+      font-size: 10px; font-weight: 400;
+      color: rgba(245,242,232,0.5); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .ic-year { font-size: 10px; font-weight: 600; color: var(--blue); letter-spacing: 0.06em; }
+
+    /* ═══ SUBSCRIBE ═══ */
+    .sub {
+      position: relative; background: var(--off);
+      padding: 120px 60px; text-align: center; overflow: hidden;
+    }
+    .sub-lbl {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(26,66,240,0.5); margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .sub-lbl::before, .sub-lbl::after {
+      content: ''; width: 18px; height: 1px; background: var(--blue); opacity: 0.3;
+    }
+    .sub-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(60px, 11vw, 155px);
+      text-transform: uppercase; line-height: 0.87;
+      color: var(--paper); margin-bottom: 12px;
+    }
+    .sub-title em { color: var(--blue); font-style: normal; }
+    .sub-desc {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: rgba(245,242,232,0.35); margin-bottom: 40px;
+    }
+    .sub-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
+    .sub-form input {
+      flex: 1; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 100px;
+      padding: 13px 20px; font-family: 'DM Sans', sans-serif;
+      font-size: 13px; color: white; outline: none; transition: border-color 0.2s;
+    }
+    .sub-form input::placeholder { color: rgba(255,255,255,0.2); }
+    .sub-form input:focus { border-color: rgba(26,66,240,0.4); }
+    .sub-form button {
+      background: var(--blue); color: #fff; border: none;
+      border-radius: 100px; padding: 13px 24px;
+      font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 12px; cursor: pointer; transition: opacity 0.2s;
+    }
+    .sub-form button:hover { opacity: 0.85; }
+    .sub-fine { margin-top: 15px; font-size: 9px; color: rgba(255,255,255,0.12); letter-spacing: 0.05em; }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--ink); padding: 30px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .ft-logo {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: 15px; line-height: 0.88; letter-spacing: 0.02em;
+      text-transform: uppercase; color: rgba(255,255,255,0.18);
+    }
+    footer p { font-size: 10px; color: rgba(255,255,255,0.14); letter-spacing: 0.06em; }
+    footer a {
+      font-size: 10px; color: rgba(26,66,240,0.4); text-decoration: none;
+      letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
+    }
+    footer a:hover { color: var(--blue); }
+
+    /* ═══ GENERIC REVEAL ═══ */
+    .rv { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .rv.in { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- ── CURTAIN ─────────────────────────────────────── -->
+<div id="curtain">
+  <div class="c-logo">Rough<br>Cut</div>
+  <div class="c-sub">Issue 07.5 · March 2026</div>
+</div>
+
+<!-- ── NAV ───────────────────────────────────────────── -->
+<nav id="nav">
+  <a class="nav-logo" href="#">ROUGH<br>CUT</a>
+  <div class="nav-r">
+    <a href="#sub" class="pill">Subscribe Free</a>
+    <div class="menu-btn">—</div>
+  </div>
+</nav>
+
+<!-- ── HERO — dark split editorial ───────────────────────── -->
+<section class="hero">
+  <!-- Left editorial panel -->
+  <div class="hero-left">
+    <div class="hero-eyebrow">A newsletter by Jayme Baggio</div>
+    <div class="wm">
+      <span><b>Rough</b></span>
+      <span><b>Cut</b></span>
+    </div>
+    <p class="hero-tag">No hype. No hedging. Just what's actually happening with AI in media — and what it means for your work.</p>
+    <div class="hero-cta-row">
+      <a href="#sub" class="pill">Subscribe Free</a>
+      <span class="hero-issue-lbl">Issue 07.5 · March 2026</span>
+    </div>
+  </div>
+
+  <!-- Right cover panel -->
+  <div class="hero-right">
+    <div class="hero-right-img">
+      <img src="RC7.5/1.png" alt="Rough Cut Issue 07.5">
+    </div>
+  </div>
+
+  <!-- Bottom marquee ticker -->
+  <div class="hero-ticker">
+    <div class="hero-ticker-track">
+      <span class="hero-ticker-item">Rough Cut</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">AI in Media</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Issue 07.5</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">March 2026</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Monthly</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Sharp</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Essential</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">By Jayme Baggio</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Rough Cut</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">AI in Media</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Issue 07.5</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">March 2026</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Monthly</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Sharp</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">Essential</span><span class="hero-ticker-item dot">◆</span>
+      <span class="hero-ticker-item">By Jayme Baggio</span><span class="hero-ticker-item dot">◆</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCROLLER ───────────────────────────────────────── -->
+<section class="scroller">
+  <div class="scroll-rows">
+    <div class="srow">
+      <div class="srow-track">
+        <span class="srow-item">MONTHLY</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">SHARP</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">ESSENTIAL</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">MONTHLY</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">SHARP</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">ESSENTIAL</span><span class="srow-item accent">◆</span>
+      </div>
+    </div>
+    <div class="srow">
+      <div class="srow-track rev">
+        <span class="srow-item">ROUGH CUT</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">HONEST TAKES</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">SINCE 2025</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">ROUGH CUT</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">HONEST TAKES</span><span class="srow-item accent">◆</span>
+        <span class="srow-item">SINCE 2025</span><span class="srow-item accent">◆</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroller-bio rv">
+    <blockquote>"The media industry is swimming in AI hype. Someone needs to call it out, explain what's real, and help you decide what actually matters."</blockquote>
+    <cite>— Jayme Baggio, Editor</cite>
+  </div>
+</section>
+
+<!-- ── GALLERY STRIP ──────────────────────────────────── -->
+<section class="gallery">
+  <div class="blobs">
+    <svg viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
+      <ellipse cx="720" cy="350" rx="480" ry="310" fill="none" stroke="rgba(11,11,11,0.038)" stroke-width="1.2"/>
+      <ellipse cx="720" cy="350" rx="320" ry="210" fill="none" stroke="rgba(11,11,11,0.038)" stroke-width="1.2"/>
+    </svg>
+  </div>
+  <div class="gallery-head rv">
+    <h2>Inside<br><em>every issue</em></h2>
+    <p>7 issues · 30+ pages · all free</p>
+  </div>
+
+  <!-- Row 1 — scroll left -->
+  <div class="g-strip">
+    <div class="g-track">
+      <div class="g-img"><img src="RC2/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC2/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC3/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC4/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC4/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC5/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC5/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/4.png"   alt=""></div>
+      <div class="g-img"><img src="RC7/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC7.5/1.png" alt=""></div>
+      <!-- duplicate for seamless loop -->
+      <div class="g-img"><img src="RC2/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC2/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC3/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC4/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC4/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC5/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC5/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/4.png"   alt=""></div>
+      <div class="g-img"><img src="RC7/1.png"   alt=""></div>
+      <div class="g-img"><img src="RC7.5/1.png" alt=""></div>
+    </div>
+  </div>
+
+  <!-- Row 2 — scroll right -->
+  <div class="g-strip">
+    <div class="g-track rev">
+      <div class="g-img"><img src="RC2/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC3/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC4/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC4/4.png"   alt=""></div>
+      <div class="g-img"><img src="RC5/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC5/4.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/5.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/6.png"   alt=""></div>
+      <div class="g-img"><img src="RC7/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC7.5/3.png" alt=""></div>
+      <!-- duplicate -->
+      <div class="g-img"><img src="RC2/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC3/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC4/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC4/4.png"   alt=""></div>
+      <div class="g-img"><img src="RC5/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC5/4.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/2.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/5.png"   alt=""></div>
+      <div class="g-img"><img src="RC6/6.png"   alt=""></div>
+      <div class="g-img"><img src="RC7/3.png"   alt=""></div>
+      <div class="g-img"><img src="RC7.5/3.png" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAN ────────────────────────────────────────────── -->
+<section class="fan">
+  <div class="blobs">
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice">
+      <ellipse cx="720" cy="600" rx="420" ry="285" fill="none" stroke="rgba(11,11,11,0.04)" stroke-width="1.2"/>
+      <ellipse cx="720" cy="600" rx="280" ry="192" fill="none" stroke="rgba(11,11,11,0.04)" stroke-width="1.2"/>
+      <ellipse cx="720" cy="600" rx="150" ry="105" fill="none" stroke="rgba(11,11,11,0.04)" stroke-width="1.2"/>
+    </svg>
+  </div>
+  <div class="fan-h rv">
+    <h2>Every issue.<br><em>Cover to cover.</em></h2>
+    <p>Hover any cover to lift it — seven issues deep</p>
+  </div>
+  <div class="fan-stage" id="fanStage">
+    <div class="fc"><img src="RC2/1.png"   alt="Issue 2"></div>
+    <div class="fc"><img src="RC3/1.png"   alt="Issue 3"></div>
+    <div class="fc"><img src="RC4/1.png"   alt="Issue 4"></div>
+    <div class="fc"><img src="RC5/1.png"   alt="Issue 5"></div>
+    <div class="fc"><img src="RC6/1.png"   alt="Issue 6"></div>
+    <div class="fc"><img src="RC7/1.png"   alt="Issue 7"></div>
+    <div class="fc"><img src="RC7.5/1.png" alt="Issue 7.5"></div>
+  </div>
+  <div class="fan-cta">
+    <p>All issues, always free.</p>
+    <a href="#sub" class="pill">Subscribe Free</a>
+  </div>
+</section>
+
+<!-- ── ARCHIVE ────────────────────────────────────────── -->
+<section class="archive" id="archive">
+  <div class="arc-head rv">
+    <div class="arc-title">Issue<br><em>Archive</em></div>
+    <div class="arc-sub">7 issues — hover to peek inside</div>
+  </div>
+  <div class="arc-grid">
+
+    <div class="ic">
+      <div class="ic-img"><img src="RC2/1.png"   alt="Issue 2"></div>
+      <div class="ic-reveal"><img src="RC2/3.png" alt=""></div>
+      <svg class="ic-frame" viewBox="0 0 100 133" fill="none" preserveAspectRatio="none">
+        <path d="M11 0.75 L89 0.75 Q99.25 0.75 99.25 11 L99.25 107 Q99.25 115.5 91 119 L66 127 Q62 128.5 60 132 L11 132.5 Q0.75 132.5 0.75 122 L0.75 11 Q0.75 0.75 11 0.75 Z" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+      </svg>
+      <div class="ic-fade"></div>
+      <div class="ic-lbl"><span class="ic-name">Issue 02</span><span class="ic-year">2025</span></div>
+    </div>
+
+    <div class="ic">
+      <div class="ic-img"><img src="RC3/1.png"   alt="Issue 3"></div>
+      <div class="ic-reveal"><img src="RC3/3.png" alt=""></div>
+      <svg class="ic-frame" viewBox="0 0 100 133" fill="none" preserveAspectRatio="none">
+        <path d="M11 0.75 L89 0.75 Q99.25 0.75 99.25 11 L99.25 107 Q99.25 115.5 91 119 L66 127 Q62 128.5 60 132 L11 132.5 Q0.75 132.5 0.75 122 L0.75 11 Q0.75 0.75 11 0.75 Z" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+      </svg>
+      <div class="ic-fade"></div>
+      <div class="ic-lbl"><span class="ic-name">Issue 03</span><span class="ic-year">Mar 2025</span></div>
+    </div>
+
+    <div class="ic">
+      <div class="ic-img"><img src="RC4/1.png"   alt="Issue 4"></div>
+      <div class="ic-reveal"><img src="RC4/2.png" alt=""></div>
+      <svg class="ic-frame" viewBox="0 0 100 133" fill="none" preserveAspectRatio="none">
+        <path d="M11 0.75 L89 0.75 Q99.25 0.75 99.25 11 L99.25 107 Q99.25 115.5 91 119 L66 127 Q62 128.5 60 132 L11 132.5 Q0.75 132.5 0.75 122 L0.75 11 Q0.75 0.75 11 0.75 Z" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+      </svg>
+      <div class="ic-fade"></div>
+      <div class="ic-lbl"><span class="ic-name">Issue 04</span><span class="ic-year">Jun 2025</span></div>
+    </div>
+
+    <div class="ic">
+      <div class="ic-img"><img src="RC5/1.png"   alt="Issue 5"></div>
+      <div class="ic-reveal"><img src="RC5/3.png" alt=""></div>
+      <svg class="ic-frame" viewBox="0 0 100 133" fill="none" preserveAspectRatio="none">
+        <path d="M11 0.75 L89 0.75 Q99.25 0.75 99.25 11 L99.25 107 Q99.25 115.5 91 119 L66 127 Q62 128.5 60 132 L11 132.5 Q0.75 132.5 0.75 122 L0.75 11 Q0.75 0.75 11 0.75 Z" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+      </svg>
+      <div class="ic-fade"></div>
+      <div class="ic-lbl"><span class="ic-name">Issue 05</span><span class="ic-year">Sep 2025</span></div>
+    </div>
+
+    <div class="ic">
+      <div class="ic-img"><img src="RC6/1.png"   alt="Issue 6"></div>
+      <div class="ic-reveal"><img src="RC6/3.png" alt=""></div>
+      <svg class="ic-frame" viewBox="0 0 100 133" fill="none" preserveAspectRatio="none">
+        <path d="M11 0.75 L89 0.75 Q99.25 0.75 99.25 11 L99.25 107 Q99.25 115.5 91 119 L66 127 Q62 128.5 60 132 L11 132.5 Q0.75 132.5 0.75 122 L0.75 11 Q0.75 0.75 11 0.75 Z" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+      </svg>
+      <div class="ic-fade"></div>
+      <div class="ic-lbl"><span class="ic-name">Issue 06</span><span class="ic-year">Dec 2025</span></div>
+    </div>
+
+    <div class="ic">
+      <div class="ic-img"><img src="RC7/1.png"   alt="Issue 7"></div>
+      <div class="ic-reveal"><img src="RC7/4.png" alt=""></div>
+      <svg class="ic-frame" viewBox="0 0 100 133" fill="none" preserveAspectRatio="none">
+        <path d="M11 0.75 L89 0.75 Q99.25 0.75 99.25 11 L99.25 107 Q99.25 115.5 91 119 L66 127 Q62 128.5 60 132 L11 132.5 Q0.75 132.5 0.75 122 L0.75 11 Q0.75 0.75 11 0.75 Z" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+      </svg>
+      <div class="ic-fade"></div>
+      <div class="ic-lbl"><span class="ic-name">Issue 07</span><span class="ic-year">Feb 2026</span></div>
+    </div>
+
+    <div class="ic">
+      <div class="ic-img"><img src="RC7.5/1.png"   alt="Issue 7.5"></div>
+      <div class="ic-reveal"><img src="RC7.5/2.png" alt=""></div>
+      <svg class="ic-frame" viewBox="0 0 100 133" fill="none" preserveAspectRatio="none">
+        <path d="M11 0.75 L89 0.75 Q99.25 0.75 99.25 11 L99.25 107 Q99.25 115.5 91 119 L66 127 Q62 128.5 60 132 L11 132.5 Q0.75 132.5 0.75 122 L0.75 11 Q0.75 0.75 11 0.75 Z" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+      </svg>
+      <div class="ic-fade"></div>
+      <div class="ic-lbl"><span class="ic-name">Issue 07.5</span><span class="ic-year">Mar 2026</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SUBSCRIBE ──────────────────────────────────────── -->
+<section class="sub" id="sub">
+  <div class="blobs">
+    <svg viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
+      <ellipse cx="720" cy="350" rx="500" ry="330" fill="none" stroke="rgba(255,255,255,0.028)" stroke-width="1.2"/>
+      <ellipse cx="720" cy="350" rx="350" ry="235" fill="none" stroke="rgba(255,255,255,0.028)" stroke-width="1.2"/>
+      <ellipse cx="720" cy="350" rx="210" ry="145" fill="none" stroke="rgba(255,255,255,0.028)" stroke-width="1.2"/>
+    </svg>
+  </div>
+  <div class="sub-lbl">Free newsletter</div>
+  <div class="sub-title rv">Get The<br><em>Cut.</em></div>
+  <p class="sub-desc rv" style="transition-delay:.1s">Delivered when it's ready. No filler. No schedule theatre.</p>
+  <form class="sub-form rv" style="transition-delay:.2s" onsubmit="return false">
+    <input type="email" placeholder="your@email.com">
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="sub-fine rv" style="transition-delay:.3s">No spam. Unsubscribe any time.</p>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="ft-logo">Rough<br>Cut</div>
+  <p>© 2026 Rough Cut by Jayme Baggio</p>
+  <a href="#sub">Subscribe →</a>
+</footer>
+
+<script>
+  // ── CURTAIN ────────────────────────────────────────────
+  const curtain = document.getElementById('curtain');
+  requestAnimationFrame(() => {
+    setTimeout(() => curtain.classList.add('show'), 80);
+    setTimeout(() => curtain.classList.add('lift'), 950);
+    setTimeout(() => curtain.remove(), 2050);
+  });
+
+  // ── NAV scroll + dark section detection ───────────────
+  const nav = document.getElementById('nav');
+  const darkSections = document.querySelectorAll('.hero, .scroller, .archive, .sub, footer');
+  function updateNav() {
+    const sy = window.scrollY;
+    nav.classList.toggle('scrolled', sy > 60);
+    let dark = false;
+    darkSections.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top <= 64 && r.bottom > 64) dark = true;
+    });
+    nav.classList.toggle('on-dark', dark);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // ── FAN opens on scroll ────────────────────────────────
+  const fanStage = document.getElementById('fanStage');
+  new IntersectionObserver((entries, obs) => {
+    if (entries[0].isIntersecting) {
+      fanStage.classList.add('fan-open');
+      obs.disconnect();
+    }
+  }, { threshold: 0.18 }).observe(fanStage);
+
+  // ── ARCHIVE cards — staggered reveal ──────────────────
+  const cardObs = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), 0);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.ic').forEach((c, i) => {
+    c.style.transitionDelay = `${i * 80}ms`;
+    cardObs.observe(c);
+  });
+
+  // ── GENERIC reveals ────────────────────────────────────
+  const rvObs = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
+</script>
+
+<a href="index.html" style="position:fixed;top:20px;left:20px;z-index:9999;font-size:20px;color:#888;opacity:0.2;text-decoration:none;background:none;padding:2px 4px;transition:opacity 0.2s;line-height:1;font-family:sans-serif" title="All concepts" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.2'">←</a></body>
+</html>

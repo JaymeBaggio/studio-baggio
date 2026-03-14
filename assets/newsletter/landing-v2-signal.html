@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cut — Signal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Anton&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #f5f5f0;
+    --black: #0a0a0a;
+    --red: #e02020;
+    --red-dim: #7a1010;
+    --grey: #888;
+    --grey-light: #d0d0c8;
+    --grey-dark: #1a1a1a;
+    --border: #2a2a2a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'IBM Plex Mono', monospace;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* Selection */
+  ::selection { background: var(--red); color: var(--white); }
+
+  /* ── TOP BAR (ticker) ── */
+  .ticker-bar {
+    background: var(--black);
+    color: var(--red);
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .ticker-sep { margin: 0 24px; color: var(--red-dim); }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 3px solid var(--black);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 40px;
+    height: 64px;
+  }
+  .header-left {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .header-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: var(--black);
+    border-left: 3px solid var(--black);
+    border-right: 3px solid var(--black);
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+  }
+  .header-right {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-align: right;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 100px);
+    border-bottom: 3px solid var(--black);
+  }
+
+  .hero-left {
+    border-right: 3px solid var(--black);
+    padding: 60px 60px 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--grey);
+    border-bottom: 1px solid var(--grey-light);
+    padding-bottom: 12px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .hero-label .live-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--red);
+  }
+  .live-dot::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: blink 1.4s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  .hero-big-text {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(64px, 9vw, 130px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    position: relative;
+  }
+  .hero-big-text .slash-red {
+    color: var(--red);
+  }
+  .hero-big-text .hero-sub-word {
+    display: block;
+    -webkit-text-stroke: 2px var(--black);
+    color: transparent;
+    font-size: clamp(56px, 8vw, 115px);
+  }
+
+  .hero-descriptor {
+    margin-top: 40px;
+  }
+  .hero-descriptor p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--grey);
+    max-width: 420px;
+  }
+  .hero-descriptor strong {
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 48px;
+  }
+  .cta-input-row {
+    display: flex;
+    gap: 0;
+    border: 2px solid var(--black);
+  }
+  .cta-input-row input {
+    flex: 1;
+    border: none;
+    padding: 14px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    background: var(--white);
+    color: var(--black);
+    outline: none;
+    letter-spacing: 0.05em;
+  }
+  .cta-input-row input::placeholder { color: var(--grey); }
+  .cta-input-row button {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 14px 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: crosshair;
+    transition: background 0.2s;
+  }
+  .cta-input-row button:hover { background: var(--red); }
+  .cta-note {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+
+  /* Hero right — stats/terminal */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-right-top {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .terminal-box {
+    border: 2px solid var(--black);
+    background: var(--black);
+    color: #00ff88;
+    font-size: 11px;
+    line-height: 1.8;
+    padding: 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.03em;
+    position: relative;
+    overflow: hidden;
+  }
+  .terminal-box::before {
+    content: '● ● ●';
+    display: block;
+    color: var(--red-dim);
+    font-size: 10px;
+    margin-bottom: 12px;
+    letter-spacing: 0.4em;
+  }
+  .terminal-line { display: flex; gap: 10px; }
+  .terminal-line .prompt { color: var(--red); flex-shrink: 0; }
+  .terminal-line .cmd { color: #00ff88; }
+  .terminal-line .out { color: rgba(255,255,255,0.5); }
+  .terminal-line.out-line { padding-left: 24px; color: rgba(255,255,255,0.4); }
+  .cursor-blink {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: #00ff88;
+    animation: termBlink 1s steps(1) infinite;
+    vertical-align: middle;
+  }
+  @keyframes termBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 3px solid var(--black);
+  }
+  .stat-item {
+    padding: 28px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .stat-item:hover { background: var(--red); color: var(--white); }
+  .stat-item:hover .stat-label { color: rgba(255,255,255,0.6); }
+  .stat-value {
+    font-family: 'Anton', sans-serif;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--black);
+    display: block;
+  }
+  .stat-item:hover .stat-value { color: var(--white); }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ── CONTENT SECTION ── */
+  .content-strip {
+    border-bottom: 3px solid var(--black);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+  .content-strip-label {
+    border-right: 3px solid var(--black);
+    padding: 40px 24px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .content-strip-inner {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  .signal-card {
+    padding: 28px;
+    border: 1px solid var(--grey-light);
+    position: relative;
+    transition: all 0.2s;
+    cursor: crosshair;
+  }
+  .signal-card:hover {
+    background: var(--black);
+    border-color: var(--black);
+    color: var(--white);
+  }
+  .signal-card:hover .sc-num { color: var(--red); }
+  .signal-card:hover .sc-head { color: var(--white); }
+  .signal-card:hover .sc-body { color: rgba(255,255,255,0.5); }
+  .signal-card:hover .sc-tag { color: rgba(255,255,255,0.3); }
+
+  .sc-num {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sc-num .sc-arrow {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.2s;
+  }
+  .signal-card:hover .sc-arrow { opacity: 1; transform: translateX(0); }
+  .sc-head {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+  .sc-body {
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--grey);
+  }
+  .sc-tag {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 16px;
+    display: block;
+    padding-top: 12px;
+    border-top: 1px solid currentColor;
+    opacity: 0.4;
+  }
+
+  /* ── MANIFESTO SECTION ── */
+  .manifesto {
+    background: var(--black);
+    color: var(--white);
+    padding: 100px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    border-bottom: 3px solid var(--red);
+  }
+  .manifesto-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-top: 24px;
+  }
+  .manifesto-heading {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .manifesto-heading .red-word { color: var(--red); }
+  .manifesto-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .manifesto-list li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+    transition: color 0.2s;
+  }
+  .manifesto-list li:hover { color: var(--white); }
+  .manifesto-list li .num {
+    font-size: 10px;
+    color: var(--red);
+    padding-top: 3px;
+    font-weight: 600;
+  }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 100px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    border-bottom: 3px solid var(--black);
+  }
+  .fct-left {
+    position: relative;
+  }
+  .fct-big {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(80px, 12vw, 180px);
+    line-height: 0.85;
+    color: var(--black);
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 2;
+  }
+  .fct-big .stroke {
+    -webkit-text-stroke: 2px var(--black);
+    color: transparent;
+    display: block;
+  }
+  .fct-bg-text {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(100px, 15vw, 220px);
+    color: rgba(0,0,0,0.04);
+    line-height: 0.85;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .fct-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .fct-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--grey);
+  }
+  .fct-desc strong { color: var(--black); }
+  .fct-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fct-input-row {
+    display: flex;
+    border: 2px solid var(--black);
+  }
+  .fct-input-row input {
+    flex: 1;
+    border: none;
+    padding: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    background: transparent;
+    outline: none;
+    letter-spacing: 0.05em;
+  }
+  .fct-input-row input::placeholder { color: var(--grey); }
+  .fct-input-row button {
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 16px 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: crosshair;
+    transition: background 0.2s;
+  }
+  .fct-input-row button:hover { background: var(--black); }
+  .fct-small {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.3);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .footer-brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    letter-spacing: 0.08em;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Glitch on hover for logo */
+  .header-logo:hover {
+    animation: glitch 0.3s steps(1) forwards;
+  }
+  @keyframes glitch {
+    0% { text-shadow: none; color: var(--black); }
+    20% { text-shadow: 3px 0 var(--red), -3px 0 #00ff88; }
+    40% { text-shadow: -3px 0 var(--red), 3px 0 #00ff88; color: var(--red); }
+    60% { text-shadow: 2px 0 var(--red), -2px 0 #00ff88; }
+    80% { text-shadow: none; }
+    100% { color: var(--black); text-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    ROUGH CUT <span class="ticker-sep">—</span> AI IN THE WORKPLACE <span class="ticker-sep">—</span> BY JAYME BAGGIO <span class="ticker-sep">—</span> MONTHLY <span class="ticker-sep">—</span> VIEWS ARE MY OWN <span class="ticker-sep">—</span> ISSUE 7.5 NOW LIVE <span class="ticker-sep">—</span> ROUGH CUT <span class="ticker-sep">—</span> AI IN THE WORKPLACE <span class="ticker-sep">—</span> BY JAYME BAGGIO <span class="ticker-sep">—</span> MONTHLY <span class="ticker-sep">—</span> VIEWS ARE MY OWN <span class="ticker-sep">—</span> ISSUE 7.5 NOW LIVE <span class="ticker-sep">—</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">Dispatch <span id="clock"></span></div>
+  <div class="header-logo">ROUGH CUT</div>
+  <div class="header-right">RC — Since 2025</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-label">
+        <span>Intelligence Briefing</span>
+        <span class="live-dot">Publishing</span>
+      </div>
+      <div class="hero-big-text">
+        ROUGH<br>
+        <span class="slash-red">/</span>
+        <span class="hero-sub-word">CUT.</span>
+      </div>
+    </div>
+    <div class="hero-descriptor">
+      <p>
+        <strong>AI in the workplace — raw, honest, early.</strong><br><br>
+        Jayme Baggio's Rough Cut is the monthly dispatch that cuts through the noise on AI adoption. Not what vendors are selling. Not what analysts are paid to say. The real picture.
+      </p>
+      <div class="hero-cta-row">
+        <form class="cta-input-row" onsubmit="return false">
+          <input type="email" placeholder="your@email.com">
+          <button type="submit">/ Subscribe</button>
+        </form>
+        <span class="cta-note">↗ Free. Monthly. No noise.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-top">
+      <div class="terminal-box">
+        <div class="terminal-line">
+          <span class="prompt">RC&gt;</span>
+          <span class="cmd">analyze adoption_rate --2025</span>
+        </div>
+        <div class="terminal-line out-line">Running analysis...</div>
+        <div class="terminal-line out-line">⬛⬛⬛⬛⬛⬛⬛⬛ 100%</div>
+        <div class="terminal-line out-line">&nbsp;</div>
+        <div class="terminal-line out-line">FINDING: 90% of firms "use AI".</div>
+        <div class="terminal-line out-line">75% still in pilot mode.</div>
+        <div class="terminal-line out-line">Gap: effectiveness, not adoption.</div>
+        <div class="terminal-line out-line">&nbsp;</div>
+        <div class="terminal-line">
+          <span class="prompt">RC&gt;</span>
+          <span class="cmd">assess shadow_ai --risk</span>
+        </div>
+        <div class="terminal-line out-line">FINDING: &gt;50% employees use</div>
+        <div class="terminal-line out-line">unapproved AI tools. High risk.</div>
+        <div class="terminal-line out-line">Also: richest experimentation.</div>
+        <div class="terminal-line out-line">&nbsp;</div>
+        <div class="terminal-line">
+          <span class="prompt">RC&gt;</span>
+          <span class="cmd"><span class="cursor-blink"></span></span>
+        </div>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <span class="stat-value">7</span>
+        <span class="stat-label">Issues filed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">2025</span>
+        <span class="stat-label">Since</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">100%</span>
+        <span class="stat-label">No fluff</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">Free</span>
+        <span class="stat-label">Always</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ISSUES STRIP -->
+<div class="content-strip">
+  <div class="content-strip-label">Archive // RC2 — RC7.5</div>
+  <div class="content-strip-inner">
+    <div class="signal-card reveal">
+      <div class="sc-num">RC7.5 <span class="sc-arrow">→</span></div>
+      <div class="sc-head">I don't get asked about AI much, which still surprises me</div>
+      <div class="sc-body">On being early. The honest take on what it means to actually use AI every day — before everyone else figures it out.</div>
+      <span class="sc-tag">Jan 2026 // Opinion</span>
+    </div>
+    <div class="signal-card reveal">
+      <div class="sc-num">RC7 <span class="sc-arrow">→</span></div>
+      <div class="sc-head">ChatGPT for Business Owners: If you only do 6 things...</div>
+      <div class="sc-body">Master prompts, Projects, Live Snapshots, Custom GPTs. The operating system mindset that separates performers from pilots.</div>
+      <span class="sc-tag">Jan 2026 // How-To</span>
+    </div>
+    <div class="signal-card reveal">
+      <div class="sc-num">RC6 <span class="sc-arrow">→</span></div>
+      <div class="sc-head">AI at work in 2025. Lots of adoption. Not much effectiveness.</div>
+      <div class="sc-body">90% say they use AI. 75% stuck in pilot mode. The data gap, the shadow AI problem, and what high performers do differently.</div>
+      <span class="sc-tag">Dec 2025 // Analysis</span>
+    </div>
+    <div class="signal-card reveal">
+      <div class="sc-num">RC5 <span class="sc-arrow">→</span></div>
+      <div class="sc-head">Gemini 3 has finally landed. Here's what you need to know.</div>
+      <div class="sc-body">Text, links, images, video in one thread. The multimodal moment that actually matters for how you work.</div>
+      <span class="sc-tag">Nov 2025 // Briefing</span>
+    </div>
+    <div class="signal-card reveal">
+      <div class="sc-num">RC4 <span class="sc-arrow">→</span></div>
+      <div class="sc-head">ChatGPT Atlas — search, chat, and execution in one.</div>
+      <div class="sc-body">AI controlling the infrastructure of attention. The new SEO. What this means for creators and businesses.</div>
+      <span class="sc-tag">Oct 2025 // Briefing</span>
+    </div>
+    <div class="signal-card reveal">
+      <div class="sc-num">RC2 <span class="sc-arrow">→</span></div>
+      <div class="sc-head">Meta's Ray-Ban Display and wearable tech's pivotal moment</div>
+      <div class="sc-body">EEG devices, haptic wearables, gesture control. The OS is moving off the screen. What happens when AI becomes ambient?</div>
+      <span class="sc-tag">Sep 2025 // Hardware</span>
+    </div>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="reveal">
+    <p class="manifesto-label">// Why this exists</p>
+    <h2 class="manifesto-heading">THE <span class="red-word">ROUGH</span><br>CUT RULE</h2>
+  </div>
+  <ul class="manifesto-list reveal">
+    <li>
+      <span class="num">01</span>
+      <span>No hype. No vendor talking points. If it's not real, it doesn't go in.</span>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <span>One concrete action per insight. Not "consider AI" — what to actually do Monday morning.</span>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <span>Early. Before the consultants arrive. Before it becomes a PowerPoint deck.</span>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <span>Views are my own. Always. No sponsored content, no affiliate links, no agenda.</span>
+    </li>
+    <li>
+      <span class="num">05</span>
+      <span>Monthly, not daily. Because drowning you in content isn't intelligence — it's just noise.</span>
+    </li>
+  </ul>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="fct-left reveal">
+    <div class="fct-bg-text">RC</div>
+    <div class="fct-big">
+      GET
+      THE
+      <span class="stroke">CUT</span>
+    </div>
+  </div>
+  <div class="fct-right reveal">
+    <p class="fct-desc">
+      <strong>Monthly. Free. Honest.</strong><br><br>
+      Join thousands of business owners, founders, and executives getting early, unfiltered takes on AI in the workplace. Before the hype settles.
+    </p>
+    <div class="fct-form">
+      <form class="fct-input-row" onsubmit="return false">
+        <input type="email" placeholder="your@email.com">
+        <button type="submit">/ Subscribe</button>
+      </form>
+      <span class="fct-small">↗ No noise. Monthly. Unsubscribe anytime.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">ROUGH CUT</span>
+  <span>By Jayme Baggio — Views are my own</span>
+  <span>© 2026</span>
+</footer>
+
+<script>
+// Live clock
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const s = String(now.getSeconds()).padStart(2, '0');
+  document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// Typewriter effect on terminal
+const lines = [
+  'identify winners --operating_system',
+  'query: "shadow AI" --risk_level',
+  'filter: genuine_effectiveness'
+];
+let lineIndex = 0;
+let charIndex = 0;
+const terminalBox = document.querySelector('.terminal-box');
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), 0);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach((el, i) => {
+  el.style.transitionDelay = (i % 3 * 0.08) + 's';
+  observer.observe(el);
+});
+</script>
+<a href="index.html" style="position:fixed;top:20px;left:20px;z-index:9999;font-size:20px;color:#888;opacity:0.2;text-decoration:none;background:none;padding:2px 4px;transition:opacity 0.2s;line-height:1;font-family:sans-serif" title="All concepts" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.2'">←</a></body>
+</html>
