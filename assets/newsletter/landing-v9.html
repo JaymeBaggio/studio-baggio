@@ -488,6 +488,24 @@ footer {
   letter-spacing: 0.08em;
   color: rgba(255,255,255,0.18);
 }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  nav { padding: 18px 24px; }
+  .nav-right { gap: 16px; }
+  .hero-text { left: 24px; right: 24px; }
+  .hero-stats { flex-wrap: wrap; }
+  .hero-stat { min-width: 33.33%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .latest-card { grid-template-columns: 1fr; }
+  .latest-img { height: 260px; }
+  .issues-grid { grid-template-columns: 1fr 1fr; }
+  .wrap { padding: 0 20px; }
+}
+@media (max-width: 480px) {
+  .issues-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 14px; }
+}
 </style>
 </head>
 <body>

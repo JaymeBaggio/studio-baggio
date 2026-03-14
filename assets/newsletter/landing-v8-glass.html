@@ -522,6 +522,34 @@ footer {
   font-size: 12px;
   color: var(--muted);
 }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  nav { width: calc(100% - 32px); }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-links { gap: 0; }
+  .featured-card {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+  .featured-img {
+    border-radius: 18px 18px 0 0;
+    margin: -1px -1px 0;
+    height: 260px;
+  }
+  .featured-body { padding: 32px 28px; }
+  .issues-row { grid-template-columns: 1fr 1fr; }
+  .hero-stats { flex-wrap: wrap; gap: 16px; padding: 16px 24px; }
+  .stat-divider { display: none; }
+  .subscribe-card { padding: 44px 28px; }
+  .footer-inner { flex-direction: column; gap: 14px; text-align: center; }
+  .footer-links { gap: 16px; }
+}
+@media (max-width: 480px) {
+  .issues-row { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions a { text-align: center; }
+}
 </style>
 </head>
 <body>

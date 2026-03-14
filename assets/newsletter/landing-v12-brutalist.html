@@ -479,6 +479,10 @@
     .subscribe { grid-template-columns: 1fr; }
     .sub-left { border-right: none; border-bottom: var(--r2); }
   }
+  @media (max-width: 480px) {
+    .col-grid { grid-template-columns: 1fr; }
+    .col:nth-child(n+2) { border-top: var(--r1); }
+  }
 </style>
 </head>
 <body>

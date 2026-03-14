@@ -627,6 +627,53 @@ footer {
   text-align: right;
 }
 
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+    padding: 0 24px;
+  }
+  .nav-center { display: none; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 10px; }
+  .hero {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+  }
+  .hero-text {
+    border-right: none;
+    border-bottom: 1px solid var(--ink);
+    padding: 40px 24px;
+  }
+  .hero-mosaic { height: 280px; }
+  .issue-grid { grid-template-columns: 1fr; }
+  .issue-card { border-right: none !important; }
+  .issue-card:nth-child(4),
+  .issue-card:nth-child(5) { border-bottom: 1px solid var(--ink) !important; }
+  .about-section { grid-template-columns: 1fr; }
+  .about-left {
+    border-right: none;
+    border-bottom: 1px solid var(--ink);
+    padding: 40px 24px;
+  }
+  .about-right { padding: 40px 24px; }
+  .subscribe-section { padding: 40px 24px; }
+  .subscribe-form { flex-direction: column; }
+  .subscribe-input { border-right: 1px solid var(--ink); border-bottom: none; }
+  .archive-section { overflow-x: auto; }
+  .archive-table { min-width: 580px; }
+  footer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+  .footer-nav { justify-content: center; }
+  .footer-copy { text-align: center; }
+}
+
 </style>
 </head>
 <body>
