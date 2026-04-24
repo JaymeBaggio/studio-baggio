@@ -12,7 +12,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#FAFAFA;--dark:#0C0C0C;--text:#1A1A1A;--dim:rgba(0,0,0,0.35);
-  --ghost:rgba(0,0,0,0.15);--rule:rgba(0,0,0,0.08);--micro:rgba(0,0,0,0.1);
+  --ghost:rgba(0,0,0,0.22);--rule:rgba(0,0,0,0.08);--micro:rgba(0,0,0,0.18);
   --serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
@@ -41,14 +41,12 @@ a{color:inherit;text-decoration:none}
 .nav.dark-mode .nav-center{color:#fff}
 
 /* ===== HERO ===== */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:140px 80px 80px;position:relative;overflow:hidden}
-.hero-micro-field{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;pointer-events:none;padding:80px}
-.hero-micro-field p{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.25em;line-height:3.2;color:rgba(0,0,0,0.07);text-align:center;margin:0;text-transform:uppercase;max-width:1200px}
-.hero-center{position:relative;z-index:2;text-align:center;padding:80px 0}
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 80px 80px;position:relative}
+.hero-left{flex:1}
 .hero-label{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:48px}
-.hero h1{font-family:var(--serif);font-size:clamp(72px,9vw,120px);font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#0D0D0D;line-height:1.12}
-.hero-line{width:48px;height:1px;background:rgba(0,0,0,0.12);margin:48px auto}
-.hero-desc{font-family:var(--sans);font-size:15px;font-weight:300;line-height:1.85;color:rgba(0,0,0,0.4);max-width:440px;margin:0 auto}
+.hero h1{font-family:var(--serif);font-size:clamp(48px,5vw,64px);font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#0D0D0D;line-height:1.2}
+.hero-micro-right{flex:0 0 420px;padding:40px 0;text-align:right}
+.hero-micro-right p{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.18em;line-height:2.8;color:rgba(0,0,0,0.2);margin:0;text-transform:uppercase}
 .hero-bottom{position:absolute;bottom:32px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
 .hero-bottom p{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.12)}
 
@@ -188,18 +186,13 @@ a{color:inherit;text-decoration:none}
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <!-- Micrographic texture field — the wallpaper -->
-  <div class="hero-micro-field" aria-hidden="true">
-    <p>Studio Baggio Ltd — London, England — Company No. 16805728 — AI Strategy & Development — Est. 2025 — 51.5074°N, 0.1278°W — JB Management — Consultancy & Strategy — JB Studio — Product Lab — /Last30Days — Fire Source — Calm Authority — The Twentiad — Revision IV — 2026 — Studio Baggio Ltd — London, England — Company No. 16805728 — AI Strategy & Development — Est. 2025 — 51.5074°N, 0.1278°W — JB Management — Consultancy & Strategy — JB Studio — Product Lab — /Last30Days — Fire Source — Calm Authority — The Twentiad — Revision IV — 2026 — Studio Baggio Ltd — London, England — Company No. 16805728 — AI Strategy & Development — Est. 2025 — 51.5074°N, 0.1278°W — JB Management — Consultancy & Strategy — JB Studio — Product Lab — /Last30Days — Fire Source — Calm Authority — The Twentiad — Studio Baggio Ltd — London — 51.5074°N — 0.1278°W — AI Strategy — Development — Est. MMXXV — Rev. IV — MMXXVI</p>
-  </div>
-  <!-- Name — centred, commanding, like CHANEL -->
-  <div class="hero-center">
+  <div class="hero-left">
     <p class="hero-label reveal-stagger">AI Strategy &amp; Development</p>
     <h1 class="reveal-stagger">Jayme<br>Baggio</h1>
-    <div class="hero-line reveal-stagger"></div>
-    <p class="hero-desc reveal-stagger">Building tools that turn expertise into systems. Giving professionals the power to capture, scale, and own their knowledge.</p>
   </div>
-  <!-- Bottom metadata -->
+  <div class="hero-micro-right" aria-hidden="true">
+    <p>AI Strategy and Development<br>Studio Baggio Ltd<br>London, England<br>Company No. 16805728<br>Established 2025<br>Revision IV · 2026<br>—<br>JB Management<br>Consultancy and Strategy<br>—<br>JB Studio<br>Product Lab<br>—<br>/Last30Days<br>Fire Source<br>Calm Authority<br>The Twentiad<br>—<br>51.5074° North<br>0.1278° West<br>—<br>AI Strategy and Development</p>
+  </div>
   <div class="hero-bottom">
     <p>51.5074°N, 0.1278°W</p>
     <p>London, 2026</p>
@@ -226,7 +219,10 @@ a{color:inherit;text-decoration:none}
 <section class="work" id="work">
   <div class="micro-runner" style="padding:0;margin-bottom:60px"><p style="color:rgba(255,255,255,0.1)">SELECTED WORK ———— /LAST30DAYS ———— FIRE SOURCE ———— CALM AUTHORITY ———— THE TWENTIAD ———— 04 LIVE ———— STUDIO BAGGIO ———— AI STRATEGY &amp; DEVELOPMENT</p></div>
   <div class="work-header reveal">
-    <h2>Selected Work</h2>
+    <div>
+      <p style="font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.15);margin:0 0 12px 0">AI Strategy & Development · London · Est. 2025</p>
+      <h2>Selected Work</h2>
+    </div>
     <span class="work-count">01 — 04</span>
   </div>
   <a href="https://last30days.app/" target="_blank" rel="noopener" class="work-item reveal">
@@ -258,8 +254,12 @@ a{color:inherit;text-decoration:none}
 
 <!-- PLAYBOOKS -->
 <section class="playbooks" id="playbooks">
+  <div class="micro-runner" style="margin-bottom:16px"><p>PLAYBOOKS ———— FRAMEWORKS WE USE ———— YOURS TO KEEP ———— AI FILMMAKING ———— AI TOOLS ———— EXECUTIVE FRAMEWORK ———— STUDIO BAGGIO ———— PLAYBOOKS</p></div>
   <div class="playbooks-header reveal">
-    <h2>Playbooks</h2>
+    <div>
+      <p style="font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.15);margin:0 0 12px 0">Resources · Studio Baggio · 2025–2026</p>
+      <h2>Playbooks</h2>
+    </div>
     <span class="playbooks-sub">Frameworks we use. Yours to keep.</span>
   </div>
   <div class="playbooks-grid">
@@ -320,9 +320,10 @@ a{color:inherit;text-decoration:none}
 
 <!-- NEWSLETTER -->
 <section class="newsletter" id="newsletter">
+  <div class="micro-runner" style="margin-bottom:16px"><p>ROUGH CUT ———— AI STRATEGY TOOLS &amp; HONEST TAKES ———— FORTNIGHTLY ———— RC8 · RC7.5 · RC7 · RC6 · RC5 · RC4 · RC3 · RC2 ———— SUBSCRIBE ———— ROUGH CUT</p></div>
   <div class="newsletter-split">
     <div class="newsletter-left reveal">
-      <p class="micro-label">Fortnightly</p>
+      <p class="micro-label" style="font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.15)">Publication · Fortnightly · Est. 2025</p>
       <h2>Rough<br>Cut</h2>
       <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works. No hype.</p>
       <span class="newsletter-cta">Subscribe →</span>
@@ -332,17 +333,17 @@ a{color:inherit;text-decoration:none}
       <div class="issue-row reveal" data-issue="1"><div class="issue-info"><span class="issue-name">RC7.5</span><span class="issue-label">Quick Dispatch</span></div><span class="issue-pages">4 pages</span></div>
       <div class="issue-row reveal" data-issue="2"><div class="issue-info"><span class="issue-name">RC7</span><span class="issue-label">AI Tools</span></div><span class="issue-pages">4 pages</span></div>
       <div class="issue-row reveal" data-issue="3"><div class="issue-info"><span class="issue-name">RC6</span><span class="issue-label">Framework</span></div><span class="issue-pages">7 pages</span></div>
-      <div class="issue-row reveal" data-issue="4"><div class="issue-info"><span class="issue-name">RC5</span><span class="issue-label"></span></div><span class="issue-pages">4 pages</span></div>
-      <div class="issue-row reveal" data-issue="5"><div class="issue-info"><span class="issue-name">RC4</span><span class="issue-label"></span></div><span class="issue-pages">5 pages</span></div>
-      <div class="issue-row reveal" data-issue="6"><div class="issue-info"><span class="issue-name">RC3</span><span class="issue-label"></span></div><span class="issue-pages">3 pages</span></div>
-      <div class="issue-row reveal" data-issue="7"><div class="issue-info"><span class="issue-name">RC2</span><span class="issue-label"></span></div><span class="issue-pages">3 pages</span></div>
+      <div class="issue-row reveal" data-issue="4"><div class="issue-info"><span class="issue-name">RC5</span><span class="issue-label">AI Workflows</span></div><span class="issue-pages">4 pages</span></div>
+      <div class="issue-row reveal" data-issue="5"><div class="issue-info"><span class="issue-name">RC4</span><span class="issue-label">Building in Public</span></div><span class="issue-pages">5 pages</span></div>
+      <div class="issue-row reveal" data-issue="6"><div class="issue-info"><span class="issue-name">RC3</span><span class="issue-label">First Principles</span></div><span class="issue-pages">3 pages</span></div>
+      <div class="issue-row reveal" data-issue="7"><div class="issue-info"><span class="issue-name">RC2</span><span class="issue-label">The Beginning</span></div><span class="issue-pages">3 pages</span></div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer" id="contact">
-  <div class="micro-runner" style="padding:0;margin-bottom:6px"><p>STUDIO BAGGIO LTD ———— ENGLAND &amp; WALES ———— 16805728 ———— 51.5074°N 0.1278°W ———— LONDON ———— AI STRATEGY &amp; DEVELOPMENT ———— EST. 2025 ———— IV · 2026</p></div>
+  <div class="micro-runner" style="padding:0;margin-bottom:6px"><p>STUDIO BAGGIO LTD ———— ENGLAND &amp; WALES ———— NO. 16805728 ———— 51.5074°N 0.1278°W ———— LONDON ———— AI STRATEGY &amp; DEVELOPMENT ———— EST. 2025 ———— REV. IV · 2026 ———— JB MANAGEMENT ———— JB STUDIO ———— STUDIO BAGGIO LTD</p></div>
   <div class="footer-inner">
     <div>
       <p class="footer-brand">Studio Baggio</p>
