@@ -3,2114 +3,442 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Baggio — AI Strategy & Development</title>
-<meta name="description" content="Studio Baggio is an AI strategy and development consultancy based in London. We build tools that redefine what's possible.">
+<title>Studio Baggio — Jayme Baggio</title>
+<meta name="description" content="AI Strategy & Development. Building tools that turn expertise into systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-/* ============================================
-   RESET & BASE
-   ============================================ */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  /* Light theme base */
-  --bg-light: #FAFAFA;
-  --bg-warm: #F0EFEB;
-  --text-dark: #0A0A0A;
-  --dim-light: #888888;
-  --divider-dark: rgba(0,0,0,0.08);
-
-  /* Dark theme (products section) */
-  --bg-dark: #0A0A0A;
-  --surface-dark: #141414;
-  --text-light: #E8E8E8;
-  --dim-dark: #5A5A5A;
-  --divider-light: rgba(255,255,255,0.08);
-
-  --bg-newsletter: #F5F4F0;
-  --accent: #4A6CF7;
-  --nav-height: 70px;
-  --max-width: 1280px;
-  --section-pad: clamp(80px, 10vw, 140px);
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--text-dark);
-  background-color: var(--bg-light);
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 60px);
-}
-
-.label {
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim-light);
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .hero-stagger {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  .scroll-indicator {
-    display: none;
-  }
-}
-
-/* ============================================
-   NAVIGATION — LIGHT
-   ============================================ */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  height: var(--nav-height);
-  display: flex;
-  align-items: center;
-  background: rgba(250,250,250,0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--divider-dark);
-  transition: background 0.3s ease;
-}
-
-.nav.scrolled {
-  background: rgba(250,250,250,0.95);
-}
-
-/* When nav is over dark section */
-.nav.nav-dark {
-  background: rgba(10,10,10,0.85);
-  border-bottom-color: var(--divider-light);
-}
-
-.nav.nav-dark.scrolled {
-  background: rgba(10,10,10,0.95);
-}
-
-.nav.nav-dark .nav-logo {
-  color: var(--text-light);
-}
-
-.nav.nav-dark .nav-links a {
-  color: var(--dim-dark);
-}
-
-.nav.nav-dark .nav-links a:hover {
-  color: var(--text-light);
-}
-
-.nav.nav-dark .nav-toggle span {
-  background: var(--text-light);
-}
-
-.nav-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 60px);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-logo {
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--text-dark);
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: clamp(20px, 3vw, 40px);
-  list-style: none;
-}
-
-.nav-links a {
-  font-weight: 400;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--dim-light);
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--text-dark);
-}
-
-/* Mobile nav toggle */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 20px;
-  height: 1px;
-  background: var(--text-dark);
-  margin: 5px 0;
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-  .nav-links {
-    position: fixed;
-    top: var(--nav-height);
-    left: 0;
-    right: 0;
-    background: rgba(250,250,250,0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    flex-direction: column;
-    padding: 40px 24px;
-    gap: 32px;
-    border-bottom: 1px solid var(--divider-dark);
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-  }
-  .nav-links.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
-  .nav-links a {
-    font-size: 0.85rem;
-  }
-}
-
-/* ============================================
-   HERO — SPLIT LAYOUT (LIGHT)
-   ============================================ */
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
-  padding-top: var(--nav-height);
-  background: var(--bg-light);
-}
-
-.hero-left {
-  display: flex;
-  align-items: center;
-  padding: clamp(40px, 6vw, 80px);
-  padding-right: clamp(24px, 4vw, 60px);
-}
-
-.hero-headline {
-  font-weight: 700;
-  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: var(--text-dark);
-  max-width: 700px;
-}
-
-.hero-right {
-  display: flex;
-  align-items: center;
-  background: var(--bg-warm);
-  padding: clamp(40px, 6vw, 80px);
-}
-
-.hero-right-content {
-  max-width: 480px;
-}
-
-.hero-label {
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim-light);
-  margin-bottom: 2rem;
-}
-
-.hero-subtitle {
-  font-weight: 300;
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
-  line-height: 1.75;
-  color: #444;
-  margin-bottom: 2.5rem;
-}
-
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 32px;
-  border: 1px solid rgba(0,0,0,0.25);
-  border-radius: 100px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  color: var(--text-dark);
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.35s ease;
-}
-
-.hero-cta:hover {
-  background: var(--text-dark);
-  color: var(--bg-light);
-  border-color: var(--text-dark);
-}
-
-.hero-cta .arrow {
-  transition: transform 0.3s ease;
-}
-
-.hero-cta:hover .arrow {
-  transform: translateX(3px);
-}
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  right: clamp(24px, 4vw, 60px);
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim-light);
-  writing-mode: vertical-rl;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.scroll-indicator::after {
-  content: '';
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, var(--dim-light), transparent);
-  animation: scrollDrop 2s ease-in-out infinite;
-}
-
-@keyframes scrollDrop {
-  0% { transform: translateY(-100%); opacity: 0; }
-  30% { opacity: 1; }
-  100% { transform: translateY(100%); opacity: 0; }
-}
-
-/* Hero stagger items (GSAP targets) */
-.hero-stagger {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-  .hero-left {
-    padding: 60px 24px 40px;
-  }
-  .hero-right {
-    padding: 40px 24px 60px;
-  }
-  .scroll-indicator {
-    display: none;
-  }
-}
-
-/* ============================================
-   DIVISIONS — LIGHT
-   ============================================ */
-.divisions {
-  padding: 0;
-  border-top: 1px solid var(--divider-dark);
-  border-bottom: 1px solid var(--divider-dark);
-  background: var(--bg-light);
-}
-
-.divisions-grid {
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  align-items: center;
-}
-
-.division-item {
-  padding: 2.5rem clamp(24px, 4vw, 60px);
-}
-
-.division-item .label {
-  line-height: 1.6;
-  color: var(--dim-light);
-}
-
-.divisions-line {
-  width: 1px;
-  height: 100%;
-  background: var(--divider-dark);
-}
-
-@media (max-width: 768px) {
-  .divisions-grid {
-    grid-template-columns: 1fr;
-  }
-  .divisions-line {
-    width: 100%;
-    height: 1px;
-  }
-  .division-item {
-    padding: 2rem 24px;
-  }
-}
-
-/* ============================================
-   PRODUCTS — HORIZONTAL PINNED SCROLL (DARK)
-   ============================================ */
-.products-section {
-  padding: var(--section-pad) 0;
-  background: var(--bg-light);
-  color: var(--text-dark);
-}
-
-.products-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.products-header h2 {
-  font-weight: 600;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--text-dark);
-}
-
-.products-pin {
-  overflow: clip;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background: var(--bg-light);
-}
-
-.products-track {
-  display: flex;
-  width: max-content;
-}
-
-.product-panel {
-  width: 100vw;
-  height: 72vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 clamp(24px, 5vw, 80px);
-  background: var(--bg-dark);
-}
-
-.product-panel-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: clamp(40px, 5vw, 80px);
-  align-items: center;
-}
-
-.product-text {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.product-number {
-  font-weight: 700;
-  font-size: clamp(3rem, 5vw, 5rem);
-  color: rgba(255,255,255,0.06);
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.product-name {
-  font-weight: 600;
-  font-size: 1.4rem;
-  letter-spacing: -0.01em;
-  color: var(--text-light);
-}
-
-.product-desc {
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--dim-dark);
-  max-width: 420px;
-}
-
-.product-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.product-status .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--dim-dark);
-}
-
-.product-status .dot.live {
-  background: var(--accent);
-  box-shadow: 0 0 8px rgba(74,108,247,0.5);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.product-status .status-text {
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dim-dark);
-}
-
-.product-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 16px;
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  padding-bottom: 2px;
-  transition: border-color 0.3s ease, color 0.3s ease;
-}
-
-.product-link:hover {
-  border-color: var(--text-light);
-}
-
-.product-visual {
-  aspect-ratio: 16/10;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-}
-
-.product-gradient {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-}
-
-/* Product progress bar */
-.products-progress {
-  position: relative;
-  padding: 24px clamp(24px, 4vw, 60px);
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.products-progress-bar {
-  width: 100%;
-  height: 1px;
-  background: var(--divider-dark);
-  position: relative;
-}
-
-.products-progress-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 1px;
-  background: var(--text-dark);
-  width: 0%;
-  transition: width 0.1s linear;
-}
-
-.products-counter {
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: var(--dim-light);
-  text-align: right;
-  margin-top: 12px;
-}
-
-/* Mobile: stack products */
-@media (max-width: 768px) {
-  .products-pin {
-    overflow: visible;
-  }
-  .products-track {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  .product-panel {
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    padding: 40px 24px;
-  }
-  .product-panel-inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .products-progress {
-    display: none;
-  }
-}
-
-/* ============================================
-   PLAYBOOKS — RESOURCES SECTION
-   ============================================ */
-.playbooks {
-  position: relative;
-  background: var(--bg-light);
-  color: var(--text-dark);
-  padding: var(--section-pad) 0;
-}
-
-.playbooks::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.06), transparent);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.playbooks-header {
-  text-align: center;
-  margin-bottom: clamp(20px, 2.5vw, 32px);
-}
-
-.playbooks-header h2 {
-  font-weight: 600;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--text-dark);
-}
-
-.playbooks-sub {
-  font-weight: 300;
-  font-size: 0.95rem;
-  color: var(--dim-light);
-  margin-top: 8px;
-}
-
-/* Playbooks — windowed carousel */
-.playbooks-window {
-  position: relative;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 60px);
-}
-
-.playbooks-frame {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.06);
-}
-
-.playbooks-strip {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 24px;
-  scrollbar-width: none;
-}
-
-.playbooks-strip::-webkit-scrollbar {
-  display: none;
-}
-
-.playbook-card {
-  flex: 0 0 calc(33.333% - 14px);
-  scroll-snap-align: start;
-  cursor: pointer;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.playbook-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-}
-
-.playbook-card-img {
-  width: 100%;
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  display: block;
-}
-
-.playbook-card-body {
-  padding: clamp(14px, 2vw, 20px);
-}
-
-.playbook-card-title {
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
-  color: var(--text-dark);
-  margin-bottom: 6px;
-}
-
-.playbook-card-desc {
-  font-weight: 300;
-  font-size: 0.8rem;
-  line-height: 1.6;
-  color: var(--dim-light);
-  margin-bottom: 12px;
-}
-
-.playbook-card-cta {
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dark);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: gap 0.3s ease;
-}
-
-.playbook-card:hover .playbook-card-cta {
-  gap: 10px;
-}
-
-.playbook-card-cta .arrow {
-  transition: transform 0.3s ease;
-}
-
-.playbook-card:hover .playbook-card-cta .arrow {
-  transform: translateX(2px);
-}
-
-/* Playbooks progress bar */
-.playbooks-progress {
-  height: 3px;
-  background: rgba(0,0,0,0.06);
-}
-
-.playbooks-progress-fill {
-  height: 100%;
-  background: rgba(0,0,0,0.2);
-  border-radius: 2px;
-  transition: width 0.15s ease, margin-left 0.15s ease;
-  width: 30%;
-}
-
-/* Playbooks nav arrows */
-.playbooks-nav {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.playbooks-arrow {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(0,0,0,0.15);
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: var(--text-dark);
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-
-.playbooks-arrow:hover {
-  border-color: var(--text-dark);
-  background: rgba(0,0,0,0.03);
-}
-
-.playbooks-arrow:disabled {
-  opacity: 0.25;
-  cursor: default;
-}
-
-/* Desktop: native horizontal scroll (trackpad/mousewheel) */
-@media (min-width: 769px) {
-  .playbooks-window,
-  .issues-window {
-    width: 100%;
-  }
-  .playbook-card {
-    flex: 0 0 clamp(280px, 25vw, 340px);
-  }
-  .issue-card {
-    flex: 0 0 clamp(220px, 20vw, 280px);
-  }
-  .playbooks-nav,
-  .issues-nav {
-    display: flex;
-  }
-}
-
-@media (max-width: 768px) {
-  .playbook-card {
-    flex: 0 0 calc(85% - 10px);
-  }
-  .playbooks-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .playbook-card {
-    flex: 0 0 calc(50% - 10px);
-  }
-}
-
-/* ============================================
-   NEWSLETTER — ISSUE CARDS + LIGHTBOX
-   ============================================ */
-.newsletter {
-  position: relative;
-  background: var(--bg-newsletter);
-  color: var(--text-dark);
-  padding: var(--section-pad) 0;
-}
-
-.newsletter::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.03), transparent);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Issue cards — windowed carousel */
-.issues-window {
-  max-width: 1060px;
-  margin: 0 auto;
-  position: relative;
-  padding: 0 clamp(24px, 4vw, 60px);
-}
-
-.issues-frame {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.06);
-}
-
-.issues-strip {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 24px;
-  scrollbar-width: none;
-}
-
-.issues-strip::-webkit-scrollbar {
-  display: none;
-}
-
-/* Progress bar at bottom of frame */
-.issues-progress {
-  height: 3px;
-  background: rgba(0,0,0,0.06);
-}
-
-.issues-progress-fill {
-  height: 100%;
-  background: rgba(0,0,0,0.2);
-  border-radius: 2px;
-  transition: width 0.15s ease;
-  width: 30%;
-}
-
-.issue-card {
-  flex: 0 0 calc(28% - 10px);
-  scroll-snap-align: start;
-  cursor: pointer;
-  position: relative;
-  border-radius: 6px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.issue-card:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-}
-
-.issue-card img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  display: block;
-}
-
-.issue-card-label {
-  padding: 8px 10px;
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-dark);
-  background: var(--bg-newsletter);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid rgba(0,0,0,0.06);
-}
-
-.issue-card-label .view-icon {
-  font-size: 0.6rem;
-  color: var(--dim-light);
-  transition: color 0.3s ease;
-}
-
-.issue-card:hover .view-icon {
-  color: var(--text-dark);
-}
-
-/* Newsletter nav arrows */
-.issues-nav {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.issues-arrow {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(0,0,0,0.15);
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: var(--text-dark);
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-
-.issues-arrow:hover {
-  border-color: var(--text-dark);
-  background: rgba(0,0,0,0.03);
-}
-
-/* Newsletter section header (restored) */
-.newsletter-header {
-  text-align: center;
-  margin-bottom: clamp(16px, 2vw, 28px);
-}
-
-.newsletter-title {
-  font-weight: 600;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--text-dark);
-}
-
-.newsletter-sub-title {
-  font-weight: 300;
-  font-size: 1rem;
-  color: var(--dim-light);
-  margin-top: 4px;
-}
-
-.newsletter-desc {
-  font-weight: 300;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: var(--dim-light);
-  max-width: 420px;
-  margin: 12px auto 0;
-}
-
-/* GSAP animation initial states */
-.playbooks-header {
-  opacity: 0;
-  transform: translateY(24px);
-}
-.newsletter-header {
-  opacity: 0;
-  transform: translateY(48px) scale(0.97);
-}
-
-.playbook-card,
-.issue-card {
-  opacity: 0;
-  transform: translateY(32px);
-}
-
-/* Desktop: cards visible immediately (GSAP pin scrolls them, no stagger needed) */
-@media (min-width: 769px) {
-  .playbook-card,
-  .issue-card {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .issue-card {
-    flex: 0 0 calc(55% - 8px);
-  }
-  .issues-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-}
-
-/* Subscribe — compact, below cards */
-.subscribe-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(24px, 3vw, 40px) clamp(24px, 4vw, 60px) clamp(40px, 5vw, 80px);
-}
-
-.subscribe-form {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  max-width: 380px;
-  width: 100%;
-}
-
-.subscribe-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
-  padding: 12px 0;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 0.85rem;
-  color: var(--text-dark);
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.subscribe-input::placeholder {
-  color: var(--dim-light);
-}
-
-.subscribe-input:focus {
-  border-color: rgba(0,0,0,0.4);
-}
-
-.subscribe-btn {
-  background: none;
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
-  padding: 12px 0 12px 16px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 0.8rem;
-  color: var(--text-dark);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
-
-.subscribe-btn:hover {
-  color: var(--accent);
-}
-
-/* ============================================
-   LIGHTBOX — Full-screen issue viewer
-   ============================================ */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0,0,0,0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-
-.lightbox.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.lightbox-inner {
-  position: relative;
-  max-width: 520px;
-  width: 90vw;
-  max-height: 85vh;
-}
-
-.lightbox-img {
-  width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 6px;
-  transform: scale(0.92);
-  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.lightbox.active .lightbox-img {
-  transform: scale(1);
-}
-
-.lightbox-label {
-  text-align: center;
-  margin-top: 16px;
-  font-weight: 400;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: -48px;
-  right: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: transparent;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.lightbox-close:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,0.1);
-}
-
-.lightbox-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: transparent;
-  color: #fff;
-  font-size: 0.85rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.lightbox-nav:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,0.1);
-}
-
-.lightbox-prev {
-  left: -60px;
-}
-
-.lightbox-next {
-  right: -60px;
-}
-
-@media (max-width: 768px) {
-  .lightbox-prev {
-    left: 8px;
-  }
-  .lightbox-next {
-    right: 8px;
-  }
-  .lightbox-close {
-    top: -44px;
-    right: 4px;
-  }
-}
-
-/* ============================================
-   FOOTER — LIGHT
-   ============================================ */
-.footer {
-  padding: 100px 0 60px;
-  background: var(--bg-light);
-  color: var(--text-dark);
-}
-
-.footer-inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: start;
-  gap: 40px;
-}
-
-.footer-logo {
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
-  color: var(--text-dark);
-}
-
-.footer-legal {
-  text-align: center;
-}
-
-.footer-legal p {
-  font-size: 0.7rem;
-  color: var(--dim-light);
-  line-height: 1.8;
-}
-
-.footer-links {
-  text-align: right;
-}
-
-.footer-links a {
-  font-size: 0.7rem;
-  color: var(--dim-light);
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: var(--text-dark);
-}
-
-.footer-links-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-end;
-}
-
-.footer-sep {
-  color: rgba(0,0,0,0.15);
-  margin: 0 4px;
-}
-
-@media (max-width: 768px) {
-  .footer-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 32px;
-  }
-  .footer-links {
-    text-align: center;
-  }
-  .footer-links-list {
-    align-items: center;
-  }
-}
-
-/* ============================================
-   SELECTION & SCROLLBAR
-   ============================================ */
-::selection {
-  background: rgba(74,108,247,0.15);
-  color: var(--text-dark);
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-light);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.1);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.2);
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAFA;--dark:#0C0C0C;--text:#1A1A1A;--dim:rgba(0,0,0,0.35);
+  --ghost:rgba(0,0,0,0.06);--rule:rgba(0,0,0,0.06);
+  --serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(0,0,0,0.08)}
+
+/* Micrographic runner */
+.micro-runner{overflow:hidden;padding:0 80px}
+.micro-runner p{font-family:var(--mono);font-size:6px;font-weight:300;letter-spacing:0.4em;color:var(--ghost);white-space:nowrap;margin:0}
+
+/* Reveal animation base */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-stagger{opacity:0;transform:translateY(20px)}
+
+/* ===== NAV ===== */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:28px 80px;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:background 0.4s ease}
+.nav.dark-mode{background:rgba(12,12,12,0.9)}
+.nav-left,.nav-right{display:flex;gap:32px}
+.nav a,.nav-center{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.4);transition:color 0.3s ease}
+.nav a:hover{color:var(--text)}
+.nav.dark-mode a{color:rgba(255,255,255,0.4)}
+.nav.dark-mode a:hover{color:#fff}
+.nav-center{font-family:var(--serif);font-size:13px;font-weight:400;letter-spacing:0.35em;color:var(--text)}
+.nav.dark-mode .nav-center{color:#fff}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 80px;position:relative}
+.hero-content{flex:1;padding:120px 0}
+.hero-micro{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.1);margin-bottom:60px}
+.hero h1{font-family:var(--serif);font-size:clamp(64px,8vw,108px);font-weight:300;letter-spacing:0.16em;text-transform:uppercase;color:#0D0D0D;line-height:1.12}
+.hero-line{width:40px;height:1px;background:rgba(0,0,0,0.1);margin:52px 0}
+.hero-desc{font-family:var(--sans);font-size:15px;font-weight:300;line-height:1.85;color:rgba(0,0,0,0.4);max-width:380px}
+.hero-texture{flex:0 0 400px;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;padding:80px 0}
+.hero-texture p{font-family:var(--mono);font-size:6px;font-weight:300;letter-spacing:0.15em;color:rgba(0,0,0,0.05);text-align:right;line-height:2.8;margin:0}
+
+/* ===== DIVISIONS ===== */
+.divisions{display:flex;margin:0 80px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.division{flex:1;padding:18px 0;display:flex;align-items:center;gap:16px}
+.division:last-child{padding-left:40px}
+.division-num{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(0,0,0,0.12)}
+.division-label{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.3)}
+.divisions-sep{width:1px;background:rgba(0,0,0,0.06)}
+
+/* ===== WORK (DARK) ===== */
+.work{background:var(--dark);padding:140px 80px 120px;margin-top:160px}
+.work-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:100px}
+.work h2{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.9)}
+.work-count{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(255,255,255,0.12)}
+.work-item{border-top:1px solid rgba(255,255,255,0.06);padding:48px 0;display:flex;align-items:flex-start;cursor:pointer;transition:padding-left 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+.work-item:last-child{border-bottom:1px solid rgba(255,255,255,0.06)}
+.work-item:hover{padding-left:16px}
+.work-num{flex:0 0 80px;font-family:var(--mono);font-size:8px;font-weight:300;color:rgba(255,255,255,0.1)}
+.work-name{flex:0 0 280px;font-family:var(--serif);font-size:clamp(24px,2.5vw,32px);font-weight:400;letter-spacing:0.06em;color:rgba(255,255,255,0.85)}
+.work-desc{flex:1;font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.75;color:rgba(255,255,255,0.3);padding-top:8px}
+.work-status{flex:0 0 100px;text-align:right;padding-top:8px}
+.work-live{display:inline-flex;align-items:center;gap:6px;margin-bottom:8px}
+.work-live-dot{width:5px;height:5px;border-radius:50%;background:#fff}
+.work-live-text{font-family:var(--sans);font-size:8px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.work-arrow{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);opacity:0;transition:opacity 0.3s ease}
+.work-item:hover .work-arrow{opacity:1}
+
+/* ===== PLAYBOOKS ===== */
+.playbooks{padding:200px 80px 0}
+.playbooks-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px}
+.playbooks h2{font-family:var(--serif);font-size:clamp(36px,4vw,48px);font-weight:300;letter-spacing:0.12em;text-transform:uppercase}
+.playbooks-sub{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(0,0,0,0.3)}
+.playbooks-grid{display:flex;gap:32px;align-items:flex-start}
+.playbook-card{flex:1;background:#fff;box-shadow:0 16px 56px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.03);cursor:pointer;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.5s ease}
+.playbook-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,0.1)}
+.playbook-card:nth-child(2){margin-top:64px}
+.playbook-card:nth-child(3){margin-top:128px}
+.playbook-img{height:240px;background:#EEECEA;overflow:hidden}
+.playbook-img img{width:100%;height:100%;object-fit:cover}
+.playbook-body{padding:40px}
+.playbook-meta{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(0,0,0,0.1);margin-bottom:20px}
+.playbook-title{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:0.04em;margin-bottom:10px}
+.playbook-desc{font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(0,0,0,0.35);margin-bottom:24px}
+.playbook-cta{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase}
+
+/* ===== NEWSLETTER ===== */
+.newsletter{padding:240px 80px 0}
+.newsletter-split{display:flex;gap:120px;border-top:1px solid var(--rule);padding-top:80px}
+.newsletter-left{flex:0 0 420px}
+.newsletter-left .micro-label{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(0,0,0,0.1);margin-bottom:16px}
+.newsletter h2{font-family:var(--serif);font-size:clamp(48px,5vw,72px);font-weight:300;letter-spacing:0.1em;text-transform:uppercase;line-height:1.05;margin-bottom:40px}
+.newsletter-desc{font-family:var(--sans);font-size:15px;font-weight:300;line-height:1.8;color:rgba(0,0,0,0.4);margin-bottom:32px}
+.newsletter-cta{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase}
+.newsletter-right{flex:1;padding-top:60px}
+.issue-row{border-top:1px solid var(--rule);padding:24px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:padding-left 0.3s ease}
+.issue-row:last-child{border-bottom:1px solid var(--rule)}
+.issue-row:hover{padding-left:12px}
+.issue-info{display:flex;align-items:baseline;gap:16px}
+.issue-name{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:0.04em}
+.issue-label{font-family:var(--sans);font-size:12px;font-weight:300;color:rgba(0,0,0,0.3)}
+.issue-pages{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(0,0,0,0.12)}
+
+/* ===== FOOTER ===== */
+.footer{margin:240px 80px 0}
+.footer-inner{border-top:1px solid var(--rule);padding:32px 0 80px;display:flex;justify-content:space-between;align-items:flex-start}
+.footer-brand{font-family:var(--serif);font-size:13px;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px}
+.footer-reg{font-family:var(--mono);font-size:6px;font-weight:300;color:rgba(0,0,0,0.1);line-height:2}
+.footer-center{font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(0,0,0,0.25);text-align:center}
+.footer-right{text-align:right}
+.footer-email{font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(0,0,0,0.25);margin-bottom:4px}
+.footer-coords{font-family:var(--mono);font-size:6px;font-weight:300;color:rgba(0,0,0,0.08)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s ease}
+.lightbox.active{opacity:1;pointer-events:all}
+.lightbox-inner{position:relative;max-width:520px;width:90vw;max-height:85vh}
+.lightbox-img{width:100%;max-height:80vh;object-fit:contain;border-radius:4px;transform:scale(0.94);transition:transform 0.4s cubic-bezier(0.25,0.1,0.25,1)}
+.lightbox.active .lightbox-img{transform:scale(1)}
+.lightbox-label{text-align:center;margin-top:16px;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+.lightbox-pages{text-align:center;margin-top:6px;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.3)}
+.lightbox-close{position:absolute;top:-48px;right:0;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease}
+.lightbox-close:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#fff;font-size:0.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease}
+.lightbox-nav:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
+.lightbox-prev{left:-60px}
+.lightbox-next{right:-60px}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .reveal-stagger{opacity:1;transform:none}
+}
+
+@media(max-width:768px){
+  .nav{padding:20px 24px}
+  .nav-left,.nav-right{gap:16px}
+  .hero{padding:0 24px;flex-direction:column}
+  .hero-texture{display:none}
+  .divisions{margin:0 24px;flex-direction:column}
+  .divisions-sep{width:100%;height:1px}
+  .division:last-child{padding-left:0}
+  .work{padding:80px 24px;margin-top:80px}
+  .work-item{flex-wrap:wrap;gap:8px}
+  .work-num{flex:0 0 40px}
+  .work-name{flex:1 1 200px}
+  .work-desc{flex:1 1 100%;padding-top:12px}
+  .work-status{flex:0 0 60px}
+  .playbooks{padding:100px 24px 0}
+  .playbooks-grid{flex-direction:column;gap:24px}
+  .playbook-card:nth-child(2),.playbook-card:nth-child(3){margin-top:0}
+  .newsletter{padding:120px 24px 0}
+  .newsletter-split{flex-direction:column;gap:40px}
+  .newsletter-left{flex:auto}
+  .footer{margin:120px 24px 0}
+  .micro-runner{padding:0 24px}
+  .lightbox-prev{left:8px}
+  .lightbox-next{right:8px}
 }
 </style>
 </head>
 <body>
 
-<!-- ==========================================
-     NAVIGATION
-     ========================================== -->
+<!-- NAV -->
 <nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Studio Baggio</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#products">Work</a></li>
-      <li><a href="#playbooks">Playbooks</a></li>
-      <li><a href="#newsletter">Newsletter</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <div class="nav-left">
+    <a href="#work">Work</a>
+    <a href="#playbooks">Playbooks</a>
+    <a href="#newsletter">Newsletter</a>
+  </div>
+  <span class="nav-center">Studio Baggio</span>
+  <div class="nav-right">
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- ==========================================
-     HERO — SPLIT LAYOUT
-     ========================================== -->
+<!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-left">
-    <h1 class="hero-headline hero-stagger">We build tools that redefine what's possible.</h1>
+  <div class="hero-content">
+    <p class="hero-micro reveal-stagger">51.5074°N, 0.1278°W</p>
+    <h1 class="reveal-stagger">Jayme<br>Baggio</h1>
+    <div class="hero-line reveal-stagger"></div>
+    <p class="hero-desc reveal-stagger">Building tools that turn expertise into systems. Giving professionals the power to capture, scale, and own their knowledge.</p>
   </div>
-  <div class="hero-right">
-    <div class="hero-right-content">
-      <p class="hero-label hero-stagger">AI Strategy &amp; Development &mdash; London, 2025</p>
-      <p class="hero-subtitle hero-stagger">We design tools that turn expertise into practical systems that supercharge output and extend reach &mdash; giving experts the power to capture and expand their knowledge.</p>
-      <a href="#newsletter" class="hero-cta hero-stagger">
-        View our work <span class="arrow">&rarr;</span>
-      </a>
-    </div>
-  </div>
-  <div class="scroll-indicator hero-stagger">Scroll &darr;</div>
-</section>
-
-<!-- ==========================================
-     DIVISIONS
-     ========================================== -->
-<section class="divisions">
-  <div class="container">
-    <div class="divisions-grid">
-      <div class="division-item reveal">
-        <p class="label">01 &mdash; JB Management &middot; Consultancy &amp; Strategy</p>
-      </div>
-      <div class="divisions-line"></div>
-      <div class="division-item reveal">
-        <p class="label">02 &mdash; JB Studio &middot; Product Lab</p>
-      </div>
-    </div>
+  <div class="hero-texture">
+    <p>AI STRATEGY AND DEVELOPMENT<br>STUDIO BAGGIO LTD<br>LONDON ENGLAND<br>COMPANY NO 16805728<br>ESTABLISHED 2025<br>REVISION IV 2026<br>—<br>JB MANAGEMENT<br>CONSULTANCY AND STRATEGY<br>—<br>JB STUDIO<br>PRODUCT LAB<br>—<br>LAST30DAYS<br>FIRE SOURCE<br>CALM AUTHORITY<br>THE TWENTIAD<br>—<br>51.5074 NORTH<br>0.1278 WEST<br>—<br>AI STRATEGY AND DEVELOPMENT</p>
   </div>
 </section>
 
-<!-- ==========================================
-     NEWSLETTER — ISSUE CARDS + LIGHTBOX
-     ========================================== -->
-<section class="newsletter" id="newsletter">
-  <div class="container">
-    <div class="newsletter-header">
-      <h2 class="newsletter-title">Newsletter</h2>
-      <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works.</p>
-    </div>
-  </div>
+<!-- MICROGRAPHIC SEAM -->
+<div class="micro-runner"><p>STUDIO BAGGIO ———— AI STRATEGY &amp; DEVELOPMENT ———— LONDON ———— 51.5074°N 0.1278°W ———— EST. 2025 ———— STUDIO BAGGIO ———— AI STRATEGY &amp; DEVELOPMENT ———— LONDON ———— 51.5074°N 0.1278°W</p></div>
 
-  <div class="issues-window">
-    <div class="issues-frame">
-      <div class="issues-strip" id="issuesStrip">
-        <div class="issue-card" data-issue="0">
-          <img src="assets/newsletter/RC8/1.png" alt="Rough Cut Issue 8 — Skills Special" loading="lazy">
-          <div class="issue-card-label">RC8 <span class="view-icon">&nearr;</span></div>
-        </div>
-        <div class="issue-card" data-issue="1">
-          <img src="assets/newsletter/RC7.5/1.png" alt="Rough Cut Issue 7.5" loading="lazy">
-          <div class="issue-card-label">RC7.5 <span class="view-icon">&nearr;</span></div>
-        </div>
-        <div class="issue-card" data-issue="2">
-          <img src="assets/newsletter/RC7/1.png" alt="Rough Cut Issue 7" loading="lazy">
-          <div class="issue-card-label">RC7 <span class="view-icon">&nearr;</span></div>
-        </div>
-        <div class="issue-card" data-issue="3">
-          <img src="assets/newsletter/RC6/1.png" alt="Rough Cut Issue 6" loading="lazy">
-          <div class="issue-card-label">RC6 <span class="view-icon">&nearr;</span></div>
-        </div>
-        <div class="issue-card" data-issue="4">
-          <img src="assets/newsletter/RC5/1.png" alt="Rough Cut Issue 5" loading="lazy">
-          <div class="issue-card-label">RC5 <span class="view-icon">&nearr;</span></div>
-        </div>
-        <div class="issue-card" data-issue="5">
-          <img src="assets/newsletter/RC4/1.png" alt="Rough Cut Issue 4" loading="lazy">
-          <div class="issue-card-label">RC4 <span class="view-icon">&nearr;</span></div>
-        </div>
-        <div class="issue-card" data-issue="6">
-          <img src="assets/newsletter/RC3/1.png" alt="Rough Cut Issue 3" loading="lazy">
-          <div class="issue-card-label">RC3 <span class="view-icon">&nearr;</span></div>
-        </div>
-        <div class="issue-card" data-issue="7">
-          <img src="assets/newsletter/RC2/1.png" alt="Rough Cut Issue 2" loading="lazy">
-          <div class="issue-card-label">RC2 <span class="view-icon">&nearr;</span></div>
-        </div>
-      </div>
-      <div class="issues-progress">
-        <div class="issues-progress-fill" id="issuesProgressFill"></div>
-      </div>
-    </div>
+<!-- DIVISIONS -->
+<section class="divisions reveal">
+  <div class="division">
+    <span class="division-num">01</span>
+    <span class="division-label">JB Management · Consultancy &amp; Strategy</span>
   </div>
-  <div class="issues-nav">
-    <button class="issues-arrow" id="issuesPrev" aria-label="Previous">&larr;</button>
-    <button class="issues-arrow" id="issuesNext" aria-label="Next">&rarr;</button>
-  </div>
-  <div class="subscribe-row">
-    <form class="subscribe-form" onsubmit="return false;">
-      <input type="email" class="subscribe-input" placeholder="Your email address" aria-label="Email address" required>
-      <button type="submit" class="subscribe-btn">Subscribe &rarr;</button>
-    </form>
+  <div class="divisions-sep"></div>
+  <div class="division">
+    <span class="division-num">02</span>
+    <span class="division-label">JB Studio · Product Lab</span>
   </div>
 </section>
 
-<!-- ==========================================
-     PLAYBOOKS — FREE RESOURCES
-     ========================================== -->
-<section class="playbooks" id="playbooks">
-  <div class="container">
-    <div class="playbooks-header">
-      <h2>Playbooks</h2>
-      <p class="playbooks-sub">Frameworks we use. Yours to keep.</p>
-    </div>
-  </div>
-
-  <div class="playbooks-window">
-    <div class="playbooks-frame">
-      <div class="playbooks-strip" id="playbooksStrip">
-        <div class="playbook-card" data-resource="0">
-          <img class="playbook-card-img" src="assets/playbooks/ai-filmmaking/1.png" alt="Blueprint for AI Filmmaking" loading="lazy">
-          <div class="playbook-card-body">
-            <h3 class="playbook-card-title">Blueprint for AI Filmmaking</h3>
-            <p class="playbook-card-desc">The complete workflow from concept to published film — using AI at every stage.</p>
-            <span class="playbook-card-cta">View playbook <span class="arrow">&rarr;</span></span>
-          </div>
-        </div>
-
-        <div class="playbook-card" data-resource="1">
-          <img class="playbook-card-img" src="assets/playbooks/ai-tools/1.png" alt="AI Tools You'll Actually Use" loading="lazy">
-          <div class="playbook-card-body">
-            <h3 class="playbook-card-title">AI Tools You'll Actually Use</h3>
-            <p class="playbook-card-desc">A curated stack of tools that save real time. No hype — just what works.</p>
-            <span class="playbook-card-cta">View playbook <span class="arrow">&rarr;</span></span>
-          </div>
-        </div>
-
-        <div class="playbook-card" data-resource="2">
-          <img class="playbook-card-img" src="assets/playbooks/executive-framework/1.png" alt="Executive Framework 2026" loading="lazy">
-          <div class="playbook-card-body">
-            <h3 class="playbook-card-title">Executive AI Framework 2026</h3>
-            <p class="playbook-card-desc">How to build an AI operating system your whole team can use — not just the early adopters.</p>
-            <span class="playbook-card-cta">View playbook <span class="arrow">&rarr;</span></span>
-          </div>
-        </div>
-
-        <div class="playbook-card" data-resource="3">
-          <img class="playbook-card-img" src="assets/playbooks/ai-filmmaking-pt2/1.png" alt="AI Filmmaking Blueprint — Part 2" loading="lazy">
-          <div class="playbook-card-body">
-            <h3 class="playbook-card-title">AI Filmmaking Blueprint — Part 2</h3>
-            <p class="playbook-card-desc">Advanced techniques and production workflows — picking up where the blueprint left off.</p>
-            <span class="playbook-card-cta">View playbook <span class="arrow">&rarr;</span></span>
-          </div>
-        </div>
-
-        <div class="playbook-card" data-resource="4">
-          <img class="playbook-card-img" src="assets/newsletter/RC8/1.png" alt="RC8 — Skills Special" loading="lazy">
-          <div class="playbook-card-body">
-            <h3 class="playbook-card-title">Skills Special — RC8</h3>
-            <p class="playbook-card-desc">What a skill is, why it matters, and why businesses using skills will move faster than those that are not.</p>
-            <span class="playbook-card-cta">View playbook <span class="arrow">&rarr;</span></span>
-          </div>
-        </div>
-      </div>
-      <div class="playbooks-progress">
-        <div class="playbooks-progress-fill" id="playbooksProgressFill"></div>
-      </div>
-    </div>
-  </div>
-  <div class="playbooks-nav">
-    <button class="playbooks-arrow" id="playbooksPrev" aria-label="Previous">&larr;</button>
-    <button class="playbooks-arrow" id="playbooksNext" aria-label="Next">&rarr;</button>
-  </div>
-</section>
-
-<!-- ==========================================
-     PRODUCTS — HORIZONTAL SCROLL (DARK)
-     ========================================== -->
-<section class="products-section" id="products">
-  <div class="container products-header reveal">
+<!-- WORK (DARK) -->
+<section class="work" id="work">
+  <div class="micro-runner" style="padding:0;margin-bottom:60px"><p style="color:rgba(255,255,255,0.03)">SELECTED WORK ———— /LAST30DAYS ———— FIRE SOURCE ———— CALM AUTHORITY ———— THE TWENTIAD ———— 04 LIVE ———— STUDIO BAGGIO ———— AI STRATEGY &amp; DEVELOPMENT</p></div>
+  <div class="work-header reveal">
     <h2>Selected Work</h2>
+    <span class="work-count">01 — 04</span>
   </div>
+  <a href="https://last30days.app/" target="_blank" rel="noopener" class="work-item reveal">
+    <span class="work-num">01</span>
+    <span class="work-name">/Last30Days</span>
+    <span class="work-desc">An intelligent research assistant that surfaces the most relevant developments from the past 30 days across any topic.</span>
+    <span class="work-status"><span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span><br><span class="work-arrow">→</span></span>
+  </a>
+  <a href="https://fire-source.vercel.app/" target="_blank" rel="noopener" class="work-item reveal">
+    <span class="work-num">02</span>
+    <span class="work-name">Fire Source</span>
+    <span class="work-desc">An AI research engine that transforms queries into structured intelligence briefs with verified sources and tailored prompts.</span>
+    <span class="work-status"><span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span><br><span class="work-arrow">→</span></span>
+  </a>
+  <a href="https://calmauthority.ai/" target="_blank" rel="noopener" class="work-item reveal">
+    <span class="work-num">03</span>
+    <span class="work-name">Calm Authority</span>
+    <span class="work-desc">A tone-of-voice writing system that maps how you write, researches what is relevant, and turns ideas into publish-ready drafts.</span>
+    <span class="work-status"><span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span><br><span class="work-arrow">→</span></span>
+  </a>
+  <div class="work-item reveal">
+    <span class="work-num">04</span>
+    <span class="work-name">The Twentiad</span>
+    <span class="work-desc">A digital platform exploring three generations of twenty-sized gas carriers. Research, analysis, and industry insight.</span>
+    <span class="work-status"><span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span></span>
+  </div>
+  <div class="micro-runner" style="padding:0;margin-top:60px"><p style="color:rgba(255,255,255,0.03)">STUDIO BAGGIO ———— /LAST30DAYS ———— FIRE SOURCE ———— CALM AUTHORITY ———— THE TWENTIAD ———— AI STRATEGY &amp; DEVELOPMENT ———— 51.5074°N ———— 0.1278°W</p></div>
+</section>
 
-  <div class="products-pin">
-    <div class="products-track">
-
-      <!-- Product 01 -->
-      <div class="product-panel">
-        <div class="product-panel-inner">
-          <div class="product-text">
-            <span class="product-number">01</span>
-            <h3 class="product-name">/Last30Days</h3>
-            <p class="product-desc">An intelligent research assistant that surfaces the most relevant developments from the past 30 days across any topic.</p>
-            <div class="product-status">
-              <span class="dot live"></span>
-              <span class="status-text">Live</span>
-            </div>
-            <a href="https://last30days.app/" target="_blank" rel="noopener" class="product-link">Visit Site &rarr;</a>
-          </div>
-          <div class="product-visual">
-            <img src="assets/products/last30days.png" alt="/Last30Days" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-        </div>
+<!-- PLAYBOOKS -->
+<section class="playbooks" id="playbooks">
+  <div class="playbooks-header reveal">
+    <h2>Playbooks</h2>
+    <span class="playbooks-sub">Frameworks we use. Yours to keep.</span>
+  </div>
+  <div class="playbooks-grid">
+    <div class="playbook-card reveal" data-resource="0">
+      <div class="playbook-img"><img src="assets/playbooks/ai-filmmaking/1.png" alt="Blueprint for AI Filmmaking" loading="lazy"></div>
+      <div class="playbook-body">
+        <p class="playbook-meta">01 — 10 pages</p>
+        <h3 class="playbook-title">Blueprint for AI Filmmaking</h3>
+        <p class="playbook-desc">The complete workflow from concept to published film — using AI at every stage.</p>
+        <span class="playbook-cta">View →</span>
       </div>
-
-      <!-- Product 02 -->
-      <div class="product-panel">
-        <div class="product-panel-inner">
-          <div class="product-text">
-            <span class="product-number">02</span>
-            <h3 class="product-name">Fire Source</h3>
-            <p class="product-desc">An AI research engine that transforms queries into structured intelligence briefs with verified sources and tailored prompts.</p>
-            <div class="product-status">
-              <span class="dot live"></span>
-              <span class="status-text">Live</span>
-            </div>
-            <a href="https://fire-source.vercel.app/" target="_blank" rel="noopener" class="product-link">Visit Site &rarr;</a>
-          </div>
-          <div class="product-visual">
-            <img src="assets/products/fire-source.png" alt="Fire Source" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 03 -->
-      <div class="product-panel">
-        <div class="product-panel-inner">
-          <div class="product-text">
-            <span class="product-number">03</span>
-            <h3 class="product-name">Calm Authority</h3>
-            <p class="product-desc">A true tone-of-voice writing system that maps how you write, researches what's relevant, and turns ideas into publish-ready drafts.</p>
-            <div class="product-status">
-              <span class="dot live"></span>
-              <span class="status-text">Live</span>
-            </div>
-            <a href="https://calmauthority.ai/" target="_blank" rel="noopener" class="product-link">Visit Site &rarr;</a>
-          </div>
-          <div class="product-visual">
-            <img src="assets/products/calm-authority.png" alt="Calm Authority" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 04 -->
-      <div class="product-panel">
-        <div class="product-panel-inner">
-          <div class="product-text">
-            <span class="product-number">04</span>
-            <h3 class="product-name">The Twentiad</h3>
-            <p class="product-desc">A comprehensive digital platform exploring three generations of twenty-sized gas carriers — research, analysis, and industry insight.</p>
-            <div class="product-status">
-              <span class="dot live"></span>
-              <span class="status-text">Live</span>
-            </div>
-          </div>
-          <div class="product-visual">
-            <img src="assets/products/twentiad.png" alt="The Twentiad" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /products-track -->
-  </div><!-- /products-pin -->
-
-  <div class="products-progress container" id="productsProgress">
-    <div class="products-progress-bar">
-      <div class="products-progress-fill" id="progressFill"></div>
     </div>
-    <div class="products-counter" id="productsCounter">01 / 04</div>
+    <div class="playbook-card reveal" data-resource="1">
+      <div class="playbook-img"><img src="assets/playbooks/ai-tools/1.png" alt="AI Tools You'll Actually Use" loading="lazy"></div>
+      <div class="playbook-body">
+        <p class="playbook-meta">02 — 13 pages</p>
+        <h3 class="playbook-title">AI Tools You'll Actually Use</h3>
+        <p class="playbook-desc">A curated stack of tools that save real time. No hype — just what works.</p>
+        <span class="playbook-cta">View →</span>
+      </div>
+    </div>
+    <div class="playbook-card reveal" data-resource="2">
+      <div class="playbook-img"><img src="assets/playbooks/executive-framework/1.png" alt="Executive AI Framework 2026" loading="lazy"></div>
+      <div class="playbook-body">
+        <p class="playbook-meta">03 — 16 pages</p>
+        <h3 class="playbook-title">Executive AI Framework 2026</h3>
+        <p class="playbook-desc">How to build an AI operating system your whole team can use — not just the early adopters.</p>
+        <span class="playbook-cta">View →</span>
+      </div>
+    </div>
+  </div>
+  <!-- Additional playbooks row -->
+  <div class="playbooks-grid" style="margin-top:32px">
+    <div class="playbook-card reveal" data-resource="3">
+      <div class="playbook-img"><img src="assets/playbooks/ai-filmmaking-pt2/1.png" alt="AI Filmmaking Part 2" loading="lazy"></div>
+      <div class="playbook-body">
+        <p class="playbook-meta">04 — 12 pages</p>
+        <h3 class="playbook-title">AI Filmmaking Blueprint — Part 2</h3>
+        <p class="playbook-desc">Advanced techniques and production workflows — picking up where the blueprint left off.</p>
+        <span class="playbook-cta">View →</span>
+      </div>
+    </div>
+    <div class="playbook-card reveal" data-resource="4">
+      <div class="playbook-img"><img src="assets/newsletter/RC8/1.png" alt="Skills Special RC8" loading="lazy"></div>
+      <div class="playbook-body">
+        <p class="playbook-meta">05 — 17 pages</p>
+        <h3 class="playbook-title">Skills Special — RC8</h3>
+        <p class="playbook-desc">What a skill is, why it matters, and why businesses using skills will move faster.</p>
+        <span class="playbook-cta">View →</span>
+      </div>
+    </div>
+    <div style="flex:1"></div>
   </div>
 </section>
 
-<!-- Lightbox overlay -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous page">&larr;</button>
-    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next page">&rarr;</button>
-    <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    <p class="lightbox-label" id="lightboxLabel"></p>
-    <p class="lightbox-page-count" id="lightboxPageCount" style="text-align:center;margin-top:6px;font-size:0.65rem;letter-spacing:0.15em;color:rgba(255,255,255,0.4);"></p>
-  </div>
-</div>
+<!-- MICROGRAPHIC SEAM -->
+<div class="micro-runner" style="margin-top:200px"><p>ROUGH CUT ———— AI STRATEGY TOOLS &amp; HONEST TAKES ———— FORTNIGHTLY ———— SUBSCRIBE ———— ROUGH CUT ———— AI STRATEGY TOOLS &amp; HONEST TAKES ———— FORTNIGHTLY</p></div>
 
-<!-- ==========================================
-     FOOTER — LIGHT
-     ========================================== -->
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-split">
+    <div class="newsletter-left reveal">
+      <p class="micro-label">Fortnightly</p>
+      <h2>Rough<br>Cut</h2>
+      <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works. No hype.</p>
+      <span class="newsletter-cta">Subscribe →</span>
+    </div>
+    <div class="newsletter-right">
+      <div class="issue-row reveal" data-issue="0"><div class="issue-info"><span class="issue-name">RC8</span><span class="issue-label">Skills Special</span></div><span class="issue-pages">17 pages</span></div>
+      <div class="issue-row reveal" data-issue="1"><div class="issue-info"><span class="issue-name">RC7.5</span><span class="issue-label">Quick Dispatch</span></div><span class="issue-pages">4 pages</span></div>
+      <div class="issue-row reveal" data-issue="2"><div class="issue-info"><span class="issue-name">RC7</span><span class="issue-label">AI Tools</span></div><span class="issue-pages">4 pages</span></div>
+      <div class="issue-row reveal" data-issue="3"><div class="issue-info"><span class="issue-name">RC6</span><span class="issue-label">Framework</span></div><span class="issue-pages">7 pages</span></div>
+      <div class="issue-row reveal" data-issue="4"><div class="issue-info"><span class="issue-name">RC5</span><span class="issue-label"></span></div><span class="issue-pages">4 pages</span></div>
+      <div class="issue-row reveal" data-issue="5"><div class="issue-info"><span class="issue-name">RC4</span><span class="issue-label"></span></div><span class="issue-pages">5 pages</span></div>
+      <div class="issue-row reveal" data-issue="6"><div class="issue-info"><span class="issue-name">RC3</span><span class="issue-label"></span></div><span class="issue-pages">3 pages</span></div>
+      <div class="issue-row reveal" data-issue="7"><div class="issue-info"><span class="issue-name">RC2</span><span class="issue-label"></span></div><span class="issue-pages">3 pages</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="footer" id="contact">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-logo-wrap">
-        <p class="footer-logo">Studio Baggio</p>
-      </div>
-      <div class="footer-legal">
-        <p>&copy; 2025 Studio Baggio Ltd</p>
-        <p>England &amp; Wales No. 16805728</p>
-      </div>
-      <div class="footer-links">
-        <div class="footer-links-list">
-          <a href="mailto:info@jbstudio.ai">info@jbstudio.ai</a>
-          <div>
-            <a href="#">Privacy</a><span class="footer-sep">&middot;</span><a href="#">Terms</a>
-          </div>
-        </div>
-      </div>
+  <div class="micro-runner" style="padding:0;margin-bottom:6px"><p>STUDIO BAGGIO LTD ———— ENGLAND &amp; WALES ———— 16805728 ———— 51.5074°N 0.1278°W ———— LONDON ———— AI STRATEGY &amp; DEVELOPMENT ———— EST. 2025 ———— IV · 2026</p></div>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Studio Baggio</p>
+      <p class="footer-reg">Studio Baggio Ltd<br>England &amp; Wales<br>No. 16805728</p>
+    </div>
+    <div>
+      <p class="footer-center">© 2026 Studio Baggio Ltd</p>
+    </div>
+    <div class="footer-right">
+      <p class="footer-email"><a href="mailto:info@jbstudio.ai">info@jbstudio.ai</a></p>
+      <p class="footer-coords">51.5074°N, 0.1278°W</p>
     </div>
   </div>
 </footer>
 
-<!-- ==========================================
-     SCRIPTS
-     ========================================== -->
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">←</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">→</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <p class="lightbox-label" id="lightboxLabel"></p>
+    <p class="lightbox-pages" id="lightboxPages"></p>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-(function() {
+(function(){
   'use strict';
-
-  /* -----------------------------------------
-     NAV — scroll state, mobile toggle & dark mode
-     ----------------------------------------- */
+  const prefersRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const nav = document.getElementById('nav');
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  const productsSection = document.getElementById('products');
+  const workSection = document.querySelector('.work');
 
-  // Track scroll for nav background
-  window.addEventListener('scroll', function() {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  navToggle.addEventListener('click', function() {
-    navLinks.classList.toggle('open');
-  });
-
-  // Close mobile nav on link click
-  navLinks.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      navLinks.classList.remove('open');
-    });
-  });
-
-  /* -----------------------------------------
-     REDUCED MOTION CHECK
-     ----------------------------------------- */
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* -----------------------------------------
-     GSAP — Hero stagger fade-in
-     ----------------------------------------- */
-  if (!prefersReducedMotion) {
+  // Nav dark mode over work section
+  if (!prefersRM) {
     gsap.registerPlugin(ScrollTrigger);
-
-    const heroItems = document.querySelectorAll('.hero-stagger');
-    gsap.fromTo(heroItems,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        stagger: 0.15,
-        delay: 0.3
-      }
-    );
-
-    /* -----------------------------------------
-       NAV — dark/light based on section
-       ----------------------------------------- */
     ScrollTrigger.create({
-      trigger: '.products-pin',
+      trigger: workSection,
       start: 'top top+=70',
       end: 'bottom top+=70',
-      onEnter: function() { nav.classList.add('nav-dark'); },
-      onLeave: function() { nav.classList.remove('nav-dark'); },
-      onEnterBack: function() { nav.classList.add('nav-dark'); },
-      onLeaveBack: function() { nav.classList.remove('nav-dark'); }
+      onEnter: () => nav.classList.add('dark-mode'),
+      onLeave: () => nav.classList.remove('dark-mode'),
+      onEnterBack: () => nav.classList.add('dark-mode'),
+      onLeaveBack: () => nav.classList.remove('dark-mode')
     });
 
-    /* -----------------------------------------
-       GSAP — Products horizontal pin
-       ----------------------------------------- */
-    const isMobile = window.innerWidth <= 768;
+    // Hero stagger
+    gsap.fromTo('.reveal-stagger', {opacity:0,y:20}, {opacity:1,y:0,duration:0.8,ease:'power2.out',stagger:0.15,delay:0.3});
 
-    if (!isMobile) {
-      const section = document.querySelector('.products-pin');
-      const track = document.querySelector('.products-track');
-      const panels = document.querySelectorAll('.product-panel');
-      const totalPanels = panels.length;
-      const progressFill = document.getElementById('progressFill');
-      const productsCounter = document.getElementById('productsCounter');
-
-      // Wait for layout to settle
-      requestAnimationFrame(function() {
-        const trackWidth = track.scrollWidth - window.innerWidth;
-
-        const pinTween = gsap.to(track, {
-          x: -trackWidth,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            pin: true,
-            scrub: 0.3,
-            anticipatePin: 1,
-            end: function() { return '+=' + (trackWidth + window.innerWidth * 0.6); },
-            invalidateOnRefresh: true,
-            onUpdate: function(self) {
-              // Progress bar
-              var pct = self.progress * 100;
-              progressFill.style.width = pct + '%';
-
-              // Counter
-              var idx = Math.min(Math.floor(self.progress * totalPanels), totalPanels - 1);
-              var num = String(idx + 1).padStart(2, '0');
-              productsCounter.textContent = num + ' / ' + String(totalPanels).padStart(2, '0');
-            }
-          }
-        });
-      });
-
-    }
-
-    /* -----------------------------------------
-       GSAP — Reveal on scroll
-       ----------------------------------------- */
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(function(el) {
+    // Reveal on scroll
+    document.querySelectorAll('.reveal').forEach(el => {
       ScrollTrigger.create({
         trigger: el,
         start: 'top 88%',
         once: true,
-        onEnter: function() {
-          el.classList.add('visible');
-        }
+        onEnter: () => el.classList.add('visible')
       });
     });
-
-    /* -----------------------------------------
-       GSAP — Parallax section titles
-       ----------------------------------------- */
-    gsap.to('.playbooks-header h2', {
-      yPercent: -30,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.playbooks',
-        start: 'top bottom',
-        end: 'top top',
-        scrub: true
-      }
-    });
-
-    gsap.to('.newsletter-header .newsletter-title', {
-      yPercent: -30,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.newsletter',
-        start: 'top bottom',
-        end: 'top top',
-        scrub: true
-      }
-    });
-
-    /* -----------------------------------------
-       GSAP — Header fade-ins
-       ----------------------------------------- */
-    gsap.fromTo('.playbooks-header',
-      { opacity: 0, y: 24 },
-      {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: '.playbooks-header', start: 'top 88%', once: true }
-      }
-    );
-
-    gsap.fromTo('.newsletter-header',
-      { opacity: 0, y: 48, scale: 0.97 },
-      {
-        opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power2.out',
-        scrollTrigger: { trigger: '.newsletter-header', start: 'top 88%', once: true }
-      }
-    );
-
-    /* -----------------------------------------
-       GSAP — Content parallax (all viewports)
-       ----------------------------------------- */
-    gsap.to('.playbooks-window', {
-      yPercent: -6, ease: 'none',
-      scrollTrigger: { trigger: '.playbooks', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-
-    gsap.to('.issues-window', {
-      yPercent: -6, ease: 'none',
-      scrollTrigger: { trigger: '.newsletter', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-
-    gsap.to('.subscribe-row', {
-      yPercent: -8, ease: 'none',
-      scrollTrigger: { trigger: '.newsletter', start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-
-    gsap.to('.divisions', {
-      yPercent: -15, opacity: 0.7, ease: 'none',
-      scrollTrigger: { trigger: '.divisions', start: 'top 60%', end: 'bottom top', scrub: true }
-    });
-
-    /* -----------------------------------------
-       GSAP — Staggered card reveals (mobile only)
-       ----------------------------------------- */
-    if (isMobile) {
-      gsap.fromTo('.playbook-card',
-        { opacity: 0, y: 32 },
-        {
-          opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.12,
-          scrollTrigger: { trigger: '.playbooks-window', start: 'top 80%', once: true }
-        }
-      );
-
-      gsap.fromTo('.issue-card',
-        { opacity: 0, y: 32 },
-        {
-          opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', stagger: 0.15,
-          scrollTrigger: { trigger: '.issues-window', start: 'top 80%', once: true }
-        }
-      );
-
-    }
-
-
   } else {
-    // If reduced motion, show everything immediately and disable pins
-    document.querySelectorAll('.hero-stagger').forEach(function(el) {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      el.classList.add('visible');
-    });
-    document.querySelectorAll('.playbook-card, .issue-card, .playbooks-header, .newsletter-header').forEach(function(el) {
+    document.querySelectorAll('.reveal,.reveal-stagger').forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
   }
 
-  /* -----------------------------------------
-     IntersectionObserver fallback for reveals
-     ----------------------------------------- */
-  if (prefersReducedMotion) {
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      el.classList.add('visible');
-    });
-  }
-
-  /* -----------------------------------------
-     LIGHTBOX — unified viewer for issues + playbooks
-     ----------------------------------------- */
-  var lightbox = document.getElementById('lightbox');
-  var lightboxImg = document.getElementById('lightboxImg');
-  var lightboxLabel = document.getElementById('lightboxLabel');
-  var lightboxPageCount = document.getElementById('lightboxPageCount');
-  var lightboxClose = document.getElementById('lightboxClose');
-  var lightboxPrev = document.getElementById('lightboxPrev');
-  var lightboxNext = document.getElementById('lightboxNext');
-
-  // Newsletter issues data
-  var issuesData = [
-    { label: 'Rough Cut — Issue 8 (Skills Special)', folder: 'assets/newsletter/RC8/', pages: 17 },
-    { label: 'Rough Cut — Issue 7.5', folder: 'assets/newsletter/RC7.5/', pages: 4 },
-    { label: 'Rough Cut — Issue 7', folder: 'assets/newsletter/RC7/', pages: 4 },
-    { label: 'Rough Cut — Issue 6', folder: 'assets/newsletter/RC6/', pages: 7 },
-    { label: 'Rough Cut — Issue 5', folder: 'assets/newsletter/RC5/', pages: 4 },
-    { label: 'Rough Cut — Issue 4', folder: 'assets/newsletter/RC4/', pages: 5 },
-    { label: 'Rough Cut — Issue 3', folder: 'assets/newsletter/RC3/', pages: 3 },
-    { label: 'Rough Cut — Issue 2', folder: 'assets/newsletter/RC2/', pages: 3 }
+  // Lightbox
+  const issuesData = [
+    {label:'Rough Cut — Issue 8 (Skills Special)',folder:'assets/newsletter/RC8/',pages:17},
+    {label:'Rough Cut — Issue 7.5',folder:'assets/newsletter/RC7.5/',pages:4},
+    {label:'Rough Cut — Issue 7',folder:'assets/newsletter/RC7/',pages:4},
+    {label:'Rough Cut — Issue 6',folder:'assets/newsletter/RC6/',pages:7},
+    {label:'Rough Cut — Issue 5',folder:'assets/newsletter/RC5/',pages:4},
+    {label:'Rough Cut — Issue 4',folder:'assets/newsletter/RC4/',pages:5},
+    {label:'Rough Cut — Issue 3',folder:'assets/newsletter/RC3/',pages:3},
+    {label:'Rough Cut — Issue 2',folder:'assets/newsletter/RC2/',pages:3}
   ];
-
-  // Playbook resources data
-  var resourcesData = [
-    { label: 'Blueprint for AI Filmmaking', folder: 'assets/playbooks/ai-filmmaking/', pages: 10 },
-    { label: 'AI Tools You\'ll Actually Use', folder: 'assets/playbooks/ai-tools/', pages: 13 },
-    { label: 'Executive AI Framework 2026', folder: 'assets/playbooks/executive-framework/', pages: 16 },
-    { label: 'AI Filmmaking Blueprint — Part 2', folder: 'assets/playbooks/ai-filmmaking-pt2/', pages: 12 },
-    { label: 'Skills Special — RC8', folder: 'assets/newsletter/RC8/', pages: 17 }
+  const resourcesData = [
+    {label:'Blueprint for AI Filmmaking',folder:'assets/playbooks/ai-filmmaking/',pages:10},
+    {label:"AI Tools You'll Actually Use",folder:'assets/playbooks/ai-tools/',pages:13},
+    {label:'Executive AI Framework 2026',folder:'assets/playbooks/executive-framework/',pages:16},
+    {label:'AI Filmmaking Blueprint — Part 2',folder:'assets/playbooks/ai-filmmaking-pt2/',pages:12},
+    {label:'Skills Special — RC8',folder:'assets/newsletter/RC8/',pages:17}
   ];
+  let activeData=null,activeIdx=0,currentPage=0;
+  const lightbox=document.getElementById('lightbox'),lightboxImg=document.getElementById('lightboxImg'),lightboxLabel=document.getElementById('lightboxLabel'),lightboxPages=document.getElementById('lightboxPages');
 
-  // Shared lightbox state
-  var activeData = null; // points to issuesData or resourcesData
-  var activeIdx = 0;
-  var currentPage = 0;
+  function updateLB(){const i=activeData[activeIdx];lightboxImg.src=i.folder+(currentPage+1)+'.png';lightboxLabel.textContent=i.label;lightboxPages.textContent=(currentPage+1)+' / '+i.pages}
+  function openLB(d,i){activeData=d;activeIdx=i;currentPage=0;updateLB();lightbox.classList.add('active');document.body.style.overflow='hidden'}
+  function closeLB(){lightbox.classList.remove('active');document.body.style.overflow=''}
+  function nextP(){currentPage=(currentPage+1)%activeData[activeIdx].pages;updateLB()}
+  function prevP(){const p=activeData[activeIdx].pages;currentPage=(currentPage-1+p)%p;updateLB()}
 
-  function updateLightbox() {
-    var item = activeData[activeIdx];
-    lightboxImg.src = item.folder + (currentPage + 1) + '.png';
-    lightboxLabel.textContent = item.label;
-    lightboxPageCount.textContent = (currentPage + 1) + ' / ' + item.pages;
-  }
+  document.querySelectorAll('.issue-row').forEach(r=>r.addEventListener('click',()=>openLB(issuesData,parseInt(r.dataset.issue))));
+  document.querySelectorAll('.playbook-card').forEach(c=>c.addEventListener('click',()=>openLB(resourcesData,parseInt(c.dataset.resource))));
+  document.getElementById('lightboxClose').addEventListener('click',closeLB);
+  document.getElementById('lightboxNext').addEventListener('click',nextP);
+  document.getElementById('lightboxPrev').addEventListener('click',prevP);
+  lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLB()});
+  document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('active'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')nextP();if(e.key==='ArrowLeft')prevP()});
 
-  function openLightbox(dataSource, idx) {
-    activeData = dataSource;
-    activeIdx = idx;
-    currentPage = 0;
-    updateLightbox();
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  function nextPage() {
-    var item = activeData[activeIdx];
-    currentPage = (currentPage + 1) % item.pages;
-    updateLightbox();
-  }
-
-  function prevPage() {
-    var item = activeData[activeIdx];
-    currentPage = (currentPage - 1 + item.pages) % item.pages;
-    updateLightbox();
-  }
-
-  // Click issue cards to open
-  document.querySelectorAll('.issue-card').forEach(function(card) {
-    card.addEventListener('click', function() {
-      openLightbox(issuesData, parseInt(card.dataset.issue));
-    });
-  });
-
-  // Click playbook cards to open
-  document.querySelectorAll('.playbook-card').forEach(function(card) {
-    card.addEventListener('click', function() {
-      openLightbox(resourcesData, parseInt(card.dataset.resource));
-    });
-  });
-
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightboxNext.addEventListener('click', nextPage);
-  lightboxPrev.addEventListener('click', prevPage);
-
-  // Close on backdrop click
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  // Keyboard nav
-  document.addEventListener('keydown', function(e) {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextPage();
-    if (e.key === 'ArrowLeft') prevPage();
-  });
-
-  /* -----------------------------------------
-     ISSUES STRIP — scroll progress bar
-     ----------------------------------------- */
-  var issuesStripEl = document.getElementById('issuesStrip');
-  var issuesProgressFill = document.getElementById('issuesProgressFill');
-
-  if (issuesStripEl && issuesProgressFill) {
-    issuesStripEl.addEventListener('scroll', function() {
-      var maxScroll = issuesStripEl.scrollWidth - issuesStripEl.clientWidth;
-      if (maxScroll > 0) {
-        var pct = (issuesStripEl.scrollLeft / maxScroll) * 100;
-        // Progress fill width: min 15% (thumb size), slides to right
-        var fillWidth = 30;
-        var leftPos = (pct / 100) * (100 - fillWidth);
-        issuesProgressFill.style.width = fillWidth + '%';
-        issuesProgressFill.style.marginLeft = leftPos + '%';
-      }
-    }, { passive: true });
-
-    // Newsletter arrow handlers
-    var issuesPrev = document.getElementById('issuesPrev');
-    var issuesNext = document.getElementById('issuesNext');
-
-    function getIssueCardWidth() {
-      var card = issuesStripEl.querySelector('.issue-card');
-      if (!card) return 200;
-      return card.offsetWidth + 16;
-    }
-
-    if (issuesPrev) {
-      issuesPrev.addEventListener('click', function() {
-        issuesStripEl.scrollBy({ left: -getIssueCardWidth(), behavior: 'smooth' });
-      });
-    }
-
-    if (issuesNext) {
-      issuesNext.addEventListener('click', function() {
-        issuesStripEl.scrollBy({ left: getIssueCardWidth(), behavior: 'smooth' });
-      });
-    }
-  }
-
-  /* -----------------------------------------
-     PLAYBOOKS STRIP — carousel arrows + progress
-     ----------------------------------------- */
-  var playbooksStripEl = document.getElementById('playbooksStrip');
-  var playbooksProgressFill = document.getElementById('playbooksProgressFill');
-  var playbooksPrev = document.getElementById('playbooksPrev');
-  var playbooksNext = document.getElementById('playbooksNext');
-
-  if (playbooksStripEl) {
-    // Progress bar on scroll
-    playbooksStripEl.addEventListener('scroll', function() {
-      var maxScroll = playbooksStripEl.scrollWidth - playbooksStripEl.clientWidth;
-      if (maxScroll > 0 && playbooksProgressFill) {
-        var pct = (playbooksStripEl.scrollLeft / maxScroll) * 100;
-        var fillWidth = 30;
-        var leftPos = (pct / 100) * (100 - fillWidth);
-        playbooksProgressFill.style.width = fillWidth + '%';
-        playbooksProgressFill.style.marginLeft = leftPos + '%';
-      }
-    }, { passive: true });
-
-    // Arrow click — scroll by one card width
-    function getPlaybookCardWidth() {
-      var card = playbooksStripEl.querySelector('.playbook-card');
-      if (!card) return 300;
-      return card.offsetWidth + 20; // card width + gap
-    }
-
-    if (playbooksPrev) {
-      playbooksPrev.addEventListener('click', function() {
-        playbooksStripEl.scrollBy({ left: -getPlaybookCardWidth(), behavior: 'smooth' });
-      });
-    }
-
-    if (playbooksNext) {
-      playbooksNext.addEventListener('click', function() {
-        playbooksStripEl.scrollBy({ left: getPlaybookCardWidth(), behavior: 'smooth' });
-      });
-    }
-  }
-
-  /* -----------------------------------------
-     SMOOTH SCROLL for anchor links
-     ----------------------------------------- */
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        var offset = nav.offsetHeight;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-      }
-    });
-  });
-
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-70,behavior:prefersRM?'auto':'smooth'})}}));
 })();
 </script>
 </body>
