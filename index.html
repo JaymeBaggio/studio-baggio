@@ -1552,25 +1552,6 @@ img {
         <div class="product-panel-inner">
           <div class="product-text">
             <span class="product-number">01</span>
-            <h3 class="product-name">Calm Authority</h3>
-            <p class="product-desc">A true tone-of-voice writing system that maps how you write, researches what's relevant, and turns ideas into publish-ready drafts.</p>
-            <div class="product-status">
-              <span class="dot live"></span>
-              <span class="status-text">Live</span>
-            </div>
-            <a href="https://calmauthority.ai/" target="_blank" rel="noopener" class="product-link">Visit Site &rarr;</a>
-          </div>
-          <div class="product-visual">
-            <img src="assets/products/calm-authority.png" alt="Calm Authority" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 02 -->
-      <div class="product-panel">
-        <div class="product-panel-inner">
-          <div class="product-text">
-            <span class="product-number">02</span>
             <h3 class="product-name">/Last30Days</h3>
             <p class="product-desc">An intelligent research assistant that surfaces the most relevant developments from the past 30 days across any topic.</p>
             <div class="product-status">
@@ -1585,11 +1566,49 @@ img {
         </div>
       </div>
 
+      <!-- Product 02 -->
+      <div class="product-panel">
+        <div class="product-panel-inner">
+          <div class="product-text">
+            <span class="product-number">02</span>
+            <h3 class="product-name">Fire Source</h3>
+            <p class="product-desc">An AI research engine that transforms queries into structured intelligence briefs with verified sources and tailored prompts.</p>
+            <div class="product-status">
+              <span class="dot live"></span>
+              <span class="status-text">Live</span>
+            </div>
+            <a href="https://fire-source.vercel.app/" target="_blank" rel="noopener" class="product-link">Visit Site &rarr;</a>
+          </div>
+          <div class="product-visual">
+            <img src="assets/products/fire-source.png" alt="Fire Source" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+
       <!-- Product 03 -->
       <div class="product-panel">
         <div class="product-panel-inner">
           <div class="product-text">
             <span class="product-number">03</span>
+            <h3 class="product-name">Calm Authority</h3>
+            <p class="product-desc">A true tone-of-voice writing system that maps how you write, researches what's relevant, and turns ideas into publish-ready drafts.</p>
+            <div class="product-status">
+              <span class="dot live"></span>
+              <span class="status-text">Live</span>
+            </div>
+            <a href="https://calmauthority.ai/" target="_blank" rel="noopener" class="product-link">Visit Site &rarr;</a>
+          </div>
+          <div class="product-visual">
+            <img src="assets/products/calm-authority.png" alt="Calm Authority" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 04 -->
+      <div class="product-panel">
+        <div class="product-panel-inner">
+          <div class="product-text">
+            <span class="product-number">04</span>
             <h3 class="product-name">The Twentiad</h3>
             <p class="product-desc">A comprehensive digital platform exploring three generations of twenty-sized gas carriers — research, analysis, and industry insight.</p>
             <div class="product-status">
@@ -1603,42 +1622,6 @@ img {
         </div>
       </div>
 
-      <!-- Product 04 -->
-      <div class="product-panel">
-        <div class="product-panel-inner">
-          <div class="product-text">
-            <span class="product-number">04</span>
-            <h3 class="product-name">AI Newsreader</h3>
-            <p class="product-desc">A smart newsreader that curates, summarises, and surfaces the stories that matter — powered by AI to cut through the noise.</p>
-            <div class="product-status">
-              <span class="dot"></span>
-              <span class="status-text">Coming Soon</span>
-            </div>
-          </div>
-          <div class="product-visual">
-            <img src="assets/products/ai-newsreader.png" alt="AI Newsreader" class="product-gradient" style="width:100%;height:100%;object-fit:contain;padding:40px;background:#111;">
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 05 -->
-      <div class="product-panel">
-        <div class="product-panel-inner">
-          <div class="product-text">
-            <span class="product-number">05</span>
-            <h3 class="product-name">Leverage</h3>
-            <p class="product-desc">AI-driven coaching & programming platform that helps trainers leverage their expertise at scale with personalised training programs.</p>
-            <div class="product-status">
-              <span class="dot"></span>
-              <span class="status-text">Coming Soon</span>
-            </div>
-          </div>
-          <div class="product-visual">
-            <img src="assets/products/leverage.png" alt="Leverage" class="product-gradient" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-        </div>
-      </div>
-
     </div><!-- /products-track -->
   </div><!-- /products-pin -->
 
@@ -1646,7 +1629,7 @@ img {
     <div class="products-progress-bar">
       <div class="products-progress-fill" id="progressFill"></div>
     </div>
-    <div class="products-counter" id="productsCounter">01 / 05</div>
+    <div class="products-counter" id="productsCounter">01 / 04</div>
   </div>
 </section>
 
@@ -1792,7 +1775,7 @@ img {
               // Counter
               var idx = Math.min(Math.floor(self.progress * totalPanels), totalPanels - 1);
               var num = String(idx + 1).padStart(2, '0');
-              productsCounter.textContent = num + ' / 0' + totalPanels;
+              productsCounter.textContent = num + ' / ' + String(totalPanels).padStart(2, '0');
             }
           }
         });
