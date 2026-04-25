@@ -102,19 +102,16 @@ a{color:inherit;text-decoration:none}
 .playbooks h2{font-family:var(--display);font-size:clamp(36px,3.5vw,48px);font-weight:300;letter-spacing:0.12em;text-transform:uppercase}
 .playbooks-sub{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(0,0,0,0.35)}
 
-.playbooks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:28px}
-.playbooks-grid--bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.playbooks-grid--bottom .playbook-card:nth-child(1){grid-column:1/2}
-.playbooks-grid--bottom .playbook-card:nth-child(2){grid-column:2/3}
+.playbooks-scroll{display:flex;gap:32px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:24px;scrollbar-width:none}
+.playbooks-scroll::-webkit-scrollbar{display:none}
 
-.playbook-card{background:#fff;border:1px solid rgba(0,0,0,0.05);cursor:pointer;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.5s ease}
-.playbook-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,0.1)}
-.playbook-img{height:220px;background:#F2F2F0;overflow:hidden}
-.playbook-img img{width:100%;height:100%;object-fit:cover}
-.playbook-body{padding:32px}
-.playbook-meta{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.15em;color:rgba(0,0,0,0.3);margin-bottom:16px;text-transform:uppercase}
-.playbook-title{font-family:var(--display);font-size:18px;font-weight:300;letter-spacing:0.04em;margin-bottom:10px}
-.playbook-desc{font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(0,0,0,0.38);margin-bottom:20px}
+.playbook-card{flex:0 0 280px;scroll-snap-align:start;cursor:pointer;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
+.playbook-card:hover{transform:translateY(-6px)}
+.playbook-img{height:380px;background:#F2F2F0;overflow:hidden;border:1px solid rgba(0,0,0,0.05)}
+.playbook-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.playbook-body{padding:20px 0}
+.playbook-meta{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.15em;color:rgba(0,0,0,0.3);margin-bottom:10px;text-transform:uppercase}
+.playbook-title{font-family:var(--display);font-size:16px;font-weight:300;letter-spacing:0.04em;margin-bottom:8px}
 .playbook-cta{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.4)}
 
 /* ===== NEWSLETTER ===== */
@@ -196,10 +193,9 @@ a{color:inherit;text-decoration:none}
   .work-info{flex:1 1 200px}
   .work-status{flex:0 0 60px}
   .playbooks{padding:60px 24px 0}
-  .playbooks-grid{grid-template-columns:1fr;gap:20px}
-  .playbooks-grid--bottom{grid-template-columns:1fr;gap:20px}
-  .playbooks-grid--bottom .playbook-card:nth-child(1),
-  .playbooks-grid--bottom .playbook-card:nth-child(2){grid-column:auto}
+  .playbooks-scroll{gap:20px}
+  .playbook-card{flex:0 0 220px}
+  .playbook-img{height:300px}
   .newsletter{padding:60px 24px 0}
   .newsletter-split{flex-direction:column;gap:40px}
   .newsletter-left{flex:auto}
@@ -319,7 +315,7 @@ a{color:inherit;text-decoration:none}
     <div class="work-img-wrap"><img src="assets/products/last30days.png" alt="/Last30Days screenshot" loading="lazy"></div>
     <div class="work-info">
       <h3 class="work-name">/Last30Days</h3>
-      <p class="work-desc">An intelligent research assistant that surfaces the most relevant developments from the past 30 days across any topic.</p>
+      <p class="work-desc">Real-time social research across Reddit, X, YouTube, TikTok, Instagram and the web. One query, ranked report with sources and platform breakdown, under 60 seconds.</p>
     </div>
     <span class="work-status">
       <span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span>
@@ -332,7 +328,7 @@ a{color:inherit;text-decoration:none}
     <div class="work-img-wrap"><img src="assets/products/fire-source.png" alt="Fire Source screenshot" loading="lazy"></div>
     <div class="work-info">
       <h3 class="work-name">Fire Source</h3>
-      <p class="work-desc">An AI research engine that transforms queries into structured intelligence briefs with verified sources and tailored prompts.</p>
+      <p class="work-desc">Scans ~96% of the open web and answers commercial questions in three minutes. Stack follow-ups to find the angle nobody else has. Cited, complete, with prompts to turn intel into pitches, emails, or strategy notes.</p>
     </div>
     <span class="work-status">
       <span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span>
@@ -392,14 +388,12 @@ a{color:inherit;text-decoration:none}
     <span class="playbooks-sub">Frameworks we use. Yours to keep.</span>
   </div>
 
-  <!-- Top row: 3 cards -->
-  <div class="playbooks-grid">
+  <div class="playbooks-scroll">
     <div class="playbook-card reveal" data-resource="0">
       <div class="playbook-img"><img src="assets/playbooks/ai-filmmaking/1.png" alt="Blueprint for AI Filmmaking" loading="lazy"></div>
       <div class="playbook-body">
         <p class="playbook-meta">01 &mdash; 10 pages</p>
         <h3 class="playbook-title">Blueprint for AI Filmmaking</h3>
-        <p class="playbook-desc">The complete workflow from concept to published film — using AI at every stage.</p>
         <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
@@ -408,7 +402,6 @@ a{color:inherit;text-decoration:none}
       <div class="playbook-body">
         <p class="playbook-meta">02 &mdash; 13 pages</p>
         <h3 class="playbook-title">AI Tools You'll Actually Use</h3>
-        <p class="playbook-desc">A curated stack of tools that save real time. No hype — just what works.</p>
         <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
@@ -417,20 +410,14 @@ a{color:inherit;text-decoration:none}
       <div class="playbook-body">
         <p class="playbook-meta">03 &mdash; 16 pages</p>
         <h3 class="playbook-title">Executive AI Framework 2026</h3>
-        <p class="playbook-desc">How to build an AI operating system your whole team can use — not just the early adopters.</p>
         <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
-  </div>
-
-  <!-- Bottom row: 2 cards centred -->
-  <div class="playbooks-grid--bottom">
     <div class="playbook-card reveal" data-resource="3">
       <div class="playbook-img"><img src="assets/playbooks/ai-filmmaking-pt2/1.png" alt="AI Filmmaking Part 2" loading="lazy"></div>
       <div class="playbook-body">
         <p class="playbook-meta">04 &mdash; 12 pages</p>
         <h3 class="playbook-title">AI Filmmaking Blueprint — Part 2</h3>
-        <p class="playbook-desc">Advanced techniques and production workflows — picking up where the blueprint left off.</p>
         <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
@@ -439,7 +426,6 @@ a{color:inherit;text-decoration:none}
       <div class="playbook-body">
         <p class="playbook-meta">05 &mdash; 17 pages</p>
         <h3 class="playbook-title">Skills Special — RC8</h3>
-        <p class="playbook-desc">What a skill is, why it matters, and why businesses using skills will move faster.</p>
         <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
@@ -465,13 +451,13 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="newsletter-right">
       <div class="issue-row reveal" data-issue="0"><div class="issue-info"><span class="issue-name">RC8</span><span class="issue-label">Skills Special</span></div><span class="issue-pages">17 pages</span></div>
-      <div class="issue-row reveal" data-issue="1"><div class="issue-info"><span class="issue-name">RC7.5</span><span class="issue-label">Quick Dispatch</span></div><span class="issue-pages">4 pages</span></div>
-      <div class="issue-row reveal" data-issue="2"><div class="issue-info"><span class="issue-name">RC7</span><span class="issue-label">AI Tools</span></div><span class="issue-pages">4 pages</span></div>
-      <div class="issue-row reveal" data-issue="3"><div class="issue-info"><span class="issue-name">RC6</span><span class="issue-label">Framework</span></div><span class="issue-pages">7 pages</span></div>
-      <div class="issue-row reveal" data-issue="4"><div class="issue-info"><span class="issue-name">RC5</span><span class="issue-label">AI Workflows</span></div><span class="issue-pages">4 pages</span></div>
-      <div class="issue-row reveal" data-issue="5"><div class="issue-info"><span class="issue-name">RC4</span><span class="issue-label">Building in Public</span></div><span class="issue-pages">5 pages</span></div>
-      <div class="issue-row reveal" data-issue="6"><div class="issue-info"><span class="issue-name">RC3</span><span class="issue-label">First Principles</span></div><span class="issue-pages">3 pages</span></div>
-      <div class="issue-row reveal" data-issue="7"><div class="issue-info"><span class="issue-name">RC2</span><span class="issue-label">The Beginning</span></div><span class="issue-pages">3 pages</span></div>
+      <div class="issue-row reveal" data-issue="1"><div class="issue-info"><span class="issue-name">RC7.5</span><span class="issue-label">The Honest Version of AI Adoption</span></div><span class="issue-pages">4 pages</span></div>
+      <div class="issue-row reveal" data-issue="2"><div class="issue-info"><span class="issue-name">RC7</span><span class="issue-label">ChatGPT for Business Owners</span></div><span class="issue-pages">4 pages</span></div>
+      <div class="issue-row reveal" data-issue="3"><div class="issue-info"><span class="issue-name">RC6</span><span class="issue-label">AI at Work &amp; 2026 Predictions</span></div><span class="issue-pages">7 pages</span></div>
+      <div class="issue-row reveal" data-issue="4"><div class="issue-info"><span class="issue-name">RC5</span><span class="issue-label">Gemini 3 &amp; Pomelli</span></div><span class="issue-pages">4 pages</span></div>
+      <div class="issue-row reveal" data-issue="5"><div class="issue-info"><span class="issue-name">RC4</span><span class="issue-label">ChatGPT Atlas &amp; AI Filmmaking</span></div><span class="issue-pages">5 pages</span></div>
+      <div class="issue-row reveal" data-issue="6"><div class="issue-info"><span class="issue-name">RC3</span><span class="issue-label">OpenAI Dev Day &amp; Sora 2</span></div><span class="issue-pages">3 pages</span></div>
+      <div class="issue-row reveal" data-issue="7"><div class="issue-info"><span class="issue-name">RC2</span><span class="issue-label">YouTube Creator Updates</span></div><span class="issue-pages">3 pages</span></div>
     </div>
   </div>
 </section>
