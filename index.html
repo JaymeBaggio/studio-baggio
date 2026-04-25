@@ -7,121 +7,147 @@
 <meta name="description" content="AI Strategy & Development. Building tools that turn expertise into systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500&family=Cormorant+Garamond:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#FAFAFA;--dark:#0C0C0C;--text:#1A1A1A;--dim:rgba(0,0,0,0.35);
-  --ghost:rgba(0,0,0,0.22);--rule:rgba(0,0,0,0.08);--micro:rgba(0,0,0,0.18);
-  --serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+  --bg:#FAFAFA;
+  --text:#1A1A1A;
+  --dim:rgba(0,0,0,0.35);
+  --micro:rgba(0,0,0,0.38);
+  --rule:rgba(0,0,0,0.07);
+  --display:'Archivo',sans-serif;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
 }
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 ::selection{background:rgba(0,0,0,0.08)}
 
-/* Micrographic runner */
-.micro-runner{overflow:hidden;padding:0 80px}
-.micro-runner p{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.35em;color:var(--ghost);white-space:nowrap;margin:0}
+/* ===== MICROGRAPHIC RUNNERS ===== */
+.micro-runner{overflow:hidden;padding:14px 80px;position:relative}
+.micro-runner-track{display:flex;white-space:nowrap;will-change:transform}
+.micro-runner-track span{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.35em;color:var(--micro);text-transform:uppercase;padding-right:40px;flex-shrink:0}
 
-/* Reveal animation base */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-stagger{opacity:0;transform:translateY(20px)}
+@keyframes marquee-left{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+@keyframes marquee-right{
+  0%{transform:translateX(-50%)}
+  100%{transform:translateX(0)}
+}
+.micro-runner--left .micro-runner-track{animation:marquee-left 60s linear infinite}
+.micro-runner--right .micro-runner-track{animation:marquee-right 60s linear infinite}
 
 /* ===== NAV ===== */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:28px 80px;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:background 0.4s ease}
-.nav.dark-mode{background:rgba(12,12,12,0.9)}
-.nav-left,.nav-right{display:flex;gap:32px}
-.nav a,.nav-center{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.4);transition:color 0.3s ease}
+.nav{display:flex;justify-content:center;align-items:center;padding:28px 80px;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav-left,.nav-right{display:flex;gap:32px;flex:1}
+.nav-right{justify-content:flex-end}
+.nav a{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.35);transition:color 0.3s ease}
 .nav a:hover{color:var(--text)}
-.nav.dark-mode a{color:rgba(255,255,255,0.4)}
-.nav.dark-mode a:hover{color:#fff}
-.nav-center{font-family:var(--serif);font-size:13px;font-weight:400;letter-spacing:0.35em;color:var(--text)}
-.nav.dark-mode .nav-center{color:#fff}
+.nav-center{font-family:var(--display);font-size:12px;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:var(--text);flex-shrink:0}
 
 /* ===== HERO ===== */
-.hero{min-height:100vh;display:flex;align-items:center;padding:140px 80px 80px;position:relative}
+.hero{min-height:100vh;display:flex;align-items:center;padding:160px 80px 80px;position:relative}
+.hero-inner{display:flex;align-items:center;width:100%}
 .hero-left{flex:1}
-.hero-label{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:48px}
-.hero h1{font-family:var(--serif);font-size:clamp(48px,5vw,64px);font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#0D0D0D;line-height:1.2}
-.hero-micro-right{flex:0 0 420px;padding:40px 0;text-align:right}
-.hero-micro-right p{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.18em;line-height:2.8;color:rgba(0,0,0,0.2);margin:0;text-transform:uppercase}
+.hero-label{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,0,0,0.3);margin-bottom:48px;opacity:0}
+.hero-name{font-family:var(--display);font-size:clamp(48px,5.5vw,72px);font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:var(--text);line-height:1.15}
+.hero-name .letter{display:inline-block;opacity:0;filter:blur(8px)}
+.hero-micro-right{flex:0 0 400px;padding:40px 0;text-align:right}
+.hero-micro-right p{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.18em;line-height:2.8;color:rgba(0,0,0,0.38);margin:0;text-transform:uppercase;opacity:0;transform:translateY(8px)}
 .hero-bottom{position:absolute;bottom:32px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
-.hero-bottom p{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.12)}
+.hero-bottom p{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.35)}
 
 /* ===== DIVISIONS ===== */
 .divisions{display:flex;margin:0 80px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .division{flex:1;padding:18px 0;display:flex;align-items:center;gap:16px}
 .division:last-child{padding-left:40px}
-.division-num{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(0,0,0,0.12)}
-.division-label{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.3)}
+.division-num{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.15em;color:rgba(0,0,0,0.35)}
+.division-label{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.35)}
 .divisions-sep{width:1px;background:rgba(0,0,0,0.06)}
 
-/* ===== WORK (DARK) ===== */
-.work{background:var(--dark);padding:140px 80px 120px;margin-top:160px}
-.work-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:100px}
-.work h2{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.9)}
-.work-count{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(255,255,255,0.25)}
-.work-item{border-top:1px solid rgba(255,255,255,0.06);padding:48px 0;display:flex;align-items:flex-start;cursor:pointer;transition:padding-left 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
-.work-item:last-child{border-bottom:1px solid rgba(255,255,255,0.06)}
+/* ===== SELECTED WORK ===== */
+.work{padding:160px 80px 120px}
+.work-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px}
+.work h2{font-family:var(--display);font-size:clamp(36px,3.5vw,48px);font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:var(--text)}
+.work-count{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.15em;color:rgba(0,0,0,0.3)}
+
+.work-item{border-top:1px solid var(--rule);padding:40px 0;display:flex;align-items:center;gap:32px;cursor:pointer;transition:padding-left 0.4s cubic-bezier(0.25,0.46,0.45,0.94);text-decoration:none;color:inherit}
+.work-item:last-child{border-bottom:1px solid var(--rule)}
 .work-item:hover{padding-left:16px}
-.work-num{flex:0 0 80px;font-family:var(--mono);font-size:8px;font-weight:300;color:rgba(255,255,255,0.2)}
-.work-name{flex:0 0 280px;font-family:var(--serif);font-size:clamp(24px,2.5vw,32px);font-weight:400;letter-spacing:0.06em;color:rgba(255,255,255,0.85)}
-.work-desc{flex:1;font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.75;color:rgba(255,255,255,0.4);padding-top:8px}
-.work-status{flex:0 0 100px;text-align:right;padding-top:8px}
-.work-live{display:inline-flex;align-items:center;gap:6px;margin-bottom:8px}
-.work-live-dot{width:5px;height:5px;border-radius:50%;background:#fff}
-.work-live-text{font-family:var(--sans);font-size:8px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
-.work-arrow{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);opacity:0;transition:opacity 0.3s ease}
+
+.work-num{flex:0 0 48px;font-family:var(--mono);font-size:8px;font-weight:300;letter-spacing:0.1em;color:rgba(0,0,0,0.25)}
+
+.work-img-wrap{flex:0 0 320px;height:200px;border-radius:4px;overflow:hidden}
+.work-img-wrap img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);will-change:transform}
+
+.work-info{flex:1;min-width:0}
+.work-name{font-family:var(--display);font-size:clamp(20px,2vw,28px);font-weight:300;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:var(--text)}
+.work-desc{font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.75;color:rgba(0,0,0,0.4);max-width:480px}
+
+.work-status{flex:0 0 100px;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.work-live{display:inline-flex;align-items:center;gap:6px}
+.work-live-dot{width:5px;height:5px;border-radius:50%;background:var(--text)}
+.work-live-text{font-family:var(--sans);font-size:8px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.35)}
+.work-arrow{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,0,0,0.35);opacity:0;transition:opacity 0.3s ease}
 .work-item:hover .work-arrow{opacity:1}
 
 /* ===== PLAYBOOKS ===== */
-.playbooks{padding:200px 80px 0}
-.playbooks-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px}
-.playbooks h2{font-family:var(--serif);font-size:clamp(36px,4vw,48px);font-weight:300;letter-spacing:0.12em;text-transform:uppercase}
-.playbooks-sub{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(0,0,0,0.3)}
-.playbooks-grid{display:flex;gap:32px;align-items:flex-start}
-.playbook-card{flex:1;background:#fff;box-shadow:0 16px 56px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.03);cursor:pointer;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.5s ease}
+.playbooks{padding:80px 80px 0}
+.playbooks-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+.playbooks h2{font-family:var(--display);font-size:clamp(36px,3.5vw,48px);font-weight:300;letter-spacing:0.12em;text-transform:uppercase}
+.playbooks-sub{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(0,0,0,0.35)}
+
+.playbooks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:28px}
+.playbooks-grid--bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.playbooks-grid--bottom .playbook-card:nth-child(1){grid-column:1/2}
+.playbooks-grid--bottom .playbook-card:nth-child(2){grid-column:2/3}
+
+.playbook-card{background:#fff;border:1px solid rgba(0,0,0,0.05);cursor:pointer;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.5s ease}
 .playbook-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(0,0,0,0.1)}
-.playbook-card:nth-child(2){margin-top:64px}
-.playbook-card:nth-child(3){margin-top:128px}
-.playbook-img{height:240px;background:#EEECEA;overflow:hidden}
+.playbook-img{height:220px;background:#F2F2F0;overflow:hidden}
 .playbook-img img{width:100%;height:100%;object-fit:cover}
-.playbook-body{padding:40px}
-.playbook-meta{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(0,0,0,0.2);margin-bottom:20px}
-.playbook-title{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:0.04em;margin-bottom:10px}
-.playbook-desc{font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(0,0,0,0.35);margin-bottom:24px}
-.playbook-cta{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase}
+.playbook-body{padding:32px}
+.playbook-meta{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.15em;color:rgba(0,0,0,0.3);margin-bottom:16px;text-transform:uppercase}
+.playbook-title{font-family:var(--display);font-size:18px;font-weight:300;letter-spacing:0.04em;margin-bottom:10px}
+.playbook-desc{font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.65;color:rgba(0,0,0,0.38);margin-bottom:20px}
+.playbook-cta{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.4)}
 
 /* ===== NEWSLETTER ===== */
-.newsletter{padding:240px 80px 0}
+.newsletter{padding:80px 80px 0}
 .newsletter-split{display:flex;gap:120px;border-top:1px solid var(--rule);padding-top:80px}
 .newsletter-left{flex:0 0 420px}
-.newsletter-left .micro-label{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(0,0,0,0.1);margin-bottom:16px}
-.newsletter h2{font-family:var(--serif);font-size:clamp(48px,5vw,72px);font-weight:300;letter-spacing:0.1em;text-transform:uppercase;line-height:1.05;margin-bottom:40px}
+.newsletter-left .micro-label{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.35);margin-bottom:16px;text-transform:uppercase}
+.newsletter h2{font-family:var(--serif);font-size:clamp(48px,5vw,72px);font-weight:300;letter-spacing:0.08em;text-transform:uppercase;line-height:1.05;margin-bottom:40px;color:var(--text)}
 .newsletter-desc{font-family:var(--sans);font-size:15px;font-weight:300;line-height:1.8;color:rgba(0,0,0,0.4);margin-bottom:32px}
-.newsletter-cta{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase}
+.newsletter-cta{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.4);transition:color 0.3s ease}
+.newsletter-cta:hover{color:var(--text)}
 .newsletter-right{flex:1;padding-top:60px}
 .issue-row{border-top:1px solid var(--rule);padding:24px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:padding-left 0.3s ease}
 .issue-row:last-child{border-bottom:1px solid var(--rule)}
 .issue-row:hover{padding-left:12px}
 .issue-info{display:flex;align-items:baseline;gap:16px}
-.issue-name{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:0.04em}
+.issue-name{font-family:var(--display);font-size:20px;font-weight:300;letter-spacing:0.06em}
 .issue-label{font-family:var(--sans);font-size:12px;font-weight:300;color:rgba(0,0,0,0.3)}
-.issue-pages{font-family:var(--mono);font-size:7px;font-weight:300;color:rgba(0,0,0,0.2)}
+.issue-pages{font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.1em;color:rgba(0,0,0,0.3)}
 
 /* ===== FOOTER ===== */
-.footer{margin:240px 80px 0}
+.footer{margin:160px 80px 0}
 .footer-inner{border-top:1px solid var(--rule);padding:32px 0 80px;display:flex;justify-content:space-between;align-items:flex-start}
-.footer-brand{font-family:var(--serif);font-size:13px;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px}
-.footer-reg{font-family:var(--mono);font-size:6px;font-weight:300;color:rgba(0,0,0,0.1);line-height:2}
-.footer-center{font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(0,0,0,0.25);text-align:center}
+.footer-brand{font-family:var(--display);font-size:12px;font-weight:300;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:12px}
+.footer-reg{font-family:var(--mono);font-size:6px;font-weight:300;letter-spacing:0.1em;color:rgba(0,0,0,0.3);line-height:2.2}
+.footer-center{font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(0,0,0,0.3);text-align:center}
 .footer-right{text-align:right}
-.footer-email{font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(0,0,0,0.25);margin-bottom:4px}
-.footer-coords{font-family:var(--mono);font-size:6px;font-weight:300;color:rgba(0,0,0,0.08)}
+.footer-email{font-family:var(--sans);font-size:10px;font-weight:300;color:rgba(0,0,0,0.3);margin-bottom:4px}
+.footer-email a{transition:color 0.3s ease}
+.footer-email a:hover{color:var(--text)}
+.footer-coords{font-family:var(--mono);font-size:6px;font-weight:300;letter-spacing:0.1em;color:rgba(0,0,0,0.25)}
 
-/* Lightbox */
+/* ===== LIGHTBOX ===== */
 .lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.35s ease}
 .lightbox.active{opacity:1;pointer-events:all}
 .lightbox-inner{position:relative;max-width:520px;width:90vw;max-height:85vh}
@@ -136,36 +162,51 @@ a{color:inherit;text-decoration:none}
 .lightbox-prev{left:-60px}
 .lightbox-next{right:-60px}
 
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(24px)}
+
+/* ===== REDUCED MOTION ===== */
 @media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  .reveal-stagger{opacity:1;transform:none}
+  .reveal{opacity:1!important;transform:none!important}
+  .hero-label{opacity:1!important}
+  .hero-name .letter{opacity:1!important;filter:none!important}
+  .hero-micro-right p{opacity:1!important;transform:none!important}
+  .micro-runner-track{animation:none!important}
+  .work-item,.issue-row{transition:none!important}
+  .playbook-card{transition:none!important}
+  .work-img-wrap img{transform:none!important}
 }
 
+/* ===== MOBILE ===== */
 @media(max-width:768px){
   .nav{padding:20px 24px}
   .nav-left,.nav-right{gap:16px}
   .hero{padding:140px 24px 80px}
-  .hero-micro-field{padding:24px}
+  .hero-inner{flex-direction:column;align-items:flex-start}
+  .hero-micro-right{flex:auto;text-align:left;padding:32px 0 0}
   .hero-bottom{left:24px;right:24px}
+  .micro-runner{padding:14px 24px}
   .divisions{margin:0 24px;flex-direction:column}
   .divisions-sep{width:100%;height:1px}
   .division:last-child{padding-left:0}
-  .work{padding:80px 24px;margin-top:80px}
-  .work-item{flex-wrap:wrap;gap:8px}
+  .work{padding:80px 24px 60px}
+  .work-item{flex-wrap:wrap;gap:16px}
   .work-num{flex:0 0 40px}
-  .work-name{flex:1 1 200px}
-  .work-desc{flex:1 1 100%;padding-top:12px}
+  .work-img-wrap{flex:1 1 100%;height:180px;order:5}
+  .work-info{flex:1 1 200px}
   .work-status{flex:0 0 60px}
-  .playbooks{padding:100px 24px 0}
-  .playbooks-grid{flex-direction:column;gap:24px}
-  .playbook-card:nth-child(2),.playbook-card:nth-child(3){margin-top:0}
-  .newsletter{padding:120px 24px 0}
+  .playbooks{padding:60px 24px 0}
+  .playbooks-grid{grid-template-columns:1fr;gap:20px}
+  .playbooks-grid--bottom{grid-template-columns:1fr;gap:20px}
+  .playbooks-grid--bottom .playbook-card:nth-child(1),
+  .playbooks-grid--bottom .playbook-card:nth-child(2){grid-column:auto}
+  .newsletter{padding:60px 24px 0}
   .newsletter-split{flex-direction:column;gap:40px}
   .newsletter-left{flex:auto}
-  .footer{margin:120px 24px 0}
-  .micro-runner{padding:0 24px}
+  .footer{margin:100px 24px 0}
   .lightbox-prev{left:8px}
   .lightbox-next{right:8px}
+  .hero-name{font-size:clamp(36px,10vw,56px)}
 }
 </style>
 </head>
@@ -178,7 +219,7 @@ a{color:inherit;text-decoration:none}
     <a href="#playbooks">Playbooks</a>
     <a href="#newsletter">Newsletter</a>
   </div>
-  <span class="nav-center">Studio Baggio</span>
+  <span class="nav-center">STUDIO BAGGIO</span>
   <div class="nav-right">
     <a href="#contact">Contact</a>
   </div>
@@ -186,147 +227,241 @@ a{color:inherit;text-decoration:none}
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-left">
-    <p class="hero-label reveal-stagger">AI Strategy &amp; Development</p>
-    <h1 class="reveal-stagger">Jayme<br>Baggio</h1>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="hero-label">AI Strategy &amp; Development</p>
+      <h1 class="hero-name" id="heroName">JAYME BAGGIO</h1>
+    </div>
+    <div class="hero-micro-right" id="heroMicro" aria-hidden="true">
+      <p>AI Strategy and Development</p>
+      <p>Studio Baggio Ltd</p>
+      <p>London, England</p>
+      <p>Company No. 16805728</p>
+      <p>Established 2025</p>
+      <p>Revision IV &middot; 2026</p>
+      <p>&mdash;</p>
+      <p>JB Management</p>
+      <p>Consultancy and Strategy</p>
+      <p>&mdash;</p>
+      <p>JB Studio</p>
+      <p>Product Lab</p>
+      <p>&mdash;</p>
+      <p>/Last30Days</p>
+      <p>Fire Source</p>
+      <p>Calm Authority</p>
+      <p>The Twentiad</p>
+    </div>
   </div>
-  <div class="hero-micro-right" aria-hidden="true">
-    <p>AI Strategy and Development<br>Studio Baggio Ltd<br>London, England<br>Company No. 16805728<br>Established 2025<br>Revision IV · 2026<br>—<br>JB Management<br>Consultancy and Strategy<br>—<br>JB Studio<br>Product Lab<br>—<br>/Last30Days<br>Fire Source<br>Calm Authority<br>The Twentiad<br>—<br>51.5074° North<br>0.1278° West<br>—<br>AI Strategy and Development</p>
+
+  <!-- Micrographic runner above name -->
+  <div class="micro-runner micro-runner--left" style="position:absolute;top:120px;left:0;right:0;padding:0 80px">
+    <div class="micro-runner-track">
+      <span>STUDIO BAGGIO &mdash;&mdash;&mdash;&mdash; AI STRATEGY &amp; DEVELOPMENT &mdash;&mdash;&mdash;&mdash; LONDON &mdash;&mdash;&mdash;&mdash; 51.5074&deg;N 0.1278&deg;W &mdash;&mdash;&mdash;&mdash; EST. 2025 &mdash;&mdash;&mdash;&mdash; REVISION IV</span>
+      <span>STUDIO BAGGIO &mdash;&mdash;&mdash;&mdash; AI STRATEGY &amp; DEVELOPMENT &mdash;&mdash;&mdash;&mdash; LONDON &mdash;&mdash;&mdash;&mdash; 51.5074&deg;N 0.1278&deg;W &mdash;&mdash;&mdash;&mdash; EST. 2025 &mdash;&mdash;&mdash;&mdash; REVISION IV</span>
+    </div>
   </div>
+
+  <!-- Micrographic runner below name -->
+  <div class="micro-runner micro-runner--right" style="position:absolute;bottom:64px;left:0;right:0;padding:0 80px">
+    <div class="micro-runner-track">
+      <span>JB MANAGEMENT &mdash;&mdash;&mdash;&mdash; CONSULTANCY &amp; STRATEGY &mdash;&mdash;&mdash;&mdash; JB STUDIO &mdash;&mdash;&mdash;&mdash; PRODUCT LAB &mdash;&mdash;&mdash;&mdash; /LAST30DAYS &mdash;&mdash;&mdash;&mdash; FIRE SOURCE &mdash;&mdash;&mdash;&mdash; CALM AUTHORITY</span>
+      <span>JB MANAGEMENT &mdash;&mdash;&mdash;&mdash; CONSULTANCY &amp; STRATEGY &mdash;&mdash;&mdash;&mdash; JB STUDIO &mdash;&mdash;&mdash;&mdash; PRODUCT LAB &mdash;&mdash;&mdash;&mdash; /LAST30DAYS &mdash;&mdash;&mdash;&mdash; FIRE SOURCE &mdash;&mdash;&mdash;&mdash; CALM AUTHORITY</span>
+    </div>
+  </div>
+
   <div class="hero-bottom">
-    <p>51.5074°N, 0.1278°W</p>
+    <p>51.5074&deg;N, 0.1278&deg;W</p>
     <p>London, 2026</p>
   </div>
 </section>
 
 <!-- MICROGRAPHIC SEAM -->
-<div class="micro-runner"><p>STUDIO BAGGIO ———— AI STRATEGY &amp; DEVELOPMENT ———— LONDON ———— 51.5074°N 0.1278°W ———— EST. 2025 ———— STUDIO BAGGIO ———— AI STRATEGY &amp; DEVELOPMENT ———— LONDON ———— 51.5074°N 0.1278°W</p></div>
+<div class="micro-runner micro-runner--left">
+  <div class="micro-runner-track">
+    <span>STUDIO BAGGIO &mdash;&mdash;&mdash;&mdash; AI STRATEGY &amp; DEVELOPMENT &mdash;&mdash;&mdash;&mdash; LONDON &mdash;&mdash;&mdash;&mdash; 51.5074&deg;N 0.1278&deg;W &mdash;&mdash;&mdash;&mdash; EST. 2025 &mdash;&mdash;&mdash;&mdash; STUDIO BAGGIO</span>
+    <span>STUDIO BAGGIO &mdash;&mdash;&mdash;&mdash; AI STRATEGY &amp; DEVELOPMENT &mdash;&mdash;&mdash;&mdash; LONDON &mdash;&mdash;&mdash;&mdash; 51.5074&deg;N 0.1278&deg;W &mdash;&mdash;&mdash;&mdash; EST. 2025 &mdash;&mdash;&mdash;&mdash; STUDIO BAGGIO</span>
+  </div>
+</div>
 
 <!-- DIVISIONS -->
 <section class="divisions reveal">
   <div class="division">
     <span class="division-num">01</span>
-    <span class="division-label">JB Management · Consultancy &amp; Strategy</span>
+    <span class="division-label">JB Management &middot; Consultancy &amp; Strategy</span>
   </div>
   <div class="divisions-sep"></div>
   <div class="division">
     <span class="division-num">02</span>
-    <span class="division-label">JB Studio · Product Lab</span>
+    <span class="division-label">JB Studio &middot; Product Lab</span>
   </div>
 </section>
 
-<!-- WORK (DARK) -->
+<!-- MICROGRAPHIC SEAM -->
+<div class="micro-runner micro-runner--right" style="margin-top:160px;margin-bottom:16px">
+  <div class="micro-runner-track">
+    <span>SELECTED WORK &mdash;&mdash;&mdash;&mdash; /LAST30DAYS &mdash;&mdash;&mdash;&mdash; FIRE SOURCE &mdash;&mdash;&mdash;&mdash; CALM AUTHORITY &mdash;&mdash;&mdash;&mdash; THE TWENTIAD &mdash;&mdash;&mdash;&mdash; 04 LIVE &mdash;&mdash;&mdash;&mdash; STUDIO BAGGIO</span>
+    <span>SELECTED WORK &mdash;&mdash;&mdash;&mdash; /LAST30DAYS &mdash;&mdash;&mdash;&mdash; FIRE SOURCE &mdash;&mdash;&mdash;&mdash; CALM AUTHORITY &mdash;&mdash;&mdash;&mdash; THE TWENTIAD &mdash;&mdash;&mdash;&mdash; 04 LIVE &mdash;&mdash;&mdash;&mdash; STUDIO BAGGIO</span>
+  </div>
+</div>
+
+<!-- SELECTED WORK -->
 <section class="work" id="work">
-  <div class="micro-runner" style="padding:0;margin-bottom:60px"><p style="color:rgba(255,255,255,0.1)">SELECTED WORK ———— /LAST30DAYS ———— FIRE SOURCE ———— CALM AUTHORITY ———— THE TWENTIAD ———— 04 LIVE ———— STUDIO BAGGIO ———— AI STRATEGY &amp; DEVELOPMENT</p></div>
   <div class="work-header reveal">
     <div>
-      <p style="font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.15);margin:0 0 12px 0">AI Strategy & Development · London · Est. 2025</p>
+      <p style="font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.3);margin:0 0 12px 0;text-transform:uppercase">AI Strategy &amp; Development &middot; London &middot; Est. 2025</p>
       <h2>Selected Work</h2>
     </div>
-    <span class="work-count">01 — 04</span>
+    <span class="work-count">01 &mdash; 04</span>
   </div>
+
   <a href="https://last30days.app/" target="_blank" rel="noopener" class="work-item reveal">
     <span class="work-num">01</span>
-    <span class="work-name">/Last30Days</span>
-    <span class="work-desc">An intelligent research assistant that surfaces the most relevant developments from the past 30 days across any topic.</span>
-    <span class="work-status"><span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span><br><span class="work-arrow">→</span></span>
+    <div class="work-img-wrap"><img src="assets/products/last30days.png" alt="/Last30Days screenshot" loading="lazy"></div>
+    <div class="work-info">
+      <h3 class="work-name">/Last30Days</h3>
+      <p class="work-desc">An intelligent research assistant that surfaces the most relevant developments from the past 30 days across any topic.</p>
+    </div>
+    <span class="work-status">
+      <span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span>
+      <span class="work-arrow">&rarr;</span>
+    </span>
   </a>
+
   <a href="https://fire-source.vercel.app/" target="_blank" rel="noopener" class="work-item reveal">
     <span class="work-num">02</span>
-    <span class="work-name">Fire Source</span>
-    <span class="work-desc">An AI research engine that transforms queries into structured intelligence briefs with verified sources and tailored prompts.</span>
-    <span class="work-status"><span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span><br><span class="work-arrow">→</span></span>
+    <div class="work-img-wrap"><img src="assets/products/fire-source.png" alt="Fire Source screenshot" loading="lazy"></div>
+    <div class="work-info">
+      <h3 class="work-name">Fire Source</h3>
+      <p class="work-desc">An AI research engine that transforms queries into structured intelligence briefs with verified sources and tailored prompts.</p>
+    </div>
+    <span class="work-status">
+      <span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span>
+      <span class="work-arrow">&rarr;</span>
+    </span>
   </a>
+
   <a href="https://calmauthority.ai/" target="_blank" rel="noopener" class="work-item reveal">
     <span class="work-num">03</span>
-    <span class="work-name">Calm Authority</span>
-    <span class="work-desc">A tone-of-voice writing system that maps how you write, researches what is relevant, and turns ideas into publish-ready drafts.</span>
-    <span class="work-status"><span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span><br><span class="work-arrow">→</span></span>
+    <div class="work-img-wrap"><img src="assets/products/calm-authority.png" alt="Calm Authority screenshot" loading="lazy"></div>
+    <div class="work-info">
+      <h3 class="work-name">Calm Authority</h3>
+      <p class="work-desc">A tone-of-voice writing system that maps how you write, researches what is relevant, and turns ideas into publish-ready drafts.</p>
+    </div>
+    <span class="work-status">
+      <span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span>
+      <span class="work-arrow">&rarr;</span>
+    </span>
   </a>
+
   <div class="work-item reveal">
     <span class="work-num">04</span>
-    <span class="work-name">The Twentiad</span>
-    <span class="work-desc">A digital platform exploring three generations of twenty-sized gas carriers. Research, analysis, and industry insight.</span>
-    <span class="work-status"><span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span></span>
+    <div class="work-img-wrap"><img src="assets/products/twentiad.png" alt="The Twentiad screenshot" loading="lazy"></div>
+    <div class="work-info">
+      <h3 class="work-name">The Twentiad</h3>
+      <p class="work-desc">A digital platform exploring three generations of twenty-sized gas carriers. Research, analysis, and industry insight.</p>
+    </div>
+    <span class="work-status">
+      <span class="work-live"><span class="work-live-dot"></span><span class="work-live-text">Live</span></span>
+    </span>
   </div>
-  <div class="micro-runner" style="padding:0;margin-top:60px"><p style="color:rgba(255,255,255,0.1)">STUDIO BAGGIO ———— /LAST30DAYS ———— FIRE SOURCE ———— CALM AUTHORITY ———— THE TWENTIAD ———— AI STRATEGY &amp; DEVELOPMENT ———— 51.5074°N ———— 0.1278°W</p></div>
 </section>
+
+<!-- MICROGRAPHIC SEAM -->
+<div class="micro-runner micro-runner--left">
+  <div class="micro-runner-track">
+    <span>STUDIO BAGGIO &mdash;&mdash;&mdash;&mdash; /LAST30DAYS &mdash;&mdash;&mdash;&mdash; FIRE SOURCE &mdash;&mdash;&mdash;&mdash; CALM AUTHORITY &mdash;&mdash;&mdash;&mdash; THE TWENTIAD &mdash;&mdash;&mdash;&mdash; AI STRATEGY &amp; DEVELOPMENT &mdash;&mdash;&mdash;&mdash; 51.5074&deg;N</span>
+    <span>STUDIO BAGGIO &mdash;&mdash;&mdash;&mdash; /LAST30DAYS &mdash;&mdash;&mdash;&mdash; FIRE SOURCE &mdash;&mdash;&mdash;&mdash; CALM AUTHORITY &mdash;&mdash;&mdash;&mdash; THE TWENTIAD &mdash;&mdash;&mdash;&mdash; AI STRATEGY &amp; DEVELOPMENT &mdash;&mdash;&mdash;&mdash; 51.5074&deg;N</span>
+  </div>
+</div>
+
+<!-- MICROGRAPHIC SEAM -->
+<div class="micro-runner micro-runner--right" style="margin-top:80px;margin-bottom:16px">
+  <div class="micro-runner-track">
+    <span>PLAYBOOKS &mdash;&mdash;&mdash;&mdash; FRAMEWORKS WE USE &mdash;&mdash;&mdash;&mdash; YOURS TO KEEP &mdash;&mdash;&mdash;&mdash; AI FILMMAKING &mdash;&mdash;&mdash;&mdash; AI TOOLS &mdash;&mdash;&mdash;&mdash; EXECUTIVE FRAMEWORK &mdash;&mdash;&mdash;&mdash; STUDIO BAGGIO</span>
+    <span>PLAYBOOKS &mdash;&mdash;&mdash;&mdash; FRAMEWORKS WE USE &mdash;&mdash;&mdash;&mdash; YOURS TO KEEP &mdash;&mdash;&mdash;&mdash; AI FILMMAKING &mdash;&mdash;&mdash;&mdash; AI TOOLS &mdash;&mdash;&mdash;&mdash; EXECUTIVE FRAMEWORK &mdash;&mdash;&mdash;&mdash; STUDIO BAGGIO</span>
+  </div>
+</div>
 
 <!-- PLAYBOOKS -->
 <section class="playbooks" id="playbooks">
-  <div class="micro-runner" style="margin-bottom:16px"><p>PLAYBOOKS ———— FRAMEWORKS WE USE ———— YOURS TO KEEP ———— AI FILMMAKING ———— AI TOOLS ———— EXECUTIVE FRAMEWORK ———— STUDIO BAGGIO ———— PLAYBOOKS</p></div>
   <div class="playbooks-header reveal">
     <div>
-      <p style="font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.15);margin:0 0 12px 0">Resources · Studio Baggio · 2025–2026</p>
+      <p style="font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.3);margin:0 0 12px 0;text-transform:uppercase">Resources &middot; Studio Baggio &middot; 2025&ndash;2026</p>
       <h2>Playbooks</h2>
     </div>
     <span class="playbooks-sub">Frameworks we use. Yours to keep.</span>
   </div>
+
+  <!-- Top row: 3 cards -->
   <div class="playbooks-grid">
     <div class="playbook-card reveal" data-resource="0">
       <div class="playbook-img"><img src="assets/playbooks/ai-filmmaking/1.png" alt="Blueprint for AI Filmmaking" loading="lazy"></div>
       <div class="playbook-body">
-        <p class="playbook-meta">01 — 10 pages</p>
+        <p class="playbook-meta">01 &mdash; 10 pages</p>
         <h3 class="playbook-title">Blueprint for AI Filmmaking</h3>
         <p class="playbook-desc">The complete workflow from concept to published film — using AI at every stage.</p>
-        <span class="playbook-cta">View →</span>
+        <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
     <div class="playbook-card reveal" data-resource="1">
       <div class="playbook-img"><img src="assets/playbooks/ai-tools/1.png" alt="AI Tools You'll Actually Use" loading="lazy"></div>
       <div class="playbook-body">
-        <p class="playbook-meta">02 — 13 pages</p>
+        <p class="playbook-meta">02 &mdash; 13 pages</p>
         <h3 class="playbook-title">AI Tools You'll Actually Use</h3>
         <p class="playbook-desc">A curated stack of tools that save real time. No hype — just what works.</p>
-        <span class="playbook-cta">View →</span>
+        <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
     <div class="playbook-card reveal" data-resource="2">
       <div class="playbook-img"><img src="assets/playbooks/executive-framework/1.png" alt="Executive AI Framework 2026" loading="lazy"></div>
       <div class="playbook-body">
-        <p class="playbook-meta">03 — 16 pages</p>
+        <p class="playbook-meta">03 &mdash; 16 pages</p>
         <h3 class="playbook-title">Executive AI Framework 2026</h3>
         <p class="playbook-desc">How to build an AI operating system your whole team can use — not just the early adopters.</p>
-        <span class="playbook-cta">View →</span>
+        <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
   </div>
-  <!-- Additional playbooks row -->
-  <div class="playbooks-grid" style="margin-top:32px">
+
+  <!-- Bottom row: 2 cards centred -->
+  <div class="playbooks-grid--bottom">
     <div class="playbook-card reveal" data-resource="3">
       <div class="playbook-img"><img src="assets/playbooks/ai-filmmaking-pt2/1.png" alt="AI Filmmaking Part 2" loading="lazy"></div>
       <div class="playbook-body">
-        <p class="playbook-meta">04 — 12 pages</p>
+        <p class="playbook-meta">04 &mdash; 12 pages</p>
         <h3 class="playbook-title">AI Filmmaking Blueprint — Part 2</h3>
         <p class="playbook-desc">Advanced techniques and production workflows — picking up where the blueprint left off.</p>
-        <span class="playbook-cta">View →</span>
+        <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
     <div class="playbook-card reveal" data-resource="4">
       <div class="playbook-img"><img src="assets/newsletter/RC8/1.png" alt="Skills Special RC8" loading="lazy"></div>
       <div class="playbook-body">
-        <p class="playbook-meta">05 — 17 pages</p>
+        <p class="playbook-meta">05 &mdash; 17 pages</p>
         <h3 class="playbook-title">Skills Special — RC8</h3>
         <p class="playbook-desc">What a skill is, why it matters, and why businesses using skills will move faster.</p>
-        <span class="playbook-cta">View →</span>
+        <span class="playbook-cta">View &rarr;</span>
       </div>
     </div>
-    <div style="flex:1"></div>
   </div>
 </section>
 
 <!-- MICROGRAPHIC SEAM -->
-<div class="micro-runner" style="margin-top:200px"><p>ROUGH CUT ———— AI STRATEGY TOOLS &amp; HONEST TAKES ———— FORTNIGHTLY ———— SUBSCRIBE ———— ROUGH CUT ———— AI STRATEGY TOOLS &amp; HONEST TAKES ———— FORTNIGHTLY</p></div>
+<div class="micro-runner micro-runner--left" style="margin-top:160px;margin-bottom:16px">
+  <div class="micro-runner-track">
+    <span>ROUGH CUT &mdash;&mdash;&mdash;&mdash; AI STRATEGY TOOLS &amp; HONEST TAKES &mdash;&mdash;&mdash;&mdash; FORTNIGHTLY &mdash;&mdash;&mdash;&mdash; SUBSCRIBE &mdash;&mdash;&mdash;&mdash; ROUGH CUT &mdash;&mdash;&mdash;&mdash; RC8 &middot; RC7.5 &middot; RC7 &middot; RC6 &middot; RC5</span>
+    <span>ROUGH CUT &mdash;&mdash;&mdash;&mdash; AI STRATEGY TOOLS &amp; HONEST TAKES &mdash;&mdash;&mdash;&mdash; FORTNIGHTLY &mdash;&mdash;&mdash;&mdash; SUBSCRIBE &mdash;&mdash;&mdash;&mdash; ROUGH CUT &mdash;&mdash;&mdash;&mdash; RC8 &middot; RC7.5 &middot; RC7 &middot; RC6 &middot; RC5</span>
+  </div>
+</div>
 
 <!-- NEWSLETTER -->
 <section class="newsletter" id="newsletter">
-  <div class="micro-runner" style="margin-bottom:16px"><p>ROUGH CUT ———— AI STRATEGY TOOLS &amp; HONEST TAKES ———— FORTNIGHTLY ———— RC8 · RC7.5 · RC7 · RC6 · RC5 · RC4 · RC3 · RC2 ———— SUBSCRIBE ———— ROUGH CUT</p></div>
   <div class="newsletter-split">
     <div class="newsletter-left reveal">
-      <p class="micro-label" style="font-family:var(--mono);font-size:7px;font-weight:300;letter-spacing:0.2em;color:rgba(0,0,0,0.15)">Publication · Fortnightly · Est. 2025</p>
+      <p class="micro-label">Publication &middot; Fortnightly &middot; Est. 2025</p>
       <h2>Rough<br>Cut</h2>
       <p class="newsletter-desc">AI strategy, tools, and honest takes on what actually works. No hype.</p>
-      <span class="newsletter-cta">Subscribe →</span>
+      <a href="https://roughcut.substack.com/" target="_blank" rel="noopener" class="newsletter-cta">Subscribe &rarr;</a>
     </div>
     <div class="newsletter-right">
       <div class="issue-row reveal" data-issue="0"><div class="issue-info"><span class="issue-name">RC8</span><span class="issue-label">Skills Special</span></div><span class="issue-pages">17 pages</span></div>
@@ -343,18 +478,23 @@ a{color:inherit;text-decoration:none}
 
 <!-- FOOTER -->
 <footer class="footer" id="contact">
-  <div class="micro-runner" style="padding:0;margin-bottom:6px"><p>STUDIO BAGGIO LTD ———— ENGLAND &amp; WALES ———— NO. 16805728 ———— 51.5074°N 0.1278°W ———— LONDON ———— AI STRATEGY &amp; DEVELOPMENT ———— EST. 2025 ———— REV. IV · 2026 ———— JB MANAGEMENT ———— JB STUDIO ———— STUDIO BAGGIO LTD</p></div>
+  <div class="micro-runner micro-runner--right" style="padding:0;margin-bottom:8px">
+    <div class="micro-runner-track">
+      <span>STUDIO BAGGIO LTD &mdash;&mdash;&mdash;&mdash; ENGLAND &amp; WALES &mdash;&mdash;&mdash;&mdash; NO. 16805728 &mdash;&mdash;&mdash;&mdash; 51.5074&deg;N 0.1278&deg;W &mdash;&mdash;&mdash;&mdash; LONDON &mdash;&mdash;&mdash;&mdash; AI STRATEGY &amp; DEVELOPMENT &mdash;&mdash;&mdash;&mdash; EST. 2025 &mdash;&mdash;&mdash;&mdash; REV. IV &middot; 2026</span>
+      <span>STUDIO BAGGIO LTD &mdash;&mdash;&mdash;&mdash; ENGLAND &amp; WALES &mdash;&mdash;&mdash;&mdash; NO. 16805728 &mdash;&mdash;&mdash;&mdash; 51.5074&deg;N 0.1278&deg;W &mdash;&mdash;&mdash;&mdash; LONDON &mdash;&mdash;&mdash;&mdash; AI STRATEGY &amp; DEVELOPMENT &mdash;&mdash;&mdash;&mdash; EST. 2025 &mdash;&mdash;&mdash;&mdash; REV. IV &middot; 2026</span>
+    </div>
+  </div>
   <div class="footer-inner">
     <div>
       <p class="footer-brand">Studio Baggio</p>
       <p class="footer-reg">Studio Baggio Ltd<br>England &amp; Wales<br>No. 16805728</p>
     </div>
     <div>
-      <p class="footer-center">© 2026 Studio Baggio Ltd</p>
+      <p class="footer-center">&copy; 2026 Studio Baggio Ltd</p>
     </div>
     <div class="footer-right">
       <p class="footer-email"><a href="mailto:info@jbstudio.ai">info@jbstudio.ai</a></p>
-      <p class="footer-coords">51.5074°N, 0.1278°W</p>
+      <p class="footer-coords">51.5074&deg;N, 0.1278&deg;W</p>
     </div>
   </div>
 </footer>
@@ -362,9 +502,9 @@ a{color:inherit;text-decoration:none}
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">←</button>
-    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">→</button>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&larr;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&rarr;</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
     <p class="lightbox-label" id="lightboxLabel"></p>
     <p class="lightbox-pages" id="lightboxPages"></p>
@@ -374,82 +514,252 @@ a{color:inherit;text-decoration:none}
 <!-- SCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 <script>
 (function(){
   'use strict';
   const prefersRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const nav = document.getElementById('nav');
-  const workSection = document.querySelector('.work');
 
-  // Nav dark mode over work section
+  /* ===== LENIS SMOOTH SCROLL ===== */
+  if (!prefersRM) {
+    const lenis = new Lenis({
+      duration: 2,
+      wheelMultiplier: 0.8,
+      smoothWheel: true
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Connect Lenis to GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  /* ===== HERO LETTER WRAP ===== */
+  const heroName = document.getElementById('heroName');
+  const nameText = heroName.textContent;
+  heroName.innerHTML = '';
+  for (let i = 0; i < nameText.length; i++) {
+    const span = document.createElement('span');
+    span.className = 'letter';
+    span.textContent = nameText[i] === ' ' ? '\u00A0' : nameText[i];
+    if (nameText[i] === ' ') span.style.width = '0.3em';
+    heroName.appendChild(span);
+  }
+
   if (!prefersRM) {
     gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.create({
-      trigger: workSection,
-      start: 'top top+=70',
-      end: 'bottom top+=70',
-      onEnter: () => nav.classList.add('dark-mode'),
-      onLeave: () => nav.classList.remove('dark-mode'),
-      onEnterBack: () => nav.classList.add('dark-mode'),
-      onLeaveBack: () => nav.classList.remove('dark-mode')
+
+    /* ===== HERO ANIMATIONS ===== */
+
+    // 1. Hero label fade-in
+    gsap.to('.hero-label', {
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power2.out',
+      delay: 0.2
     });
 
-    // Hero stagger
-    gsap.fromTo('.reveal-stagger', {opacity:0,y:20}, {opacity:1,y:0,duration:0.8,ease:'power2.out',stagger:0.15,delay:0.3});
+    // 2. Hero name blur reveal
+    gsap.to('.hero-name .letter', {
+      filter: 'blur(0px)',
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+      stagger: 0.04,
+      delay: 0.5
+    });
 
-    // Reveal on scroll
+    // 3. Hero micrographic right — line-by-line stagger
+    const microLines = document.querySelectorAll('#heroMicro p');
+    gsap.to(microLines, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      stagger: 0.06,
+      delay: 0.8
+    });
+
+    /* ===== SCROLL REVEALS ===== */
     document.querySelectorAll('.reveal').forEach(el => {
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top 88%',
-        once: true,
-        onEnter: () => el.classList.add('visible')
-      });
+      gsap.fromTo(el,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            once: true
+          }
+        }
+      );
     });
+
+    /* ===== PRODUCT IMAGE SCALE ON SCROLL ===== */
+    document.querySelectorAll('.work-img-wrap img').forEach(img => {
+      gsap.fromTo(img,
+        { scale: 1.03 },
+        {
+          scale: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img.parentElement,
+            start: 'top 90%',
+            end: 'bottom 20%',
+            scrub: true
+          }
+        }
+      );
+    });
+
+    /* ===== PLAYBOOK CARDS STAGGER ===== */
+    const allCards = document.querySelectorAll('.playbook-card');
+    gsap.fromTo(allCards,
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.playbooks-grid',
+          start: 'top 85%',
+          once: true
+        }
+      }
+    );
+
+    /* ===== ISSUE ROWS STAGGER ===== */
+    const issueRows = document.querySelectorAll('.issue-row');
+    gsap.fromTo(issueRows,
+      { opacity: 0, y: 16 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: '.newsletter-right',
+          start: 'top 85%',
+          once: true
+        }
+      }
+    );
+
   } else {
-    document.querySelectorAll('.reveal,.reveal-stagger').forEach(el => {
+    /* Reduced motion: show everything immediately */
+    document.querySelectorAll('.reveal, .hero-label, .hero-name .letter').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+    });
+    document.querySelectorAll('#heroMicro p').forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
   }
 
-  // Lightbox
+  /* ===== LIGHTBOX ===== */
   const issuesData = [
-    {label:'Rough Cut — Issue 8 (Skills Special)',folder:'assets/newsletter/RC8/',pages:17},
-    {label:'Rough Cut — Issue 7.5',folder:'assets/newsletter/RC7.5/',pages:4},
-    {label:'Rough Cut — Issue 7',folder:'assets/newsletter/RC7/',pages:4},
-    {label:'Rough Cut — Issue 6',folder:'assets/newsletter/RC6/',pages:7},
-    {label:'Rough Cut — Issue 5',folder:'assets/newsletter/RC5/',pages:4},
-    {label:'Rough Cut — Issue 4',folder:'assets/newsletter/RC4/',pages:5},
-    {label:'Rough Cut — Issue 3',folder:'assets/newsletter/RC3/',pages:3},
-    {label:'Rough Cut — Issue 2',folder:'assets/newsletter/RC2/',pages:3}
+    { label: 'Rough Cut — Issue 8 (Skills Special)', folder: 'assets/newsletter/RC8/', pages: 17 },
+    { label: 'Rough Cut — Issue 7.5', folder: 'assets/newsletter/RC7.5/', pages: 4 },
+    { label: 'Rough Cut — Issue 7', folder: 'assets/newsletter/RC7/', pages: 4 },
+    { label: 'Rough Cut — Issue 6', folder: 'assets/newsletter/RC6/', pages: 7 },
+    { label: 'Rough Cut — Issue 5', folder: 'assets/newsletter/RC5/', pages: 4 },
+    { label: 'Rough Cut — Issue 4', folder: 'assets/newsletter/RC4/', pages: 5 },
+    { label: 'Rough Cut — Issue 3', folder: 'assets/newsletter/RC3/', pages: 3 },
+    { label: 'Rough Cut — Issue 2', folder: 'assets/newsletter/RC2/', pages: 3 }
   ];
   const resourcesData = [
-    {label:'Blueprint for AI Filmmaking',folder:'assets/playbooks/ai-filmmaking/',pages:10},
-    {label:"AI Tools You'll Actually Use",folder:'assets/playbooks/ai-tools/',pages:13},
-    {label:'Executive AI Framework 2026',folder:'assets/playbooks/executive-framework/',pages:16},
-    {label:'AI Filmmaking Blueprint — Part 2',folder:'assets/playbooks/ai-filmmaking-pt2/',pages:12},
-    {label:'Skills Special — RC8',folder:'assets/newsletter/RC8/',pages:17}
+    { label: 'Blueprint for AI Filmmaking', folder: 'assets/playbooks/ai-filmmaking/', pages: 10 },
+    { label: "AI Tools You'll Actually Use", folder: 'assets/playbooks/ai-tools/', pages: 13 },
+    { label: 'Executive AI Framework 2026', folder: 'assets/playbooks/executive-framework/', pages: 16 },
+    { label: 'AI Filmmaking Blueprint — Part 2', folder: 'assets/playbooks/ai-filmmaking-pt2/', pages: 12 },
+    { label: 'Skills Special — RC8', folder: 'assets/newsletter/RC8/', pages: 17 }
   ];
-  let activeData=null,activeIdx=0,currentPage=0;
-  const lightbox=document.getElementById('lightbox'),lightboxImg=document.getElementById('lightboxImg'),lightboxLabel=document.getElementById('lightboxLabel'),lightboxPages=document.getElementById('lightboxPages');
 
-  function updateLB(){const i=activeData[activeIdx];lightboxImg.src=i.folder+(currentPage+1)+'.png';lightboxLabel.textContent=i.label;lightboxPages.textContent=(currentPage+1)+' / '+i.pages}
-  function openLB(d,i){activeData=d;activeIdx=i;currentPage=0;updateLB();lightbox.classList.add('active');document.body.style.overflow='hidden'}
-  function closeLB(){lightbox.classList.remove('active');document.body.style.overflow=''}
-  function nextP(){currentPage=(currentPage+1)%activeData[activeIdx].pages;updateLB()}
-  function prevP(){const p=activeData[activeIdx].pages;currentPage=(currentPage-1+p)%p;updateLB()}
+  let activeData = null, activeIdx = 0, currentPage = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxLabel = document.getElementById('lightboxLabel');
+  const lightboxPages = document.getElementById('lightboxPages');
 
-  document.querySelectorAll('.issue-row').forEach(r=>r.addEventListener('click',()=>openLB(issuesData,parseInt(r.dataset.issue))));
-  document.querySelectorAll('.playbook-card').forEach(c=>c.addEventListener('click',()=>openLB(resourcesData,parseInt(c.dataset.resource))));
-  document.getElementById('lightboxClose').addEventListener('click',closeLB);
-  document.getElementById('lightboxNext').addEventListener('click',nextP);
-  document.getElementById('lightboxPrev').addEventListener('click',prevP);
-  lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLB()});
-  document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('active'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')nextP();if(e.key==='ArrowLeft')prevP()});
+  function updateLB() {
+    const item = activeData[activeIdx];
+    lightboxImg.src = item.folder + (currentPage + 1) + '.png';
+    lightboxLabel.textContent = item.label;
+    lightboxPages.textContent = (currentPage + 1) + ' / ' + item.pages;
+  }
 
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-70,behavior:prefersRM?'auto':'smooth'})}}));
+  function openLB(data, idx) {
+    activeData = data;
+    activeIdx = idx;
+    currentPage = 0;
+    updateLB();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLB() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function nextPage() {
+    currentPage = (currentPage + 1) % activeData[activeIdx].pages;
+    updateLB();
+  }
+
+  function prevPage() {
+    const total = activeData[activeIdx].pages;
+    currentPage = (currentPage - 1 + total) % total;
+    updateLB();
+  }
+
+  document.querySelectorAll('.issue-row').forEach(row => {
+    row.addEventListener('click', () => openLB(issuesData, parseInt(row.dataset.issue)));
+  });
+  document.querySelectorAll('.playbook-card').forEach(card => {
+    card.addEventListener('click', () => openLB(resourcesData, parseInt(card.dataset.resource)));
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLB);
+  document.getElementById('lightboxNext').addEventListener('click', nextPage);
+  document.getElementById('lightboxPrev').addEventListener('click', prevPage);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLB(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLB();
+    if (e.key === 'ArrowRight') nextPage();
+    if (e.key === 'ArrowLeft') prevPage();
+  });
+
+  /* ===== SMOOTH SCROLL ANCHORS ===== */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.pageYOffset - 70,
+          behavior: prefersRM ? 'auto' : 'smooth'
+        });
+      }
+    });
+  });
 })();
 </script>
 </body>
