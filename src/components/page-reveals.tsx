@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 type SplitTextInstance = {
+  lines: Element[];
   words: Element[];
   revert: () => void;
 };
@@ -40,6 +41,7 @@ export function PageReveals() {
         const heroPin = document.querySelector<HTMLElement>(".hero-pin");
         const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
         const splitElements = gsap.utils.toArray<HTMLElement>("[data-split]");
+        const stickySections = gsap.utils.toArray<HTMLElement>("[data-sticky-section]");
 
         if (reduce) {
           gsap.set([...revealElements, ...splitElements], { opacity: 1, y: 0 });
@@ -77,15 +79,30 @@ export function PageReveals() {
           });
         }
 
+        if (window.innerWidth >= 900) {
+          stickySections.forEach((section) => {
+            ScrollTrigger.create({
+              trigger: section,
+              start: "top top",
+              end: () => `+=${Math.round(window.innerHeight * 1.15)}`,
+              pin: true,
+              pinSpacing: true,
+              anticipatePin: 1,
+              invalidateOnRefresh: true
+            });
+          });
+        }
+
         revealElements.forEach((element) => {
           gsap.from(element, {
-            y: 34,
+            y: 18,
             opacity: 0,
-            duration: 0.75,
+            duration: 0.45,
             ease: "power3.out",
             scrollTrigger: {
               trigger: element,
-              start: "top 86%",
+              start: "top 110%",
+              fastScrollEnd: true,
               once: true
             }
           });
@@ -94,32 +111,34 @@ export function PageReveals() {
         splitElements.forEach((element) => {
           if (SplitText) {
             const split = new SplitText(element, {
-              type: "lines, words",
+              type: "lines",
               mask: "lines",
               autoSplit: true
             });
             splits.push(split);
-            gsap.from(split.words, {
-              yPercent: 105,
+            gsap.from(split.lines, {
+              yPercent: 70,
               opacity: 0,
-              duration: 0.85,
-              stagger: 0.025,
+              duration: 0.52,
+              stagger: 0.045,
               ease: "expo.out",
               scrollTrigger: {
                 trigger: element,
-                start: "top 82%",
+                start: "top 110%",
+                fastScrollEnd: true,
                 once: true
               }
             });
           } else {
             gsap.from(element, {
-              y: 24,
+              y: 16,
               opacity: 0,
-              duration: 0.8,
+              duration: 0.5,
               ease: "power3.out",
               scrollTrigger: {
                 trigger: element,
-                start: "top 82%",
+                start: "top 110%",
+                fastScrollEnd: true,
                 once: true
               }
             });

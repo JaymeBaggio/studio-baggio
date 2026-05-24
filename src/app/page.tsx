@@ -60,7 +60,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad border-y border-ink/12">
+      <section className="section-pad sticky-chapter border-y border-ink/12" data-sticky-section>
         <div className="editorial-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="eyebrow">{home.problem.eyebrow}</p>
@@ -85,7 +85,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad sticky-chapter" data-sticky-section>
         <div className="editorial-container">
           <p className="eyebrow">{home.method.eyebrow}</p>
           <div className="mt-5 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -104,7 +104,7 @@ export default function HomePage() {
                 data-reveal
               >
                 <span className="text-sm uppercase tracking-[0.08em] text-ink/45">0{index + 1}</span>
-                <p className="text-3xl leading-none md:text-6xl">{step}</p>
+                <p className="text-3xl leading-tight md:text-5xl">{step}</p>
               </div>
             ))}
           </div>
@@ -113,7 +113,7 @@ export default function HomePage() {
 
       <ValueMap />
 
-      <section className="section-pad">
+      <section className="section-pad sticky-chapter" data-sticky-section>
         <div className="editorial-container grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="eyebrow">{home.commercialSprint.eyebrow}</p>
@@ -165,7 +165,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad">
+      <section className="section-pad sticky-chapter" data-sticky-section>
         <div className="editorial-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="eyebrow">{home.outcome.eyebrow}</p>

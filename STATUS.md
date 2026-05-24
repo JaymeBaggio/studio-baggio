@@ -72,6 +72,7 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Implementation commit pushed to `main`: `c568393` (`Build Studio Baggio AI advantage site`).
 - Browser-warning cleanup commit pushed to `main`: `e37d2be` (`Clean up Studio Baggio browser warnings`).
 - Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy, a thin divider and the lede section visible immediately below.
+- Scroll/reading polish: large display type reduced for easier in-frame reading, key homepage narrative sections made sticky on desktop/tablet, and reveal triggers moved earlier so text is fully visible before the user can scroll past it.
 - Launch status committed after deployment verification.
 - Vercel project: `studio-baggio`.
 - Vercel framework preset: `nextjs`.
