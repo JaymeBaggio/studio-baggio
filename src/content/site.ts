@@ -260,6 +260,7 @@ export const systemBlocks = [
 
 export const businessTracker = {
   title: "Business Tracker",
+  pageKicker: "Lead intelligence operating system",
   coreLine:
     "The operating system that captures every interaction, makes it visible and produces a named follow-up pipeline.",
   explanation:
@@ -272,6 +273,11 @@ export const businessTracker = {
     "It makes growth more feasible for smaller teams because the business can see who is warming up, why they matter and what should happen next.",
   strap: "Business intelligence. Qualified prospects. More conversations. More clients. More impact.",
   outcome: "Delivers: Visibility. Qualified Leads. Commercial Advantage.",
+  pageSummary: [
+    "Business Tracker is a Studio Baggio system, not a generic analytics dashboard or a portfolio note.",
+    "The point is to show how attention, engagement, search visibility and market context become named leads, qualification, AI rationale and suggested follow-up.",
+    "For smaller teams, the value is focus: the system shows who is warming up, why they matter and which conversation should happen next."
+  ],
   modules: [
     ["01", "Intelligence", "Commercial insight none of your competitors have."],
     ["02", "Attribution", "Captures every interaction across website, SEO, LinkedIn, lead magnets and email."],
@@ -353,7 +359,10 @@ export const calmAuthority = {
 };
 
 export const about = {
-  title: "Jayme Baggio builds practical AI systems for commercial advantage.",
+  eyebrow: "About Jayme Baggio",
+  title: "A strategist and systems operator building practical AI work that creates commercial advantage.",
+  intro:
+    "Studio Baggio is built around Jayme's work across strategy, AI systems, content, product and commercial execution: turning expert judgement into useful operating systems, public proof and market-facing products.",
   body: [
     "Jayme Baggio is a strategist, founder and systems operator at the intersection of AI, creativity, media and commercial strategy.",
     "Her work focuses on how AI can turn expert judgement inside creative and commercial teams into practical operating systems, content and products.",
@@ -365,6 +374,23 @@ export const about = {
     "Calm Authority: a Studio Baggio product for making adviser expertise visible in a trust-led market.",
     "Business Tracker: a lead-intelligence operating system for qualified follow-up.",
     "Fire Source and Last30Days: research and intelligence tools that turn live signals into usable commercial information."
+  ],
+  capabilities: [
+    {
+      title: "Strategy",
+      body:
+        "Find the commercial place where AI can change visibility, market intelligence, lead quality, authority or workflow."
+    },
+    {
+      title: "Systems",
+      body:
+        "Turn that opportunity into practical operating layers, content systems, intelligence products or client-facing tools."
+    },
+    {
+      title: "Proof",
+      body:
+        "Build from real work: Calm Authority, Business Tracker, Fire Source, Last30Days and consulting systems rather than generic AI theatre."
+    }
   ]
 };
 

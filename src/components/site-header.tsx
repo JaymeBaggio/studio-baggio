@@ -39,8 +39,8 @@ export function SiteHeader() {
         <Link
           href="/"
           className={cn(
-            "focus-ring text-sm uppercase tracking-[0.08em] transition-opacity duration-300",
-            homeTop ? "pointer-events-none opacity-0" : "opacity-100"
+            "focus-ring text-sm uppercase tracking-[0.08em] transition-colors duration-300",
+            homeTop ? "text-ink/70 hover:text-ink" : "text-ink"
           )}
           onClick={() => setOpen(false)}
         >
@@ -48,8 +48,8 @@ export function SiteHeader() {
         </Link>
         <nav
           className={cn(
-            "hidden items-center gap-7 transition-opacity duration-300 lg:flex",
-            homeTop ? "pointer-events-none opacity-0" : "opacity-100"
+            "hidden items-center gap-7 transition-colors duration-300 lg:flex",
+            homeTop ? "text-ink/55" : "text-ink/60"
           )}
           aria-label="Primary navigation"
         >
@@ -57,7 +57,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="focus-ring text-xs uppercase tracking-[0.07em] text-ink/60 transition-colors hover:text-ink"
+              className="focus-ring text-xs uppercase tracking-[0.07em] text-current transition-colors hover:text-ink"
             >
               {item.label}
             </Link>
@@ -67,7 +67,7 @@ export function SiteHeader() {
           href={primaryCta.href}
           className={cn(
             "focus-ring hidden min-h-11 items-center border border-ink px-4 text-xs uppercase tracking-[0.07em] transition-colors hover:bg-ink hover:text-paper lg:inline-flex",
-            homeTop ? "pointer-events-none opacity-0" : "opacity-100"
+            homeTop ? "bg-white/45 text-ink/72" : "text-ink"
           )}
         >
           {primaryCta.label}
@@ -79,7 +79,7 @@ export function SiteHeader() {
           onClick={() => setOpen((value) => !value)}
           className={cn(
             "focus-ring inline-flex h-11 w-11 items-center justify-center border border-ink/20 transition-opacity duration-300 lg:hidden",
-            homeTop ? "pointer-events-none opacity-0" : "opacity-100"
+            homeTop ? "bg-white/45 text-ink/72" : "opacity-100"
           )}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

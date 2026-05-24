@@ -57,6 +57,7 @@ Fixed in this pass:
 - Expanded Calm Authority copy from `08_CALM_AUTHORITY_COPY.md`, including Harry/Jayme facts, generic-AI trust-market risk, stronger Studio Baggio product proof and additional public proof references.
 - Added an AI Advantage section explaining how opportunities are prioritised.
 - Added the full offer ladder to the homepage so `Commercial AI Sprint`, `AI Advantage Build` and `AI Advantage Partner` all appear against the v9 source.
+- Made standalone page structure more explicit after follow-up review: the primary nav remains visible on the Paper-style home frame, About has a fuller independent page treatment, and Business Tracker has clearer dedicated operating-system page framing.
 - Moved footer, contact and privacy copy into the editable content layer.
 - Fixed the contact form so a Resend API error cannot be reported as success and a missing-env `503` does not show the success state.
 - Added page-specific Open Graph/Twitter metadata, favicon/app icon routes and `www.studiobaggio.ai` as the canonical default.

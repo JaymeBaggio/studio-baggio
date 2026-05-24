@@ -12,13 +12,26 @@ export default function BusinessTrackerPage() {
       <PageReveals />
       <section className="section-pad pt-32">
         <div className="editorial-container">
-          <p className="eyebrow">Business Tracker</p>
+          <p className="eyebrow">{businessTracker.pageKicker}</p>
           <h1 className="display-xl mt-6 max-w-7xl" data-split>
             {businessTracker.coreLine}
           </h1>
           <p className="body-large mt-10 max-w-3xl text-ink/72" data-reveal>
             {businessTracker.explanation}
           </p>
+        </div>
+      </section>
+
+      <section className="section-pad border-y border-ink/12">
+        <div className="editorial-container grid gap-10 lg:grid-cols-[0.42fr_1fr]">
+          <p className="eyebrow">Standalone system page</p>
+          <div className="space-y-7">
+            {businessTracker.pageSummary.map((paragraph) => (
+              <p key={paragraph} className="body-large text-ink/72" data-reveal>
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
       </section>
 
