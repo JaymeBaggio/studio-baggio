@@ -3,7 +3,7 @@
 
 ## Current Build
 
-The old static single-page site has been replaced locally with a Next.js phase-1
+The old static single-page site has been replaced with a live Next.js phase-1
 site for `studiobaggio.ai`.
 
 Core message:
@@ -53,7 +53,7 @@ Required for live email sending:
 - `CONTACT_FROM_EMAIL`
 - `CONTACT_TO_EMAIL` optional, defaults to `jayme@studiobaggio.ai`
 
-Current local behaviour without email env vars: validation works, then the API
+Current live behaviour without email env vars: validation works, then the API
 returns `503` with a clear message telling the user to email Jayme directly.
 
 ## Verified Locally
@@ -67,14 +67,38 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Contact form validation and missing-email-env error state verified in browser.
 - Console error check clean in the in-app browser.
 
-## Deployment
+## Verified Live
 
-Pending:
+- GitHub commit pushed to `main`: `c568393` (`Build Studio Baggio AI advantage site`).
+- Vercel project: `studio-baggio`.
+- Live deployment: `dpl_7Zhb3LzfYmcHfocATPPtm1sAKdQq`.
+- Production URL: `https://studio-baggio-fs0ms2y27-jaymes-projects-95f6f9cd.vercel.app`.
+- Domains verified:
+  - `https://studiobaggio.ai` redirects to `https://www.studiobaggio.ai/`.
+  - `https://www.studiobaggio.ai/` returns `200`.
+- Live routes verified as `200`: `/`, `/ai-advantage`, `/work`, `/business-tracker`, `/calm-authority`, `/about`, `/contact`, `/privacy`.
+- `sitemap.xml` and `robots.txt` return `200`.
+- Live source includes the v9 headline `Turn AI into a commercial advantage.`
+- Live Business Tracker page includes the required operating-system line and channel logic.
+- Live Calm Authority page includes the dedicated case-study copy and proof facts.
 
-- Commit and push to GitHub.
-- Deploy to Vercel.
-- Verify `studiobaggio.ai` and `www.studiobaggio.ai`.
-- Add Resend env vars in Vercel before expecting live form email delivery.
+## Deployment Notes
+
+The first Vercel deployment after the GitHub push returned `404` because the
+project was still configured as a generic/static project. With a `public/`
+folder present, Vercel served static assets instead of the Next output.
+
+Fixed on 24 May 2026:
+
+- Updated Vercel project framework to `nextjs`.
+- Redeployed to production.
+- Re-verified custom domains and phase-1 routes.
+
+Still required before expecting email delivery from the form:
+
+- Add `RESEND_API_KEY` in Vercel.
+- Add `CONTACT_FROM_EMAIL` in Vercel.
+- Optional: add `CONTACT_TO_EMAIL`; otherwise it defaults to `jayme@studiobaggio.ai`.
 
 ## Deferred To Phase 2
 
