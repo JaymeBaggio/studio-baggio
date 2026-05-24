@@ -12,17 +12,13 @@ type SplitTextInstance = {
   revert: () => void;
 };
 
-type SplitTextConstructor = new (
-  target: Element | Element[] | string,
-  vars?: Record<string, unknown>
-) => SplitTextInstance;
-
 export function PageReveals() {
   useGSAP(
     () => {
       let alive = true;
       const splits: SplitTextInstance[] = [];
       const animations: gsap.core.Animation[] = [];
+      const triggers: ScrollTrigger[] = [];
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       async function run() {
@@ -35,22 +31,17 @@ export function PageReveals() {
           window.scrollTo({ top: 0, left: 0, behavior: "instant" });
         }
 
-        let SplitText: SplitTextConstructor | null = null;
-        try {
-          SplitText = (await import("gsap/SplitText")).SplitText;
-          gsap.registerPlugin(SplitText);
-        } catch {
-          SplitText = null;
-        }
-
         const heroLines = gsap.utils.toArray<HTMLElement>("[data-hero-line]");
         const heroMeta = gsap.utils.toArray<HTMLElement>("[data-hero-meta]");
         const heroPromise = gsap.utils.toArray<HTMLElement>("[data-hero-promise]");
         const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
         const splitElements = gsap.utils.toArray<HTMLElement>("[data-split]");
+        const scrollRevealElements = [...revealElements, ...splitElements];
+
+        gsap.set(scrollRevealElements, { autoAlpha: 1, y: 0, yPercent: 0 });
 
         if (reduce) {
-          gsap.set([...revealElements, ...splitElements], { opacity: 1, y: 0 });
+          gsap.set(scrollRevealElements, { opacity: 1, y: 0 });
           return;
         }
 
@@ -87,81 +78,30 @@ export function PageReveals() {
           }, 0.78);
         }
 
-        if (heroLines.length) {
-          animations.push(
-            gsap.to(heroLines, {
-              yPercent: -8,
-              opacity: 0.72,
-              ease: "none",
-              scrollTrigger: {
-                trigger: ".home-reference-hero",
-                start: "top top",
-                end: "bottom top",
-                scrub: 0.8,
-                invalidateOnRefresh: true
+        scrollRevealElements.forEach((element) => {
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: element,
+              start: "top 98%",
+              once: true,
+              fastScrollEnd: true,
+              onEnter: () => {
+                animations.push(
+                  gsap.fromTo(
+                    element,
+                    { y: 18, autoAlpha: 0.001 },
+                    {
+                      y: 0,
+                      autoAlpha: 1,
+                      duration: element.hasAttribute("data-split") ? 0.72 : 0.52,
+                      ease: "power3.out",
+                      overwrite: "auto"
+                    }
+                  )
+                );
               }
             })
           );
-        }
-
-        const textScrollTrigger = (element: HTMLElement) => ({
-          trigger: element,
-          start: "top 92%",
-          end: "top 58%",
-          scrub: 0.45,
-          fastScrollEnd: true,
-          invalidateOnRefresh: true
-        });
-
-        revealElements.forEach((element) => {
-          animations.push(
-            gsap.fromTo(
-              element,
-              { y: 28, autoAlpha: 0 },
-              {
-                y: 0,
-                autoAlpha: 1,
-                ease: "power3.out",
-                scrollTrigger: textScrollTrigger(element)
-              }
-            )
-          );
-        });
-
-        splitElements.forEach((element) => {
-          if (SplitText) {
-            const split = new SplitText(element, {
-              type: "lines",
-              autoSplit: true
-            });
-            splits.push(split);
-            animations.push(
-              gsap.fromTo(
-                split.lines,
-                { yPercent: 82, autoAlpha: 0 },
-                {
-                  yPercent: 0,
-                  autoAlpha: 1,
-                  stagger: 0.08,
-                  ease: "expo.out",
-                  scrollTrigger: textScrollTrigger(element)
-                }
-              )
-            );
-          } else {
-            animations.push(
-              gsap.fromTo(
-                element,
-                { y: 24, autoAlpha: 0 },
-                {
-                  y: 0,
-                  autoAlpha: 1,
-                  ease: "power3.out",
-                  scrollTrigger: textScrollTrigger(element)
-                }
-              )
-            );
-          }
         });
       }
 
@@ -169,6 +109,7 @@ export function PageReveals() {
 
       return () => {
         alive = false;
+        triggers.forEach((trigger) => trigger.kill());
         animations.forEach((animation) => animation.kill());
         splits.forEach((split) => split.revert());
       };

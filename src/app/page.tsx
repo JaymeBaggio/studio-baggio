@@ -93,7 +93,7 @@ export default function HomePage() {
               {home.method.body}
             </p>
           </div>
-          <div className="mt-16 border-t border-ink/15">
+          <div className="mt-10 border-t border-ink/15">
             {home.method.steps.map((step, index) => (
               <div
                 key={step}
@@ -143,7 +143,7 @@ export default function HomePage() {
           <h2 className="display-lg mt-5 max-w-6xl" data-split>
             Start with the opportunity, then build and improve the systems that create the advantage.
           </h2>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {offerLadder.map((offer, index) => (
               <div key={offer.name} className="border-t border-ink/15 pt-5" data-reveal>
                 <p className="text-xs uppercase tracking-[0.08em] text-ink/45">0{index + 1}</p>
@@ -161,7 +161,7 @@ export default function HomePage() {
           <h2 className="display-lg mt-5 max-w-6xl" data-split>
             Practical AI systems for the parts of the business where advantage is actually created.
           </h2>
-          <div className="mt-14 border-t border-ink/15">
+          <div className="mt-10 border-t border-ink/15">
             {systemBlocks.map((block, index) => (
               <div
                 key={block.title}
