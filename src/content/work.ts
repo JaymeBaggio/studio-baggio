@@ -17,13 +17,13 @@ export const workItems: WorkItem[] = [
     title: "Calm Authority",
     eyebrow: "Product / financial advice / authority systems",
     problem:
-      "Financial advisers have valuable judgement, but too little of it is visible before prospects decide who to trust.",
+      "37,136 UK financial advisers are authorised, but fewer than 300 post consistently on LinkedIn.",
     built:
-      "A LinkedIn writing system that maps adviser voice, surfaces weekly angles and drafts publish-ready posts from an idea, URL or article.",
+      "A live LinkedIn writing system that maps each adviser's voice, surfaces weekly angles and drafts posts from an idea, URL or article.",
     whyItMatters:
-      "It turns private expertise into public proof without flattening the adviser's voice or removing manual editorial control.",
+      "It turns private expertise into public proof while keeping the adviser in control: every post is reviewed, edited and published manually.",
     proves:
-      "Studio Baggio can turn expert judgement into a practical AI-enabled product and operating system.",
+      "Studio Baggio can turn expert judgement, compliance constraints and a market visibility gap into a practical AI-enabled product.",
     href: "/calm-authority",
     external: "https://www.calmauthority.ai/",
     image: "/assets/products/calm-authority.png"

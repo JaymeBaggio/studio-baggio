@@ -178,6 +178,14 @@ textarea {
   padding-block: clamp(4.25rem, 8vw, 8.75rem);
 }
 
+.calm-authority-hero {
+  padding-block: clamp(5.5rem, 7vw, 7.5rem) clamp(3rem, 5vw, 5rem);
+}
+
+.calm-authority-overview {
+  padding-block: clamp(2.75rem, 4.5vw, 4.75rem);
+}
+
 .sticky-chapter {
   min-height: 100svh;
   display: flex;

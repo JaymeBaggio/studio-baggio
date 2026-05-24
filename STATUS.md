@@ -58,6 +58,7 @@ Fixed in this pass:
 - Added an AI Advantage section explaining how opportunities are prioritised.
 - Added the full offer ladder to the homepage so `Commercial AI Sprint`, `AI Advantage Build` and `AI Advantage Partner` all appear against the v9 source.
 - Made standalone page structure more explicit after follow-up review: the primary nav remains visible on the Paper-style home frame, About has a fuller independent page treatment, and Business Tracker has clearer dedicated operating-system page framing.
+- Reworked the Calm Authority page again from the live May 2026 fact sheet: removed the unwanted case-study/problem headline, added first-screen click-throughs to `calmauthority.ai` and the press fact sheet, refreshed the product screenshot, and rebuilt the page around what it is, what it does, who it is for, facts, pricing, proof, recent study and compliance.
 - Moved footer, contact and privacy copy into the editable content layer.
 - Fixed the contact form so a Resend API error cannot be reported as success and a missing-env `503` does not show the success state.
 - Added page-specific Open Graph/Twitter metadata, favicon/app icon routes and `www.studiobaggio.ai` as the canonical default.
@@ -88,6 +89,7 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Sticky-section check: 4 desktop sticky sections create 4 pin spacers; heading/reveal copy reaches opacity `1` and transform reset before the section is pinned at the top.
 - Contact form validation and missing-email-env error state verified in browser; the success message is not shown on the configured `503` fallback.
 - Console error check clean in the in-app browser.
+- Calm Authority desktop/mobile render checks passed after the fact-sheet correction; the first scroll now shows `What it is`, `What it does` and `Who it is for`, with the old `The expertise was already there. The visibility was not.` line removed.
 - Content checks passed for v9 headline, required Work items, Business Tracker mandatory lines/channel logic, Calm Authority facts/proof and AI Advantage prioritisation section.
 - `npm audit --omit=dev` currently reports 2 moderate advisories through Next's bundled PostCSS dependency; `npm audit fix --force` suggests an unsafe breaking downgrade, so this was not applied.
 
