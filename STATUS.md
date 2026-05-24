@@ -107,7 +107,7 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Calm Authority fact-sheet correction commit pushed to `main`: `c5544ec` (`Update Calm Authority fact sheet page`).
 - Motion/work QA commit pushed to `main`: `ee0bed6` (`Fix Studio Baggio motion and work QA`).
 - Homepage scroll-flow correction commit pushed to `main`: `1aa1940` (`Fix homepage scroll flow`).
-- Latest production deployment: `https://studio-baggio-a7k6dqnim-jaymes-projects-95f6f9cd.vercel.app`.
+- Latest production deployment verified at stable alias: `https://www.studiobaggio.ai` (inspected Vercel deployment: `https://studio-baggio-4vpezo955-jaymes-projects-95f6f9cd.vercel.app`).
 - Vercel aliased the deployment to `https://www.studiobaggio.ai`.
 - Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, full-frame right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy and the conventional nav hidden on the first home viewport until scroll.
 - Scroll/reading polish: large display type reduced for easier in-frame reading, masked SplitText clipping removed, sticky/pinned chapter behaviour removed, and section-level reveal triggers moved early enough that text is visible before users can scroll past it.
