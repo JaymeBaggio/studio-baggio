@@ -66,6 +66,7 @@ Fixed in this pass:
 - Added a dedicated Calm Authority motion layer with entrance animation, product-shot depth/parallax, card/row/proof reveals and visible-by-default content so the page never blanks while waiting for a scroll trigger.
 - Replaced the Last30Days work image with the current Desktop asset from `/Users/jaymebaggio/Desktop/Last 30 Days/public/last30days-og-new.png`.
 - Removed Hanbury / Growth Intelligence from the public Work section for now.
+- Emergency follow-up after scroll QA: commit `1aa1940` removed scrubbed homepage ScrollTrigger reveals, kept homepage content visible by default, tightened section spacing and pushed/deployed the corrected normal scroll flow.
 
 ## Contact Form
 
@@ -105,7 +106,8 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Standalone page clarification commit pushed to `main`: `61f2696` (`Clarify standalone Studio Baggio pages`).
 - Calm Authority fact-sheet correction commit pushed to `main`: `c5544ec` (`Update Calm Authority fact sheet page`).
 - Motion/work QA commit pushed to `main`: `ee0bed6` (`Fix Studio Baggio motion and work QA`).
-- Latest production deployment: `https://studio-baggio-dx1f7z9tv-jaymes-projects-95f6f9cd.vercel.app`.
+- Homepage scroll-flow correction commit pushed to `main`: `1aa1940` (`Fix homepage scroll flow`).
+- Latest production deployment: `https://studio-baggio-a7k6dqnim-jaymes-projects-95f6f9cd.vercel.app`.
 - Vercel aliased the deployment to `https://www.studiobaggio.ai`.
 - Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, full-frame right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy and the conventional nav hidden on the first home viewport until scroll.
 - Scroll/reading polish: large display type reduced for easier in-frame reading, masked SplitText clipping removed, sticky/pinned chapter behaviour removed, and section-level reveal triggers moved early enough that text is visible before users can scroll past it.
