@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { PageReveals } from "@/components/page-reveals";
 import { ValueMap } from "@/components/value-map";
 import { WorkShowcase } from "@/components/work-showcase";
-import { hero, home, metadata as siteMetadata, offerLadder, primaryCta, systemBlocks } from "@/content/site";
+import { hero, home, metadata as siteMetadata, primaryCta, systemBlocks } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
@@ -108,8 +108,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ValueMap />
-
       <section className="section-pad narrative-chapter">
         <div className="editorial-container grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
@@ -137,23 +135,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad border-y border-ink/12">
-        <div className="editorial-container">
-          <p className="eyebrow">How the work can progress</p>
-          <h2 className="display-lg mt-5 max-w-6xl" data-split>
-            Start with the opportunity, then build and improve the systems that create the advantage.
-          </h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {offerLadder.map((offer, index) => (
-              <div key={offer.name} className="border-t border-ink/15 pt-5" data-reveal>
-                <p className="text-xs uppercase tracking-[0.08em] text-ink/45">0{index + 1}</p>
-                <h3 className="mt-7 text-3xl leading-none">{offer.name}</h3>
-                <p className="mt-6 leading-relaxed text-ink/72">{offer.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ValueMap />
 
       <section className="section-pad border-y border-ink/12">
         <div className="editorial-container">
@@ -180,33 +162,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad narrative-chapter">
-        <div className="editorial-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <p className="eyebrow">{home.outcome.eyebrow}</p>
-            <h2 className="display-lg mt-5" data-split>
-              {home.outcome.title}
-            </h2>
-          </div>
-          <div className="space-y-7">
-            {home.outcome.lines.map((line) => (
-              <p key={line} className="body-large text-ink/72" data-reveal>
-                {line}
-              </p>
-            ))}
-            <p className="text-2xl leading-tight" data-reveal>
-              The work is useful when it changes how the business is found, informed and followed up.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="section-pad bg-paper">
         <div className="editorial-container">
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.42fr_1fr]">
             <p className="eyebrow">Built from live work</p>
             <h2 className="display-lg" data-split>
-              Built from live work across AI search, wealth strategy, content systems, media, workflow design and commercial operations.
+              Proof that AI systems can turn expertise into visibility, named follow-up and useful intelligence.
             </h2>
           </div>
           <WorkShowcase compact />

@@ -340,13 +340,15 @@ textarea {
 @media (max-width: 767px) {
   .home-reference-hero {
     min-height: 100svh;
-    padding-top: 5.5rem;
+    padding-top: 4.75rem;
   }
 
   .home-reference-frame {
-    min-height: calc(100svh - 5.5rem);
+    min-height: calc(100svh - 4.75rem);
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto minmax(14rem, 1fr) auto;
+    row-gap: clamp(0.9rem, 3vw, 1.35rem);
+    padding-bottom: 1rem;
   }
 
   .home-reference-meta,
@@ -361,14 +363,16 @@ textarea {
   }
 
   .home-reference-wordmark {
-    align-self: start;
+    align-self: center;
     justify-self: end;
-    font-size: clamp(3.25rem, 17vw, 5.35rem);
+    font-size: clamp(2.85rem, 15vw, 4.45rem);
+    line-height: 0.84;
   }
 
   .home-reference-promise {
-    max-width: 23rem;
-    font-size: 0.76rem;
+    max-width: 20.5rem;
+    font-size: 0.72rem;
+    line-height: 1.38;
   }
 
   .home-reference-lede-title {

@@ -81,44 +81,41 @@ export const home = {
     ]
   },
   problem: {
-    eyebrow: "Where the work starts",
+    eyebrow: "The AI gap",
     title:
-      "Most AI work starts with tools. The useful work starts with the business.",
+      "Most businesses know they should be using AI. Far fewer know where it creates commercial value.",
     body: [
-      "Many firms are testing prompts, automations and workshops. The missing link is deciding which systems would improve how the business wins work.",
-      "That means looking at where buyers search, what prospects reveal, what competitors miss, where expertise is hidden and which workflows slow the team down.",
-      "Once those points are clear, AI has a job to do."
+      "Many firms are experimenting with prompts, tools, workshops and automation. Some of it is useful. Most of it never changes how the business wins work.",
+      "The commercial edge comes from knowing where AI can improve visibility, intelligence, lead quality, authority or workflow, then building the system around that opportunity.",
+      "That is where Studio Baggio starts."
     ],
     pullQuotes: [
-      "Useful AI work changes one of four things: visibility, speed, intelligence or the quality of follow-up."
+      "The expensive mistake is not moving slowly. It is spending time and budget on AI work that never changes the commercial position of the business."
     ]
   },
   method: {
     eyebrow: "What Studio Baggio does",
-    title: "We turn the highest-value opportunities into working systems.",
+    title: "Find the opportunity. Build the system. Prove the value.",
     body:
-      "The work starts with commercial context, then moves quickly into build: search assets, intelligence workflows, lead systems, content engines and internal tools.",
+      "Studio Baggio works with expert-led businesses to identify where AI can create the most value, then turns those opportunities into practical systems: search assets, market intelligence workflows, lead capture, prospect research, authority systems, internal tools or client-facing experiences.",
     steps: [
-      "Map where value is leaking",
-      "Choose the use cases that matter",
-      "Build the working system",
-      "Put it in front of real users",
-      "Improve from live signals"
+      "Identify the commercial opportunity",
+      "Choose what should be built first",
+      "Build the practical system",
+      "Connect it to proof, pipeline or workflow",
+      "Improve it from live signals"
     ]
   },
   commercialSprint: {
     eyebrow: "Commercial AI Sprint",
-    title: "Start with the places where AI can move the business.",
+    title: "The first step is finding what is actually worth building.",
     body:
-      "The sprint maps visibility, intelligence, lead quality, authority and workflow opportunities, then turns them into a practical 30-90 day build plan.",
+      "A Commercial AI Sprint identifies where AI can create the most commercial value, what should be built first and how the work should connect to visibility, pipeline, workflow or client experience.",
     deliverables: [
-      "A clear view of where AI can create commercial value",
-      "The highest-value use cases across visibility, intelligence, lead quality, authority and workflow",
-      "SEO and AI-search opportunities buyers are already signalling",
-      "Market and competitor intelligence gaps worth tracking",
-      "Lead capture and prospect qualification opportunities",
-      "Internal workflows where AI can save serious time",
-      "Proof, content or client-facing assets needed to make the business easier to buy from",
+      "Where AI can create commercial value in the business",
+      "The use cases worth prioritising across visibility, intelligence, lead quality, authority and workflow",
+      "The search, market, lead and workflow signals buyers are already giving you",
+      "What should be built first, and why",
       "A practical 30-90 day build plan"
     ]
   },
@@ -154,32 +151,32 @@ export const home = {
 
 export const valueAreas = [
   {
-    title: "Easier to find",
-    summary: "Show up where buyers already search.",
+    title: "Findability",
+    summary: "Help the business show up where buyers are already looking.",
     detail:
       "SEO, AI search, buyer-question mapping, specialist landing pages, topic authority and proof assets."
   },
   {
-    title: "Better informed",
-    summary: "See the market before decisions are made.",
+    title: "Market Intelligence",
+    summary: "Help the business understand what is happening before competitors do.",
     detail:
       "Competitor tracking, customer signals, content gaps, market movement, opportunity mapping and sourced reports."
   },
   {
-    title: "Better leads",
-    summary: "Turn attention into named prospects and clearer next steps.",
+    title: "Lead Quality",
+    summary: "Turn visibility into better prospects and clearer next steps.",
     detail:
       "Lead magnets, diagnostic tools, website journeys, email capture, Business Tracker, scoring and qualification."
   },
   {
-    title: "Trusted sooner",
-    summary: "Turn expertise into proof buyers can inspect.",
+    title: "Authority",
+    summary: "Turn expertise into proof buyers can trust.",
     detail:
       "LinkedIn, articles, case studies, thought leadership, playbooks, newsletters and expert content systems."
   },
   {
-    title: "Faster to act",
-    summary: "Remove drag from the work that slows the team down.",
+    title: "Workflow Acceleration",
+    summary: "Use AI to speed up the work that actually matters.",
     detail:
       "Research, content production, reporting, sales prep, client onboarding, internal knowledge, proposal support and decision-making."
   }
