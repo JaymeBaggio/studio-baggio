@@ -376,7 +376,8 @@ textarea {
   }
 
   .home-reference-lede-title {
-    font-size: clamp(2.15rem, 11vw, 4.5rem);
+    font-size: clamp(2rem, 9.4vw, 3.65rem);
+    line-height: 1;
   }
 
   .home-reference-lede-body {
@@ -384,7 +385,8 @@ textarea {
   }
 
   .home-reference-lede-body .body-large {
-    font-size: clamp(2.35rem, 13vw, 5rem);
+    font-size: clamp(2.05rem, 10vw, 3.85rem);
+    line-height: 0.98;
   }
 
   .calm-authority-hero {
