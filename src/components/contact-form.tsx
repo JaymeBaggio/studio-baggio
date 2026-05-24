@@ -41,7 +41,7 @@ export function ContactForm() {
         data.message ||
         "The form could not send. Email Jayme directly at jayme@studiobaggio.ai.";
       toast.error(message);
-      throw new Error(message);
+      return;
     }
 
     toast.success("Message sent to Studio Baggio.");

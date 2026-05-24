@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -18,8 +17,6 @@ type SplitTextConstructor = new (
 ) => SplitTextInstance;
 
 export function PageReveals() {
-  const scope = useRef<HTMLDivElement>(null);
-
   useGSAP(
     () => {
       let alive = true;
@@ -38,31 +35,41 @@ export function PageReveals() {
           SplitText = null;
         }
 
+        const heroLines = gsap.utils.toArray<HTMLElement>("[data-hero-line]");
+        const heroMeta = gsap.utils.toArray<HTMLElement>("[data-hero-meta]");
+        const heroPin = document.querySelector<HTMLElement>(".hero-pin");
+        const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
+        const splitElements = gsap.utils.toArray<HTMLElement>("[data-split]");
+
         if (reduce) {
-          gsap.set("[data-reveal], [data-split]", { opacity: 1, y: 0 });
+          gsap.set([...revealElements, ...splitElements], { opacity: 1, y: 0 });
           return;
         }
 
-        gsap.from("[data-hero-line]", {
-          yPercent: 110,
-          opacity: 0,
-          duration: 0.85,
-          stagger: 0.08,
-          ease: "expo.out"
-        });
+        if (heroLines.length) {
+          gsap.from(heroLines, {
+            yPercent: 110,
+            opacity: 0,
+            duration: 0.85,
+            stagger: 0.08,
+            ease: "expo.out"
+          });
+        }
 
-        gsap.from("[data-hero-meta]", {
-          y: 18,
-          opacity: 0,
-          duration: 0.7,
-          delay: 0.35,
-          stagger: 0.08,
-          ease: "power3.out"
-        });
+        if (heroMeta.length) {
+          gsap.from(heroMeta, {
+            y: 18,
+            opacity: 0,
+            duration: 0.7,
+            delay: 0.35,
+            stagger: 0.08,
+            ease: "power3.out"
+          });
+        }
 
-        if (window.innerWidth >= 960) {
+        if (heroPin && window.innerWidth >= 960) {
           ScrollTrigger.create({
-            trigger: ".hero-pin",
+            trigger: heroPin,
             start: "top top",
             end: "+=42%",
             pin: true,
@@ -70,7 +77,7 @@ export function PageReveals() {
           });
         }
 
-        gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
+        revealElements.forEach((element) => {
           gsap.from(element, {
             y: 34,
             opacity: 0,
@@ -84,7 +91,7 @@ export function PageReveals() {
           });
         });
 
-        gsap.utils.toArray<HTMLElement>("[data-split]").forEach((element) => {
+        splitElements.forEach((element) => {
           if (SplitText) {
             const split = new SplitText(element, {
               type: "lines, words",
@@ -126,9 +133,8 @@ export function PageReveals() {
         alive = false;
         splits.forEach((split) => split.revert());
       };
-    },
-    { scope }
+    }
   );
 
-  return <div ref={scope} aria-hidden="true" />;
+  return null;
 }
