@@ -111,12 +111,13 @@ textarea {
 .home-reference-wordmark {
   grid-column: 4 / -1;
   grid-row: 2;
-  align-self: center;
+  align-self: end;
   justify-self: end;
   text-align: right;
   font-size: clamp(5.5rem, 11.5vw, 14rem);
   line-height: 0.82;
   letter-spacing: 0;
+  margin-bottom: clamp(1.75rem, 4vw, 4.75rem);
 }
 
 .home-reference-promise {
@@ -363,10 +364,11 @@ textarea {
   }
 
   .home-reference-wordmark {
-    align-self: center;
+    align-self: end;
     justify-self: end;
     font-size: clamp(2.85rem, 15vw, 4.45rem);
     line-height: 0.84;
+    margin-bottom: clamp(1.25rem, 7vw, 3rem);
   }
 
   .home-reference-promise {
