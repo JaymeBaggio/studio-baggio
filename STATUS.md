@@ -69,10 +69,10 @@ returns `503` with a clear message telling the user to email Jayme directly.
 
 ## Verified Live
 
-- GitHub commit pushed to `main`: `c568393` (`Build Studio Baggio AI advantage site`).
+- Implementation commit pushed to `main`: `c568393` (`Build Studio Baggio AI advantage site`).
+- Launch status committed after deployment verification.
 - Vercel project: `studio-baggio`.
-- Live deployment: `dpl_7Zhb3LzfYmcHfocATPPtm1sAKdQq`.
-- Production URL: `https://studio-baggio-fs0ms2y27-jaymes-projects-95f6f9cd.vercel.app`.
+- Vercel framework preset: `nextjs`.
 - Domains verified:
   - `https://studiobaggio.ai` redirects to `https://www.studiobaggio.ai/`.
   - `https://www.studiobaggio.ai/` returns `200`.
