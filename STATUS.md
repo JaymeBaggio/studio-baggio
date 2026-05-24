@@ -104,7 +104,8 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Homepage offer-ladder completion commit pushed to `main`: `ac09486` (`Add homepage offer ladder`).
 - Standalone page clarification commit pushed to `main`: `61f2696` (`Clarify standalone Studio Baggio pages`).
 - Calm Authority fact-sheet correction commit pushed to `main`: `c5544ec` (`Update Calm Authority fact sheet page`).
-- Latest production deployment: `https://studio-baggio-a81xrsn4k-jaymes-projects-95f6f9cd.vercel.app`.
+- Motion/work QA commit pushed to `main`: `ee0bed6` (`Fix Studio Baggio motion and work QA`).
+- Latest production deployment: `https://studio-baggio-dx1f7z9tv-jaymes-projects-95f6f9cd.vercel.app`.
 - Vercel aliased the deployment to `https://www.studiobaggio.ai`.
 - Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, full-frame right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy and the conventional nav hidden on the first home viewport until scroll.
 - Scroll/reading polish: large display type reduced for easier in-frame reading, masked SplitText clipping removed, sticky/pinned chapter behaviour removed, and section-level reveal triggers moved early enough that text is visible before users can scroll past it.
@@ -119,6 +120,8 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Live source includes the v9 headline `Turn AI into a commercial advantage.`
 - Live Business Tracker page includes the required operating-system line, market-specific signal examples, Intel Bank detail and channel logic.
 - Live Calm Authority page includes clear links to `calmauthority.ai` and the press fact sheet, the `What it is`, `What it does` and `Who it is for` overview, fact-sheet pricing/proof/recent/compliance content, and no longer includes the removed `The expertise was already there. The visibility was not.` line.
+- Live Work page includes Calm Authority, Business Tracker, Last30Days and Fire Source, and no longer includes Hanbury / Growth Intelligence.
+- Live homepage source check confirms no purple/violet/indigo/lavender colour references.
 - Live AI Advantage page includes the opportunity prioritisation section.
 - Live canonical and Open Graph URL resolve to `https://www.studiobaggio.ai`.
 
