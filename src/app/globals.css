@@ -94,7 +94,7 @@ textarea {
   min-height: calc(100svh - clamp(5rem, 6.2vw, 7.25rem));
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
   column-gap: clamp(1rem, 2vw, 2rem);
   padding-bottom: clamp(1.1rem, 2.2vw, 2.4rem);
 }
@@ -108,53 +108,62 @@ textarea {
   color: rgba(20, 20, 20, 0.72);
 }
 
-.home-reference-message {
-  grid-column: 1 / -1;
+.home-reference-wordmark {
+  grid-column: 4 / -1;
   grid-row: 2;
   align-self: center;
-  max-width: 104rem;
-  text-align: left;
-  font-size: clamp(2.85rem, 5.3vw, 6.65rem);
-  font-weight: 700;
-  line-height: 1.08;
+  justify-self: end;
+  text-align: right;
+  font-size: clamp(5.5rem, 11.5vw, 14rem);
+  line-height: 0.82;
   letter-spacing: 0;
 }
 
-.home-reference-message-title {
-  display: block;
+.home-reference-promise {
+  grid-column: 7 / -1;
+  grid-row: 3;
+  justify-self: end;
+  max-width: 46rem;
+  text-align: right;
+  font-size: clamp(0.78rem, 0.78vw, 0.92rem);
+  line-height: 1.45;
+  color: rgba(20, 20, 20, 0.78);
 }
 
-.home-reference-outcomes {
-  display: grid;
-  gap: 0.08em;
-  margin-top: clamp(3rem, 5.5vw, 5.5rem);
-}
-
-.home-reference-outcomes span {
-  display: block;
+.home-reference-promise p + p {
+  margin-top: 0.25rem;
 }
 
 .home-reference-lede {
-  padding-block: clamp(1.35rem, 3.2vw, 3.25rem);
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding-block: clamp(5rem, 9vw, 9rem);
   background: var(--background);
   border-bottom: 1px solid rgba(20, 20, 20, 0.12);
 }
 
 .home-reference-lede-title {
-  max-width: 58rem;
+  max-width: 76rem;
   margin-inline: auto;
   text-align: center;
-  font-size: clamp(1.5rem, 2.1vw, 2.6rem);
-  line-height: 1.02;
+  font-size: clamp(2.5rem, 5.6vw, 7.25rem);
+  line-height: 0.96;
   letter-spacing: 0;
 }
 
 .home-reference-lede-body {
-  max-width: 62rem;
-  margin: clamp(1.25rem, 2.4vw, 2rem) auto 0;
+  max-width: 72rem;
+  margin: clamp(2.2rem, 4.8vw, 5.25rem) auto 0;
   display: grid;
-  gap: 1rem;
+  gap: clamp(0.1rem, 0.6vw, 0.45rem);
   text-align: center;
+}
+
+.home-reference-lede-body .body-large {
+  font-size: clamp(2.65rem, 6.4vw, 8rem);
+  line-height: 0.94;
+  color: var(--foreground);
 }
 
 .display-xl {
@@ -341,7 +350,8 @@ textarea {
   }
 
   .home-reference-meta,
-  .home-reference-message {
+  .home-reference-wordmark,
+  .home-reference-promise {
     grid-column: 1;
   }
 
@@ -350,17 +360,27 @@ textarea {
     font-size: 0.76rem;
   }
 
-  .home-reference-message {
-    align-self: center;
-    font-size: clamp(2.15rem, 10vw, 4.3rem);
+  .home-reference-wordmark {
+    align-self: start;
+    justify-self: end;
+    font-size: clamp(3.25rem, 17vw, 5.35rem);
+  }
+
+  .home-reference-promise {
+    max-width: 23rem;
+    font-size: 0.76rem;
   }
 
   .home-reference-lede-title {
-    font-size: clamp(1.35rem, 8vw, 2.25rem);
+    font-size: clamp(2.15rem, 11vw, 4.5rem);
   }
 
   .home-reference-lede-body {
-    text-align: left;
+    text-align: center;
+  }
+
+  .home-reference-lede-body .body-large {
+    font-size: clamp(2.35rem, 13vw, 5rem);
   }
 
   .calm-authority-hero {

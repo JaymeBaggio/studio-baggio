@@ -27,14 +27,9 @@ export default function Image() {
         <div style={{ fontSize: 18, letterSpacing: 3, textTransform: "uppercase" }}>
           Studio Baggio.ai
         </div>
-        <div style={{ fontSize: 72, lineHeight: 0.94, maxWidth: 1000 }}>
-          Easier to find.
-          <br />
-          Faster to act.
-          <br />
-          Better informed.
-          <br />
-          Harder to compete with.
+        <div style={{ fontSize: 56, lineHeight: 1.04, maxWidth: 1000 }}>
+          We design and build practical AI systems that help your business become easier to find,
+          faster, better informed, harder to compete with.
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
           <span>Practical AI systems</span>

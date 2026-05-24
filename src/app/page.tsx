@@ -23,18 +23,19 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <h1 className="home-reference-message uppercase">
-            <span data-hero-line className="home-reference-message-title">
-              {hero.promiseTitle}
-            </span>
-            <span className="home-reference-outcomes" aria-label="Studio Baggio outcomes">
-              {hero.outcomes.map((outcome) => (
-                <span key={outcome} data-hero-line>
-                  {outcome}
+          <h1 className="home-reference-wordmark uppercase" aria-label="Studio Baggio dot AI">
+            {hero.wordmark.map((line) => (
+              <span key={line} className="mask-line block">
+                <span data-hero-line className="block">
+                  {line}
                 </span>
-              ))}
-            </span>
+              </span>
+            ))}
           </h1>
+          <div className="home-reference-promise">
+            <p data-hero-promise>{hero.promiseTitle}</p>
+            <p data-hero-promise>{hero.promise}</p>
+          </div>
         </div>
       </section>
 

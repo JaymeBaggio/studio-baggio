@@ -57,29 +57,27 @@ export const metadata = {
 
 export const hero = {
   meta: [
-    "Practical AI systems for expert-led businesses.",
-    "Search, intelligence, lead quality and workflow.",
-    "Built around how your business wins work."
+    "Practical AI systems built around how your business wins in market.",
+    "Create visibility, intelligence, leads and commercial advantage.",
+    "Not AI theory. Not generic automation."
   ],
   wordmark: ["STUDIO", "BAGGIO.AI"],
-  promiseTitle:
-    "We design and build practical AI systems that help your business become:",
-  outcomes: [
-    "Easier to find.",
-    "Faster to act.",
-    "Better informed.",
-    "Harder to compete with."
-  ],
+  promiseTitle: "AI commercial advantage systems for expert-led businesses.",
+  promise:
+    "We help serious businesses work out where AI can create value, then build the systems that make it useful.",
   scrollCue: "See where AI creates value"
 };
 
 export const home = {
   aiGap: {
     eyebrow: "What changes",
-    title: "The useful opportunities usually sit in search, intelligence, pipeline and workflow.",
+    title:
+      "We design and build practical AI systems that help your business become:",
     body: [
-      "Studio Baggio works with expert-led businesses to identify where better systems would change visibility, intelligence, pipeline, authority or day-to-day work.",
-      "Then we build them: AI-search pages, market intelligence workflows, lead capture, prospect qualification, authority systems and client-facing tools."
+      "Easier to find.",
+      "Faster to act.",
+      "Better informed.",
+      "Harder to compete with."
     ]
   },
   problem: {
