@@ -1,6 +1,8 @@
 _strategy/
 references/
-public/assets/newsletter/.vercel/
+public/assets/newsletter/
+public/assets/newsletter.zip
+public/assets/playbooks/
 **/.DS_Store
 Domain_Corrections_Table.numbers
 STUDIO BAGGIO current copy.docx

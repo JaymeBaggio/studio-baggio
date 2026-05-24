@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
 import { PageReveals } from "@/components/page-reveals";
 import { businessTracker, metadata as siteMetadata, primaryCta } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: siteMetadata.businessTracker.title,
-  description: siteMetadata.businessTracker.description,
-  alternates: { canonical: "/business-tracker" }
-};
+export const metadata: Metadata = pageMetadata({ ...siteMetadata.businessTracker, path: "/business-tracker" });
 
 export default function BusinessTrackerPage() {
   return (
@@ -32,6 +29,7 @@ export default function BusinessTrackerPage() {
           </h2>
           <div className="space-y-6 body-large text-ink/72">
             <p data-reveal>{businessTracker.captures}</p>
+            <p data-reveal>{businessTracker.marketSpecificContext}</p>
             <p data-reveal>{businessTracker.commercialPoint}</p>
             <p className="text-2xl text-ink" data-reveal>{businessTracker.strap}</p>
           </div>

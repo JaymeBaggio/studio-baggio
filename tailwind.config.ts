@@ -6,12 +6,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#F8F7F3",
+        paper: "#F7F7F7",
         ink: "#141414",
         charcoal: "#111111",
-        muted: "#8E8A84",
-        hairline: "#D8D4CC",
-        acid: "#C9FE6E"
+        muted: "#747474",
+        hairline: "#D9D9D9"
       },
       fontFamily: {
         sans: ["var(--font-aileron)", "Aileron", "Arial", "sans-serif"]

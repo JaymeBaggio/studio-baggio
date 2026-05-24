@@ -4,12 +4,9 @@ import { PageReveals } from "@/components/page-reveals";
 import { ValueMap } from "@/components/value-map";
 import { WorkShowcase } from "@/components/work-showcase";
 import { hero, home, metadata as siteMetadata, primaryCta, systemBlocks } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: siteMetadata.home.title,
-  description: siteMetadata.home.description,
-  alternates: { canonical: "/" }
-};
+export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
 
 export default function HomePage() {
   return (
@@ -36,8 +33,8 @@ export default function HomePage() {
             ))}
           </h1>
           <div className="home-reference-promise">
-            <p>{hero.promiseTitle}</p>
-            <p>{hero.promise}</p>
+            <p data-hero-promise>{hero.promiseTitle}</p>
+            <p data-hero-promise>{hero.promise}</p>
           </div>
         </div>
       </section>

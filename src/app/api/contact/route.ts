@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
   const { name, email, business, website, improvement, aiOpportunity } = parsed.data;
 
   try {
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from,
       to,
       replyTo: email,
@@ -83,7 +83,14 @@ export async function POST(request: NextRequest) {
       ].join("\n")
     });
 
-    return NextResponse.json({ ok: true });
+    if (result.error) {
+      return NextResponse.json(
+        { message: result.error.message || "The message could not be sent. Email jayme@studiobaggio.ai directly." },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ ok: true, id: result.data?.id });
   } catch {
     return NextResponse.json(
       { message: "The message could not be sent. Email jayme@studiobaggio.ai directly." },

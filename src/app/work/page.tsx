@@ -3,12 +3,9 @@ import { PageReveals } from "@/components/page-reveals";
 import { WorkShowcase } from "@/components/work-showcase";
 import { ButtonLink } from "@/components/ui/button";
 import { metadata as siteMetadata, primaryCta } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: siteMetadata.work.title,
-  description: siteMetadata.work.description,
-  alternates: { canonical: "/work" }
-};
+export const metadata: Metadata = pageMetadata({ ...siteMetadata.work, path: "/work" });
 
 export default function WorkPage() {
   return (

@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Send } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { contactSchema, type ContactFormValues } from "@/lib/contact-schema";
@@ -9,11 +10,12 @@ import { SubmitButton } from "@/components/ui/button";
 import { Field, FieldError, Input, Label, Textarea } from "@/components/ui/form-controls";
 
 export function ContactForm() {
+  const [submitted, setSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitSuccessful }
+    formState: { errors, isSubmitting }
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -28,24 +30,31 @@ export function ContactForm() {
   });
 
   async function onSubmit(values: ContactFormValues) {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values)
-    });
+    setSubmitted(false);
 
-    const data = (await response.json().catch(() => ({}))) as { message?: string };
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values)
+      });
 
-    if (!response.ok) {
-      const message =
-        data.message ||
-        "The form could not send. Email Jayme directly at jayme@studiobaggio.ai.";
-      toast.error(message);
-      return;
+      const data = (await response.json().catch(() => ({}))) as { message?: string };
+
+      if (!response.ok) {
+        const message =
+          data.message ||
+          "The form could not send. Email Jayme directly at jayme@studiobaggio.ai.";
+        toast.error(message);
+        return;
+      }
+
+      toast.success("Message sent to Studio Baggio.");
+      setSubmitted(true);
+      reset();
+    } catch {
+      toast.error("The form could not send. Email Jayme directly at jayme@studiobaggio.ai.");
     }
-
-    toast.success("Message sent to Studio Baggio.");
-    reset();
   }
 
   return (
@@ -93,7 +102,7 @@ export function ContactForm() {
           {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Send className="h-4 w-4" aria-hidden="true" />}
           {isSubmitting ? "Sending" : "Send enquiry"}
         </SubmitButton>
-        {isSubmitSuccessful ? (
+        {submitted ? (
           <p className="text-sm text-ink/60" role="status">
             Thanks. The enquiry has been submitted.
           </p>

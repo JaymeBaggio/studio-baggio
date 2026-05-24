@@ -3,12 +3,9 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
 import { PageReveals } from "@/components/page-reveals";
 import { calmAuthority, metadata as siteMetadata, primaryCta } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: siteMetadata.calmAuthority.title,
-  description: siteMetadata.calmAuthority.description,
-  alternates: { canonical: "/calm-authority" }
-};
+export const metadata: Metadata = pageMetadata({ ...siteMetadata.calmAuthority, path: "/calm-authority" });
 
 export default function CalmAuthorityPage() {
   return (
@@ -44,6 +41,7 @@ export default function CalmAuthorityPage() {
           <div className="space-y-6 body-large text-ink/72">
             <p data-reveal>{calmAuthority.summary}</p>
             <p data-reveal>{calmAuthority.problem}</p>
+            <p data-reveal>{calmAuthority.genericAiRisk}</p>
             <p data-reveal>{calmAuthority.system}</p>
           </div>
         </div>

@@ -22,11 +22,19 @@ export function PageReveals() {
     () => {
       let alive = true;
       const splits: SplitTextInstance[] = [];
+      const animations: gsap.core.Animation[] = [];
+      const triggers: ScrollTrigger[] = [];
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       async function run() {
         await document.fonts?.ready;
         if (!alive) return;
+
+        ScrollTrigger.clearScrollMemory("manual");
+
+        if (!window.location.hash) {
+          window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        }
 
         let SplitText: SplitTextConstructor | null = null;
         try {
@@ -38,7 +46,7 @@ export function PageReveals() {
 
         const heroLines = gsap.utils.toArray<HTMLElement>("[data-hero-line]");
         const heroMeta = gsap.utils.toArray<HTMLElement>("[data-hero-meta]");
-        const heroPin = document.querySelector<HTMLElement>(".hero-pin");
+        const heroPromise = gsap.utils.toArray<HTMLElement>("[data-hero-promise]");
         const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
         const splitElements = gsap.utils.toArray<HTMLElement>("[data-split]");
         const stickySections = gsap.utils.toArray<HTMLElement>("[data-sticky-section]");
@@ -48,67 +56,77 @@ export function PageReveals() {
           return;
         }
 
-        if (heroLines.length) {
-          gsap.from(heroLines, {
-            yPercent: 110,
-            opacity: 0,
-            duration: 0.85,
-            stagger: 0.08,
-            ease: "expo.out"
-          });
-        }
+        const heroTimeline = gsap.timeline();
+        animations.push(heroTimeline);
 
         if (heroMeta.length) {
-          gsap.from(heroMeta, {
-            y: 18,
+          heroTimeline.from(heroMeta, {
+            y: 14,
             opacity: 0,
-            duration: 0.7,
-            delay: 0.35,
+            duration: 0.72,
             stagger: 0.08,
             ease: "power3.out"
-          });
+          }, 0.08);
         }
 
-        if (heroPin && window.innerWidth >= 960) {
-          ScrollTrigger.create({
-            trigger: heroPin,
-            start: "top top",
-            end: "+=42%",
-            pin: true,
-            pinSpacing: true
-          });
+        if (heroLines.length) {
+          heroTimeline.from(heroLines, {
+            yPercent: 110,
+            opacity: 0,
+            duration: 0.95,
+            stagger: 0.12,
+            ease: "expo.out"
+          }, 0.22);
+        }
+
+        if (heroPromise.length) {
+          heroTimeline.from(heroPromise, {
+            y: 10,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: "power2.out"
+          }, 0.78);
         }
 
         if (window.innerWidth >= 900) {
           stickySections.forEach((section) => {
-            ScrollTrigger.create({
-              trigger: section,
-              start: "top top",
-              end: () => `+=${Math.round(window.innerHeight * 1.15)}`,
-              pin: true,
-              pinSpacing: true,
-              anticipatePin: 1,
-              invalidateOnRefresh: true
-            });
+            triggers.push(
+              ScrollTrigger.create({
+                trigger: section,
+                start: "top top",
+                end: () => `+=${Math.round(window.innerHeight * 2)}`,
+                pin: true,
+                pinSpacing: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true
+              })
+            );
           });
         }
 
         revealElements.forEach((element) => {
-          gsap.from(element, {
-            y: 18,
-            opacity: 0,
-            duration: 0.45,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: element,
-              start: "top 110%",
-              fastScrollEnd: true,
-              once: true
-            }
-          });
+          const stickyParent = element.closest("[data-sticky-section]") as HTMLElement | null;
+
+          animations.push(
+            gsap.from(element, {
+              y: 18,
+              opacity: 0,
+              duration: 0.45,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: stickyParent || element,
+                start: stickyParent ? "top 78%" : "top 86%",
+                fastScrollEnd: true,
+                once: true
+              }
+            })
+          );
         });
 
         splitElements.forEach((element) => {
+          const stickyParent = element.closest("[data-sticky-section]") as HTMLElement | null;
+
           if (SplitText) {
             const split = new SplitText(element, {
               type: "lines",
@@ -116,32 +134,36 @@ export function PageReveals() {
               autoSplit: true
             });
             splits.push(split);
-            gsap.from(split.lines, {
-              yPercent: 70,
-              opacity: 0,
-              duration: 0.52,
-              stagger: 0.045,
-              ease: "expo.out",
-              scrollTrigger: {
-                trigger: element,
-                start: "top 110%",
-                fastScrollEnd: true,
-                once: true
-              }
-            });
+            animations.push(
+              gsap.from(split.lines, {
+                yPercent: 70,
+                opacity: 0,
+                duration: 0.52,
+                stagger: 0.045,
+                ease: "expo.out",
+                scrollTrigger: {
+                  trigger: stickyParent || element,
+                  start: stickyParent ? "top 78%" : "top 86%",
+                  fastScrollEnd: true,
+                  once: true
+                }
+              })
+            );
           } else {
-            gsap.from(element, {
-              y: 16,
-              opacity: 0,
-              duration: 0.5,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: element,
-                start: "top 110%",
-                fastScrollEnd: true,
-                once: true
-              }
-            });
+            animations.push(
+              gsap.from(element, {
+                y: 16,
+                opacity: 0,
+                duration: 0.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: stickyParent || element,
+                  start: stickyParent ? "top 78%" : "top 86%",
+                  fastScrollEnd: true,
+                  once: true
+                }
+              })
+            );
           }
         });
       }
@@ -150,6 +172,8 @@ export function PageReveals() {
 
       return () => {
         alive = false;
+        animations.forEach((animation) => animation.kill());
+        triggers.forEach((trigger) => trigger.kill());
         splits.forEach((split) => split.revert());
       };
     }

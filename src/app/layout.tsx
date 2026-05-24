@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
+import { ScrollReset } from "@/components/scroll-reset";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { metadata as siteMetadata } from "@/content/site";
@@ -72,13 +73,20 @@ const organizationSchema = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={aileron.variable}>
+    <html lang="en" className={aileron.variable} data-scroll-behavior="smooth">
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; if (!location.hash) { scrollTo(0, 0); addEventListener('pageshow', function () { requestAnimationFrame(function () { scrollTo(0, 0); }); }); }"
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <div className="site-shell">
+          <ScrollReset />
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />

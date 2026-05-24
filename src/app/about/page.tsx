@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
 import { PageReveals } from "@/components/page-reveals";
 import { about, metadata as siteMetadata, primaryCta } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: siteMetadata.about.title,
-  description: siteMetadata.about.description,
-  alternates: { canonical: "/about" }
-};
+export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
 
 export default function AboutPage() {
   return (

@@ -40,8 +40,26 @@ Primary build files:
 - Work includes Calm Authority, Hanbury / Growth Intelligence, Business Tracker, Last30Days and Fire Source.
 - Business Tracker has a dedicated page using the 06 Business Tracker source copy.
 - Calm Authority has a dedicated page using the 08 Calm Authority copy plus live Calm Authority source facts.
-- SEO basics added: metadata, Open Graph image route, canonical URLs, sitemap, robots and Organization JSON-LD.
-- Existing Rough Cut / Newsletter and Playbook assets were preserved under `public/assets/` for phase 2.
+- SEO basics added: page-specific metadata, Open Graph image route, canonical URLs, sitemap, robots, favicons and Organization JSON-LD.
+- Rough Cut / Newsletter and Playbook assets remain local phase-2 material and are excluded from Vercel deployment.
+
+## 24 May Repair Pass
+
+After Jayme's review, the build was re-audited against the original goal with subagent tracks for copy/content, design/motion, engineering and QA/deploy.
+
+Fixed in this pass:
+
+- Removed the remaining lime/purple accent system and warm cream tones. The site now uses black, white and neutral greys only.
+- Rebuilt the homepage first viewport as a full-frame Paper-reference hero: small top-left metadata, large right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy, and hidden conventional nav until scroll on the home first frame.
+- Added scroll restoration controls so reload/navigation returns to the top when there is no hash.
+- Reworked homepage sticky sections to pin for roughly 2 viewport heights on desktop/tablet and trigger text reveals from the section before the reader can scroll past.
+- Expanded Business Tracker copy from `06_BUSINESS_TRACKER_COPY.md`, including market-specific signal examples, LinkedIn hook/timing logic, Intel Bank competitor-information line and scale/reporting language.
+- Expanded Calm Authority copy from `08_CALM_AUTHORITY_COPY.md`, including Harry/Jayme facts, generic-AI trust-market risk, stronger Studio Baggio product proof and additional public proof references.
+- Added an AI Advantage section explaining how opportunities are prioritised.
+- Moved footer, contact and privacy copy into the editable content layer.
+- Fixed the contact form so a Resend API error cannot be reported as success and a missing-env `503` does not show the success state.
+- Added page-specific Open Graph/Twitter metadata, favicon/app icon routes and `www.studiobaggio.ai` as the canonical default.
+- Pinned package versions from the current lockfile instead of leaving production dependencies on `latest`.
 
 ## Contact Form
 
@@ -62,10 +80,14 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - `npm run lint` passes.
 - `npm run build` passes.
 - Local routes return `200`: `/`, `/ai-advantage`, `/work`, `/business-tracker`, `/calm-authority`, `/about`, `/contact`, `/privacy`.
-- `sitemap.xml` and `robots.txt` return `200`.
-- Desktop and mobile browser checks show no horizontal overflow.
-- Contact form validation and missing-email-env error state verified in browser.
+- `sitemap.xml`, `robots.txt`, `opengraph-image`, `icon` and `apple-icon` return `200`.
+- Desktop in-app browser check: home reload starts at `scrollY: 0`, hero top is `0`, hero height is the full viewport, lede starts after the viewport, and there is no horizontal overflow.
+- Mobile in-app browser check at 390x844: hero is full frame, no horizontal overflow, sticky pinning is disabled on mobile, and hero text fits.
+- Sticky-section check: 4 desktop sticky sections create 4 pin spacers; heading/reveal copy reaches opacity `1` and transform reset before the section is pinned at the top.
+- Contact form validation and missing-email-env error state verified in browser; the success message is not shown on the configured `503` fallback.
 - Console error check clean in the in-app browser.
+- Content checks passed for v9 headline, required Work items, Business Tracker mandatory lines/channel logic, Calm Authority facts/proof and AI Advantage prioritisation section.
+- `npm audit --omit=dev` currently reports 2 moderate advisories through Next's bundled PostCSS dependency; `npm audit fix --force` suggests an unsafe breaking downgrade, so this was not applied.
 
 ## Verified Live
 

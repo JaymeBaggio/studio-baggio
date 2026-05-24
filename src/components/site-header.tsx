@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navItems, primaryCta } from "@/content/site";
@@ -9,9 +10,25 @@ import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const [open, setOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+  const pathname = usePathname();
+  const homeTop = pathname === "/" && !scrolled && !open;
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-ink/10 bg-paper/88 backdrop-blur-xl">
+    <header
+      className={cn(
+        "fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300",
+        homeTop ? "border-transparent bg-transparent" : "border-ink/10 bg-paper/92 backdrop-blur-xl"
+      )}
+    >
       <a
         href="#main"
         className="focus-ring sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-paper focus:px-4 focus:py-3"
@@ -21,12 +38,21 @@ export function SiteHeader() {
       <div className="editorial-container flex min-h-16 items-center justify-between gap-6">
         <Link
           href="/"
-          className="focus-ring text-sm uppercase tracking-[0.08em]"
+          className={cn(
+            "focus-ring text-sm uppercase tracking-[0.08em] transition-opacity duration-300",
+            homeTop ? "pointer-events-none opacity-0" : "opacity-100"
+          )}
           onClick={() => setOpen(false)}
         >
           Studio Baggio
         </Link>
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+        <nav
+          className={cn(
+            "hidden items-center gap-7 transition-opacity duration-300 lg:flex",
+            homeTop ? "pointer-events-none opacity-0" : "opacity-100"
+          )}
+          aria-label="Primary navigation"
+        >
           {navItems.slice(1).map((item) => (
             <Link
               key={item.href}
@@ -39,7 +65,10 @@ export function SiteHeader() {
         </nav>
         <Link
           href={primaryCta.href}
-          className="focus-ring hidden min-h-11 items-center border border-ink px-4 text-xs uppercase tracking-[0.07em] transition-colors hover:bg-ink hover:text-paper lg:inline-flex"
+          className={cn(
+            "focus-ring hidden min-h-11 items-center border border-ink px-4 text-xs uppercase tracking-[0.07em] transition-colors hover:bg-ink hover:text-paper lg:inline-flex",
+            homeTop ? "pointer-events-none opacity-0" : "opacity-100"
+          )}
         >
           {primaryCta.label}
         </Link>
@@ -48,7 +77,10 @@ export function SiteHeader() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
-          className="focus-ring inline-flex h-11 w-11 items-center justify-center border border-ink/20 lg:hidden"
+          className={cn(
+            "focus-ring inline-flex h-11 w-11 items-center justify-center border border-ink/20 transition-opacity duration-300 lg:hidden",
+            homeTop ? "pointer-events-none opacity-0" : "opacity-100"
+          )}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>

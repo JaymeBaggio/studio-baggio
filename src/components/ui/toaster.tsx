@@ -10,7 +10,7 @@ export function Toaster() {
         style: {
           borderRadius: 0,
           border: "1px solid rgba(20,20,20,0.18)",
-          background: "#F8F7F3",
+          background: "#F7F7F7",
           color: "#141414",
           fontFamily: "var(--font-aileron)"
         }

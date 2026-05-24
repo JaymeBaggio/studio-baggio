@@ -44,7 +44,7 @@ export function ValueMap() {
                 exit={{ opacity: 0, y: -14 }}
                 transition={{ duration: 0.28 }}
               >
-                <p className="text-sm uppercase tracking-[0.07em] text-acid">0{active + 1}</p>
+                <p className="text-sm uppercase tracking-[0.07em] text-paper/55">0{active + 1}</p>
                 <h3 className="mt-8 text-4xl leading-tight md:text-5xl">{current.title}</h3>
                 <p className="body-large mt-8 text-paper/78">{current.summary}</p>
                 <p className="mt-8 leading-relaxed text-paper/58">{current.detail}</p>

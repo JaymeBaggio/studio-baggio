@@ -1,20 +1,20 @@
 import Link from "next/link";
-import { primaryCta } from "@/content/site";
+import { footer, primaryCta } from "@/content/site";
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-ink/15">
       <div className="editorial-container grid gap-10 py-10 md:grid-cols-[1.1fr_1fr_1fr] md:py-14">
         <div>
-          <p className="text-sm uppercase tracking-[0.08em]">Studio Baggio Ltd</p>
+          <p className="text-sm uppercase tracking-[0.08em]">{footer.company}</p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink/55">
-            Practical AI systems for expert-led businesses.
+            {footer.summary}
           </p>
         </div>
         <div className="text-sm leading-relaxed text-ink/60">
-          <p>jayme@studiobaggio.ai</p>
+          <p>{footer.email}</p>
           <Link className="focus-ring mt-2 inline-flex underline-offset-4 hover:underline" href="/privacy">
-            Privacy
+            {footer.privacyLabel}
           </Link>
         </div>
         <div className="text-sm leading-relaxed text-ink/60 md:text-right">

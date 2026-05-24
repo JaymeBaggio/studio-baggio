@@ -2,13 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { PageReveals } from "@/components/page-reveals";
-import { businessTracker, metadata as siteMetadata, offerLadder, primaryCta, systemBlocks, valueAreas } from "@/content/site";
+import { businessTracker, metadata as siteMetadata, offerLadder, opportunityPriorities, primaryCta, systemBlocks, valueAreas } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: siteMetadata.aiAdvantage.title,
-  description: siteMetadata.aiAdvantage.description,
-  alternates: { canonical: "/ai-advantage" }
-};
+export const metadata: Metadata = pageMetadata({ ...siteMetadata.aiAdvantage, path: "/ai-advantage" });
 
 export default function AIAdvantagePage() {
   return (
@@ -56,6 +53,24 @@ export default function AIAdvantagePage() {
         </div>
       </section>
 
+      <section className="section-pad border-y border-ink/12">
+        <div className="editorial-container">
+          <p className="eyebrow">How opportunities are prioritised</p>
+          <h2 className="display-lg mt-5 max-w-6xl" data-split>
+            The strongest AI opportunities are the ones that change the commercial position of the business.
+          </h2>
+          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {opportunityPriorities.map((priority, index) => (
+              <div key={priority.title} className="border-t border-ink/15 pt-5" data-reveal>
+                <p className="text-xs uppercase tracking-[0.08em] text-ink/45">0{index + 1}</p>
+                <h3 className="mt-7 text-3xl leading-none">{priority.title}</h3>
+                <p className="mt-6 leading-relaxed text-ink/72">{priority.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-pad bg-charcoal text-paper">
         <div className="editorial-container">
           <p className="eyebrow text-paper/55">Offer ladder</p>
@@ -65,7 +80,7 @@ export default function AIAdvantagePage() {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {offerLadder.map((offer, index) => (
               <div key={offer.name} className="border-t border-paper/20 pt-5" data-reveal>
-                <p className="text-xs uppercase tracking-[0.07em] text-acid">0{index + 1}</p>
+                <p className="text-xs uppercase tracking-[0.07em] text-paper/55">0{index + 1}</p>
                 <h3 className="mt-7 text-3xl leading-none">{offer.name}</h3>
                 <p className="mt-6 leading-relaxed text-paper/68">{offer.description}</p>
               </div>

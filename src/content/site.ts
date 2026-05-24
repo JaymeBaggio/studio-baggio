@@ -131,7 +131,10 @@ export const home = {
       "The right prospects can find clearer evidence of what you do and why it matters.",
       "Your team can see where the market is moving, what buyers are asking and what competitors are missing.",
       "Your website and content stop being passive brochures and start capturing signals.",
-      "When somebody shows interest, the signal does not disappear."
+      "When somebody shows interest, the signal does not disappear.",
+      "Expertise becomes visible proof instead of staying trapped in calls, inboxes and internal documents.",
+      "The business can see who engaged, where they came from and what should happen next.",
+      "Less guessing. Less wasted activity. More time spent on the opportunities most likely to matter."
     ]
   },
   fit: {
@@ -204,6 +207,29 @@ export const offerLadder = [
   }
 ];
 
+export const opportunityPriorities = [
+  {
+    title: "Commercial value",
+    body:
+      "Will this make the business easier to find, faster to act, better informed, easier to buy from or more valuable to clients?"
+  },
+  {
+    title: "Proof and visibility",
+    body:
+      "Will it create clearer evidence of expertise, authority, capability or market understanding?"
+  },
+  {
+    title: "Pipeline and timing",
+    body:
+      "Will it help the business see who is warming up, why they matter and what the right follow-up should be?"
+  },
+  {
+    title: "Operational leverage",
+    body:
+      "Will it remove serious drag from research, reporting, content, sales prep, client experience or decision-making?"
+  }
+];
+
 export const systemBlocks = [
   {
     title: "SEO And AI Search",
@@ -240,6 +266,8 @@ export const businessTracker = {
     "The Business Tracker is a market-specific prospecting system built around the audience a business wants to reach and the qualification criteria that matter commercially.",
   captures:
     "It captures website analytics, SEO and AI search visibility, LinkedIn engagement, lead magnet activity, email performance, enquiries, referrals, target accounts and market context. Then it turns that into named leads, qualification, AI rationale and suggested follow-up.",
+  marketSpecificContext:
+    "The market layer changes by sector. For one business, the useful signals might be funding, hiring, regulation, acquisitions, partnerships, leadership changes or public commentary. For another, they might be agents, managers, press, sponsorships, injuries, tours, events, social activity or career moves.",
   commercialPoint:
     "It makes growth more feasible for smaller teams because the business can see who is warming up, why they matter and what should happen next.",
   strap: "Business intelligence. Qualified prospects. More conversations. More clients. More impact.",
@@ -251,15 +279,19 @@ export const businessTracker = {
     [
       "04",
       "Live AI Search Intelligence",
-      "Adds current market context around each lead or target account: funding, hiring, regulation, acquisitions, partnerships, public commentary, talent moves, social activity or other market-specific signals."
+      "Adds current market context around each lead or target account. The source changes by market: funding, hiring, regulation, acquisitions, partnerships, leadership changes, public commentary, agents, managers, press, sponsorships, injuries, tours, events, social activity or career moves."
     ],
     ["05", "Follow-Up", "Recommends the next action per lead, so teams know who to prioritise."],
     [
       "06",
       "The Intel Bank",
-      "Keeps target firms, decision-makers, introducers, recent news, campaign status, relationship context and follow-up angles in one place."
+      "Keeps target firms, decision-makers, introducers, recent news, campaign status, relationship context and follow-up angles in one place, giving the business information competitors do not have: who is active, who is warming up, what changed and where the best opening is."
     ],
-    ["07", "Reporting And Scale", "Creates a board-ready monthly view of what is working, what is not and what to optimise next."]
+    [
+      "07",
+      "Reporting And Scale",
+      "Creates a board-ready monthly view of what is working, what is not and what to optimise next, designed to scale beyond the current setup."
+    ]
   ],
   channels: [
     {
@@ -270,7 +302,7 @@ export const businessTracker = {
     {
       title: "LinkedIn",
       body:
-        "Who followed, commented and engaged, qualified prospects and best-performing formats. LinkedIn without analytics creates blind impressions without growth mechanics."
+        "Who followed, commented and engaged, qualified prospects, best-performing formats, when to post and what hooks work. LinkedIn without analytics creates blind impressions without growth mechanics."
     },
     {
       title: "Lead Magnets",
@@ -294,13 +326,17 @@ export const calmAuthority = {
   problem:
     "Financial advisers win on trust, judgement and relationships. But in most firms, the thinking clients value most stays trapped in private meetings, inboxes and internal conversations.",
   system:
-    "The product maps real adviser voice, surfaces weekly angles and drafts posts from ideas, articles or URLs. Advisers stay in control. They review, edit and publish manually. Nothing is auto-published.",
+    "The product maps real adviser voice, surfaces weekly angles and drafts posts from ideas, articles or URLs. Advisers stay in control. They review, edit and publish manually. Nothing is auto-published. The point is not to generate more content. The point is to help credible experts show up consistently without losing the voice and judgement that make them credible.",
+  genericAiRisk:
+    "Generic AI makes the visibility problem worse when it produces bland, template-like content. In trust-based markets, sounding the same as everyone else is a commercial risk.",
   proof:
-    "Public Calm Authority materials cite one adviser growing impressions by more than 500% in a short measured period, +527% impressions in 28 days for one adviser, and 52 inbound leads in six months for one IFA posting consistently. These are specific examples, not promised outcomes.",
+    "Public Calm Authority materials cite one adviser growing impressions by more than 500% in a short measured period, +527% impressions in 28 days for one adviser, 52 inbound leads in six months for one IFA posting consistently, and two inbound LinkedIn enquiries in one month generating initial and ongoing revenue proof. Money Marketing / Financial Times-related visibility study materials are also referenced in Calm Authority materials. These are specific examples, not promised outcomes.",
   studioAngle:
-    "Calm Authority shows how Studio Baggio turns a market gap into a working AI product: expert judgement -> voice mapping -> useful content system -> visible authority -> market trust -> commercial opportunity.",
+    "Calm Authority shows how Studio Baggio turns a market gap into a working AI product: positioning, workflow design, voice mapping, content systems, compliance-aware product thinking and commercial rollout, all connected to expert judgement -> visible authority -> market trust -> commercial opportunity.",
   facts: [
     "Founded in 2025 by Harry Sims, a Chartered Financial Planner, and Jayme Baggio, a content and systems strategist.",
+    "Harry brought eleven years of financial-services experience and adviser-market insight.",
+    "Jayme built the tone-of-voice system and leads product, design and platform strategy.",
     "Built around a structural adviser-market visibility gap: 37,136 authorised financial advisers in the UK, fewer than 300 posting consistently on LinkedIn.",
     "Maps each adviser's actual writing voice from real samples.",
     "Surfaces weekly angles and drafts from a URL, article or idea.",
@@ -322,6 +358,7 @@ export const about = {
     "Jayme Baggio is a strategist, founder and systems operator at the intersection of AI, creativity, media and commercial strategy.",
     "Her work focuses on how AI can turn expert judgement inside creative and commercial teams into practical operating systems, content and products.",
     "She builds systems that help experts package and leverage their IP at scale, from AI-enabled authority products to research tools, lead-intelligence layers and market-specific workflows.",
+    "She brings strong teams together, designs systems around how they already work and focuses on the cultural traction needed for AI to create business value rather than perform as a surface-level tool demo.",
     "She speaks about practical AI implementation and executive-level frameworks for leaders, and publishes Rough Cut as live public thinking on AI, creativity, media and commercial work in practice."
   ],
   proof: [
@@ -337,3 +374,50 @@ export const phaseTwoTodos = [
   "Add sector pages for financial advisers, wealth firms, professional services and founder-led consultancies.",
   "Add deeper Hanbury, Last30Days and Fire Source standalone case studies when source material is ready."
 ];
+
+export const footer = {
+  company: "Studio Baggio Ltd",
+  summary: "Practical AI systems for expert-led businesses.",
+  email: "jayme@studiobaggio.ai",
+  privacyLabel: "Privacy"
+};
+
+export const contactPage = {
+  eyebrow: "Contact",
+  title: "Discuss your AI opportunity.",
+  body:
+    "Bring the business, market or workflow you want to improve. Studio Baggio will help you work out where AI can create real commercial value, what should be built first and how it should connect to visibility, pipeline, workflow or client experience.",
+  email: "jayme@studiobaggio.ai"
+};
+
+export const privacyPage = {
+  eyebrow: "Privacy",
+  title: "Simple privacy notes for Studio Baggio contact enquiries.",
+  items: [
+    {
+      title: "What the form collects",
+      body:
+        "The contact form asks for your name, email address, business or firm, website, what you are trying to improve and where you think AI could help."
+    },
+    {
+      title: "Why it is collected",
+      body:
+        "Studio Baggio uses this information to understand the enquiry and reply with relevant context. It is not used for automated marketing lists from this website."
+    },
+    {
+      title: "Where submissions are sent",
+      body:
+        "Submissions are sent by email to jayme@studiobaggio.ai through the configured transactional email provider."
+    },
+    {
+      title: "Your data questions",
+      body:
+        "You can contact jayme@studiobaggio.ai to ask about your submission or request deletion of the information you sent."
+    },
+    {
+      title: "Analytics",
+      body:
+        "This phase-1 build does not install analytics or tracking scripts. If analytics are added later, this page should be updated before launch."
+    }
+  ]
+};
