@@ -1,0 +1,264 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+import { ButtonLink } from "@/components/ui/button";
+import { PageReveals } from "@/components/page-reveals";
+import { ValueMap } from "@/components/value-map";
+import { WorkShowcase } from "@/components/work-showcase";
+import { hero, home, metadata as siteMetadata, primaryCta, systemBlocks } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: siteMetadata.home.title,
+  description: siteMetadata.home.description,
+  alternates: { canonical: "/" }
+};
+
+export default function HomePage() {
+  return (
+    <>
+      <PageReveals />
+      <section className="hero-pin min-h-dvh pt-28 md:pt-32">
+        <div className="editorial-container grid min-h-[calc(100dvh-8rem)] grid-rows-[auto_1fr_auto] gap-10 pb-10">
+          <div className="grid gap-3 md:grid-cols-[0.45fr_1fr]">
+            <div className="space-y-2">
+              {hero.meta.map((line) => (
+                <p key={line} data-hero-meta className="max-w-sm text-sm leading-relaxed text-ink/62">
+                  {line}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center">
+            <h1 className="display-hero uppercase" aria-label="Studio Baggio dot AI">
+              {hero.wordmark.map((line) => (
+                <span key={line} className="mask-line block">
+                  <span data-hero-line className="block">
+                    {line}
+                  </span>
+                </span>
+              ))}
+            </h1>
+          </div>
+          <div className="grid gap-8 border-t border-ink/15 pt-6 md:grid-cols-[1fr_0.58fr] md:items-end">
+            <Link
+              href="#ai-gap"
+              className="focus-ring text-sm uppercase tracking-[0.07em] text-ink/55 hover:text-ink"
+            >
+              {hero.scrollCue}
+            </Link>
+            <div>
+              <p className="text-xl leading-tight md:text-2xl">{hero.promiseTitle}</p>
+              <p className="mt-3 leading-relaxed text-ink/62">{hero.promise}</p>
+              <div className="mt-6">
+                <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai-gap" className="section-pad">
+        <div className="editorial-container grid gap-10 lg:grid-cols-[0.42fr_1fr]">
+          <p className="eyebrow">{home.aiGap.eyebrow}</p>
+          <div>
+            <h2 className="display-xl max-w-6xl" data-split>
+              {home.aiGap.title}
+            </h2>
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              {home.aiGap.body.map((paragraph) => (
+                <p key={paragraph} className="body-large text-ink/72" data-reveal>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad border-y border-ink/12">
+        <div className="editorial-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <p className="eyebrow">{home.problem.eyebrow}</p>
+            <h2 className="display-lg mt-5" data-split>
+              {home.problem.title}
+            </h2>
+          </div>
+          <div className="space-y-7">
+            {home.problem.body.map((paragraph) => (
+              <p key={paragraph} className="body-large text-ink/70" data-reveal>
+                {paragraph}
+              </p>
+            ))}
+            <div className="grid gap-4 pt-5">
+              {home.problem.pullQuotes.map((quote) => (
+                <blockquote key={quote} className="border-l border-ink pl-5 text-xl leading-snug text-ink">
+                  {quote}
+                </blockquote>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad">
+        <div className="editorial-container">
+          <p className="eyebrow">{home.method.eyebrow}</p>
+          <div className="mt-5 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+            <h2 className="display-lg" data-split>
+              {home.method.title}
+            </h2>
+            <p className="body-large text-ink/72" data-reveal>
+              {home.method.body}
+            </p>
+          </div>
+          <div className="mt-16 border-t border-ink/15">
+            {home.method.steps.map((step, index) => (
+              <div
+                key={step}
+                className="grid gap-4 border-b border-ink/12 py-6 md:grid-cols-[80px_1fr]"
+                data-reveal
+              >
+                <span className="text-sm uppercase tracking-[0.08em] text-ink/45">0{index + 1}</span>
+                <p className="text-3xl leading-none md:text-6xl">{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ValueMap />
+
+      <section className="section-pad">
+        <div className="editorial-container grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <p className="eyebrow">{home.commercialSprint.eyebrow}</p>
+            <h2 className="display-lg mt-5" data-split>
+              {home.commercialSprint.title}
+            </h2>
+            <p className="body-large mt-8 text-ink/72" data-reveal>
+              {home.commercialSprint.body}
+            </p>
+            <div className="mt-8">
+              <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
+            </div>
+          </div>
+          <div className="border-t border-ink/15">
+            {home.commercialSprint.deliverables.map((item, index) => (
+              <div key={item} className="grid grid-cols-[56px_1fr] gap-5 border-b border-ink/12 py-5" data-reveal>
+                <span className="text-xs uppercase tracking-[0.08em] text-ink/45">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p className="text-lg leading-snug">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad border-y border-ink/12">
+        <div className="editorial-container">
+          <p className="eyebrow">What the system includes</p>
+          <h2 className="display-lg mt-5 max-w-6xl" data-split>
+            Practical AI systems for the parts of the business where advantage is actually created.
+          </h2>
+          <div className="mt-14 border-t border-ink/15">
+            {systemBlocks.map((block, index) => (
+              <div
+                key={block.title}
+                className="grid gap-5 border-b border-ink/12 py-8 md:grid-cols-[80px_0.7fr_1fr]"
+                data-reveal
+              >
+                <span className="text-xs uppercase tracking-[0.08em] text-ink/45">0{index + 1}</span>
+                <h3 className="text-3xl leading-none">{block.title}</h3>
+                <div className="space-y-4 leading-relaxed text-ink/70">
+                  <p>{block.promise}</p>
+                  <p>{block.examples}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad">
+        <div className="editorial-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <p className="eyebrow">{home.outcome.eyebrow}</p>
+            <h2 className="display-lg mt-5" data-split>
+              {home.outcome.title}
+            </h2>
+          </div>
+          <div className="space-y-7">
+            {home.outcome.lines.map((line) => (
+              <p key={line} className="body-large text-ink/72" data-reveal>
+                {line}
+              </p>
+            ))}
+            <p className="text-2xl leading-tight" data-reveal>
+              No generic AI training. No tool theatre. No automation for the sake of it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-paper">
+        <div className="editorial-container">
+          <div className="mb-12 grid gap-8 lg:grid-cols-[0.42fr_1fr]">
+            <p className="eyebrow">Built from live work</p>
+            <h2 className="display-lg" data-split>
+              Built from live work across AI search, wealth strategy, content systems, media, workflow design and commercial operations.
+            </h2>
+          </div>
+          <WorkShowcase compact />
+        </div>
+      </section>
+
+      <section className="section-pad border-t border-ink/12">
+        <div className="editorial-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <h2 className="display-lg" data-split>
+            {home.fit.title}
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            <FitList title="Good fit" items={home.fit.good} />
+            <FitList title="Not a fit" items={home.fit.bad} />
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-charcoal text-paper">
+        <div className="editorial-container grid gap-10 md:grid-cols-[1fr_0.6fr] md:items-end">
+          <div>
+            <p className="eyebrow text-paper/55">Next step</p>
+            <h2 className="display-lg mt-5" data-split>
+              If AI should be giving your business an edge, start with the opportunity.
+            </h2>
+          </div>
+          <div>
+            <p className="body-large text-paper/70">
+              Bring the business, market or workflow you want to improve. Studio Baggio will help you work out where AI can create real commercial value and what should be built first.
+            </p>
+            <div className="mt-8">
+              <ButtonLink href={primaryCta.href} className="border-paper text-paper hover:bg-paper hover:text-ink">
+                {primaryCta.label}
+              </ButtonLink>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function FitList({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="border-t border-ink/15">
+      <h3 className="py-5 text-sm uppercase tracking-[0.07em] text-ink/52">{title}</h3>
+      <div>
+        {items.map((item) => (
+          <p key={item} className="border-t border-ink/10 py-4 leading-relaxed text-ink/72">
+            {item}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
