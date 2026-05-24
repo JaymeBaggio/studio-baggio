@@ -56,6 +56,7 @@ Fixed in this pass:
 - Expanded Business Tracker copy from `06_BUSINESS_TRACKER_COPY.md`, including market-specific signal examples, LinkedIn hook/timing logic, Intel Bank competitor-information line and scale/reporting language.
 - Expanded Calm Authority copy from `08_CALM_AUTHORITY_COPY.md`, including Harry/Jayme facts, generic-AI trust-market risk, stronger Studio Baggio product proof and additional public proof references.
 - Added an AI Advantage section explaining how opportunities are prioritised.
+- Added the full offer ladder to the homepage so `Commercial AI Sprint`, `AI Advantage Build` and `AI Advantage Partner` all appear against the v9 source.
 - Moved footer, contact and privacy copy into the editable content layer.
 - Fixed the contact form so a Resend API error cannot be reported as success and a missing-env `503` does not show the success state.
 - Added page-specific Open Graph/Twitter metadata, favicon/app icon routes and `www.studiobaggio.ai` as the canonical default.
@@ -93,8 +94,11 @@ returns `503` with a clear message telling the user to email Jayme directly.
 
 - Implementation commit pushed to `main`: `c568393` (`Build Studio Baggio AI advantage site`).
 - Browser-warning cleanup commit pushed to `main`: `e37d2be` (`Clean up Studio Baggio browser warnings`).
-- Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy, a thin divider and the lede section visible immediately below.
-- Scroll/reading polish: large display type reduced for easier in-frame reading, key homepage narrative sections made sticky on desktop/tablet, and reveal triggers moved earlier so text is fully visible before the user can scroll past it.
+- Launch QA repair commit pushed to `main`: `e6f6bfb` (`Fix Studio Baggio launch QA issues`).
+- Latest production deployment: `https://studio-baggio-7505dj896-jaymes-projects-95f6f9cd.vercel.app`.
+- Vercel aliased the deployment to `https://www.studiobaggio.ai`.
+- Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, full-frame right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy and the conventional nav hidden on the first home viewport until scroll.
+- Scroll/reading polish: large display type reduced for easier in-frame reading, key homepage narrative sections made sticky on desktop/tablet, and section-level reveal triggers moved early enough that text is visible before users can scroll past it.
 - Launch status committed after deployment verification.
 - Vercel project: `studio-baggio`.
 - Vercel framework preset: `nextjs`.
@@ -104,8 +108,10 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Live routes verified as `200`: `/`, `/ai-advantage`, `/work`, `/business-tracker`, `/calm-authority`, `/about`, `/contact`, `/privacy`.
 - `sitemap.xml` and `robots.txt` return `200`.
 - Live source includes the v9 headline `Turn AI into a commercial advantage.`
-- Live Business Tracker page includes the required operating-system line and channel logic.
-- Live Calm Authority page includes the dedicated case-study copy and proof facts.
+- Live Business Tracker page includes the required operating-system line, market-specific signal examples, Intel Bank detail and channel logic.
+- Live Calm Authority page includes the dedicated case-study copy, Harry/Jayme facts, generic-AI risk framing and proof facts.
+- Live AI Advantage page includes the opportunity prioritisation section.
+- Live canonical and Open Graph URL resolve to `https://www.studiobaggio.ai`.
 
 ## Deployment Notes
 

@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { PageReveals } from "@/components/page-reveals";
 import { ValueMap } from "@/components/value-map";
 import { WorkShowcase } from "@/components/work-showcase";
-import { hero, home, metadata as siteMetadata, primaryCta, systemBlocks } from "@/content/site";
+import { hero, home, metadata as siteMetadata, offerLadder, primaryCta, systemBlocks } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
@@ -131,6 +131,24 @@ export default function HomePage() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <p className="text-lg leading-snug">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad border-y border-ink/12">
+        <div className="editorial-container">
+          <p className="eyebrow">How the work can progress</p>
+          <h2 className="display-lg mt-5 max-w-6xl" data-split>
+            Start with the opportunity, then build and improve the systems that create the advantage.
+          </h2>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {offerLadder.map((offer, index) => (
+              <div key={offer.name} className="border-t border-ink/15 pt-5" data-reveal>
+                <p className="text-xs uppercase tracking-[0.08em] text-ink/45">0{index + 1}</p>
+                <h3 className="mt-7 text-3xl leading-none">{offer.name}</h3>
+                <p className="mt-6 leading-relaxed text-ink/72">{offer.description}</p>
               </div>
             ))}
           </div>
