@@ -36,7 +36,7 @@ export function WorkShowcase({ compact = false }: { compact?: boolean }) {
           </button>
         ))}
       </div>
-      <div className="sticky top-28 h-fit border border-ink/12 bg-paper p-5 md:p-8">
+      <div className="h-fit border border-ink/12 bg-paper p-5 md:p-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={current.slug}
@@ -53,6 +53,8 @@ export function WorkShowcase({ compact = false }: { compact?: boolean }) {
                   width={1400}
                   height={875}
                   className="h-full w-full object-cover"
+                  priority={active === 0}
+                  sizes="(min-width: 1024px) 44vw, 100vw"
                 />
               ) : (
                 <div className="flex h-full flex-col justify-between p-6">

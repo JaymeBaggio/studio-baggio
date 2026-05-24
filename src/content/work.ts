@@ -29,19 +29,6 @@ export const workItems: WorkItem[] = [
     image: "/assets/products/calm-authority.png"
   },
   {
-    slug: "hanbury-growth-intelligence",
-    title: "Hanbury / Growth Intelligence",
-    eyebrow: "Specialist wealth / market entry / growth system",
-    problem:
-      "A specialist wealth opportunity needed sharper market positioning, proof, visibility and follow-up logic without exposing sensitive client detail.",
-    built:
-      "A growth-intelligence system across positioning, website direction, search visibility, authority assets, lead capture, email nurture and follow-up intelligence.",
-    whyItMatters:
-      "It shows how a market opportunity becomes a joined-up commercial system rather than a scattered set of marketing assets.",
-    proves:
-      "Studio Baggio can turn a high-value niche into a practical route to visibility, qualified interest and better-informed follow-up."
-  },
-  {
     slug: "business-tracker",
     title: "Business Tracker",
     eyebrow: "Lead intelligence / attribution / follow-up",

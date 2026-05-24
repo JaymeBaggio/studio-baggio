@@ -25,9 +25,9 @@ export const metadata = {
       "Commercial AI strategy, AI SEO, market intelligence, lead intelligence and practical AI systems built around how your business wins in market."
   },
   work: {
-    title: "Studio Baggio Work | AI Systems, Products and Growth Intelligence",
+    title: "Studio Baggio Work | AI Systems, Products and Commercial Intelligence",
     description:
-      "Selected Studio Baggio work across Calm Authority, Growth Intelligence, Business Tracker, Last30Days and Fire Source."
+      "Selected Studio Baggio work across Calm Authority, Business Tracker, Last30Days and Fire Source."
   },
   businessTracker: {
     title: "Business Tracker | Lead Intelligence Operating System",
@@ -448,7 +448,7 @@ export const phaseTwoTodos = [
   "Build Rough Cut / Newsletter archive after phase-1 conversion site is live.",
   "Build Playbooks pages after main site QA and domain replacement.",
   "Add sector pages for financial advisers, wealth firms, professional services and founder-led consultancies.",
-  "Add deeper Hanbury, Last30Days and Fire Source standalone case studies when source material is ready."
+  "Add deeper Last30Days and Fire Source standalone case studies when source material is ready."
 ];
 
 export const footer = {

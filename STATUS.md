@@ -37,7 +37,7 @@ Primary build files:
 
 - Stack: Next.js, React, TypeScript, Tailwind, GSAP, ScrollTrigger, SplitText, Framer Motion, React Hook Form, Zod.
 - Content layer: `src/content/site.ts` and `src/content/work.ts`.
-- Work includes Calm Authority, Hanbury / Growth Intelligence, Business Tracker, Last30Days and Fire Source.
+- Work currently includes Calm Authority, Business Tracker, Last30Days and Fire Source. Hanbury / Growth Intelligence is removed from the public Work section for now.
 - Business Tracker has a dedicated page using the 06 Business Tracker source copy.
 - Calm Authority has a dedicated page using the 08 Calm Authority copy plus live Calm Authority source facts.
 - SEO basics added: page-specific metadata, Open Graph image route, canonical URLs, sitemap, robots, favicons and Organization JSON-LD.
@@ -52,7 +52,7 @@ Fixed in this pass:
 - Removed the remaining lime/purple accent system and warm cream tones. The site now uses black, white and neutral greys only.
 - Rebuilt the homepage first viewport as a full-frame Paper-reference hero: small top-left metadata, large right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy, and hidden conventional nav until scroll on the home first frame.
 - Added scroll restoration controls so reload/navigation returns to the top when there is no hash.
-- Reworked homepage sticky sections to pin for roughly 2 viewport heights on desktop/tablet and trigger text reveals from the section before the reader can scroll past.
+- Removed the homepage sticky/pinned chapter system after motion QA because it made scrolling feel heavy in the wrong places. The current homepage uses early ScrollTrigger text reveals, hero parallax and normal page flow for smoother reading.
 - Expanded Business Tracker copy from `06_BUSINESS_TRACKER_COPY.md`, including market-specific signal examples, LinkedIn hook/timing logic, Intel Bank competitor-information line and scale/reporting language.
 - Expanded Calm Authority copy from `08_CALM_AUTHORITY_COPY.md`, including Harry/Jayme facts, generic-AI trust-market risk, stronger Studio Baggio product proof and additional public proof references.
 - Added an AI Advantage section explaining how opportunities are prioritised.
@@ -63,6 +63,9 @@ Fixed in this pass:
 - Fixed the contact form so a Resend API error cannot be reported as success and a missing-env `503` does not show the success state.
 - Added page-specific Open Graph/Twitter metadata, favicon/app icon routes and `www.studiobaggio.ai` as the canonical default.
 - Pinned package versions from the current lockfile instead of leaving production dependencies on `latest`.
+- Added a dedicated Calm Authority motion layer with entrance animation, product-shot depth/parallax, card/row/proof reveals and visible-by-default content so the page never blanks while waiting for a scroll trigger.
+- Replaced the Last30Days work image with the current Desktop asset from `/Users/jaymebaggio/Desktop/Last 30 Days/public/last30days-og-new.png`.
+- Removed Hanbury / Growth Intelligence from the public Work section for now.
 
 ## Contact Form
 
@@ -84,12 +87,12 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - `npm run build` passes.
 - Local routes return `200`: `/`, `/ai-advantage`, `/work`, `/business-tracker`, `/calm-authority`, `/about`, `/contact`, `/privacy`.
 - `sitemap.xml`, `robots.txt`, `opengraph-image`, `icon` and `apple-icon` return `200`.
-- Desktop in-app browser check: home reload starts at `scrollY: 0`, hero top is `0`, hero height is the full viewport, lede starts after the viewport, and there is no horizontal overflow.
-- Mobile in-app browser check at 390x844: hero is full frame, no horizontal overflow, sticky pinning is disabled on mobile, and hero text fits.
-- Sticky-section check: 4 desktop sticky sections create 4 pin spacers; heading/reveal copy reaches opacity `1` and transform reset before the section is pinned at the top.
+- Desktop render check: home reload starts at `scrollY: 0`, hero top is `0`, hero height is the full viewport, lede starts after the viewport, and there is no horizontal overflow.
+- Mobile render check at 390x844: hero is full frame, no horizontal overflow, and hero text fits.
+- Sticky-section cleanup check: homepage and Work no longer contain `position: sticky`, `pin: true`, `data-sticky-section`, `sticky-chapter` or masked SplitText lines.
 - Contact form validation and missing-email-env error state verified in browser; the success message is not shown on the configured `503` fallback.
 - Console error check clean in the in-app browser.
-- Calm Authority desktop/mobile render checks passed after the fact-sheet correction; the first scroll now shows `What it is`, `What it does` and `Who it is for`, with the old `The expertise was already there. The visibility was not.` line removed.
+- Calm Authority desktop/mobile render checks passed after the fact-sheet and motion correction; the first scroll now shows `What it is`, `What it does` and `Who it is for`, the page has dedicated GSAP depth/reveals, and the old `The expertise was already there. The visibility was not.` line is removed.
 - Content checks passed for v9 headline, required Work items, Business Tracker mandatory lines/channel logic, Calm Authority facts/proof and AI Advantage prioritisation section.
 - `npm audit --omit=dev` currently reports 2 moderate advisories through Next's bundled PostCSS dependency; `npm audit fix --force` suggests an unsafe breaking downgrade, so this was not applied.
 
@@ -104,7 +107,7 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Latest production deployment: `https://studio-baggio-a81xrsn4k-jaymes-projects-95f6f9cd.vercel.app`.
 - Vercel aliased the deployment to `https://www.studiobaggio.ai`.
 - Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, full-frame right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy and the conventional nav hidden on the first home viewport until scroll.
-- Scroll/reading polish: large display type reduced for easier in-frame reading, key homepage narrative sections made sticky on desktop/tablet, and section-level reveal triggers moved early enough that text is visible before users can scroll past it.
+- Scroll/reading polish: large display type reduced for easier in-frame reading, masked SplitText clipping removed, sticky/pinned chapter behaviour removed, and section-level reveal triggers moved early enough that text is visible before users can scroll past it.
 - Launch status committed after deployment verification.
 - Vercel project: `studio-baggio`.
 - Vercel framework preset: `nextjs`.
@@ -144,7 +147,8 @@ Still required before expecting email delivery from the form:
 - Rough Cut / Newsletter archive.
 - Playbooks pages.
 - Sector pages.
-- Deeper standalone case studies for Hanbury, Last30Days and Fire Source.
+- Deeper standalone case studies for Last30Days and Fire Source.
+- Hanbury / Growth Intelligence public work item, when source material and approval are ready.
 
 ## Notes For Next Session
 

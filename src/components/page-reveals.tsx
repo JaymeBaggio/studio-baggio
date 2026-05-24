@@ -23,7 +23,6 @@ export function PageReveals() {
       let alive = true;
       const splits: SplitTextInstance[] = [];
       const animations: gsap.core.Animation[] = [];
-      const triggers: ScrollTrigger[] = [];
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       async function run() {
@@ -49,7 +48,6 @@ export function PageReveals() {
         const heroPromise = gsap.utils.toArray<HTMLElement>("[data-hero-promise]");
         const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
         const splitElements = gsap.utils.toArray<HTMLElement>("[data-split]");
-        const stickySections = gsap.utils.toArray<HTMLElement>("[data-sticky-section]");
 
         if (reduce) {
           gsap.set([...revealElements, ...splitElements], { opacity: 1, y: 0 });
@@ -89,80 +87,79 @@ export function PageReveals() {
           }, 0.78);
         }
 
-        if (window.innerWidth >= 900) {
-          stickySections.forEach((section) => {
-            triggers.push(
-              ScrollTrigger.create({
-                trigger: section,
-                start: "top top",
-                end: () => `+=${Math.round(window.innerHeight * 2)}`,
-                pin: true,
-                pinSpacing: true,
-                anticipatePin: 1,
-                invalidateOnRefresh: true
-              })
-            );
-          });
-        }
-
-        revealElements.forEach((element) => {
-          const stickyParent = element.closest("[data-sticky-section]") as HTMLElement | null;
-
+        if (heroLines.length) {
           animations.push(
-            gsap.from(element, {
-              y: 18,
-              opacity: 0,
-              duration: 0.45,
-              ease: "power3.out",
+            gsap.to(heroLines, {
+              yPercent: -8,
+              opacity: 0.72,
+              ease: "none",
               scrollTrigger: {
-                trigger: stickyParent || element,
-                start: stickyParent ? "top 78%" : "top 86%",
-                fastScrollEnd: true,
-                once: true
+                trigger: ".home-reference-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.8,
+                invalidateOnRefresh: true
               }
             })
+          );
+        }
+
+        const textScrollTrigger = (element: HTMLElement) => ({
+          trigger: element,
+          start: "top 92%",
+          end: "top 58%",
+          scrub: 0.45,
+          fastScrollEnd: true,
+          invalidateOnRefresh: true
+        });
+
+        revealElements.forEach((element) => {
+          animations.push(
+            gsap.fromTo(
+              element,
+              { y: 28, autoAlpha: 0 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                ease: "power3.out",
+                scrollTrigger: textScrollTrigger(element)
+              }
+            )
           );
         });
 
         splitElements.forEach((element) => {
-          const stickyParent = element.closest("[data-sticky-section]") as HTMLElement | null;
-
           if (SplitText) {
             const split = new SplitText(element, {
               type: "lines",
-              mask: "lines",
               autoSplit: true
             });
             splits.push(split);
             animations.push(
-              gsap.from(split.lines, {
-                yPercent: 70,
-                opacity: 0,
-                duration: 0.52,
-                stagger: 0.045,
-                ease: "expo.out",
-                scrollTrigger: {
-                  trigger: stickyParent || element,
-                  start: stickyParent ? "top 78%" : "top 86%",
-                  fastScrollEnd: true,
-                  once: true
+              gsap.fromTo(
+                split.lines,
+                { yPercent: 82, autoAlpha: 0 },
+                {
+                  yPercent: 0,
+                  autoAlpha: 1,
+                  stagger: 0.08,
+                  ease: "expo.out",
+                  scrollTrigger: textScrollTrigger(element)
                 }
-              })
+              )
             );
           } else {
             animations.push(
-              gsap.from(element, {
-                y: 16,
-                opacity: 0,
-                duration: 0.5,
-                ease: "power3.out",
-                scrollTrigger: {
-                  trigger: stickyParent || element,
-                  start: stickyParent ? "top 78%" : "top 86%",
-                  fastScrollEnd: true,
-                  once: true
+              gsap.fromTo(
+                element,
+                { y: 24, autoAlpha: 0 },
+                {
+                  y: 0,
+                  autoAlpha: 1,
+                  ease: "power3.out",
+                  scrollTrigger: textScrollTrigger(element)
                 }
-              })
+              )
             );
           }
         });
@@ -173,7 +170,6 @@ export function PageReveals() {
       return () => {
         alive = false;
         animations.forEach((animation) => animation.kill());
-        triggers.forEach((trigger) => trigger.kill());
         splits.forEach((split) => split.revert());
       };
     }
