@@ -94,7 +94,7 @@ textarea {
   min-height: calc(100svh - clamp(5rem, 6.2vw, 7.25rem));
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   column-gap: clamp(1rem, 2vw, 2rem);
   padding-bottom: clamp(1.1rem, 2.2vw, 2.4rem);
 }
@@ -108,30 +108,30 @@ textarea {
   color: rgba(20, 20, 20, 0.72);
 }
 
-.home-reference-wordmark {
-  grid-column: 4 / -1;
+.home-reference-message {
+  grid-column: 1 / -1;
   grid-row: 2;
   align-self: center;
-  justify-self: end;
-  text-align: right;
-  font-size: clamp(5.5rem, 11.5vw, 14rem);
-  line-height: 0.82;
+  max-width: 104rem;
+  text-align: left;
+  font-size: clamp(2.85rem, 5.3vw, 6.65rem);
+  font-weight: 700;
+  line-height: 1.08;
   letter-spacing: 0;
 }
 
-.home-reference-promise {
-  grid-column: 7 / -1;
-  grid-row: 3;
-  justify-self: end;
-  max-width: 46rem;
-  text-align: right;
-  font-size: clamp(0.78rem, 0.78vw, 0.92rem);
-  line-height: 1.45;
-  color: rgba(20, 20, 20, 0.78);
+.home-reference-message-title {
+  display: block;
 }
 
-.home-reference-promise p + p {
-  margin-top: 0.25rem;
+.home-reference-outcomes {
+  display: grid;
+  gap: 0.08em;
+  margin-top: clamp(3rem, 5.5vw, 5.5rem);
+}
+
+.home-reference-outcomes span {
+  display: block;
 }
 
 .home-reference-lede {
@@ -341,8 +341,7 @@ textarea {
   }
 
   .home-reference-meta,
-  .home-reference-wordmark,
-  .home-reference-promise {
+  .home-reference-message {
     grid-column: 1;
   }
 
@@ -351,15 +350,9 @@ textarea {
     font-size: 0.76rem;
   }
 
-  .home-reference-wordmark {
+  .home-reference-message {
     align-self: center;
-    justify-self: end;
-    font-size: clamp(3.25rem, 17vw, 5.35rem);
-  }
-
-  .home-reference-promise {
-    max-width: 21rem;
-    font-size: 0.76rem;
+    font-size: clamp(2.15rem, 10vw, 4.3rem);
   }
 
   .home-reference-lede-title {

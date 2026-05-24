@@ -23,19 +23,18 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <h1 className="home-reference-wordmark uppercase" aria-label="Studio Baggio dot AI">
-            {hero.wordmark.map((line) => (
-              <span key={line} className="mask-line block">
-                <span data-hero-line className="block">
-                  {line}
+          <h1 className="home-reference-message uppercase">
+            <span data-hero-line className="home-reference-message-title">
+              {hero.promiseTitle}
+            </span>
+            <span className="home-reference-outcomes" aria-label="Studio Baggio outcomes">
+              {hero.outcomes.map((outcome) => (
+                <span key={outcome} data-hero-line>
+                  {outcome}
                 </span>
-              </span>
-            ))}
+              ))}
+            </span>
           </h1>
-          <div className="home-reference-promise">
-            <p data-hero-promise>{hero.promiseTitle}</p>
-            <p data-hero-promise>{hero.promise}</p>
-          </div>
         </div>
       </section>
 
@@ -195,7 +194,7 @@ export default function HomePage() {
               </p>
             ))}
             <p className="text-2xl leading-tight" data-reveal>
-              No generic AI training. No tool theatre. No automation for the sake of it.
+              The work is useful when it changes how the business is found, informed and followed up.
             </p>
           </div>
         </div>
@@ -219,8 +218,8 @@ export default function HomePage() {
             {home.fit.title}
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <FitList title="Good fit" items={home.fit.good} />
-            <FitList title="Not a fit" items={home.fit.bad} />
+            <FitList title="Best for" items={home.fit.good} />
+            <FitList title="Less useful for" items={home.fit.bad} />
           </div>
         </div>
       </section>

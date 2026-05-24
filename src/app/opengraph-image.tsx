@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Studio Baggio - Turn AI into a commercial advantage.";
+export const alt = "Studio Baggio - practical AI systems for expert-led businesses.";
 export const size = {
   width: 1200,
   height: 630
@@ -27,8 +27,14 @@ export default function Image() {
         <div style={{ fontSize: 18, letterSpacing: 3, textTransform: "uppercase" }}>
           Studio Baggio.ai
         </div>
-        <div style={{ fontSize: 112, lineHeight: 0.9, maxWidth: 1000 }}>
-          Turn AI into a commercial advantage.
+        <div style={{ fontSize: 72, lineHeight: 0.94, maxWidth: 1000 }}>
+          Easier to find.
+          <br />
+          Faster to act.
+          <br />
+          Better informed.
+          <br />
+          Harder to compete with.
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
           <span>Practical AI systems</span>
