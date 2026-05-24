@@ -96,7 +96,7 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - Browser-warning cleanup commit pushed to `main`: `e37d2be` (`Clean up Studio Baggio browser warnings`).
 - Launch QA repair commit pushed to `main`: `e6f6bfb` (`Fix Studio Baggio launch QA issues`).
 - Homepage offer-ladder completion commit pushed to `main`: `ac09486` (`Add homepage offer ladder`).
-- Latest production deployment: `https://studio-baggio-m240rxexl-jaymes-projects-95f6f9cd.vercel.app`.
+- Latest production deployment: `https://studio-baggio-n862in88f-jaymes-projects-95f6f9cd.vercel.app`.
 - Vercel aliased the deployment to `https://www.studiobaggio.ai`.
 - Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, full-frame right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy and the conventional nav hidden on the first home viewport until scroll.
 - Scroll/reading polish: large display type reduced for easier in-frame reading, key homepage narrative sections made sticky on desktop/tablet, and section-level reveal triggers moved early enough that text is visible before users can scroll past it.
