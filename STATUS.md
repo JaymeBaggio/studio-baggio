@@ -70,6 +70,8 @@ returns `503` with a clear message telling the user to email Jayme directly.
 ## Verified Live
 
 - Implementation commit pushed to `main`: `c568393` (`Build Studio Baggio AI advantage site`).
+- Browser-warning cleanup commit pushed to `main`: `e37d2be` (`Clean up Studio Baggio browser warnings`).
+- Hero reference visual update: homepage header rebuilt to match the Paper reference more closely, with top-left metadata, right-aligned `STUDIO BAGGIO.AI`, bottom-right promise copy, a thin divider and the lede section visible immediately below.
 - Launch status committed after deployment verification.
 - Vercel project: `studio-baggio`.
 - Vercel framework preset: `nextjs`.
@@ -93,6 +95,8 @@ Fixed on 24 May 2026:
 - Updated Vercel project framework to `nextjs`.
 - Redeployed to production.
 - Re-verified custom domains and phase-1 routes.
+- Cleaned up homepage-only GSAP selectors so non-home pages do not warn when hero elements are absent.
+- Cleaned up the missing-email-env contact-form path so it shows the configured error state without an unhandled promise rejection.
 
 Still required before expecting email delivery from the form:
 

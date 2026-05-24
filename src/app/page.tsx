@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
 import { PageReveals } from "@/components/page-reveals";
@@ -16,54 +15,41 @@ export default function HomePage() {
   return (
     <>
       <PageReveals />
-      <section className="hero-pin min-h-dvh pt-28 md:pt-32">
-        <div className="editorial-container grid min-h-[calc(100dvh-8rem)] grid-rows-[auto_1fr_auto] gap-10 pb-10">
-          <div className="grid gap-3 md:grid-cols-[0.45fr_1fr]">
+      <section className="home-reference-hero">
+        <div className="editorial-container home-reference-frame">
+          <div className="home-reference-meta">
             <div className="space-y-2">
               {hero.meta.map((line) => (
-                <p key={line} data-hero-meta className="max-w-sm text-sm leading-relaxed text-ink/62">
+                <p key={line} data-hero-meta>
                   {line}
                 </p>
               ))}
             </div>
           </div>
-          <div className="flex items-center">
-            <h1 className="display-hero uppercase" aria-label="Studio Baggio dot AI">
-              {hero.wordmark.map((line) => (
-                <span key={line} className="mask-line block">
-                  <span data-hero-line className="block">
-                    {line}
-                  </span>
+          <h1 className="home-reference-wordmark uppercase" aria-label="Studio Baggio dot AI">
+            {hero.wordmark.map((line) => (
+              <span key={line} className="mask-line block">
+                <span data-hero-line className="block">
+                  {line}
                 </span>
-              ))}
-            </h1>
-          </div>
-          <div className="grid gap-8 border-t border-ink/15 pt-6 md:grid-cols-[1fr_0.58fr] md:items-end">
-            <Link
-              href="#ai-gap"
-              className="focus-ring text-sm uppercase tracking-[0.07em] text-ink/55 hover:text-ink"
-            >
-              {hero.scrollCue}
-            </Link>
-            <div>
-              <p className="text-xl leading-tight md:text-2xl">{hero.promiseTitle}</p>
-              <p className="mt-3 leading-relaxed text-ink/62">{hero.promise}</p>
-              <div className="mt-6">
-                <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
-              </div>
-            </div>
+              </span>
+            ))}
+          </h1>
+          <div className="home-reference-promise">
+            <p>{hero.promiseTitle}</p>
+            <p>{hero.promise}</p>
           </div>
         </div>
       </section>
 
-      <section id="ai-gap" className="section-pad">
-        <div className="editorial-container grid gap-10 lg:grid-cols-[0.42fr_1fr]">
-          <p className="eyebrow">{home.aiGap.eyebrow}</p>
+      <section id="ai-gap" className="home-reference-lede">
+        <div className="editorial-container">
+          <p className="sr-only">{home.aiGap.eyebrow}</p>
           <div>
-            <h2 className="display-xl max-w-6xl" data-split>
+            <h2 className="home-reference-lede-title" data-split>
               {home.aiGap.title}
             </h2>
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="home-reference-lede-body">
               {home.aiGap.body.map((paragraph) => (
                 <p key={paragraph} className="body-large text-ink/72" data-reveal>
                   {paragraph}
