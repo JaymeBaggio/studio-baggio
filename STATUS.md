@@ -21,7 +21,7 @@ Scope:
 - Rebuilt `/calm-authority` only, from clean `origin/main`, to avoid clashing with the uncommitted homepage work in the main website folder.
 - Replaced the old Calm Authority fact-sheet/pricing/recent-study page structure with Jayme's supplied flagship-product copy.
 - New page sequence: hero, featured-in wordmarks, commercial thesis, problem, why now, how it works, who it is for, proof, compliance, featured-in, founding adviser and built-by sections.
-- Updated Calm Authority page metadata to `Calm Authority | Your Own Expertise. At Scale`.
+- Updated Calm Authority page metadata to `Calm Authority | Your own expertise at scale`.
 
 Verified on branch:
 
@@ -54,6 +54,7 @@ Verified locally before push:
 - `npm run build` passes.
 - Render checks at desktop `1440x1000` and mobile `390x844` show no horizontal overflow.
 - Calm Authority OG image renders from the original `1659x948` PNG and the image link points to `https://www.calmauthority.ai/`.
+- Follow-up copy tweak: removed the dash before the hero tagline and changed it to `Your own expertise at scale`.
 
 ## Built In Phase 1
 

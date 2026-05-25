@@ -183,7 +183,7 @@ export function CalmAuthorityProductPage() {
             </p>
             <h1 className="calm-authority-hero-title" data-calm-motion data-calm-hero-copy>
               {calmAuthority.title}
-              <span>— {calmAuthority.tagline}</span>
+              <span>{calmAuthority.tagline}</span>
             </h1>
             <p className="calm-authority-built-line" data-calm-motion data-calm-hero-copy>
               {calmAuthority.builtLine}
@@ -477,7 +477,7 @@ export function CalmAuthorityProductPage() {
         <div className="editorial-container calm-authority-final-grid" data-calm-reveal>
           <div>
             <p className="eyebrow text-paper/58">Calm Authority</p>
-            <h2>Your Own Expertise. At Scale</h2>
+            <h2>{calmAuthority.tagline}</h2>
           </div>
           <div className="calm-authority-final-actions">
             <ButtonLink href={calmAuthority.liveHref} external className="border-paper bg-paper text-ink hover:bg-transparent hover:text-paper">
