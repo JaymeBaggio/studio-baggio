@@ -7,6 +7,8 @@ const routes = [
   "/work",
   "/business-tracker",
   "/calm-authority",
+  "/fire-source",
+  "/last30days",
   "/about",
   "/contact",
   "/privacy"
@@ -15,7 +17,7 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${siteUrl}${route}`,
-    lastModified: new Date("2026-05-24"),
+    lastModified: new Date("2026-05-25"),
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : 0.75
   }));

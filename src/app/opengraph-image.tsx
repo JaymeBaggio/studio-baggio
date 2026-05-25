@@ -29,7 +29,7 @@ export default function Image() {
         </div>
         <div style={{ fontSize: 56, lineHeight: 1.04, maxWidth: 1000 }}>
           We design and build practical AI systems that help your business become easier to find,
-          faster, better informed, harder to compete with.
+          faster to act, better informed and harder to compete with.
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
           <span>Practical AI systems</span>

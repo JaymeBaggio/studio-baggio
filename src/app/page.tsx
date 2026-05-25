@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
 import { PageReveals } from "@/components/page-reveals";
+import { ProofTiles } from "@/components/proof-tiles";
 import { ValueMap } from "@/components/value-map";
-import { WorkShowcase } from "@/components/work-showcase";
-import { hero, home, metadata as siteMetadata, primaryCta, systemBlocks } from "@/content/site";
+import { hero, home, metadata as siteMetadata, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
@@ -39,17 +39,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="ai-gap" className="home-reference-lede">
-        <div className="editorial-container">
-          <p className="sr-only">{home.aiGap.eyebrow}</p>
-          <div>
-            <h2 className="home-reference-lede-title" data-split>
-              {home.aiGap.title}
+      <section id="ai-gap" className="opening-argument-section">
+        <div className="editorial-container opening-argument-grid">
+          <div className="opening-argument-top">
+            <h2 className="opening-argument-headline" data-split>
+              {home.opening.headline}
             </h2>
-            <div className="home-reference-lede-body">
-              {home.aiGap.body.map((paragraph) => (
-                <p key={paragraph} className="body-large text-ink/72" data-reveal>
-                  {paragraph}
+            <p className="opening-argument-qualifier" data-reveal>
+              {home.opening.qualifier}
+            </p>
+          </div>
+          <div className="opening-outcome-block">
+            <p className="opening-outcome-setup" data-reveal>
+              {home.opening.setup}
+            </p>
+            <div className="opening-outcome-stack">
+              {home.opening.outcomes.map((line, index) => (
+                <p key={line} className={index === home.opening.outcomes.length - 1 ? "is-strong" : ""} data-reveal>
+                  {line}
                 </p>
               ))}
             </div>
@@ -57,64 +64,68 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-pad narrative-chapter border-y border-ink/12">
-        <div className="editorial-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
+      <section className="problem-clarifier-section">
+        <div className="editorial-container">
+          <div className="problem-clarifier-copy">
             <p className="eyebrow">{home.problem.eyebrow}</p>
-            <h2 className="display-lg mt-5" data-split>
+            <h2 className="problem-clarifier-title" data-split>
               {home.problem.title}
             </h2>
-          </div>
-          <div className="space-y-7">
+            <p className="problem-stat" data-reveal>
+              {home.problem.stat}
+            </p>
+            <a className="problem-source focus-ring" href={home.problem.sourceUrl} target="_blank" rel="noreferrer" data-reveal>
+              {home.problem.source}
+            </a>
             {home.problem.body.map((paragraph) => (
-              <p key={paragraph} className="body-large text-ink/70" data-reveal>
+              <p key={paragraph} className="problem-strong" data-reveal>
                 {paragraph}
               </p>
             ))}
-            <div className="grid gap-4 pt-5">
-              {home.problem.pullQuotes.map((quote) => (
-                <blockquote key={quote} className="border-l border-ink pl-5 text-xl leading-snug text-ink">
-                  {quote}
-                </blockquote>
-              ))}
-            </div>
           </div>
+          {home.problem.pullQuotes.map((quote) => (
+            <blockquote key={quote} className="problem-quote" data-reveal>
+              {quote}
+            </blockquote>
+          ))}
         </div>
       </section>
 
-      <section className="section-pad narrative-chapter">
-        <div className="editorial-container">
-          <p className="eyebrow">{home.method.eyebrow}</p>
-          <div className="mt-5 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-            <h2 className="display-lg" data-split>
-              {home.method.title}
-            </h2>
-            <p className="body-large text-ink/72" data-reveal>
-              {home.method.body}
-            </p>
+      <section className="expertise-bridge-section">
+        <div className="editorial-container expertise-bridge-grid">
+          <h2 className="expertise-bridge-title" data-split>
+            {home.expertiseBridge.title}
+          </h2>
+          <div className="expertise-bridge-body">
+            {home.expertiseBridge.body.map((paragraph) => (
+              <p key={paragraph} className="body-large text-ink/72" data-reveal>
+                {paragraph}
+              </p>
+            ))}
           </div>
-          <div className="mt-10 border-t border-ink/15">
-            {home.method.steps.map((step, index) => (
-              <div
-                key={step}
-                className="grid gap-4 border-b border-ink/12 py-6 md:grid-cols-[80px_1fr]"
-                data-reveal
-              >
-                <span className="text-sm uppercase tracking-[0.08em] text-ink/45">0{index + 1}</span>
-                <p className="text-3xl leading-tight md:text-5xl">{step}</p>
+          <div className="expertise-flow" aria-label="Internal expertise to intelligent follow-up">
+            {home.expertiseBridge.steps.map((step, index) => (
+              <div key={step} className="expertise-flow-item" data-expertise-step data-reveal>
+                <span>0{index + 1}</span>
+                <p>{step}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-pad narrative-chapter">
+      <ValueMap />
+
+      <section className="section-pad narrative-chapter commercial-sprint-section">
         <div className="editorial-container grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="eyebrow">{home.commercialSprint.eyebrow}</p>
             <h2 className="display-lg mt-5" data-split>
               {home.commercialSprint.title}
             </h2>
+            <p className="mt-6 text-2xl leading-tight text-ink/62" data-reveal>
+              {home.commercialSprint.subline}
+            </p>
             <p className="body-large mt-8 text-ink/72" data-reveal>
               {home.commercialSprint.body}
             </p>
@@ -135,42 +146,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ValueMap />
-
-      <section className="section-pad border-y border-ink/12">
-        <div className="editorial-container">
-          <p className="eyebrow">What the system includes</p>
-          <h2 className="display-lg mt-5 max-w-6xl" data-split>
-            Practical AI systems for the parts of the business where advantage is actually created.
-          </h2>
-          <div className="mt-10 border-t border-ink/15">
-            {systemBlocks.map((block, index) => (
-              <div
-                key={block.title}
-                className="grid gap-5 border-b border-ink/12 py-8 md:grid-cols-[80px_0.7fr_1fr]"
-                data-reveal
-              >
-                <span className="text-xs uppercase tracking-[0.08em] text-ink/45">0{index + 1}</span>
-                <h3 className="text-3xl leading-none">{block.title}</h3>
-                <div className="space-y-4 leading-relaxed text-ink/70">
-                  <p>{block.promise}</p>
-                  <p>{block.examples}</p>
-                </div>
+      <section className="working-promise-section border-y border-ink/12">
+        <div className="editorial-container working-promise-grid">
+          <div>
+            <p className="eyebrow">{home.workingPromise.eyebrow}</p>
+            <h2 className="display-lg mt-5" data-split>
+              {home.workingPromise.title}
+            </h2>
+          </div>
+          <div className="working-promise-copy">
+            {home.workingPromise.body.map((paragraph, index) => (
+              <p key={paragraph} className={index >= home.workingPromise.body.length - 2 ? "is-emphasis" : ""} data-reveal>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          <div className="commitment-grid">
+            {home.workingPromise.commitments.map((commitment, index) => (
+              <div key={commitment.title} className="commitment-item" data-reveal>
+                <span>0{index + 1}</span>
+                <h3>{commitment.title}</h3>
+                <p>{commitment.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-pad bg-paper">
+      <section className="section-pad bg-paper proof-section">
         <div className="editorial-container">
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.42fr_1fr]">
-            <p className="eyebrow">Built from live work</p>
+            <p className="eyebrow">{home.proof.eyebrow}</p>
             <h2 className="display-lg" data-split>
-              Proof that AI systems can turn expertise into visibility, named follow-up and useful intelligence.
+              {home.proof.title}
             </h2>
           </div>
-          <WorkShowcase compact />
+          <ProofTiles />
         </div>
       </section>
 

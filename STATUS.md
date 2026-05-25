@@ -1,5 +1,5 @@
 # Studio Baggio Website - STATUS
-*Last updated: 24 May 2026*
+*Last updated: 25 May 2026*
 
 ## Current Build
 
@@ -17,6 +17,8 @@ Core message:
 - Work
 - Business Tracker
 - Calm Authority
+- Fire Source placeholder case-study page
+- Last30Days placeholder case-study page
 - About
 - Contact
 - Privacy
@@ -31,6 +33,7 @@ Primary build files:
 
 - `_strategy/Studio baggio consulting/Website_Build_Pack/`
 - `_strategy/Studio baggio consulting/Studio_Baggio_Landing_Page_Script_v9_AI_Commercial_Advantage.md`
+- `_strategy/Studio baggio consulting/Website_Build_Pack/09_HOMEPAGE_REVISED_DIRECTION_2026-05-25.md`
 - `_strategy/Studio baggio consulting/design.md`
 
 ## Implementation
@@ -42,6 +45,30 @@ Primary build files:
 - Calm Authority has a dedicated page using the 08 Calm Authority copy plus live Calm Authority source facts.
 - SEO basics added: page-specific metadata, Open Graph image route, canonical URLs, sitemap, robots, favicons and Organization JSON-LD.
 - Rough Cut / Newsletter and Playbook assets remain local phase-2 material and are excluded from Vercel deployment.
+
+## 25 May Homepage Revised Direction
+
+Jayme approved and implemented a revised homepage direction. It is saved in:
+
+`_strategy/Studio baggio consulting/Website_Build_Pack/09_HOMEPAGE_REVISED_DIRECTION_2026-05-25.md`
+
+Key decisions:
+
+- Keep the existing hero/header reference direction locked.
+- Rebuild the homepage sequence as: hero/header, opening commercial argument, problem/clarifier, expertise-to-proof bridge, value areas, Commercial AI Sprint, working promise, proof, fit/not fit and CTA.
+- Replace `Findability` with `Discoverability`.
+- Use Studio Graphene's 2026 AI ROI figures carefully: 78% of UK businesses using AI tools, 31% reporting positive ROI, and 41% clearly defining success.
+- Make proof blocks click through to individual pages. Fire Source and Last30Days can be placeholder case-study pages until deeper pages are built.
+- Use GSAP for the expertise bridge and desktop value-area progression only where scroll clarifies the message. Use Framer Motion for tabs, accordions, proof tile states and mobile interactions.
+- Visual rhythm: white hero, white opening argument, grey problem/stat section, white expertise bridge, charcoal value interaction, white sprint, white/grey proof, light grey fit, charcoal CTA.
+
+Implemented:
+
+- Homepage now follows the approved sequence from hero/header through CTA.
+- Hero/header direction is retained, with the mobile wordmark adjusted so it no longer clips.
+- Value-area section uses desktop rail/panel behaviour with light GSAP ScrollTrigger progression and a Framer Motion mobile accordion.
+- Proof section uses editorial proof tiles for Calm Authority, Business Tracker, Last30Days and Fire Source.
+- Placeholder local pages added for `/fire-source` and `/last30days` so proof tiles can click through before the deeper case-study pages are written.
 
 ## 24 May Repair Pass
 
@@ -86,10 +113,11 @@ returns `503` with a clear message telling the user to email Jayme directly.
 - `npm run typecheck` passes.
 - `npm run lint` passes.
 - `npm run build` passes.
-- Local routes return `200`: `/`, `/ai-advantage`, `/work`, `/business-tracker`, `/calm-authority`, `/about`, `/contact`, `/privacy`.
+- Local routes return `200`: `/`, `/ai-advantage`, `/work`, `/business-tracker`, `/calm-authority`, `/fire-source`, `/last30days`, `/about`, `/contact`, `/privacy`.
 - `sitemap.xml`, `robots.txt`, `opengraph-image`, `icon` and `apple-icon` return `200`.
 - Desktop render check: home reload starts at `scrollY: 0`, hero top is `0`, hero height is the full viewport, lede starts after the viewport, and there is no horizontal overflow.
 - Mobile render check at 390x844: hero is full frame, no horizontal overflow, and hero text fits.
+- 25 May homepage browser QA: approved homepage sections are present, `Findability` is removed, `Discoverability` is present, proof tiles link to `/calm-authority`, `/business-tracker`, `/last30days` and `/fire-source`, and the mobile value accordion opens the selected area.
 - Sticky-section cleanup check: homepage and Work no longer contain `position: sticky`, `pin: true`, `data-sticky-section`, `sticky-chapter` or masked SplitText lines.
 - Contact form validation and missing-email-env error state verified in browser; the success message is not shown on the configured `503` fallback.
 - Console error check clean in the in-app browser.

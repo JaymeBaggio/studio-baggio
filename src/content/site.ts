@@ -17,12 +17,12 @@ export const metadata = {
   home: {
     title: "Studio Baggio | AI Commercial Advantage Systems",
     description:
-      "Studio Baggio builds practical AI systems for expert-led businesses: AI search, market intelligence, lead intelligence, authority systems and workflow acceleration."
+      "Studio Baggio designs and builds practical AI systems for expert-led businesses: discoverability, market intelligence, lead quality, authority systems and workflow acceleration."
   },
   aiAdvantage: {
     title: "AI Commercial Advantage for Expert-Led Businesses",
     description:
-      "Commercial AI strategy, AI SEO, market intelligence, lead intelligence and practical AI systems built around how your business wins in market."
+      "Commercial AI strategy, AI search, discoverability, market intelligence, lead intelligence and practical AI systems built around how your business wins in market."
   },
   work: {
     title: "Studio Baggio Work | AI Systems, Products and Commercial Intelligence",
@@ -69,11 +69,12 @@ export const hero = {
 };
 
 export const home = {
-  aiGap: {
-    eyebrow: "What changes",
-    title:
-      "We design and build practical AI systems that help your business become:",
-    body: [
+  opening: {
+    headline:
+      "Most businesses are \"experimenting with AI\". Very few are using it to create real commercial advantage.",
+    qualifier: "For companies that rely on trust and credibility to win clients.",
+    setup: "Studio Baggio designs and builds practical AI systems that help your business become:",
+    outcomes: [
       "Easier to find.",
       "Faster to act.",
       "Better informed.",
@@ -83,67 +84,95 @@ export const home = {
   problem: {
     eyebrow: "The AI gap",
     title:
-      "Most businesses know they should be using AI. Far fewer know where it creates commercial value.",
+      "Businesses know AI is changing their market. Far fewer know where to apply it to create measurable commercial value.",
+    stat:
+      "A 2026 Studio Graphene study found that 78% of UK businesses are using AI tools, but only 31% report positive ROI. Just 41% say they can clearly define what success looks like.",
+    source:
+      "Studio Graphene research reported by TechRadar, 25 March 2026.",
+    sourceUrl:
+      "https://www.techradar.com/pro/security/a-critical-point-nearly-80-of-uk-firms-have-adopted-ai-but-barely-any-are-seeing-a-positive-roi-so-far",
     body: [
-      "Many firms are experimenting with prompts, tools, workshops and automation. Some of it is useful. Most of it never changes how the business wins work.",
-      "The commercial edge comes from knowing where AI can improve visibility, intelligence, lead quality, authority or workflow, then building the system around that opportunity.",
-      "That is where Studio Baggio starts."
+      "Studio Baggio helps expert-led businesses identify where AI can create measurable commercial value, then turns those opportunities into practical systems across SEO, AI search, market intelligence, lead capture, prospect research, authority-building and workflow acceleration."
     ],
     pullQuotes: [
-      "The expensive mistake is not moving slowly. It is spending time and budget on AI work that never changes the commercial position of the business."
+      "We know exactly where AI can give this business an edge, and we have the systems live to prove it."
     ]
   },
-  method: {
-    eyebrow: "What Studio Baggio does",
-    title: "Find the opportunity. Build the system. Prove the value.",
-    body:
-      "Studio Baggio works with expert-led businesses to identify where AI can create the most value, then turns those opportunities into practical systems: search assets, market intelligence workflows, lead capture, prospect research, authority systems, internal tools or client-facing experiences.",
+  expertiseBridge: {
+    title:
+      "Your expertise only creates commercial value when the market can understand it, trust it and act on it.",
+    body: [
+      "Studio Baggio turns the expertise inside your business into visible public proof.",
+      "That means showing up consistently where your prospects already are, giving them useful value before they are ready to buy, and connecting the dots between who is engaging, what they care about and how the business should follow up.",
+      "That is how expertise becomes commercial advantage."
+    ],
     steps: [
-      "Identify the commercial opportunity",
-      "Choose what should be built first",
-      "Build the practical system",
-      "Connect it to proof, pipeline or workflow",
-      "Improve it from live signals"
+      "Internal expertise",
+      "Visible proof",
+      "Buyer engagement",
+      "Intelligent follow-up"
     ]
   },
   commercialSprint: {
     eyebrow: "Commercial AI Sprint",
-    title: "The first step is finding what is actually worth building.",
+    title: "A strategy sprint to find where AI can create the most commercial value in your business.",
+    subline: "Best when you know AI matters, but need clarity on where to apply it.",
     body:
-      "A Commercial AI Sprint identifies where AI can create the most commercial value, what should be built first and how the work should connect to visibility, pipeline, workflow or client experience.",
+      "The first step is a focused sprint to identify where AI can create commercial value, what should be built first, and how it should connect to visibility, pipeline, workflow or client experience.",
     deliverables: [
-      "Where AI can create commercial value in the business",
-      "The use cases worth prioritising across visibility, intelligence, lead quality, authority and workflow",
-      "The search, market, lead and workflow signals buyers are already giving you",
+      "Where AI can create value in the business",
+      "The use cases worth prioritising",
+      "The buyer, market and workflow signals already available",
       "What should be built first, and why",
       "A practical 30-90 day build plan"
     ]
   },
-  outcome: {
-    eyebrow: "What changes",
-    title: "The business becomes easier to find, quicker to move and better placed to win.",
-    lines: [
-      "Buyers can find clearer proof of what you do.",
-      "Your team can see market movement sooner.",
-      "Signals from content, search and forms become structured follow-up.",
-      "Internal work that used to slow the team down becomes easier to repeat.",
-      "Expertise becomes something buyers can inspect before a sales conversation."
+  workingPromise: {
+    eyebrow: "How this works",
+    title: "This is not generic AI training.",
+    body: [
+      "We do not send you away with a list of tools to learn, prompts to maintain or software your team has to adopt.",
+      "Every recommendation is practical, buildable and tied to a commercial outcome. If we recommend it, it is because it can be built, shipped or handed over as a working system.",
+      "Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update.",
+      "The point is to turn your expertise into commercial leverage.",
+      "Not to make you spend more time thinking about AI."
+    ],
+    commitments: [
+      {
+        title: "No tool theatre.",
+        body: "No performance of AI adoption for its own sake. The work has to connect to commercial value."
+      },
+      {
+        title: "No software homework.",
+        body: "You are not left with platforms, prompts or workflows your team has to learn from scratch."
+      },
+      {
+        title: "No training programme to keep alive.",
+        body: "The output is a practical system, not a workshop that fades once everyone goes back to work."
+      },
+      {
+        title: "No heavy time investment from your team.",
+        body: "The work is designed to protect senior time and move with focused input, not endless internal meetings."
+      }
     ]
+  },
+  proof: {
+    eyebrow: "Built From Live Work",
+    title: "This is not AI theory. The systems are already live."
   },
   fit: {
     title: "For expert-led businesses that need AI connected to commercial outcomes.",
     good: [
-      "Wealth, advisory and specialist professional-services firms.",
-      "Founder-led firms with valuable expertise and weak public proof.",
-      "Businesses entering a more valuable niche.",
-      "Firms where trust, timing and specialist judgement drive revenue.",
-      "Teams with valuable expertise and an unclear path from AI activity to commercial value."
+      "Trust-led firms.",
+      "Specialist advisers.",
+      "Founder-led businesses.",
+      "Professional services.",
+      "Teams with valuable expertise but weak public proof."
     ],
     bad: [
-      "Training-only requests.",
+      "Generic AI training.",
       "One-off tools workshops.",
-      "Automation projects with no commercial owner.",
-      "Content, SEO or lead generation in isolation.",
+      "Automation without commercial ownership.",
       "Cheap-lead volume plays."
     ]
   }
@@ -151,34 +180,38 @@ export const home = {
 
 export const valueAreas = [
   {
-    title: "Findability",
-    summary: "Help the business show up where buyers are already looking.",
+    title: "Discoverability",
+    summary:
+      "Show up where buyers, search engines and AI systems are already looking.",
     detail:
-      "SEO, AI search, buyer-question mapping, specialist landing pages, topic authority and proof assets."
+      "Make the business easier to surface, understand and choose before a sales conversation starts."
   },
   {
     title: "Market Intelligence",
-    summary: "Help the business understand what is happening before competitors do.",
+    summary: "Turn public signals into useful commercial information.",
     detail:
-      "Competitor tracking, customer signals, content gaps, market movement, opportunity mapping and sourced reports."
+      "See prospect movement, competitor activity, market questions and emerging opportunities earlier."
   },
   {
     title: "Lead Quality",
-    summary: "Turn visibility into better prospects and clearer next steps.",
+    summary:
+      "Turn attention into named prospects, clearer qualification and stronger follow-up.",
     detail:
-      "Lead magnets, diagnostic tools, website journeys, email capture, Business Tracker, scoring and qualification."
+      "Spend more time with the right opportunities and less time guessing who is worth pursuing."
   },
   {
-    title: "Authority",
-    summary: "Turn expertise into proof buyers can trust.",
+    title: "Authority And Proof",
+    summary:
+      "Make expert judgement visible before a buyer reaches the sales conversation.",
     detail:
-      "LinkedIn, articles, case studies, thought leadership, playbooks, newsletters and expert content systems."
+      "In trust-based businesses, people need evidence that the expertise on the website actually exists."
   },
   {
-    title: "Workflow Acceleration",
-    summary: "Use AI to speed up the work that actually matters.",
+    title: "Workflow Acceleration And Amplification",
+    summary:
+      "Use AI to speed up research, reporting, content, sales prep and client work.",
     detail:
-      "Research, content production, reporting, sales prep, client onboarding, internal knowledge, proposal support and decision-making."
+      "Improve the quality and usefulness of what the business delivers while protecting time for client work that actually matters."
   }
 ];
 
