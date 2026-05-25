@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
+import { ExpertiseBridge } from "@/components/expertise-bridge";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
 import { ValueMap } from "@/components/value-map";
@@ -65,54 +66,36 @@ export default function HomePage() {
       </section>
 
       <section className="problem-clarifier-section">
-        <div className="editorial-container">
-          <div className="problem-clarifier-copy">
+        <div className="editorial-container problem-clarifier-frame">
+          <div className="problem-kicker">
             <p className="eyebrow">{home.problem.eyebrow}</p>
+            <span>2026 UK AI ROI reality</span>
+          </div>
+          <div className="problem-clarifier-copy">
             <h2 className="problem-clarifier-title" data-split>
               {home.problem.title}
             </h2>
-            <p className="problem-stat" data-reveal>
-              {home.problem.stat}
-            </p>
-            <a className="problem-source focus-ring" href={home.problem.sourceUrl} target="_blank" rel="noreferrer" data-reveal>
-              {home.problem.source}
-            </a>
+            <div className="problem-stat-panel" data-reveal>
+              <p className="problem-stat">
+                {home.problem.stat}
+              </p>
+              <a className="problem-source focus-ring" href={home.problem.sourceUrl} target="_blank" rel="noreferrer">
+                {home.problem.source}
+              </a>
+            </div>
+          </div>
+          <div className="problem-response" data-reveal>
+            <span>Studio Baggio response</span>
             {home.problem.body.map((paragraph) => (
-              <p key={paragraph} className="problem-strong" data-reveal>
+              <p key={paragraph} className="problem-strong">
                 {paragraph}
               </p>
             ))}
           </div>
-          {home.problem.pullQuotes.map((quote) => (
-            <blockquote key={quote} className="problem-quote" data-reveal>
-              {quote}
-            </blockquote>
-          ))}
         </div>
       </section>
 
-      <section className="expertise-bridge-section">
-        <div className="editorial-container expertise-bridge-grid">
-          <h2 className="expertise-bridge-title" data-split>
-            {home.expertiseBridge.title}
-          </h2>
-          <div className="expertise-bridge-body">
-            {home.expertiseBridge.body.map((paragraph) => (
-              <p key={paragraph} className="body-large text-ink/72" data-reveal>
-                {paragraph}
-              </p>
-            ))}
-          </div>
-          <div className="expertise-flow" aria-label="Internal expertise to intelligent follow-up">
-            {home.expertiseBridge.steps.map((step, index) => (
-              <div key={step} className="expertise-flow-item" data-expertise-step data-reveal>
-                <span>0{index + 1}</span>
-                <p>{step}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ExpertiseBridge />
 
       <ValueMap />
 
@@ -159,15 +142,6 @@ export default function HomePage() {
               <p key={paragraph} className={index >= home.workingPromise.body.length - 2 ? "is-emphasis" : ""} data-reveal>
                 {paragraph}
               </p>
-            ))}
-          </div>
-          <div className="commitment-grid">
-            {home.workingPromise.commitments.map((commitment, index) => (
-              <div key={commitment.title} className="commitment-item" data-reveal>
-                <span>0{index + 1}</span>
-                <h3>{commitment.title}</h3>
-                <p>{commitment.body}</p>
-              </div>
             ))}
           </div>
         </div>

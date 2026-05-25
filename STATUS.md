@@ -70,6 +70,19 @@ Implemented:
 - Proof section uses editorial proof tiles for Calm Authority, Business Tracker, Last30Days and Fire Source.
 - Placeholder local pages added for `/fire-source` and `/last30days` so proof tiles can click through before the deeper case-study pages are written.
 
+Follow-up repair after design review:
+
+- Tightened the homepage copy to match Jayme's approved structure more closely, including the revised opening argument, AI gap copy, value-area copy, Commercial AI Sprint deliverables, working-promise copy and proof labels.
+- Changed `Built From Live Work` to `Live Work`.
+- Removed the AI-gap pull quote and the four repeated working-promise commitment blocks.
+- Rebuilt the AI gap section as an editorial split: thesis, evidence/source panel and Studio Baggio response.
+- Rebuilt the expertise-to-proof bridge as a tactile scroll-aware mechanism with a live Framer Motion panel, step triggers and GSAP ScrollTrigger progress.
+- Normalised key homepage sections to fit the visible desktop frame beneath the fixed header: opening, AI gap, expertise bridge, value map and proof.
+- Fixed mobile overflow caused by the hidden desktop proof panel still contributing layout width.
+- Verified desktop frame fit at 1888x920: opening, AI gap, expertise bridge, value map and proof all fit from fixed-header bottom to viewport bottom with no horizontal overflow.
+- Verified mobile has no horizontal overflow at 390px width.
+- `npm run build`, `npm run typecheck` and `npm run lint` pass.
+
 ## 24 May Repair Pass
 
 After Jayme's review, the build was re-audited against the original goal with subagent tracks for copy/content, design/motion, engineering and QA/deploy.
