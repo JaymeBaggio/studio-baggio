@@ -8,6 +8,7 @@ export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/
 export default function AboutPage() {
   return (
     <>
+      <div className="bg-white text-ink">
       <section className="border-b border-ink/12 pb-12 pt-28 md:pb-16">
         <div className="editorial-container max-w-5xl">
           <p className="eyebrow">{about.eyebrow}</p>
@@ -110,6 +111,7 @@ export default function AboutPage() {
           </ButtonLink>
         </div>
       </section>
+      </div>
     </>
   );
 }

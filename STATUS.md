@@ -99,6 +99,7 @@ Follow-up correction after live review:
 - Removed the abstract capability grid and the first-screen facts grid.
 - Removed page-level reveal animation from `/about` so text renders clearly immediately.
 - Page now follows a simple order: intro, founder/studio story, why the studio exists, expert-collaboration model, what Studio Baggio builds, quote and CTA.
+- Forced `/about` content background to pure white with black/neutral grey text only, so it no longer inherits the site-wide tinted paper/grid treatment.
 
 ## 25 May Homepage Revised Direction
 
