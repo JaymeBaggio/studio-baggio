@@ -223,6 +223,7 @@ Follow-up alignment repair:
 
 - Fixed the homepage grid drift where section 2 and later frames were being pulled to different left edges by conflicting `margin-inline` overrides.
 - Locked all homepage `editorial-container` section frames back to the same page grid, while keeping inner copy blocks left-aligned inside that shared frame.
+- Fixed the remaining section-2 outcome stack issue where `Easier to find`, `Faster to act`, `Better informed` and `Harder to compete with` were still being centred by an older `justify-items: center` rule.
 - Verified in the Codex in-app browser at desktop `1440x900`: opening argument, AI Gap, Practical Systems, Value and Commercial AI Sprint all share the same `80px` left edge, with horizontal overflow `0`.
 - Verified in the Codex in-app browser at mobile `390x844`: opening argument, AI Gap, Practical Systems and Commercial AI Sprint all share the same `16px` left edge, every content section keeps a `100svh` minimum frame, and horizontal overflow is `0`.
 - Verified commands pass: `npm run lint`, `npm run typecheck` and `npm run build`.

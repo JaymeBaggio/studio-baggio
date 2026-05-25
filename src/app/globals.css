@@ -3081,12 +3081,16 @@ textarea {
   display: block;
   margin-top: 28px;
   border: 0;
+  justify-content: start;
+  justify-items: start;
   text-align: left;
 }
 
 .home-4b .opening-outcome-muted-group {
+  width: 100%;
   display: block;
   max-width: var(--studio-reading-lane);
+  justify-self: stretch;
   text-align: left;
 }
 
@@ -3492,6 +3496,8 @@ textarea {
   .home-4b .opening-outcome-muted-group {
     display: grid;
     gap: 12px;
+    width: 100%;
+    justify-items: start;
   }
 
   .home-4b .opening-outcome-muted-group p:nth-child(2),
