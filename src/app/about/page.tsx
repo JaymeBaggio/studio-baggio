@@ -48,33 +48,33 @@ export default function AboutPage() {
                   {section.label}
                 </h2>
               </div>
-              <div className="mt-8 max-w-[980px] space-y-6" data-about-body>
-                {section.body.map((paragraph) => (
-                  <p key={paragraph} className="text-xl leading-9 text-ink/78 md:text-[1.45rem] md:leading-10">
-                    {paragraph}
-                  </p>
-                ))}
+              <div
+                className={index === 0
+                  ? "mt-8 grid gap-10 lg:grid-cols-[minmax(0,980px)_minmax(18rem,28rem)] lg:items-start lg:gap-16"
+                  : "mt-8 max-w-[980px]"}
+                data-about-body
+              >
+                <div className="space-y-6">
+                  {section.body.map((paragraph) => (
+                    <p key={paragraph} className="text-xl leading-9 text-ink/78 md:text-[1.45rem] md:leading-10">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                {index === 0 ? (
+                  <figure className="border-l border-ink/16 pl-6 text-ink/72 lg:mt-1">
+                    <blockquote className="text-lg leading-7 md:text-xl md:leading-8">
+                      &ldquo;{about.quote.text}&rdquo;
+                    </blockquote>
+                    <figcaption className="mt-5 text-xs uppercase tracking-[0.1em] text-ink/45">
+                      {about.quote.attribution}
+                    </figcaption>
+                  </figure>
+                ) : null}
               </div>
               <span className="mt-12 block h-px w-full origin-left scale-x-0 bg-ink/20" data-about-rule />
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="border-y border-ink/12 bg-neutral-100 py-16 md:py-24" data-about-section>
-        <div className="editorial-container">
-          <p className="text-sm uppercase tracking-[0.12em] text-ink/50" data-about-section-heading>
-            EXTERNAL VIEW
-          </p>
-          <figure className="mt-8 max-w-[900px]" data-about-body>
-            <blockquote className="text-3xl leading-[1.08] text-ink md:text-[3.4rem]">
-              &ldquo;{about.quote.text}&rdquo;
-            </blockquote>
-            <figcaption className="mt-8 text-sm uppercase tracking-[0.1em] text-ink/55">
-              {about.quote.attribution}
-            </figcaption>
-          </figure>
-          <span className="mt-12 block h-px w-full origin-left scale-x-0 bg-ink/20" data-about-rule />
         </div>
       </section>
 
