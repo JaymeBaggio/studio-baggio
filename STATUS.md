@@ -129,6 +129,7 @@ returns `503` with a clear message telling the user to email Jayme directly.
 
 - Implementation commit pushed to `main`: `c568393` (`Build Studio Baggio AI advantage site`).
 - Browser-warning cleanup commit pushed to `main`: `e37d2be` (`Clean up Studio Baggio browser warnings`).
+- Homepage messaging rebuild commit pushed to `main`: `76573d8` (`Rebuild homepage messaging flow`).
 - Launch QA repair commit pushed to `main`: `e6f6bfb` (`Fix Studio Baggio launch QA issues`).
 - Homepage offer-ladder completion commit pushed to `main`: `ac09486` (`Add homepage offer ladder`).
 - Standalone page clarification commit pushed to `main`: `61f2696` (`Clarify standalone Studio Baggio pages`).
