@@ -114,6 +114,7 @@ Follow-up correction after live review:
 - Reworked `/about` again using the supplied user copy as the source: proper editorial hierarchy, uppercase section labels, smaller headings, readable line lengths, black/white/grey palette only and a restrained GSAP reveal for hero/sections.
 - Follow-up desktop fix: removed the split desktop grid, made the page follow the same single-column editorial rhythm as mobile, changed the main title to uppercase, tightened first-section spacing and added GSAP ScrollTrigger scroll progress/section-rule animation.
 - Follow-up quote fix: removed the standalone quote band and moved the Harry Sims quote into the first Founder section as a smaller right-side aside on desktop.
+- Follow-up CTA fix: removed the vague `Advisory is selective. The work starts with the commercial problem.` heading from the About page final CTA.
 
 ## 25 May Homepage Revised Direction
 

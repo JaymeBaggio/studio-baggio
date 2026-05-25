@@ -84,10 +84,7 @@ export default function AboutPage() {
             START A CONVERSATION
           </p>
           <div className="mt-8" data-about-body>
-            <h2 className="max-w-[850px] text-4xl leading-[1.05] md:text-[4.35rem]">
-              Advisory is selective. The work starts with the commercial problem.
-            </h2>
-            <ButtonLink href={primaryCta.href} className="mt-10 border-paper text-paper hover:bg-paper hover:text-ink">
+            <ButtonLink href={primaryCta.href} className="border-paper text-paper hover:bg-paper hover:text-ink">
               {primaryCta.label}
             </ButtonLink>
           </div>
