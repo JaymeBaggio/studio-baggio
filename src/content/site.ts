@@ -40,9 +40,9 @@ export const metadata = {
       "The flagship Studio Baggio product: a LinkedIn writing system for UK financial advisers that turns real expertise into visible public proof."
   },
   about: {
-    title: "About Jayme Baggio | Studio Baggio",
+    title: "About Studio Baggio | Practical AI Systems",
     description:
-      "Jayme Baggio is a strategist, founder and systems operator working across AI, creativity, media and commercial strategy."
+      "Studio Baggio is an applied AI systems studio founded by Jayme Baggio, building practical AI systems for visibility, market intelligence, demand capture and commercial ROI."
   },
   contact: {
     title: "Contact Studio Baggio",
@@ -404,37 +404,80 @@ export const calmAuthority = {
 };
 
 export const about = {
-  eyebrow: "About Jayme Baggio",
-  title: "A strategist and systems operator building practical AI work that creates commercial advantage.",
+  eyebrow: "About Studio Baggio",
+  title: "Practical AI systems, built with the people who understand the market.",
   intro:
-    "Studio Baggio is built around Jayme's work across strategy, AI systems, content, product and commercial execution: turning expert judgement into useful operating systems, public proof and market-facing products.",
-  body: [
-    "Jayme Baggio is a strategist, founder and systems operator at the intersection of AI, creativity, media and commercial strategy.",
-    "Her work focuses on how AI can turn expert judgement inside creative and commercial teams into practical operating systems, content and products.",
-    "She builds systems that help experts package and leverage their IP at scale, from AI-enabled authority products to research tools, lead-intelligence layers and market-specific workflows.",
-    "She brings strong teams together, designs systems around how they already work and focuses on the cultural traction needed for AI to create business value rather than perform as a surface-level tool demo.",
-    "She speaks about practical AI implementation and executive-level frameworks for leaders, and publishes Rough Cut as live public thinking on AI, creativity, media and commercial work in practice."
+    "Founded by Jayme Baggio in 2025, Studio Baggio builds practical AI systems that help businesses become visible, understand their market, capture demand and generate real commercial value.",
+  highlights: [
+    ["Founded", "Established in 2025 by Jayme Baggio."],
+    ["Built with experts", "Systems are shaped with industry specialists, operators and client teams who understand the market from inside it."],
+    ["Focus", "Visibility, market authority, lead intelligence, demand capture and workflow acceleration."],
+    ["Proof", "Live products and systems across wealth advice, content production, research and commercial intelligence."]
   ],
-  proof: [
-    "Calm Authority: a Studio Baggio product for making adviser expertise visible in a trust-led market.",
-    "Business Tracker: a lead-intelligence operating system for qualified follow-up.",
-    "Fire Source and Last30Days: research and intelligence tools that turn live signals into usable commercial information."
+  story: {
+    eyebrow: "Founder and studio",
+    title: "The work sits between commercial storytelling, practical AI and market execution.",
+    body: [
+      "Jayme has spent years inside major media and brand environments, with experience across Channel 4, ITV, BBC Studios, Google, M&S and HSBC. That background in commercial storytelling, production pressure, audience behaviour, marketing strategy and senior-stakeholder work shapes how Studio Baggio approaches AI.",
+      "The studio is built around a practical question: where can AI create measurable value inside a real business, with real constraints, real customers and real commercial pressure?",
+      "Over the past 18 months, Jayme has focused on where AI can deliver maximum value for expert-led businesses: not as a surface-level tool demo, but as infrastructure for visibility, market understanding, demand capture, workflow and public proof."
+    ]
+  },
+  origin: {
+    eyebrow: "Why Studio Baggio exists",
+    title: "AI only matters when it changes how the business wins.",
+    body: [
+      "After building and launching Calm Authority, Jayme saw a wider gap in how many sectors are using AI. Businesses often have valuable expertise, trusted people and strong market knowledge, but no reliable system for turning that into visibility, pipeline or scale.",
+      "Studio Baggio applies that lesson to growth systems for trust-based and founder-led businesses, from wealth advice to content production.",
+      "The studio is built around a specific commercial system: helping companies understand who to target, what to say and how to turn public proof into pipeline."
+    ]
+  },
+  collaboration: {
+    eyebrow: "How the studio works",
+    title: "Led by Jayme. Built with market expertise.",
+    body:
+      "Studio Baggio is not built on generic AI advice. Jayme leads strategy, product direction and system design, then collaborates with industry experts, operators and client teams to make sure each system reflects how the market actually works.",
+    steps: [
+      {
+        title: "Understand the market",
+        body: "Clarify the audience, buyer signals, existing expertise, commercial pressure and the places value is currently being missed."
+      },
+      {
+        title: "Design the system",
+        body: "Turn that market understanding into a practical AI-enabled system across visibility, lead intelligence, authority, research, workflow or client experience."
+      },
+      {
+        title: "Build for proof",
+        body: "Create outputs that can be used, measured and shown: live products, public evidence, qualified follow-up, sharper market intelligence and better client-facing workflows."
+      }
+    ]
+  },
+  work: [
+    "Calm Authority: a Studio Baggio product built with inside-market insight from financial advice, helping advisers turn real expertise into publish-ready LinkedIn content in their own voice.",
+    "Business Tracker: a lead-intelligence operating system that helps businesses see who is engaging, why they matter and what should happen next.",
+    "Fire Source and Last30Days: research and intelligence tools that turn live public signals into usable commercial information.",
+    "Advisory projects: a small number of paid engagements focused on AI-enabled growth systems, public evidence and lead intelligence."
   ],
+  quote: {
+    text:
+      "Jayme has founder-level pattern recognition, strong taste, practical AI fluency and a rare ability to turn emerging tools into commercially understandable systems.",
+    attribution: "Harry Sims, Fairstone Group"
+  },
   capabilities: [
     {
-      title: "Strategy",
+      title: "Visibility",
       body:
-        "Find the commercial place where AI can change visibility, market intelligence, lead quality, authority or workflow."
+        "Make expert businesses easier to find, understand and trust before the first sales conversation."
     },
     {
-      title: "Systems",
+      title: "Intelligence",
       body:
-        "Turn that opportunity into practical operating layers, content systems, intelligence products or client-facing tools."
+        "Turn public signals, market movement and buyer behaviour into useful commercial information."
     },
     {
-      title: "Proof",
+      title: "Pipeline",
       body:
-        "Build from real work: Calm Authority, Business Tracker, Fire Source, Last30Days and consulting systems rather than generic AI theatre."
+        "Connect authority, lead signals and follow-up so attention can become qualified commercial opportunity."
     }
   ]
 };

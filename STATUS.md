@@ -56,6 +56,7 @@ Primary build files:
 - `_strategy/Studio baggio consulting/Website_Build_Pack/`
 - `_strategy/Studio baggio consulting/Studio_Baggio_Landing_Page_Script_v9_AI_Commercial_Advantage.md`
 - `_strategy/Studio baggio consulting/Website_Build_Pack/09_HOMEPAGE_REVISED_DIRECTION_2026-05-25.md`
+- `_strategy/Studio baggio consulting/Website_Build_Pack/10_ABOUT_PAGE_WORKING_BASE_2026-05-25.md`
 - `_strategy/Studio baggio consulting/design.md`
 
 ## Implementation
@@ -67,6 +68,30 @@ Primary build files:
 - Calm Authority has a dedicated page using the 08 Calm Authority copy plus live Calm Authority source facts.
 - SEO basics added: page-specific metadata, Open Graph image route, canonical URLs, sitemap, robots, favicons and Organization JSON-LD.
 - Rough Cut / Newsletter and Playbook assets remain local phase-2 material and are excluded from Vercel deployment.
+
+## 25 May About Page Branch
+
+Branch/worktree:
+
+- Branch: `about-page`
+- Worktree: `/Users/jaymebaggio/Desktop/Studio Baggio/Website-about`
+
+Implemented:
+
+- Saved Jayme's supplied About-page copy as the working source in `Website_Build_Pack/10_ABOUT_PAGE_WORKING_BASE_2026-05-25.md`.
+- Removed the rejected line: `The page is separate because the work is not only a service line. It is a founder/operator practice.`
+- Repositioned `/about` as a Studio Baggio page first, with Jayme as named founder and strategic lead.
+- Added explicit expert-collaboration framing: led by Jayme, shaped with industry specialists, operators and client teams.
+- Added stronger Studio Baggio proof framing around Calm Authority, Business Tracker, Fire Source, Last30Days and selective advisory work.
+- Updated About metadata from `About Jayme Baggio` to `About Studio Baggio`.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Local `/about` verified at `http://127.0.0.1:3002/about`.
+- Browser check confirms no horizontal overflow at desktop width, no console errors, and the rejected line is absent.
 
 ## 25 May Homepage Revised Direction
 
