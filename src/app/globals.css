@@ -3044,26 +3044,26 @@ textarea {
 .home-4b .opening-argument-top,
 .home-4b .opening-outcome-block {
   width: 100%;
-  max-width: var(--studio-reading-lane);
+  max-width: min(100%, 1120px);
   margin-inline: 0;
   text-align: left;
 }
 
 .home-4b .opening-argument-headline,
 .home-4b .opening-outcome-setup {
-  max-width: var(--studio-reading-lane);
-  font-size: var(--studio-title-size);
-  line-height: var(--studio-title-line);
+  max-width: min(100%, 1120px);
+  font-size: clamp(28px, 2.1vw, 32px);
+  line-height: 1.14;
   color: var(--studio-ink);
 }
 
 .home-4b .opening-argument-qualifier {
-  max-width: var(--studio-reading-lane);
+  max-width: min(100%, 1120px);
   margin-top: 22px;
   margin-bottom: 0;
-  font-size: var(--studio-label-size);
-  line-height: var(--studio-label-line);
-  letter-spacing: var(--studio-label-tracking);
+  font-size: clamp(15px, 1.22vw, 18px);
+  line-height: 1.35;
+  letter-spacing: 0;
   font-weight: 700;
   text-transform: uppercase;
   color: #8f8f8f;
@@ -3077,7 +3077,7 @@ textarea {
 }
 
 .home-4b .opening-outcome-stack {
-  width: min(100%, var(--studio-reading-lane));
+  width: min(100%, 1120px);
   display: block;
   margin-top: 28px;
   border: 0;
@@ -3089,7 +3089,7 @@ textarea {
 .home-4b .opening-outcome-muted-group {
   width: 100%;
   display: block;
-  max-width: var(--studio-reading-lane);
+  max-width: min(100%, 1120px);
   justify-self: stretch;
   text-align: left;
 }
@@ -3099,8 +3099,8 @@ textarea {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: var(--studio-body-size);
-  line-height: var(--studio-body-line);
+  font-size: clamp(15px, 1.22vw, 18px);
+  line-height: 1.35;
   font-weight: 700;
   text-transform: uppercase;
   text-align: left;
@@ -3111,23 +3111,13 @@ textarea {
   margin-top: 12px;
 }
 
-.home-4b .opening-outcome-muted-group p:nth-child(2),
-.home-4b .opening-outcome-muted-group p:nth-child(3) {
-  width: auto;
-  display: inline-block;
-}
-
-.home-4b .opening-outcome-muted-group p:nth-child(3) {
-  margin-left: 18px;
-}
-
 .home-4b .opening-outcome-stack p.is-strong {
   width: 100%;
   margin-top: 14px;
   padding: 0;
   border: 0;
-  font-size: var(--studio-body-size);
-  line-height: var(--studio-body-line);
+  font-size: clamp(15px, 1.22vw, 18px);
+  line-height: 1.35;
   font-weight: 700;
   text-align: left;
   text-transform: uppercase;
