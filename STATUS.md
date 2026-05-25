@@ -21,7 +21,7 @@ Scope:
 - Rebuilt `/calm-authority` only, from clean `origin/main`, to avoid clashing with the uncommitted homepage work in the main website folder.
 - Replaced the old Calm Authority fact-sheet/pricing/recent-study page structure with Jayme's supplied flagship-product copy.
 - New page sequence: hero, featured-in wordmarks, commercial thesis, problem, why now, how it works, who it is for, proof, compliance, featured-in, founding adviser and built-by sections.
-- Updated Calm Authority page metadata to `Calm Authority | Your Own Expertise. At Scale`.
+- Updated Calm Authority page metadata to `Calm Authority | Your own expertise at scale`.
 
 Verified on branch:
 
@@ -31,6 +31,30 @@ Verified on branch:
 - Local branch preview route returned `200` at `http://127.0.0.1:3002/calm-authority`.
 
 Not live yet. Merge or deploy this branch after review.
+
+## 25 May Calm Authority Product Page Redesign
+
+Branch: `calm-authority-og-image`.
+
+Worktree: `/Users/jaymebaggio/Desktop/Studio Baggio/Website-calm-authority`.
+
+Scope:
+
+- Rebuilt `/calm-authority` as a full flagship product page rather than a linear copy page.
+- Used the supplied Calm Authority copy as the visible product-page source of truth; removed added explanatory microcopy after Jayme clarified not to change copy.
+- Added the rectangular Calm Authority OG asset from Downloads at `public/assets/products/calm-authority-og-rectangle.png`.
+- Made the OG image click through to `https://www.calmauthority.ai/`, with original PNG dimensions and `unoptimized` rendering to avoid blurry text.
+- Replaced the old Calm Authority motion layer with a page-specific client component using GSAP ScrollTrigger for the desktop mechanism section and Framer Motion for tactile card, proof and CTA interactions.
+- New page structure: editorial hero, featured-in strip, product intro/thesis, problem/stat band, why-now signal labels, scroll-aware how-it-works mechanism, who-it-is-for panels, proof panel, compliance controls, featured-in repeat, founding adviser / built-by panels and final Calm Authority CTA.
+
+Verified locally before push:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Render checks at desktop `1440x1000` and mobile `390x844` show no horizontal overflow.
+- Calm Authority OG image renders from the original `1659x948` PNG and the image link points to `https://www.calmauthority.ai/`.
+- Follow-up copy tweak: removed the dash before the hero tagline and changed it to `Your own expertise at scale`.
 
 ## Built In Phase 1
 

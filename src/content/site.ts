@@ -35,7 +35,7 @@ export const metadata = {
       "A market-specific prospecting system that captures interactions, qualifies named leads and produces a prioritised follow-up pipeline."
   },
   calmAuthority: {
-    title: "Calm Authority | Your Own Expertise. At Scale",
+    title: "Calm Authority | Your own expertise at scale",
     description:
       "The flagship Studio Baggio product: a LinkedIn writing system for UK financial advisers that turns real expertise into visible public proof."
   },
@@ -331,7 +331,7 @@ export const businessTracker = {
 export const calmAuthority = {
   eyebrow: "Flagship Product:",
   title: "Calm Authority",
-  tagline: "Your Own Expertise. At Scale",
+  tagline: "Your own expertise at scale",
   liveHref: "https://www.calmauthority.ai/",
   factSheetHref: "https://www.calmauthority.ai/press/calm-authority-fact-sheet.html",
   builtLine: "Built 2025. Live at calmauthority.ai.",
@@ -378,7 +378,7 @@ export const calmAuthority = {
     }
   ],
   compliance:
-    "Calm Authority is a writing assistant. Every post is reviewed and published manually by the adviser. Standard FCA promotional rules apply. The product operates inside firm policies, not around them.",
+    "Calm Authority is a writing assistant. Every post is reviewed and published manually by the adviser. Standard FCA promotional rules apply. Calm Authority operates inside firm policies, not around them.",
   foundingAdviser: {
     name: "Harry Sims",
     role: "Founding Adviser and First User",
