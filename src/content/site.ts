@@ -71,7 +71,7 @@ export const hero = {
 export const home = {
   opening: {
     headline:
-      "Most businesses are \"experimenting with AI\". Very few are using it to create real commercial advantage.",
+      "Most businesses are “experimenting with AI”. Very few are using it to create real commercial advantage.",
     qualifier: "For companies that rely on trust and credibility to win clients.",
     setup: "Studio Baggio designs and builds practical AI systems that help your business become:",
     outcomes: [
@@ -84,9 +84,9 @@ export const home = {
   problem: {
     eyebrow: "The AI gap",
     title:
-      "Businesses know AI is changing their market. Far fewer know where to apply it to create measurable commercial value.",
+      "Businesses know AI is changing their market. Far fewer know where to apply it to create measurable commercial advantage & deliver significant ROI.",
     stat:
-      "A 2026 Studio Graphene study found that 78% of UK businesses are using AI tools, but only 31% report positive ROI. Just 41% say they can clearly define what success looks like.",
+      "A 2026 UK business study found that 78% of UK businesses use AI tools, but only 31% of AI users have seen positive ROI. It also reported that fewer than half can clearly define what success looks like when implementing AI. Studio Graphene.",
     source:
       "Studio Graphene research reported by TechRadar, 25 March 2026.",
     sourceUrl:
@@ -94,9 +94,7 @@ export const home = {
     body: [
       "Studio Baggio helps expert-led businesses identify where AI can create measurable commercial value, then turns those opportunities into practical systems across SEO, AI search, market intelligence, lead capture, prospect research, authority-building and workflow acceleration."
     ],
-    pullQuotes: [
-      "We know exactly where AI can give this business an edge, and we have the systems live to prove it."
-    ]
+    pullQuotes: []
   },
   expertiseBridge: {
     title:
@@ -120,44 +118,25 @@ export const home = {
     body:
       "The first step is a focused sprint to identify where AI can create commercial value, what should be built first, and how it should connect to visibility, pipeline, workflow or client experience.",
     deliverables: [
-      "Where AI can create value in the business",
-      "The use cases worth prioritising",
-      "The buyer, market and workflow signals already available",
-      "What should be built first, and why",
-      "A practical 30-90 day build plan"
+      "Where AI can create value in the business.",
+      "The use cases worth prioritising.",
+      "The buyer, market and workflow signals already available.",
+      "What should be built first, and why.",
+      "A practical 30-90 day build plan."
     ]
   },
   workingPromise: {
     eyebrow: "How this works",
-    title: "This is not generic AI training.",
+    title: "This is not- AI Training, Tool Recommendations or Prompt packs.",
     body: [
-      "We do not send you away with a list of tools to learn, prompts to maintain or software your team has to adopt.",
       "Every recommendation is practical, buildable and tied to a commercial outcome. If we recommend it, it is because it can be built, shipped or handed over as a working system.",
       "Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update.",
       "The point is to turn your expertise into commercial leverage.",
       "Not to make you spend more time thinking about AI."
-    ],
-    commitments: [
-      {
-        title: "No tool theatre.",
-        body: "No performance of AI adoption for its own sake. The work has to connect to commercial value."
-      },
-      {
-        title: "No software homework.",
-        body: "You are not left with platforms, prompts or workflows your team has to learn from scratch."
-      },
-      {
-        title: "No training programme to keep alive.",
-        body: "The output is a practical system, not a workshop that fades once everyone goes back to work."
-      },
-      {
-        title: "No heavy time investment from your team.",
-        body: "The work is designed to protect senior time and move with focused input, not endless internal meetings."
-      }
     ]
   },
   proof: {
-    eyebrow: "Built From Live Work",
+    eyebrow: "Live Work",
     title: "This is not AI theory. The systems are already live."
   },
   fit: {
@@ -184,34 +163,34 @@ export const valueAreas = [
     summary:
       "Show up where buyers, search engines and AI systems are already looking.",
     detail:
-      "Make the business easier to surface, understand and choose before a sales conversation starts."
+      "Capitalise on the opportunity to use AI to be cited above your competitors."
   },
   {
     title: "Market Intelligence",
-    summary: "Turn public signals into useful commercial information.",
+    summary: "Capitalise on access to the most valuable data.",
     detail:
-      "See prospect movement, competitor activity, market questions and emerging opportunities earlier."
+      "Use it to make prospects, competitors and opportunities your market is already producing visible. Gain an insight advantage over your competitors."
   },
   {
     title: "Lead Quality",
     summary:
-      "Turn attention into named prospects, clearer qualification and stronger follow-up.",
+      "Turn attention into lead generation and capture, named prospects, clearer qualification and stronger follow-up.",
     detail:
-      "Spend more time with the right opportunities and less time guessing who is worth pursuing."
+      "Stronger prospecting intelligence. Higher conversion of the right clients. Greater impact."
   },
   {
     title: "Authority And Proof",
     summary:
       "Make expert judgement visible before a buyer reaches the sales conversation.",
     detail:
-      "In trust-based businesses, people need evidence that the expertise on the website actually exists."
+      "In trust-based businesses, clients need to know the expertise on your website actually exists. Deliver real value and bank trust consistently so buyers come in warm, not cold."
   },
   {
-    title: "Workflow Acceleration And Amplification",
+    title: "Workflow Acceleration",
     summary:
-      "Use AI to speed up research, reporting, content, sales prep and client work.",
+      "Use AI to speed up the research, reporting, content and sales prep, then use your time to focus on client work that actually matters.",
     detail:
-      "Improve the quality and usefulness of what the business delivers while protecting time for client work that actually matters."
+      "Use AI to make the work stronger and deliver more effectively, offering advantages to your clients that your competitors are not able to deliver."
   }
 ];
 

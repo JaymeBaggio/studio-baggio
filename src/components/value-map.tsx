@@ -26,10 +26,8 @@ export function ValueMap() {
       mm.add("(min-width: 1024px)", () => {
         const trigger = ScrollTrigger.create({
           trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${Math.round(window.innerHeight * 0.56 * (valueAreas.length - 1))}`,
-          pin: true,
-          pinSpacing: true,
+          start: "top 75%",
+          end: "bottom 25%",
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             const next = Math.min(valueAreas.length - 1, Math.round(self.progress * (valueAreas.length - 1)));
@@ -92,9 +90,9 @@ export function ValueMap() {
                 transition={{ duration: 0.32, ease: "easeOut" }}
               >
                 <p className="text-sm uppercase tracking-[0.07em] text-paper/55">0{active + 1}</p>
-                <h3 className="mt-10 text-5xl leading-none xl:text-7xl">{current.title}</h3>
-                <p className="mt-10 text-2xl leading-tight text-paper/86 xl:text-4xl">{current.summary}</p>
-                <p className="mt-10 max-w-2xl text-lg leading-relaxed text-paper/62">{current.detail}</p>
+                <h3 className="mt-7 text-4xl leading-none xl:text-6xl">{current.title}</h3>
+                <p className="mt-7 text-xl leading-tight text-paper/86 xl:text-2xl">{current.summary}</p>
+                <p className="mt-7 max-w-2xl text-base leading-relaxed text-paper/62 xl:text-lg">{current.detail}</p>
               </motion.div>
             </AnimatePresence>
           </div>

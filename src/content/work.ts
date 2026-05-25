@@ -22,7 +22,7 @@ export const workItems: WorkItem[] = [
     promise: "Your Own Expertise. At Scale.",
     status: "Live product",
     proofCopy:
-      "A Studio Baggio product turning financial adviser expertise into publish-ready authority content.",
+      "Flagship product from Studio Baggio, turning adviser expertise into publish-ready authority content.",
     problem:
       "37,136 UK financial advisers are authorised, but fewer than 300 post consistently on LinkedIn.",
     built:
@@ -42,7 +42,7 @@ export const workItems: WorkItem[] = [
     promise: "Lead intelligence for warmer follow-up.",
     status: "Live system",
     proofCopy:
-      "A system for turning engagement into named prospects, clearer qualification and next-step intelligence.",
+      "Turning engagement into named follow-up and lead intelligence.",
     problem:
       "Smaller expert-led teams often create visibility without knowing who is warming up, why they matter or what should happen next.",
     built:
@@ -60,7 +60,7 @@ export const workItems: WorkItem[] = [
     promise: "What the market is saying right now.",
     status: "Placeholder case study",
     proofCopy:
-      "A reporting system that pulls recent discussion and sentiment from Reddit, X, TikTok, Instagram, YouTube and the open web, then turns it into a sourced market report.",
+      "Pulls the last 30 days of discussion and sentiment from Reddit, X, TikTok, Instagram, YouTube, including comments and transcripts, and the open web. Where markets form real opinions. Where trends emerge before the press catches up. Where your competitors are being discussed, praised, or quietly abandoned. Ask any question. Last30Days outputs a fully sourced report in under sixty seconds, every claim cited. Before you launch, pivot, or compete, know what the market is really saying right now.",
     problem:
       "Teams need to know what people are saying now, not what a stale report said months ago.",
     built:
@@ -80,7 +80,7 @@ export const workItems: WorkItem[] = [
     promise: "Commercial intelligence from the open web.",
     status: "Placeholder case study",
     proofCopy:
-      "A research system that scans the open web, answers commercial questions quickly and turns cited intelligence into pitches, emails and strategy notes.",
+      "Fire Source scans around 96% of the open web and answers commercial questions in three minutes. Stack follow-ups to sharpen the picture and find the angle nobody else has. Competitor moves, market shifts, who is buying what, who is hiring whom, pricing moves and prospect intelligence, all in under three minutes. Cited, complete, with prompts to turn the intelligence into pitches, emails or strategy notes. Built by Studio Baggio.",
     problem:
       "Commercial teams need competitor moves, market shifts, buyer signals and pitch intelligence faster than manual research allows.",
     built:
