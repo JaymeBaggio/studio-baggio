@@ -209,6 +209,17 @@ Follow-up typography/motion correction after Jayme's live review:
 - Verified in the Codex in-app browser at `http://127.0.0.1:3000/`: `Expertise to proof` is no longer rendered, the new commercial systems section appears directly below AI Gap, type roles are unified, and horizontal overflow is `0`.
 - Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
 
+Final hierarchy/frame correction:
+
+- Replaced the stacked emergency homepage overrides with one final Direction 4B homepage system for section frames, typography roles, reading lanes, list rows and neutral colour tokens.
+- Locked the opening argument to the approved full-frame, left-lane treatment with uppercase title/setup text, grey uppercase qualifier, left-aligned outcome stack and no split/right-shifted layout.
+- Kept `Expertise to proof` removed and rebuilt the following practical systems section as a proper full-frame section with a microheader, body copy and the same numbered horizontal-row list grammar as Commercial AI Sprint.
+- Added visible microheaders to the practical systems and fit/not-fit sections so every homepage content section now has a consistent section label.
+- Reworked homepage GSAP reveals into section-level sequences: label first, masked title lines second, body/list/cards last. Added `immediateRender: false` so content remains visible by default and is not hidden before its reveal trigger.
+- Verified in the Codex in-app browser at desktop `1440x900`: all rendered homepage sections are full-frame (`min-height: 900px`), value/proof sections expand only where content requires it, no horizontal overflow, 6 practical-system rows, 5 value rows, 4 proof rows, 2 fit cards, no rendered `Expertise to proof`, and Aileron is the only computed font family.
+- Verified in the Codex in-app browser at mobile `390x844`: no horizontal overflow and each homepage content section has at least `100svh` minimum height.
+- Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
+
 ## 24 May Repair Pass
 
 After Jayme's review, the build was re-audited against the original goal with subagent tracks for copy/content, design/motion, engineering and QA/deploy.

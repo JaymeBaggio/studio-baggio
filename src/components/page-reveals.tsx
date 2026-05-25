@@ -114,6 +114,7 @@ export function PageReveals() {
         const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
         const splitElements = gsap.utils.toArray<HTMLElement>("[data-split]");
         const ctaButtons = gsap.utils.toArray<HTMLElement>("[data-cta-button]");
+        const homepageSections = gsap.utils.toArray<HTMLElement>(".home-4b > section");
 
         gsap.set([...revealElements, ...splitElements, ...ctaButtons], { autoAlpha: 1, y: 0, yPercent: 0 });
 
@@ -162,57 +163,85 @@ export function PageReveals() {
           }, 0.64);
         }
 
-        revealElements.forEach((element) => {
-          triggers.push(
-            ScrollTrigger.create({
-              trigger: element,
-              start: "top 97%",
-              once: true,
-              fastScrollEnd: true,
-              onEnter: () => {
-                animations.push(
-                  gsap.fromTo(
-                    element,
-                    { y: 18, autoAlpha: 0.001 },
-                    {
-                      y: 0,
-                      autoAlpha: 1,
-                      duration: 0.4,
-                      ease: "power3.out",
-                      overwrite: "auto"
-                    }
-                  )
-                );
-              }
-            })
+        homepageSections.forEach((section) => {
+          const labelTargets = gsap.utils.toArray<HTMLElement>(
+            section.querySelectorAll(".eyebrow, .opening-argument-qualifier, .problem-source, .home-cta-brand")
           );
-        });
+          const sectionRevealElements = gsap.utils.toArray<HTMLElement>(section.querySelectorAll("[data-reveal]"));
+          const bodyTargets = sectionRevealElements.filter((element) => !labelTargets.includes(element));
+          const splitTargets = gsap.utils
+            .toArray<HTMLElement>(section.querySelectorAll("[data-split]"))
+            .flatMap((element) => {
+              const split = splits.find((item) => item.element === element);
+              return split?.inners.length ? split.inners : [element];
+            });
+          const triggerTarget =
+            section.querySelector<HTMLElement>("[data-split], [data-reveal], [data-cta-button]") ?? section;
 
-        splitElements.forEach((element) => {
-          const split = splits.find((item) => item.element === element);
-          const targets = split?.inners.length ? split.inners : [element];
+          if (!labelTargets.length && !splitTargets.length && !bodyTargets.length) return;
+
+          const timeline = gsap.timeline({ paused: true });
+          animations.push(timeline);
+
+          if (labelTargets.length) {
+            timeline.fromTo(
+              labelTargets,
+              { y: 16, autoAlpha: 0.001 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.3,
+                immediateRender: false,
+                stagger: 0.035,
+                ease: "power3.out",
+                overwrite: "auto"
+              },
+              0
+            );
+          }
+
+          if (splitTargets.length) {
+            timeline.fromTo(
+              splitTargets,
+              { yPercent: 110, autoAlpha: 0.001 },
+              {
+                yPercent: 0,
+                autoAlpha: 1,
+                duration: 0.52,
+                immediateRender: false,
+                stagger: 0.032,
+                ease: "expo.out",
+                overwrite: "auto"
+              },
+              labelTargets.length ? 0.06 : 0
+            );
+          }
+
+          if (bodyTargets.length) {
+            timeline.fromTo(
+              bodyTargets,
+              { y: 22, autoAlpha: 0.001 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.36,
+                immediateRender: false,
+                stagger: 0.042,
+                ease: "power3.out",
+                overwrite: "auto"
+              },
+              splitTargets.length ? 0.18 : 0.08
+            );
+          }
 
           triggers.push(
             ScrollTrigger.create({
-              trigger: element,
-              start: "top 95%",
+              trigger: triggerTarget,
+              start: "top 94%",
               once: true,
               fastScrollEnd: true,
               onEnter: () => {
-                animations.push(
-                  gsap.fromTo(
-                    targets,
-                    { yPercent: 112, autoAlpha: 0.001 },
-                    {
-                      yPercent: 0,
-                      autoAlpha: 1,
-                      duration: 0.58,
-                      stagger: 0.04,
-                      ease: "expo.out",
-                      overwrite: "auto"
-                    }
-                  )
-                );
+                timeline.play(0);
               }
             })
           );

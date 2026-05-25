@@ -106,6 +106,9 @@ export default function HomePage() {
 
         <section className="commercial-systems-section">
           <div className="editorial-container commercial-systems-frame">
+            <p className="eyebrow commercial-systems-eyebrow" data-reveal>
+              Practical systems
+            </p>
             {home.problem.body.map((paragraph) => (
               <p key={paragraph} className="commercial-systems-lead" data-reveal>
                 {paragraph}
@@ -175,6 +178,9 @@ export default function HomePage() {
 
         <section className="fit-section">
           <div className="editorial-container fit-section-frame">
+            <p className="eyebrow fit-section-eyebrow" data-reveal>
+              Fit / not fit
+            </p>
             <h2 className="fit-section-title" data-split>
               {home.fit.title}
             </h2>
@@ -209,7 +215,7 @@ export default function HomePage() {
 
 function FitList({ title, items, dark }: { title: string; items: string[]; dark?: boolean }) {
   return (
-    <div className={dark ? "fit-card is-dark" : "fit-card"}>
+    <div className={dark ? "fit-card is-dark" : "fit-card"} data-reveal>
       <h3>{title}</h3>
       <div className="fit-card-copy">
         {items.map((item) => (
