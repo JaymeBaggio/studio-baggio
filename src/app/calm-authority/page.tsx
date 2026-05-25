@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { CalmAuthorityMotion } from "@/components/calm-authority-motion";
 import { ButtonLink } from "@/components/ui/button";
-import { calmAuthority, metadata as siteMetadata, primaryCta } from "@/content/site";
+import { calmAuthority, metadata as siteMetadata } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.calmAuthority, path: "/calm-authority" });
@@ -12,41 +12,39 @@ export default function CalmAuthorityPage() {
     <>
       <CalmAuthorityMotion />
       <section className="calm-authority-hero" data-calm-hero>
-        <div className="editorial-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div>
-            <p className="eyebrow" data-calm-motion data-calm-hero-copy>Live product / LinkedIn writing system</p>
-            <h1 className="display-xl mt-6" data-calm-motion data-calm-hero-copy>
-              {calmAuthority.title}
-            </h1>
-            <p className="body-large mt-8 text-ink/72" data-calm-motion data-calm-hero-copy>
-              {calmAuthority.tagline}
+        <div className="editorial-container calm-authority-hero-grid">
+          <div className="calm-authority-hero-copy">
+            <p className="eyebrow" data-calm-motion data-calm-hero-copy>
+              {calmAuthority.eyebrow}
             </p>
-            <p className="mt-5 max-w-xl text-base leading-7 text-ink/62" data-calm-motion data-calm-hero-copy>
-              {calmAuthority.hero}
+            <h1 className="display-xl mt-6" data-calm-motion data-calm-hero-copy>
+              {calmAuthority.title} <span>— {calmAuthority.tagline}</span>
+            </h1>
+            <p className="calm-authority-built-line" data-calm-motion data-calm-hero-copy>
+              {calmAuthority.builtLine}
+            </p>
+            <div className="calm-authority-featured" data-calm-motion data-calm-hero-copy>
+              <span>Featured in:</span>
+              <div className="calm-authority-logo-row" aria-label={`Featured in ${calmAuthority.featuredIn.join(", ")}`}>
+                {calmAuthority.featuredIn.map((publication) => (
+                  <span key={publication} className="calm-authority-wordmark">
+                    {publication}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <p className="calm-authority-hero-intro" data-calm-motion data-calm-hero-copy>
+              {calmAuthority.productIntro}
             </p>
             <div className="mt-8 flex flex-wrap gap-3" data-calm-motion data-calm-hero-copy>
-              <ButtonLink href={calmAuthority.liveHref} external>
-                Visit Calm Authority
-              </ButtonLink>
-              <ButtonLink href={calmAuthority.factSheetHref} external className="border-ink/30 text-ink/70">
-                Press Fact Sheet
-              </ButtonLink>
-            </div>
-            <div className="calm-authority-stat-grid mt-10">
-              <div className="calm-authority-stat" data-calm-motion data-calm-stat>
-                <span>2025</span>
-                <p>Founded by Harry Sims and Jayme Baggio.</p>
-              </div>
-              <div className="calm-authority-stat" data-calm-motion data-calm-stat>
-                <span>+527%</span>
-                <p>Impressions in 28 days for the founding user.</p>
-              </div>
-              <div className="calm-authority-stat" data-calm-motion data-calm-stat>
-                <span>52</span>
-                <p>Inbound leads in six months for one consistent adviser.</p>
-              </div>
+              {calmAuthority.links.map((link) => (
+                <ButtonLink key={link.href} href={link.href} external>
+                  {link.label}
+                </ButtonLink>
+              ))}
             </div>
           </div>
+
           <a
             href={calmAuthority.liveHref}
             target="_blank"
@@ -73,133 +71,124 @@ export default function CalmAuthorityPage() {
         </div>
       </section>
 
-      <section className="calm-authority-overview border-y border-ink/12">
+      <section className="calm-authority-lede-section border-b border-ink/12">
         <div className="editorial-container">
-          <div className="grid gap-5 md:grid-cols-3">
-            {calmAuthority.overview.map((item) => (
-              <article key={item.title} className="calm-authority-overview-card" data-calm-motion data-calm-card>
-                <h2 className="text-xl leading-7">{item.title}</h2>
-                <p className="mt-8 text-base leading-7 text-ink/68">{item.body}</p>
+          <div className="calm-authority-lede">
+            {calmAuthority.commercialThesis.map((paragraph) => (
+              <p key={paragraph} data-calm-motion data-calm-row>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="calm-authority-section">
+        <div className="editorial-container calm-authority-copy-grid">
+          <p className="eyebrow">The problem</p>
+          <div className="calm-authority-copy">
+            {calmAuthority.problem.map((paragraph) => (
+              <p key={paragraph} data-calm-motion data-calm-row>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="calm-authority-section border-y border-ink/12 bg-soft">
+        <div className="editorial-container calm-authority-copy-grid">
+          <p className="eyebrow">Why now</p>
+          <div className="calm-authority-copy">
+            <p data-calm-motion data-calm-row>{calmAuthority.whyNow}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="calm-authority-section">
+        <div className="editorial-container calm-authority-copy-grid">
+          <p className="eyebrow">How it works</p>
+          <div className="calm-authority-copy">
+            {calmAuthority.howItWorks.map((paragraph) => (
+              <p key={paragraph} data-calm-motion data-calm-row>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="calm-authority-section border-y border-ink/12">
+        <div className="editorial-container calm-authority-copy-grid">
+          <p className="eyebrow">Who it&apos;s for</p>
+          <ul className="calm-authority-list">
+            {calmAuthority.whoItsFor.map((item) => (
+              <li key={item} data-calm-motion data-calm-row>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="calm-authority-proof-section section-pad">
+        <div className="editorial-container">
+          <div className="calm-authority-section-header">
+            <p className="eyebrow">Proof</p>
+            <h2 className="display-md" data-calm-motion data-calm-row>
+              Growth signals from real adviser use.
+            </h2>
+          </div>
+          <div className="calm-authority-proof-grid">
+            {calmAuthority.proofPoints.map((point) => (
+              <article key={point.metric} className="calm-authority-proof-card" data-calm-motion data-calm-proof>
+                <h3>{point.metric}</h3>
+                {point.body ? <p>{point.body}</p> : null}
               </article>
             ))}
           </div>
-          <div className="mt-12 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <p className="eyebrow">Market context</p>
-            <div className="space-y-6 body-large text-ink/72">
-              <p data-calm-motion data-calm-row>{calmAuthority.summary}</p>
-              <p data-calm-motion data-calm-row>{calmAuthority.marketContext}</p>
-              <p data-calm-motion data-calm-row>{calmAuthority.genericAiRisk}</p>
-            </div>
+        </div>
+      </section>
+
+      <section className="calm-authority-section bg-charcoal text-paper" data-calm-dark-section>
+        <div className="editorial-container calm-authority-copy-grid">
+          <p className="eyebrow text-paper/58">Compliance and editorial control</p>
+          <div className="calm-authority-copy text-paper/76">
+            <p data-calm-motion data-calm-dark>{calmAuthority.compliance}</p>
           </div>
         </div>
       </section>
 
-      <section className="section-pad">
-        <div className="editorial-container">
-          <div className="grid gap-10 lg:grid-cols-[0.65fr_1.35fr]">
-            <div>
-              <p className="eyebrow">At a glance</p>
-              <p className="mt-6 text-base leading-7 text-ink/62">{calmAuthority.sourceNote}</p>
-            </div>
-            <div className="border-t border-ink/15">
-              {calmAuthority.atAGlance.map(([label, value]) => (
-                <div key={label} className="grid gap-3 border-b border-ink/12 py-5 md:grid-cols-[190px_1fr]" data-calm-motion data-calm-row>
-                  <span className="text-xs uppercase tracking-[0.08em] text-ink/45">{label}</span>
-                  <p className="text-base leading-7 text-ink/72">{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-20">
-            <p className="eyebrow">How it works</p>
-            <div className="mt-10 border-t border-ink/15">
-              {calmAuthority.facts.map((fact, index) => (
-                <div key={fact} className="grid gap-5 border-b border-ink/12 py-6 md:grid-cols-[80px_1fr]" data-calm-motion data-calm-row>
-                  <span className="text-xs uppercase tracking-[0.08em] text-ink/45">0{index + 1}</span>
-                  <p className="body-large text-ink/72">{fact}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad border-y border-ink/12">
-        <div className="editorial-container grid gap-10 lg:grid-cols-[0.65fr_1.35fr]">
-          <div>
-            <p className="eyebrow">Proof points</p>
-            <h2 className="display-md mt-6" data-calm-motion data-calm-row>
-              Measured authority, pipeline and revenue signals.
-            </h2>
-          </div>
-          <div className="grid gap-4">
-            {calmAuthority.proofPoints.map((point) => (
-              <div key={point} className="calm-authority-proof-card" data-calm-motion data-calm-proof>
-                <p className="body-large text-ink/72">{point}</p>
-              </div>
+      <section className="calm-authority-section border-b border-ink/12">
+        <div className="editorial-container calm-authority-featured-block">
+          <p className="eyebrow">Featured in</p>
+          <div className="calm-authority-logo-row calm-authority-logo-row-large">
+            {calmAuthority.featuredIn.map((publication) => (
+              <span key={publication} className="calm-authority-wordmark">
+                {publication}
+              </span>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-pad bg-charcoal text-paper" data-calm-dark-section>
-        <div className="editorial-container grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <h2 className="display-lg" data-calm-motion data-calm-dark>
-            What it proves about Studio Baggio.
-          </h2>
-          <div className="space-y-7 body-large text-paper/72">
-            <p data-calm-motion data-calm-dark>{calmAuthority.studioAngle}</p>
-            <p data-calm-motion data-calm-dark>{calmAuthority.proof}</p>
-          </div>
-        </div>
-      </section>
+      <section className="calm-authority-section">
+        <div className="editorial-container calm-authority-profile-grid">
+          <article className="calm-authority-profile-card" data-calm-motion data-calm-card>
+            <p className="eyebrow">Founding adviser</p>
+            <h2>{calmAuthority.foundingAdviser.name}</h2>
+            <p className="calm-authority-profile-role">{calmAuthority.foundingAdviser.role}</p>
+            <p>{calmAuthority.foundingAdviser.body}</p>
+          </article>
 
-      <section className="section-pad">
-        <div className="editorial-container grid gap-12 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <p className="eyebrow">Pricing</p>
-            <div className="mt-8 border-t border-ink/15">
-              {calmAuthority.pricing.map(([tier, price, scope]) => (
-                <div key={tier} className="grid gap-3 border-b border-ink/12 py-5" data-calm-motion data-calm-row>
-                  <div className="flex flex-wrap items-baseline justify-between gap-3">
-                    <h2 className="text-lg leading-7">{tier}</h2>
-                    <span className="text-sm uppercase tracking-[0.06em] text-ink/55">{price}</span>
-                  </div>
-                  <p className="text-base leading-7 text-ink/62">{scope}</p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-5 text-sm leading-6 text-ink/50">
-              Firm tiers are 90 days upfront, then quarterly in advance. Prices exclude VAT.
-            </p>
-          </div>
-
-          <div>
-            <p className="eyebrow">Recent / compliance</p>
-            <div className="mt-8 space-y-6 text-base leading-7 text-ink/68">
-              {calmAuthority.recent.map((item) => (
-                <p key={item} data-calm-motion data-calm-row>{item}</p>
-              ))}
-              <p className="border-l border-ink/30 pl-5 text-ink/78" data-calm-motion data-calm-row>{calmAuthority.compliance}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad">
-        <div className="editorial-container grid gap-8 md:grid-cols-[1fr_0.6fr] md:items-end">
-          <div>
-            <p className="eyebrow">Links</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {calmAuthority.links.map((link) => (
-                <ButtonLink key={link.href} href={link.href} external>
-                  {link.label}
-                </ButtonLink>
-              ))}
-            </div>
-          </div>
-          <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
+          <article className="calm-authority-profile-card" data-calm-motion data-calm-card>
+            <p className="eyebrow">Built by</p>
+            <h2>{calmAuthority.builtBy.name}</h2>
+            <p className="calm-authority-profile-role">{calmAuthority.builtBy.role}</p>
+            {calmAuthority.builtBy.body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </article>
         </div>
       </section>
     </>
