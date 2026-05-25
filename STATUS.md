@@ -184,6 +184,17 @@ Vercel deployment repair:
 - Disconnected `rough-cut-newsletter` from the Studio Baggio GitHub repo, cleared the invalid root directory setting, and redeployed the newsletter manually from `/Users/jaymebaggio/Desktop/Rough Cut/RC8/newsletter`.
 - Verified `https://rough-cut-newsletter.vercel.app` returns `200` and the latest `rough-cut-newsletter` production deployment is `Ready`.
 
+Direction 4B polish pass:
+
+- Locked stricter homepage type roles with Direction 4B tokens for labels, titles, lead copy, body, stats, row titles and outcome text.
+- Reworked homepage text reveal motion into masked line reveals, with labels/body/rows following the same editorial motion grammar.
+- Added section-aware header contrast so the fixed header switches correctly over dark sections rather than relying only on scroll distance.
+- Tightened mobile rhythm and fixed invalid CSS container width calculations that caused mobile text lanes to hit the viewport edge.
+- Refined the dark value rows with border-draw progression, active-row sharpening and readable inactive rows, without reintroducing the rejected rail/panel layout.
+- Updated proof heading copy to `PRODUCTS IN MARKET` / `LIVE WORK`, removing `This is not AI theory. The systems are already live.`
+- Verified in the Codex in-app browser at the local preview: no horizontal overflow, mobile reading lane has 16px margins, dark header flips correctly, value section has 5 vertical rows and no panels, and proof heading copy is exact.
+- Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
+
 ## 24 May Repair Pass
 
 After Jayme's review, the build was re-audited against the original goal with subagent tracks for copy/content, design/motion, engineering and QA/deploy.

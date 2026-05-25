@@ -7,10 +7,87 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 type SplitTextInstance = {
-  lines: Element[];
-  words: Element[];
+  element: HTMLElement;
+  originalHTML: string;
+  inners: HTMLElement[];
   revert: () => void;
 };
+
+function splitElementIntoLines(element: HTMLElement): SplitTextInstance | null {
+  const originalHTML = element.innerHTML;
+  const text = element.textContent?.replace(/\s+/g, " ").trim();
+
+  if (!text) return null;
+
+  element.setAttribute("aria-label", text);
+  element.replaceChildren();
+
+  const words = text.split(" ");
+  const measureFragment = document.createDocumentFragment();
+
+  words.forEach((word, index) => {
+    const span = document.createElement("span");
+    span.className = "split-measure-word";
+    span.textContent = index === words.length - 1 ? word : `${word} `;
+    measureFragment.appendChild(span);
+  });
+
+  element.appendChild(measureFragment);
+
+  const wordNodes = Array.from(element.querySelectorAll<HTMLElement>(".split-measure-word"));
+  const groups: string[][] = [];
+  let currentTop: number | null = null;
+  let currentWords: string[] = [];
+
+  wordNodes.forEach((wordNode) => {
+    const top = Math.round(wordNode.getBoundingClientRect().top);
+    const word = wordNode.textContent?.trim();
+    if (!word) return;
+
+    if (currentTop === null || Math.abs(top - currentTop) <= 2) {
+      currentTop = currentTop ?? top;
+      currentWords.push(word);
+      return;
+    }
+
+    groups.push(currentWords);
+    currentWords = [word];
+    currentTop = top;
+  });
+
+  if (currentWords.length) {
+    groups.push(currentWords);
+  }
+
+  element.replaceChildren();
+
+  const inners: HTMLElement[] = [];
+  const finalFragment = document.createDocumentFragment();
+
+  groups.forEach((lineWords) => {
+    const line = document.createElement("span");
+    const inner = document.createElement("span");
+
+    line.className = "split-line";
+    inner.className = "split-line-inner";
+    inner.textContent = lineWords.join(" ");
+
+    line.appendChild(inner);
+    finalFragment.appendChild(line);
+    inners.push(inner);
+  });
+
+  element.appendChild(finalFragment);
+
+  return {
+    element,
+    originalHTML,
+    inners,
+    revert: () => {
+      element.innerHTML = originalHTML;
+    }
+  };
+}
 
 export function PageReveals() {
   useGSAP(
@@ -44,6 +121,13 @@ export function PageReveals() {
           gsap.set([...revealElements, ...splitElements, ...ctaButtons], { opacity: 1, y: 0, clipPath: "none" });
           return;
         }
+
+        splitElements.forEach((element) => {
+          const split = splitElementIntoLines(element);
+          if (split) splits.push(split);
+        });
+
+        ScrollTrigger.refresh();
 
         const heroTimeline = gsap.timeline();
         animations.push(heroTimeline);
@@ -82,7 +166,7 @@ export function PageReveals() {
           triggers.push(
             ScrollTrigger.create({
               trigger: element,
-              start: "top 98%",
+              start: "top 94%",
               once: true,
               fastScrollEnd: true,
               onEnter: () => {
@@ -93,7 +177,7 @@ export function PageReveals() {
                     {
                       y: 0,
                       autoAlpha: 1,
-                      duration: 0.52,
+                      duration: 0.62,
                       ease: "power3.out",
                       overwrite: "auto"
                     }
@@ -105,23 +189,26 @@ export function PageReveals() {
         });
 
         splitElements.forEach((element) => {
+          const split = splits.find((item) => item.element === element);
+          const targets = split?.inners.length ? split.inners : [element];
+
           triggers.push(
             ScrollTrigger.create({
               trigger: element,
-              start: "top 94%",
+              start: "top 88%",
               once: true,
               fastScrollEnd: true,
               onEnter: () => {
                 animations.push(
                   gsap.fromTo(
-                    element,
-                    { y: 26, autoAlpha: 0.001, clipPath: "inset(0 0 100% 0)" },
+                    targets,
+                    { yPercent: 112, autoAlpha: 0.001 },
                     {
-                      y: 0,
+                      yPercent: 0,
                       autoAlpha: 1,
-                      clipPath: "inset(0 0 0% 0)",
-                      duration: 0.78,
-                      ease: "power3.out",
+                      duration: 0.86,
+                      stagger: 0.075,
+                      ease: "expo.out",
                       overwrite: "auto"
                     }
                   )

@@ -159,7 +159,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="home-cta-section">
+        <section className="home-cta-section" data-header-theme="dark">
           <div className="editorial-container home-cta-frame">
             <p className="eyebrow home-cta-eyebrow" data-reveal>{home.cta.eyebrow}</p>
             <h2 className="home-cta-title" data-split>

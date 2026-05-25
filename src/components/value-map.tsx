@@ -18,33 +18,46 @@ export function ValueMap() {
       if (reduce || !sectionRef.current) return;
 
       const rows = gsap.utils.toArray<HTMLElement>(".value-map-row");
-      const tween = gsap.fromTo(
+      gsap.set(rows, { "--row-progress": 0 });
+
+      const reveal = gsap.fromTo(
         rows,
-        { y: 24, autoAlpha: 0.001 },
+        { y: 22, autoAlpha: 0.001 },
         {
           y: 0,
           autoAlpha: 1,
-          duration: 0.72,
+          "--row-progress": 1,
+          duration: 0.62,
           ease: "power3.out",
-          stagger: 0.09,
+          stagger: 0.055,
           scrollTrigger: {
             trigger: ".value-map-rows",
-            start: "top 82%",
+            start: "top 84%",
             once: true
           }
         }
       );
 
+      const activeTriggers = rows.map((row) =>
+        ScrollTrigger.create({
+          trigger: row,
+          start: "top 62%",
+          end: "bottom 42%",
+          toggleClass: { targets: row, className: "is-active" }
+        })
+      );
+
       return () => {
-        tween.scrollTrigger?.kill();
-        tween.kill();
+        reveal.scrollTrigger?.kill();
+        reveal.kill();
+        activeTriggers.forEach((trigger) => trigger.kill());
       };
     },
     { scope: sectionRef }
   );
 
   return (
-    <section ref={sectionRef} className="value-map-section">
+    <section ref={sectionRef} className="value-map-section" data-header-theme="dark">
       <div className="editorial-container value-map-frame">
         <p className="eyebrow value-map-eyebrow" data-reveal>
           {home.value.eyebrow}
@@ -58,7 +71,7 @@ export function ValueMap() {
             <motion.div
               key={area.title}
               className="value-map-row"
-              whileHover={{ x: 6 }}
+              whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.035)" }}
               transition={{ type: "spring", stiffness: 420, damping: 34 }}
             >
               <h3>

@@ -142,8 +142,8 @@ export const home = {
     ]
   },
   proof: {
-    eyebrow: "Live Work",
-    title: "This is not AI theory. The systems are already live."
+    eyebrow: "PRODUCTS IN MARKET",
+    title: "LIVE WORK"
   },
   fit: {
     title: "For expert-led businesses that need AI connected to commercial outcomes.",
