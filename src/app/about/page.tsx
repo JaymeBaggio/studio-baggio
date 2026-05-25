@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AboutPageMotion } from "@/components/about-page-motion";
 import { ButtonLink } from "@/components/ui/button";
 import { about, metadata as siteMetadata, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -7,111 +8,79 @@ export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/
 
 export default function AboutPage() {
   return (
-    <>
-      <div className="bg-white text-ink">
-      <section className="border-b border-ink/12 pb-12 pt-28 md:pb-16">
-        <div className="editorial-container max-w-5xl">
-          <p className="eyebrow">{about.eyebrow}</p>
-          <h1 className="mt-6 text-4xl leading-tight md:text-6xl">
-            {about.title}
-          </h1>
-          <p className="mt-6 max-w-4xl text-xl leading-8 text-ink/74 md:text-2xl md:leading-9">
-            {about.intro}
-          </p>
-        </div>
-      </section>
+    <div className="bg-white text-ink">
+      <AboutPageMotion />
 
-      <section className="section-pad">
-        <div className="editorial-container max-w-5xl">
-          <p className="eyebrow">{about.story.eyebrow}</p>
-          <h2 className="mt-5 text-3xl leading-tight md:text-5xl">
-            {about.story.title}
-          </h2>
-          <div className="mt-10 space-y-6">
-            {about.story.body.map((paragraph) => (
-              <p key={paragraph} className="text-xl leading-9 text-ink/74">
-                {paragraph}
-              </p>
-            ))}
+      <section className="border-b border-ink/12 pb-14 pt-28 md:pb-20 md:pt-32">
+        <div className="editorial-container max-w-6xl">
+          <p className="text-xs uppercase tracking-[0.12em] text-ink/50" data-about-hero>
+            {about.eyebrow}
+          </p>
+          <div className="mt-10 grid gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:items-start">
+            <h1 className="text-4xl leading-[1.02] md:text-6xl" data-about-hero>
+              {about.title}
+            </h1>
+            <p className="max-w-3xl text-xl leading-9 text-ink/78 md:text-2xl md:leading-10" data-about-hero>
+              {about.intro}
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="section-pad border-y border-ink/12 bg-white">
-        <div className="editorial-container max-w-5xl">
-          <p className="eyebrow">{about.origin.eyebrow}</p>
-          <h2 className="mt-5 text-3xl leading-tight md:text-5xl">
-            {about.origin.title}
-          </h2>
-          <div className="mt-10 space-y-6">
-            {about.origin.body.map((paragraph) => (
-              <p key={paragraph} className="text-xl leading-9 text-ink/74">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad">
-        <div className="editorial-container max-w-5xl">
-          <p className="eyebrow">{about.collaboration.eyebrow}</p>
-          <h2 className="mt-5 text-3xl leading-tight md:text-5xl">
-            {about.collaboration.title}
-          </h2>
-          <p className="mt-10 text-xl leading-9 text-ink/74">
-            {about.collaboration.body}
-          </p>
-          <div className="mt-10 border-t border-ink/15">
-            {about.collaboration.steps.map((step) => (
-              <div key={step.title} className="border-b border-ink/12 py-6">
-                <h3 className="text-2xl leading-tight">{step.title}</h3>
-                <p className="mt-3 text-base leading-7 text-ink/70">{step.body}</p>
+      <section className="py-4">
+        <div className="editorial-container max-w-6xl">
+          {about.sections.map((section) => (
+            <section
+              key={section.label}
+              className="grid gap-8 border-b border-ink/12 py-12 last:border-b-0 md:py-16 lg:grid-cols-[0.32fr_0.68fr]"
+              data-about-section
+            >
+              <h2 className="text-xs uppercase tracking-[0.12em] text-ink/50">
+                {section.label}
+              </h2>
+              <div className="max-w-3xl space-y-6">
+                {section.body.map((paragraph) => (
+                  <p key={paragraph} className="text-lg leading-8 text-ink/76 md:text-xl md:leading-9">
+                    {paragraph}
+                  </p>
+                ))}
               </div>
-            ))}
+            </section>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-ink/12 bg-neutral-100 py-14 md:py-20" data-about-section>
+        <div className="editorial-container max-w-6xl">
+          <div className="grid gap-8 lg:grid-cols-[0.32fr_0.68fr]">
+            <p className="text-xs uppercase tracking-[0.12em] text-ink/50">EXTERNAL VIEW</p>
+            <figure className="max-w-4xl">
+              <blockquote className="text-2xl leading-tight text-ink md:text-4xl">
+                &ldquo;{about.quote.text}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 text-sm uppercase tracking-[0.1em] text-ink/55">
+                {about.quote.attribution}
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
-      <section className="section-pad border-y border-ink/12 bg-white">
-        <div className="editorial-container max-w-5xl">
-          <p className="eyebrow">What Studio Baggio builds</p>
-          <h2 className="mt-5 text-3xl leading-tight md:text-5xl">
-            Products, advisory systems and proof assets.
-          </h2>
-          <div className="mt-10 space-y-5">
-            {about.work.map((item) => (
-              <p key={item} className="border-l border-ink/20 pl-5 text-lg leading-8 text-ink/74">
-                {item}
-              </p>
-            ))}
+      <section className="bg-charcoal py-14 text-paper md:py-20" data-about-section>
+        <div className="editorial-container max-w-6xl">
+          <div className="grid gap-8 lg:grid-cols-[0.32fr_0.68fr] lg:items-end">
+            <p className="text-xs uppercase tracking-[0.12em] text-paper/55">START A CONVERSATION</p>
+            <div>
+              <h2 className="max-w-3xl text-3xl leading-tight md:text-5xl">
+                Advisory is selective. The work starts with the commercial problem.
+              </h2>
+              <ButtonLink href={primaryCta.href} className="mt-8 border-paper text-paper hover:bg-paper hover:text-ink">
+                {primaryCta.label}
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </section>
-
-      <section className="section-pad">
-        <div className="editorial-container max-w-5xl">
-          <p className="eyebrow">External view</p>
-          <blockquote className="mt-6 text-3xl leading-tight text-ink md:text-5xl">
-            &ldquo;{about.quote.text}&rdquo;
-          </blockquote>
-          <p className="mt-6 text-sm uppercase tracking-[0.08em] text-ink/55">
-            {about.quote.attribution}
-          </p>
-        </div>
-      </section>
-
-      <section className="section-pad bg-charcoal text-paper">
-        <div className="editorial-container max-w-5xl">
-          <h2 className="text-3xl leading-tight md:text-5xl">
-            Advisory is selective. The work starts with the commercial problem.
-          </h2>
-          <ButtonLink href={primaryCta.href} className="mt-8 border-paper text-paper hover:bg-paper hover:text-ink">
-            {primaryCta.label}
-          </ButtonLink>
-        </div>
-      </section>
-      </div>
-    </>
+    </div>
   );
 }
