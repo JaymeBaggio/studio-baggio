@@ -405,9 +405,9 @@ export const calmAuthority = {
 
 export const about = {
   eyebrow: "About Studio Baggio",
-  title: "Practical AI systems, built with the people who understand the market.",
+  title: "About Studio Baggio",
   intro:
-    "Founded by Jayme Baggio in 2025, Studio Baggio builds practical AI systems that help businesses become visible, understand their market, capture demand and generate real commercial value.",
+    "Studio Baggio builds practical AI systems for expert-led businesses that need to become more visible, understand their market, capture demand and generate measurable commercial value.",
   highlights: [
     ["Founded", "Established in 2025 by Jayme Baggio."],
     ["Built with experts", "Systems are shaped with industry specialists, operators and client teams who understand the market from inside it."],
@@ -415,8 +415,8 @@ export const about = {
     ["Proof", "Live products and systems across wealth advice, content production, research and commercial intelligence."]
   ],
   story: {
-    eyebrow: "Founder and studio",
-    title: "The work sits between commercial storytelling, practical AI and market execution.",
+    eyebrow: "Founded by Jayme Baggio",
+    title: "Studio Baggio was established in 2025 to turn practical AI into commercial advantage.",
     body: [
       "Jayme has spent years inside major media and brand environments, with experience across Channel 4, ITV, BBC Studios, Google, M&S and HSBC. That background in commercial storytelling, production pressure, audience behaviour, marketing strategy and senior-stakeholder work shapes how Studio Baggio approaches AI.",
       "The studio is built around a practical question: where can AI create measurable value inside a real business, with real constraints, real customers and real commercial pressure?",
@@ -425,7 +425,7 @@ export const about = {
   },
   origin: {
     eyebrow: "Why Studio Baggio exists",
-    title: "AI only matters when it changes how the business wins.",
+    title: "The studio exists for businesses that have expertise, but no system for turning it into visibility, demand and pipeline.",
     body: [
       "After building and launching Calm Authority, Jayme saw a wider gap in how many sectors are using AI. Businesses often have valuable expertise, trusted people and strong market knowledge, but no reliable system for turning that into visibility, pipeline or scale.",
       "Studio Baggio applies that lesson to growth systems for trust-based and founder-led businesses, from wealth advice to content production.",

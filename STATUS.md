@@ -93,6 +93,13 @@ Verified:
 - Local `/about` verified at `http://127.0.0.1:3002/about`.
 - Browser check confirms no horizontal overflow at desktop width, no console errors, and the rejected line is absent.
 
+Follow-up correction after live review:
+
+- Replaced the over-designed About layout with a plain professional About page.
+- Removed the abstract capability grid and the first-screen facts grid.
+- Removed page-level reveal animation from `/about` so text renders clearly immediately.
+- Page now follows a simple order: intro, founder/studio story, why the studio exists, expert-collaboration model, what Studio Baggio builds, quote and CTA.
+
 ## 25 May Homepage Revised Direction
 
 Jayme approved and implemented a revised homepage direction. It is saved in:
