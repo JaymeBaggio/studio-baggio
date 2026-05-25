@@ -218,6 +218,14 @@ Final hierarchy/frame correction:
 - Reworked homepage GSAP reveals into section-level sequences: label first, masked title lines second, body/list/cards last. Added `immediateRender: false` so content remains visible by default and is not hidden before its reveal trigger.
 - Verified in the Codex in-app browser at desktop `1440x900`: all rendered homepage sections are full-frame (`min-height: 900px`), value/proof sections expand only where content requires it, no horizontal overflow, 6 practical-system rows, 5 value rows, 4 proof rows, 2 fit cards, no rendered `Expertise to proof`, and Aileron is the only computed font family.
 - Verified in the Codex in-app browser at mobile `390x844`: no horizontal overflow and each homepage content section has at least `100svh` minimum height.
+
+Follow-up alignment repair:
+
+- Fixed the homepage grid drift where section 2 and later frames were being pulled to different left edges by conflicting `margin-inline` overrides.
+- Locked all homepage `editorial-container` section frames back to the same page grid, while keeping inner copy blocks left-aligned inside that shared frame.
+- Verified in the Codex in-app browser at desktop `1440x900`: opening argument, AI Gap, Practical Systems, Value and Commercial AI Sprint all share the same `80px` left edge, with horizontal overflow `0`.
+- Verified in the Codex in-app browser at mobile `390x844`: opening argument, AI Gap, Practical Systems and Commercial AI Sprint all share the same `16px` left edge, every content section keeps a `100svh` minimum frame, and horizontal overflow is `0`.
+- Verified commands pass: `npm run lint`, `npm run typecheck` and `npm run build`.
 - Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
 
 ## 24 May Repair Pass
