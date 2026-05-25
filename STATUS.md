@@ -36,6 +36,13 @@ Verified:
 - Desktop and mobile screenshot checks show no horizontal overflow.
 - Automated DOM check confirms no extra `Growth signals from real adviser use.` or `Visit Calm Authority` copy, six logo instances render, and the OG image link points to `https://www.calmauthority.ai/`.
 
+Follow-up correction after live review:
+
+- Reworked `/calm-authority` to match the `/about` page's plain editorial structure, font hierarchy, white/black palette, section numbering, rule animation and scroll progress treatment.
+- Preserved Jayme's supplied Calm Authority copy and sections; no extra visible CTA or invented section copy added.
+- Kept the Calm Authority OG image linked to `https://www.calmauthority.ai/` and retained the real Financial Times, Professional Adviser and Money Marketing logos.
+- Replaced the separate white-background Featured In logo row/section with one 16:9 Calm Authority image asset containing the actual Financial Times, Professional Adviser and Money Marketing logo files.
+
 ## Built In Phase 1
 
 - Home

@@ -1,227 +1,183 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { PageReveals } from "@/components/page-reveals";
+import { AboutPageMotion } from "@/components/about-page-motion";
 import { calmAuthority, metadata as siteMetadata } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.calmAuthority, path: "/calm-authority" });
 
-const featuredLogos = [
+const sections = [
   {
-    name: "Financial Times",
-    src: "/assets/logos/financial-times.png",
-    width: 4800,
-    height: 1384,
-    className: "calm-authority-logo-ft"
+    label: "The problem",
+    body: calmAuthority.problem
   },
   {
-    name: "Professional Adviser",
-    src: "/assets/logos/professional-adviser.svg",
-    width: 2167,
-    height: 180,
-    className: "calm-authority-logo-pa"
+    label: "Why now",
+    body: [calmAuthority.whyNow]
   },
   {
-    name: "Money Marketing",
-    src: "/assets/logos/money-marketing.png",
-    width: 440,
-    height: 132,
-    className: "calm-authority-logo-mm"
+    label: "How it works",
+    body: calmAuthority.howItWorks
+  },
+  {
+    label: "Who it's for",
+    list: calmAuthority.whoItsFor
+  },
+  {
+    label: "Proof",
+    proof: calmAuthority.proofPoints
+  },
+  {
+    label: "Compliance and editorial control",
+    body: [calmAuthority.compliance]
+  },
+  {
+    label: "Founding adviser",
+    person: {
+      name: calmAuthority.foundingAdviser.name,
+      role: calmAuthority.foundingAdviser.role,
+      body: [calmAuthority.foundingAdviser.body]
+    }
+  },
+  {
+    label: "Built by",
+    person: {
+      name: calmAuthority.builtBy.name,
+      role: calmAuthority.builtBy.role,
+      body: calmAuthority.builtBy.body
+    }
   }
 ] as const;
 
 export default function CalmAuthorityPage() {
   return (
-    <div className="calm-authority-page">
-      <PageReveals />
-      <section className="calm-authority-hero">
-        <div className="editorial-container calm-authority-container">
-          <div className="calm-authority-hero-meta">
-            <div data-hero-meta>
-              <p className="eyebrow">{calmAuthority.eyebrow}</p>
-              <p className="calm-authority-built-line">{calmAuthority.builtLine}</p>
-            </div>
-            <div className="calm-authority-featured" data-hero-meta>
-              <span>Featured in:</span>
-              <div className="calm-authority-logo-row" aria-label={`Featured in ${calmAuthority.featuredIn.join(", ")}`}>
-                {featuredLogos.map((logo) => (
-                  <span key={logo.name} className="calm-authority-logo-card">
-                    <Image
-                      src={logo.src}
-                      alt={logo.name}
-                      width={logo.width}
-                      height={logo.height}
-                      className={logo.className}
-                      unoptimized
-                    />
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+    <div className="relative overflow-hidden bg-white text-ink" data-about-page>
+      <AboutPageMotion />
 
-          <h1 className="calm-authority-title" data-hero-line>
-            {calmAuthority.title}
-            <span>{calmAuthority.tagline}</span>
-          </h1>
+      <div
+        className="pointer-events-none fixed left-6 top-28 z-20 hidden h-[calc(100vh-8rem)] w-px bg-ink/10 lg:block"
+        aria-hidden="true"
+      >
+        <span className="block h-full w-px origin-top scale-y-0 bg-ink" data-about-progress />
+      </div>
 
-          <a
-            href={calmAuthority.liveHref}
-            target="_blank"
-            rel="noreferrer"
-            className="calm-authority-shot-wrap focus-ring"
-            aria-label="Open Calm Authority website"
+      <section className="border-b border-ink/12 pb-14 pt-24 md:pb-18 md:pt-32">
+        <div className="editorial-container">
+          <p className="text-xs uppercase tracking-[0.12em] text-ink/50" data-about-hero>
+            {calmAuthority.eyebrow}
+          </p>
+          <h1
+            className="mt-8 max-w-[21rem] text-[2.2rem] uppercase leading-[1.02] sm:max-w-[28rem] sm:text-5xl md:max-w-[42rem] md:text-[3.7rem] lg:text-[4.2rem]"
+            data-about-hero
           >
-            <div className="calm-authority-shot">
+            {calmAuthority.title}
+          </h1>
+          <p
+            className="mt-7 max-w-[31rem] text-2xl leading-[1.18] text-ink/58 sm:max-w-[34rem] md:max-w-[760px] md:text-[2.05rem] md:leading-[1.16]"
+            data-about-hero
+          >
+            {calmAuthority.tagline}
+          </p>
+          <p className="mt-6 max-w-[31rem] text-base leading-7 text-ink/58 md:max-w-[760px]" data-about-hero>
+            {calmAuthority.builtLine}
+          </p>
+          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,36rem)] lg:items-start lg:gap-16" data-about-hero>
+            <p className="text-xl leading-9 text-ink/78 md:text-[1.45rem] md:leading-10">
+              {calmAuthority.productIntro}
+            </p>
+            <a
+              href={calmAuthority.liveHref}
+              target="_blank"
+              rel="noreferrer"
+              className="focus-ring block border border-ink/14 bg-[#020914]"
+              aria-label="Open Calm Authority website"
+            >
               <Image
-                src="/assets/products/calm-authority-og-rectangle.png"
-                alt="Calm Authority brand graphic: Your own expertise at scale."
-                width={1659}
-                height={948}
-                className="calm-authority-og-image calm-authority-og-desktop"
+                src="/assets/products/calm-authority-og-featured-16x9.png"
+                alt="Calm Authority brand graphic with Financial Times, Professional Adviser and Money Marketing logos."
+                width={2400}
+                height={1350}
+                className="h-auto w-full"
                 priority
                 unoptimized
               />
-              <Image
-                src="/assets/products/calm-authority-og-square.png"
-                alt="Calm Authority brand graphic: Your own expertise at scale."
-                width={1254}
-                height={1254}
-                className="calm-authority-og-image calm-authority-og-mobile"
-                unoptimized
-              />
-              <div className="calm-authority-shot-caption">
-                <span>Live site</span>
-                <span>calmauthority.ai</span>
-              </div>
-            </div>
-          </a>
-
-          <div className="calm-authority-intro-row" data-hero-promise>
-            <p className="calm-authority-hero-intro">{calmAuthority.productIntro}</p>
+            </a>
           </div>
         </div>
       </section>
 
-      <section className="calm-authority-lede-section">
-        <div className="editorial-container calm-authority-container">
-          <div className="calm-authority-section-row calm-authority-section-row-plain">
-            <div aria-hidden="true" />
-            <div className="calm-authority-lede" data-reveal>
+      <section>
+        <div className="editorial-container">
+          <article className="border-b border-ink/12 py-14 md:py-16" data-about-section>
+            <div className="max-w-[980px] space-y-6" data-about-body>
               {calmAuthority.commercialThesis.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph} className="text-xl leading-9 text-ink/78 md:text-[1.45rem] md:leading-10">
+                  {paragraph}
+                </p>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="calm-authority-section">
-        <div className="editorial-container calm-authority-container calm-authority-section-row">
-          <h2 className="eyebrow">The problem</h2>
-          <div className="calm-authority-copy" data-reveal>
-            {calmAuthority.problem.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="calm-authority-section">
-        <div className="editorial-container calm-authority-container calm-authority-section-row">
-          <h2 className="eyebrow">Why now</h2>
-          <div className="calm-authority-copy" data-reveal>
-            <p>{calmAuthority.whyNow}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="calm-authority-section">
-        <div className="editorial-container calm-authority-container calm-authority-section-row">
-          <h2 className="eyebrow">How it works</h2>
-          <div className="calm-authority-copy" data-reveal>
-            {calmAuthority.howItWorks.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="calm-authority-section">
-        <div className="editorial-container calm-authority-container calm-authority-section-row">
-          <h2 className="eyebrow">Who it&apos;s for</h2>
-          <ul className="calm-authority-list" data-reveal>
-            {calmAuthority.whoItsFor.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="calm-authority-section">
-        <div className="editorial-container calm-authority-container calm-authority-section-row">
-          <h2 className="eyebrow">Proof</h2>
-          <div className="calm-authority-proof-list" data-reveal>
-            {calmAuthority.proofPoints.map((point) => (
-              <article key={point.metric} className="calm-authority-proof-row">
-                <h3>{point.metric}</h3>
-                {point.body ? <p>{point.body}</p> : null}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="calm-authority-section">
-        <div className="editorial-container calm-authority-container calm-authority-section-row">
-          <h2 className="eyebrow">Compliance and editorial control</h2>
-          <div className="calm-authority-copy" data-reveal>
-            <p>{calmAuthority.compliance}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="calm-authority-section">
-        <div className="editorial-container calm-authority-container calm-authority-section-row">
-          <h2 className="eyebrow">Featured in</h2>
-          <div className="calm-authority-logo-row calm-authority-logo-row-large" data-reveal>
-            {featuredLogos.map((logo) => (
-              <span key={logo.name} className="calm-authority-logo-card">
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  width={logo.width}
-                  height={logo.height}
-                  className={logo.className}
-                  unoptimized
-                />
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="calm-authority-section">
-        <div className="editorial-container calm-authority-container calm-authority-people-list">
-          <article className="calm-authority-section-row calm-authority-person-row" data-reveal>
-            <h2 className="eyebrow">Founding adviser</h2>
-            <div className="calm-authority-person-copy">
-              <h3>{calmAuthority.foundingAdviser.name}</h3>
-              <p className="calm-authority-profile-role">{calmAuthority.foundingAdviser.role}</p>
-              <p>{calmAuthority.foundingAdviser.body}</p>
-            </div>
+            <span className="mt-12 block h-px w-full origin-left scale-x-0 bg-ink/20" data-about-rule />
           </article>
 
-          <article className="calm-authority-section-row calm-authority-person-row" data-reveal>
-            <h2 className="eyebrow">Built by</h2>
-            <div className="calm-authority-person-copy">
-              <h3>{calmAuthority.builtBy.name}</h3>
-              <p className="calm-authority-profile-role">{calmAuthority.builtBy.role}</p>
-              {calmAuthority.builtBy.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </article>
+          {sections.map((section, index) => (
+            <article key={section.label} className="border-b border-ink/12 py-14 md:py-16" data-about-section>
+              <div className="flex items-baseline gap-4" data-about-section-heading>
+                <span className="w-10 shrink-0 text-sm tabular-nums text-ink/40">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h2 className="text-sm uppercase tracking-[0.12em] text-ink/58">{section.label}</h2>
+              </div>
+
+              <div className="mt-8 max-w-[980px]" data-about-body>
+                {"body" in section ? (
+                  <div className="space-y-6">
+                    {section.body.map((paragraph) => (
+                      <p key={paragraph} className="text-xl leading-9 text-ink/78 md:text-[1.45rem] md:leading-10">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+
+                {"list" in section ? (
+                  <ul className="divide-y divide-ink/12 border-y border-ink/12">
+                    {section.list.map((item) => (
+                      <li key={item} className="py-5 text-xl leading-8 text-ink/78 md:text-[1.45rem] md:leading-10">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                {"proof" in section ? (
+                  <div className="divide-y divide-ink/12 border-y border-ink/12">
+                    {section.proof.map((point) => (
+                      <div key={point.metric} className="grid gap-4 py-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+                        <h3 className="text-xl leading-8 text-ink md:text-[1.45rem] md:leading-9">{point.metric}</h3>
+                        {point.body ? <p className="text-base leading-7 text-ink/68 md:text-lg md:leading-8">{point.body}</p> : null}
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+
+                {"person" in section ? (
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-3xl leading-none md:text-[3.2rem]">{section.person.name}</h3>
+                      <p className="mt-3 text-xs uppercase tracking-[0.1em] text-ink/45">{section.person.role}</p>
+                    </div>
+                    {section.person.body.map((paragraph) => (
+                      <p key={paragraph} className="text-xl leading-9 text-ink/78 md:text-[1.45rem] md:leading-10">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+
+              <span className="mt-12 block h-px w-full origin-left scale-x-0 bg-ink/20" data-about-rule />
+            </article>
+          ))}
         </div>
       </section>
     </div>
