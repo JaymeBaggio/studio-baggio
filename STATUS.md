@@ -175,6 +175,15 @@ Direction 4B implementation pass:
 - Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
 - Follow-up copy tweak: removed the quotation marks around `experimenting with AI` in the opening homepage headline.
 
+Vercel deployment repair:
+
+- Investigated the flood of failed Vercel emails after the homepage push.
+- Root cause was not the Studio Baggio site deployment; `studio-baggio` was deploying successfully.
+- The failing project was `rough-cut-newsletter`, which was incorrectly connected to the `JaymeBaggio/studio-baggio` GitHub repo and configured with a non-existent root directory, `assets/newsletter`.
+- Every push to `main` was therefore triggering a doomed `rough-cut-newsletter` production deployment.
+- Disconnected `rough-cut-newsletter` from the Studio Baggio GitHub repo, cleared the invalid root directory setting, and redeployed the newsletter manually from `/Users/jaymebaggio/Desktop/Rough Cut/RC8/newsletter`.
+- Verified `https://rough-cut-newsletter.vercel.app` returns `200` and the latest `rough-cut-newsletter` production deployment is `Ready`.
+
 ## 24 May Repair Pass
 
 After Jayme's review, the build was re-audited against the original goal with subagent tracks for copy/content, design/motion, engineering and QA/deploy.
