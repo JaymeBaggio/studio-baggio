@@ -32,6 +32,29 @@ Verified on branch:
 
 Not live yet. Merge or deploy this branch after review.
 
+## 25 May Calm Authority Product Page Redesign
+
+Branch: `calm-authority-og-image`.
+
+Worktree: `/Users/jaymebaggio/Desktop/Studio Baggio/Website-calm-authority`.
+
+Scope:
+
+- Rebuilt `/calm-authority` as a full flagship product page rather than a linear copy page.
+- Used the supplied Calm Authority copy as the visible product-page source of truth; removed added explanatory microcopy after Jayme clarified not to change copy.
+- Added the rectangular Calm Authority OG asset from Downloads at `public/assets/products/calm-authority-og-rectangle.png`.
+- Made the OG image click through to `https://www.calmauthority.ai/`, with original PNG dimensions and `unoptimized` rendering to avoid blurry text.
+- Replaced the old Calm Authority motion layer with a page-specific client component using GSAP ScrollTrigger for the desktop mechanism section and Framer Motion for tactile card, proof and CTA interactions.
+- New page structure: editorial hero, featured-in strip, product intro/thesis, problem/stat band, why-now signal labels, scroll-aware how-it-works mechanism, who-it-is-for panels, proof panel, compliance controls, featured-in repeat, founding adviser / built-by panels and final Calm Authority CTA.
+
+Verified locally before push:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Render checks at desktop `1440x1000` and mobile `390x844` show no horizontal overflow.
+- Calm Authority OG image renders from the original `1659x948` PNG and the image link points to `https://www.calmauthority.ai/`.
+
 ## Built In Phase 1
 
 - Home
