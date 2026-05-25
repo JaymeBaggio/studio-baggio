@@ -10,51 +10,31 @@ Core message:
 
 `Turn AI into a commercial advantage.`
 
-## 25 May Calm Authority Branch Copy Rebuild
+## 25 May Calm Authority Linear Page Repair
 
-Branch: `calm-authority-page-copy`.
+Branch/worktree:
 
-Worktree: `/Users/jaymebaggio/Desktop/Studio Baggio/Website-calm-authority`.
+- Branch: `revert-calm-authority-redesign`
+- Worktree: `/Users/jaymebaggio/Desktop/Studio Baggio/Website-calm-authority`
 
 Scope:
 
-- Rebuilt `/calm-authority` only, from clean `origin/main`, to avoid clashing with the uncommitted homepage work in the main website folder.
-- Replaced the old Calm Authority fact-sheet/pricing/recent-study page structure with Jayme's supplied flagship-product copy.
-- New page sequence: hero, featured-in wordmarks, commercial thesis, problem, why now, how it works, who it is for, proof, compliance, featured-in, founding adviser and built-by sections.
-- Updated Calm Authority page metadata to `Calm Authority | Your own expertise at scale`.
+- Reverted the rejected over-designed Calm Authority product-page treatment.
+- Rebuilt `/calm-authority` as a clean linear case-study page using only Jayme's supplied Calm Authority sections and copy.
+- Removed the pink/warm tint, dark compliance block, bento/proof panels, extra CTA copy and invented heading text.
+- Kept Jayme's correction to the hero tagline: `Your own expertise at scale`.
+- Used the real Financial Times, Professional Adviser and Money Marketing logo assets from the Calm Authority website folder.
+- Kept the Calm Authority OG image click-through to `https://www.calmauthority.ai/`; desktop uses the rectangular OG image and mobile uses the square OG image so it does not read as clipped.
+- Added restrained text reveal animation through the existing GSAP `PageReveals` system rather than adding a new interaction layer.
 
-Verified on branch:
+Verified:
 
 - `npm run typecheck` passes.
 - `npm run lint` passes.
 - `npm run build` passes.
-- Local branch preview route returned `200` at `http://127.0.0.1:3002/calm-authority`.
-
-Not live yet. Merge or deploy this branch after review.
-
-## 25 May Calm Authority Product Page Redesign
-
-Branch: `calm-authority-og-image`.
-
-Worktree: `/Users/jaymebaggio/Desktop/Studio Baggio/Website-calm-authority`.
-
-Scope:
-
-- Rebuilt `/calm-authority` as a full flagship product page rather than a linear copy page.
-- Used the supplied Calm Authority copy as the visible product-page source of truth; removed added explanatory microcopy after Jayme clarified not to change copy.
-- Added the rectangular Calm Authority OG asset from Downloads at `public/assets/products/calm-authority-og-rectangle.png`.
-- Made the OG image click through to `https://www.calmauthority.ai/`, with original PNG dimensions and `unoptimized` rendering to avoid blurry text.
-- Replaced the old Calm Authority motion layer with a page-specific client component using GSAP ScrollTrigger for the desktop mechanism section and Framer Motion for tactile card, proof and CTA interactions.
-- New page structure: editorial hero, featured-in strip, product intro/thesis, problem/stat band, why-now signal labels, scroll-aware how-it-works mechanism, who-it-is-for panels, proof panel, compliance controls, featured-in repeat, founding adviser / built-by panels and final Calm Authority CTA.
-
-Verified locally before push:
-
-- `npm run typecheck` passes.
-- `npm run lint` passes.
-- `npm run build` passes.
-- Render checks at desktop `1440x1000` and mobile `390x844` show no horizontal overflow.
-- Calm Authority OG image renders from the original `1659x948` PNG and the image link points to `https://www.calmauthority.ai/`.
-- Follow-up copy tweak: removed the dash before the hero tagline and changed it to `Your own expertise at scale`.
+- Local `/calm-authority` returns `200` at `http://127.0.0.1:3003/calm-authority`.
+- Desktop and mobile screenshot checks show no horizontal overflow.
+- Automated DOM check confirms no extra `Growth signals from real adviser use.` or `Visit Calm Authority` copy, six logo instances render, and the OG image link points to `https://www.calmauthority.ai/`.
 
 ## Built In Phase 1
 
