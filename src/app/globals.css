@@ -2635,7 +2635,7 @@ textarea {
 }
 
 .home-4b .opening-argument-section {
-  min-height: calc(100svh - 72px);
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding-block: clamp(72px, 8vh, 104px);
@@ -2719,7 +2719,7 @@ textarea {
 }
 
 .home-4b .problem-clarifier-section {
-  min-height: 580px;
+  min-height: 100svh;
   padding-block: 78px 72px;
 }
 
@@ -2742,7 +2742,7 @@ textarea {
 }
 
 .home-4b .commercial-systems-section {
-  min-height: 620px;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding-block: 80px 82px;
@@ -2800,21 +2800,21 @@ textarea {
 
 .home-4b .expertise-bridge-section,
 .home-4b .commercial-sprint-section {
-  min-height: 720px;
+  min-height: 100svh;
 }
 
 .home-4b .value-map-section {
-  min-height: 940px;
+  min-height: 100svh;
 }
 
 .home-4b .proof-section {
-  min-height: 820px;
+  min-height: 100svh;
 }
 
 .home-4b .working-promise-section,
 .home-4b .fit-section,
 .home-4b .home-cta-section {
-  min-height: 520px;
+  min-height: 100svh;
 }
 
 @media (max-width: 1023px) {

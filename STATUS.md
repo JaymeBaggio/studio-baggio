@@ -203,6 +203,7 @@ Follow-up typography/motion correction after Jayme's live review:
 - Removed the rendered `Expertise to proof` section from the homepage flow.
 - Moved the existing `Studio Baggio helps expert-led businesses identify where AI can create measurable commercial value...` sentence out of AI Gap into its own section immediately below AI Gap, with the system areas presented as a clean numbered list while leaving the approved copy in `src/content/site.ts` unchanged.
 - Rebuilt the opening argument as a proper full-frame editorial section: sentence-case top argument, left-aligned grid, ruled lower promise area and vertical outcome stack so it no longer reads as a centred floating slab.
+- Follow-up desktop section-frame correction: locked the opening argument, AI Gap, commercial systems, value, sprint, promise, proof, fit and CTA sections to `100svh` minimum on desktop so the new commercial systems section no longer collapses into a partial-height band before the dark value section.
 - Removed the remaining blue-cast fallback colour from the Calm Authority shot background; the CSS audit now shows neutral black/white/grey values only in the touched files.
 - Verified in the Codex in-app browser at `http://127.0.0.1:3000/`: `Expertise to proof` is no longer rendered, the new commercial systems section appears directly below AI Gap, type roles are unified, and horizontal overflow is `0`.
 - Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
