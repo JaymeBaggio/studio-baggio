@@ -18,22 +18,22 @@ export default function AboutPage() {
         <span className="block h-full w-px origin-top scale-y-0 bg-ink" data-about-progress />
       </div>
 
-      <section className="border-b border-ink/12 pb-16 pt-28 md:pb-24 md:pt-36">
-        <div className="editorial-container max-w-[980px]">
+      <section className="border-b border-ink/12 pb-14 pt-24 md:pb-18 md:pt-32">
+        <div className="editorial-container">
           <p className="text-xs uppercase tracking-[0.12em] text-ink/50" data-about-hero>
             {about.eyebrow}
           </p>
-          <h1 className="mt-8 max-w-[21rem] text-[2.2rem] uppercase leading-[1.02] sm:max-w-[28rem] sm:text-5xl md:max-w-none md:text-6xl lg:text-[5rem]" data-about-hero>
+          <h1 className="mt-8 max-w-[21rem] text-[2.2rem] uppercase leading-[1.02] sm:max-w-[28rem] sm:text-5xl md:max-w-[42rem] md:text-[3.7rem] lg:text-[4.2rem]" data-about-hero>
             {about.title}
           </h1>
-          <p className="mt-10 max-w-[31rem] text-2xl leading-[1.36] text-ink/82 sm:max-w-[34rem] md:max-w-[850px] md:text-[2rem]" data-about-hero>
+          <p className="mt-9 max-w-[31rem] text-2xl leading-[1.36] text-ink/82 sm:max-w-[34rem] md:max-w-[760px] md:text-[1.55rem] md:leading-[1.48]" data-about-hero>
             {about.intro}
           </p>
         </div>
       </section>
 
       <section>
-        <div className="editorial-container max-w-[980px]">
+        <div className="editorial-container">
           {about.sections.map((section, index) => (
             <article
               key={section.label}
@@ -48,7 +48,7 @@ export default function AboutPage() {
                   {section.label}
                 </h2>
               </div>
-              <div className="mt-8 max-w-[820px] space-y-6 md:ml-14" data-about-body>
+              <div className="mt-8 max-w-[980px] space-y-6" data-about-body>
                 {section.body.map((paragraph) => (
                   <p key={paragraph} className="text-xl leading-9 text-ink/78 md:text-[1.45rem] md:leading-10">
                     {paragraph}
@@ -62,7 +62,7 @@ export default function AboutPage() {
       </section>
 
       <section className="border-y border-ink/12 bg-neutral-100 py-16 md:py-24" data-about-section>
-        <div className="editorial-container max-w-[980px]">
+        <div className="editorial-container">
           <p className="text-sm uppercase tracking-[0.12em] text-ink/50" data-about-section-heading>
             EXTERNAL VIEW
           </p>
@@ -79,7 +79,7 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-charcoal py-16 text-paper md:py-24" data-about-section>
-        <div className="editorial-container max-w-[980px]">
+        <div className="editorial-container">
           <p className="text-sm uppercase tracking-[0.12em] text-paper/55" data-about-section-heading>
             START A CONVERSATION
           </p>
