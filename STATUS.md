@@ -195,6 +195,17 @@ Direction 4B polish pass:
 - Verified in the Codex in-app browser at the local preview: no horizontal overflow, mobile reading lane has 16px margins, dark header flips correctly, value section has 5 vertical rows and no panels, and proof heading copy is exact.
 - Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
 
+Follow-up typography/motion correction after Jayme's live review:
+
+- Collapsed the homepage typography system into four visible roles: label, body, lead and title/impact. Short titles render uppercase and resolve to one shared title size; long explanatory statements now use readable lead/body treatment instead of oversized all-caps blocks.
+- Reworked the opening argument to match the left-lane mockup direction: headline, qualifier and setup are left-aligned, while the outcome stack is the centred landing moment with `HARDER TO COMPETE WITH.` treated as the final impact line.
+- Shortened GSAP reveal timings and moved ScrollTrigger starts earlier so section text is visible as it enters the viewport instead of appearing after the user has scrolled past it.
+- Removed the rendered `Expertise to proof` section from the homepage flow.
+- Moved the existing `Studio Baggio helps expert-led businesses identify where AI can create measurable commercial value...` sentence out of AI Gap into its own section immediately below AI Gap, with the system areas presented as a clean numbered list while leaving the approved copy in `src/content/site.ts` unchanged.
+- Removed the remaining blue-cast fallback colour from the Calm Authority shot background; the CSS audit now shows neutral black/white/grey values only in the touched files.
+- Verified in the Codex in-app browser at `http://127.0.0.1:3000/`: `Expertise to proof` is no longer rendered, the new commercial systems section appears directly below AI Gap, type roles are unified, and horizontal overflow is `0`.
+- Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
+
 ## 24 May Repair Pass
 
 After Jayme's review, the build was re-audited against the original goal with subagent tracks for copy/content, design/motion, engineering and QA/deploy.

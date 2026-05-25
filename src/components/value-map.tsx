@@ -27,12 +27,12 @@ export function ValueMap() {
           y: 0,
           autoAlpha: 1,
           "--row-progress": 1,
-          duration: 0.62,
+          duration: 0.42,
           ease: "power3.out",
-          stagger: 0.055,
+          stagger: 0.035,
           scrollTrigger: {
             trigger: ".value-map-rows",
-            start: "top 84%",
+            start: "top 92%",
             once: true
           }
         }

@@ -943,7 +943,7 @@ textarea {
   max-width: 100%;
   overflow: hidden;
   border: 1px solid rgba(20, 20, 20, 0.16);
-  background: #020914;
+  background: #111111;
 }
 
 .calm-authority-shot img,
@@ -2316,6 +2316,7 @@ textarea {
 
 .home-4b .expertise-copy-panel p,
 .home-4b .problem-stat,
+.home-4b .commercial-systems-lead,
 .home-4b .value-map-row p,
 .home-4b .commercial-sprint-body,
 .home-4b .commercial-deliverable-row p,
@@ -2519,5 +2520,351 @@ textarea {
 
   .home-4b [data-cta-button] a > span {
     min-width: 0;
+  }
+}
+
+/* Direction 4B alignment pass: calmer scale, clearer opening argument, faster reading rhythm */
+.home-4b {
+  --type-label-size: 12px;
+  --type-label-line: 16px;
+  --type-label-tracking: 0.14em;
+  --type-body-size: 15px;
+  --type-body-line: 23px;
+  --type-lead-size: clamp(20px, 1.65vw, 24px);
+  --type-lead-line: 1.24;
+  --type-title-size: clamp(26px, 2.05vw, 32px);
+  --type-title-line: 1.12;
+  --type-impact-size: var(--type-title-size);
+  --type-impact-line: var(--type-title-line);
+  --sb-label-size: var(--type-label-size);
+  --sb-label-line: var(--type-label-line);
+  --sb-label-tracking: var(--type-label-tracking);
+  --sb-body-size: var(--type-body-size);
+  --sb-body-line: var(--type-body-line);
+  --sb-lead-size: var(--type-lead-size);
+  --sb-lead-line: var(--type-lead-line);
+  --sb-title-size: var(--type-title-size);
+  --sb-title-line: var(--type-title-line);
+  --sb-row-title-size: var(--type-body-size);
+  --sb-row-title-line: var(--type-body-line);
+  --sb-outcome-size: var(--type-impact-size);
+  --sb-outcome-line: var(--type-impact-line);
+  --sb-stat-size: var(--type-impact-size);
+  --sb-stat-line: var(--type-impact-line);
+  --sb-compact-title-size: var(--type-title-size);
+  --sb-compact-title-line: var(--type-title-line);
+}
+
+.home-4b .eyebrow,
+.home-4b .problem-source,
+.home-4b .commercial-deliverable-row span,
+.home-4b .fit-card h3,
+.home-4b .home-cta-brand,
+.home-4b .proof-row-cta span {
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
+  letter-spacing: var(--type-label-tracking);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.home-4b .expertise-copy-panel p,
+.home-4b .problem-stat,
+.home-4b .value-map-row p,
+.home-4b .commercial-sprint-body,
+.home-4b .commercial-deliverable-row p,
+.home-4b .commercial-systems-row p,
+.home-4b .working-promise-copy p,
+.home-4b .working-promise-copy .is-emphasis,
+.home-4b .proof-row-copy,
+.home-4b .fit-card-copy,
+.home-4b .home-cta-body {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+
+.home-4b .opening-argument-headline,
+.home-4b .opening-outcome-setup,
+.home-4b .expertise-bridge-title,
+.home-4b .value-map-title,
+.home-4b .commercial-sprint-title,
+.home-4b .working-promise-title,
+.home-4b .proof-section-title,
+.home-4b .fit-section-title,
+.home-4b .home-cta-title {
+  font-size: var(--type-title-size);
+  line-height: var(--type-title-line);
+  letter-spacing: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-4b .problem-clarifier-title {
+  font-size: var(--type-lead-size);
+  line-height: var(--type-lead-line);
+  letter-spacing: 0;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.home-4b .problem-stat-cards span,
+.home-4b .opening-outcome-muted-group p,
+.home-4b .opening-outcome-stack p.is-strong {
+  font-size: var(--type-impact-size);
+  line-height: var(--type-impact-line);
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.home-4b .value-map-row h3,
+.home-4b .proof-row-title h3,
+.home-4b .problem-strong,
+.home-4b .commercial-sprint-subline,
+.home-4b .expertise-progress-card strong {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  font-weight: 700;
+}
+
+.home-4b [data-cta-button] a > span {
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-4b .opening-argument-section {
+  min-height: 620px;
+  padding-block: 74px 82px;
+}
+
+.home-4b .opening-argument-grid {
+  max-width: 1040px;
+}
+
+.home-4b .opening-argument-top {
+  max-width: 970px;
+  margin-inline: 0;
+  text-align: left;
+}
+
+.home-4b .opening-argument-qualifier {
+  margin-top: 22px;
+  margin-bottom: 62px;
+  color: #7a7a7a;
+}
+
+.home-4b .opening-outcome-block {
+  width: min(100%, 970px);
+  margin-top: 88px;
+  margin-inline: 0;
+  text-align: left;
+}
+
+.home-4b .opening-outcome-setup {
+  max-width: 900px;
+  margin-inline: 0;
+}
+
+.home-4b .opening-outcome-stack {
+  width: min(100%, 760px);
+  margin-top: 42px;
+  margin-inline: auto;
+  gap: 0;
+  text-align: center;
+}
+
+.home-4b .opening-outcome-muted-group {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  row-gap: 20px;
+  column-gap: 26px;
+  justify-items: center;
+}
+
+.home-4b .opening-outcome-muted-group p:first-child {
+  grid-column: 1 / -1;
+}
+
+.home-4b .opening-outcome-muted-group p {
+  text-transform: uppercase;
+  color: #9a9a9a;
+}
+
+.home-4b .opening-outcome-stack p.is-strong {
+  width: min(100%, 780px);
+  margin-top: 34px;
+  padding-top: 0;
+  border-top: 0;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.home-4b .problem-clarifier-section {
+  min-height: 580px;
+  padding-block: 78px 72px;
+}
+
+.home-4b .problem-clarifier-title {
+  max-width: 790px;
+  margin-bottom: 30px;
+}
+
+.home-4b .problem-stat-cards {
+  margin-bottom: 22px;
+}
+
+.home-4b .problem-stat-cards span {
+  width: 76px;
+  height: 62px;
+}
+
+.home-4b .problem-stat {
+  max-width: 820px;
+}
+
+.home-4b .commercial-systems-section {
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  padding-block: 80px 82px;
+  border-bottom: 1px solid #d8d8d8;
+  scroll-margin-top: 4rem;
+  background: #ffffff;
+}
+
+.home-4b .commercial-systems-frame {
+  display: block;
+}
+
+.home-4b .commercial-systems-lead {
+  width: min(100%, 760px);
+  margin-bottom: 38px;
+  font-weight: 400;
+  text-transform: none;
+  color: #111111;
+}
+
+.home-4b .commercial-systems-list {
+  width: min(100%, 940px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid #d8d8d8;
+  border-left: 1px solid #d8d8d8;
+}
+
+.home-4b .commercial-systems-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  min-height: 84px;
+  border-right: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.home-4b .commercial-systems-row span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #d8d8d8;
+  color: #8a8a8a;
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
+  letter-spacing: var(--type-label-tracking);
+}
+
+.home-4b .commercial-systems-row p {
+  align-self: center;
+  padding: 18px 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.home-4b .expertise-bridge-section,
+.home-4b .commercial-sprint-section {
+  min-height: 720px;
+}
+
+.home-4b .value-map-section {
+  min-height: 940px;
+}
+
+.home-4b .proof-section {
+  min-height: 820px;
+}
+
+.home-4b .working-promise-section,
+.home-4b .fit-section,
+.home-4b .home-cta-section {
+  min-height: 520px;
+}
+
+@media (max-width: 1023px) {
+  .home-4b {
+    --type-body-size: 15px;
+    --type-body-line: 23px;
+    --type-lead-size: clamp(20px, 6vw, 24px);
+    --type-lead-line: 1.18;
+    --type-title-size: clamp(25px, 7.1vw, 31px);
+    --type-title-line: 1.1;
+    --type-impact-size: var(--type-title-size);
+    --type-impact-line: var(--type-title-line);
+  }
+
+  .home-4b .opening-argument-section {
+    padding-block: 64px 70px;
+  }
+
+  .home-4b .problem-clarifier-section,
+  .home-4b .commercial-systems-section {
+    min-height: auto;
+    padding-block: 64px;
+  }
+
+  .home-4b .commercial-systems-lead {
+    margin-bottom: 30px;
+  }
+
+  .home-4b .commercial-systems-list {
+    grid-template-columns: 1fr;
+  }
+
+  .home-4b .commercial-systems-row {
+    min-height: 74px;
+  }
+
+  .home-4b .opening-argument-qualifier {
+    margin-top: 20px;
+    margin-bottom: 44px;
+  }
+
+  .home-4b .opening-outcome-block {
+    margin-top: 58px;
+  }
+
+  .home-4b .opening-outcome-setup {
+    max-width: 100%;
+  }
+
+  .home-4b .opening-outcome-stack {
+    margin-top: 26px;
+  }
+
+  .home-4b .opening-outcome-muted-group {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 6px;
+  }
+
+  .home-4b .opening-outcome-muted-group p:first-child {
+    grid-column: auto;
+  }
+
+  .home-4b .opening-outcome-stack p.is-strong {
+    margin-top: 24px;
+    padding-top: 0;
+    text-align: left;
   }
 }

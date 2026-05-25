@@ -136,8 +136,8 @@ export function PageReveals() {
           heroTimeline.from(heroMeta, {
             y: 14,
             opacity: 0,
-            duration: 0.72,
-            stagger: 0.08,
+            duration: 0.48,
+            stagger: 0.055,
             ease: "power3.out"
           }, 0.08);
         }
@@ -146,8 +146,8 @@ export function PageReveals() {
           heroTimeline.from(heroLines, {
             yPercent: 110,
             opacity: 0,
-            duration: 0.95,
-            stagger: 0.12,
+            duration: 0.72,
+            stagger: 0.075,
             ease: "expo.out"
           }, 0.22);
         }
@@ -156,17 +156,17 @@ export function PageReveals() {
           heroTimeline.from(heroPromise, {
             y: 10,
             opacity: 0,
-            duration: 0.7,
-            stagger: 0.08,
+            duration: 0.46,
+            stagger: 0.055,
             ease: "power2.out"
-          }, 0.78);
+          }, 0.64);
         }
 
         revealElements.forEach((element) => {
           triggers.push(
             ScrollTrigger.create({
               trigger: element,
-              start: "top 94%",
+              start: "top 97%",
               once: true,
               fastScrollEnd: true,
               onEnter: () => {
@@ -177,7 +177,7 @@ export function PageReveals() {
                     {
                       y: 0,
                       autoAlpha: 1,
-                      duration: 0.62,
+                      duration: 0.4,
                       ease: "power3.out",
                       overwrite: "auto"
                     }
@@ -195,7 +195,7 @@ export function PageReveals() {
           triggers.push(
             ScrollTrigger.create({
               trigger: element,
-              start: "top 88%",
+              start: "top 95%",
               once: true,
               fastScrollEnd: true,
               onEnter: () => {
@@ -206,8 +206,8 @@ export function PageReveals() {
                     {
                       yPercent: 0,
                       autoAlpha: 1,
-                      duration: 0.86,
-                      stagger: 0.075,
+                      duration: 0.58,
+                      stagger: 0.04,
                       ease: "expo.out",
                       overwrite: "auto"
                     }
@@ -222,7 +222,7 @@ export function PageReveals() {
           triggers.push(
             ScrollTrigger.create({
               trigger: element,
-              start: "top 92%",
+              start: "top 96%",
               once: true,
               onEnter: () => {
                 const borderTarget = element.querySelector("a > span") ?? element;
@@ -234,7 +234,7 @@ export function PageReveals() {
                       "--cta-scale": 1,
                       autoAlpha: 1,
                       y: 0,
-                      duration: 0.7,
+                      duration: 0.46,
                       ease: "power3.out",
                       overwrite: "auto"
                     }

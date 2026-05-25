@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
-import { ExpertiseBridge } from "@/components/expertise-bridge";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
 import { ValueMap } from "@/components/value-map";
@@ -10,6 +9,17 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
 
 export default function HomePage() {
+  const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
+  const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
+  const commercialSystemAreas = [
+    "SEO, AI search",
+    "market intelligence",
+    "lead capture",
+    "prospect research",
+    "authority-building",
+    "workflow acceleration"
+  ];
+
   return (
     <>
       <PageReveals />
@@ -55,12 +65,19 @@ export default function HomePage() {
               <p className="opening-outcome-setup" data-reveal>
                 {home.opening.setup}
               </p>
-              <div className="opening-outcome-stack">
-                {home.opening.outcomes.map((line, index) => (
-                  <p key={line} className={index === home.opening.outcomes.length - 1 ? "is-strong" : ""} data-reveal>
-                    {line}
+              <div className="opening-outcome-stack" aria-label={home.opening.outcomes.join(" ")}>
+                <div className="opening-outcome-muted-group" data-reveal>
+                  {openingOutcomeLead.map((line) => (
+                    <p key={line}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+                {openingOutcomeFinal ? (
+                  <p className="is-strong" data-reveal>
+                    {openingOutcomeFinal}
                   </p>
-                ))}
+                ) : null}
               </div>
             </div>
           </div>
@@ -83,18 +100,27 @@ export default function HomePage() {
               <a className="problem-source focus-ring" href={home.problem.sourceUrl} target="_blank" rel="noreferrer" data-reveal>
                 {home.problem.source}
               </a>
-              <div className="problem-response" data-reveal>
-                {home.problem.body.map((paragraph) => (
-                  <p key={paragraph} className="problem-strong">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
             </div>
           </div>
         </section>
 
-        <ExpertiseBridge />
+        <section className="commercial-systems-section">
+          <div className="editorial-container commercial-systems-frame">
+            {home.problem.body.map((paragraph) => (
+              <p key={paragraph} className="commercial-systems-lead" data-reveal>
+                {paragraph}
+              </p>
+            ))}
+            <div className="commercial-systems-list" aria-label="Practical systems Studio Baggio builds">
+              {commercialSystemAreas.map((area, index) => (
+                <div key={area} className="commercial-systems-row" data-reveal>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{area}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <ValueMap />
 
