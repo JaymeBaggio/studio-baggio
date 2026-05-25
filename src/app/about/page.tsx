@@ -23,10 +23,10 @@ export default function AboutPage() {
           <p className="text-xs uppercase tracking-[0.12em] text-ink/50" data-about-hero>
             {about.eyebrow}
           </p>
-          <h1 className="mt-8 max-w-[21rem] text-[2.2rem] uppercase leading-[1.02] sm:max-w-none sm:text-5xl md:text-6xl lg:text-[5rem]" data-about-hero>
+          <h1 className="mt-8 max-w-[21rem] text-[2.2rem] uppercase leading-[1.02] sm:max-w-[28rem] sm:text-5xl md:max-w-none md:text-6xl lg:text-[5rem]" data-about-hero>
             {about.title}
           </h1>
-          <p className="mt-10 max-w-[850px] text-2xl leading-[1.36] text-ink/82 md:text-[2rem]" data-about-hero>
+          <p className="mt-10 max-w-[31rem] text-2xl leading-[1.36] text-ink/82 sm:max-w-[34rem] md:max-w-[850px] md:text-[2rem]" data-about-hero>
             {about.intro}
           </p>
         </div>
