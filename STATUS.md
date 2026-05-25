@@ -124,6 +124,7 @@ Jayme approved and implemented a revised homepage direction. It is saved in:
 Key decisions:
 
 - Keep the existing hero/header reference direction locked.
+- Hard colour rule: black, white and true neutral greys only. No pink, no purple, no purple-tinted grey, no lavender/blue-grey cast and no coloured accents in the Studio Baggio homepage/site direction unless Jayme explicitly reverses this in writing.
 - Rebuild the homepage sequence as: hero/header, opening commercial argument, problem/clarifier, expertise-to-proof bridge, value areas, Commercial AI Sprint, working promise, proof, fit/not fit and CTA.
 - Replace `Findability` with `Discoverability`.
 - Use Studio Graphene's 2026 AI ROI figures carefully: 78% of UK businesses using AI tools, 31% reporting positive ROI, and 41% clearly defining success.
@@ -151,6 +152,28 @@ Follow-up repair after design review:
 - Verified desktop frame fit at 1888x920: opening, AI gap, expertise bridge, value map and proof all fit from fixed-header bottom to viewport bottom with no horizontal overflow.
 - Verified mobile has no horizontal overflow at 390px width.
 - `npm run build`, `npm run typecheck` and `npm run lint` pass.
+
+Paper design exploration after homepage review:
+
+- Created `Direction 4B - Typography System Fixed` in Paper after rejecting the right-shifted Hanbury-style layout direction.
+- Direction 4B keeps the existing header/hero and approved homepage copy, but applies Hanbury-inspired typography discipline only: consistent Aileron type roles, centred/left reading lanes, restrained section spacing, and black/white/true neutral greys only.
+- Type-role intent: nav/labels use small uppercase tracking, body uses one readable size, statement/body-lead copy uses one stronger size, section titles use one consistent display scale, and only the hero wordmark uses oversized display type.
+- Ran a Paper typography audit on Direction 4B using the UI audit hierarchy/style checklist. Fixed type drift by collapsing the board into defined roles: label 12/16, body 16/24, lead 22/30, row title 20/26, section title 42/48, outcome 32/37, stat 28/32 and hero wordmark 112/104. Kept Aileron only, two weights only, and caps only for nav/labels/CTAs/outcome stack.
+- Reworked the Sprint and Promise sections in Direction 4B to remove the right-shifted label/content split; both now use the same left reading lane as the rest of the typography-refined homepage direction.
+- Final Paper tweaks before build consideration: AI Gap moved onto the same left-aligned 1248px grid as the following sections, `Where AI Creates Value` changed back to a vertical stacked dark section, Fit/Not Fit changed to the preferred two-card treatment with a black `Not for` card, and the final CTA now uses the preferred bordered `Discuss your AI opportunity` button with `STUDIO BAGGIO` beneath it.
+
+Direction 4B implementation pass:
+
+- Implemented the final approved Paper artboard `Direction 4B - Typography System Fixed` (`2FU-0`) onto the live homepage while keeping the existing hero/header direction.
+- Kept homepage wording sourced from `src/content/site.ts` and work proof copy sourced from `src/content/work.ts`; added missing structural labels for the value section, fit cards and CTA to the content layer without rewriting wording.
+- Rebuilt the AI Gap as a light true-grey left-lane section with compact `78%` and `31%` stat boxes and no pull quote.
+- Rebuilt the expertise bridge as a white section with the large left headline, grey copy block, four bottom progression blocks and a black final block.
+- Rebuilt `Where AI Creates Value` as a charcoal vertical stacked-row section; removed the previous rail/panel interaction from the rendered component.
+- Rebuilt Commercial AI Sprint, Working Promise, Live Work, Fit/Not Fit and CTA to match the Direction 4B left reading lanes, row treatment, two-card fit treatment and dark final CTA.
+- Animation now uses GSAP for section/title reveals, value/proof rows, expertise progression and CTA border reveal, with Framer Motion limited to hover/tap micro-interactions.
+- Verified locally in the Codex in-app browser at desktop `1440x900` and mobile `390x844`: no horizontal overflow, `Discoverability` present, `Findability` absent, value section renders 5 vertical rows, no rendered value rail/panel, 4 proof rows, 2 fit cards and no console errors.
+- Verified commands pass: `npm run typecheck`, `npm run lint` and `npm run build`.
+- Follow-up copy tweak: removed the quotation marks around `experimenting with AI` in the opening homepage headline.
 
 ## 24 May Repair Pass
 
@@ -269,6 +292,8 @@ Still required before expecting email delivery from the form:
 ## Notes For Next Session
 
 - Do not use the old live site as copy source.
+- Do not use pink, purple, violet, lavender, purple-grey, blue-grey or any warm/coloured grey. The approved visual system is black, white and actual neutral greys only.
 - Do not lead with Growth Intelligence as the front-door offer.
 - Do not use `Map Your AI Advantage`.
 - Avoid running `next build` and `tsc --noEmit` at the same time because Next 16 updates `.next/types` during build.
+- Jayme wants completed and verified website changes pushed to `main` by default going forward, unless she explicitly asks not to push.

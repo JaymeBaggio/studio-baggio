@@ -1,100 +1,78 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { ArrowUpRight } from "lucide-react";
 import { workItems } from "@/content/work";
-import { cn } from "@/lib/utils";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function ProofTiles() {
-  const [active, setActive] = useState(0);
-  const current = workItems[active];
-  const currentHref = current.href ?? current.external ?? "/work";
+  const listRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(
+    () => {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce || !listRef.current) return;
+
+      const rows = gsap.utils.toArray<HTMLElement>(".proof-row");
+      const tween = gsap.fromTo(
+        rows,
+        { y: 20, autoAlpha: 0.001 },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.64,
+          ease: "power3.out",
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: listRef.current,
+            start: "top 84%",
+            once: true
+          }
+        }
+      );
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
+    },
+    { scope: listRef }
+  );
 
   return (
-    <>
-      <div className="proof-panel-system hidden lg:grid">
-        <div className="proof-rail">
-          {workItems.map((item, index) => (
-            <button
-              key={item.slug}
-              type="button"
-              className={cn("focus-ring proof-rail-button", index === active ? "is-active" : "")}
-              aria-current={index === active ? "true" : undefined}
-              onClick={() => setActive(index)}
-            >
-              <span>0{index + 1}</span>
-              <strong>{item.title}</strong>
-              <em>{item.status ?? "Studio Baggio work"}</em>
-            </button>
-          ))}
-        </div>
-
-        <Link href={currentHref} className="focus-ring proof-active-panel group">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.slug}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.28, ease: "easeOut" }}
-            >
-              <div className="proof-panel-topline">
-                <span>{current.status ?? "Studio Baggio work"}</span>
-                <ArrowUpRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
+    <div ref={listRef} className="proof-row-list">
+      {workItems.map((item) => {
+        const href = item.href ?? item.external ?? "/work";
+        return (
+          <motion.div
+            key={item.slug}
+            className="proof-row"
+            whileHover={{ x: 6 }}
+            transition={{ type: "spring", stiffness: 420, damping: 34 }}
+          >
+            <Link href={href} className="focus-ring proof-row-link">
+              <div className="proof-row-title">
+                <h3>{item.title}</h3>
               </div>
-              <h3>{current.title}</h3>
-              <p className="proof-panel-promise">{current.promise ?? current.eyebrow}</p>
-              <p className="proof-panel-copy">{current.proofCopy ?? current.built}</p>
-              <p className="proof-panel-proves">{current.proves}</p>
-              <p className="proof-panel-cta">View work</p>
-            </motion.div>
-          </AnimatePresence>
-        </Link>
-      </div>
-
-      <div className="proof-mobile-list lg:hidden">
-        {workItems.map((item, index) => {
-          const isOpen = active === index;
-          const href = item.href ?? item.external ?? "/work";
-          const contentId = `proof-item-${index}`;
-          return (
-            <div key={item.slug} className="proof-mobile-item">
-              <button
-                type="button"
-                className="focus-ring proof-mobile-trigger"
-                aria-expanded={isOpen}
-                aria-controls={contentId}
-                onClick={() => setActive(index)}
-              >
-                <span>{item.title}</span>
-                <em>0{index + 1}</em>
-              </button>
-              <AnimatePresence initial={false}>
-                {isOpen ? (
-                  <motion.div
-                    id={contentId}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.28, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <div className="proof-mobile-content">
-                      <p>{item.promise ?? item.eyebrow}</p>
-                      <p>{item.proofCopy ?? item.built}</p>
-                      <Link href={href} className="focus-ring proof-mobile-link">
-                        View work
-                      </Link>
-                    </div>
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
-            </div>
-          );
-        })}
-      </div>
-    </>
+              <div className="proof-row-copy">
+                <p>
+                  <strong>{item.promise ?? item.eyebrow}</strong> {item.proofCopy ?? item.built}
+                </p>
+              </div>
+              <div className="proof-row-cta">
+                <span>View work</span>
+                <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </div>
+            </Link>
+          </motion.div>
+        );
+      })}
+    </div>
   );
 }

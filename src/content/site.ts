@@ -71,7 +71,7 @@ export const hero = {
 export const home = {
   opening: {
     headline:
-      "Most businesses are “experimenting with AI”. Very few are using it to create real commercial advantage.",
+      "Most businesses are experimenting with AI. Very few are using it to create real commercial advantage.",
     qualifier: "For companies that rely on trust and credibility to win clients.",
     setup: "Studio Baggio designs and builds practical AI systems that help your business become:",
     outcomes: [
@@ -97,6 +97,7 @@ export const home = {
     pullQuotes: []
   },
   expertiseBridge: {
+    eyebrow: "Expertise to proof",
     title:
       "Your expertise only creates commercial value when the market can understand it, trust it and act on it.",
     body: [
@@ -110,6 +111,11 @@ export const home = {
       "Buyer engagement",
       "Intelligent follow-up"
     ]
+  },
+  value: {
+    eyebrow: "Where AI Creates Value",
+    title:
+      "Most businesses know AI matters. Few know where to put it. Fewer still have embedded it into the work that creates revenue, visibility, insight or competitive advantage. Studio Baggio helps close that gap."
   },
   commercialSprint: {
     eyebrow: "Commercial AI Sprint",
@@ -141,6 +147,8 @@ export const home = {
   },
   fit: {
     title: "For expert-led businesses that need AI connected to commercial outcomes.",
+    goodLabel: "Best for",
+    badLabel: "Not for",
     good: [
       "Trust-led firms.",
       "Specialist advisers.",
@@ -154,6 +162,13 @@ export const home = {
       "Automation without commercial ownership.",
       "Cheap-lead volume plays."
     ]
+  },
+  cta: {
+    eyebrow: "DISCUSS YOUR AI OPPORTUNITY",
+    title: "If AI should be giving your business an edge, start with the opportunity.",
+    body:
+      "Bring the business, market or workflow you want to improve. Studio Baggio will help you work out where AI can create real commercial value and what should be built first.",
+    brand: "STUDIO BAGGIO"
   }
 };
 

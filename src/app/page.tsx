@@ -40,168 +40,154 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="ai-gap" className="opening-argument-section">
-        <div className="editorial-container opening-argument-grid">
-          <div className="opening-argument-top">
-            <h2 className="opening-argument-headline" data-split>
-              {home.opening.headline}
-            </h2>
-            <p className="opening-argument-qualifier" data-reveal>
-              {home.opening.qualifier}
-            </p>
+      <div className="home-4b">
+        <section className="opening-argument-section">
+          <div className="editorial-container opening-argument-grid">
+            <div className="opening-argument-top">
+              <h2 className="opening-argument-headline" data-split>
+                {home.opening.headline}
+              </h2>
+              <p className="opening-argument-qualifier" data-reveal>
+                {home.opening.qualifier}
+              </p>
+            </div>
+            <div className="opening-outcome-block">
+              <p className="opening-outcome-setup" data-reveal>
+                {home.opening.setup}
+              </p>
+              <div className="opening-outcome-stack">
+                {home.opening.outcomes.map((line, index) => (
+                  <p key={line} className={index === home.opening.outcomes.length - 1 ? "is-strong" : ""} data-reveal>
+                    {line}
+                  </p>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="opening-outcome-block">
-            <p className="opening-outcome-setup" data-reveal>
-              {home.opening.setup}
+        </section>
+
+        <section id="ai-gap" className="problem-clarifier-section">
+          <div className="editorial-container problem-clarifier-frame">
+            <div className="problem-clarifier-copy">
+              <p className="eyebrow" data-reveal>{home.problem.eyebrow}</p>
+              <h2 className="problem-clarifier-title" data-split>
+                {home.problem.title}
+              </h2>
+              <div className="problem-stat-cards" aria-label="2026 UK AI ROI figures" data-reveal>
+                <span>78%</span>
+                <span>31%</span>
+              </div>
+              <p className="problem-stat" data-reveal>
+                {home.problem.stat}
+              </p>
+              <a className="problem-source focus-ring" href={home.problem.sourceUrl} target="_blank" rel="noreferrer" data-reveal>
+                {home.problem.source}
+              </a>
+              <div className="problem-response" data-reveal>
+                {home.problem.body.map((paragraph) => (
+                  <p key={paragraph} className="problem-strong">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <ExpertiseBridge />
+
+        <ValueMap />
+
+        <section className="commercial-sprint-section">
+          <div className="editorial-container commercial-sprint-frame">
+            <p className="eyebrow" data-reveal>{home.commercialSprint.eyebrow}</p>
+            <h2 className="commercial-sprint-title" data-split>
+              {home.commercialSprint.title}
+            </h2>
+            <p className="commercial-sprint-subline" data-reveal>
+              {home.commercialSprint.subline}
             </p>
-            <div className="opening-outcome-stack">
-              {home.opening.outcomes.map((line, index) => (
-                <p key={line} className={index === home.opening.outcomes.length - 1 ? "is-strong" : ""} data-reveal>
-                  {line}
+            <p className="commercial-sprint-body" data-reveal>
+              {home.commercialSprint.body}
+            </p>
+            <div className="commercial-deliverables">
+              {home.commercialSprint.deliverables.map((item, index) => (
+                <div key={item} className="commercial-deliverable-row" data-reveal>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="working-promise-section">
+          <div className="editorial-container working-promise-frame">
+            <p className="eyebrow" data-reveal>{home.workingPromise.eyebrow}</p>
+            <h2 className="working-promise-title" data-split>
+              {home.workingPromise.title}
+            </h2>
+            <div className="working-promise-copy">
+              {home.workingPromise.body.map((paragraph, index) => (
+                <p key={paragraph} className={index >= home.workingPromise.body.length - 2 ? "is-emphasis" : ""} data-reveal>
+                  {paragraph}
                 </p>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="problem-clarifier-section">
-        <div className="editorial-container problem-clarifier-frame">
-          <div className="problem-kicker">
-            <p className="eyebrow">{home.problem.eyebrow}</p>
-            <span>2026 UK AI ROI reality</span>
-          </div>
-          <div className="problem-clarifier-copy">
-            <h2 className="problem-clarifier-title" data-split>
-              {home.problem.title}
-            </h2>
-            <div className="problem-stat-panel" data-reveal>
-              <p className="problem-stat">
-                {home.problem.stat}
-              </p>
-              <a className="problem-source focus-ring" href={home.problem.sourceUrl} target="_blank" rel="noreferrer">
-                {home.problem.source}
-              </a>
-            </div>
-          </div>
-          <div className="problem-response" data-reveal>
-            <span>Studio Baggio response</span>
-            {home.problem.body.map((paragraph) => (
-              <p key={paragraph} className="problem-strong">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <ExpertiseBridge />
-
-      <ValueMap />
-
-      <section className="section-pad narrative-chapter commercial-sprint-section">
-        <div className="editorial-container grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-          <div>
-            <p className="eyebrow">{home.commercialSprint.eyebrow}</p>
-            <h2 className="display-lg mt-5" data-split>
-              {home.commercialSprint.title}
-            </h2>
-            <p className="mt-6 text-2xl leading-tight text-ink/62" data-reveal>
-              {home.commercialSprint.subline}
-            </p>
-            <p className="body-large mt-8 text-ink/72" data-reveal>
-              {home.commercialSprint.body}
-            </p>
-            <div className="mt-8">
-              <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
-            </div>
-          </div>
-          <div className="border-t border-ink/15">
-            {home.commercialSprint.deliverables.map((item, index) => (
-              <div key={item} className="grid grid-cols-[56px_1fr] gap-5 border-b border-ink/12 py-5" data-reveal>
-                <span className="text-xs uppercase tracking-[0.08em] text-ink/45">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="text-lg leading-snug">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="working-promise-section border-y border-ink/12">
-        <div className="editorial-container working-promise-grid">
-          <div>
-            <p className="eyebrow">{home.workingPromise.eyebrow}</p>
-            <h2 className="display-lg mt-5" data-split>
-              {home.workingPromise.title}
-            </h2>
-          </div>
-          <div className="working-promise-copy">
-            {home.workingPromise.body.map((paragraph, index) => (
-              <p key={paragraph} className={index >= home.workingPromise.body.length - 2 ? "is-emphasis" : ""} data-reveal>
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad bg-paper proof-section">
-        <div className="editorial-container">
-          <div className="mb-12 grid gap-8 lg:grid-cols-[0.42fr_1fr]">
-            <p className="eyebrow">{home.proof.eyebrow}</p>
-            <h2 className="display-lg" data-split>
+        <section className="proof-section">
+          <div className="editorial-container proof-section-frame">
+            <p className="eyebrow" data-reveal>{home.proof.eyebrow}</p>
+            <h2 className="proof-section-title" data-split>
               {home.proof.title}
             </h2>
+            <ProofTiles />
           </div>
-          <ProofTiles />
-        </div>
-      </section>
+        </section>
 
-      <section className="section-pad border-t border-ink/12">
-        <div className="editorial-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <h2 className="display-lg" data-split>
-            {home.fit.title}
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            <FitList title="Best for" items={home.fit.good} />
-            <FitList title="Less useful for" items={home.fit.bad} />
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad bg-charcoal text-paper">
-        <div className="editorial-container grid gap-10 md:grid-cols-[1fr_0.6fr] md:items-end">
-          <div>
-            <p className="eyebrow text-paper/55">Next step</p>
-            <h2 className="display-lg mt-5" data-split>
-              If AI should be giving your business an edge, start with the opportunity.
+        <section className="fit-section">
+          <div className="editorial-container fit-section-frame">
+            <h2 className="fit-section-title" data-split>
+              {home.fit.title}
             </h2>
+            <div className="fit-card-grid">
+              <FitList title={home.fit.goodLabel} items={home.fit.good} />
+              <FitList title={home.fit.badLabel} items={home.fit.bad} dark />
+            </div>
           </div>
-          <div>
-            <p className="body-large text-paper/70">
-              Bring the business, market or workflow you want to improve. Studio Baggio will help you work out where AI can create real commercial value and what should be built first.
+        </section>
+
+        <section className="home-cta-section">
+          <div className="editorial-container home-cta-frame">
+            <p className="eyebrow home-cta-eyebrow" data-reveal>{home.cta.eyebrow}</p>
+            <h2 className="home-cta-title" data-split>
+              {home.cta.title}
+            </h2>
+            <p className="home-cta-body" data-reveal>
+              {home.cta.body}
             </p>
-            <div className="mt-8">
+            <div data-cta-button>
               <ButtonLink href={primaryCta.href} className="border-paper text-paper hover:bg-paper hover:text-ink">
                 {primaryCta.label}
               </ButtonLink>
             </div>
+            <p className="home-cta-brand" data-reveal>{home.cta.brand}</p>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }
 
-function FitList({ title, items }: { title: string; items: string[] }) {
+function FitList({ title, items, dark }: { title: string; items: string[]; dark?: boolean }) {
   return (
-    <div className="border-t border-ink/15">
-      <h3 className="py-5 text-sm uppercase tracking-[0.07em] text-ink/52">{title}</h3>
-      <div>
+    <div className={dark ? "fit-card is-dark" : "fit-card"}>
+      <h3>{title}</h3>
+      <div className="fit-card-copy">
         {items.map((item) => (
-          <p key={item} className="border-t border-ink/10 py-4 leading-relaxed text-ink/72">
+          <p key={item}>
             {item}
           </p>
         ))}

@@ -36,12 +36,12 @@ export function PageReveals() {
         const heroPromise = gsap.utils.toArray<HTMLElement>("[data-hero-promise]");
         const revealElements = gsap.utils.toArray<HTMLElement>("[data-reveal]");
         const splitElements = gsap.utils.toArray<HTMLElement>("[data-split]");
-        const scrollRevealElements = [...revealElements, ...splitElements];
+        const ctaButtons = gsap.utils.toArray<HTMLElement>("[data-cta-button]");
 
-        gsap.set(scrollRevealElements, { autoAlpha: 1, y: 0, yPercent: 0 });
+        gsap.set([...revealElements, ...splitElements, ...ctaButtons], { autoAlpha: 1, y: 0, yPercent: 0 });
 
         if (reduce) {
-          gsap.set(scrollRevealElements, { opacity: 1, y: 0 });
+          gsap.set([...revealElements, ...splitElements, ...ctaButtons], { opacity: 1, y: 0, clipPath: "none" });
           return;
         }
 
@@ -78,7 +78,7 @@ export function PageReveals() {
           }, 0.78);
         }
 
-        scrollRevealElements.forEach((element) => {
+        revealElements.forEach((element) => {
           triggers.push(
             ScrollTrigger.create({
               trigger: element,
@@ -93,7 +93,61 @@ export function PageReveals() {
                     {
                       y: 0,
                       autoAlpha: 1,
-                      duration: element.hasAttribute("data-split") ? 0.72 : 0.52,
+                      duration: 0.52,
+                      ease: "power3.out",
+                      overwrite: "auto"
+                    }
+                  )
+                );
+              }
+            })
+          );
+        });
+
+        splitElements.forEach((element) => {
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: element,
+              start: "top 94%",
+              once: true,
+              fastScrollEnd: true,
+              onEnter: () => {
+                animations.push(
+                  gsap.fromTo(
+                    element,
+                    { y: 26, autoAlpha: 0.001, clipPath: "inset(0 0 100% 0)" },
+                    {
+                      y: 0,
+                      autoAlpha: 1,
+                      clipPath: "inset(0 0 0% 0)",
+                      duration: 0.78,
+                      ease: "power3.out",
+                      overwrite: "auto"
+                    }
+                  )
+                );
+              }
+            })
+          );
+        });
+
+        ctaButtons.forEach((element) => {
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: element,
+              start: "top 92%",
+              once: true,
+              onEnter: () => {
+                const borderTarget = element.querySelector("a > span") ?? element;
+                animations.push(
+                  gsap.fromTo(
+                    borderTarget,
+                    { "--cta-scale": 0, autoAlpha: 0.001, y: 12 },
+                    {
+                      "--cta-scale": 1,
+                      autoAlpha: 1,
+                      y: 0,
+                      duration: 0.7,
                       ease: "power3.out",
                       overwrite: "auto"
                     }
