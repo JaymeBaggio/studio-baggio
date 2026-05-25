@@ -35,9 +35,9 @@ export const metadata = {
       "A market-specific prospecting system that captures interactions, qualifies named leads and produces a prioritised follow-up pipeline."
   },
   calmAuthority: {
-    title: "Calm Authority | Your Expertise. At Scale.",
+    title: "Calm Authority | Your Own Expertise. At Scale",
     description:
-      "A Studio Baggio product and live LinkedIn writing system for UK financial advisers, built by Harry Sims and Jayme Baggio."
+      "The flagship Studio Baggio product: a LinkedIn writing system for UK financial advisers that turns real expertise into visible public proof."
   },
   about: {
     title: "About Jayme Baggio | Studio Baggio",
@@ -329,88 +329,78 @@ export const businessTracker = {
 };
 
 export const calmAuthority = {
+  eyebrow: "Flagship Product:",
   title: "Calm Authority",
-  tagline: "Your expertise. At scale.",
+  tagline: "Your Own Expertise. At Scale",
   liveHref: "https://www.calmauthority.ai/",
   factSheetHref: "https://www.calmauthority.ai/press/calm-authority-fact-sheet.html",
-  hero:
-    "Calm Authority helps financial advisers turn real expertise into consistent, publish-ready LinkedIn posts in their own voice.",
-  summary:
-    "Built by Harry Sims, a Chartered Financial Planner, and Jayme Baggio, a content and systems strategist.",
-  overview: [
-    {
-      title: "What it is",
-      body:
-        "A LinkedIn writing system for financial advisers, built around real expertise, adviser voice and the trust dynamics of a compliance-sensitive market."
-    },
-    {
-      title: "What it does",
-      body:
-        "It maps each adviser's writing voice from real samples, runs weekly research to surface relevant angles, and turns a URL, article or idea into draft posts the adviser can edit, approve and publish manually."
-    },
-    {
-      title: "Who it is for",
-      body:
-        "Individual advisers, advisory firms and PE-backed consolidators first. The wider Studio Baggio pattern applies to trust-based, expert-led businesses where credibility, judgement and visible authority drive commercial opportunity."
-    }
+  builtLine: "Built 2025. Live at calmauthority.ai.",
+  featuredIn: ["Financial Times", "Professional Adviser", "Money Marketing"],
+  productIntro:
+    "Calm Authority is the flagship product of Studio Baggio — a LinkedIn writing system for UK financial advisers that maps each adviser's real writing voice from samples, surfaces relevant weekly angles, and generates publish-ready drafts the adviser edits and posts manually. Built in 2025 by Jayme Baggio, a content and systems strategist, with founding adviser Harry Sims, a Chartered Financial Planner with eleven years in financial services. Together they identified a structural visibility gap in the UK advice market — and built a system to close it.",
+  commercialThesis: [
+    "Your firm has valuable thinking. Too much of it disappears before it becomes growth. That expertise is only commercially useful if the market can understand it, trust it and act on it.",
+    "Studio Baggio develops systems to turn your business's internal expertise into visible public proof. Enables you to show up consistently and provide real value where your prospects already are. Then connect the dots between who is engaging, what they care about and how the business should follow up to earn the right to win in market."
   ],
-  marketContext:
-    "37,136 financial advisers are authorised in the UK. Fewer than 300 post consistently on LinkedIn. Calm Authority was built for that visibility gap: making trusted judgement visible before the first conversation, without flattening expert voice or removing editorial control.",
-  system:
-    "Calm Authority maps each adviser's actual writing voice from real samples, runs weekly research to surface relevant angles and generates draft posts from a URL, an article or an idea. Advisers edit, approve and post manually. Nothing is auto-published.",
-  genericAiRisk:
-    "Generic AI is a reputational risk for people who sell trust and judgement, because the output can read like the same template everyone else is using. Calm Authority closes the visibility gap without the time cost of writing from scratch and without homogenised output.",
-  proof:
-    "Public Calm Authority proof includes +527% impressions in 28 days for one adviser, 52 inbound leads in six months for one IFA posting consistently, two inbound LinkedIn enquiries in one month generating initial and ongoing revenue proof, and two to three client meetings per week sustained for another adviser. These are specific examples, not promised outcomes.",
-  studioAngle:
-    "Calm Authority shows how Studio Baggio turns a market gap into a working AI product: positioning, workflow design, voice mapping, content systems, compliance-aware product thinking, commercial packaging and rollout, all connected to expert judgement -> visible authority -> market trust -> commercial opportunity.",
-  atAGlance: [
-    ["Company", "Calm Authority"],
-    ["Tagline", "Your expertise. At scale."],
-    ["Founded", "2025"],
-    ["Founders", "Harry Sims, Chartered Financial Planner, and Jayme Baggio, content and systems strategist"],
-    ["Based", "United Kingdom"],
-    ["Website", "calmauthority.ai"],
-    ["Press contact", "info@calmauthority.ai"]
+  problem: [
+    "37,136 authorised financial advisers in the UK. Fewer than 300 post consistently on LinkedIn. In a relationship business, that is a structural visibility gap. Clients trust adviser judgement in private. Prospects, referral partners, and centres of influence have no public evidence of it.",
+    "Generic AI makes this worse. Output that reads like a template everyone else is using is a reputational risk for people who sell trust and judgement. Calm Authority closes the visibility gap without the time cost of writing from scratch and without the homogenised output of generic AI."
   ],
-  facts: [
-    "30-minute weekly rhythm for advisers who need consistency without writing from scratch every week.",
-    "Designed for individual advisers, advisory firms and PE-backed consolidators.",
-    "Firm-level guardrails, adoption visibility for firm admins and a structured 90-day rollout for advisory firms.",
-    "Primary wedge: UK financial advice. Active expansion into recruitment and wider professional services.",
-    "Harry Sims has eleven years in financial services and holds the Advanced Diploma in Regulated Financial Planning from the Chartered Insurance Institute.",
-    "Jayme Baggio has twelve years across media, brand-building and practical AI, with experience across Channel 4, BBC Studios, Google, Coca-Cola, HSBC, M&S, National Lottery, Nestlé, Banijay and All3Media.",
-    "Built around the compliance sensitivities and trust dynamics of the advisory profession, not retro-fitted to them."
+  whyNow:
+    "Buyers, AI search systems, competitors and partners are using public information to decide who is credible, relevant and worth speaking to. If your expertise is trapped in private conversations, old decks and offline relationships, it is harder for the market to understand why you matter. Calm Authority helps you make that value visible, structured and commercially useful.",
+  howItWorks: [
+    "Calm Authority maps each adviser's actual writing voice from real samples, runs weekly research to surface relevant angles, and generates draft posts from a URL, an article, or an idea. Advisers edit, approve, and post manually. Nothing is auto-published. Each adviser retains full editorial control.",
+    "A 30-minute weekly rhythm. Designed for individuals and firms, with firm-level guardrails, adoption visibility for firm admins, and a structured 90-day rollout for advisory firms."
+  ],
+  whoItsFor: [
+    "Individual financial advisers who want consistent LinkedIn presence without writing from scratch.",
+    "Advisory firms and PE-backed consolidators who want their best thinking visible across the team, in each adviser's own voice, without compliance exposure."
   ],
   proofPoints: [
-    "+527% impressions in 28 days for Harry Sims as founding user: 48,000 to 301,314 impressions, with the top single post reaching 93,704.",
-    "Viewers included EY, Deloitte, PwC and HSBC.",
-    "Two inbound LinkedIn enquiries in one month created £20,000 initial fees plus £18,000 ongoing annual revenue.",
-    "52 inbound leads in six months for Harry Gallow, with 60% from direct messages and 40% from prospects reaching out directly.",
-    "Two to three client meetings per week sustained for Nicola Podda DipPFS."
-  ],
-  pricing: [
-    ["Individual earlybird", "£99.99 / month", "First 100 subscribers; rate locked while the subscription stays active."],
-    ["Individual standard", "£149.99 / month", "After the first 100 subscribers."],
-    ["Firm Starter", "£850 / month", "Up to 5 seats. Branded firm workspace, team visibility and compliance policy built into onboarding."],
-    ["Firm Boutique", "£2,000 / month", "Up to 15 advisers. 90-day charter, structured rollout and leadership visibility."],
-    ["Firm Growth / Established / Enterprise", "Sized to firm", "Boutique core scaled. Rollout sized to the firm."]
-  ],
-  recent: [
-    "The Adviser Visibility Study is a 90-day measurement of twelve junior advisers, one nominated by each of twelve leading UK advice firms, publishing three posts a week in their own voice with Calm Authority support.",
-    "Findings are being published exclusively with Money Marketing, with wider analysis by the Financial Times.",
-    "Nominations closed on 9 May 2026. Findings are due in August 2026."
+    {
+      metric: "52 inbound leads in six months.",
+      body:
+        "\"6 months on LinkedIn — 52 inbound leads. Approx 60% from DMs, 40% from prospects reaching out to me.\" — Harry Gallow, independent financial adviser"
+    },
+    {
+      metric: "Two to three client meetings per week, sustained.",
+      body:
+        "\"Since I started using Calm Authority, I've been able to kick off quite a few conversations on LinkedIn and have been booking around 2–3 meetings a week over the past couple of months. A great tool for building my personal brand.\" — Nicola Podda DipPFS"
+    },
+    {
+      metric: "£20,000 initial fees plus £18,000 ongoing annual revenue from two inbound LinkedIn enquiries in a single month — roughly 44× the cost of a monthly licence.",
+      body: ""
+    },
+    {
+      metric: "+527% impressions in 28 days.",
+      body:
+        "One adviser, same audience: 48,000 to 301,314 impressions. Top single post reached 93,704. Viewers included EY, Deloitte, PwC, and HSBC."
+    }
   ],
   compliance:
     "Calm Authority is a writing assistant. Every post is reviewed and published manually by the adviser. Standard FCA promotional rules apply. The product operates inside firm policies, not around them.",
+  foundingAdviser: {
+    name: "Harry Sims",
+    role: "Founding Adviser and First User",
+    body:
+      "Chartered Financial Planner with eleven years in financial services. Holds the Advanced Diploma in Regulated Financial Planning from the Chartered Insurance Institute. The first person to use Calm Authority in practice — the product is built around the compliance sensitivities and trust dynamics of the advisory profession, not retrofitted to them."
+  },
+  builtBy: {
+    name: "Jayme Baggio",
+    role: "Founder, Studio Baggio",
+    body: [
+      "A content and systems strategist with twelve years across media, brand-building, and practical AI. Jayme has worked with brands including Channel 4, BBC Studios, Google, Coca-Cola, HSBC, M&S, National Lottery, and Nestlé, and with production companies including Fremantle, Banijay and All3Media.",
+      "Jayme's understanding of commercial storytelling, production pressure, brand, audience, sponsorship, senior stakeholders and AI implementation in a real operation is now focused on building growth systems for trust-based businesses.",
+      "She built the tone-of-voice mapping system at the core of Calm Authority and leads product strategy at Studio Baggio."
+    ]
+  },
   links: [
     { label: "Visit Calm Authority", href: "https://www.calmauthority.ai/" },
     {
       label: "Read press fact sheet",
       href: "https://www.calmauthority.ai/press/calm-authority-fact-sheet.html"
     }
-  ],
-  sourceNote: "Facts updated from the Calm Authority press fact sheet, May 2026."
+  ]
 };
 
 export const about = {

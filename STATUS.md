@@ -10,6 +10,28 @@ Core message:
 
 `Turn AI into a commercial advantage.`
 
+## 25 May Calm Authority Branch Copy Rebuild
+
+Branch: `calm-authority-page-copy`.
+
+Worktree: `/Users/jaymebaggio/Desktop/Studio Baggio/Website-calm-authority`.
+
+Scope:
+
+- Rebuilt `/calm-authority` only, from clean `origin/main`, to avoid clashing with the uncommitted homepage work in the main website folder.
+- Replaced the old Calm Authority fact-sheet/pricing/recent-study page structure with Jayme's supplied flagship-product copy.
+- New page sequence: hero, featured-in wordmarks, commercial thesis, problem, why now, how it works, who it is for, proof, compliance, featured-in, founding adviser and built-by sections.
+- Updated Calm Authority page metadata to `Calm Authority | Your Own Expertise. At Scale`.
+
+Verified on branch:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Local branch preview route returned `200` at `http://127.0.0.1:3002/calm-authority`.
+
+Not live yet. Merge or deploy this branch after review.
+
 ## Built In Phase 1
 
 - Home
