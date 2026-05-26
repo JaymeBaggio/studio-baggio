@@ -314,6 +314,9 @@ export function PageReveals() {
         const statGrid = document.querySelector<HTMLElement>(".problem-stat-grid");
 
         if (statElements.length && statGrid) {
+          const statSection = statGrid.closest<HTMLElement>(".problem-clarifier-section") ?? statGrid;
+          const statTrigger = pinHomepageSections ? statSection : statGrid;
+
           statElements.forEach((element) => {
             const target = Number(element.dataset.statValue ?? element.textContent?.replace("%", ""));
             if (!Number.isFinite(target)) return;
@@ -322,8 +325,8 @@ export function PageReveals() {
 
           triggers.push(
             ScrollTrigger.create({
-              trigger: statGrid,
-              start: "top 68%",
+              trigger: statTrigger,
+              start: pinHomepageSections ? "top top+=64" : "top 68%",
               once: true,
               onEnter: () => {
                 statElements.forEach((element, index) => {
@@ -333,8 +336,8 @@ export function PageReveals() {
                   const counter = { value: 0 };
                   const tween = gsap.to(counter, {
                     value: target,
-                    duration: 0.9,
-                    delay: index * 0.08,
+                    duration: 0.72,
+                    delay: index * 0.05,
                     ease: "power2.out",
                     snap: { value: 1 },
                     onUpdate: () => {
@@ -372,6 +375,8 @@ export function PageReveals() {
                 refreshPriority: sectionIndex + 10
               })
             );
+
+            return;
           }
 
           const labelTargets = gsap.utils.toArray<HTMLElement>(
@@ -584,6 +589,10 @@ export function PageReveals() {
               }
             })
           );
+        });
+
+        requestAnimationFrame(() => {
+          if (alive) ScrollTrigger.refresh();
         });
       }
 
