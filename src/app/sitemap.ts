@@ -3,7 +3,6 @@ import { siteUrl } from "@/lib/utils";
 
 const routes = [
   "",
-  "/ai-advantage",
   "/work",
   "/business-tracker",
   "/calm-authority",

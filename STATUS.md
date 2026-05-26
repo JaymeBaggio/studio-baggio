@@ -16,10 +16,15 @@ Branch:
 
 - `quiet-luxury-homepage-system`
 
+Pre-review correction:
+
+- Removed the `/ai-advantage` page from active navigation, sitemap and route files.
+- Updated the Business Tracker page copy to match `BUSINESS_TRACKER_COPY_DRAFT.md`.
+- The homepage remains unchanged.
+
 Scope:
 
 - Rolled the approved homepage `.home-4b` design system across:
-  - `/ai-advantage`
   - `/work`
   - `/business-tracker`
   - `/calm-authority`
@@ -27,14 +32,13 @@ Scope:
   - `/contact`
   - `/privacy`
 - Did not change the homepage hero/header direction or homepage implementation.
-- Did not edit `src/content/site.ts` or `src/content/work.ts`; page copy remains sourced from the existing content layer and route literals.
+- Business Tracker visible copy is now sourced from the approved draft copy file.
 
 Implemented:
 
 - Added a shared `studio-page` extension to `src/app/globals.css` using the locked `.home-4b` tokens, typography roles, spacing, section frames, dark sections, ruled rows, proof rows, contact form framing and CTA treatment.
-- Rebuilt AI Advantage as an editorial service page with a dark ruled value-area index and light prioritisation / offer / example-system rows.
 - Rebuilt Work as a proof-led ruled case-study index instead of an interactive portfolio card layout.
-- Rebuilt Business Tracker as a product system page with an editorial intro, dark operating-layer index, channel rows and outcome CTA.
+- Rebuilt Business Tracker as a product system page with an editorial intro, dark operating-layer index, input map, outcome, fit, commercial terms and CTA.
 - Rebuilt Calm Authority as a Studio Baggio product page using only existing Calm Authority copy and the real Calm Authority proof image asset.
 - Rebuilt About, Contact and Privacy into the same editorial page rhythm; Contact now separates the intro frame from the form frame so the first read stays complete on desktop and mobile.
 - Kept motion on the existing GSAP `PageReveals` path for semantic section/title/row reveal; no new scroll-storytelling layer added.
@@ -42,7 +46,11 @@ Implemented:
 Verified:
 
 - `npm run typecheck`, `npm run lint` and `npm run build` pass.
-- Codex Browser QA at `1440x900` and `390x844` across all seven routes confirms:
+- Latest Codex Browser pre-review QA confirms:
+  - `/business-tracker` at `1440x900` and `390x844` has no horizontal overflow, no console errors and all draft copy present in the DOM.
+  - `/ai-advantage` returns `404`.
+  - `/sitemap.xml` no longer includes `/ai-advantage`.
+- Codex Browser QA at `1440x900` and `390x844` across all live rollout routes confirms:
   - horizontal overflow offenders: `0`
   - visible Next error overlay: `false`
   - visible font family: Aileron only

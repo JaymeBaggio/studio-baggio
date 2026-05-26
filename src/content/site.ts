@@ -1,6 +1,5 @@
 export const navItems = [
   { label: "Studio Baggio", href: "/" },
-  { label: "AI Advantage", href: "/ai-advantage" },
   { label: "Work", href: "/work" },
   { label: "Business Tracker", href: "/business-tracker" },
   { label: "Calm Authority", href: "/calm-authority" },
@@ -19,20 +18,15 @@ export const metadata = {
     description:
       "Studio Baggio designs and builds AI-enabled growth systems for trust-based businesses: search visibility, market intelligence, lead capture, authority systems, workflow acceleration and client-facing AI tools."
   },
-  aiAdvantage: {
-    title: "AI Commercial Advantage for Expert-Led Businesses",
-    description:
-      "Commercial AI strategy, AI search, discoverability, market intelligence, lead intelligence and practical AI systems built around how your business wins in market."
-  },
   work: {
     title: "Studio Baggio Work | AI Systems, Products and Commercial Intelligence",
     description:
       "Selected Studio Baggio work across Calm Authority, Business Tracker, Last30Days and Fire Source."
   },
   businessTracker: {
-    title: "Business Tracker | Lead Intelligence Operating System",
+    title: "Business Tracker | Commercial Intelligence",
     description:
-      "A market-specific prospecting system that captures interactions, qualifies named leads and produces a prioritised follow-up pipeline."
+      "The operating system that captures every interaction, makes it visible & produces a named follow-up pipeline."
   },
   calmAuthority: {
     title: "Calm Authority | Your own expertise at scale",
@@ -309,68 +303,80 @@ export const systemBlocks = [
 ];
 
 export const businessTracker = {
-  title: "Business Tracker",
-  pageKicker: "Lead intelligence operating system",
+  title: "BUSINESS TRACKER",
+  pageKicker: "COMMERCIAL INTELLIGENCE",
   coreLine:
-    "The operating system that captures every interaction, makes it visible and produces a named follow-up pipeline.",
-  explanation:
-    "The Business Tracker is a market-specific prospecting system built around the audience a business wants to reach and the qualification criteria that matter commercially.",
-  captures:
-    "It captures website analytics, SEO and AI search visibility, LinkedIn engagement, lead magnet activity, email performance, enquiries, referrals, target accounts and market context. Then it turns that into named leads, qualification, AI rationale and suggested follow-up.",
-  marketSpecificContext:
-    "The market layer changes by sector. For one business, the useful signals might be funding, hiring, regulation, acquisitions, partnerships, leadership changes or public commentary. For another, they might be agents, managers, press, sponsorships, injuries, tours, events, social activity or career moves.",
-  commercialPoint:
-    "It makes growth more feasible for smaller teams because the business can see who is warming up, why they matter and what should happen next.",
-  strap: "Business intelligence. Qualified prospects. More conversations. More clients. More impact.",
-  outcome: "Delivers: Visibility. Qualified Leads. Commercial Advantage.",
-  pageSummary: [
-    "Business Tracker is a Studio Baggio system, not a generic analytics dashboard or a portfolio note.",
-    "The point is to show how attention, engagement, search visibility and market context become named leads, qualification, AI rationale and suggested follow-up.",
-    "For smaller teams, the value is focus: the system shows who is warming up, why they matter and which conversation should happen next."
-  ],
+    "The operating system that captures every interaction, makes it visible & produces a named follow-up pipeline.",
+  cta: "Enquire now",
+  sectionLabels: {
+    operatingLayers: "Operating Layers",
+    inputMap: "INPUT MAP",
+    outcome: "Outcome",
+    fit: "Who it's for",
+    commercial: "How it works commercially"
+  },
   modules: [
     ["01", "Intelligence", "Commercial insight none of your competitors have."],
     ["02", "Attribution", "Captures every interaction across website, SEO, LinkedIn, lead magnets and email."],
-    ["03", "Qualification", "Scores leads against business criteria such as ICP fit, funds, relevance and relationship value."],
+    ["03", "Qualification", "Scores leads against the firm's own criteria: fit, value, relevance and relationship potential."],
     [
       "04",
       "Live AI Search Intelligence",
-      "Adds current market context around each lead or target account. The source changes by market: funding, hiring, regulation, acquisitions, partnerships, leadership changes, public commentary, agents, managers, press, sponsorships, injuries, tours, events, social activity or career moves."
+      "Adds current context from public signals, sector activity, press and relationship cues."
     ],
-    ["05", "Follow-Up", "Recommends the next action per lead, so teams know who to prioritise."],
+    ["05", "Follow-up", "Recommends the next action per lead, so the team knows who to prioritise."],
     [
       "06",
-      "The Intel Bank",
-      "Keeps target firms, decision-makers, introducers, recent news, campaign status, relationship context and follow-up angles in one place, giving the business information competitors do not have: who is active, who is warming up, what changed and where the best opening is."
-    ],
-    [
-      "07",
-      "Reporting And Scale",
-      "Creates a board-ready monthly view of what is working, what is not and what to optimise next, designed to scale beyond the current setup."
+      "Reporting & Scale",
+      "Creates a board-ready monthly view of what is working, what is not, and what to optimise next. Designed to scale beyond the current set-up."
     ]
   ],
-  channels: [
+  inputs: [
     {
       title: "SEO / AI Search Visibility",
       body:
-        "Which articles convert, where you sit in search, AI search rationale and optimal follow-up. SEO without lead magnets creates anonymous traffic."
+        "Which articles convert, and where you sit in search. AI search rationale. Optimal follow-up.",
+      note: "SEO without Lead Magnets = Anonymous traffic."
     },
     {
       title: "LinkedIn",
       body:
-        "Who followed, commented and engaged, qualified prospects, best-performing formats, when to post and what hooks work. LinkedIn without analytics creates blind impressions without growth mechanics."
+        "Who followed, commented and engaged. Qualified prospects and best-performing formats. When to post and what hooks work.",
+      note: "LinkedIn without Analytics = Blind impressions without growth mechanics."
     },
     {
       title: "Lead Magnets",
       body:
-        "Who interacted, when and why, engagement and lead quality score, AI rationale and optimal follow-up. Lead magnets without email marketing waste the chance to keep depositing value."
+        "Who interacted, when and why. Engagement and lead quality score. AI rationale and optimal follow-up.",
+      note: "Lead Magnet without Email Marketing = Wasted contact and opportunity to deposit value."
     },
     {
       title: "Email Marketing",
       body:
-        "Behavioural triggers, source attribution, messaging stage, engagement score, lead quality, AI rationale and optimal follow-up. Email without the Business Tracker means sending without knowing who engaged."
+        "Behavioural triggers and source attribution. Messaging stage and engagement score. Lead quality, AI rationale and optimal follow-up.",
+      note: "Email Marketing without the Business Tracker = Sending without knowing who you're sending to and who engaged."
     }
-  ]
+  ],
+  bridge:
+    "Without the Business Tracker, these are separate touchpoints. With it, every signal becomes business intelligence, a qualified prospect or a follow-up action.",
+  outcome: {
+    deliverable: "Delivers: Visibility | Qualified Leads | Commercial Advantage",
+    impact: "Business intelligence | Qualified prospects | More conversations | More clients | More impact"
+  },
+  fit: {
+    bestFor:
+      "Expert-led businesses where high-value leads need careful nurturing. Specialist advisers, founder-led firms, professional services, and trust-based businesses with touchpoints (SEO, LinkedIn, lead magnets, email) that currently sit apart.",
+    notFor: "High-volume B2C funnels. Generic CRM replacement. Teams that just want a dashboard."
+  },
+  commercial: {
+    lead: "Retainer-led. Starts at £6,000 p/m.",
+    includesLabel: "Includes:",
+    includes: [
+      "Business Tracker build and setup",
+      "Monthly reporting and optimisation insights",
+      "A 90-minute strategy session each month"
+    ]
+  }
 };
 
 export const calmAuthority = {
