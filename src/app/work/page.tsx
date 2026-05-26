@@ -16,7 +16,7 @@ export default function WorkPage() {
           <div className="editorial-container studio-page-frame">
             <div>
               <h1 className="studio-page-title" data-split>
-                Live work.
+                Live products.
               </h1>
             </div>
           </div>

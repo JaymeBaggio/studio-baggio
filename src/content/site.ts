@@ -1,6 +1,6 @@
 export const navItems = [
   { label: "Studio Baggio", href: "/" },
-  { label: "Work", href: "/work" },
+  { label: "Products", href: "/work" },
   { label: "Business Tracker", href: "/business-tracker" },
   { label: "Calm Authority", href: "/calm-authority" },
   { label: "About", href: "/about" },
@@ -19,9 +19,9 @@ export const metadata = {
       "Studio Baggio designs and builds AI-enabled growth systems for trust-based businesses: search visibility, market intelligence, lead capture, authority systems, workflow acceleration and client-facing AI tools."
   },
   work: {
-    title: "Studio Baggio Work | AI Systems, Products and Commercial Intelligence",
+    title: "Studio Baggio Products | AI Systems and Commercial Intelligence",
     description:
-      "Selected Studio Baggio work across Calm Authority, Business Tracker, Last30Days and Fire Source."
+      "Live Studio Baggio products across Calm Authority, Business Tracker, Last30Days and Fire Source."
   },
   businessTracker: {
     title: "Business Tracker | Commercial Intelligence",
