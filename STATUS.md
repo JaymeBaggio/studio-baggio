@@ -37,10 +37,12 @@ Implemented:
 - Locked the hero promise under `STUDIO BAGGIO.AI` into three intentional desktop lines to match Jayme's reference: promise title, market line, and `BUILD TRUST, CAPTURE DEMAND & FOLLOW UP SMARTER`.
 - Added a named `Hero Promise` typography role so the larger hero subtext is part of the type system rather than a one-off override; first two lines use muted grey and the final line uses ink.
 - Added the restrained accent-blue token `--sb-accent-blue` and used it only on the `BAGGIO.AI` dot.
-- Reworked the Gap section back into one calm full-width evidence frame matching Jayme's reference: title first, one three-column `16% / 77% / 12%` stat row, single source line and closing commercial takeaway.
+- Reworked the Gap section back into one calm full-width evidence frame matching Jayme's reference: title first, one three-column `16% / 77% / 12%` stat row, fuller explanatory copy under each stat, individual source lines and closing commercial takeaway.
 - Reworked Section 2 as the deliberate centred exception in the homepage system: the opening thesis fades on scroll, the Studio Baggio outcome stack expands into view, and `Harder to compete with.` is the only full blue line on the page.
 - Reworked `What We Build` into a restrained expandable index: rows start collapsed with the service headline and one clear summary line visible, then full detail expands on hover, focus or click.
 - Tightened the mobile hero promise under `STUDIO BAGGIO.AI` so the three intended lines no longer create orphaned words on phone widths.
+- Corrected the latest Gap evidence layout to match Jayme's supplied visual reference: white frame, slimmer 3-column stat row, narrower caption measures and per-stat sources.
+- Removed the sticky desktop pin from Section 2 and re-timed the opening motion so the thesis reads first, the grey qualifier follows, the Studio Baggio setup appears on the next scroll beat, and the outcome stack resolves last.
 
 Verified:
 
@@ -48,6 +50,8 @@ Verified:
 - Codex browser desktop check after the latest Section 2 / Gap correction: Section 2 centres the core proposition, the final outcome line resolves in blue, the Gap evidence row spans the full editorial frame, and horizontal overflow is `0`.
 - Mobile hero promise width check confirms the three promise lines fit from `320px` to `430px` wide viewports using the locked Aileron Bold font and the updated fluid mobile type role.
 - Motion refinement check in the Codex browser confirmed the opening outcome stack progresses across scroll positions, with the muted lines revealing first and `Harder to compete with.` resolving last.
+- Latest in-app browser check confirmed the Gap section renders as `16%`, `77%`, `12%` across three columns on desktop, with the longer captions/sources visible, white background, and horizontal overflow at `0`.
+- Latest in-app browser check confirmed Section 2 is no longer pinned: the headline is the first visible read, the qualifier remains hidden until the next scroll position, the setup stays hidden until later, and the blue final outcome resolves last.
 - Hero typography check at desktop confirmed the `Hero Promise` role renders at `18.432px` on a `1440px` viewport, keeps three locked lines and has no horizontal overflow.
 - Vercel production build passed and was aliased to `https://www.studiobaggio.ai`.
 - Live production browser check at `https://www.studiobaggio.ai/` confirms the latest Gap copy is present, old `78%` / `31%` / Studio Graphene / TechRadar copy is absent, and CTA text appears once.

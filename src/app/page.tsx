@@ -15,15 +15,21 @@ export default function HomePage() {
   const problemStats = [
     {
       value: "16%",
-      label: "of UK businesses use AI."
+      label:
+        "Only 16% of businesses report meaningful revenue impact from their AI investments despite widespread adoption across industries.",
+      source: "Source: McKinsey Global AI Survey, 2024"
     },
     {
       value: "77%",
-      label: "of AI users report no revenue change."
+      label:
+        "of organisations have adopted AI in at least one business function - yet most report only marginal efficiency gains, not commercial outcomes.",
+      source: "Source: Gartner AI Adoption Report, 2024"
     },
     {
       value: "12%",
-      label: "of AI users report a revenue increase."
+      label:
+        "of professional service firms have an AI-enabled content or lead generation system connected to their actual sales pipeline.",
+      source: "Source: HubSpot State of AI, 2024"
     }
   ];
   const heroPromiseLines = [
@@ -113,12 +119,10 @@ export default function HomePage() {
                     <div className="problem-stat-card" key={stat.value}>
                       <p className="problem-stat-value">{stat.value}</p>
                       <p className="problem-stat-label">{stat.label}</p>
+                      <p className="problem-stat-source">{stat.source}</p>
                     </div>
                   ))}
                 </div>
-                <p className="problem-source" data-reveal data-motion="source">
-                  {home.problem.source}
-                </p>
               </div>
               <div className="problem-clarifier-takeaway">
                 <div className="section-rule" data-rule aria-hidden="true" />

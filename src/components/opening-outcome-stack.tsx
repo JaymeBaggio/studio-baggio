@@ -34,8 +34,8 @@ export function OpeningOutcomeStack({
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: stackRef.current,
-          start: "top 74%",
-          end: "top 42%",
+          start: "top 38%",
+          end: "top 14%",
           scrub: 0.75,
           invalidateOnRefresh: true
         }

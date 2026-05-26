@@ -170,62 +170,103 @@ export function PageReveals() {
         const openingTop = openingSection?.querySelector<HTMLElement>(".opening-argument-top");
         const openingOutcome = openingSection?.querySelector<HTMLElement>(".opening-outcome-block");
 
-        if (
-          openingSection &&
-          openingTop &&
-          openingOutcome &&
-          window.matchMedia("(min-width: 1024px)").matches
-        ) {
-          gsap.set(openingOutcome, {
-            y: 44,
-            scale: 0.965,
-            autoAlpha: 0.001,
-            transformOrigin: "center top"
-          });
+        if (openingSection && openingTop && openingOutcome) {
+          const openingHeadline = openingSection.querySelector<HTMLElement>(".opening-argument-headline");
+          const openingHeadlineTargets = openingHeadline
+            ? (splits.find((item) => item.element === openingHeadline)?.inners ?? [openingHeadline])
+            : [];
+          const openingQualifier = openingSection.querySelector<HTMLElement>(".opening-argument-qualifier");
+          const openingSetup = openingSection.querySelector<HTMLElement>(".opening-outcome-setup");
 
-          const openingScrollTimeline = gsap.timeline({ paused: true });
-          animations.push(openingScrollTimeline);
+          if (openingHeadlineTargets.length || openingQualifier) {
+            if (openingHeadlineTargets.length) {
+              gsap.set(openingHeadlineTargets, { yPercent: 110, autoAlpha: 0.001 });
+            }
+            if (openingQualifier) {
+              gsap.set(openingQualifier, { y: 14, autoAlpha: 0.001 });
+            }
 
-          openingScrollTimeline
-            .to(
-              openingTop,
-              {
-                y: -34,
-                autoAlpha: 0.08,
-                duration: 0.74,
-                ease: "power2.out",
-                overwrite: "auto"
-              },
-              0
-            )
-            .to(
-              openingOutcome,
+            const openingTopTimeline = gsap.timeline({ paused: true });
+            animations.push(openingTopTimeline);
+
+            if (openingHeadlineTargets.length) {
+              openingTopTimeline.fromTo(
+                openingHeadlineTargets,
+                { yPercent: 110, autoAlpha: 0.001 },
+                {
+                  yPercent: 0,
+                  autoAlpha: 1,
+                  duration: 0.9,
+                  stagger: 0.08,
+                  ease: "expo.out",
+                  overwrite: "auto"
+                },
+                0
+              );
+            }
+
+            if (openingQualifier) {
+              openingTopTimeline.fromTo(
+                openingQualifier,
+                { y: 14, autoAlpha: 0.001 },
+                {
+                  y: 0,
+                  autoAlpha: 1,
+                  duration: 0.48,
+                  ease: "power3.out",
+                  overwrite: "auto"
+                },
+                openingHeadlineTargets.length ? 0.68 : 0
+              );
+            }
+
+            triggers.push(
+              ScrollTrigger.create({
+                trigger: openingTop,
+                start: "top 80%",
+                end: "bottom 42%",
+                animation: openingTopTimeline,
+                scrub: 0.9,
+                invalidateOnRefresh: true
+              })
+            );
+          }
+
+          if (openingSetup) {
+            gsap.set(openingSetup, { y: 24, autoAlpha: 0.001 });
+
+            const openingSetupTimeline = gsap.timeline({ paused: true });
+            animations.push(openingSetupTimeline);
+
+            openingSetupTimeline.fromTo(
+              openingSetup,
+              { y: 24, autoAlpha: 0.001 },
               {
                 y: 0,
-                scale: 1,
                 autoAlpha: 1,
-                duration: 0.82,
+                duration: 0.78,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              0.18
+              0
             );
 
-          triggers.push(
-            ScrollTrigger.create({
-              trigger: openingSection,
-              start: "top top",
-              end: "+=900",
-              animation: openingScrollTimeline,
-              pin: true,
-              pinSpacing: true,
-              scrub: 1.05,
-              invalidateOnRefresh: true
-            })
-          );
+            triggers.push(
+              ScrollTrigger.create({
+                trigger: openingOutcome,
+                start: "top 38%",
+                end: "top 18%",
+                animation: openingSetupTimeline,
+                scrub: 0.8,
+                invalidateOnRefresh: true
+              })
+            );
+          }
         }
 
         homepageSections.forEach((section) => {
+          if (section === openingSection) return;
+
           const labelTargets = gsap.utils.toArray<HTMLElement>(
             section.querySelectorAll("[data-motion='label'], .eyebrow, .opening-argument-qualifier, .home-cta-brand")
           );
