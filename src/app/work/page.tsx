@@ -12,7 +12,7 @@ export default function WorkPage() {
     <>
       <PageReveals />
       <div className="home-4b studio-page">
-        <section className="studio-page-hero">
+        <section className="studio-page-hero studio-products-hero">
           <div className="editorial-container studio-page-frame">
             <div>
               <h1 className="studio-page-title" data-split>

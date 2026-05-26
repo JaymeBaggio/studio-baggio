@@ -2257,6 +2257,11 @@ textarea {
   padding-block: clamp(112px, 15vh, 152px) var(--sb-section-y);
 }
 
+.home-4b.studio-page .studio-products-hero {
+  min-height: clamp(320px, 46svh, 440px);
+  padding-block: clamp(104px, 12vh, 128px) clamp(58px, 7vh, 78px);
+}
+
 .home-4b .studio-page-frame,
 .home-4b .studio-page-stack {
   display: grid;
