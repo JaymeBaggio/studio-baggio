@@ -237,13 +237,13 @@ export function PageReveals() {
             openingStoryTimeline.to(
               openingTop,
               {
-                yPercent: -10,
-                autoAlpha: 0.18,
-                duration: 0.82,
+                yPercent: -4,
+                autoAlpha: 0.32,
+                duration: 0.72,
                 ease: "power2.out",
                 overwrite: "auto"
               },
-              1.52
+              1.42
             );
 
             openingStoryTimeline.fromTo(
@@ -252,11 +252,11 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.82,
+                duration: 0.78,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              1.84
+              1.72
             );
           }
 
@@ -267,12 +267,12 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.86,
-                stagger: 0.2,
+                duration: 0.78,
+                stagger: 0.16,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              2.45
+              2.22
             );
           }
 
@@ -283,21 +283,21 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.92,
+                duration: 0.84,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              openingOutcomeSupport.length ? 3.35 : 2.55
+              openingOutcomeSupport.length ? 3 : 2.38
             );
           }
 
-          openingStoryTimeline.to({}, { duration: 1.25 });
+          openingStoryTimeline.to({}, { duration: 2.1 });
 
           triggers.push(
             ScrollTrigger.create({
               trigger: openingSection,
               start: pinOpeningSequence ? "top top+=64" : "top 72%",
-              end: pinOpeningSequence ? "+=220%" : "bottom 18%",
+              end: pinOpeningSequence ? "+=285%" : "bottom 18%",
               animation: openingStoryTimeline,
               scrub: pinOpeningSequence ? 1.05 : 0.9,
               pin: pinOpeningSequence,
