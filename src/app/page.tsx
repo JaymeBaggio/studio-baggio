@@ -12,9 +12,20 @@ export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/"
 export default function HomePage() {
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
-  const [problemBeforeEmphasis, problemAfterEmphasis = ""] = home.problem.body.split(home.problem.emphasis);
-  const problemLead = problemBeforeEmphasis.trim();
-  const problemTail = problemAfterEmphasis.trim();
+  const problemStats = [
+    {
+      value: "16%",
+      label: "of UK businesses use AI."
+    },
+    {
+      value: "77%",
+      label: "of AI users report no revenue change."
+    },
+    {
+      value: "12%",
+      label: "of AI users report a revenue increase."
+    }
+  ];
   const heroPromiseLines = [
     hero.promiseTitle,
     ...hero.promise.replace(" TO BUILD", " TO\nBUILD").split("\n")
@@ -87,43 +98,34 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="ai-gap" className="problem-clarifier-section problem-clarifier-opening">
+        <section id="ai-gap" className="problem-clarifier-section">
           <div className="editorial-container problem-clarifier-frame">
             <div className="problem-clarifier-copy">
-              <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
-              <h2 className="problem-clarifier-title" data-split>
-                {home.problem.title}
-              </h2>
-              <p className="problem-lead" data-reveal>
-                {problemLead}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="problem-clarifier-section problem-clarifier-evidence">
-          <div className="editorial-container problem-clarifier-frame">
-            <div className="problem-clarifier-copy">
-              <p className="problem-stat" data-reveal data-motion="emphasis">
-                {home.problem.emphasis}
-              </p>
-              <p className="problem-tail" data-reveal data-motion="evidence">
-                {problemTail}
-              </p>
-              <p className="problem-source" data-reveal data-motion="source">
-                {home.problem.source}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="problem-clarifier-section problem-clarifier-takeaway">
-          <div className="editorial-container problem-clarifier-frame">
-            <div className="problem-clarifier-copy">
-              <div className="section-rule" data-rule aria-hidden="true" />
-              <p className="problem-strong" data-reveal data-motion="close">
-                {home.problem.close}
-              </p>
+              <div className="problem-clarifier-opening">
+                <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
+                <h2 className="problem-clarifier-title" data-split>
+                  {home.problem.title}
+                </h2>
+              </div>
+              <div className="problem-clarifier-evidence">
+                <div className="problem-stat-grid" data-reveal data-motion="evidence">
+                  {problemStats.map((stat) => (
+                    <div className="problem-stat-card" key={stat.value}>
+                      <p className="problem-stat-value">{stat.value}</p>
+                      <p className="problem-stat-label">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="problem-source" data-reveal data-motion="source">
+                  {home.problem.source}
+                </p>
+              </div>
+              <div className="problem-clarifier-takeaway">
+                <div className="section-rule" data-rule aria-hidden="true" />
+                <p className="problem-strong" data-reveal data-motion="close">
+                  {home.problem.close}
+                </p>
+              </div>
             </div>
           </div>
         </section>

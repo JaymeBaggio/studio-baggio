@@ -166,6 +166,65 @@ export function PageReveals() {
           }, 0.64);
         }
 
+        const openingSection = document.querySelector<HTMLElement>(".opening-argument-section");
+        const openingTop = openingSection?.querySelector<HTMLElement>(".opening-argument-top");
+        const openingOutcome = openingSection?.querySelector<HTMLElement>(".opening-outcome-block");
+
+        if (
+          openingSection &&
+          openingTop &&
+          openingOutcome &&
+          window.matchMedia("(min-width: 1024px)").matches
+        ) {
+          gsap.set(openingOutcome, {
+            y: 44,
+            scale: 0.965,
+            autoAlpha: 0.001,
+            transformOrigin: "center top"
+          });
+
+          const openingScrollTimeline = gsap.timeline({ paused: true });
+          animations.push(openingScrollTimeline);
+
+          openingScrollTimeline
+            .to(
+              openingTop,
+              {
+                y: -34,
+                autoAlpha: 0.08,
+                duration: 0.74,
+                ease: "power2.out",
+                overwrite: "auto"
+              },
+              0
+            )
+            .to(
+              openingOutcome,
+              {
+                y: 0,
+                scale: 1,
+                autoAlpha: 1,
+                duration: 0.82,
+                ease: "power3.out",
+                overwrite: "auto"
+              },
+              0.18
+            );
+
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: openingSection,
+              start: "top top",
+              end: "+=900",
+              animation: openingScrollTimeline,
+              pin: true,
+              pinSpacing: true,
+              scrub: 1.05,
+              invalidateOnRefresh: true
+            })
+          );
+        }
+
         homepageSections.forEach((section) => {
           const labelTargets = gsap.utils.toArray<HTMLElement>(
             section.querySelectorAll("[data-motion='label'], .eyebrow, .opening-argument-qualifier, .home-cta-brand")

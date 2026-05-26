@@ -1492,17 +1492,17 @@ textarea {
   --sb-frame: 1280px;
   --sb-reading: 940px;
   --sb-wide: 1120px;
-  --sb-section-y: clamp(62px, 7.5vh, 78px);
+  --sb-section-y: clamp(84px, 11vh, 118px);
   --sb-label-size: 12px;
   --sb-label-line: 16px;
   --sb-label-tracking: 0.26em;
-  --sb-title-size: clamp(38px, 3.9vw, 56px);
-  --sb-title-line: 1.07;
-  --sb-lead-size: clamp(23px, 2.35vw, 34px);
+  --sb-title-size: clamp(42px, 4.35vw, 66px);
+  --sb-title-line: 1.04;
+  --sb-lead-size: clamp(26px, 2.65vw, 40px);
   --sb-lead-line: 1.14;
   --sb-body-size: 16px;
   --sb-body-line: 1.46;
-  --sb-row-size: 18px;
+  --sb-row-size: 20px;
   --sb-row-line: 1.35;
   --sb-small-size: 15px;
   --sb-small-line: 1.45;
@@ -1516,7 +1516,7 @@ textarea {
 }
 
 .home-4b > section {
-  min-height: 100svh;
+  min-height: auto;
   display: flex;
   align-items: center;
   padding-block: var(--sb-section-y);
@@ -1540,7 +1540,6 @@ textarea {
 
 .home-4b .opening-argument-headline,
 .home-4b .problem-clarifier-title,
-.home-4b .problem-stat,
 .home-4b .commercial-sprint-title,
 .home-4b .working-promise-title,
 .home-4b .proof-section-title,
@@ -1600,75 +1599,99 @@ textarea {
 
 .home-4b .opening-argument-section {
   background: var(--sb-paper);
+  min-height: calc(100svh - 4rem);
 }
 
 .home-4b .opening-argument-grid {
-  display: block;
+  min-height: min(760px, calc(100svh - 4rem));
+  display: grid;
+  align-content: center;
+  gap: clamp(72px, 11vh, 128px);
 }
 
 .home-4b .opening-argument-top {
-  max-width: var(--sb-reading);
-  margin-inline: 0;
-  text-align: left;
+  max-width: 1180px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.home-4b .opening-argument-headline {
+  order: 1;
+  max-width: 1180px;
+  margin-inline: auto;
+  font-size: clamp(44px, 4.7vw, 76px);
+  line-height: 1.04;
 }
 
 .home-4b .opening-argument-qualifier {
-  max-width: 780px;
-  margin-bottom: 22px;
+  order: 2;
+  max-width: none;
+  margin: clamp(22px, 3vh, 34px) 0 0;
   text-transform: uppercase;
   color: var(--sb-muted);
+  font-size: clamp(18px, 1.55vw, 30px);
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  font-weight: 700;
 }
 
 .home-4b .opening-outcome-block {
-  max-width: var(--sb-wide);
-  margin-top: clamp(62px, 9vh, 92px);
-  margin-inline: 0;
-  padding-top: 36px;
-  border-top: 1px solid var(--sb-rule);
-  text-align: left;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-top: 0;
+  border-top: 0;
+  text-align: center;
 }
 
 .home-4b .opening-outcome-setup {
-  max-width: 860px;
+  max-width: 1260px;
+  margin-inline: auto;
+  font-size: clamp(30px, 3.05vw, 54px);
+  line-height: 1.12;
 }
 
 .home-4b .opening-outcome-stack {
   width: 100%;
-  margin-top: 32px;
+  margin-top: clamp(28px, 4vh, 46px);
   display: grid;
-  gap: 12px;
+  justify-items: center;
+  gap: clamp(16px, 2.3vh, 28px);
 }
 
 .home-4b .opening-outcome-muted-group {
   display: grid;
-  gap: 12px;
+  justify-items: center;
+  gap: clamp(16px, 2.3vh, 28px);
 }
 
 .home-4b .opening-outcome-stack p {
+  max-width: 920px;
+  text-align: center;
   text-transform: uppercase;
   color: #9a9a9a;
+  font-size: clamp(24px, 2.15vw, 36px);
+  line-height: 1.08;
+  font-weight: 700;
 }
 
 .home-4b .opening-outcome-stack p.is-strong {
-  color: var(--sb-ink);
+  max-width: 1200px;
+  color: var(--sb-accent-blue);
+  font-size: clamp(34px, 3.45vw, 58px);
+  line-height: 1;
 }
 
 .home-4b .problem-clarifier-section {
   background: var(--sb-soft);
 }
 
-.home-4b .problem-clarifier-opening,
-.home-4b .problem-clarifier-evidence,
-.home-4b .problem-clarifier-takeaway {
-  min-height: 100svh;
-}
-
 .home-4b .problem-clarifier-copy {
   width: 100%;
-  max-width: var(--sb-reading);
+  max-width: var(--sb-frame);
   display: block;
   grid-template-columns: none;
-  gap: 0;
   text-align: left;
 }
 
@@ -1678,39 +1701,71 @@ textarea {
 }
 
 .home-4b .problem-clarifier-title {
-  max-width: 880px;
+  max-width: 780px;
   margin-top: 28px;
 }
 
-.home-4b .problem-lead {
-  max-width: 760px;
-  margin-top: 38px;
-  color: var(--sb-body);
+.home-4b .problem-clarifier-evidence {
+  width: 100%;
+  margin-top: clamp(48px, 6.5vw, 82px);
+  display: block;
 }
 
-.home-4b .problem-stat {
-  max-width: 980px;
+.home-4b .problem-stat-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--sb-rule);
+}
+
+.home-4b .problem-stat-card {
+  min-width: 0;
+  min-height: clamp(220px, 18vw, 290px);
+  padding: clamp(32px, 4.4vw, 54px) clamp(30px, 4.4vw, 54px) clamp(28px, 3.2vw, 42px) 0;
+}
+
+.home-4b .problem-stat-card + .problem-stat-card {
+  border-left: 1px solid var(--sb-rule);
+  padding-left: clamp(30px, 4.4vw, 54px);
+}
+
+.home-4b .problem-stat-value {
+  margin: 0;
+  font-size: clamp(72px, 7vw, 116px);
+  line-height: 0.92;
+  letter-spacing: 0;
+  font-weight: 400;
   color: var(--sb-ink);
 }
 
-.home-4b .problem-tail {
-  max-width: 620px;
-  margin-top: 28px;
+.home-4b .problem-stat-label {
+  max-width: 310px;
+  margin: clamp(22px, 2.2vw, 30px) 0 0;
+  font-size: var(--sb-body-size);
+  line-height: var(--sb-body-line);
+  color: var(--sb-body);
+}
+
+.home-4b .problem-clarifier-takeaway {
+  max-width: 760px;
+  margin-top: clamp(48px, 6vw, 74px);
+}
+
+.home-4b .problem-clarifier-section .section-rule {
+  display: none;
+}
+
+.home-4b .problem-strong {
+  max-width: 760px;
+  font-size: clamp(19px, 1.35vw, 24px);
+  line-height: 1.45;
+  font-weight: 400;
   color: var(--sb-body);
 }
 
 .home-4b .problem-source {
-  margin-top: 24px;
+  margin-top: 22px;
   color: var(--sb-muted);
-}
-
-.home-4b .problem-clarifier-section .section-rule {
-  max-width: 1040px;
-}
-
-.home-4b .problem-strong {
-  max-width: 1040px;
-  margin-top: 32px;
 }
 
 .home-4b .value-map-section,
@@ -1736,7 +1791,7 @@ textarea {
 
 .home-4b .value-map-rows {
   width: min(100%, var(--sb-wide));
-  margin-top: 42px;
+  margin-top: 34px;
   border-top: 1px solid var(--sb-dark-rule);
 }
 
@@ -1768,8 +1823,8 @@ textarea {
 }
 
 .home-4b .value-map-row-button {
-  min-height: 76px;
-  padding-block: 20px;
+  min-height: 84px;
+  padding-block: 22px;
   border: 0;
   background: transparent;
   text-align: left;
@@ -1796,8 +1851,8 @@ textarea {
 
 .home-4b .value-map-summary {
   max-width: 820px;
-  font-size: var(--sb-body-size);
-  line-height: var(--sb-body-line);
+  font-size: clamp(17px, 1.25vw, 20px);
+  line-height: 1.36;
   font-weight: 700;
   color: var(--sb-dark-body);
   transition: color 220ms cubic-bezier(0.23, 1, 0.32, 1);
@@ -1816,7 +1871,7 @@ textarea {
 }
 
 .home-4b .value-map-detail-inner {
-  padding-bottom: 24px;
+  padding-bottom: 30px;
 }
 
 .home-4b .value-map-detail p {
@@ -2043,9 +2098,43 @@ textarea {
     align-items: flex-start;
   }
 
+  .home-4b .opening-argument-section {
+    min-height: auto;
+  }
+
+  .home-4b .opening-argument-grid {
+    min-height: auto;
+    gap: 54px;
+  }
+
+  .home-4b .opening-argument-headline,
+  .home-4b .opening-outcome-setup,
+  .home-4b .opening-outcome-stack p {
+    text-align: center;
+  }
+
+  .home-4b .opening-argument-headline {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+
+  .home-4b .opening-argument-qualifier {
+    font-size: clamp(15px, 4.6vw, 20px);
+  }
+
   .home-4b .opening-outcome-block {
-    margin-top: 54px;
-    padding-top: 30px;
+    padding-top: 0;
+  }
+
+  .home-4b .opening-outcome-setup {
+    font-size: clamp(28px, 8.8vw, 42px);
+  }
+
+  .home-4b .opening-outcome-stack p {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+
+  .home-4b .opening-outcome-stack p.is-strong {
+    font-size: clamp(32px, 10vw, 48px);
   }
 
   .home-4b .problem-clarifier-opening,
@@ -2054,16 +2143,28 @@ textarea {
     min-height: auto;
   }
 
-  .home-4b .problem-lead {
-    margin-top: 28px;
+  .home-4b .problem-stat-grid {
+    grid-template-columns: 1fr;
   }
 
-  .home-4b .problem-tail {
-    margin-top: 22px;
+  .home-4b .problem-stat-card {
+    min-height: auto;
+    padding: 28px 0;
   }
 
-  .home-4b .problem-source {
-    margin-top: 20px;
+  .home-4b .problem-clarifier-evidence,
+  .home-4b .problem-clarifier-takeaway {
+    margin-top: 40px;
+  }
+
+  .home-4b .problem-stat-card + .problem-stat-card {
+    border-top: 1px solid var(--sb-rule);
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .home-4b .problem-stat-value {
+    font-size: clamp(64px, 18vw, 86px);
   }
 
   .home-4b .problem-clarifier-section .section-rule {

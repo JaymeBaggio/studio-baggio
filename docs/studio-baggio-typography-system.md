@@ -127,6 +127,8 @@ Use for:
 - Fit title.
 - CTA title if present.
 
+Section 2 is the deliberate homepage exception: it may centre-align the argument and outcome stack because it is the page's core proposition, not a standard content section.
+
 CSS selectors:
 
 ```css
@@ -244,7 +246,7 @@ The hero promise is allowed to be larger than labels because it functions as the
 
 Accent rule:
 - Use the blue dot as a restrained brand signal.
-- Do not turn whole lines of copy blue.
+- The only full line allowed to use blue is Section 2's final outcome: `Harder to compete with.`
 - Do not use blue for ordinary emphasis, body text, section titles or decorative rules.
 
 ---

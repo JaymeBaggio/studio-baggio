@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function ValueMap() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useGSAP(
     () => {
@@ -82,7 +82,7 @@ export function ValueMap() {
                 className="value-map-row-button"
                 aria-expanded={activeIndex === index}
                 aria-controls={`value-area-${index}`}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
                 onFocus={() => setActiveIndex(index)}
               >
                 <span className="value-map-number">{String(index + 1).padStart(2, "0")}</span>
