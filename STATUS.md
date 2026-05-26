@@ -49,6 +49,7 @@ Implemented:
 - Updated `docs/studio-baggio-typography-system.md` so the written scale now matches the live CSS roles, including Section 2 proposition exceptions and Gap evidence roles.
 - Locked `docs/studio-baggio-design-system.md` as the current Studio Baggio site-wide UI system for future page rollouts, covering design position, non-negotiables, colour/layout tokens, section patterns, homepage exceptions, motion rules, QA checks and recommended page mappings.
 - Added `docs/studio-baggio-pages-rollout-handover.md` so another agent can tackle the remaining pages from the approved homepage system without reworking the homepage or drifting into older design directions.
+- Updated only the visible homepage Gap stat cards to the Deloitte 2026 / UK Government 2026 figures: `66%`, `20%` and `12%`; the Gap title and closing takeaway were left unchanged.
 
 Verified:
 

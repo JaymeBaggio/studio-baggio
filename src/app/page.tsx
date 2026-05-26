@@ -14,22 +14,22 @@ export default function HomePage() {
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
   const problemStats = [
     {
-      value: "16%",
+      value: "66%",
       label:
-        "Only 16% of businesses report meaningful revenue impact from their AI investments despite widespread adoption across industries.",
-      source: "Source: McKinsey Global AI Survey, 2024"
+        "of organisations have achieved productivity or efficiency gains from AI.",
+      source: "Source: Deloitte State of AI report, 2026"
     },
     {
-      value: "77%",
+      value: "20%",
       label:
-        "of organisations have adopted AI in at least one business function - yet most report only marginal efficiency gains, not commercial outcomes.",
-      source: "Source: Gartner AI Adoption Report, 2024"
+        "report increased revenue.",
+      source: "Source: Deloitte State of AI report, 2026"
     },
     {
       value: "12%",
       label:
-        "of professional service firms have an AI-enabled content or lead generation system connected to their actual sales pipeline.",
-      source: "Source: HubSpot State of AI, 2024"
+        "of UK businesses using AI report a revenue increase.",
+      source: "Source: UK Government AI Adoption Research, 2026"
     }
   ];
   const heroPromiseLines = [
