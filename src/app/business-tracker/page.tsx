@@ -10,88 +10,97 @@ export default function BusinessTrackerPage() {
   return (
     <>
       <PageReveals />
-      <section className="section-pad pt-32">
-        <div className="editorial-container">
-          <p className="eyebrow">{businessTracker.pageKicker}</p>
-          <h1 className="display-xl mt-6 max-w-7xl" data-split>
-            {businessTracker.coreLine}
-          </h1>
-          <p className="body-large mt-10 max-w-3xl text-ink/72" data-reveal>
-            {businessTracker.explanation}
-          </p>
-        </div>
-      </section>
-
-      <section className="section-pad border-y border-ink/12">
-        <div className="editorial-container grid gap-10 lg:grid-cols-[0.42fr_1fr]">
-          <p className="eyebrow">Standalone system page</p>
-          <div className="space-y-7">
-            {businessTracker.pageSummary.map((paragraph) => (
-              <p key={paragraph} className="body-large text-ink/72" data-reveal>
-                {paragraph}
+      <div className="home-4b studio-page">
+        <section className="studio-page-hero">
+          <div className="editorial-container studio-page-frame">
+            <div>
+              <p className="eyebrow" data-reveal data-motion="label">{businessTracker.pageKicker}</p>
+              <h1 className="studio-page-title" data-split>
+                {businessTracker.coreLine}
+              </h1>
+              <p className="studio-page-body" data-reveal>
+                {businessTracker.explanation}
               </p>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section-pad border-y border-ink/12">
-        <div className="editorial-container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <h2 className="display-lg" data-split>
-            From anonymous activity to qualified follow-up.
-          </h2>
-          <div className="space-y-6 body-large text-ink/72">
-            <p data-reveal>{businessTracker.captures}</p>
-            <p data-reveal>{businessTracker.marketSpecificContext}</p>
-            <p data-reveal>{businessTracker.commercialPoint}</p>
-            <p className="text-2xl text-ink" data-reveal>{businessTracker.strap}</p>
+        <section>
+          <div className="editorial-container studio-page-stack">
+            <p className="eyebrow" data-reveal data-motion="label">Standalone system page</p>
+            <div className="studio-page-copy" data-reveal>
+              {businessTracker.pageSummary.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section-pad">
-        <div className="editorial-container">
-          <p className="eyebrow">Operating layers</p>
-          <div className="mt-10 border-t border-ink/15">
-            {businessTracker.modules.map(([number, title, body]) => (
-              <div key={title} className="grid gap-5 border-b border-ink/12 py-8 md:grid-cols-[80px_0.7fr_1fr]" data-reveal>
-                <span className="text-xs uppercase tracking-[0.08em] text-ink/45">{number}</span>
-                <h2 className="text-4xl leading-none">{title}</h2>
-                <p className="body-large text-ink/72">{body}</p>
+        <section>
+          <div className="editorial-container studio-page-stack">
+            <div>
+              <h2 className="studio-page-title" data-split>
+                From anonymous activity to qualified follow-up.
+              </h2>
+              <div className="studio-page-copy">
+                <p data-reveal>{businessTracker.captures}</p>
+                <p data-reveal>{businessTracker.marketSpecificContext}</p>
+                <p data-reveal>{businessTracker.commercialPoint}</p>
               </div>
-            ))}
+            </div>
+            <p className="studio-page-lead" data-reveal data-motion="emphasis">{businessTracker.strap}</p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section-pad bg-charcoal text-paper">
-        <div className="editorial-container">
-          <p className="eyebrow text-paper/55">Channel logic</p>
-          <h2 className="display-lg mt-5 max-w-6xl" data-split>
-            The Tracker connects the channels that usually sit apart.
-          </h2>
-          <div className="mt-14 grid gap-8 md:grid-cols-2">
-            {businessTracker.channels.map((channel) => (
-              <div key={channel.title} className="border-t border-paper/20 pt-5" data-reveal>
-                <h3 className="text-3xl leading-none">{channel.title}</h3>
-                <p className="mt-5 leading-relaxed text-paper/70">{channel.body}</p>
-              </div>
-            ))}
+        <section className="studio-page-dark" data-header-theme="dark">
+          <div className="editorial-container studio-page-stack">
+            <p className="eyebrow" data-reveal data-motion="label">Operating layers</p>
+            <div className="studio-page-rows is-full">
+              {businessTracker.modules.map(([number, title, body]) => (
+                <article key={title} className="studio-page-row" data-reveal>
+                  <span className="studio-page-row-number">{number}</span>
+                  <h2 className="studio-page-row-title">{title}</h2>
+                  <p className="studio-page-row-copy">{body}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section-pad">
-        <div className="editorial-container grid gap-8 md:grid-cols-[1fr_0.45fr] md:items-end">
-          <div>
-            <p className="eyebrow">Outcome</p>
-            <h2 className="display-lg mt-5" data-split>
+        <section>
+          <div className="editorial-container studio-page-stack">
+            <div>
+              <p className="eyebrow" data-reveal data-motion="label">Channel logic</p>
+              <h2 className="studio-page-title" data-split>
+                The Tracker connects the channels that usually sit apart.
+              </h2>
+            </div>
+            <div className="studio-page-rows is-full">
+              {businessTracker.channels.map((channel, index) => (
+                <article key={channel.title} className="studio-page-row" data-reveal>
+                  <span className="studio-page-row-number">0{index + 1}</span>
+                  <h3 className="studio-page-row-title">{channel.title}</h3>
+                  <p className="studio-page-row-copy">{channel.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="home-cta-section studio-page-cta" data-header-theme="dark">
+          <div className="editorial-container home-cta-frame">
+            <p className="eyebrow home-cta-eyebrow" data-reveal data-motion="label">Outcome</p>
+            <h2 className="home-cta-title" data-split>
               {businessTracker.outcome}
             </h2>
+            <div data-cta-button>
+              <ButtonLink href={primaryCta.href}>
+                Enquire Now
+              </ButtonLink>
+            </div>
           </div>
-          <ButtonLink href={primaryCta.href}>Enquire Now</ButtonLink>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }

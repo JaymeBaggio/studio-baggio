@@ -10,6 +10,46 @@ Core message:
 
 `Turn AI into a commercial advantage.`
 
+## 26 May Other Pages Design System Rollout
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Rolled the approved homepage `.home-4b` design system across:
+  - `/ai-advantage`
+  - `/work`
+  - `/business-tracker`
+  - `/calm-authority`
+  - `/about`
+  - `/contact`
+  - `/privacy`
+- Did not change the homepage hero/header direction or homepage implementation.
+- Did not edit `src/content/site.ts` or `src/content/work.ts`; page copy remains sourced from the existing content layer and route literals.
+
+Implemented:
+
+- Added a shared `studio-page` extension to `src/app/globals.css` using the locked `.home-4b` tokens, typography roles, spacing, section frames, dark sections, ruled rows, proof rows, contact form framing and CTA treatment.
+- Rebuilt AI Advantage as an editorial service page with a dark ruled value-area index and light prioritisation / offer / example-system rows.
+- Rebuilt Work as a proof-led ruled case-study index instead of an interactive portfolio card layout.
+- Rebuilt Business Tracker as a product system page with an editorial intro, dark operating-layer index, channel rows and outcome CTA.
+- Rebuilt Calm Authority as a Studio Baggio product page using only existing Calm Authority copy and the real Calm Authority proof image asset.
+- Rebuilt About, Contact and Privacy into the same editorial page rhythm; Contact now separates the intro frame from the form frame so the first read stays complete on desktop and mobile.
+- Kept motion on the existing GSAP `PageReveals` path for semantic section/title/row reveal; no new scroll-storytelling layer added.
+
+Verified:
+
+- `npm run typecheck`, `npm run lint` and `npm run build` pass.
+- Codex Browser QA at `1440x900` and `390x844` across all seven routes confirms:
+  - horizontal overflow offenders: `0`
+  - visible Next error overlay: `false`
+  - visible font family: Aileron only
+  - visible font weights: `400` and `700` only
+- Browser screenshots saved in `output/playwright/`.
+- The Codex in-app browser blocked loopback URLs with `ERR_BLOCKED_BY_CLIENT`, so QA used the same local dev server via the Mac LAN address `http://172.27.160.240:3005`.
+
 ## 26 May Homepage Option A Editorial Calm
 
 Branch:

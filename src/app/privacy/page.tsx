@@ -9,24 +9,31 @@ export default function PrivacyPage() {
   return (
     <>
       <PageReveals />
-      <section className="section-pad pt-32">
-        <div className="editorial-container">
-          <p className="eyebrow">{privacyPage.eyebrow}</p>
-          <h1 className="display-xl mt-6 max-w-6xl" data-split>
-            {privacyPage.title}
-          </h1>
-        </div>
-      </section>
-      <section className="section-pad border-t border-ink/12">
-        <div className="editorial-container border-t border-ink/15">
-          {privacyPage.items.map((item) => (
-            <div key={item.title} className="grid gap-5 border-b border-ink/12 py-7 md:grid-cols-[0.4fr_1fr]" data-reveal>
-              <h2 className="text-3xl leading-none">{item.title}</h2>
-              <p className="body-large text-ink/72">{item.body}</p>
+      <div className="home-4b studio-page">
+        <section className="studio-page-hero">
+          <div className="editorial-container studio-page-frame">
+            <div>
+              <p className="eyebrow" data-reveal data-motion="label">{privacyPage.eyebrow}</p>
+              <h1 className="studio-page-title" data-split>
+                {privacyPage.title}
+              </h1>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+        <section>
+          <div className="editorial-container">
+            <div className="studio-page-rows is-full">
+              {privacyPage.items.map((item, index) => (
+                <article key={item.title} className="studio-page-row" data-reveal>
+                  <span className="studio-page-row-number">0{index + 1}</span>
+                  <h2 className="studio-page-row-title">{item.title}</h2>
+                  <p className="studio-page-row-copy">{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 }
