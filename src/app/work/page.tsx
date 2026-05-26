@@ -15,13 +15,9 @@ export default function WorkPage() {
         <section className="studio-page-hero">
           <div className="editorial-container studio-page-frame">
             <div>
-              <p className="eyebrow" data-reveal data-motion="label">Selected work</p>
               <h1 className="studio-page-title" data-split>
-                Live proof across AI systems, products and commercial intelligence.
+                Live work.
               </h1>
-              <p className="studio-page-body" data-reveal>
-                Studio Baggio work is not a generic portfolio grid. Each project is proof of a repeatable pattern: find the market gap, build the system, make expertise visible and connect it to commercial growth.
-              </p>
             </div>
           </div>
         </section>

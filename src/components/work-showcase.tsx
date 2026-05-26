@@ -22,7 +22,6 @@ export function WorkShowcase() {
             <ProofBlock label="Commercial problem" text={item.problem} />
             <ProofBlock label="System built" text={item.built} />
             <ProofBlock label="Why it matters" text={item.whyItMatters} />
-            <ProofBlock label="What it proves" text={item.proves} />
             <div className="studio-row-actions">
               {item.href ? <WorkLink href={item.href}>Read more</WorkLink> : null}
               {item.external ? (
