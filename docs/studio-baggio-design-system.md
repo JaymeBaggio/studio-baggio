@@ -377,7 +377,6 @@ Use motion to enforce semantic hierarchy.
 Use GSAP for:
 
 - scroll-led reveals
-- homepage section holds / pins where the section needs to be read as a complete frame
 - masked title-line reveals
 - rule draws
 - section-level sequencing
@@ -390,7 +389,6 @@ Rules:
 - Do not animate everything at once.
 - Do not reveal important lines before the user reaches them.
 - Do not use jittery strokes, scale-from-zero stats, or decorative motion.
-- Stat count-ups may be used only as evidence emphasis, with a short ease-out count and final exact value.
 - Reduced-motion users must still see all content clearly.
 
 ### Framer Motion

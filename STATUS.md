@@ -94,10 +94,7 @@ Implemented:
 - Corrected the latest Gap evidence layout to match Jayme's supplied visual reference: white frame, slimmer 3-column stat row, narrower caption measures and per-stat sources.
 - Reintroduced Section 2 as a controlled GSAP reading sequence: the thesis reads first, the grey qualifier follows, the Studio Baggio setup appears on the next scroll beat, the outcome stack resolves last, and the blue `Harder to compete with.` line gets a held final beat.
 - Extended the Section 2 pin duration and moved the outcome reveal earlier so `Harder to compete with.` resolves in the pinned frame before the Gap section enters.
-- Tightened the Section 2 internal timing again after live review so the setup, muted outcomes and blue final line complete earlier inside the pinned frame and hold before release.
-- Added homepage-only sticky holds to the remaining `.home-4b` sections on desktop so each section can land as a complete reading frame without changing the other pages yet.
-- Added restrained GSAP count-up animation for the three Gap percentage values only; reduced-motion users still receive the final values immediately.
-- Corrected the sticky hold behaviour so desktop pinned homepage sections stay visible immediately instead of being hidden by the old scrub reveal path, then ordered the ScrollTrigger refresh sequence so stacked pins calculate after the opening pin and do not collide during fast scroll.
+- Rolled back the broken all-sections sticky experiment to the last working model from commit `09bd6f8`: Section 2 is the only pinned scroll-story section, and the remaining homepage sections use the normal semantic reveal path.
 - Audited the homepage typography system using the `ui-design-system` and `ui-audit` workflow, then converted the live one-off Section 2, Gap stat/source and value-summary styles into named CSS tokens.
 - Updated `docs/studio-baggio-typography-system.md` so the written scale now matches the live CSS roles, including Section 2 proposition exceptions and Gap evidence roles.
 - Locked `docs/studio-baggio-design-system.md` as the current Studio Baggio site-wide UI system for future page rollouts, covering design position, non-negotiables, colour/layout tokens, section patterns, homepage exceptions, motion rules, QA checks and recommended page mappings.

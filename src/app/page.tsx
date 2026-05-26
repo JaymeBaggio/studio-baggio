@@ -118,9 +118,7 @@ export default function HomePage() {
                 <div className="problem-stat-grid" data-reveal data-motion="evidence">
                   {problemStats.map((stat) => (
                     <div className="problem-stat-card" key={stat.value}>
-                      <p className="problem-stat-value" data-stat-value={stat.value.replace("%", "")}>
-                        {stat.value}
-                      </p>
+                      <p className="problem-stat-value">{stat.value}</p>
                       <p className="problem-stat-label">{stat.label}</p>
                       <p className="problem-stat-source">{stat.source}</p>
                     </div>

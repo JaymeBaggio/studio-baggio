@@ -116,8 +116,6 @@ export function PageReveals() {
         const ctaButtons = gsap.utils.toArray<HTMLElement>("[data-cta-button]");
         const ruleElements = gsap.utils.toArray<HTMLElement>("[data-rule]");
         const homepageSections = gsap.utils.toArray<HTMLElement>(".home-4b > section");
-        const homepageRoot = document.querySelector<HTMLElement>(".home-4b:not(.studio-page)");
-        const pinHomepageSections = Boolean(homepageRoot) && window.matchMedia("(min-width: 1024px)").matches;
 
         gsap.set([...revealElements, ...splitElements, ...ctaButtons], { autoAlpha: 1, y: 0, yPercent: 0 });
         gsap.set(ruleElements, { scaleX: 1, transformOrigin: "left center" });
@@ -241,11 +239,11 @@ export function PageReveals() {
               {
                 yPercent: -4,
                 autoAlpha: 0.32,
-                duration: 0.64,
+                duration: 0.72,
                 ease: "power2.out",
                 overwrite: "auto"
               },
-              1.12
+              1.42
             );
 
             openingStoryTimeline.fromTo(
@@ -254,11 +252,11 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.7,
+                duration: 0.78,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              1.38
+              1.72
             );
           }
 
@@ -269,12 +267,12 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.72,
-                stagger: 0.14,
+                duration: 0.78,
+                stagger: 0.16,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              1.88
+              2.22
             );
           }
 
@@ -285,15 +283,15 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.72,
+                duration: 0.84,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              openingOutcomeSupport.length ? 2.52 : 2.02
+              openingOutcomeSupport.length ? 3 : 2.38
             );
           }
 
-          openingStoryTimeline.to({}, { duration: 2.55 });
+          openingStoryTimeline.to({}, { duration: 2.1 });
 
           triggers.push(
             ScrollTrigger.create({
@@ -305,81 +303,13 @@ export function PageReveals() {
               pin: pinOpeningSequence,
               pinSpacing: pinOpeningSequence,
               anticipatePin: pinOpeningSequence ? 1 : 0,
-              invalidateOnRefresh: true,
-              refreshPriority: 1000
+              invalidateOnRefresh: true
             })
           );
         }
 
-        const statElements = gsap.utils.toArray<HTMLElement>("[data-stat-value]");
-        const statGrid = document.querySelector<HTMLElement>(".problem-stat-grid");
-
-        if (statElements.length && statGrid) {
-          const statSection = statGrid.closest<HTMLElement>(".problem-clarifier-section") ?? statGrid;
-          const statTrigger = pinHomepageSections ? statSection : statGrid;
-
-          statElements.forEach((element) => {
-            const target = Number(element.dataset.statValue ?? element.textContent?.replace("%", ""));
-            if (!Number.isFinite(target)) return;
-            element.textContent = "0%";
-          });
-
-          triggers.push(
-            ScrollTrigger.create({
-              trigger: statTrigger,
-              start: pinHomepageSections ? "top top+=64" : "top 68%",
-              once: true,
-              refreshPriority: -100,
-              onEnter: () => {
-                statElements.forEach((element, index) => {
-                  const target = Number(element.dataset.statValue ?? element.textContent?.replace("%", ""));
-                  if (!Number.isFinite(target)) return;
-
-                  const counter = { value: 0 };
-                  const tween = gsap.to(counter, {
-                    value: target,
-                    duration: 0.72,
-                    delay: index * 0.05,
-                    ease: "power2.out",
-                    snap: { value: 1 },
-                    onUpdate: () => {
-                      element.textContent = `${Math.round(counter.value)}%`;
-                    },
-                    onComplete: () => {
-                      element.textContent = `${target}%`;
-                    }
-                  });
-
-                  animations.push(tween);
-                });
-              }
-            })
-          );
-        }
-
-        homepageSections.forEach((section, sectionIndex) => {
+        homepageSections.forEach((section) => {
           if (section === openingSection) return;
-
-          if (pinHomepageSections && homepageRoot?.contains(section)) {
-            triggers.push(
-              ScrollTrigger.create({
-                trigger: section,
-                start: "top top+=64",
-                end: () => {
-                  const viewportHold = Math.max(560, (window.innerHeight - 64) * 0.92);
-                  const contentHold = Math.min(section.scrollHeight * 0.72, (window.innerHeight - 64) * 1.18);
-                  return `+=${Math.round(Math.max(viewportHold, contentHold))}`;
-                },
-                pin: true,
-                pinSpacing: true,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-                refreshPriority: 900 - sectionIndex
-              })
-            );
-
-            return;
-          }
 
           const labelTargets = gsap.utils.toArray<HTMLElement>(
             section.querySelectorAll("[data-motion='label'], .eyebrow, .opening-argument-qualifier, .home-cta-brand")
@@ -591,12 +521,6 @@ export function PageReveals() {
               }
             })
           );
-        });
-
-        requestAnimationFrame(() => {
-          if (!alive) return;
-          ScrollTrigger.sort();
-          ScrollTrigger.refresh();
         });
       }
 

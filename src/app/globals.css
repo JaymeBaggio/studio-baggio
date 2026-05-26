@@ -2239,12 +2239,6 @@ textarea {
   }
 }
 
-@media (min-width: 1024px) {
-  .home-4b:not(.studio-page) > section {
-    min-height: calc(100svh - 4rem);
-  }
-}
-
 /* Studio Baggio remaining-page rollout system.
    Extends the locked .home-4b tokens without adding new colour or type roles. */
 .home-4b.studio-page {
