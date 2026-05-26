@@ -177,91 +177,135 @@ export function PageReveals() {
             : [];
           const openingQualifier = openingSection.querySelector<HTMLElement>(".opening-argument-qualifier");
           const openingSetup = openingSection.querySelector<HTMLElement>(".opening-outcome-setup");
+          const openingOutcomeSupport = gsap.utils.toArray<HTMLElement>(
+            openingSection.querySelectorAll("[data-outcome-support]")
+          );
+          const openingOutcomeEmphasis = openingSection.querySelector<HTMLElement>("[data-outcome-emphasis]");
+          const pinOpeningSequence = window.matchMedia("(min-width: 768px)").matches;
 
-          if (openingHeadlineTargets.length || openingQualifier) {
-            if (openingHeadlineTargets.length) {
-              gsap.set(openingHeadlineTargets, { yPercent: 110, autoAlpha: 0.001 });
-            }
-            if (openingQualifier) {
-              gsap.set(openingQualifier, { y: 14, autoAlpha: 0.001 });
-            }
-
-            const openingTopTimeline = gsap.timeline({ paused: true });
-            animations.push(openingTopTimeline);
-
-            if (openingHeadlineTargets.length) {
-              openingTopTimeline.fromTo(
-                openingHeadlineTargets,
-                { yPercent: 110, autoAlpha: 0.001 },
-                {
-                  yPercent: 0,
-                  autoAlpha: 1,
-                  duration: 0.9,
-                  stagger: 0.08,
-                  ease: "expo.out",
-                  overwrite: "auto"
-                },
-                0
-              );
-            }
-
-            if (openingQualifier) {
-              openingTopTimeline.fromTo(
-                openingQualifier,
-                { y: 14, autoAlpha: 0.001 },
-                {
-                  y: 0,
-                  autoAlpha: 1,
-                  duration: 0.48,
-                  ease: "power3.out",
-                  overwrite: "auto"
-                },
-                openingHeadlineTargets.length ? 0.68 : 0
-              );
-            }
-
-            triggers.push(
-              ScrollTrigger.create({
-                trigger: openingTop,
-                start: "top 80%",
-                end: "bottom 42%",
-                animation: openingTopTimeline,
-                scrub: 0.9,
-                invalidateOnRefresh: true
-              })
-            );
+          if (openingHeadlineTargets.length) {
+            gsap.set(openingHeadlineTargets, { yPercent: 108, autoAlpha: 0.001 });
+          }
+          if (openingQualifier) {
+            gsap.set(openingQualifier, { y: 12, autoAlpha: 0.001 });
+          }
+          if (openingSetup) {
+            gsap.set(openingSetup, { y: 22, autoAlpha: 0.001 });
+          }
+          if (openingOutcomeSupport.length) {
+            gsap.set(openingOutcomeSupport, { y: 18, autoAlpha: 0.001 });
+          }
+          if (openingOutcomeEmphasis) {
+            gsap.set(openingOutcomeEmphasis, { y: 16, autoAlpha: 0.001 });
           }
 
-          if (openingSetup) {
-            gsap.set(openingSetup, { y: 24, autoAlpha: 0.001 });
+          const openingStoryTimeline = gsap.timeline({ paused: true });
+          animations.push(openingStoryTimeline);
 
-            const openingSetupTimeline = gsap.timeline({ paused: true });
-            animations.push(openingSetupTimeline);
-
-            openingSetupTimeline.fromTo(
-              openingSetup,
-              { y: 24, autoAlpha: 0.001 },
+          if (openingHeadlineTargets.length) {
+            openingStoryTimeline.fromTo(
+              openingHeadlineTargets,
+              { yPercent: 108, autoAlpha: 0.001 },
               {
-                y: 0,
+                yPercent: 0,
                 autoAlpha: 1,
-                duration: 0.78,
-                ease: "power3.out",
+                duration: 0.95,
+                stagger: 0.09,
+                ease: "expo.out",
                 overwrite: "auto"
               },
               0
             );
+          }
 
-            triggers.push(
-              ScrollTrigger.create({
-                trigger: openingOutcome,
-                start: "top 38%",
-                end: "top 18%",
-                animation: openingSetupTimeline,
-                scrub: 0.8,
-                invalidateOnRefresh: true
-              })
+          if (openingQualifier) {
+            openingStoryTimeline.fromTo(
+              openingQualifier,
+              { y: 12, autoAlpha: 0.001 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.52,
+                ease: "power3.out",
+                overwrite: "auto"
+              },
+              openingHeadlineTargets.length ? 0.82 : 0
             );
           }
+
+          if (openingSetup) {
+            openingStoryTimeline.to(
+              openingTop,
+              {
+                yPercent: -10,
+                autoAlpha: 0.18,
+                duration: 0.82,
+                ease: "power2.out",
+                overwrite: "auto"
+              },
+              1.52
+            );
+
+            openingStoryTimeline.fromTo(
+              openingSetup,
+              { y: 22, autoAlpha: 0.001 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.82,
+                ease: "power3.out",
+                overwrite: "auto"
+              },
+              1.84
+            );
+          }
+
+          if (openingOutcomeSupport.length) {
+            openingStoryTimeline.fromTo(
+              openingOutcomeSupport,
+              { y: 18, autoAlpha: 0.001 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.86,
+                stagger: 0.2,
+                ease: "power3.out",
+                overwrite: "auto"
+              },
+              2.45
+            );
+          }
+
+          if (openingOutcomeEmphasis) {
+            openingStoryTimeline.fromTo(
+              openingOutcomeEmphasis,
+              { y: 16, autoAlpha: 0.001 },
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.92,
+                ease: "power3.out",
+                overwrite: "auto"
+              },
+              openingOutcomeSupport.length ? 3.35 : 2.55
+            );
+          }
+
+          openingStoryTimeline.to({}, { duration: 1.25 });
+
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: openingSection,
+              start: pinOpeningSequence ? "top top+=64" : "top 72%",
+              end: pinOpeningSequence ? "+=220%" : "bottom 18%",
+              animation: openingStoryTimeline,
+              scrub: pinOpeningSequence ? 1.05 : 0.9,
+              pin: pinOpeningSequence,
+              pinSpacing: pinOpeningSequence,
+              anticipatePin: pinOpeningSequence ? 1 : 0,
+              invalidateOnRefresh: true
+            })
+          );
         }
 
         homepageSections.forEach((section) => {

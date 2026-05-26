@@ -92,13 +92,14 @@ Implemented:
 - Reworked `What We Build` into a restrained expandable index: rows start collapsed with the service headline and one clear summary line visible, then full detail expands on hover, focus or click.
 - Tightened the mobile hero promise under `STUDIO BAGGIO.AI` so the three intended lines no longer create orphaned words on phone widths.
 - Corrected the latest Gap evidence layout to match Jayme's supplied visual reference: white frame, slimmer 3-column stat row, narrower caption measures and per-stat sources.
-- Removed the sticky desktop pin from Section 2 and re-timed the opening motion so the thesis reads first, the grey qualifier follows, the Studio Baggio setup appears on the next scroll beat, and the outcome stack resolves last.
+- Reintroduced Section 2 as a controlled GSAP reading sequence: the thesis reads first, the grey qualifier follows, the Studio Baggio setup appears on the next scroll beat, the outcome stack resolves last, and the blue `Harder to compete with.` line gets a held final beat.
 - Audited the homepage typography system using the `ui-design-system` and `ui-audit` workflow, then converted the live one-off Section 2, Gap stat/source and value-summary styles into named CSS tokens.
 - Updated `docs/studio-baggio-typography-system.md` so the written scale now matches the live CSS roles, including Section 2 proposition exceptions and Gap evidence roles.
 - Locked `docs/studio-baggio-design-system.md` as the current Studio Baggio site-wide UI system for future page rollouts, covering design position, non-negotiables, colour/layout tokens, section patterns, homepage exceptions, motion rules, QA checks and recommended page mappings.
 - Added `docs/studio-baggio-pages-rollout-handover.md` so another agent can tackle the remaining pages from the approved homepage system without reworking the homepage or drifting into older design directions.
 - Updated only the visible homepage Gap stat cards to the Deloitte 2026 / UK Government 2026 figures: `66%`, `20%` and `12%`; the Gap title and closing takeaway were left unchanged.
-- Refined the locked homepage typography weight system so standard section titles, the Section 2 thesis/setup and value summaries use regular `400` weight; bold `700` is now reserved for labels, row titles, CTAs and true emphasis while the hero/header remains unchanged.
+- Refined the locked homepage typography system again so standard section titles, Section 2, FAQ rows, proof rows and value-map row headings use a smaller, quieter scale; bold `700` is now reserved for labels, row numbers, CTAs, the Section 2 outcome stack and true emphasis while the hero/header remains unchanged.
+- Added split-line descender breathing room so masked text reveals no longer clip letters like `g`.
 
 Verified:
 
@@ -112,6 +113,7 @@ Verified:
 - UI design system handoff checked against the current verified homepage token set and typography guide; no production code or visual layout changes were made in this documentation step.
 - Other-pages rollout handover checked against the locked design system, typography guide, current page routes and project status; no production code or visual layout changes were made in this documentation step.
 - Hero typography check at desktop confirmed the `Hero Promise` role renders at `18.432px` on a `1440px` viewport, keeps three locked lines and has no horizontal overflow.
+- Latest code check after the Section 2 timing/type-scale correction: `npm run typecheck` and `npm run lint` pass.
 - Vercel production build passed and was aliased to `https://www.studiobaggio.ai`.
 - Live production browser check at `https://www.studiobaggio.ai/` confirms the latest Gap copy is present, old `78%` / `31%` / Studio Graphene / TechRadar copy is absent, and CTA text appears once.
 - Codex browser desktop check at `1440x900`: all nine `.home-4b` sections below the hero measure as full `900px` frames, horizontal overflow is `0`, and console error count is `0`.

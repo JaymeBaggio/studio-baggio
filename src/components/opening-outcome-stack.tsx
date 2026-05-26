@@ -11,11 +11,13 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export function OpeningOutcomeStack({
   lead,
   final,
-  label
+  label,
+  controlled = false
 }: {
   lead: string[];
   final?: string;
   label: string;
+  controlled?: boolean;
 }) {
   const stackRef = useRef<HTMLDivElement | null>(null);
   const reduceMotion = useReducedMotion();
@@ -23,7 +25,7 @@ export function OpeningOutcomeStack({
   useGSAP(
     () => {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce || !stackRef.current) return;
+      if (controlled || reduce || !stackRef.current) return;
 
       const supporting = Array.from(stackRef.current.querySelectorAll<HTMLElement>("[data-outcome-support]"));
       const emphasis = stackRef.current.querySelector<HTMLElement>("[data-outcome-emphasis]");
@@ -67,11 +69,13 @@ export function OpeningOutcomeStack({
         timeline.kill();
       };
     },
-    { scope: stackRef }
+    { scope: stackRef, dependencies: [controlled] }
   );
 
-  const initialSupportingStyle = reduceMotion ? undefined : { opacity: 0, transform: "translateY(18px)" };
-  const initialEmphasisStyle = reduceMotion ? undefined : { opacity: 0, transform: "translateY(16px)" };
+  const initialSupportingStyle =
+    reduceMotion || controlled ? undefined : { opacity: 0, transform: "translateY(18px)" };
+  const initialEmphasisStyle =
+    reduceMotion || controlled ? undefined : { opacity: 0, transform: "translateY(16px)" };
 
   return (
     <div ref={stackRef} className="opening-outcome-stack" aria-label={label}>

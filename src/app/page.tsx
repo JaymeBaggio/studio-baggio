@@ -99,6 +99,7 @@ export default function HomePage() {
                 lead={openingOutcomeLead}
                 final={openingOutcomeFinal}
                 label={home.opening.outcomes.join(" ")}
+                controlled
               />
             </div>
           </div>

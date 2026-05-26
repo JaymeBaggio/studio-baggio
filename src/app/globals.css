@@ -1494,11 +1494,11 @@ textarea {
   --sb-frame: 1280px;
   --sb-reading: 940px;
   --sb-wide: 1120px;
-  --sb-section-y: clamp(84px, 11vh, 118px);
+  --sb-section-y: clamp(74px, 9vh, 104px);
   --sb-label-size: 12px;
   --sb-label-line: 16px;
   --sb-label-tracking: 0.26em;
-  --sb-title-size: clamp(42px, 4.35vw, 66px);
+  --sb-title-size: clamp(34px, 3.35vw, 52px);
   --sb-title-line: 1.04;
   --sb-lead-size: clamp(26px, 2.65vw, 40px);
   --sb-lead-line: 1.14;
@@ -1508,12 +1508,12 @@ textarea {
   --sb-row-line: 1.35;
   --sb-small-size: 15px;
   --sb-small-line: 1.45;
-  --sb-opening-title-size: clamp(44px, 4.7vw, 76px);
-  --sb-opening-qualifier-size: clamp(18px, 1.55vw, 30px);
+  --sb-opening-title-size: clamp(38px, 3.75vw, 58px);
+  --sb-opening-qualifier-size: clamp(15px, 1.15vw, 20px);
   --sb-opening-qualifier-tracking: 0.03em;
-  --sb-opening-setup-size: clamp(30px, 3.05vw, 54px);
-  --sb-opening-outcome-size: clamp(24px, 2.15vw, 36px);
-  --sb-opening-outcome-emphasis-size: clamp(34px, 3.45vw, 58px);
+  --sb-opening-setup-size: clamp(26px, 2.45vw, 40px);
+  --sb-opening-outcome-size: clamp(20px, 1.7vw, 28px);
+  --sb-opening-outcome-emphasis-size: clamp(28px, 2.6vw, 44px);
   --sb-stat-size: clamp(68px, 6.1vw, 96px);
   --sb-stat-caption-size: clamp(15px, 1.05vw, 17px);
   --sb-stat-source-size: 12px;
@@ -1599,7 +1599,17 @@ textarea {
   font-size: var(--sb-row-size);
   line-height: var(--sb-row-line);
   letter-spacing: 0;
+}
+
+.home-4b .opening-argument-qualifier,
+.home-4b .opening-outcome-stack p {
   font-weight: 700;
+}
+
+.home-4b .value-map-heading,
+.home-4b .proof-row-title h3,
+.home-4b .faq-row h3 {
+  font-weight: 400;
 }
 
 .home-4b .section-rule {
@@ -1615,10 +1625,10 @@ textarea {
 }
 
 .home-4b .opening-argument-grid {
-  min-height: min(760px, calc(100svh - 4rem));
+  min-height: min(640px, calc(100svh - 9rem));
   display: grid;
   align-content: center;
-  gap: clamp(72px, 11vh, 128px);
+  gap: clamp(42px, 6vh, 72px);
 }
 
 .home-4b .opening-argument-top {
@@ -1634,7 +1644,7 @@ textarea {
   max-width: 1180px;
   margin-inline: auto;
   font-size: var(--sb-opening-title-size);
-  line-height: 1.04;
+  line-height: 1.08;
 }
 
 .home-4b .opening-argument-qualifier {
@@ -1666,16 +1676,16 @@ textarea {
 
 .home-4b .opening-outcome-stack {
   width: 100%;
-  margin-top: clamp(28px, 4vh, 46px);
+  margin-top: clamp(22px, 3vh, 34px);
   display: grid;
   justify-items: center;
-  gap: clamp(16px, 2.3vh, 28px);
+  gap: clamp(12px, 1.8vh, 22px);
 }
 
 .home-4b .opening-outcome-muted-group {
   display: grid;
   justify-items: center;
-  gap: clamp(16px, 2.3vh, 28px);
+  gap: clamp(12px, 1.8vh, 22px);
 }
 
 .home-4b .opening-outcome-stack p {
@@ -1684,7 +1694,7 @@ textarea {
   text-transform: uppercase;
   color: var(--sb-outcome-muted);
   font-size: var(--sb-opening-outcome-size);
-  line-height: 1.08;
+  line-height: 1.12;
   font-weight: 700;
 }
 
@@ -1692,7 +1702,7 @@ textarea {
   max-width: 1200px;
   color: var(--sb-accent-blue);
   font-size: var(--sb-opening-outcome-emphasis-size);
-  line-height: 1;
+  line-height: 1.08;
 }
 
 .home-4b .problem-clarifier-section {
@@ -1841,14 +1851,14 @@ textarea {
 .home-4b .value-map-detail-inner {
   width: 100%;
   display: grid;
-  grid-template-columns: 52px minmax(230px, 0.42fr) minmax(0, 1fr) 28px;
-  column-gap: clamp(22px, 4vw, 58px);
+  grid-template-columns: 44px minmax(210px, 0.36fr) minmax(0, 1fr) 24px;
+  column-gap: clamp(18px, 3vw, 44px);
   align-items: baseline;
 }
 
 .home-4b .value-map-row-button {
-  min-height: 84px;
-  padding-block: 22px;
+  min-height: 78px;
+  padding-block: 20px;
   border: 0;
   background: transparent;
   text-align: left;
@@ -1883,7 +1893,7 @@ textarea {
 }
 
 .home-4b .value-map-row.is-open .value-map-summary {
-  color: #ffffff;
+  color: var(--sb-dark-body);
 }
 
 .home-4b .value-map-indicator {
@@ -2051,8 +2061,8 @@ textarea {
 
 .home-4b .faq-row {
   display: grid;
-  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr);
-  gap: clamp(34px, 6vw, 86px);
+  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 64px);
   padding-block: 24px;
   border-bottom: 1px solid var(--sb-rule);
 }
@@ -2095,6 +2105,8 @@ textarea {
 .home-4b .split-line {
   display: block;
   overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
 }
 
 .home-4b .split-line-inner {
@@ -2111,15 +2123,15 @@ textarea {
   .home-4b {
     --sb-page-x: 18px;
     --sb-section-y: 52px;
-    --sb-title-size: clamp(30px, 8.4vw, 36px);
+    --sb-title-size: clamp(27px, 7.2vw, 34px);
     --sb-lead-size: clamp(22px, 6.2vw, 28px);
     --sb-body-size: 15px;
     --sb-row-size: 16px;
-    --sb-opening-title-size: clamp(34px, 10vw, 48px);
-    --sb-opening-qualifier-size: clamp(15px, 4.6vw, 20px);
-    --sb-opening-setup-size: clamp(28px, 8.8vw, 42px);
-    --sb-opening-outcome-size: clamp(22px, 7vw, 32px);
-    --sb-opening-outcome-emphasis-size: clamp(32px, 10vw, 48px);
+    --sb-opening-title-size: clamp(30px, 8.4vw, 40px);
+    --sb-opening-qualifier-size: clamp(13px, 3.9vw, 16px);
+    --sb-opening-setup-size: clamp(24px, 7.2vw, 32px);
+    --sb-opening-outcome-size: clamp(18px, 5.4vw, 24px);
+    --sb-opening-outcome-emphasis-size: clamp(24px, 7.2vw, 32px);
     --sb-stat-size: clamp(64px, 18vw, 86px);
   }
 
@@ -2134,7 +2146,7 @@ textarea {
 
   .home-4b .opening-argument-grid {
     min-height: auto;
-    gap: 54px;
+    gap: 44px;
   }
 
   .home-4b .opening-argument-headline,
@@ -2189,8 +2201,8 @@ textarea {
 
   .home-4b .value-map-row-button,
   .home-4b .value-map-detail-inner {
-    grid-template-columns: 42px minmax(0, 1fr) 24px;
-    column-gap: 14px;
+    grid-template-columns: 36px minmax(0, 1fr) 22px;
+    column-gap: 12px;
   }
 
   .home-4b .value-map-row-button {

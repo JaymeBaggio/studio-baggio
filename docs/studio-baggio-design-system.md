@@ -169,7 +169,7 @@ Rules:
 - Labels are uppercase and letter-spaced.
 - Section titles are sentence case and regular weight.
 - Body is regular weight.
-- Bold is reserved for labels, compact row titles, CTA text and true emphasis.
+- Bold is reserved for labels, row numbers, CTA text, the Section 2 outcome stack and true emphasis.
 - Letter spacing is `0` except labels and the Section 2 qualifier.
 - Use layout, spacing and motion before inventing a new type size.
 
@@ -362,7 +362,7 @@ It may use:
 - larger setup role
 - muted uppercase outcome stack
 - blue final outcome line
-- semantic scroll-led reveal
+- semantic scroll-led reveal with a held final outcome moment
 
 Do not copy this treatment to ordinary content pages unless the page has a similarly central thesis that deserves the exception.
 

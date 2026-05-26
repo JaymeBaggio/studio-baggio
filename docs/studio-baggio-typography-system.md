@@ -43,8 +43,8 @@ Allowed weights:
 
 | Weight | Use |
 | --- | --- |
-| `400` | Section titles, lead statements, body, supporting copy, proof copy, FAQ answers |
-| `700` | Labels, row titles, CTAs, outcome emphasis and true emphasis |
+| `400` | Section titles, lead statements, content row titles, body, supporting copy, proof copy, FAQ answers |
+| `700` | Labels, row numbers, CTAs, Section 2 outcome stack and true emphasis |
 
 No intermediate weights. No fake semi-bold.
 
@@ -83,10 +83,10 @@ Base body size: `16px`.
 | Role | CSS Token | Desktop Size | Mobile Size | Line Height | Weight | Tracking | Case | Colour |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Label / Eyebrow | `--sb-label-size` | `12px` | `12px` | `16px` | `700` | `0.26em` | Uppercase | `--sb-muted` / `--sb-dark-muted` |
-| Section Title | `--sb-title-size` | `clamp(42px, 4.35vw, 66px)` | `clamp(30px, 8.4vw, 36px)` | `1.04` | `400` | `0` | Sentence case | `--sb-ink` |
+| Section Title | `--sb-title-size` | `clamp(34px, 3.35vw, 52px)` | `clamp(27px, 7.2vw, 34px)` | `1.04` | `400` | `0` | Sentence case | `--sb-ink` |
 | Lead / Proof Statement | `--sb-lead-size` | `clamp(26px, 2.65vw, 40px)` | `clamp(22px, 6.2vw, 28px)` | `1.14` | `400` | `0` | Sentence case | `--sb-ink` |
 | Body | `--sb-body-size` | `16px` | `15px` | `1.46` | `400` | `0` | Sentence case | `--sb-body` / `--sb-ink` |
-| Row Title | `--sb-row-size` | `20px` | `16px` | `1.35` | `700` | `0` | Context dependent | `--sb-ink` / white |
+| Row Title | `--sb-row-size` | `20px` | `16px` | `1.35` | `400` | `0` | Context dependent | `--sb-ink` / white |
 | Small / Dense Body | `--sb-small-size` | `15px` | `15px` | `1.45` | `400` | `0` | Sentence case | `--sb-body` / `--sb-dark-body` |
 | Stat Display | `--sb-stat-size` | `clamp(68px, 6.1vw, 96px)` | `clamp(64px, 18vw, 86px)` | `0.94` | `400` | `0` | Numeric | `--sb-ink` |
 | Stat Caption | `--sb-stat-caption-size` | `clamp(15px, 1.05vw, 17px)` | inherits desktop clamp | `1.48` | `400` | `0` | Sentence case | `--sb-body` |
@@ -176,17 +176,17 @@ Section 2 is the only centred proposition frame. It is allowed to use a larger d
 
 | Role | CSS Token | Desktop Size | Mobile Size | Line Height | Weight | Tracking | Case | Colour |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Opening Thesis | `--sb-opening-title-size` | `clamp(44px, 4.7vw, 76px)` | `clamp(34px, 10vw, 48px)` | `1.04` | `400` | `0` | Sentence case | `--sb-ink` |
-| Opening Qualifier | `--sb-opening-qualifier-size` | `clamp(18px, 1.55vw, 30px)` | `clamp(15px, 4.6vw, 20px)` | `1.2` | `700` | `0.03em` | Uppercase | `--sb-muted` |
-| Opening Setup | `--sb-opening-setup-size` | `clamp(30px, 3.05vw, 54px)` | `clamp(28px, 8.8vw, 42px)` | `1.12` | `400` | `0` | Sentence case | `--sb-ink` |
-| Opening Outcome | `--sb-opening-outcome-size` | `clamp(24px, 2.15vw, 36px)` | `clamp(22px, 7vw, 32px)` | `1.08` | `700` | `0` | Uppercase | `--sb-outcome-muted` |
-| Opening Outcome Emphasis | `--sb-opening-outcome-emphasis-size` | `clamp(34px, 3.45vw, 58px)` | `clamp(32px, 10vw, 48px)` | `1` | `700` | `0` | Uppercase | `--sb-accent-blue` |
+| Opening Thesis | `--sb-opening-title-size` | `clamp(38px, 3.75vw, 58px)` | `clamp(30px, 8.4vw, 40px)` | `1.08` | `400` | `0` | Sentence case | `--sb-ink` |
+| Opening Qualifier | `--sb-opening-qualifier-size` | `clamp(15px, 1.15vw, 20px)` | `clamp(13px, 3.9vw, 16px)` | `1.2` | `700` | `0.03em` | Uppercase | `--sb-muted` |
+| Opening Setup | `--sb-opening-setup-size` | `clamp(26px, 2.45vw, 40px)` | `clamp(24px, 7.2vw, 32px)` | `1.12` | `400` | `0` | Sentence case | `--sb-ink` |
+| Opening Outcome | `--sb-opening-outcome-size` | `clamp(20px, 1.7vw, 28px)` | `clamp(18px, 5.4vw, 24px)` | `1.12` | `700` | `0` | Uppercase | `--sb-outcome-muted` |
+| Opening Outcome Emphasis | `--sb-opening-outcome-emphasis-size` | `clamp(28px, 2.6vw, 44px)` | `clamp(24px, 7.2vw, 32px)` | `1.08` | `700` | `0` | Uppercase | `--sb-accent-blue` |
 
 Rules:
 - This exception must not spread to ordinary sections.
 - The thesis and setup use regular weight so the page keeps a quieter editorial feel.
 - The final blue line is the only full blue line in the homepage system.
-- Motion should reinforce this hierarchy: thesis first, qualifier second, setup third, outcome stack last.
+- Motion should reinforce this hierarchy: thesis first, qualifier second, setup third, outcome stack last, with the final blue line held long enough to land.
 
 ### Gap Evidence Roles
 
