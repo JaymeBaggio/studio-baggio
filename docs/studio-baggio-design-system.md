@@ -167,8 +167,9 @@ Core roles:
 Rules:
 
 - Labels are uppercase and letter-spaced.
-- Section titles are sentence case.
+- Section titles are sentence case and regular weight.
 - Body is regular weight.
+- Bold is reserved for labels, compact row titles, CTA text and true emphasis.
 - Letter spacing is `0` except labels and the Section 2 qualifier.
 - Use layout, spacing and motion before inventing a new type size.
 
@@ -483,4 +484,3 @@ HOMEPAGE_COPY_DRAFT.md
 ```
 
 and resolve differences explicitly with Jayme.
-

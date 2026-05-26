@@ -90,6 +90,7 @@ Implemented:
 - Locked `docs/studio-baggio-design-system.md` as the current Studio Baggio site-wide UI system for future page rollouts, covering design position, non-negotiables, colour/layout tokens, section patterns, homepage exceptions, motion rules, QA checks and recommended page mappings.
 - Added `docs/studio-baggio-pages-rollout-handover.md` so another agent can tackle the remaining pages from the approved homepage system without reworking the homepage or drifting into older design directions.
 - Updated only the visible homepage Gap stat cards to the Deloitte 2026 / UK Government 2026 figures: `66%`, `20%` and `12%`; the Gap title and closing takeaway were left unchanged.
+- Refined the locked homepage typography weight system so standard section titles, the Section 2 thesis/setup and value summaries use regular `400` weight; bold `700` is now reserved for labels, row titles, CTAs and true emphasis while the hero/header remains unchanged.
 
 Verified:
 

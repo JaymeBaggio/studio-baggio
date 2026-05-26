@@ -43,8 +43,8 @@ Allowed weights:
 
 | Weight | Use |
 | --- | --- |
-| `400` | Body, supporting copy, proof copy, FAQ answers |
-| `700` | Labels, section titles, lead statements, row titles, CTAs, emphasis |
+| `400` | Section titles, lead statements, body, supporting copy, proof copy, FAQ answers |
+| `700` | Labels, row titles, CTAs, outcome emphasis and true emphasis |
 
 No intermediate weights. No fake semi-bold.
 
@@ -83,8 +83,8 @@ Base body size: `16px`.
 | Role | CSS Token | Desktop Size | Mobile Size | Line Height | Weight | Tracking | Case | Colour |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Label / Eyebrow | `--sb-label-size` | `12px` | `12px` | `16px` | `700` | `0.26em` | Uppercase | `--sb-muted` / `--sb-dark-muted` |
-| Section Title | `--sb-title-size` | `clamp(42px, 4.35vw, 66px)` | `clamp(30px, 8.4vw, 36px)` | `1.04` | `700` | `0` | Sentence case | `--sb-ink` |
-| Lead / Proof Statement | `--sb-lead-size` | `clamp(26px, 2.65vw, 40px)` | `clamp(22px, 6.2vw, 28px)` | `1.14` | `700` | `0` | Sentence case | `--sb-ink` |
+| Section Title | `--sb-title-size` | `clamp(42px, 4.35vw, 66px)` | `clamp(30px, 8.4vw, 36px)` | `1.04` | `400` | `0` | Sentence case | `--sb-ink` |
+| Lead / Proof Statement | `--sb-lead-size` | `clamp(26px, 2.65vw, 40px)` | `clamp(22px, 6.2vw, 28px)` | `1.14` | `400` | `0` | Sentence case | `--sb-ink` |
 | Body | `--sb-body-size` | `16px` | `15px` | `1.46` | `400` | `0` | Sentence case | `--sb-body` / `--sb-ink` |
 | Row Title | `--sb-row-size` | `20px` | `16px` | `1.35` | `700` | `0` | Context dependent | `--sb-ink` / white |
 | Small / Dense Body | `--sb-small-size` | `15px` | `15px` | `1.45` | `400` | `0` | Sentence case | `--sb-body` / `--sb-dark-body` |
@@ -92,7 +92,7 @@ Base body size: `16px`.
 | Stat Caption | `--sb-stat-caption-size` | `clamp(15px, 1.05vw, 17px)` | inherits desktop clamp | `1.48` | `400` | `0` | Sentence case | `--sb-body` |
 | Stat Source | `--sb-stat-source-size` | `12px` | `12px` | `1.3` | `400 italic` | `0` | Sentence case | `--sb-source` |
 | Gap Close | `--sb-gap-close-size` | `clamp(19px, 1.35vw, 24px)` | inherits desktop clamp | `1.45` | `400` | `0` | Sentence case | `--sb-body` |
-| Value Summary | `--sb-value-summary-size` | `clamp(17px, 1.25vw, 20px)` | inherits desktop clamp | `1.36` | `700` | `0` | Sentence case | `--sb-dark-body` |
+| Value Summary | `--sb-value-summary-size` | `clamp(17px, 1.25vw, 20px)` | inherits desktop clamp | `1.36` | `400` | `0` | Sentence case | `--sb-dark-body` |
 
 ---
 
@@ -150,6 +150,7 @@ Rules:
 - Sentence case, not all caps.
 - Same size across sections.
 - Same weight across sections.
+- Regular weight by default; hierarchy comes from size, position and spacing.
 - No negative letter spacing.
 
 ### Lead / Proof Statement
@@ -166,6 +167,7 @@ CSS selectors:
 Rules:
 - This is the hierarchy step below section title.
 - Use for the point that should slow the reader down.
+- Keep regular weight unless the point is a deliberate emphasis line.
 - Do not use for ordinary body copy.
 
 ### Section 2 Core Proposition Exception
@@ -174,14 +176,15 @@ Section 2 is the only centred proposition frame. It is allowed to use a larger d
 
 | Role | CSS Token | Desktop Size | Mobile Size | Line Height | Weight | Tracking | Case | Colour |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Opening Thesis | `--sb-opening-title-size` | `clamp(44px, 4.7vw, 76px)` | `clamp(34px, 10vw, 48px)` | `1.04` | `700` | `0` | Sentence case | `--sb-ink` |
+| Opening Thesis | `--sb-opening-title-size` | `clamp(44px, 4.7vw, 76px)` | `clamp(34px, 10vw, 48px)` | `1.04` | `400` | `0` | Sentence case | `--sb-ink` |
 | Opening Qualifier | `--sb-opening-qualifier-size` | `clamp(18px, 1.55vw, 30px)` | `clamp(15px, 4.6vw, 20px)` | `1.2` | `700` | `0.03em` | Uppercase | `--sb-muted` |
-| Opening Setup | `--sb-opening-setup-size` | `clamp(30px, 3.05vw, 54px)` | `clamp(28px, 8.8vw, 42px)` | `1.12` | `700` | `0` | Sentence case | `--sb-ink` |
+| Opening Setup | `--sb-opening-setup-size` | `clamp(30px, 3.05vw, 54px)` | `clamp(28px, 8.8vw, 42px)` | `1.12` | `400` | `0` | Sentence case | `--sb-ink` |
 | Opening Outcome | `--sb-opening-outcome-size` | `clamp(24px, 2.15vw, 36px)` | `clamp(22px, 7vw, 32px)` | `1.08` | `700` | `0` | Uppercase | `--sb-outcome-muted` |
 | Opening Outcome Emphasis | `--sb-opening-outcome-emphasis-size` | `clamp(34px, 3.45vw, 58px)` | `clamp(32px, 10vw, 48px)` | `1` | `700` | `0` | Uppercase | `--sb-accent-blue` |
 
 Rules:
 - This exception must not spread to ordinary sections.
+- The thesis and setup use regular weight so the page keeps a quieter editorial feel.
 - The final blue line is the only full blue line in the homepage system.
 - Motion should reinforce this hierarchy: thesis first, qualifier second, setup third, outcome stack last.
 
