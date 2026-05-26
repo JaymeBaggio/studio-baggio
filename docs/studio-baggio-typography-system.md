@@ -59,12 +59,14 @@ No intermediate weights. No fake semi-bold.
 | `--sb-soft` | `#f4f4f4` | Soft evidence section background |
 | `--sb-dark` | `#101010` | Dark section background |
 | `--sb-muted` | `#8a8a8a` | Light-section labels, source text, muted outcome lines |
+| `--sb-source` | `#b0b0b0` | Small citation/source text |
+| `--sb-outcome-muted` | `#9a9a9a` | Section 2 muted outcome stack |
 | `--sb-body` | `#4f4f4f` | Long-form body copy on light backgrounds |
 | `--sb-dark-muted` | `#b8b8b8` | Dark-section labels |
 | `--sb-dark-body` | `#d4d4d4` | Dark-section body copy |
 | `--sb-rule` | `#d8d8d8` | Light-section hairlines |
 | `--sb-dark-rule` | `#303030` | Dark-section hairlines |
-| `--sb-accent-blue` | `#2f5cff` | Sparing brand accent, currently only the `BAGGIO.AI` dot |
+| `--sb-accent-blue` | `#2f5cff` | Sparing brand accent: `BAGGIO.AI` dot and Section 2 final outcome line |
 
 Colour rule:
 - Use true neutral greys only.
@@ -81,11 +83,16 @@ Base body size: `16px`.
 | Role | CSS Token | Desktop Size | Mobile Size | Line Height | Weight | Tracking | Case | Colour |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Label / Eyebrow | `--sb-label-size` | `12px` | `12px` | `16px` | `700` | `0.26em` | Uppercase | `--sb-muted` / `--sb-dark-muted` |
-| Section Title | `--sb-title-size` | `clamp(38px, 3.9vw, 56px)` | `clamp(30px, 8.4vw, 36px)` | `1.07` | `700` | `0` | Sentence case | `--sb-ink` |
-| Lead / Proof Statement | `--sb-lead-size` | `clamp(23px, 2.35vw, 34px)` | `clamp(22px, 6.2vw, 28px)` | `1.14` | `700` | `0` | Sentence case | `--sb-ink` |
+| Section Title | `--sb-title-size` | `clamp(42px, 4.35vw, 66px)` | `clamp(30px, 8.4vw, 36px)` | `1.04` | `700` | `0` | Sentence case | `--sb-ink` |
+| Lead / Proof Statement | `--sb-lead-size` | `clamp(26px, 2.65vw, 40px)` | `clamp(22px, 6.2vw, 28px)` | `1.14` | `700` | `0` | Sentence case | `--sb-ink` |
 | Body | `--sb-body-size` | `16px` | `15px` | `1.46` | `400` | `0` | Sentence case | `--sb-body` / `--sb-ink` |
-| Row Title | `--sb-row-size` | `18px` | `16px` | `1.35` | `700` | `0` | Context dependent | `--sb-ink` / white |
+| Row Title | `--sb-row-size` | `20px` | `16px` | `1.35` | `700` | `0` | Context dependent | `--sb-ink` / white |
 | Small / Dense Body | `--sb-small-size` | `15px` | `15px` | `1.45` | `400` | `0` | Sentence case | `--sb-body` / `--sb-dark-body` |
+| Stat Display | `--sb-stat-size` | `clamp(68px, 6.1vw, 96px)` | `clamp(64px, 18vw, 86px)` | `0.94` | `400` | `0` | Numeric | `--sb-ink` |
+| Stat Caption | `--sb-stat-caption-size` | `clamp(15px, 1.05vw, 17px)` | inherits desktop clamp | `1.48` | `400` | `0` | Sentence case | `--sb-body` |
+| Stat Source | `--sb-stat-source-size` | `12px` | `12px` | `1.3` | `400 italic` | `0` | Sentence case | `--sb-source` |
+| Gap Close | `--sb-gap-close-size` | `clamp(19px, 1.35vw, 24px)` | inherits desktop clamp | `1.45` | `400` | `0` | Sentence case | `--sb-body` |
+| Value Summary | `--sb-value-summary-size` | `clamp(17px, 1.25vw, 20px)` | inherits desktop clamp | `1.36` | `700` | `0` | Sentence case | `--sb-dark-body` |
 
 ---
 
@@ -119,7 +126,6 @@ Rules:
 ### Section Title
 
 Use for:
-- Opening argument H1-style section heading.
 - Gap title.
 - Audit title.
 - Working promise title.
@@ -132,7 +138,6 @@ Section 2 is the deliberate homepage exception: it may centre-align the argument
 CSS selectors:
 
 ```css
-.home-4b .opening-argument-headline,
 .home-4b .problem-clarifier-title,
 .home-4b .commercial-sprint-title,
 .home-4b .working-promise-title,
@@ -150,22 +155,56 @@ Rules:
 ### Lead / Proof Statement
 
 Use for:
-- Opening setup line.
-- Key stat/emphasis line.
-- Gap close/takeaway line.
+- Reserved for future key proof statements that sit one level below section titles.
 
 CSS selectors:
 
 ```css
-.home-4b .opening-outcome-setup,
-.home-4b .problem-stat strong,
-.home-4b .problem-strong
+.home-4b .opening-outcome-setup
 ```
 
 Rules:
 - This is the hierarchy step below section title.
 - Use for the point that should slow the reader down.
 - Do not use for ordinary body copy.
+
+### Section 2 Core Proposition Exception
+
+Section 2 is the only centred proposition frame. It is allowed to use a larger display rhythm than the standard content sections because it carries the homepage's central argument.
+
+| Role | CSS Token | Desktop Size | Mobile Size | Line Height | Weight | Tracking | Case | Colour |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Opening Thesis | `--sb-opening-title-size` | `clamp(44px, 4.7vw, 76px)` | `clamp(34px, 10vw, 48px)` | `1.04` | `700` | `0` | Sentence case | `--sb-ink` |
+| Opening Qualifier | `--sb-opening-qualifier-size` | `clamp(18px, 1.55vw, 30px)` | `clamp(15px, 4.6vw, 20px)` | `1.2` | `700` | `0.03em` | Uppercase | `--sb-muted` |
+| Opening Setup | `--sb-opening-setup-size` | `clamp(30px, 3.05vw, 54px)` | `clamp(28px, 8.8vw, 42px)` | `1.12` | `700` | `0` | Sentence case | `--sb-ink` |
+| Opening Outcome | `--sb-opening-outcome-size` | `clamp(24px, 2.15vw, 36px)` | `clamp(22px, 7vw, 32px)` | `1.08` | `700` | `0` | Uppercase | `--sb-outcome-muted` |
+| Opening Outcome Emphasis | `--sb-opening-outcome-emphasis-size` | `clamp(34px, 3.45vw, 58px)` | `clamp(32px, 10vw, 48px)` | `1` | `700` | `0` | Uppercase | `--sb-accent-blue` |
+
+Rules:
+- This exception must not spread to ordinary sections.
+- The final blue line is the only full blue line in the homepage system.
+- Motion should reinforce this hierarchy: thesis first, qualifier second, setup third, outcome stack last.
+
+### Gap Evidence Roles
+
+Use for:
+- The three-column Gap evidence block.
+- Numeric evidence where the number is the visual object and the caption/source explain it.
+
+CSS selectors:
+
+```css
+.home-4b .problem-stat-value,
+.home-4b .problem-stat-label,
+.home-4b .problem-stat-source,
+.home-4b .problem-strong
+```
+
+Rules:
+- Stat values are display numerals, not headings.
+- Stat captions use regular body weight and narrow measures.
+- Sources are italic, small and deliberately secondary.
+- The close line is a takeaway, not a lead heading; keep it regular weight.
 
 ### Body
 
@@ -179,9 +218,9 @@ Use for:
 CSS selectors:
 
 ```css
-.home-4b .problem-stat,
 .home-4b .commercial-deliverable-row p,
 .home-4b .working-promise-copy p,
+.home-4b .value-map-detail p,
 .home-4b .proof-row-copy,
 .home-4b .fit-card-copy,
 .home-4b .faq-row p
@@ -195,7 +234,6 @@ Rules:
 ### Row Title
 
 Use for:
-- Opening outcome stack.
 - Value map row titles.
 - Proof item titles.
 - FAQ questions.
@@ -203,9 +241,7 @@ Use for:
 CSS selectors:
 
 ```css
-.home-4b .opening-argument-qualifier,
-.home-4b .opening-outcome-stack p,
-.home-4b .value-map-row h3,
+.home-4b .value-map-heading,
 .home-4b .proof-row-title h3,
 .home-4b .faq-row h3
 ```

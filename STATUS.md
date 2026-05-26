@@ -43,6 +43,8 @@ Implemented:
 - Tightened the mobile hero promise under `STUDIO BAGGIO.AI` so the three intended lines no longer create orphaned words on phone widths.
 - Corrected the latest Gap evidence layout to match Jayme's supplied visual reference: white frame, slimmer 3-column stat row, narrower caption measures and per-stat sources.
 - Removed the sticky desktop pin from Section 2 and re-timed the opening motion so the thesis reads first, the grey qualifier follows, the Studio Baggio setup appears on the next scroll beat, and the outcome stack resolves last.
+- Audited the homepage typography system using the `ui-design-system` and `ui-audit` workflow, then converted the live one-off Section 2, Gap stat/source and value-summary styles into named CSS tokens.
+- Updated `docs/studio-baggio-typography-system.md` so the written scale now matches the live CSS roles, including Section 2 proposition exceptions and Gap evidence roles.
 
 Verified:
 
@@ -52,6 +54,7 @@ Verified:
 - Motion refinement check in the Codex browser confirmed the opening outcome stack progresses across scroll positions, with the muted lines revealing first and `Harder to compete with.` resolving last.
 - Latest in-app browser check confirmed the Gap section renders as `16%`, `77%`, `12%` across three columns on desktop, with the longer captions/sources visible, white background, and horizontal overflow at `0`.
 - Latest in-app browser check confirmed Section 2 is no longer pinned: the headline is the first visible read, the qualifier remains hidden until the next scroll position, the setup stays hidden until later, and the blue final outcome resolves last.
+- Typography audit confirmed Aileron loads for the homepage, only `400` and `700` weights are used in the measured homepage roles, named tokens now drive the Gap and Section 2 exceptions, and horizontal overflow remains `0`.
 - Hero typography check at desktop confirmed the `Hero Promise` role renders at `18.432px` on a `1440px` viewport, keeps three locked lines and has no horizontal overflow.
 - Vercel production build passed and was aliased to `https://www.studiobaggio.ai`.
 - Live production browser check at `https://www.studiobaggio.ai/` confirms the latest Gap copy is present, old `78%` / `31%` / Studio Graphene / TechRadar copy is absent, and CTA text appears once.
