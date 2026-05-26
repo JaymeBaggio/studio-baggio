@@ -20,6 +20,7 @@ Reference:
 
 - Saved the implementation plan at `docs/homepage-option-a-editorial-calm-implementation-plan.md`.
 - Saved the locked typography guide at `docs/studio-baggio-typography-system.md`.
+- Locked the canonical site UI design system handoff at `docs/studio-baggio-design-system.md`.
 - Source copy is `HOMEPAGE_COPY_DRAFT.md`.
 
 Implemented:
@@ -45,6 +46,7 @@ Implemented:
 - Removed the sticky desktop pin from Section 2 and re-timed the opening motion so the thesis reads first, the grey qualifier follows, the Studio Baggio setup appears on the next scroll beat, and the outcome stack resolves last.
 - Audited the homepage typography system using the `ui-design-system` and `ui-audit` workflow, then converted the live one-off Section 2, Gap stat/source and value-summary styles into named CSS tokens.
 - Updated `docs/studio-baggio-typography-system.md` so the written scale now matches the live CSS roles, including Section 2 proposition exceptions and Gap evidence roles.
+- Locked `docs/studio-baggio-design-system.md` as the current Studio Baggio site-wide UI system for future page rollouts, covering design position, non-negotiables, colour/layout tokens, section patterns, homepage exceptions, motion rules, QA checks and recommended page mappings.
 
 Verified:
 
@@ -55,6 +57,7 @@ Verified:
 - Latest in-app browser check confirmed the Gap section renders as `16%`, `77%`, `12%` across three columns on desktop, with the longer captions/sources visible, white background, and horizontal overflow at `0`.
 - Latest in-app browser check confirmed Section 2 is no longer pinned: the headline is the first visible read, the qualifier remains hidden until the next scroll position, the setup stays hidden until later, and the blue final outcome resolves last.
 - Typography audit confirmed Aileron loads for the homepage, only `400` and `700` weights are used in the measured homepage roles, named tokens now drive the Gap and Section 2 exceptions, and horizontal overflow remains `0`.
+- UI design system handoff checked against the current verified homepage token set and typography guide; no production code or visual layout changes were made in this documentation step.
 - Hero typography check at desktop confirmed the `Hero Promise` role renders at `18.432px` on a `1440px` viewport, keeps three locked lines and has no horizontal overflow.
 - Vercel production build passed and was aliased to `https://www.studiobaggio.ai`.
 - Live production browser check at `https://www.studiobaggio.ai/` confirms the latest Gap copy is present, old `78%` / `31%` / Studio Graphene / TechRadar copy is absent, and CTA text appears once.
