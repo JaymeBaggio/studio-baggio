@@ -238,9 +238,10 @@ Hero promise role:
 
 | Role | CSS Token | Desktop Size | Mobile Size | Line Height | Weight | Tracking | Case | Colour |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Hero Promise | `--hero-promise-size` | `clamp(16px, 1.28vw, 23.2px)` | `12.8px` | `1.18` desktop / `1.25` mobile | `700` | `0` | Uppercase | `--hero-promise-muted`; final line `--hero-promise-ink` |
+| Hero Promise | `--hero-promise-size` | `clamp(16px, 1.28vw, 23.2px)` | `clamp(8px, 2.52vw, 10.72px)` | `1.18` desktop / `1.22` mobile | `700` | `0` | Uppercase | `--hero-promise-muted`; final line `--hero-promise-ink` |
 
 Do not let this text wrap organically on desktop. It should be three deliberate lines.
+Mobile uses the same three deliberate lines at a smaller fluid size so the promise does not create orphaned words under the wordmark.
 
 The hero promise is allowed to be larger than labels because it functions as the hero's supporting proposition, not as metadata.
 

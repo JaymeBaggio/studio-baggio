@@ -1255,13 +1255,13 @@ textarea {
   }
 
   .home-reference-promise {
-    max-width: 20.5rem;
-    font-size: 0.8rem;
-    line-height: 1.25;
+    max-width: calc(100vw - 32px);
+    font-size: clamp(0.5rem, 2.52vw, 0.67rem);
+    line-height: 1.22;
   }
 
   .home-reference-promise p {
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .home-reference-lede-title {

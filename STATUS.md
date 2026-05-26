@@ -40,11 +40,13 @@ Implemented:
 - Reworked the Gap section back into one calm full-width evidence frame matching Jayme's reference: title first, one three-column `16% / 77% / 12%` stat row, single source line and closing commercial takeaway.
 - Reworked Section 2 as the deliberate centred exception in the homepage system: the opening thesis fades on scroll, the Studio Baggio outcome stack expands into view, and `Harder to compete with.` is the only full blue line on the page.
 - Reworked `What We Build` into a restrained expandable index: rows start collapsed with the service headline and one clear summary line visible, then full detail expands on hover, focus or click.
+- Tightened the mobile hero promise under `STUDIO BAGGIO.AI` so the three intended lines no longer create orphaned words on phone widths.
 
 Verified:
 
 - `npm run typecheck`, `npm run lint` and `npm run build` pass locally.
 - Codex browser desktop check after the latest Section 2 / Gap correction: Section 2 centres the core proposition, the final outcome line resolves in blue, the Gap evidence row spans the full editorial frame, and horizontal overflow is `0`.
+- Mobile hero promise width check confirms the three promise lines fit from `320px` to `430px` wide viewports using the locked Aileron Bold font and the updated fluid mobile type role.
 - Motion refinement check in the Codex browser confirmed the opening outcome stack progresses across scroll positions, with the muted lines revealing first and `Harder to compete with.` resolving last.
 - Hero typography check at desktop confirmed the `Hero Promise` role renders at `18.432px` on a `1440px` viewport, keeps three locked lines and has no horizontal overflow.
 - Vercel production build passed and was aliased to `https://www.studiobaggio.ai`.
