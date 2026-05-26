@@ -68,7 +68,7 @@ Verified:
 Production:
 
 - Live URL: `https://www.studiobaggio.ai`
-- Deployment URL: `https://studio-baggio-cqf1ioaeo-jaymes-projects-95f6f9cd.vercel.app`
+- Deployment URL: `https://studio-baggio-85lrh0j7r-jaymes-projects-95f6f9cd.vercel.app`
 - Local screenshots captured at `/tmp/studio-baggio-homepage-desktop-1440x900.png`, `/tmp/studio-baggio-homepage-mobile-390x844.png` and `/tmp/studio-baggio-live-desktop-1440x900.png`.
 
 ## 25 May Quiet Luxury Homepage System Branch
