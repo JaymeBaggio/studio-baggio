@@ -116,6 +116,8 @@ export function PageReveals() {
         const ctaButtons = gsap.utils.toArray<HTMLElement>("[data-cta-button]");
         const ruleElements = gsap.utils.toArray<HTMLElement>("[data-rule]");
         const homepageSections = gsap.utils.toArray<HTMLElement>(".home-4b > section");
+        const homepageRoot = document.querySelector<HTMLElement>(".home-4b:not(.studio-page)");
+        const pinHomepageSections = Boolean(homepageRoot) && window.matchMedia("(min-width: 1024px)").matches;
 
         gsap.set([...revealElements, ...splitElements, ...ctaButtons], { autoAlpha: 1, y: 0, yPercent: 0 });
         gsap.set(ruleElements, { scaleX: 1, transformOrigin: "left center" });
@@ -308,8 +310,69 @@ export function PageReveals() {
           );
         }
 
-        homepageSections.forEach((section) => {
+        const statElements = gsap.utils.toArray<HTMLElement>("[data-stat-value]");
+        const statGrid = document.querySelector<HTMLElement>(".problem-stat-grid");
+
+        if (statElements.length && statGrid) {
+          statElements.forEach((element) => {
+            const target = Number(element.dataset.statValue ?? element.textContent?.replace("%", ""));
+            if (!Number.isFinite(target)) return;
+            element.textContent = "0%";
+          });
+
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: statGrid,
+              start: "top 68%",
+              once: true,
+              onEnter: () => {
+                statElements.forEach((element, index) => {
+                  const target = Number(element.dataset.statValue ?? element.textContent?.replace("%", ""));
+                  if (!Number.isFinite(target)) return;
+
+                  const counter = { value: 0 };
+                  const tween = gsap.to(counter, {
+                    value: target,
+                    duration: 0.9,
+                    delay: index * 0.08,
+                    ease: "power2.out",
+                    snap: { value: 1 },
+                    onUpdate: () => {
+                      element.textContent = `${Math.round(counter.value)}%`;
+                    },
+                    onComplete: () => {
+                      element.textContent = `${target}%`;
+                    }
+                  });
+
+                  animations.push(tween);
+                });
+              }
+            })
+          );
+        }
+
+        homepageSections.forEach((section, sectionIndex) => {
           if (section === openingSection) return;
+
+          if (pinHomepageSections && homepageRoot?.contains(section)) {
+            triggers.push(
+              ScrollTrigger.create({
+                trigger: section,
+                start: "top top+=64",
+                end: () => {
+                  const viewportHold = Math.max(560, (window.innerHeight - 64) * 0.92);
+                  const contentHold = Math.min(section.scrollHeight * 0.72, (window.innerHeight - 64) * 1.18);
+                  return `+=${Math.round(Math.max(viewportHold, contentHold))}`;
+                },
+                pin: true,
+                pinSpacing: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                refreshPriority: sectionIndex + 10
+              })
+            );
+          }
 
           const labelTargets = gsap.utils.toArray<HTMLElement>(
             section.querySelectorAll("[data-motion='label'], .eyebrow, .opening-argument-qualifier, .home-cta-brand")
