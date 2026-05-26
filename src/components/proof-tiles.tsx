@@ -6,10 +6,14 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { ArrowUpRight } from "lucide-react";
 import { workItems } from "@/content/work";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+const homepageProofOrder = ["calm-authority", "business-tracker", "fire-source", "last30days"];
+const homepageProofItems = homepageProofOrder
+  .map((slug) => workItems.find((item) => item.slug === slug))
+  .filter((item): item is (typeof workItems)[number] => Boolean(item));
 
 export function ProofTiles() {
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -20,22 +24,23 @@ export function ProofTiles() {
       if (reduce || !listRef.current) return;
 
       const rows = gsap.utils.toArray<HTMLElement>(".proof-row");
-      const tween = gsap.fromTo(
-        rows,
-        { y: 20, autoAlpha: 0.001 },
-        {
-          y: 0,
-          autoAlpha: 1,
-          duration: 0.64,
-          ease: "power3.out",
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: listRef.current,
-            start: "top 84%",
-            once: true
-          }
+      gsap.set(rows, { y: 20, autoAlpha: 0.001 });
+
+      const tween = gsap.timeline({
+        scrollTrigger: {
+          trigger: listRef.current,
+          start: "top 80%",
+          end: "center 48%",
+          scrub: 0.8,
+          invalidateOnRefresh: true
         }
-      );
+      }).to(rows, {
+        y: 0,
+        autoAlpha: 1,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.12
+      });
 
       return () => {
         tween.scrollTrigger?.kill();
@@ -47,7 +52,7 @@ export function ProofTiles() {
 
   return (
     <div ref={listRef} className="proof-row-list">
-      {workItems.map((item) => {
+      {homepageProofItems.map((item) => {
         const href = item.href ?? item.external ?? "/work";
         return (
           <motion.div
@@ -61,13 +66,7 @@ export function ProofTiles() {
                 <h3>{item.title}</h3>
               </div>
               <div className="proof-row-copy">
-                <p>
-                  <strong>{item.promise ?? item.eyebrow}</strong> {item.proofCopy ?? item.built}
-                </p>
-              </div>
-              <div className="proof-row-cta">
-                <span>View work</span>
-                <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                <p>{item.proofCopy ?? item.built}</p>
               </div>
             </Link>
           </motion.div>

@@ -1,5 +1,5 @@
 # Studio Baggio Website - STATUS
-*Last updated: 25 May 2026*
+*Last updated: 26 May 2026*
 
 ## Current Build
 
@@ -9,6 +9,81 @@ site for `studiobaggio.ai`.
 Core message:
 
 `Turn AI into a commercial advantage.`
+
+## 26 May Homepage Option A Editorial Calm
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Reference:
+
+- Saved the implementation plan at `docs/homepage-option-a-editorial-calm-implementation-plan.md`.
+- Saved the locked typography guide at `docs/studio-baggio-typography-system.md`.
+- Source copy is `HOMEPAGE_COPY_DRAFT.md`.
+
+Implemented:
+
+- Updated the homepage to the approved Paper `Option A Editorial Calm` direction while keeping the existing header/hero structure intact.
+- Swapped in the latest approved Gap section copy: UK Government AI Adoption Research, `16%`, `77%`, `12%`, and the `effectivly` close line exactly as supplied.
+- Rebuilt the post-hero homepage flow as: Opening argument, Gap, What We Build, AI Opportunity Audit, Working Promise, Live Work, Fit, FAQ and CTA.
+- Removed the duplicate `.home-4b` CSS patch stack and replaced it with one locked homepage system at the end of `src/app/globals.css`.
+- Locked the homepage type system to defined roles for label, title, lead/stat, body, row and small text; section titles now share the same size, weight, case rules and neutral colour tokens.
+- Documented the typography roles, sizes, line-heights, weights, colours, casing, letter-spacing and usage rules so future pages can follow the same system.
+- Added consistent section hairlines, reading lanes, dark-section treatment and CTA treatment.
+- Updated GSAP reveal motion so labels, masked title lines, evidence, sources, rules and close lines reveal in a semantic order; Framer Motion remains limited to row/button micro-interactions.
+- Fixed the Studio Baggio header link on the homepage so it scrolls back to the top instead of doing nothing.
+- Refined the homepage motion after live review: section reveals now scrub across the reader's scroll position instead of firing early, the opening outcome stack has its own scroll-linked sequence, and `Harder to compete with.` now receives a separate emphasis beat.
+- Locked the hero promise under `STUDIO BAGGIO.AI` into three intentional desktop lines to match Jayme's reference: promise title, market line, and `BUILD TRUST, CAPTURE DEMAND & FOLLOW UP SMARTER`.
+- Added a named `Hero Promise` typography role so the larger hero subtext is part of the type system rather than a one-off override; first two lines use muted grey and the final line uses ink.
+- Added the restrained accent-blue token `--sb-accent-blue` and used it only on the `BAGGIO.AI` dot.
+- Reworked the Gap section into three sequential full-frame beats so the thesis, evidence and commercial takeaway no longer compete in one dense frame.
+- Reworked `What We Build` into a restrained expandable index: each row shows the service headline and one clear summary line, with the full detail expanding on hover, focus or click.
+
+Verified:
+
+- `npm run typecheck`, `npm run lint` and `npm run build` pass locally.
+- Codex browser desktop check after the Gap / What We Build rework: the three Gap frames each measure `900px` at a `1440x900` viewport, `What We Build` fits inside one `900px` dark frame, expandable rows change `aria-expanded` correctly, and horizontal overflow is `0`.
+- Motion refinement check in the Codex browser confirmed the opening outcome stack progresses across scroll positions, with the muted lines revealing first and `Harder to compete with.` resolving last.
+- Hero typography check at desktop confirmed the `Hero Promise` role renders at `18.432px` on a `1440px` viewport, keeps three locked lines and has no horizontal overflow.
+- Vercel production build passed and was aliased to `https://www.studiobaggio.ai`.
+- Live production browser check at `https://www.studiobaggio.ai/` confirms the latest Gap copy is present, old `78%` / `31%` / Studio Graphene / TechRadar copy is absent, and CTA text appears once.
+- Codex browser desktop check at `1440x900`: all nine `.home-4b` sections below the hero measure as full `900px` frames, horizontal overflow is `0`, and console error count is `0`.
+- Codex browser mobile check at `390x844`: horizontal overflow is `0`; the Gap section now fits within the mobile viewport after the type/spacing correction.
+- Header brand click verified from lower page scroll: `scrollY` returned from `8268.5` to `0`.
+
+Production:
+
+- Live URL: `https://www.studiobaggio.ai`
+- Deployment URL: `https://studio-baggio-cqf1ioaeo-jaymes-projects-95f6f9cd.vercel.app`
+- Local screenshots captured at `/tmp/studio-baggio-homepage-desktop-1440x900.png`, `/tmp/studio-baggio-homepage-mobile-390x844.png` and `/tmp/studio-baggio-live-desktop-1440x900.png`.
+
+## 25 May Quiet Luxury Homepage System Branch
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Reference:
+
+- Saved the implementation plan at `docs/quiet-luxury-homepage-system-plan.md`.
+
+Implemented:
+
+- Kept the existing homepage header/hero direction intact.
+- Kept homepage copy frozen; `src/content/site.ts` and `src/content/work.ts` were not edited.
+- Removed the old accumulated `.home-4b` homepage patch stack from `src/app/globals.css`.
+- Added one dedicated homepage system stylesheet at `src/app/homepage-system.css` for tokens, section frames, reading lanes, typography roles, rules, dark sections, CTA states and mobile treatment.
+- Reworked section two, the first post-hero section, as a single editorial thesis frame: left-lane headline, qualifier, ruled Studio Baggio setup and a ruled outcome ledger underneath. No right/left split.
+- Kept GSAP for section reveals, masked title lines, rule draws and value/proof row reveals; kept Framer Motion only for row/button micro-interactions.
+- Added mobile internal rails for the long value/proof sections so every homepage content section remains one viewport frame without changing copy.
+
+Verified:
+
+- Copy snapshot before/after is identical: `b37963f67215f95174eb02264b7e2ed2ff68921d43c408ff8c3787d461ca4312`.
+- Codex in-app browser desktop audit at `1440x900`: all nine homepage sections below the hero are exactly one `900px` frame, content sits below the fixed header, and horizontal overflow is `0`.
+- Codex in-app browser mobile audit at `390x844`: all nine homepage sections below the hero are one `844px` frame and horizontal overflow is `0`.
+- `npm run typecheck`, `npm run lint` and `npm run build` pass.
 
 ## 25 May Calm Authority Linear Page Repair
 
@@ -286,6 +361,17 @@ returns `503` with a clear message telling the user to email Jayme directly.
 
 ## Verified Live
 
+- 26 May 2026 motion correction deployed to production:
+  - Latest production deployment: `https://studio-baggio-g8ihj0t4x-jaymes-projects-95f6f9cd.vercel.app`.
+  - Aliased to `https://www.studiobaggio.ai`.
+  - Header promise copy now renders as three intentional lines:
+    `AI ENABLED GROWTH SYSTEMS FOR TRUST BASED BUSINESSES` /
+    `WE ENABLE EXPERT-LED FIRMS COMPETING IN HIGH VALUE MARKETS TO` /
+    `BUILD TRUST, CAPTURE DEMAND & FOLLOW UP SMARTER`.
+  - Homepage section reveals now use a slower GSAP ScrollTrigger scrub instead of early one-shot reveals.
+  - Opening outcome stack lines are sequenced so `Harder to compete with.` is held back and receives a distinct emphasis beat.
+  - `ValueMap` and `ProofTiles` row reveals now scrub through the reading area instead of firing early.
+  - Live verification at `1440x900` confirmed `splitCount: 15`, no horizontal overflow, latest Gap copy present, old `78% / 31%` stats absent, no console/page errors, and the opening outcome emphasis animates after the supporting lines.
 - Implementation commit pushed to `main`: `c568393` (`Build Studio Baggio AI advantage site`).
 - Browser-warning cleanup commit pushed to `main`: `e37d2be` (`Clean up Studio Baggio browser warnings`).
 - Homepage messaging rebuild commit pushed to `main`: `76573d8` (`Rebuild homepage messaging flow`).

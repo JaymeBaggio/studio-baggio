@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
+import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
 import { ValueMap } from "@/components/value-map";
@@ -11,13 +12,12 @@ export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/"
 export default function HomePage() {
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
-  const commercialSystemAreas = [
-    "SEO, AI search",
-    "market intelligence",
-    "lead capture",
-    "prospect research",
-    "authority-building",
-    "workflow acceleration"
+  const [problemBeforeEmphasis, problemAfterEmphasis = ""] = home.problem.body.split(home.problem.emphasis);
+  const problemLead = problemBeforeEmphasis.trim();
+  const problemTail = problemAfterEmphasis.trim();
+  const heroPromiseLines = [
+    hero.promiseTitle,
+    ...hero.promise.replace(" TO BUILD", " TO\nBUILD").split("\n")
   ];
 
   return (
@@ -38,14 +38,27 @@ export default function HomePage() {
             {hero.wordmark.map((line) => (
               <span key={line} className="mask-line block">
                 <span data-hero-line className="block">
-                  {line}
+                  {line === "BAGGIO.AI" ? (
+                    <>
+                      BAGGIO<span className="home-reference-wordmark-dot">.</span>AI
+                    </>
+                  ) : (
+                    line
+                  )}
                 </span>
               </span>
             ))}
           </h1>
           <div className="home-reference-promise">
-            <p data-hero-promise>{hero.promiseTitle}</p>
-            <p data-hero-promise>{hero.promise}</p>
+            {heroPromiseLines.map((line, index) => (
+              <p
+                key={line}
+                className={index === heroPromiseLines.length - 1 ? "is-emphasis" : undefined}
+                data-hero-promise
+              >
+                {line}
+              </p>
+            ))}
           </div>
         </div>
       </section>
@@ -54,73 +67,63 @@ export default function HomePage() {
         <section className="opening-argument-section">
           <div className="editorial-container opening-argument-grid">
             <div className="opening-argument-top">
-              <h2 className="opening-argument-headline" data-split>
-                {home.opening.headline}
-              </h2>
               <p className="opening-argument-qualifier" data-reveal>
                 {home.opening.qualifier}
               </p>
+              <h2 className="opening-argument-headline" data-split>
+                {home.opening.headline}
+              </h2>
             </div>
             <div className="opening-outcome-block">
               <p className="opening-outcome-setup" data-reveal>
                 {home.opening.setup}
               </p>
-              <div className="opening-outcome-stack" aria-label={home.opening.outcomes.join(" ")}>
-                <div className="opening-outcome-muted-group" data-reveal>
-                  {openingOutcomeLead.map((line) => (
-                    <p key={line}>
-                      {line}
-                    </p>
-                  ))}
-                </div>
-                {openingOutcomeFinal ? (
-                  <p className="is-strong" data-reveal>
-                    {openingOutcomeFinal}
-                  </p>
-                ) : null}
-              </div>
+              <OpeningOutcomeStack
+                lead={openingOutcomeLead}
+                final={openingOutcomeFinal}
+                label={home.opening.outcomes.join(" ")}
+              />
             </div>
           </div>
         </section>
 
-        <section id="ai-gap" className="problem-clarifier-section">
+        <section id="ai-gap" className="problem-clarifier-section problem-clarifier-opening">
           <div className="editorial-container problem-clarifier-frame">
             <div className="problem-clarifier-copy">
-              <p className="eyebrow" data-reveal>{home.problem.eyebrow}</p>
+              <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
               <h2 className="problem-clarifier-title" data-split>
                 {home.problem.title}
               </h2>
-              <div className="problem-stat-cards" aria-label="2026 UK AI ROI figures" data-reveal>
-                <span>78%</span>
-                <span>31%</span>
-              </div>
-              <p className="problem-stat" data-reveal>
-                {home.problem.stat}
+              <p className="problem-lead" data-reveal>
+                {problemLead}
               </p>
-              <a className="problem-source focus-ring" href={home.problem.sourceUrl} target="_blank" rel="noreferrer" data-reveal>
-                {home.problem.source}
-              </a>
             </div>
           </div>
         </section>
 
-        <section className="commercial-systems-section">
-          <div className="editorial-container commercial-systems-frame">
-            <p className="eyebrow commercial-systems-eyebrow" data-reveal>
-              Practical systems
-            </p>
-            {home.problem.body.map((paragraph) => (
-              <p key={paragraph} className="commercial-systems-lead" data-reveal>
-                {paragraph}
+        <section className="problem-clarifier-section problem-clarifier-evidence">
+          <div className="editorial-container problem-clarifier-frame">
+            <div className="problem-clarifier-copy">
+              <p className="problem-stat" data-reveal data-motion="emphasis">
+                {home.problem.emphasis}
               </p>
-            ))}
-            <div className="commercial-systems-list" aria-label="Practical systems Studio Baggio builds">
-              {commercialSystemAreas.map((area, index) => (
-                <div key={area} className="commercial-systems-row" data-reveal>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <p>{area}</p>
-                </div>
-              ))}
+              <p className="problem-tail" data-reveal data-motion="evidence">
+                {problemTail}
+              </p>
+              <p className="problem-source" data-reveal data-motion="source">
+                {home.problem.source}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="problem-clarifier-section problem-clarifier-takeaway">
+          <div className="editorial-container problem-clarifier-frame">
+            <div className="problem-clarifier-copy">
+              <div className="section-rule" data-rule aria-hidden="true" />
+              <p className="problem-strong" data-reveal data-motion="close">
+                {home.problem.close}
+              </p>
             </div>
           </div>
         </section>
@@ -129,16 +132,20 @@ export default function HomePage() {
 
         <section className="commercial-sprint-section">
           <div className="editorial-container commercial-sprint-frame">
-            <p className="eyebrow" data-reveal>{home.commercialSprint.eyebrow}</p>
+            <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
             <h2 className="commercial-sprint-title" data-split>
               {home.commercialSprint.title}
             </h2>
-            <p className="commercial-sprint-subline" data-reveal>
-              {home.commercialSprint.subline}
-            </p>
-            <p className="commercial-sprint-body" data-reveal>
-              {home.commercialSprint.body}
-            </p>
+            {home.commercialSprint.subline ? (
+              <p className="commercial-sprint-subline" data-reveal>
+                {home.commercialSprint.subline}
+              </p>
+            ) : null}
+            {home.commercialSprint.body ? (
+              <p className="commercial-sprint-body" data-reveal>
+                {home.commercialSprint.body}
+              </p>
+            ) : null}
             <div className="commercial-deliverables">
               {home.commercialSprint.deliverables.map((item, index) => (
                 <div key={item} className="commercial-deliverable-row" data-reveal>
@@ -152,13 +159,20 @@ export default function HomePage() {
 
         <section className="working-promise-section">
           <div className="editorial-container working-promise-frame">
-            <p className="eyebrow" data-reveal>{home.workingPromise.eyebrow}</p>
+            {home.workingPromise.eyebrow ? (
+              <p className="eyebrow" data-reveal data-motion="label">{home.workingPromise.eyebrow}</p>
+            ) : null}
             <h2 className="working-promise-title" data-split>
               {home.workingPromise.title}
             </h2>
             <div className="working-promise-copy">
               {home.workingPromise.body.map((paragraph, index) => (
-                <p key={paragraph} className={index >= home.workingPromise.body.length - 2 ? "is-emphasis" : ""} data-reveal>
+                <p
+                  key={paragraph}
+                  className={index >= home.workingPromise.body.length - 2 ? "is-emphasis" : ""}
+                  data-reveal
+                  data-motion={index >= home.workingPromise.body.length - 2 ? "emphasis" : undefined}
+                >
                   {paragraph}
                 </p>
               ))}
@@ -168,7 +182,9 @@ export default function HomePage() {
 
         <section className="proof-section">
           <div className="editorial-container proof-section-frame">
-            <p className="eyebrow" data-reveal>{home.proof.eyebrow}</p>
+            {home.proof.eyebrow ? (
+              <p className="eyebrow" data-reveal data-motion="label">{home.proof.eyebrow}</p>
+            ) : null}
             <h2 className="proof-section-title" data-split>
               {home.proof.title}
             </h2>
@@ -178,9 +194,6 @@ export default function HomePage() {
 
         <section className="fit-section">
           <div className="editorial-container fit-section-frame">
-            <p className="eyebrow fit-section-eyebrow" data-reveal>
-              Fit / not fit
-            </p>
             <h2 className="fit-section-title" data-split>
               {home.fit.title}
             </h2>
@@ -191,21 +204,43 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="faq-section">
+          <div className="editorial-container faq-section-frame">
+            <p className="eyebrow" data-reveal data-motion="label">{home.faq.eyebrow}</p>
+            <div className="faq-list">
+              {home.faq.items.map((item) => (
+                <div key={item.question} className="faq-row" data-reveal>
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="home-cta-section" data-header-theme="dark">
           <div className="editorial-container home-cta-frame">
-            <p className="eyebrow home-cta-eyebrow" data-reveal>{home.cta.eyebrow}</p>
-            <h2 className="home-cta-title" data-split>
-              {home.cta.title}
-            </h2>
-            <p className="home-cta-body" data-reveal>
-              {home.cta.body}
-            </p>
+            {home.cta.eyebrow ? (
+              <p className="eyebrow home-cta-eyebrow" data-reveal data-motion="label">{home.cta.eyebrow}</p>
+            ) : null}
+            {home.cta.title ? (
+              <h2 className="home-cta-title" data-split>
+                {home.cta.title}
+              </h2>
+            ) : null}
+            {home.cta.body ? (
+              <p className="home-cta-body" data-reveal>
+                {home.cta.body}
+              </p>
+            ) : null}
             <div data-cta-button>
               <ButtonLink href={primaryCta.href} className="border-paper text-paper hover:bg-paper hover:text-ink">
                 {primaryCta.label}
               </ButtonLink>
             </div>
-            <p className="home-cta-brand" data-reveal>{home.cta.brand}</p>
+            {home.cta.brand ? (
+              <p className="home-cta-brand" data-reveal>{home.cta.brand}</p>
+            ) : null}
           </div>
         </section>
       </div>

@@ -16,6 +16,22 @@ export function SiteHeader() {
   const darkHeader = pathname === "/" && overDarkSection && !open;
   const homeTop = pathname === "/" && !scrolled && !open && !darkHeader;
 
+  const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    setOpen(false);
+
+    if (pathname !== "/") {
+      return;
+    }
+
+    event.preventDefault();
+    window.history.replaceState(null, "", "/");
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"
+    });
+  };
+
   React.useEffect(() => {
     let frame = 0;
 
@@ -79,7 +95,7 @@ export function SiteHeader() {
             "focus-ring text-sm uppercase tracking-[0.08em] transition-colors duration-300",
             darkHeader ? "text-paper/[0.88] hover:text-paper" : homeTop ? "text-ink/70 hover:text-ink" : "text-ink"
           )}
-          onClick={() => setOpen(false)}
+          onClick={handleHomeClick}
         >
           Studio Baggio
         </Link>
@@ -149,7 +165,7 @@ export function SiteHeader() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    onClick={() => setOpen(false)}
+                    onClick={item.href === "/" ? handleHomeClick : () => setOpen(false)}
                     className="focus-ring border-b border-ink/10 py-4 text-3xl leading-none"
                   >
                     {item.label}
