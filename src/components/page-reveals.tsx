@@ -305,7 +305,8 @@ export function PageReveals() {
               pin: pinOpeningSequence,
               pinSpacing: pinOpeningSequence,
               anticipatePin: pinOpeningSequence ? 1 : 0,
-              invalidateOnRefresh: true
+              invalidateOnRefresh: true,
+              refreshPriority: 1000
             })
           );
         }
@@ -328,6 +329,7 @@ export function PageReveals() {
               trigger: statTrigger,
               start: pinHomepageSections ? "top top+=64" : "top 68%",
               once: true,
+              refreshPriority: -100,
               onEnter: () => {
                 statElements.forEach((element, index) => {
                   const target = Number(element.dataset.statValue ?? element.textContent?.replace("%", ""));
@@ -372,7 +374,7 @@ export function PageReveals() {
                 pinSpacing: true,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
-                refreshPriority: sectionIndex + 10
+                refreshPriority: 900 - sectionIndex
               })
             );
 
@@ -592,7 +594,9 @@ export function PageReveals() {
         });
 
         requestAnimationFrame(() => {
-          if (alive) ScrollTrigger.refresh();
+          if (!alive) return;
+          ScrollTrigger.sort();
+          ScrollTrigger.refresh();
         });
       }
 
