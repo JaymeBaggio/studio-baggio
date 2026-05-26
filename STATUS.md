@@ -94,6 +94,7 @@ Implemented:
 - Corrected the latest Gap evidence layout to match Jayme's supplied visual reference: white frame, slimmer 3-column stat row, narrower caption measures and per-stat sources.
 - Reintroduced Section 2 as a controlled GSAP reading sequence: the thesis reads first, the grey qualifier follows, the Studio Baggio setup appears on the next scroll beat, the outcome stack resolves last, and the blue `Harder to compete with.` line gets a held final beat.
 - Extended the Section 2 pin duration and moved the outcome reveal earlier so `Harder to compete with.` resolves in the pinned frame before the Gap section enters.
+- Tightened the Section 2 internal timing again after live review so the setup, muted outcomes and blue final line complete earlier inside the pinned frame and hold before release.
 - Added homepage-only sticky holds to the remaining `.home-4b` sections on desktop so each section can land as a complete reading frame without changing the other pages yet.
 - Added restrained GSAP count-up animation for the three Gap percentage values only; reduced-motion users still receive the final values immediately.
 - Audited the homepage typography system using the `ui-design-system` and `ui-audit` workflow, then converted the live one-off Section 2, Gap stat/source and value-summary styles into named CSS tokens.

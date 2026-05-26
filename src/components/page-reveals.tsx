@@ -241,11 +241,11 @@ export function PageReveals() {
               {
                 yPercent: -4,
                 autoAlpha: 0.32,
-                duration: 0.72,
+                duration: 0.64,
                 ease: "power2.out",
                 overwrite: "auto"
               },
-              1.42
+              1.12
             );
 
             openingStoryTimeline.fromTo(
@@ -254,11 +254,11 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.78,
+                duration: 0.7,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              1.72
+              1.38
             );
           }
 
@@ -269,12 +269,12 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.78,
-                stagger: 0.16,
+                duration: 0.72,
+                stagger: 0.14,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              2.22
+              1.88
             );
           }
 
@@ -285,15 +285,15 @@ export function PageReveals() {
               {
                 y: 0,
                 autoAlpha: 1,
-                duration: 0.84,
+                duration: 0.72,
                 ease: "power3.out",
                 overwrite: "auto"
               },
-              openingOutcomeSupport.length ? 3 : 2.38
+              openingOutcomeSupport.length ? 2.52 : 2.02
             );
           }
 
-          openingStoryTimeline.to({}, { duration: 2.1 });
+          openingStoryTimeline.to({}, { duration: 2.55 });
 
           triggers.push(
             ScrollTrigger.create({
