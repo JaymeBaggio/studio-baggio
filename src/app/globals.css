@@ -2446,12 +2446,12 @@ textarea {
 
 .home-4b .proof-row-panel-inner {
   display: grid;
-  gap: clamp(24px, 3.6vw, 52px);
-  padding: 0 clamp(24px, 4vw, 70px) clamp(30px, 3.8vw, 44px) 84px;
+  gap: clamp(26px, 3.2vw, 44px);
+  padding: 0 clamp(24px, 4vw, 64px) clamp(30px, 3.6vw, 42px) 84px;
 }
 
 .home-4b .proof-row-panel-inner.has-media {
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
   align-items: start;
 }
 
@@ -2491,19 +2491,27 @@ textarea {
 
 .home-4b .proof-row-media {
   justify-self: end;
-  width: min(100%, 420px);
+  width: min(100%, 360px);
+  padding-top: 4px;
 }
 
 .home-4b .proof-row-media-frame {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid rgba(216, 216, 216, 0.88);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.03);
+}
+
+.home-4b .proof-row-media-image {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border: 1px solid var(--sb-rule);
   background: var(--sb-paper);
 }
 
-.home-4b .proof-row-media-frame img {
+.home-4b .proof-row-media-image img {
   object-fit: cover;
 }
 
@@ -2833,7 +2841,7 @@ textarea {
   .home-4b .proof-row-media {
     justify-self: start;
     width: 100%;
-    max-width: 420px;
+    max-width: 360px;
   }
 
   .home-4b .faq-question-button {

@@ -64,6 +64,39 @@ Not done:
 
 - Push pending after Jayme's final small hero-line request.
 
+## 27 May Live Work Product Image Polish - Local Review
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Added the new OG images Jayme supplied for Calm Authority and Fire Source.
+- Polished the homepage `Live Work` / products accordion media treatment.
+
+Implemented:
+
+- Added homepage OG image assets:
+  - `public/assets/products/calm-authority-og.png`
+  - `public/assets/products/fire-source-og.png`
+- Wired Calm Authority and Fire Source to those assets in `src/content/work.ts`.
+- Reduced product media size in the open accordion panels from a `420px` desktop cap to `360px`.
+- Added a quieter framed image treatment with an inner image well, hairline border and subtle surface so the images feel integrated rather than pasted onto the row.
+- Updated the Next Image `sizes` value to match the new desktop media cap.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Browser check confirms all four Live Work rows now resolve homepage images at `360px` wide and there is no horizontal overflow.
+- Pushed to GitHub `main` and `quiet-luxury-homepage-system` in commit `Polish live work product media`.
+
+Not done:
+
+- Vercel production deployment should be checked separately if Jayme wants live-domain confirmation.
+
 ## 27 May Moonchild Section Harvest - Local Review
 
 Branch:

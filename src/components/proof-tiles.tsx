@@ -86,12 +86,14 @@ export function ProofTiles() {
                     {homepageImage ? (
                       <div className="proof-row-media" aria-hidden="true">
                         <div className="proof-row-media-frame">
-                          <Image
-                            src={homepageImage}
-                            alt=""
-                            fill
-                            sizes="(min-width: 1024px) 420px, 100vw"
-                          />
+                          <div className="proof-row-media-image">
+                            <Image
+                              src={homepageImage}
+                              alt=""
+                              fill
+                              sizes="(min-width: 1024px) 360px, 100vw"
+                            />
+                          </div>
                         </div>
                       </div>
                     ) : null}

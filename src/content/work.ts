@@ -42,6 +42,7 @@ export const workItems: WorkItem[] = [
       { label: "See more →", href: "/calm-authority" },
       { label: "Visit live site →", href: "https://www.calmauthority.ai" }
     ],
+    homepageImage: "/assets/products/calm-authority-og.png",
     image: "/assets/products/calm-authority.png"
   },
   {
@@ -105,6 +106,7 @@ export const workItems: WorkItem[] = [
     href: "/fire-source",
     external: "https://fire-source.vercel.app",
     homepageLinks: [{ label: "Visit live site →", href: "https://fire-source.vercel.app" }],
+    homepageImage: "/assets/products/fire-source-og.png",
     image: "/assets/products/fire-source.png"
   }
 ];
