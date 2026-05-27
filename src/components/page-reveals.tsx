@@ -355,6 +355,32 @@ export function PageReveals() {
               return;
             }
 
+            if (type === "input-map") {
+              const label = section.querySelector<HTMLElement>("[data-motion='label']");
+              const bridge = section.querySelector<HTMLElement>(".bt-input-map-bridge");
+              const cards = Array.from(section.querySelectorAll<HTMLElement>(".bt-input-map-card"));
+
+              if (label) prepareRise(label, 10);
+              if (bridge) prepareRise(bridge, 14);
+              if (cards.length) prepareRise(cards, 10);
+
+              const reveal = gsap.timeline({
+                defaults: { ease: editorialOut }
+              });
+
+              if (label) revealRise(reveal, label, 0, { duration: 0.82 });
+              if (bridge) revealRiseFromHidden(reveal, bridge, label ? 0.16 : 0, { duration: 0.96 });
+              if (cards.length) {
+                revealRiseFromHidden(reveal, cards, bridge ? 0.48 : 0.18, {
+                  duration: 0.92,
+                  stagger: 0.16
+                });
+              }
+
+              playOnApproach(reveal, section, "studio-business-tracker-input-map-reveal");
+              return;
+            }
+
             const title = section.querySelector<HTMLElement>("[data-split]");
             const titleTargets = targetsFor(title);
             const revealTargets = Array.from(

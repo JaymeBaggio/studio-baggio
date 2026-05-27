@@ -422,73 +422,195 @@ export const systemBlocks = [
   }
 ];
 
+export type BusinessTrackerInputMapCard = {
+  number: string;
+  title: string;
+  bullets: string[];
+  failure: string;
+  image: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+    fit: "cover" | "contain";
+  };
+};
+
 export const businessTracker = {
-  title: "BUSINESS TRACKER",
-  pageKicker: "COMMERCIAL INTELLIGENCE",
-  coreLine:
-    "The operating system that captures every interaction, makes it visible & produces a named follow-up pipeline.",
-  cta: "Enquire now",
-  sectionLabels: {
-    operatingLayers: "Operating Layers",
-    inputMap: "INPUT MAP",
-    outcome: "Outcome",
-    fit: "Who it's for",
-    commercial: "How it works commercially"
-  },
-  modules: [
-    ["01", "Intelligence", "Commercial insight none of your competitors have."],
-    ["02", "Attribution", "Captures every interaction across website, SEO, LinkedIn, lead magnets and email."],
-    ["03", "Qualification", "Scores leads against the firm's own criteria: fit, value, relevance and relationship potential."],
-    [
-      "04",
-      "Live AI Search Intelligence",
-      "Adds current context from public signals, sector activity, press and relationship cues."
-    ],
-    ["05", "Follow-up", "Recommends the next action per lead, so the team knows who to prioritise."],
-    [
-      "06",
-      "Reporting & Scale",
-      "Creates a board-ready monthly view of what is working, what is not, and what to optimise next. Designed to scale beyond the current set-up."
-    ]
-  ],
-  inputs: [
-    {
-      title: "SEO / AI Search Visibility",
-      body:
-        "Which articles convert, and where you sit in search. AI search rationale. Optimal follow-up.",
-      note: "SEO without Lead Magnets = Anonymous traffic."
-    },
-    {
-      title: "LinkedIn",
-      body:
-        "Who followed, commented and engaged. Qualified prospects and best-performing formats. When to post and what hooks work.",
-      note: "LinkedIn without Analytics = Blind impressions without growth mechanics."
-    },
-    {
-      title: "Lead Magnets",
-      body:
-        "Who interacted, when and why. Engagement and lead quality score. AI rationale and optimal follow-up.",
-      note: "Lead Magnet without Email Marketing = Wasted contact and opportunity to deposit value."
-    },
-    {
-      title: "Email Marketing",
-      body:
-        "Behavioural triggers and source attribution. Messaging stage and engagement score. Lead quality, AI rationale and optimal follow-up.",
-      note: "Email Marketing without the Business Tracker = Sending without knowing who you're sending to and who engaged."
+  hero: {
+    eyebrow: "COMMERCIAL INTELLIGENCE",
+    title: "BUSINESS TRACKER",
+    sub:
+      "The operating system that captures every interaction, makes it visible & produces a named follow-up pipeline.",
+    cta: "Enquire now",
+    dashboard: {
+      src: "/business-tracker/hero/dashboard-hires.png",
+      width: 1672,
+      height: 941,
+      alt: "Calm Authority Business Tracker dashboard showing lead intelligence, engagement and follow-up pipeline."
     }
-  ],
-  bridge:
-    "Without the Business Tracker, these are separate touchpoints. With it, every signal becomes business intelligence, a qualified prospect or a follow-up action.",
+  },
+  whatItDoes: {
+    eyebrow: "WHAT IT DOES",
+    intro: "Eyes and ears on",
+    bullets: [
+      "who is searching for what you do",
+      "where prospects have engaged",
+      "who they are",
+      "what they do",
+      "how they qualify against your criteria",
+      "what is performing and how to optimise"
+    ],
+    close: "Every signal traced to a named person, ranked by commercial priority, with the next action recommended for each."
+  },
+  operatingLayers: {
+    eyebrow: "Operating Layers",
+    items: [
+      {
+        number: "01",
+        title: "Intelligence",
+        body: "Commercial insight none of your competitors have."
+      },
+      {
+        number: "02",
+        title: "Attribution",
+        body: "Captures every interaction across website, SEO, LinkedIn, lead magnets and email."
+      },
+      {
+        number: "03",
+        title: "Qualification",
+        body: "Scores leads against the firm's own criteria: fit, value, relevance and relationship potential."
+      },
+      {
+        number: "04",
+        title: "Live AI Search Intelligence",
+        body: "Adds current context from public signals, sector activity, press and relationship cues."
+      },
+      {
+        number: "05",
+        title: "Follow-up",
+        body: "Recommends the next action per lead, so the team knows who to prioritise."
+      },
+      {
+        number: "06",
+        title: "Reporting & Scale",
+        body:
+          "Creates a board-ready monthly view of what is working, what is not, and what to optimise next. Designed to scale beyond the current set-up."
+      }
+    ]
+  },
+  inputMap: {
+    eyebrow: "INPUT MAP",
+    bridge:
+      "Without the Business Tracker, these are separate touchpoints. With it, every signal becomes business intelligence, a qualified prospect or a follow-up action.",
+    cards: [
+      {
+        number: "01",
+        title: "SEO / AI Search Visibility",
+        bullets: [
+          "Which articles convert, and where you sit in search.",
+          "AI search rationale.",
+          "Optimal follow-up."
+        ],
+        failure: "SEO without Lead Magnets = Anonymous traffic.",
+        image: {
+          src: "/business-tracker/input-map/01-seo.png",
+          width: 1389,
+          height: 1132,
+          alt: "Calm Authority Google search mock showing first-position ranking, search visibility and estimated monthly clicks.",
+          fit: "contain"
+        }
+      },
+      {
+        number: "02",
+        title: "LinkedIn",
+        bullets: [
+          "Who followed, commented and engaged.",
+          "Qualified prospects and best-performing formats.",
+          "When to post and what hooks work."
+        ],
+        failure: "LinkedIn without Analytics = Blind impressions without growth mechanics.",
+        image: {
+          src: "/business-tracker/input-map/02-linkedin.png",
+          width: 1648,
+          height: 810,
+          alt: "Calm Authority LinkedIn company header showing the live brand presence on LinkedIn.",
+          fit: "contain"
+        }
+      },
+      {
+        number: "03",
+        title: "Lead Magnets",
+        bullets: [
+          "Who interacted, when and why.",
+          "Engagement and lead quality score.",
+          "AI rationale and optimal follow-up."
+        ],
+        failure: "Lead Magnet without Email Marketing = Wasted contact and opportunity to deposit value.",
+        image: {
+          src: "/business-tracker/input-map/03-lead-magnet.jpg",
+          width: 1170,
+          height: 1547,
+          alt: "Calm Authority Visibility Diagnostic lead magnet preview.",
+          fit: "contain"
+        }
+      },
+      {
+        number: "04",
+        title: "Email Marketing",
+        bullets: [
+          "Who opened, who clicked, and which campaign moved them.",
+          "Messaging stage and engagement score.",
+          "Lead quality, AI rationale and optimal follow-up."
+        ],
+        failure:
+          "Email Marketing without the Business Tracker = Sending without knowing who you're sending to and who engaged.",
+        image: {
+          src: "/business-tracker/input-map/04-email.png",
+          width: 1066,
+          height: 1130,
+          alt: "Calm Authority marketing email example showing a live email campaign.",
+          fit: "contain"
+        }
+      }
+    ] satisfies BusinessTrackerInputMapCard[]
+  },
   outcome: {
+    eyebrow: "Outcome",
     deliverable: "Delivers: Visibility | Qualified Leads | Commercial Advantage",
     impact: "Business intelligence | Qualified prospects | More conversations | More clients | More impact"
   },
   fit: {
+    eyebrow: "Who it's for",
+    bestForLabel: "Best for",
     bestFor:
       "Expert-led businesses where high-value leads need careful nurturing. Specialist advisers, founder-led firms, professional services, and trust-based businesses with touchpoints (SEO, LinkedIn, lead magnets, email) that currently sit apart.",
-    notFor: "High-volume B2C funnels. Generic CRM replacement. Teams that just want a dashboard."
+    bestForItems: [
+      "Expert-led businesses where high-value leads need careful nurturing",
+      "Specialist advisers",
+      "Founder-led firms",
+      "Professional services",
+      "Trust-based businesses with touchpoints (SEO, LinkedIn, lead magnets, email) that currently sit apart"
+    ],
+    notForLabel: "Not for",
+    notFor: "High-volume B2C funnels. Generic CRM replacement. Teams that just want a dashboard.",
+    notForItems: [
+      "High-volume B2C funnels",
+      "Generic CRM replacement",
+      "Teams that just want a dashboard"
+    ]
+  },
+  hiring: {
+    eyebrow: "EXTENDS TO HIRING & BEYOND",
+    intro: "The same engine that qualifies leads against your Ideal Customer Profile qualifies candidates against your Ideal Employee Profile.",
+    bullets: [
+      "CVs and applications go in, the Business Tracker enriches each person from their public signals, scores them against your bespoke criteria, and ranks them with reasoning attached.",
+      "Same logic, different intent.",
+      "Useful for firms hiring selectively, where every wrong hire is expensive and every right hire compounds."
+    ]
   },
   commercial: {
+    eyebrow: "How it works commercially",
     lead: "Retainer-led. Starts at £6,000 p/m.",
     includesLabel: "Includes:",
     includes: [
@@ -496,6 +618,54 @@ export const businessTracker = {
       "Monthly reporting and optimisation insights",
       "A 90-minute strategy session each month"
     ]
+  },
+  faq: {
+    eyebrow: "FAQ",
+    items: [
+      {
+        question: "What is the Business Tracker?",
+        answer:
+          "The Business Tracker is a commercial intelligence system that captures every interaction across your website, SEO, LinkedIn, lead magnets and email, scores each one against your own criteria, and produces a ranked, named follow-up pipeline with the next action recommended for each lead. Built by Studio Baggio and currently running live for Calm Authority."
+      },
+      {
+        question: "How is the Business Tracker different from a CRM?",
+        answer:
+          "A CRM stores the contacts you already know about. The Business Tracker finds them, enriches them from public signals, qualifies them against your bespoke criteria, and tells you who to contact next and why. It connects to your CRM where one exists. It does not replace it. Most clients pair the two: Business Tracker as the intelligence layer, CRM as the system of record."
+      },
+      {
+        question: "What does the Business Tracker connect to?",
+        answer:
+          "Your website (analytics, search visibility), LinkedIn (company page, posts, engagement), email platform (sends, opens, clicks), lead magnets (downloads, diagnostics, calculators), and your CRM if you have one. We build the integrations during setup. The result is one ranked, named pipeline view rather than five separate dashboards."
+      },
+      {
+        question: "Who owns the data?",
+        answer:
+          "You do. The Business Tracker is built around your data and your criteria. The database stays portable, your data is not pooled with other clients or resold, and data-residency and ownership terms are documented in the engagement."
+      },
+      {
+        question: "How long does setup take?",
+        answer:
+          "2 to 4 weeks for the standard channel set, once access to your website, LinkedIn and email platform is shared. Wider scope, such as building lead magnets, content strategy or related assets, extends the build and is scoped at the start."
+      },
+      {
+        question: "Can the Business Tracker be used for hiring?",
+        answer:
+          "Yes. The same engine that qualifies leads against your Ideal Customer Profile qualifies candidates against your Ideal Employee Profile. CVs and applications go in, get enriched from public signals, scored against your bespoke criteria, and ranked with reasoning. Recruitment is the most common second use case. The engine extends to anywhere humans need to be enriched, scored and ranked against your own criteria."
+      },
+      {
+        question: "How does it work commercially?",
+        answer:
+          "Retainer-led. Starts at £6,000 p/m. Includes: Business Tracker build and setup, monthly reporting and optimisation insights, and a 90-minute strategy session each month."
+      },
+      {
+        question: "What if we already have a marketing agency or in-house marketing team?",
+        answer:
+          "We work alongside them. The Business Tracker is the commercial intelligence layer that tells your team or agency who is showing intent, why they matter, and what to follow up on. They keep doing the execution. The Tracker makes that execution more targeted."
+      }
+    ]
+  },
+  cta: {
+    label: "Enquire now"
   }
 };
 

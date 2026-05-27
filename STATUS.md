@@ -1,6 +1,39 @@
 # Studio Baggio Website - STATUS
 *Last updated: 27 May 2026*
 
+## 27 May Business Tracker Rebuild - Local Verified
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Rebuilt `/business-tracker` only.
+- No homepage, Work, Calm Authority, About, Contact or Privacy route changes.
+
+Implemented:
+
+- Updated Business Tracker content in `src/content/site.ts` to the locked page structure.
+- Added the supplied Business Tracker assets under `public/business-tracker/`.
+- Added a four-card Input Map component using the supplied product mock images.
+- Reworked the page rhythm to match the locked Studio Baggio homepage system: calm labels, row-scale titles, homepage-style ruled lists and neutral-only Studio chrome.
+- Moved the commercial/pricing detail out of the main page flow and into FAQ disclosure content, per Jayme's direction.
+- Reused the existing GSAP PageReveals system, including a staggered Input Map card reveal.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Codex in-app browser checks pass at desktop `1440x900`, tablet `820x900` and mobile `390x844`: no horizontal overflow, no console errors, Input Map responsive layout correct, all four mocks visible, FAQ disclosure pattern intact.
+- Business Tracker asset paths return `200` locally.
+- Scoped page typography uses Aileron only, weights `400` and `700`.
+
+Not done:
+
+- Push and production verification pending.
+
 ## 27 May Typography Weight Softening - Local Review
 
 Branch:
