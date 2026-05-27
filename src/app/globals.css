@@ -122,6 +122,10 @@ textarea {
   color: var(--sb-accent-blue);
 }
 
+.home-reference-nowrap {
+  white-space: nowrap;
+}
+
 .home-reference-wordmark {
   grid-column: 1 / -1;
   grid-row: 2;
@@ -2309,14 +2313,22 @@ textarea {
 
 .home-4b .working-promise-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
-  gap: clamp(58px, 8vw, 100px);
+  gap: clamp(42px, 5vw, 68px);
+  align-items: start;
+}
+
+.home-4b .working-promise-body-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1fr);
+  gap: clamp(64px, 8vw, 128px);
   align-items: start;
 }
 
 .home-4b .working-promise-negatives {
   display: grid;
   gap: 10px;
+  width: min(100%, 760px);
+  justify-self: end;
 }
 
 .home-4b .working-promise-negative {
@@ -2332,7 +2344,7 @@ textarea {
 }
 
 .home-4b .working-promise-copy {
-  width: min(100%, 640px);
+  width: min(100%, 700px);
   margin-top: 0;
   margin-left: 0;
   display: grid;
@@ -2885,6 +2897,11 @@ textarea {
   }
 
   .home-4b .working-promise-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .home-4b .working-promise-body-grid {
     grid-template-columns: 1fr;
     gap: 34px;
   }

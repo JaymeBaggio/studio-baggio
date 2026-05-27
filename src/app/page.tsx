@@ -10,6 +10,24 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
 
+function renderHeroMetaLine(line: string) {
+  const phrase = "WIN IN MARKET";
+
+  if (!line.includes(phrase)) {
+    return line;
+  }
+
+  const [before, after] = line.split(phrase);
+
+  return (
+    <>
+      {before}
+      <span className="home-reference-nowrap">{phrase}</span>
+      {after}
+    </>
+  );
+}
+
 export default function HomePage() {
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
@@ -51,7 +69,7 @@ export default function HomePage() {
                   className={index >= hero.meta.length - 2 ? "is-accent" : undefined}
                   data-hero-meta
                 >
-                  {line}
+                  {renderHeroMetaLine(line)}
                 </p>
               ))}
             </div>
@@ -190,22 +208,24 @@ export default function HomePage() {
             {home.workingPromise.eyebrow ? (
               <p className="eyebrow" data-reveal data-motion="label">{home.workingPromise.eyebrow}</p>
             ) : null}
-            <div className="working-promise-negatives" aria-label={home.workingPromise.title}>
-              {home.workingPromise.negativeLines.map((line) => (
-                <p key={line} className="working-promise-negative" data-reveal>
-                  {line}
-                </p>
-              ))}
-            </div>
-            <div className="working-promise-copy">
-              {home.workingPromise.body.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  data-reveal
-                >
-                  {paragraph}
-                </p>
-              ))}
+            <div className="working-promise-body-grid">
+              <div className="working-promise-copy">
+                {home.workingPromise.body.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    data-reveal
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <div className="working-promise-negatives" aria-label={home.workingPromise.title}>
+                {home.workingPromise.negativeLines.map((line) => (
+                  <p key={line} className="working-promise-negative" data-reveal>
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </section>

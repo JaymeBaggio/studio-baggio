@@ -34,6 +34,36 @@ Not done:
 
 - Vercel production deployment should be checked separately if Jayme wants live-domain confirmation.
 
+## 27 May Working Promise Layout Adjustment - Local Review
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Small homepage layout adjustment only for the `Working Promise` section after Jayme flagged the copy/strikethrough spacing as odd.
+
+Implemented:
+
+- Changed the section from three disconnected grid items into a clearer lockup:
+  - `WORKING PROMISE` eyebrow above.
+  - Body copy in the left column.
+  - Strikethrough negative lines in the right column.
+- Kept typography, copy, animation data attributes and section styling within the existing homepage system.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Browser measurement at local preview shows copy and strikethrough columns top-aligned, no horizontal overflow.
+- Hero meta line also keeps `WIN IN MARKET` together as one unbroken phrase.
+
+Not done:
+
+- Push pending after Jayme's final small hero-line request.
+
 ## 27 May Moonchild Section Harvest - Local Review
 
 Branch:
