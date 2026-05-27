@@ -1,6 +1,36 @@
 # Studio Baggio Website - STATUS
 *Last updated: 27 May 2026*
 
+## 27 May Business Tracker Hierarchy Refinement - Local Verified
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- `/business-tracker` only.
+
+Implemented:
+
+- Promoted the What It Does argument to a proper section title: "Commercial intelligence your competitors cannot see."
+- Promoted the "Every signal traced to a named person..." line into the section proof statement instead of ordinary body copy.
+- Renamed the vague Operating Layers eyebrow to "The Intelligence Engine" and added a clear section title explaining the ranked follow-up pipeline.
+- Reworked Outcome from a dark banner into a calm ruled section with separate outcome pillars: Visibility, Qualified Leads and Commercial Advantage.
+- Moved "Extends to hiring & beyond" before "Who it's for" and gave both sections complete frames.
+- Tightened the FAQ transition spacing while keeping the homepage FAQ disclosure pattern.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Codex in-app browser local check confirms zero horizontal overflow, correct section order and Aileron weights `400`/`700` only.
+
+Not done:
+
+- Push and production verification pending.
+
 ## 27 May Business Tracker Rebuild - Local Verified
 
 Branch:

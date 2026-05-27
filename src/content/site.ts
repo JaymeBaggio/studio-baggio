@@ -452,7 +452,8 @@ export const businessTracker = {
   },
   whatItDoes: {
     eyebrow: "WHAT IT DOES",
-    intro: "Eyes and ears on",
+    title: "Commercial intelligence your competitors cannot see.",
+    intro: "Eyes and ears on who is showing intent, how they qualify and what to do next.",
     bullets: [
       "who is searching for what you do",
       "where prospects have engaged",
@@ -464,7 +465,8 @@ export const businessTracker = {
     close: "Every signal traced to a named person, ranked by commercial priority, with the next action recommended for each."
   },
   operatingLayers: {
-    eyebrow: "Operating Layers",
+    eyebrow: "The Intelligence Engine",
+    title: "How the Business Tracker turns scattered signals into a ranked follow-up pipeline.",
     items: [
       {
         number: "01",
@@ -577,11 +579,13 @@ export const businessTracker = {
   },
   outcome: {
     eyebrow: "Outcome",
-    deliverable: "Delivers: Visibility | Qualified Leads | Commercial Advantage",
-    impact: "Business intelligence | Qualified prospects | More conversations | More clients | More impact"
+    deliverable: "Delivers",
+    deliverables: ["Visibility", "Qualified Leads", "Commercial Advantage"],
+    impact: ["Business intelligence", "Qualified prospects", "More conversations", "More clients", "More impact"]
   },
   fit: {
     eyebrow: "Who it's for",
+    title: "Built for firms where valuable signals currently sit apart.",
     bestForLabel: "Best for",
     bestFor:
       "Expert-led businesses where high-value leads need careful nurturing. Specialist advisers, founder-led firms, professional services, and trust-based businesses with touchpoints (SEO, LinkedIn, lead magnets, email) that currently sit apart.",

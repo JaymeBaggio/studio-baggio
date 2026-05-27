@@ -46,19 +46,21 @@ export default function BusinessTrackerPage() {
               <p className="eyebrow" data-reveal data-motion="label">
                 {businessTracker.whatItDoes.eyebrow}
               </p>
+              <h2 className="bt-section-title" data-split>
+                {businessTracker.whatItDoes.title}
+              </h2>
+              <p className="bt-section-intro" data-reveal>
+                {businessTracker.whatItDoes.intro}
+              </p>
             </header>
             <div className="bt-signal-panel">
               <div className="bt-signal-copy">
-                <h2 className="bt-section-lead" data-split>
-                  {businessTracker.whatItDoes.intro}
-                </h2>
                 <div className="bt-calm-list is-signal-list" data-reveal>
                   <ul>
                     {businessTracker.whatItDoes.bullets.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                  <p className="bt-calm-list-close">{businessTracker.whatItDoes.close}</p>
                 </div>
               </div>
               <div className="bt-what-dashboard" data-reveal data-motion="evidence">
@@ -72,6 +74,9 @@ export default function BusinessTrackerPage() {
                 />
               </div>
             </div>
+            <p className="bt-signal-proof" data-reveal>
+              {businessTracker.whatItDoes.close}
+            </p>
           </div>
         </section>
 
@@ -85,6 +90,9 @@ export default function BusinessTrackerPage() {
             <p className="eyebrow" data-reveal data-motion="label">
               {businessTracker.operatingLayers.eyebrow}
             </p>
+            <h2 className="bt-section-title" data-split>
+              {businessTracker.operatingLayers.title}
+            </h2>
             <div className="bt-operating-rows">
               {businessTracker.operatingLayers.items.map((item, index) => (
                 <article key={item.title} className={index === 0 ? "bt-operating-row is-open" : "bt-operating-row"} data-reveal>
@@ -102,19 +110,50 @@ export default function BusinessTrackerPage() {
         <BusinessTrackerInputMap {...businessTracker.inputMap} />
 
         <section
-          className="studio-page-dark"
-          data-header-theme="dark"
+          className="bt-outcome-section"
           data-business-tracker-section="outcome"
           data-home-section
           data-motion-section="bt-outcome"
         >
-          <div className="editorial-container studio-page-stack">
+          <div className="editorial-container bt-outcome-frame">
             <p className="eyebrow" data-reveal data-motion="label">
               {businessTracker.outcome.eyebrow}
             </p>
-            <div className="studio-page-copy" data-reveal>
-              <p className="studio-page-lead">{businessTracker.outcome.deliverable}</p>
-              <p>{businessTracker.outcome.impact}</p>
+            <h2 className="bt-section-title" data-split>
+              {businessTracker.outcome.deliverable}
+            </h2>
+            <div className="bt-outcome-pillars" data-reveal>
+              {businessTracker.outcome.deliverables.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
+            </div>
+            <ul className="bt-outcome-list" data-reveal>
+              {businessTracker.outcome.impact.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section
+          className="bt-hiring-section"
+          data-business-tracker-section="hiring"
+          data-home-section
+          data-motion-section="bt-hiring"
+        >
+          <div className="editorial-container studio-page-stack">
+            <p className="eyebrow" data-reveal data-motion="label">
+              {businessTracker.hiring.eyebrow}
+            </p>
+            <h2 className="bt-section-title" data-split>
+              {businessTracker.hiring.intro}
+            </h2>
+            <div className="bt-calm-list" data-reveal>
+              <ul>
+                {businessTracker.hiring.bullets.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
@@ -129,31 +168,12 @@ export default function BusinessTrackerPage() {
             <p className="eyebrow" data-reveal data-motion="label">
               {businessTracker.fit.eyebrow}
             </p>
+            <h2 className="bt-section-title" data-split>
+              {businessTracker.fit.title}
+            </h2>
             <div className="fit-list-grid bt-fit-list-grid" data-reveal>
               <BusinessTrackerFitList title={businessTracker.fit.bestForLabel} items={businessTracker.fit.bestForItems} />
               <BusinessTrackerFitList title={businessTracker.fit.notForLabel} items={businessTracker.fit.notForItems} />
-            </div>
-          </div>
-        </section>
-
-        <section
-          data-business-tracker-section="hiring"
-          data-home-section
-          data-motion-section="bt-hiring"
-        >
-          <div className="editorial-container studio-page-stack">
-            <p className="eyebrow" data-reveal data-motion="label">
-              {businessTracker.hiring.eyebrow}
-            </p>
-            <h2 className="bt-section-lead" data-split>
-              {businessTracker.hiring.intro}
-            </h2>
-            <div className="bt-calm-list" data-reveal>
-              <ul>
-                {businessTracker.hiring.bullets.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
             </div>
           </div>
         </section>
