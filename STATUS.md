@@ -36,6 +36,7 @@ Implemented:
 - Fixed mobile edge spacing by restoring the shared `.editorial-container` width on harvested homepage section frames and moving the mobile side-padding rhythm to `24px`.
 - Removed mobile hero promise overflow by allowing the promise lines to wrap/balance within the frame.
 - Widened the mobile stat-number column so the Gap section percentages no longer overflow their grid cell.
+- Tuned `Who This Is For` after Moonchild-reference review so it keeps the two-column ruled-list layout while fitting the desktop frame instead of using the oversized raw reference scale.
 
 Verified locally:
 
@@ -57,6 +58,7 @@ Verified locally:
   - Desktop CTA/footer handoff now uses comparable heights instead of a huge black block.
   - Mobile checks at reviewed phone widths show `24px` left/right frame spacing across header, hero, What We Build, proof rows, CTA and footer.
   - Mobile checks at reviewed phone widths and a narrower `320px` viewport have no horizontal overflow.
+  - `Who This Is For` desktop frame check: section height about `854px` in the 1440-style review viewport, final row lands at about `833px`, no horizontal overflow.
 
 Not done:
 
