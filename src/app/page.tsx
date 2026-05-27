@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
+import { FaqAccordion } from "@/components/faq-accordion";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
@@ -44,8 +45,12 @@ export default function HomePage() {
         <div className="editorial-container home-reference-frame">
           <div className="home-reference-meta">
             <div className="space-y-2">
-              {hero.meta.map((line) => (
-                <p key={line} data-hero-meta>
+              {hero.meta.map((line, index) => (
+                <p
+                  key={line}
+                  className={index >= hero.meta.length - 2 ? "is-accent" : undefined}
+                  data-hero-meta
+                >
                   {line}
                 </p>
               ))}
@@ -162,30 +167,41 @@ export default function HomePage() {
             ) : null}
             <div className="commercial-deliverables">
               {home.commercialSprint.deliverables.map((item, index) => (
-                <div key={item} className="commercial-deliverable-row" data-reveal>
+                <div key={item.lead} className="commercial-deliverable-row" data-reveal>
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <p>{item}</p>
+                  <p>
+                    <strong>{item.lead}</strong>
+                    {" — "}
+                    {item.detail}
+                  </p>
                 </div>
               ))}
+            </div>
+            <div className="commercial-sprint-cta-wrap" data-reveal>
+              <ButtonLink href={primaryCta.href} className="commercial-sprint-cta">
+                {primaryCta.label}
+              </ButtonLink>
             </div>
           </div>
         </section>
 
         <section className="home-section working-promise-section" data-home-section data-motion-section="promise">
-          <div className="editorial-container working-promise-frame">
+          <div className="editorial-container working-promise-frame working-promise-grid">
             {home.workingPromise.eyebrow ? (
               <p className="eyebrow" data-reveal data-motion="label">{home.workingPromise.eyebrow}</p>
             ) : null}
-            <h2 className="working-promise-title" data-split>
-              {home.workingPromise.title}
-            </h2>
+            <div className="working-promise-negatives" aria-label={home.workingPromise.title}>
+              {home.workingPromise.negativeLines.map((line) => (
+                <p key={line} className="working-promise-negative" data-reveal>
+                  {line}
+                </p>
+              ))}
+            </div>
             <div className="working-promise-copy">
-              {home.workingPromise.body.map((paragraph, index) => (
+              {home.workingPromise.body.map((paragraph) => (
                 <p
                   key={paragraph}
-                  className={index >= home.workingPromise.body.length - 2 ? "is-emphasis" : ""}
                   data-reveal
-                  data-motion={index >= home.workingPromise.body.length - 2 ? "emphasis" : undefined}
                 >
                   {paragraph}
                 </p>
@@ -208,12 +224,13 @@ export default function HomePage() {
 
         <section className="home-section fit-section" data-home-section data-motion-section="fit">
           <div className="editorial-container fit-section-frame">
+            <p className="eyebrow" data-reveal data-motion="label">{home.fit.eyebrow}</p>
             <h2 className="fit-section-title" data-split>
               {home.fit.title}
             </h2>
-            <div className="fit-card-grid">
+            <div className="fit-list-grid" data-reveal>
               <FitList title={home.fit.goodLabel} items={home.fit.good} />
-              <FitList title={home.fit.badLabel} items={home.fit.bad} dark />
+              <FitList title={home.fit.badLabel} items={home.fit.bad} />
             </div>
           </div>
         </section>
@@ -221,14 +238,7 @@ export default function HomePage() {
         <section className="home-section faq-section" data-home-section data-motion-section="faq">
           <div className="editorial-container faq-section-frame">
             <p className="eyebrow" data-reveal data-motion="label">{home.faq.eyebrow}</p>
-            <div className="faq-list">
-              {home.faq.items.map((item) => (
-                <div key={item.question} className="faq-row" data-reveal>
-                  <h3>{item.question}</h3>
-                  <p>{item.answer}</p>
-                </div>
-              ))}
-            </div>
+            <FaqAccordion items={home.faq.items} />
           </div>
         </section>
 
@@ -262,17 +272,17 @@ export default function HomePage() {
   );
 }
 
-function FitList({ title, items, dark }: { title: string; items: string[]; dark?: boolean }) {
+function FitList({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className={dark ? "fit-card is-dark" : "fit-card"} data-reveal>
+    <div className="fit-list-column">
       <h3>{title}</h3>
-      <div className="fit-card-copy">
+      <ul className="fit-ruled-list">
         {items.map((item) => (
-          <p key={item}>
-            {item}
-          </p>
+          <li key={item}>
+            <p>{item}</p>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

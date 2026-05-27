@@ -113,20 +113,39 @@ export const home = {
     subline: "",
     body: "",
     deliverables: [
-      "Where AI can create value in the business.",
-      "The use cases worth prioritising first.",
-      "The buyer, market, and workflow signals already available to you.",
-      "A 30 to 90 day build plan."
+      {
+        lead: "Where AI can create value in the business",
+        detail:
+          "a structured conversation to understand your current pipeline, how you win business, and where the friction lives."
+      },
+      {
+        lead: "The use cases worth prioritising first",
+        detail:
+          "identification of the three to five highest-leverage points where AI can create measurable commercial impact."
+      },
+      {
+        lead: "The buyer, market, and workflow signals already available to you",
+        detail:
+          "a clear, practical outline of what to build, in what order, and what outcomes to expect at each stage."
+      },
+      {
+        lead: "A 30 to 90 day build plan",
+        detail:
+          "honest guidance on what you should build custom, what tools to deploy, and what to ignore entirely."
+      }
     ]
   },
   workingPromise: {
     eyebrow: "",
     title: "This is not- AI Training, Tool Recommendations\nor Prompt packs.",
+    negativeLines: [
+      "This is not AI training.",
+      "Not tool recommendations.",
+      "Not prompt packs."
+    ],
     body: [
       "Every recommendation is practical, buildable and tied to a commercial outcome. If we recommend it, it is because it can be built, shipped or handed over as a working system.",
-      "Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update.",
-      "The point is to turn your expertise into commercial leverage.",
-      "Not to make you spend more time thinking about AI."
+      "Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update."
     ]
   },
   proof: {
@@ -134,24 +153,29 @@ export const home = {
     title: "Live work"
   },
   fit: {
+    eyebrow: "WHO THIS IS FOR",
     title: "For expert-led businesses that need AI connected to commercial outcomes.",
     goodLabel: "Best for",
     badLabel: "Not for",
     good: [
-      "Trust-led firms.",
-      "Specialist advisers.",
-      "Founder-led businesses.",
-      "Professional services.",
-      "Teams with valuable expertise and weak public proof."
+      "Trust-led firms competing on expertise and reputation",
+      "Specialist advisers with valuable knowledge and weak public proof",
+      "Founder-led businesses wanting systems, not experiments",
+      "Professional services firms with longer sales cycles",
+      "Teams with valuable expertise and weak public proof",
+      "Businesses with strong delivery but inconsistent pipeline"
     ],
     bad: [
-      "Generic AI training.",
-      "One-off tools workshops.",
-      "Cheap-lead volume plays."
+      "Generic AI training or tool workshops",
+      "One-off tools and prompt pack requests",
+      "Cheap-lead volume plays and commodity pricing models",
+      "Businesses without a clear view of their ideal client",
+      "Companies seeking only a tool implementation partner",
+      "Organisations not ready to integrate AI into commercial operations"
     ]
   },
   faq: {
-    eyebrow: "FAQ",
+    eyebrow: "FREQUENTLY ASKED QUESTIONS",
     title: "",
     items: [
       {
@@ -191,43 +215,116 @@ export const home = {
 
 export const valueAreas = [
   {
-    title: "SEO and AI search visibility",
+    title: "SEO and AI Search Visibility",
     summary:
       "Make your business easier to find when buyers are already looking for answers.",
+    intro:
+      "Make your business easier to find when buyers are already looking for answers.",
+    includes: [
+      "Google visibility",
+      "AI search visibility",
+      "Specialist landing pages",
+      "Topic maps",
+      "Competitor gaps",
+      "Proof assets",
+      "Content shaped around real buyer questions"
+    ],
+    goal: "Show up where your best prospects are searching, comparing and deciding.",
     detail:
       "This includes Google visibility, AI search visibility, specialist landing pages, topic maps, competitor gaps, proof assets and content shaped around real buyer questions. The goal: show up where your best prospects are searching, comparing and deciding."
   },
   {
-    title: "Market and competitor intelligence",
+    title: "Market and Competitor Intelligence",
     summary:
       "Use AI to understand what is happening in your market faster than your competitors.",
+    intro:
+      "Use AI to understand what is happening in your market faster than your competitors.",
+    includes: [
+      "Competitor tracking",
+      "Public signal research",
+      "Customer language analysis",
+      "Content gap mapping",
+      "Positioning analysis",
+      "Market movement monitoring",
+      "Opportunity mapping"
+    ],
+    goal: "Move before the market does.",
     detail:
       "This includes competitor tracking, public signal research, customer language, content gaps, positioning analysis, market movement and opportunity mapping. Move before the market does."
   },
   {
-    title: "Lead capture and prospect intelligence",
+    title: "Lead Capture and Prospect Intelligence",
     summary: "Turn visibility into named prospects and better conversations.",
+    intro: "Turn visibility into named prospects and better conversations.",
+    includes: [
+      "Lead magnets",
+      "Diagnostics",
+      "Email capture",
+      "Website journeys",
+      "Business Tracker",
+      "Lead scoring",
+      "Qualification logic",
+      "Next-action recommendations"
+    ],
+    goal:
+      "Your team know who is showing interest, why they matter and what to say next.",
     detail:
       "This includes lead magnets, diagnostics, email capture, website journeys, Business Tracker, lead scoring, qualification logic and next-action recommendations. Your team know who is showing interest, why they matter and what to say next."
   },
   {
-    title: "Authority and content systems",
+    title: "Authority and Content Systems",
     summary:
       "Turn the expertise inside your business into public proof people can find, trust and act on.",
+    intro:
+      "Turn the expertise inside your business into public proof people can find, trust and act on.",
+    includes: [
+      "LinkedIn systems",
+      "Articles",
+      "Case studies",
+      "Playbooks",
+      "Newsletters",
+      "Proof pages",
+      "Founder content",
+      "Expert-led authority systems"
+    ],
+    goal: "Prospects come in warm not cold.",
     detail:
       "This includes LinkedIn, articles, case studies, playbooks, newsletters, proof pages, founder content and expert-led authority systems. Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold."
   },
   {
-    title: "Workflow acceleration",
+    title: "Workflow Acceleration",
     summary:
       "Use AI to speed up the work that actually matters.",
+    intro: "Use AI to speed up the work that actually matters.",
+    includes: [
+      "Research",
+      "Reporting",
+      "Content production",
+      "Sales preparation",
+      "Client onboarding",
+      "Proposal support",
+      "Internal knowledge systems",
+      "Decision support"
+    ],
+    goal: "Remove low-value drag so your best people can move faster.",
     detail:
       "This includes research, reporting, content production, sales preparation, client onboarding, proposal support, internal knowledge systems and decision support. The goal is not to automate everything. The goal is to remove low-value drag so your best people can move faster."
   },
   {
-    title: "Client-facing AI products and tools",
+    title: "Client-Facing AI Products and Tools",
     summary:
-      "Create useful AI-supported tools that help prospects or clients understand their situation, make better decisions or move closer to buying.",
+      "Create useful AI-supported tools that help prospects or clients understand their situation.",
+    intro:
+      "Create useful AI-supported tools that help prospects or clients understand their situation.",
+    includes: [
+      "Diagnostics",
+      "Calculators",
+      "Simulators",
+      "Personalised reports",
+      "Onboarding tools",
+      "Interactive lead magnets"
+    ],
+    goal: "Package your expertise into something people can experience.",
     detail:
       "This includes diagnostics, calculators, simulators, personalised reports, onboarding tools and interactive lead magnets. Package your expertise into something people can experience."
   }

@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronDown } from "lucide-react";
 import { home, valueAreas } from "@/content/site";
 
 const accordionEase = [0.23, 1, 0.32, 1] as const;
 
 export function ValueMap() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const shouldReduceMotion = useReducedMotion();
   const refreshScrollMeasurements = () => {
     window.requestAnimationFrame(() => ScrollTrigger.refresh());
@@ -19,7 +20,6 @@ export function ValueMap() {
       className="home-section value-map-section"
       data-home-section
       data-motion-section="value"
-      data-header-theme="dark"
     >
       <div className="editorial-container value-map-frame">
         <p className="eyebrow value-map-eyebrow" data-reveal>
@@ -46,11 +46,11 @@ export function ValueMap() {
                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
               >
                 <span className="value-map-number">{String(index + 1).padStart(2, "0")}</span>
-                <span className="value-map-heading">{area.title}</span>
-                <span className="value-map-summary">{area.summary}</span>
-                <span className="value-map-indicator" aria-hidden="true">
-                  {activeIndex === index ? "-" : "+"}
+                <span className="value-map-row-copy">
+                  <span className="value-map-heading">{area.title}</span>
+                  <span className="value-map-summary">{area.summary}</span>
                 </span>
+                <ChevronDown className="value-map-chevron" aria-hidden="true" />
               </button>
               <AnimatePresence initial={false}>
                 {activeIndex === index ? (
@@ -68,7 +68,19 @@ export function ValueMap() {
 	                    onAnimationComplete={refreshScrollMeasurements}
 	                  >
 	                    <div className="value-map-detail-inner">
-	                      <p>{area.detail}</p>
+                        <div className="value-map-detail-copy">
+                          <p className="value-map-intro">{area.intro}</p>
+                          <p className="value-map-detail-label">This includes</p>
+                          <ul className="value-map-includes">
+                            {area.includes.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                          <div className="value-map-goal">
+                            <p className="value-map-detail-label">Goal</p>
+                            <p>{area.goal}</p>
+                          </div>
+                        </div>
 	                    </div>
 	                  </motion.div>
                 ) : null}

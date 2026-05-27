@@ -1,6 +1,67 @@
 # Studio Baggio Website - STATUS
 *Last updated: 27 May 2026*
 
+## 27 May Moonchild Section Harvest - Local Review
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Harvested only the preferred Moonchild/reference treatments for:
+  - Homepage hero meta/subheader treatment.
+  - `What We Build`.
+  - `AI Opportunity Audit`.
+  - `This is not...` promise section.
+  - `Who This Is For`.
+  - FAQ.
+  - Final CTA/footer handoff.
+- Did not merge the downloaded app wholesale.
+- Did not touch unrelated pages, routes, contact form, metadata or deployment config.
+
+Implemented:
+
+- Updated hero meta copy styling so `NOT AI THEORY.` and `NOT GENERIC AUTOMATION.` use the Moonchild blue accent.
+- Reduced hero promise/subheader weight and tightened the hero wordmark scale so the promise lines fit inside the first frame at the reviewed desktop viewport.
+- Rebuilt `What We Build` as a white, compact single-open accordion with light-grey open panel, chevrons, includes list and goal block.
+- Kept the accordion on Framer Motion only, with GSAP `ScrollTrigger.refresh()` after open/close so scroll measurements do not judder.
+- Rebuilt `AI Opportunity Audit` as the Moonchild-style ruled deliverable list with bold lead phrase and supporting descriptor on each row, plus the black CTA.
+- Rebuilt the promise section as a two-column layout: grey strikethrough negative lines on the left and practical delivery copy on the right.
+- Rebuilt the FAQ as a quiet Moonchild-style single-open accordion: first item open by default, uppercase small questions, ruled rows, grey plus icons and blue close icon on the active row.
+- Rebuilt `Who This Is For` as the Moonchild-style two-column ruled list with `Best for` and `Not for` columns, small uppercase labels, dash markers and six rows per side.
+- Reduced the final black CTA from a full-screen inherited homepage section to a compact footer band. Desktop review metrics: black CTA band about `177px`, white info footer about `167px`.
+- Removed the forced `100svh` minimum from the harvested editorial sections so they sit as natural-height bands rather than full-screen panels.
+- Added named CSS tokens for the new service-heading, audit-title, deliverable and promise-negative type roles so the harvest stays inside the homepage typography system.
+- Fixed mobile edge spacing by restoring the shared `.editorial-container` width on harvested homepage section frames and moving the mobile side-padding rhythm to `24px`.
+- Removed mobile hero promise overflow by allowing the promise lines to wrap/balance within the frame.
+- Widened the mobile stat-number column so the Gap section percentages no longer overflow their grid cell.
+
+Verified locally:
+
+- Local preview remains `http://localhost:3006/`.
+- Compared against the live Moonchild reference in Playwriter:
+  - `https://studio.moonchild.ai/project/9a40eb56-f778-4d8b-80de-e6c18814756e/Baggio-Swiss-UI?frameId=337a34a9-d7ad-4fac-8515-a06914c1e240`
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Current density check at desktop review size:
+  - What We Build open row: about `438px`; closed rows: about `94px`; five rows visible in frame.
+  - AI Opportunity Audit section height reduced from about `1204px` to about `1004px` in the same Playwriter viewport.
+  - Promise section: about `490px`, matching the compact Moonchild-style band.
+- FAQ interaction check: clicking row 2 closes row 1 and opens only row 2; closed rows are about `81px` high in the Playwriter viewport.
+- Design-system consistency check:
+  - `Who This Is For` label/list labels use the shared `12px` uppercase label role.
+  - `Who This Is For` list rows use `15px` desktop / `13px` mobile small-body rows.
+  - Harvested list and accordion rules use the shared `--sb-rule` hairline (`#d8d8d8`).
+  - Desktop CTA/footer handoff now uses comparable heights instead of a huge black block.
+  - Mobile checks at reviewed phone widths show `24px` left/right frame spacing across header, hero, What We Build, proof rows, CTA and footer.
+  - Mobile checks at reviewed phone widths and a narrower `320px` viewport have no horizontal overflow.
+
+Not done:
+
+- No deploy yet.
+
 ## 27 May Homepage Motion Expert Pass - Local Only
 
 Branch:
