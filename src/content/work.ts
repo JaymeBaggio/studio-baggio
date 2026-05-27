@@ -11,6 +11,10 @@ export type WorkItem = {
   proves: string;
   href?: string;
   external?: string;
+  homepageLinks?: Array<{
+    label: string;
+    href: string;
+  }>;
   image?: string;
 };
 
@@ -33,6 +37,10 @@ export const workItems: WorkItem[] = [
       "Studio Baggio can turn expert judgement, compliance constraints and a market visibility gap into a practical AI-enabled product.",
     href: "/calm-authority",
     external: "https://www.calmauthority.ai/",
+    homepageLinks: [
+      { label: "See more →", href: "/calm-authority" },
+      { label: "Visit live site →", href: "https://www.calmauthority.ai" }
+    ],
     image: "/assets/products/calm-authority.png"
   },
   {
@@ -42,7 +50,7 @@ export const workItems: WorkItem[] = [
     promise: "Lead intelligence for warmer follow-up.",
     status: "Live system",
     proofCopy:
-      "turning engagement into named follow-up and lead intelligence.",
+      "Turning engagement into named follow-up and lead intelligence.",
     problem:
       "Smaller expert-led teams often create visibility without knowing who is warming up, why they matter or what should happen next.",
     built:
@@ -51,7 +59,8 @@ export const workItems: WorkItem[] = [
       "It makes growth more feasible because teams can put time into conversations most likely to shift ROI.",
     proves:
       "Studio Baggio can connect visibility, market context and practical follow-up into one operating layer.",
-    href: "/business-tracker"
+    href: "/business-tracker",
+    homepageLinks: [{ label: "See more →", href: "/business-tracker" }]
   },
   {
     slug: "last30days",
@@ -60,7 +69,7 @@ export const workItems: WorkItem[] = [
     promise: "What the market is saying right now.",
     status: "Placeholder case study",
     proofCopy:
-      "Pulls the last 30days worth of discussion and sentiment from Reddit. X. TikTok. Instagram. YouTube (inc comments and transcripts). The open web- Where markets form real opinions. Where trends emerge before the press catches up. Where your competitors are being discussed, praised, or quietly abandoned. Ask any question - Last30Days outputs a fully sourced report in under sixty seconds - every claim cited. Before you launch, pivot, or compete - know what the market is really saying right now.",
+      "Pulls the last 30 days worth of discussion and sentiment from Reddit. X. TikTok. Instagram. YouTube (inc comments and transcripts). The open web- Where markets form real opinions. Where trends emerge before the press catches up. Where your competitors are being discussed, praised, or quietly abandoned. Ask any question - Last30Days outputs a fully sourced report in under sixty seconds - every claim cited. Before you launch, pivot, or compete - know what the market is really saying right now.",
     problem:
       "Teams need to know what people are saying now, not what a stale report said months ago.",
     built:
@@ -71,6 +80,7 @@ export const workItems: WorkItem[] = [
       "Studio Baggio can build useful AI products that combine research, source discipline, synthesis and user-facing workflows.",
     href: "/last30days",
     external: "https://last30days.app",
+    homepageLinks: [{ label: "Visit live site →", href: "https://last30days.app" }],
     image: "/assets/products/last30days.png"
   },
   {
@@ -80,7 +90,7 @@ export const workItems: WorkItem[] = [
     promise: "Commercial intelligence from the open web.",
     status: "Placeholder case study",
     proofCopy:
-      "Fire Source scans ~96% of the open web and answers your commercial questions in three minutes. Stack follow-ups to sharpen the picture and find the angle nobody else hasCompetitor moves, market shifts, who's buying what, who's hiring whom, pricing moves, prospect intelligence all in under three minutes. Cited, complete, with prompts to turn the intel into pitches, emails, or strategy notes. Built by Studio Baggio.",
+      "Fire Source scans ~96% of the open web and answers your commercial questions in three minutes. Stack follow-ups to sharpen the picture and find the angle nobody else has. Competitor moves, market shifts, who's buying what, who's hiring whom, pricing moves, prospect intelligence all in under three minutes. Cited, complete, with prompts to turn the intel into pitches, emails, or strategy notes. Built by Studio Baggio.",
     problem:
       "Commercial teams need competitor moves, market shifts, buyer signals and pitch intelligence faster than manual research allows.",
     built:
@@ -91,6 +101,7 @@ export const workItems: WorkItem[] = [
       "Studio Baggio can build commercial intelligence products that preserve source discipline while accelerating decisions.",
     href: "/fire-source",
     external: "https://fire-source.vercel.app",
+    homepageLinks: [{ label: "Visit live site →", href: "https://fire-source.vercel.app" }],
     image: "/assets/products/fire-source.png"
   }
 ];

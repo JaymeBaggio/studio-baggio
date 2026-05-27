@@ -52,14 +52,14 @@ export const metadata = {
 export const hero = {
   meta: [
     "PRACTICAL SYSTEMS BUILT AROUND HOW YOUR BUSINESS WINS IN MARKET.",
-    "CREATE VISIBILITY, GENERATE LEADS & COMMERCIAL ADVANTAGE",
+    "CREATE VISIBILITY, GENERATE LEADS & WIN IN MARKET",
     "NOT AI THEORY.",
     "NOT GENERIC AUTOMATION."
   ],
   wordmark: ["STUDIO", "BAGGIO.AI"],
   promiseTitle: "AI ENABLED GROWTH SYSTEMS FOR TRUST BASED BUSINESSES",
   promise:
-    "WE ENABLE EXPERT-LED FIRMS COMPETING IN HIGH VALUE MARKETS TO BUILD TRUST, CAPTURE DEMAND & FOLLOW UP SMARTER",
+    "CREATING REAL COMMERCIAL ADVANTAGE FOR EXPERT-LED FIRMS IN HIGH VALUE MARKETS",
   scrollCue: "See where AI creates value"
 };
 
@@ -84,7 +84,7 @@ export const home = {
     emphasis: "Among those that do, 77% report no revenue change.",
     source: "UK Government AI Adoption Research, 2026.",
     close:
-      "Knowing where to effectivly apply AI creates real commercial advantage. Studio Baggio identifies where AI creates real value, then builds the system that delivers it.",
+      "Knowing where to effectively apply AI creates real commercial advantage. Studio Baggio identifies where AI creates real value, then builds the commercial architecture that delivers it.",
     pullQuotes: []
   },
   expertiseBridge: {
@@ -108,7 +108,7 @@ export const home = {
     title: ""
   },
   commercialSprint: {
-    eyebrow: "AI OPPORTUNITY AUDIT",
+    eyebrow: "AI OPPORTUNITY AUDIT — 14 DAYS",
     title: "A focused audit to find where AI creates the most commercial value in your business.",
     subline: "",
     body: "",
@@ -136,7 +136,7 @@ export const home = {
     ]
   },
   workingPromise: {
-    eyebrow: "",
+    eyebrow: "WORKING PROMISE",
     title: "This is not- AI Training, Tool Recommendations\nor Prompt packs.",
     negativeLines: [
       "This is not AI training.",
@@ -145,12 +145,14 @@ export const home = {
     ],
     body: [
       "Every recommendation is practical, buildable and tied to a commercial outcome. If we recommend it, it is because it can be built, shipped or handed over as a working system.",
-      "Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update."
+      "Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update.",
+      "The point is to turn your expertise into commercial leverage.",
+      "Not to make you spend more time thinking about AI."
     ]
   },
   proof: {
-    eyebrow: "",
-    title: "Live work"
+    eyebrow: "PRODUCTS",
+    title: "Live Work"
   },
   fit: {
     eyebrow: "WHO THIS IS FOR",
@@ -181,27 +183,47 @@ export const home = {
       {
         question: "Is this AI training?",
         answer:
-          "No. Training teaches your team to use tools. We build working systems that produce commercial outcomes, not generic AI education programmes."
+          "No. We don't run training programmes, workshops, or courses. We build practical systems that create commercial outcomes — systems your team operates, not courses they sit through. If you're looking for an AI literacy programme, we're not the right fit."
       },
       {
         question: "Is this automation?",
         answer:
-          "Not in the Zapier or n8n sense. The work is the commercial system that drives revenue: visibility, search, market intelligence, lead quality, client conversations, workflows. Automation is one tool inside it."
+          "Automation is part of what we build, but it's not the point. The point is commercial advantage — visibility, pipeline, conversion. We use automation where it creates leverage. We don't automate for the sake of it. Every system we build is designed to deliver a measurable business outcome, not just to reduce manual effort."
       },
       {
         question: "Is this marketing?",
         answer:
-          "Partly. The work connects AI, SEO, AI search, market intelligence, lead capture, authority-building, and workflow design. It is wider than what a marketing agency does."
+          "It's closer to commercial architecture. We work across the full pipeline — visibility, lead capture, nurture, proposal, and client retention. Some of what we build looks like marketing. Some looks like sales operations. All of it is designed to make your business easier to find, easier to buy from, and harder to compete with."
       },
       {
-        question: "Is this only for wealth firms?",
+        question: "Is this only for wealth and financial advisory firms?",
         answer:
-          "No. Wealth and advisory firms are a strong fit because trust and expertise matter most there. The same approach fits any expert-led business: professional services, specialist founder-led firms, and high-trust niches."
+          "No. We work with any expert-led business that wins on trust — consulting, legal, accountancy, technology advisory, executive search, and specialist B2B services. The common thread is that the sale involves expertise, credibility, and a longer cycle. If that describes your business, we're likely a fit."
       },
       {
         question: "Do you build as well as advise?",
         answer:
-          "Yes, once the commercial structure is agreed. Studio Baggio maps the opportunity, designs the system, builds the assets, and supports the work on an ongoing retainer."
+          "Yes — we build. The AI Opportunity Audit produces a clear plan. After that, most clients move into a build phase where we create the actual systems. We don't hand over a deck and wish you luck. We work in focused sprints with clear deliverables, and we hand over working systems your team can operate from day one."
+      },
+      {
+        question: "How long does the AI Opportunity Audit take?",
+        answer:
+          "14 days. The audit identifies where AI can create commercial value, the use cases worth prioritising, and a 30 to 90 day build plan. You walk away with a clear plan; implementation starts from there."
+      },
+      {
+        question: "Do you work with our existing marketing team or agency?",
+        answer:
+          "Yes. We design the commercial architecture. Your team or agency executes against it, or we take that work on ourselves. Either way, the work fits with what's already in place."
+      },
+      {
+        question: "What's the first step?",
+        answer:
+          "Click 'Enquire now' below and share the core business details. If you're a good fit, we'll set up a short introductory call to discuss your priorities and where AI can create commercial value."
+      },
+      {
+        question: "Can the Business Tracker be used for anything other than lead intelligence?",
+        answer:
+          "Yes. The same engine that scores leads against your Ideal Customer Profile scores candidates against your Ideal Employee Profile. CVs and applications go in, get enriched from public signals, scored against your bespoke criteria, and ranked with reasoning. Same logic, different intent. Recruitment is the most common second use case. The engine extends to anywhere humans need to be enriched, scored and ranked against your own criteria."
       }
     ]
   },
@@ -218,8 +240,7 @@ export const valueAreas = [
     title: "SEO and AI Search Visibility",
     summary:
       "Make your business easier to find when buyers are already looking for answers.",
-    intro:
-      "Make your business easier to find when buyers are already looking for answers.",
+    intro: "",
     includes: [
       "Google visibility",
       "AI search visibility",
@@ -242,10 +263,10 @@ export const valueAreas = [
     includes: [
       "Competitor tracking",
       "Public signal research",
-      "Customer language analysis",
-      "Content gap mapping",
+      "Customer language",
+      "Content gaps",
       "Positioning analysis",
-      "Market movement monitoring",
+      "Market movement",
       "Opportunity mapping"
     ],
     goal: "Move before the market does.",
@@ -278,7 +299,7 @@ export const valueAreas = [
     intro:
       "Turn the expertise inside your business into public proof people can find, trust and act on.",
     includes: [
-      "LinkedIn systems",
+      "LinkedIn",
       "Articles",
       "Case studies",
       "Playbooks",
@@ -287,7 +308,8 @@ export const valueAreas = [
       "Founder content",
       "Expert-led authority systems"
     ],
-    goal: "Prospects come in warm not cold.",
+    goal:
+      "Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold.",
     detail:
       "This includes LinkedIn, articles, case studies, playbooks, newsletters, proof pages, founder content and expert-led authority systems. Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold."
   },
@@ -306,16 +328,17 @@ export const valueAreas = [
       "Internal knowledge systems",
       "Decision support"
     ],
-    goal: "Remove low-value drag so your best people can move faster.",
+    goal:
+      "The goal is not to automate everything. The goal is to remove low-value drag so your best people can move faster.",
     detail:
       "This includes research, reporting, content production, sales preparation, client onboarding, proposal support, internal knowledge systems and decision support. The goal is not to automate everything. The goal is to remove low-value drag so your best people can move faster."
   },
   {
     title: "Client-Facing AI Products and Tools",
     summary:
-      "Create useful AI-supported tools that help prospects or clients understand their situation.",
+      "Create useful AI-supported tools that help prospects or clients understand their situation, make better decisions or move closer to buying.",
     intro:
-      "Create useful AI-supported tools that help prospects or clients understand their situation.",
+      "Create useful AI-supported tools that help prospects or clients understand their situation, make better decisions or move closer to buying.",
     includes: [
       "Diagnostics",
       "Calculators",

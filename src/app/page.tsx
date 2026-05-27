@@ -17,19 +17,19 @@ export default function HomePage() {
     {
       value: "66%",
       label:
-        "of organisations have achieved productivity or efficiency gains from AI.",
+        "of organisations have adopted AI in at least one business function - yet most report only marginal efficiency gains, not commercial outcomes.",
       source: "Source: Deloitte State of AI report, 2026"
     },
     {
       value: "20%",
       label:
-        "report increased revenue.",
+        "Only 20% of organisations using AI report some level of increased revenue. The gap between internal productivity and external revenue is where most AI investment breaks down.",
       source: "Source: Deloitte State of AI report, 2026"
     },
     {
       value: "12%",
       label:
-        "of UK businesses using AI report a revenue increase.",
+        "Only 12% of businesses report meaningful revenue impact from their AI investments despite widespread adoption across industries.",
       source: "Source: UK Government AI Adoption Research, 2026"
     }
   ];
