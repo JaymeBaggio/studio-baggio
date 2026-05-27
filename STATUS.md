@@ -1,6 +1,39 @@
 # Studio Baggio Website - STATUS
 *Last updated: 27 May 2026*
 
+## 27 May Typography Weight Softening - Local Review
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Typography weight/system pass only after Jayme felt the homepage was reading too bold/heavy.
+- No layout, animation, copy, routing, product content, deployment config or domain changes.
+
+Implemented:
+
+- Kept the existing local Aileron setup. The project only has Aileron `400`, `700` and italic files, so no new font family or fake mid-weight was introduced.
+- Added homepage/system weight tokens for labels, titles, rows, strong emphasis and CTA labels.
+- Moved eyebrows, small uppercase questions, product names, `What We Build` row headings, the large audit/fit titles and the strikethrough promise lines to Aileron regular.
+- Kept Aileron bold for CTA labels and deliberate inline emphasis, so hierarchy remains clear without the page feeling heavy.
+- Removed the synthetic `300` hero promise weight and moved it to real Aileron regular.
+
+Verified locally:
+
+- Local preview remains `http://localhost:3006/`.
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Playwriter computed-style check confirms key homepage roles now render at `font-weight: 400`, while CTA labels remain `700`.
+- No horizontal overflow detected in the browser check.
+
+Not done:
+
+- No push.
+- No deploy.
+
 ## 27 May Moonchild Section Harvest - Local Review
 
 Branch:

@@ -15,6 +15,7 @@ export type WorkItem = {
     label: string;
     href: string;
   }>;
+  homepageImage?: string;
   image?: string;
 };
 
@@ -60,7 +61,8 @@ export const workItems: WorkItem[] = [
     proves:
       "Studio Baggio can connect visibility, market context and practical follow-up into one operating layer.",
     href: "/business-tracker",
-    homepageLinks: [{ label: "See more →", href: "/business-tracker" }]
+    homepageLinks: [{ label: "See more →", href: "/business-tracker" }],
+    homepageImage: "/assets/products/business-tracker-og.png"
   },
   {
     slug: "last30days",
@@ -81,6 +83,7 @@ export const workItems: WorkItem[] = [
     href: "/last30days",
     external: "https://last30days.app",
     homepageLinks: [{ label: "Visit live site →", href: "https://last30days.app" }],
+    homepageImage: "/assets/products/last30days-og.png",
     image: "/assets/products/last30days.png"
   },
   {
