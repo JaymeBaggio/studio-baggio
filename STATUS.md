@@ -28,11 +28,11 @@ Verified locally:
 - `npm run build` passes.
 - Playwriter computed-style check confirms key homepage roles now render at `font-weight: 400`, while CTA labels remain `700`.
 - No horizontal overflow detected in the browser check.
+- Pushed to GitHub `main` and `quiet-luxury-homepage-system` at commit `1ab628e` (`Refine homepage products and typography`).
 
 Not done:
 
-- No push.
-- No deploy.
+- Vercel production deployment should be checked separately if Jayme wants live-domain confirmation.
 
 ## 27 May Moonchild Section Harvest - Local Review
 
