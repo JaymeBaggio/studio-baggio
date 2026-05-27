@@ -1,5 +1,74 @@
 # Studio Baggio Website - STATUS
-*Last updated: 26 May 2026*
+*Last updated: 27 May 2026*
+
+## 27 May Homepage Motion Expert Pass - Local Only
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Motion-only pass after `MOTION_AGENT_HANDOVER_2026-05-27.md`.
+- No copy, content, route, metadata, form, product, push or deploy changes.
+- Confirmed latest local package versions are current: GSAP `3.15.0`, `@gsap/react` `2.1.2`, Lenis `1.3.23`, `framer-motion` `12.40.0`.
+
+Implemented:
+
+- Kept Framer/Motion limited to existing header/menu/value-accordion micro-interactions.
+- Kept GSAP ScrollTrigger as the owner of scroll storytelling, per handover and refreshed `framer-motion-animator` skill guidance.
+- Re-timed the two sticky story sections so their ScrollTrigger timelines map to the native sticky stage instead of firing from far below the viewport.
+- Extended the native sticky scroll distance for Section 2 and Gap so the reveals have breathing room and a held final state.
+- Updated Section 2 choreography: headline/qualifier first, setup and outcome stack second, blue final outcome last.
+- Updated Gap choreography: eyebrow/title first, evidence frame second, once-only count-up, takeaway last.
+- Added section-specific reveal ordering for Value, AI Opportunity Audit, Working Promise, Live Work, Fit, FAQ and CTA instead of one generic batch reveal.
+- Started later-section reveals earlier so rows are readable when the section becomes the active viewport.
+- Kept reduced-motion fallback static: no Lenis/sticky behaviour, all reveal content visible, Gap numbers final.
+
+Verified locally:
+
+- Local preview already running at `http://localhost:3006/`.
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Automated Chrome headless visual pass at `1440x900`, `390x844`, and desktop reduced-motion found:
+  - horizontal overflow: `false`
+  - visible hidden reveal elements at final scroll: `[]`
+  - desktop and mobile sticky final states fit the viewport
+  - reduced motion collapses sticky sections to normal static sections
+- Screenshots saved under `.animation-review/motion-rebuild-2026-05-27/`.
+
+Not done:
+
+- No push.
+- No deploy.
+- Needs Jayme review in the local page flow.
+
+## Tomorrow (27 May 2026) — Open Actions
+
+### 1. Update live site FAQs
+Source of truth: `FAQ_COPY_DRAFT.md` (locked).
+
+**Replace the five existing FAQs on the live homepage with the updated wording:**
+- Q1 — Is this AI training? *(updated — leads with delivery model, no "generic AI education programmes" defensive line)*
+- Q2 — Is this automation? *(updated — drops Zapier/n8n name-drop, repositions automation as sub-component)*
+- Q3 — Is this marketing? *(updated — positions Studio Baggio as the layer marketing fits into, not "wider than a marketing agency")*
+- Q4 — Is this only for wealth firms? *(updated — names target sectors: law, insurance, financial services)*
+- Q5 — Do you build as well as advise? *(updated — adds "assets & working system")*
+
+**Add three new FAQs:**
+- Q6 — How long does the AI Opportunity Audit take? (`14 days...`)
+- Q7 — Do you work with our existing marketing team or agency? (`Yes. Studio Baggio works alongside...`)
+- Q8 — What's the first step? (`Clicking 'Enquire now' below...`)
+
+### 2. Update additional pages
+- **Business Tracker page** — apply `BUSINESS_TRACKER_COPY_DRAFT.md` (locked, includes the slide-verbatim Operating Layers, Input Map with channel blocks below the bridge line, `Commercial Intelligence` eyebrow, `Enquire now` CTA).
+- Audit other pages (`/about`, `/calm-authority`, `/work`, `/contact`) against any copy drift since last update.
+
+### 3. Fix text spacing issues
+Jayme spotted spacing issues during live review — TBC location once she walks me through them. Likely candidates: hero promise line breaks, Gap section caption widths, FAQ row spacing, mobile margins.
+
+---
 
 ## Current Build
 
@@ -9,6 +78,51 @@ site for `studiobaggio.ai`.
 Core message:
 
 `Turn AI into a commercial advantage.`
+
+## 26 May Homepage Motion Rebuild - Local Approval Pending
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Production reference checked before edits:
+
+- `https://www.studiobaggio.ai` is aliased to `studio-baggio-fcrpz0kz4-jaymes-projects-95f6f9cd.vercel.app`.
+- Vercel inspect/build logs confirm that deployment was built from `main` at commit `ddcc96a` (`Compact Products page hero`) on 26 May 2026.
+
+Current local state:
+
+- Motion rebuilt from the static reset with a narrower architecture: Lenis for page glide, GSAP ScrollTrigger for scroll storytelling, and Framer Motion only for small header/button/accordion interactions.
+- Lenis is synced to GSAP's ticker and `ScrollTrigger.update`, avoiding the separate RAF loop that can cause scroll judder.
+- `PageReveals` is the single homepage GSAP controller, with `useGSAP`, `gsap.matchMedia()`, cleanup, and reduced-motion fallback.
+- Section 2 and Gap now use native sticky stages instead of GSAP `pin: true`. The rest of the homepage uses in-flow reveals, not sticky holds.
+- Section 2 has its own scroll-controlled timeline: headline, qualifier, Studio Baggio setup, outcome stack, then the blue final line.
+- Gap has its own scroll-controlled evidence reveal and a once-only calm stat count-up for `66%`, `20%`, and `12%`.
+- What We Build remains a click-only accordion with Framer Motion limited to row open/close micro-interaction.
+- Hero and copy remain unchanged.
+
+Verified locally:
+
+- Local preview: `http://localhost:3006/`.
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Desktop `1440x900`: zero console errors, zero horizontal overflow, zero GSAP pin spacers, Section 2 blue line fully lands in the sticky frame before release, and Gap numbers settle to `66%`, `20%`, `12%`.
+- Mobile `390x844`: zero console errors, zero horizontal overflow, zero GSAP pin spacers, Section 2 final blue line fits in the sticky frame, and Gap final state fits with the takeaway visible.
+- Reduced motion: zero pin spacers, no sticky stages, no Lenis class, all reveal content visible statically, and Gap numbers show final values immediately.
+- Scroll recordings saved at `.animation-review/20260527-final-scroll-review-desktop.mp4` and `.animation-review/20260527-final-scroll-review-mobile.mp4`.
+- Verification screenshots/contact sheets saved under `.animation-review/20260527-final-check/` and `.animation-review/20260527-final-scroll-review-contact.png`.
+- Full Gemini video analysis remains blocked because `GEMINI_API_KEY` is not set in this environment.
+- Follow-up polish after Jayme review: restored a soft header entrance, softened the shared reveal ease/durations, added visible row-level reveals for What We Build and Live Work, and kept the no-extra-pins rule intact.
+- Superseded follow-up verification: the earlier two-GSAP-pin-spacer version was replaced because Jayme still felt the pin boundary slam.
+- GSAP-docs-based correction: Section 2 and Gap no longer use `pin`, `pinSpacing`, or `anticipatePin`; native sticky is handling the hold while GSAP only controls child transforms/opacity.
+- Hero wordmark entrance restored with masked transform/opacity animation; reduced motion disables it cleanly.
+
+Not done:
+
+- No push.
+- No deploy.
+- Waiting for Jayme to review the local browser flow.
 
 ## 26 May Other Pages Design System Rollout
 
@@ -501,6 +615,16 @@ Still required before expecting email delivery from the form:
 
 ## Notes For Next Session
 
+- 27 May 2026 local-only homepage motion repair:
+  - Replaced GSAP `pin: true` on Section 2 and Gap with native CSS sticky stages, because GSAP pin activation was the source of the hard “slam” Jayme was feeling.
+  - GSAP ScrollTrigger now controls only child opacity/transform timelines for those two sections; no `.pin-spacer` elements are created locally.
+  - Lower homepage sections were changed from subtle scrub fades to clear one-shot editorial reveals so the page no longer goes flat after Gap.
+  - Hero wordmark entrance changed from a masked/blinds line reveal to a single soft wordmark dissolve/lift. The mark is faintly visible immediately, line-level animations are disabled, and the mask overflow is visible.
+  - Reduced motion disables the sticky stages and shows all homepage content statically with final Gap numbers.
+  - Verified locally at `http://localhost:3006/`: no horizontal overflow, no console errors, desktop `1440x900`, mobile `390x844`, reduced motion, final Gap numbers `66% / 20% / 12%`.
+  - Local screenshots and metrics saved in `.animation-review/20260527-sticky-stage-pass/` and `.animation-review/20260527-hero-wordmark-soft-reveal/`.
+  - Validation passed: `npm run lint`, `npm run typecheck`, `npm run build`. Do not run `next build` and `tsc --noEmit` in parallel because Next 16 rewrites `.next/types`.
+  - Not pushed and not deployed.
 - Do not use the old live site as copy source.
 - Do not use pink, purple, violet, lavender, purple-grey, blue-grey or any warm/coloured grey. The approved visual system is black, white and actual neutral greys only.
 - Do not lead with Growth Intelligence as the front-door offer.

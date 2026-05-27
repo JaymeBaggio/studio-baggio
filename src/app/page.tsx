@@ -81,7 +81,7 @@ export default function HomePage() {
       </section>
 
       <div className="home-4b">
-        <section className="opening-argument-section">
+        <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
           <div className="editorial-container opening-argument-grid">
             <div className="opening-argument-top">
               <p className="opening-argument-qualifier" data-reveal>
@@ -105,7 +105,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="ai-gap" className="problem-clarifier-section">
+        <section
+          id="ai-gap"
+          className="home-section problem-clarifier-section"
+          data-home-section
+          data-motion-section="gap"
+        >
           <div className="editorial-container problem-clarifier-frame">
             <div className="problem-clarifier-copy">
               <div className="problem-clarifier-opening">
@@ -117,8 +122,10 @@ export default function HomePage() {
               <div className="problem-clarifier-evidence">
                 <div className="problem-stat-grid" data-reveal data-motion="evidence">
                   {problemStats.map((stat) => (
-                    <div className="problem-stat-card" key={stat.value}>
-                      <p className="problem-stat-value">{stat.value}</p>
+                    <div className="problem-stat-card" key={stat.value} data-gap-stat-card>
+                      <p className="problem-stat-value" data-gap-stat-value data-count-target={stat.value.replace("%", "")}>
+                        {stat.value}
+                      </p>
                       <p className="problem-stat-label">{stat.label}</p>
                       <p className="problem-stat-source">{stat.source}</p>
                     </div>
@@ -137,7 +144,7 @@ export default function HomePage() {
 
         <ValueMap />
 
-        <section className="commercial-sprint-section">
+        <section className="home-section commercial-sprint-section" data-home-section data-motion-section="offer">
           <div className="editorial-container commercial-sprint-frame">
             <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
             <h2 className="commercial-sprint-title" data-split>
@@ -164,7 +171,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="working-promise-section">
+        <section className="home-section working-promise-section" data-home-section data-motion-section="promise">
           <div className="editorial-container working-promise-frame">
             {home.workingPromise.eyebrow ? (
               <p className="eyebrow" data-reveal data-motion="label">{home.workingPromise.eyebrow}</p>
@@ -187,7 +194,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="proof-section">
+        <section className="home-section proof-section" data-home-section data-motion-section="proof">
           <div className="editorial-container proof-section-frame">
             {home.proof.eyebrow ? (
               <p className="eyebrow" data-reveal data-motion="label">{home.proof.eyebrow}</p>
@@ -199,7 +206,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="fit-section">
+        <section className="home-section fit-section" data-home-section data-motion-section="fit">
           <div className="editorial-container fit-section-frame">
             <h2 className="fit-section-title" data-split>
               {home.fit.title}
@@ -211,7 +218,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="faq-section">
+        <section className="home-section faq-section" data-home-section data-motion-section="faq">
           <div className="editorial-container faq-section-frame">
             <p className="eyebrow" data-reveal data-motion="label">{home.faq.eyebrow}</p>
             <div className="faq-list">
@@ -225,7 +232,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="home-cta-section" data-header-theme="dark">
+        <section className="home-section home-cta-section" data-home-section data-motion-section="cta" data-header-theme="dark">
           <div className="editorial-container home-cta-frame">
             {home.cta.eyebrow ? (
               <p className="eyebrow home-cta-eyebrow" data-reveal data-motion="label">{home.cta.eyebrow}</p>

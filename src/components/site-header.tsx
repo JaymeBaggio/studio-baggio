@@ -3,8 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 import { navItems, primaryCta } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = React.useState(false);
   const [overDarkSection, setOverDarkSection] = React.useState(false);
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
   const darkHeader = pathname === "/" && overDarkSection && !open;
   const homeTop = pathname === "/" && !scrolled && !open && !darkHeader;
 
@@ -28,7 +29,7 @@ export function SiteHeader() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"
+      behavior: "instant"
     });
   };
 
@@ -72,9 +73,10 @@ export function SiteHeader() {
   }, [pathname]);
 
   return (
-    <header
+    <motion.header
+      initial={false}
       className={cn(
-        "fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300",
+        "site-header-shell fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300",
         darkHeader
           ? "border-paper/15 bg-ink/[0.92] text-paper backdrop-blur-xl"
           : homeTop
@@ -132,11 +134,13 @@ export function SiteHeader() {
         >
           {primaryCta.label}
         </Link>
-        <button
+        <motion.button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
+          whileTap={{ scale: shouldReduceMotion ? 1 : 0.97 }}
+          transition={{ duration: 0.14, ease: [0.23, 1, 0.32, 1] }}
           className={cn(
             "focus-ring inline-flex h-11 w-11 items-center justify-center border transition-colors duration-300 lg:hidden",
             darkHeader
@@ -147,15 +151,15 @@ export function SiteHeader() {
           )}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        </motion.button>
       </div>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {open ? (
           <motion.nav
-            initial={{ opacity: 0, y: -12 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.22 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.24, ease: [0.23, 1, 0.32, 1] }}
             className={cn("border-t border-ink/10 bg-paper lg:hidden")}
             aria-label="Mobile navigation"
           >
@@ -183,6 +187,6 @@ export function SiteHeader() {
           </motion.nav>
         ) : null}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

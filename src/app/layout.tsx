@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
 import { ScrollReset } from "@/components/scroll-reset";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { metadata as siteMetadata } from "@/content/site";
@@ -73,8 +74,8 @@ const organizationSchema = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={aileron.variable} data-scroll-behavior="smooth">
-      <body>
+    <html lang="en" className={aileron.variable}>
+      <body suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
             __html:
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         />
         <div className="site-shell">
           <ScrollReset />
+          <SmoothScroll />
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />
