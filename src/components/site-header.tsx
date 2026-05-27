@@ -170,7 +170,7 @@ export function SiteHeader() {
                     key={item.href}
                     href={item.href}
                     onClick={item.href === "/" ? handleHomeClick : () => setOpen(false)}
-                    className="focus-ring border-b border-ink/10 py-4 text-3xl leading-none"
+                    className="focus-ring border-b border-ink/10 py-4 text-sm uppercase leading-none tracking-[0.1em]"
                   >
                     {item.label}
                   </Link>

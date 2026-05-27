@@ -13,20 +13,53 @@ const homepageProofItems = homepageProofOrder
   .map((slug) => workItems.find((item) => item.slug === slug))
   .filter((item): item is (typeof workItems)[number] => Boolean(item));
 const accordionEase = [0.23, 1, 0.32, 1] as const;
+const proofImageSizes = "(min-width: 1024px) 360px, 100vw";
 
 export function ProofTiles() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [readyImages, setReadyImages] = useState<Record<string, boolean>>({});
   const shouldReduceMotion = useReducedMotion();
   const refreshScrollMeasurements = () => {
     window.requestAnimationFrame(() => ScrollTrigger.refresh());
   };
+  const markImageReady = (slug: string) => {
+    setReadyImages((current) => (current[slug] ? current : { ...current, [slug]: true }));
+  };
 
   return (
     <div className="proof-row-list">
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          width: 1,
+          height: 1,
+          overflow: "hidden",
+          opacity: 0,
+          pointerEvents: "none"
+        }}
+      >
+        {homepageProofItems.map((item) =>
+          item.homepageImage ? (
+            <Image
+              key={`preload-${item.slug}`}
+              src={item.homepageImage}
+              alt=""
+              width={720}
+              height={405}
+              sizes={proofImageSizes}
+              loading="eager"
+              onLoad={() => markImageReady(item.slug)}
+              onError={() => markImageReady(item.slug)}
+            />
+          ) : null
+        )}
+      </div>
       {homepageProofItems.map((item, index) => {
         const isOpen = activeIndex === index;
         const summary = item.promise ?? item.proofCopy ?? item.eyebrow;
         const homepageImage = item.homepageImage;
+        const imageIsReady = readyImages[item.slug] ?? false;
         const bodyParagraphs = [item.proofCopy, item.built, item.whyItMatters].filter(
           (paragraph): paragraph is string => Boolean(paragraph)
         );
@@ -85,13 +118,15 @@ export function ProofTiles() {
                     </div>
                     {homepageImage ? (
                       <div className="proof-row-media" aria-hidden="true">
-                        <div className="proof-row-media-frame">
+                        <div className={`proof-row-media-frame ${imageIsReady ? "is-ready" : "is-loading"}`}>
                           <div className="proof-row-media-image">
                             <Image
                               src={homepageImage}
                               alt=""
                               fill
-                              sizes="(min-width: 1024px) 360px, 100vw"
+                              sizes={proofImageSizes}
+                              onLoad={() => markImageReady(item.slug)}
+                              onError={() => markImageReady(item.slug)}
                             />
                           </div>
                         </div>

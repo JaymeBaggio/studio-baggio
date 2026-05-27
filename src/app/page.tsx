@@ -28,6 +28,21 @@ function renderHeroMetaLine(line: string) {
   );
 }
 
+function renderProblemTitle(title: string) {
+  const lockedSecondLine = "meaningful ROI.";
+
+  if (!title.endsWith(lockedSecondLine)) {
+    return title;
+  }
+
+  return (
+    <>
+      <span className="problem-title-line">{title.slice(0, -lockedSecondLine.length).trim()}</span>
+      <span className="problem-title-line">{lockedSecondLine}</span>
+    </>
+  );
+}
+
 export default function HomePage() {
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
@@ -138,8 +153,8 @@ export default function HomePage() {
             <div className="problem-clarifier-copy">
               <div className="problem-clarifier-opening">
                 <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
-                <h2 className="problem-clarifier-title" data-split>
-                  {home.problem.title}
+                <h2 className="problem-clarifier-title problem-clarifier-title-manual" aria-label={home.problem.title}>
+                  {renderProblemTitle(home.problem.title)}
                 </h2>
               </div>
               <div className="problem-clarifier-evidence">

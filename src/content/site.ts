@@ -51,10 +51,10 @@ export const metadata = {
 
 export const hero = {
   meta: [
-    "PRACTICAL SYSTEMS BUILT AROUND HOW YOUR BUSINESS WINS IN MARKET.",
-    "CREATE VISIBILITY, GENERATE LEADS & WIN IN MARKET",
+    "PRACTICAL SYSTEMS BUILT AROUND",
+    "HOW YOUR BUSINESS WINS IN MARKET.",
     "NOT AI THEORY.",
-    "NOT GENERIC AUTOMATION."
+    "NOT GENERIC AUTOMATION"
   ],
   wordmark: ["STUDIO", "BAGGIO.AI"],
   promiseTitle: "AI ENABLED GROWTH SYSTEMS FOR TRUST BASED BUSINESSES",
@@ -78,13 +78,13 @@ export const home = {
   },
   problem: {
     eyebrow: "THE GAP",
-    title: "Adoption has run ahead of commercial return.",
+    title: "Adoption has run ahead of meaningful ROI.",
     body:
       "The UK government's 2026 AI Adoption Research found 16% of UK businesses use AI. Among those that do, 77% report no revenue change. Only 12% report a revenue increase.",
     emphasis: "Among those that do, 77% report no revenue change.",
     source: "UK Government AI Adoption Research, 2026.",
     close:
-      "Knowing where to effectively apply AI creates real commercial advantage. Studio Baggio identifies where AI creates real value, then builds the commercial architecture that delivers it.",
+      "Knowing where to effectively apply AI creates real competitive advantage.\nStudio Baggio identifies where AI creates real value, then builds the commercial architecture that delivers it.",
     pullQuotes: []
   },
   expertiseBridge: {
@@ -109,7 +109,7 @@ export const home = {
   },
   commercialSprint: {
     eyebrow: "AI OPPORTUNITY AUDIT — 14 DAYS",
-    title: "A focused audit to find where AI creates the most commercial value in your business.",
+    title: "A focused audit to find where AI creates the most value in your business.",
     subline: "",
     body: "",
     deliverables: [
@@ -144,7 +144,7 @@ export const home = {
       "Not prompt packs."
     ],
     body: [
-      "Every recommendation is practical, buildable and tied to a commercial outcome. If we recommend it, it is because it can be built, shipped or handed over as a working system.",
+      "Every recommendation is practical, buildable and tied to a tangible business outcome. If we recommend it, it is because it can be built, shipped or handed over as a working system.",
       "Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update.",
       "The point is to turn your expertise into commercial leverage.",
       "Not to make you spend more time thinking about AI."
