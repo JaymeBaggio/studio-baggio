@@ -2375,8 +2375,8 @@ textarea {
 
 .home-4b .fit-list-grid {
   width: min(100%, var(--sb-wide));
-  margin-top: clamp(32px, 3.6vw, 48px);
-  padding-top: clamp(28px, 3.2vw, 36px);
+  margin-top: clamp(38px, 4.2vw, 56px);
+  padding-top: clamp(34px, 3.8vw, 44px);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(56px, 7vw, 100px);
@@ -2384,7 +2384,7 @@ textarea {
 }
 
 .home-4b .fit-list-column h3 {
-  margin-bottom: 22px;
+  margin-bottom: 28px;
 }
 
 .home-4b .fit-ruled-list {
@@ -2398,7 +2398,7 @@ textarea {
   grid-template-columns: 14px minmax(0, 1fr);
   gap: 16px;
   align-items: baseline;
-  padding: 13px 0;
+  padding: 15px 0;
   border-bottom: 1px solid var(--sb-rule);
 }
 

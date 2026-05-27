@@ -226,6 +226,7 @@ export function PageReveals() {
 
           const sectionStart = isDesktop ? "top 76%" : "top 84%";
           const stickyStoryStart = isDesktop ? "top 12%" : "top 10%";
+          const gapStoryStart = isDesktop ? "top 64%" : "top 70%";
 
           const playOnApproach = (
             timeline: gsap.core.Timeline,
@@ -336,7 +337,7 @@ export function PageReveals() {
                 scrollTrigger: {
                   id: "studio-gap-story",
                   trigger: section,
-                  start: stickyStoryStart,
+                  start: gapStoryStart,
                   end: "bottom bottom",
                   scrub: isDesktop ? 1.02 : 0.82,
                   invalidateOnRefresh: true,
