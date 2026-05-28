@@ -20,7 +20,7 @@ export default function BusinessTrackerPage() {
           data-home-section
           data-motion-section="bt-hero"
         >
-          <div className="editorial-container studio-page-frame bt-hero-frame">
+          <div className="editorial-container bt-hero-frame">
             <div className="bt-hero-copy">
               <p className="eyebrow" data-reveal data-motion="label">
                 {businessTracker.hero.eyebrow}
@@ -31,6 +31,16 @@ export default function BusinessTrackerPage() {
               <p className="studio-page-body" data-reveal>
                 {businessTracker.hero.sub}
               </p>
+              <figure className="bt-hero-shot" data-reveal data-motion="evidence">
+                <Image
+                  src={businessTracker.hero.dashboard.src}
+                  width={businessTracker.hero.dashboard.width}
+                  height={businessTracker.hero.dashboard.height}
+                  alt={businessTracker.hero.dashboard.alt}
+                  priority
+                  sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) calc(100vw - 48px), 780px"
+                />
+              </figure>
             </div>
           </div>
         </section>
@@ -42,41 +52,27 @@ export default function BusinessTrackerPage() {
           data-motion-section="bt-what"
         >
           <div className="editorial-container bt-what-frame">
-            <header className="bt-what-header">
+            <div className="bt-what-copy">
               <p className="eyebrow" data-reveal data-motion="label">
                 {businessTracker.whatItDoes.eyebrow}
               </p>
-              <h2 className="bt-section-title" data-split>
+              <h2 className="bt-section-title bt-signal-title" data-split>
                 {businessTracker.whatItDoes.title}
               </h2>
-              <p className="bt-section-intro" data-reveal>
+              <p className="bt-signal-intro" data-reveal>
                 {businessTracker.whatItDoes.intro}
               </p>
-            </header>
-            <div className="bt-signal-panel">
-              <div className="bt-signal-copy">
-                <div className="bt-calm-list is-signal-list" data-reveal>
-                  <ul>
-                    {businessTracker.whatItDoes.bullets.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="bt-what-dashboard" data-reveal data-motion="evidence">
-                <Image
-                  src={businessTracker.hero.dashboard.src}
-                  width={businessTracker.hero.dashboard.width}
-                  height={businessTracker.hero.dashboard.height}
-                  alt={businessTracker.hero.dashboard.alt}
-                  priority
-                  sizes="(max-width: 1023px) calc(100vw - 36px), min(640px, 52vw)"
-                />
+              <div className="bt-calm-list is-signal-list" data-reveal>
+                <ul>
+                  {businessTracker.whatItDoes.bullets.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <p className="bt-calm-list-close">
+                  {businessTracker.whatItDoes.close}
+                </p>
               </div>
             </div>
-            <p className="bt-signal-proof" data-reveal>
-              {businessTracker.whatItDoes.close}
-            </p>
           </div>
         </section>
 
@@ -90,12 +86,9 @@ export default function BusinessTrackerPage() {
             <p className="eyebrow" data-reveal data-motion="label">
               {businessTracker.operatingLayers.eyebrow}
             </p>
-            <h2 className="bt-section-title" data-split>
-              {businessTracker.operatingLayers.title}
-            </h2>
             <div className="bt-operating-rows">
-              {businessTracker.operatingLayers.items.map((item, index) => (
-                <article key={item.title} className={index === 0 ? "bt-operating-row is-open" : "bt-operating-row"} data-reveal>
+              {businessTracker.operatingLayers.items.map((item) => (
+                <article key={item.title} className="bt-operating-row" data-reveal>
                   <span className="bt-operating-number">{item.number}</span>
                   <div className="bt-operating-copy">
                     <h2>{item.title}</h2>
@@ -111,27 +104,21 @@ export default function BusinessTrackerPage() {
 
         <section
           className="bt-outcome-section"
+          data-header-theme="light"
           data-business-tracker-section="outcome"
           data-home-section
           data-motion-section="bt-outcome"
         >
-          <div className="editorial-container bt-outcome-frame">
+          <div className="editorial-container studio-page-stack bt-outcome-frame">
             <p className="eyebrow" data-reveal data-motion="label">
               {businessTracker.outcome.eyebrow}
             </p>
-            <h2 className="bt-section-title" data-split>
-              {businessTracker.outcome.deliverable}
-            </h2>
-            <div className="bt-outcome-pillars" data-reveal>
-              {businessTracker.outcome.deliverables.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
+            <div className="studio-page-copy bt-outcome-copy" data-reveal>
+              <p className="studio-page-lead">
+                {businessTracker.outcome.deliverable}
+              </p>
+              <p>{businessTracker.outcome.impact}</p>
             </div>
-            <ul className="bt-outcome-list" data-reveal>
-              {businessTracker.outcome.impact.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
           </div>
         </section>
 
@@ -145,9 +132,9 @@ export default function BusinessTrackerPage() {
             <p className="eyebrow" data-reveal data-motion="label">
               {businessTracker.hiring.eyebrow}
             </p>
-            <h2 className="bt-section-title" data-split>
+            <p className="bt-section-lead" data-reveal>
               {businessTracker.hiring.intro}
-            </h2>
+            </p>
             <div className="bt-calm-list" data-reveal>
               <ul>
                 {businessTracker.hiring.bullets.map((item) => (
@@ -168,9 +155,6 @@ export default function BusinessTrackerPage() {
             <p className="eyebrow" data-reveal data-motion="label">
               {businessTracker.fit.eyebrow}
             </p>
-            <h2 className="bt-section-title" data-split>
-              {businessTracker.fit.title}
-            </h2>
             <div className="fit-list-grid bt-fit-list-grid" data-reveal>
               <BusinessTrackerFitList title={businessTracker.fit.bestForLabel} items={businessTracker.fit.bestForItems} />
               <BusinessTrackerFitList title={businessTracker.fit.notForLabel} items={businessTracker.fit.notForItems} />

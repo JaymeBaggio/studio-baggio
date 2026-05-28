@@ -1,5 +1,77 @@
 # Studio Baggio Website - STATUS
-*Last updated: 27 May 2026*
+*Last updated: 28 May 2026*
+
+## 28 May Business Tracker Version For Main
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- `/business-tracker` only.
+
+Implemented:
+
+- Removed the Business Tracker hero from the shared `studio-page-frame` wrapper so the dashboard image cannot be treated as a right-hand hero column.
+- Moved the dashboard image inside the hero copy flow, after the locked hero copy, as `.bt-hero-shot`.
+- Removed the unused OG poster image from the working tree; the hero uses `public/business-tracker/hero/dashboard-hires.png`.
+- Kept the only approved Section 2 copy change:
+  - `Commercial intelligence your competitors cannot see.`
+  - `Eyes and ears on who is showing intent, how they qualify and what to do next.`
+- Kept pricing/commercial detail out of the main page flow and in FAQ only.
+
+Verified locally:
+
+- Local server responds at `http://localhost:3006/business-tracker`.
+- Restarted the local dev server on port `3006` after the hero repair to clear stale Turbopack/browser state.
+- Served HTML contains `editorial-container bt-hero-frame` and does not contain `studio-page-hero-grid bt-hero-frame`.
+- Served HTML places `.bt-hero-shot` inside `.bt-hero-copy`.
+- Served CSS caps `.bt-hero-shot` at `max-width: min(780px, 100%)`.
+- Business Tracker image assets return `200` locally.
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+
+Not done:
+
+- No production deploy.
+- Further design refinement still needed; this version is being pushed because it is better than current `main` and will be picked up by another agent.
+
+## 27 May Homepage Copy And Header Polish - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Homepage copy/layout polish and mobile header menu style only.
+- Preserved concurrent Business Tracker work; no Business Tracker page files were edited by this pass.
+
+Implemented:
+
+- Hero meta now uses the approved four-line lockup:
+  - `PRACTICAL SYSTEMS BUILT AROUND`
+  - `HOW YOUR BUSINESS WINS IN MARKET.`
+  - `NOT AI THEORY.`
+  - `NOT GENERIC AUTOMATION`
+- Tightened the first two hero meta lines so they read as one sentence, while keeping breathing room before the blue proof lines.
+- Updated Gap title to `Adoption has run ahead of meaningful ROI.` and narrowed the title measure so `meaningful ROI` sits together on the second line.
+- Updated the Gap close paragraph with a deliberate line break before `Studio Baggio`, widened the paragraph measure and enabled `white-space: pre-line` so the second sentence reads as one line where the frame allows.
+- Updated Audit title and Working Promise first paragraph copy to reduce `commercial` repetition.
+- Restyled the mobile pop-out menu links to small uppercase tracked nav text, matching the desktop nav language.
+- Added the mobile menu rule to `STUDIO_BAGGIO_DESIGN_SYSTEM.md`.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+
+Not done:
+
+- Not pushed.
 
 ## 27 May Business Tracker Hierarchy Refinement - Local Verified
 
@@ -15,7 +87,7 @@ Implemented:
 
 - Promoted the What It Does argument to a proper section title: "Commercial intelligence your competitors cannot see."
 - Promoted the "Every signal traced to a named person..." line into the section proof statement instead of ordinary body copy.
-- Renamed the vague Operating Layers eyebrow to "The Intelligence Engine" and added a clear section title explaining the ranked follow-up pipeline.
+- Renamed the vague Operating Layers eyebrow to “The Intelligence Engine” and added a clear section title explaining the ranked follow-up pipeline.
 - Reworked Outcome from a dark banner into a calm ruled section with separate outcome pillars: Visibility, Qualified Leads and Commercial Advantage.
 - Moved "Extends to hiring & beyond" before "Who it's for" and gave both sections complete frames.
 - Tightened the FAQ transition spacing while keeping the homepage FAQ disclosure pattern.
@@ -63,6 +135,97 @@ Verified locally:
 Not done:
 
 - Push and production verification pending.
+
+## 27 May Homepage Motion System Lock - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Locked the approved homepage motion system in documentation.
+- Documentation only: no homepage code, layout, copy, animation implementation, deployment or domain changes.
+- Business Tracker implementation files were not edited.
+
+Implemented:
+
+- Replaced the stale `MOTION_AGENT_HANDOVER_2026-05-27.md` rebuild brief with a current locked homepage motion handover.
+- Captured the approved motion ownership split:
+  - GSAP + ScrollTrigger for scroll storytelling and section reveals.
+  - Lenis for page-level smooth scroll.
+  - Framer Motion for accordions, menu and tap micro-interactions.
+  - CSS keyframes for the simple first-load hero/header entrance.
+- Documented the working homepage architecture: native CSS sticky stages for Opening and Gap, GSAP child transforms only, section-specific reveal branches, reduced-motion fallback and Live Work image readiness.
+- Added a motion reference and key rules into `STUDIO_BAGGIO_DESIGN_SYSTEM.md`.
+
+Verified locally:
+
+- Documentation checked against `src/components/page-reveals.tsx`, `src/components/smooth-scroll.tsx`, `src/app/page.tsx`, relevant component motion files and current homepage CSS.
+- No build was run because this was a documentation-only change.
+
+Not done:
+
+- Not pushed.
+
+## 27 May Live Work Image Decode Fix - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Small interaction polish for the homepage `Live Work` accordion.
+- No copy, layout, product data, routing, animation-system, deployment or domain changes.
+
+Implemented:
+
+- Updated `src/components/proof-tiles.tsx` so all four homepage product images preload and decode on component mount.
+- Added image readiness tracking so the media frame stays hidden until the image has actually loaded/decoded.
+- Added a short opacity/translate fade-in to the existing media frame styling.
+- Updated `STUDIO_BAGGIO_DESIGN_SYSTEM.md` so this image-ready media behaviour is now part of the locked Live Work component rules.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Local dev server responds at `http://localhost:3006/`.
+
+Not done:
+
+- Not pushed.
+- Codex Browser tools were not exposed in this session, so no visible in-app-browser click pass was available from the tool layer.
+
+## 27 May Studio Baggio Design System Lock - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Documented the current approved homepage as the Studio Baggio design-system source of truth.
+- Documentation only: no design, layout, animation, component, copy, deployment or domain changes.
+
+Implemented:
+
+- Added `STUDIO_BAGGIO_DESIGN_SYSTEM.md` at the project root.
+- Captured the current homepage direction: quiet editorial Swiss-informed system, monochrome surfaces, ruled rows, sparse blue emphasis and regular-weight Aileron typography.
+- Locked the current colour tokens, typography roles, type scale, layout widths, section rhythm, component patterns, motion ownership, responsive rules, accessibility rules and implementation guardrails.
+- Included the exact local font constraints: Aileron `400`, `700` and `400 italic` only, with no synthetic mid-weights.
+- Documented the current component rules for header, CTAs, ruled accordions, What We Build, Live Work, AI Opportunity Audit, Working Promise, Who This Is For, FAQ and footer.
+
+Verified locally:
+
+- Documentation reviewed against the current homepage implementation files.
+- No code build was run because this was a markdown-only documentation change.
+
+Not done:
+
+- Not pushed.
+- `CLAUDE.md` was not edited because it already has unrelated local changes in the worktree.
 
 ## 27 May Typography Weight Softening - Local Review
 
@@ -837,6 +1000,37 @@ Still required before expecting email delivery from the form:
 - Sector pages.
 - Deeper standalone case studies for Last30Days and Fire Source.
 - Hanbury / Growth Intelligence public work item, when source material and approval are ready.
+
+## 27 May Business Tracker Page Rebuild - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Rebuilt `/business-tracker` only from `BUSINESS_TRACKER_COPY_DRAFT.md`.
+- Added the locked Business Tracker dashboard hero image and the four-card Input Map component from `INPUT_MAP_COMPONENT_BRIEF.md`.
+- Kept homepage and all other routes out of scope.
+
+Implemented:
+
+- Moved the locked 10-section Business Tracker copy into `src/content/site.ts`.
+- Rebuilt the route order as Hero, What it does, Operating Layers, Input Map, Outcome, Who it's for, Extends to hiring & beyond, Commercial, FAQ and CTA.
+- Added `src/components/business-tracker/input-map.tsx` using the four committed Calm Authority assets from `public/business-tracker/input-map/`.
+- Added the dashboard hero media from `public/business-tracker/hero/dashboard-hires.png`.
+- Reused `FaqAccordion` for the 7 locked FAQ items.
+- Reused `PageReveals` and added one focused Input Map reveal sequence. No new motion library, pinning or scroll-storytelling layer.
+- Corrected the blank-section issue by removing hidden emphasis-only reveal hooks from standalone BT lead paragraphs and replacing the full-viewport treatment on ordinary BT sections with compact editorial section rhythm.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Codex in-app browser checks passed at `1440x900`, `820x900` and `390x844`: 10 sections, 7 FAQs, no horizontal overflow, no console errors, only Aileron `400` and `700`, four Input Map cards, 4-column desktop, 2x2 tablet, stacked mobile, all Input Map images visible, consistent mock aspect ratio, failure lines bold black.
+- All 7 `/business-tracker/` image asset paths return `200` locally.
+- Screenshots saved in `.animation-review/business-tracker-2026-05-27/`.
 
 ## Notes For Next Session
 
