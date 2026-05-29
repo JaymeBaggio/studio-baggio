@@ -97,7 +97,7 @@ export const workItems: WorkItem[] = [
           label: "01 — The Problem",
           paragraphs: [
             "LinkedIn is the #1 platform for client conversions among advisers, yet of the 37,136 authorised financial advisers in the UK, fewer than 300 post consistently on LinkedIn. In a relationship business, that is a structural visibility gap.",
-            "Clients trust adviser judgement in private — but prospects have no evidence the expertise your website claims actually exists. An adviser sharing market insight, client-relevant commentary, and professional perspective starts building trust before the first meeting. Clients come in warm, not cold."
+            "Clients trust adviser judgement in private — but prospects have no evidence the expertise your website claims actually exists. An\u00A0adviser sharing market insight, client-relevant commentary, and professional perspective starts building trust before the first meeting. Clients come in warm, not cold."
           ],
           stats: [
             {
@@ -296,25 +296,24 @@ export const workItems: WorkItem[] = [
       },
       sections: [
         {
-          label: "What The Market Is Saying",
+          label: "What it is",
           paragraphs: [
-            "Last30Days listens to Reddit, X, TikTok, Instagram, YouTube and the open web — then distils what matters into signal you can act on. Not historical data. Not guesswork. What real people are saying right now, in the last 30 days."
+            "Every business decision made without knowing what the market is saying right now is a guess dressed up as strategy.",
+            "Last30Days scrapes Reddit. X. TikTok. Instagram. YouTube and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited."
           ]
         },
         {
-          label: "Before You Launch, Pivot, or Compete",
+          label: "Where markets form their opinions",
           paragraphs: [
-            "Know what your market is actually discussing before you write a word of copy, build a feature, or brief an agency. Last30Days gives founders, strategists and product teams live intelligence from the platforms that matter."
+            "This is where markets form their opinions. Where trends emerge before they reach the trade press. Where your competitors are being discussed, praised, or quietly abandoned."
           ]
         },
         {
-          label: "Signal, Not Noise",
+          label: "What it replaces",
           paragraphs: [
-            "Every output is structured, sourced and scannable. Trending topics. Sentiment shifts. Competitor gaps. Emerging language. Delivered in minutes, not weeks."
-          ],
-          closing: [
+            "What used to take a research team, an agency brief, or a six-figure contract is now delivered in one search.",
             "Before you launch, pivot, or compete — know what the market is really saying right now."
-          ]
+          ],
         }
       ],
       ctas: [{ label: "Visit live site →", href: "https://last30days.app", external: true }]
