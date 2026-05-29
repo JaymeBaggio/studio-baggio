@@ -1,6 +1,37 @@
 # Studio Baggio Website - STATUS
 *Last updated: 28 May 2026*
 
+## 28 May Homepage Section 2 Scan Reveal - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- Homepage opening argument / section 2 motion only.
+- No copy, layout, Business Tracker page, deployment, domain or product-page changes.
+
+Implemented:
+
+- Replaced the opening section's fast vertical line-rise with a slower GSAP horizontal masked text reveal.
+- Added a subtle blur-to-sharp scan treatment so each line resolves more deliberately instead of snapping in.
+- Split the setup line into measured visual lines for the same reveal system.
+- Kept the blue `Harder to compete with.` payoff as the final motion beat with a slightly larger resolve.
+- Extended the pinned opening section scroll range and increased the spacing between each support line so the reading beats do not collapse into each other.
+
+Verified locally:
+
+- Codex in-app browser at `http://localhost:3006/` shows the section 2 text clipping/blur resolving as the user scrolls.
+- Codex in-app browser timing check confirms the support lines now resolve in separate scroll beats before the blue payoff line appears.
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+
+Not done:
+
+- Production verification after Vercel deployment pending.
+
 ## 28 May Business Tracker Version For Main
 
 Branch:

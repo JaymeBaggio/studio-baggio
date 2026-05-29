@@ -122,15 +122,17 @@ export default function HomePage() {
         <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
           <div className="editorial-container opening-argument-grid">
             <div className="opening-argument-top">
-              <p className="opening-argument-qualifier" data-reveal>
-                {home.opening.qualifier}
-              </p>
+              {home.opening.qualifier ? (
+                <p className="opening-argument-qualifier" data-reveal>
+                  {home.opening.qualifier}
+                </p>
+              ) : null}
               <h2 className="opening-argument-headline" data-split>
                 {home.opening.headline}
               </h2>
             </div>
             <div className="opening-outcome-block">
-              <p className="opening-outcome-setup" data-reveal>
+              <p className="opening-outcome-setup" data-reveal data-split>
                 {home.opening.setup}
               </p>
               <OpeningOutcomeStack

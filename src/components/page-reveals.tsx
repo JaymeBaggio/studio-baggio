@@ -163,6 +163,25 @@ export function PageReveals() {
             if (targets.length) gsap.set(targets, { yPercent: 106, autoAlpha: 0.001 });
           };
 
+          const prepareScan = (
+            targets: gsap.TweenTarget,
+            {
+              x = 18,
+              blur = 10,
+              scale = 1
+            }: { x?: number; blur?: number; scale?: number } = {}
+          ) => {
+            gsap.set(targets, {
+              x,
+              scale,
+              autoAlpha: 0.001,
+              filter: `blur(${blur}px)`,
+              clipPath: "inset(0 100% 0 0)",
+              transformOrigin: "50% 50%",
+              willChange: "transform, opacity, filter, clip-path"
+            });
+          };
+
           const revealRise = (
             timeline: gsap.core.Timeline,
             targets: gsap.TweenTarget,
@@ -219,6 +238,29 @@ export function PageReveals() {
                 stagger,
                 ease: editorialOut,
                 overwrite: "auto"
+              },
+              position
+            );
+          };
+
+          const revealScan = (
+            timeline: gsap.core.Timeline,
+            targets: gsap.TweenTarget,
+            position: gsap.Position,
+            vars: gsap.TweenVars = {}
+          ) => {
+            timeline.to(
+              targets,
+              {
+                x: 0,
+                scale: 1,
+                autoAlpha: 1,
+                filter: "blur(0px)",
+                clipPath: "inset(0 0% 0 0)",
+                duration: 1.34,
+                ease: editorialOut,
+                overwrite: "auto",
+                ...vars
               },
               position
             );
@@ -286,12 +328,13 @@ export function PageReveals() {
               const support = Array.from(section.querySelectorAll<HTMLElement>("[data-outcome-support]"));
               const emphasis = section.querySelector<HTMLElement>("[data-outcome-emphasis]");
               const headlineTargets = targetsFor(headline);
+              const setupTargets = targetsFor(setup);
 
-              prepareLines(headlineTargets);
-              if (qualifier) prepareRise(qualifier, 10);
-              if (setup) prepareRise(setup, 16);
-              if (support.length) prepareRise(support, 14);
-              if (emphasis) prepareRise(emphasis, 14);
+              prepareScan(headlineTargets, { x: 24, blur: 12 });
+              if (qualifier) prepareScan(qualifier, { x: 14, blur: 6 });
+              if (setupTargets.length) prepareScan(setupTargets, { x: 18, blur: 8 });
+              if (support.length) prepareScan(support, { x: 16, blur: 8, scale: 0.992 });
+              if (emphasis) prepareScan(emphasis, { x: 22, blur: 10, scale: 0.985 });
 
               const opening = gsap.timeline({
                 defaults: { ease: editorialOut },
@@ -300,21 +343,26 @@ export function PageReveals() {
                   trigger: section,
                   start: stickyStoryStart,
                   end: "bottom bottom",
-                  scrub: isDesktop ? 1.12 : 0.92,
+                  scrub: isDesktop ? 1.45 : 1.15,
                   invalidateOnRefresh: true
                 }
               });
 
-              revealLines(opening, headlineTargets, 0, 0.065);
-              if (qualifier) revealRise(opening, qualifier, 0.34, { duration: 0.98 });
-              opening.to({}, { duration: 0.48 }, 0.96);
-              if (top) opening.to(top, { autoAlpha: 0.3, duration: 1.05 }, 1.12);
-              if (setup) revealRise(opening, setup, 1.42, { duration: 1.08 });
+              revealScan(opening, headlineTargets, 0, { duration: 1.72, stagger: 0.22 });
+              if (qualifier) revealScan(opening, qualifier, 0.58, { duration: 1.18 });
+              opening.to({}, { duration: 0.9 }, 1.28);
+              if (top) opening.to(top, { autoAlpha: 0.28, duration: 1.46 }, 1.82);
+              if (setupTargets.length) {
+                revealScan(opening, setupTargets, 2.28, { duration: 1.5, stagger: 0.14 });
+              }
               support.forEach((item, index) => {
-                revealRise(opening, item, 2.1 + index * 0.32, { duration: 0.98 });
+                revealScan(opening, item, 4.34 + index * 1.58, { duration: 1.22 });
               });
-              if (emphasis) revealRise(opening, emphasis, 3.34, { duration: 1.08 });
-              opening.to({}, { duration: 1.12 });
+              if (emphasis) {
+                revealScan(opening, emphasis, 10.0, { duration: 1.56, scale: isDesktop ? 1.045 : 1.025 });
+                opening.to(emphasis, { scale: 1, duration: 0.9, ease: editorialOut }, 11.38);
+              }
+              opening.to({}, { duration: 2.6 });
               return;
             }
 
