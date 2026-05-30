@@ -11,6 +11,7 @@ import {
   getRelatedInsights,
   insightArticles
 } from "@/content/insights";
+import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 
 type ArticlePageProps = {
@@ -49,13 +50,13 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       publishedTime: article.date,
       modifiedTime: article.updated,
       authors: ["Jayme Baggio"],
-      images: [{ url: "/opengraph-image", width: 1200, height: 630 }]
+      images: [defaultOpenGraphImage]
     },
     twitter: {
       card: "summary_large_image",
       title: article.metaTitle,
       description: article.metaDescription,
-      images: ["/opengraph-image"]
+      images: [defaultTwitterImage]
     }
   };
 }

@@ -8,6 +8,7 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { metadata as siteMetadata } from "@/content/site";
+import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 import "./globals.css";
 
@@ -50,13 +51,13 @@ export const metadata: Metadata = {
     siteName: "Studio Baggio",
     title: siteMetadata.home.title,
     description: siteMetadata.home.description,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630 }]
+    images: [defaultOpenGraphImage]
   },
   twitter: {
     card: "summary_large_image",
     title: siteMetadata.home.title,
     description: siteMetadata.home.description,
-    images: ["/opengraph-image"]
+    images: [defaultTwitterImage]
   }
 };
 

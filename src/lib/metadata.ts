@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { siteUrl } from "@/lib/utils";
 
+export const defaultOpenGraphImage = {
+  url: "/assets/og/studio-baggio-og.png",
+  width: 1200,
+  height: 675,
+  alt: "Studio Baggio AI - practical systems built around how your business wins in market."
+};
+
+export const defaultTwitterImage = defaultOpenGraphImage.url;
+
 type PageMetadataInput = {
   title: string;
   description: string;
@@ -23,13 +32,13 @@ export function pageMetadata({ title, description, path }: PageMetadataInput): M
       url,
       title,
       description,
-      images: [{ url: "/opengraph-image", width: 1200, height: 630 }]
+      images: [defaultOpenGraphImage]
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/opengraph-image"]
+      images: [defaultTwitterImage]
     }
   };
 }

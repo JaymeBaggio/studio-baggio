@@ -1410,7 +1410,7 @@ svg {
     grid-template-columns: 1fr;
     grid-template-rows: auto minmax(14rem, 1fr) auto;
     row-gap: clamp(0.9rem, 3vw, 1.35rem);
-    padding-bottom: 1rem;
+    padding-bottom: clamp(3.25rem, 8svh, 5rem);
   }
 
   .home-reference-meta,
@@ -1429,9 +1429,9 @@ svg {
     align-self: end;
     justify-self: stretch;
     max-width: 100%;
-    font-size: clamp(2.1rem, 10vw, 3.1rem);
-    line-height: 0.84;
-    margin-bottom: clamp(2rem, 11vw, 4rem);
+    font-size: clamp(3.25rem, 16.2vw, 4.55rem);
+    line-height: 0.82;
+    margin-bottom: clamp(1.5rem, 7vw, 2.4rem);
   }
 
   .home-reference-promise {
