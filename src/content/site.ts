@@ -3,6 +3,7 @@ export const navItems = [
   { label: "Products", href: "/work" },
   { label: "Business Tracker", href: "/business-tracker" },
   { label: "Calm Authority", href: "/calm-authority" },
+  { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }
 ];
@@ -32,6 +33,11 @@ export const metadata = {
     title: "Calm Authority | Your own expertise at scale",
     description:
       "The flagship Studio Baggio product: a LinkedIn writing system for UK financial advisers that turns real expertise into visible public proof."
+  },
+  insights: {
+    title: "Insights | Studio Baggio",
+    description:
+      "Useful thinking on practical AI advantage, commercial intelligence, AI adoption, skills, authority systems and audience strategy."
   },
   about: {
     title: "About Studio Baggio | Practical AI Systems",
@@ -746,43 +752,56 @@ export const calmAuthority = {
 };
 
 export const about = {
-  eyebrow: "About Studio Baggio",
-  title: "About Studio Baggio",
-  intro:
-    "Founded by Jayme Baggio, Studio Baggio was established in 2025 with the mission to build practical AI systems that help businesses become visible, understand their market, capture demand and generate real ROI.",
+  eyebrow: "ABOUT",
+  title: "Studio Baggio",
+  intro: "Founded and led by Jayme Baggio.",
   sections: [
     {
-      label: "FOUNDED BY JAYME BAGGIO",
+      number: "01",
+      label: "What we do",
       body: [
-        "Jayme has spent years inside major media businesses, working with the likes of Channel 4, ITV, BBC Studios, Google, M&S and HSBC. Her understanding of commercial storytelling, production pressure, brand, audience, marketing strategy and senior stakeholders has shaped the way she views AI and how it can change real workflows. Jayme saw the opportunity AI brings to businesses and has spent the past 18 months finding out where AI can be applied to deliver maximum value, as well as building products for real expert-led businesses."
+        "Studio Baggio partners with the best operators in their field to use AI to supercharge what they're already great at. Our mission is to build practical AI systems that help businesses make their expertise visible, their output more valuable, understand their market, capture demand, and generate real ROI.",
+        "We work exclusively with companies and individuals who are the best at what they do. That principle shapes both who we work with and what we build."
+      ],
+    },
+    {
+      number: "02",
+      label: "Two routes in",
+      body: [],
+      routes: [
+        {
+          title: "Products in market.",
+          body:
+            "Live AI systems built alongside deep specialists in their field to capitalise on their own authority and expertise — Calm Authority, Business Tracker, Last30Days, Fire Source. Each is available standalone to the wider market and can be embedded into broader commercial implementation plans."
+        },
+        {
+          title: "Advisory and build.",
+          body:
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+        }
       ]
     },
     {
-      label: "WHY STUDIO BAGGIO EXISTS",
+      number: "03",
+      label: "Who's behind it",
+      lead: "Jayme Baggio — founder.",
       body: [
-        "After building and launching Calm Authority, Jayme spotted a real gap in how many sectors are using AI, and where they are leaving value on the table by not capitalising on the opportunity to use it to leverage their own expertise and scale in a way that benefits both their bottom line and their customers.",
-        "Jayme is now applying her experience to growth systems that can scale for trust-based and founder-led businesses."
+        "A British media strategist, commercial operator, and applied AI specialist. Twelve years across media, brand-building, and practical AI. Worked with Channel 4, BBC Studios, Google, Coca-Cola, HSBC, M&S, National Lottery and Nestlé. Built campaigns and commercial systems for some of the largest commercial operators in the UK.",
+        "Built Calm Authority — the LinkedIn writing system for UK financial advisers — alongside founding adviser Harry Sims, Chartered Financial Planner. Featured in Financial Times, Money Marketing and Professional Adviser.",
+        "Presented her applied AI operating systems framework to the Unstereotype Alliance UK in partnership with UN Women."
       ]
     },
     {
-      label: "WHAT THE WORK FOCUSES ON",
+      number: "04",
+      label: "How to engage",
       body: [
-        "Her work focuses on building lead intelligence and market authority strategy for companies ranging from wealth advice to content production.",
-        "Studio Baggio was built around a specific commercial system that helps companies understand who to target, what to say, and how to turn public proof into pipeline."
-      ]
-    },
-    {
-      label: "ADVISORY AND PRODUCTS",
-      body: [
-        "Alongside developing a suite of individual products for consulting clients, Jayme herself is taking on a small number of paid advisory projects through Studio Baggio, focused on AI-enabled growth systems, public evidence and lead intelligence."
-      ]
+        "Enquire below. If you're a good fit, we'll be in touch to arrange a bespoke AI Opportunity Audit — to find where AI can create the most commercial value in your business, what should be built first, and a 30 to 90 day build plan."
+      ],
+      ctaLabel: "Discuss your AI opportunity →"
     }
   ],
-  quote: {
-    text:
-      "Jayme has founder-level pattern recognition, strong taste, practical AI fluency and a rare ability to turn emerging tools into commercially understandable systems.",
-    attribution: "Harry Sims, Fairstone Group"
-  }
+  closingQuote:
+    "Studio Baggio develops systems to turn your business's internal expertise into visible public proof. Enables you to show up consistently and provide real value where your prospects already are. Then connect the dots between who is engaging, what they care about and how the business should follow up to earn the right to win in market."
 };
 
 export const phaseTwoTodos = [

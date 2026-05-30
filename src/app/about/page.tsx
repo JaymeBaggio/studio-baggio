@@ -6,65 +6,106 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
 
+type AboutSection = (typeof about.sections)[number];
+
+function getLead(section: AboutSection) {
+  return "lead" in section ? section.lead : null;
+}
+
+function getKicker(section: AboutSection) {
+  return "kicker" in section && typeof section.kicker === "string" ? section.kicker : null;
+}
+
+function getRoutes(section: AboutSection) {
+  return "routes" in section ? section.routes : null;
+}
+
+function getCtaLabel(section: AboutSection) {
+  return "ctaLabel" in section ? section.ctaLabel : null;
+}
+
 export default function AboutPage() {
   return (
     <>
       <PageReveals />
-      <div className="home-4b studio-page">
-        <section className="studio-page-hero">
-          <div className="editorial-container studio-page-frame">
-            <div>
-              <p className="eyebrow" data-reveal data-motion="label">{about.eyebrow}</p>
-              <h1 className="studio-page-title" data-split>
-                {about.title}
-              </h1>
-              <p className="studio-page-body" data-reveal>
-                {about.intro}
+      <div className="home-4b studio-page about-page">
+        <section className="about-hero">
+          <div className="editorial-container about-hero-frame">
+            <div className="about-hero-intro">
+              <p className="eyebrow" data-reveal data-motion="label">
+                {about.eyebrow}
+              </p>
+              <p className="about-hero-statement" data-reveal>
+                Practical systems built around
+                <br />
+                how your business wins in market.
               </p>
             </div>
-          </div>
-        </section>
 
-        <section>
-          <div className="editorial-container">
-            {about.sections.map((section, index) => (
-              <article key={section.label} className="studio-page-editorial-row" data-reveal>
-                <div>
-                  <span className="studio-page-row-number">{String(index + 1).padStart(2, "0")}</span>
-                  <h2 className="studio-page-row-kicker">{section.label}</h2>
-                </div>
-                <div className={index === 0 ? "studio-about-founder-grid" : ""}>
-                  <div className="studio-page-copy">
-                    {section.body.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                  {index === 0 ? (
-                    <figure className="studio-quote">
-                      <blockquote>
-                        &ldquo;{about.quote.text}&rdquo;
-                      </blockquote>
-                      <figcaption>
-                        {about.quote.attribution}
-                      </figcaption>
-                    </figure>
-                  ) : null}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="home-cta-section studio-page-cta" data-header-theme="dark">
-          <div className="editorial-container home-cta-frame">
-            <p className="eyebrow home-cta-eyebrow" data-reveal data-motion="label">
-              START A CONVERSATION
-            </p>
-            <div data-cta-button>
-              <ButtonLink href={primaryCta.href}>
-                {primaryCta.label}
-              </ButtonLink>
+            <div className="about-hero-wordmark">
+              <h1 data-reveal>
+                Studio
+                <br />
+                Baggio<span>.</span>
+              </h1>
             </div>
+          </div>
+        </section>
+
+        <section className="about-content">
+          <div className="editorial-container about-content-frame">
+            {about.sections.map((section) => {
+              const lead = getLead(section);
+              const kicker = getKicker(section);
+              const routes = getRoutes(section);
+              const ctaLabel = getCtaLabel(section);
+
+              return (
+                <article key={section.label} className="about-section" data-reveal>
+                  <div className="about-section-label">
+                    <span>{section.number} —</span>
+                    <h2>{section.label}</h2>
+                  </div>
+
+                  <div className="about-copy">
+                    {lead ? <p className="about-lead">{lead}</p> : null}
+
+                    {section.body.length > 0 ? (
+                      <div className="about-body">
+                        {section.body.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
+                    ) : null}
+
+                    {kicker ? <p className="about-subsection-label">{kicker}</p> : null}
+
+                    {routes ? (
+                      <div className="about-routes">
+                        {routes.map((route) => (
+                          <div key={route.title} className="about-route">
+                            <h3>{route.title}</h3>
+                            <p>{route.body}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+
+                    {ctaLabel ? (
+                      <div className="about-action">
+                        <ButtonLink href={primaryCta.href}>{ctaLabel}</ButtonLink>
+                      </div>
+                    ) : null}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="about-closing">
+          <div className="editorial-container about-closing-frame">
+            <blockquote data-reveal>{about.closingQuote}</blockquote>
           </div>
         </section>
       </div>
