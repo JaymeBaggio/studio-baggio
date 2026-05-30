@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
 
 const editorialOut = CustomEase.create("studioEditorialOut", "M0,0 C0.16,0.82 0.34,1 1,1");
+const scanOut = CustomEase.create("studioScanOut", "M0,0 C0.18,0.18 0.22,1 1,1");
 
 type SplitRecord = {
   element: HTMLElement;
@@ -258,7 +259,7 @@ export function PageReveals() {
                 filter: "blur(0px)",
                 clipPath: "inset(0 0% 0 0)",
                 duration: 1.34,
-                ease: editorialOut,
+                ease: scanOut,
                 overwrite: "auto",
                 ...vars
               },
@@ -343,26 +344,26 @@ export function PageReveals() {
                   trigger: section,
                   start: stickyStoryStart,
                   end: "bottom bottom",
-                  scrub: isDesktop ? 1.45 : 1.15,
+                  scrub: isDesktop ? 1.85 : 1.45,
                   invalidateOnRefresh: true
                 }
               });
 
-              revealScan(opening, headlineTargets, 0, { duration: 1.72, stagger: 0.22 });
-              if (qualifier) revealScan(opening, qualifier, 0.58, { duration: 1.18 });
-              opening.to({}, { duration: 0.9 }, 1.28);
-              if (top) opening.to(top, { autoAlpha: 0.28, duration: 1.46 }, 1.82);
+              revealScan(opening, headlineTargets, 0, { duration: 2.35, stagger: 0.42 });
+              if (qualifier) revealScan(opening, qualifier, 0.92, { duration: 1.64 });
+              opening.to({}, { duration: 1.32 }, 1.8);
+              if (top) opening.to(top, { autoAlpha: 0.28, duration: 1.95 }, 2.58);
               if (setupTargets.length) {
-                revealScan(opening, setupTargets, 2.28, { duration: 1.5, stagger: 0.14 });
+                revealScan(opening, setupTargets, 3.36, { duration: 2.24, stagger: 0.28 });
               }
               support.forEach((item, index) => {
-                revealScan(opening, item, 4.34 + index * 1.58, { duration: 1.22 });
+                revealScan(opening, item, 6.12 + index * 2.82, { duration: 2.18 });
               });
               if (emphasis) {
-                revealScan(opening, emphasis, 10.0, { duration: 1.56, scale: isDesktop ? 1.045 : 1.025 });
-                opening.to(emphasis, { scale: 1, duration: 0.9, ease: editorialOut }, 11.38);
+                revealScan(opening, emphasis, 15.55, { duration: 2.55, scale: isDesktop ? 1.045 : 1.025 });
+                opening.to(emphasis, { scale: 1, duration: 1.28, ease: editorialOut }, 17.86);
               }
-              opening.to({}, { duration: 2.6 });
+              opening.to({}, { duration: 3.8 });
               return;
             }
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
 import { ScrollReset } from "@/components/scroll-reset";
 import { SmoothScroll } from "@/components/smooth-scroll";
@@ -76,14 +77,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en" className={aileron.variable}>
       <body suppressHydrationWarning>
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; if (!location.hash) { scrollTo(0, 0); addEventListener('pageshow', function () { requestAnimationFrame(function () { scrollTo(0, 0); }); }); }"
-          }}
-        />
-        <script
+        <Script
+          id="studio-baggio-organization-schema"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <div className="site-shell">

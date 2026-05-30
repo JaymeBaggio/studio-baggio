@@ -1811,7 +1811,7 @@ textarea {
 
 .home-4b .opening-argument-section {
   background: var(--sb-paper);
-  min-height: 380svh;
+  min-height: 520svh;
   align-items: flex-start;
   padding-block: 0;
 }
@@ -2786,7 +2786,7 @@ textarea {
   }
 
   .home-4b .opening-argument-section {
-    min-height: 360svh;
+    min-height: 500svh;
     padding-block: 0;
   }
 
@@ -3501,6 +3501,10 @@ textarea {
   background: var(--sb-paper);
 }
 
+.home-4b.products-page.products-detail-page .products-panel-shell {
+  padding-top: 4rem;
+}
+
 .home-4b.products-page .products-panel-header {
   padding-block: clamp(52px, 7vw, 76px) clamp(24px, 3vw, 40px);
 }
@@ -3600,6 +3604,14 @@ textarea {
   overflow: hidden;
   border: 1px solid var(--sb-rule);
   background: var(--sb-paper);
+}
+
+.home-4b.products-page .products-panel-media.has-secondary-media {
+  margin-bottom: clamp(14px, 1.7vw, 22px);
+}
+
+.home-4b.products-page .products-panel-media-secondary {
+  margin-bottom: clamp(28px, 3vw, 36px);
 }
 
 .home-4b.products-page .products-panel-media img {
@@ -3724,7 +3736,8 @@ textarea {
   align-items: center;
 }
 
-.home-4b.products-page .products-featured-inner span {
+.home-4b.products-page .products-featured-inner span,
+.home-4b.products-page .products-featured-inner a {
   display: inline-flex;
   min-height: 28px;
   align-items: center;
@@ -3734,9 +3747,15 @@ textarea {
   font-size: var(--sb-small-size);
   font-weight: var(--sb-strong-weight);
   line-height: var(--sb-small-line);
+  text-decoration: none;
 }
 
-.home-4b.products-page .products-featured-inner span:first-child {
+.home-4b.products-page .products-featured-inner a:hover {
+  color: var(--sb-blue);
+}
+
+.home-4b.products-page .products-featured-inner span:first-child,
+.home-4b.products-page .products-featured-inner a:first-child {
   border-left: 0;
   padding-left: 0;
 }
@@ -3822,7 +3841,9 @@ textarea {
   }
 
   .home-4b.products-page .products-featured-inner span,
-  .home-4b.products-page .products-featured-inner span:first-child {
+  .home-4b.products-page .products-featured-inner span:first-child,
+  .home-4b.products-page .products-featured-inner a,
+  .home-4b.products-page .products-featured-inner a:first-child {
     border-left: 0;
     padding-inline: 0;
   }
