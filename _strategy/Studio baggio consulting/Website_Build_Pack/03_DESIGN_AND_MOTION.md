@@ -34,6 +34,8 @@ It should demonstrate the quality of the work through the experience itself.
 ## Visual Style
 
 - Mostly monochrome palette.
+- Hard colour rule: black, white and true neutral greys only. No pink, purple, violet, lavender, purple-grey, blue-grey or coloured grey surfaces.
+- No coloured accents unless Jayme explicitly reverses this in writing. Use type, layout, rules and black/white inversion for emphasis instead.
 - Premium editorial composition.
 - Large typographic hero.
 - Sparse white space.

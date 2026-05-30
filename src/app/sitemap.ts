@@ -5,8 +5,6 @@ import { siteUrl } from "@/lib/utils";
 const routes = [
   "",
   "/work",
-  "/business-tracker",
-  "/calm-authority",
   "/insights",
   "/fire-source",
   "/last30days",

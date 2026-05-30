@@ -44,6 +44,10 @@ function renderProblemTitle(title: string) {
 }
 
 export default function HomePage() {
+  const openingHeadlineParts = home.opening.headline.split(". ");
+  const openingHeadlineLines = openingHeadlineParts.map((line, index) =>
+    index < openingHeadlineParts.length - 1 ? `${line}.` : line
+  );
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
   const problemStats = [
@@ -128,7 +132,11 @@ export default function HomePage() {
                 </p>
               ) : null}
               <h2 className="opening-argument-headline" data-split>
-                {home.opening.headline}
+                {openingHeadlineLines.map((line) => (
+                  <span data-split-hard-line key={line}>
+                    {line}
+                  </span>
+                ))}
               </h2>
             </div>
             <div className="opening-outcome-block">

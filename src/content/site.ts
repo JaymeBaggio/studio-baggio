@@ -1,8 +1,6 @@
 export const navItems = [
   { label: "Studio Baggio", href: "/" },
   { label: "Products", href: "/work" },
-  { label: "Business Tracker", href: "/business-tracker" },
-  { label: "Calm Authority", href: "/calm-authority" },
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }

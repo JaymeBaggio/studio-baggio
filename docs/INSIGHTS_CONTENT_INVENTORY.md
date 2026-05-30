@@ -70,36 +70,36 @@ Jayme approved this list on 30 May 2026. These are the articles to add or keep o
 | 2 | AI adoption is high. Value is patchy. | RC6, including `High performers think in operating systems, not tools` | Live |
 | - | High performers think in operating systems, not tools | RC6 | Folded into #2. Not a standalone article. |
 | 4 | ChatGPT for Business Owners — If You Only Do 6 Things... | RC7 | Live |
-| 5 | The channels you rent can change overnight | RC7 | Live |
+| 5 | Reuters Institute’s Trends & Predictions 2026: What businesses should do next. | RC7 | Live |
 | 6 | If your work happens on a screen, assume the shape of it is going to change | RC7.5 / `Something BIg is happening .pdf` | Live |
 | 7 | A skill is an app without a user interface | RC8, including `/Last30Days Skill`, `From Skill to Product` and the launch-stack sections | Live |
 | - | From skill to product | RC8 | Folded into #7. Not a standalone article. |
 | 9 | Brands Lean into GEO For Visibility | RC2 | Live |
 | 10 | AI SEO Framework | `Future Ideas/RC AI SEO Framework.pdf` | Live |
 | 11 | Building AI Operating Systems in 2026 | `Downloaded source PDFs/Building AI Operating Systems in 2026.pdf` | Live |
-| 12 | AI Creative Summit 2025 | `Downloaded source PDFs/AI Creative Summit 2025.pdf` | Review, then add |
-| 13 | The State of Play: AI Disruption in Media & Advertising | `Downloaded source PDFs/Future week AIIM.pdf` | Review, then add |
+| 12 | AI Creative Summit 2025 | `Downloaded source PDFs/AI Creative Summit 2025.pdf` | Live |
+| 13 | The State of Play: AI Disruption in Media & Advertising | `Downloaded source PDFs/Future week AIIM.pdf` | Live |
 | 14 | 2026 Predictions | RC6 | Live |
 | 15 | Tools of the Year 2025 | RC6 | Live |
 
 Priority review queue:
 
-1. `AI Creative Summit 2025.pdf` — add after review; likely owned-media / creative-industry source material.
-2. `Future week AIIM.pdf` — add after review; overlaps on human-in-the-loop, hybrid talent and AI in media/advertising.
+- Complete for the approved 13-article launch set.
+- Next review queue should be for second-pass article enhancements: diagrams, internal links, metadata and any title refinements Jayme approves.
 
 | Priority | Article | Category | Slug | Source | Build note |
 | --- | --- | --- | --- | --- | --- |
 | P0 | Firecrawl just gave any business access to 96% of the open web | Commercial Intelligence | `/insights/firecrawl-for-business` | RC9, RC10, follow-up PDF | Strongest first article. Preserve the full argument and add a Studio Baggio-native workflow diagram. |
 | P0 | AI adoption is high. Value is patchy. | AI Adoption | `/insights/ai-adoption-value-gap` | RC6, voice reference | Core business article. Includes `High performers think in operating systems, not tools` as part of the same article. Do not split. |
 | P0 | A skill is an app without a user interface | AI Skills | `/insights/what-is-an-ai-skill` | RC8 Skills Special | Core explainer for the Skills work. Includes `From skill to product` and the launch-stack sections as part of the same article. Do not split. |
-| P1 | The channels you rent can change overnight | Owned Media | `/insights/owned-vs-rented-audience` | RC7, voice reference | Implemented as the launch owned media article. |
+| P1 | Reuters Institute’s Trends & Predictions 2026: What businesses should do next. | Owned Media | `/insights/owned-vs-rented-audience` | RC7, voice reference | Implemented as the launch owned media article. |
 | P1 | ChatGPT for Business Owners — If You Only Do 6 Things... | AI Adoption | `/insights/chatgpt-for-business-owners` | RC7 | Implemented locally. Publish exact selected source text; no rewriting. |
 | P1 | If your work happens on a screen, assume the shape of it is going to change | AI Adoption | `/insights/ai-future-of-work` | RC7.5, `Something BIg is happening .pdf` | Implemented locally. Uses the original full article/source, not split by slide/page. |
 | P1 | Brands Lean into GEO For Visibility | AI Search | `/insights/geo-generative-engine-optimisation` | RC2 | Implemented locally. Publish exact selected source text; no rewriting. |
 | P1 | AI SEO Framework | AI Search | `/insights/ai-seo-framework` | `Future Ideas/RC AI SEO Framework.pdf` | Implemented locally from the PDF source text. |
 | P1 | Building AI Operating Systems in 2026 | AI Adoption | `/insights/building-ai-operating-systems` | `Downloaded source PDFs/Building AI Operating Systems in 2026.pdf` | Implemented locally from the PDF source text. |
-| P1 | AI Creative Summit 2025 | Owned Media | `/insights/ai-creative-summit-2025` | `Downloaded source PDFs/AI Creative Summit 2025.pdf` | Approved add/review. Map exact source boundaries first. |
-| P1 | The State of Play: AI Disruption in Media & Advertising | Owned Media | `/insights/ai-disruption-in-media-and-advertising` | `Downloaded source PDFs/Future week AIIM.pdf` | Approved add/review. Map exact source boundaries first. |
+| P1 | AI Creative Summit 2025 | Owned Media | `/insights/ai-creative-summit-2025` | `Downloaded source PDFs/AI Creative Summit 2025.pdf` | Live. PDF furniture removed; source signal/takeout structure preserved. |
+| P1 | The State of Play: AI Disruption in Media & Advertising | Owned Media | `/insights/ai-disruption-in-media-and-advertising` | `Downloaded source PDFs/Future week AIIM.pdf` | Live. PDF furniture removed; source insight/takeout structure preserved. |
 | P1 | 2026 Predictions | AI Adoption | `/insights/ai-predictions-2026` | RC6 | Implemented locally for third-party mentions and search surface. |
 | P1 | Tools of the Year 2025 | AI Skills | `/insights/best-ai-tools-2025` | RC6 | Implemented locally for third-party/tool mentions and search surface. |
 
@@ -114,10 +114,16 @@ Recommended first build order:
 7. Brands Lean into GEO For Visibility.
 8. AI SEO Framework.
 9. Building AI Operating Systems in 2026.
-10. AI Creative Summit 2025.
-11. The State of Play: AI Disruption in Media & Advertising.
-12. 2026 Predictions.
-13. Tools of the Year 2025.
+10. 2026 Predictions.
+11. Tools of the Year 2025.
+12. AI Creative Summit 2025.
+13. The State of Play: AI Disruption in Media & Advertising.
+
+Current local status after adding the approved PDF articles:
+
+- 13 article pages are live locally.
+- No approved article pages remain to add in the current launch set.
+- Recommended next move: do a second design/component enhancement pass across the full article library.
 
 ## Full Rough Cut Audit
 
@@ -153,8 +159,8 @@ Status key:
 | RC6 | 2026 Predictions | AI Adoption | Live | Implemented locally for third-party mentions, search surface and useful archive value. |
 | RC6 | Tools of the Year 2025 | AI Skills | Live | Implemented locally for third-party/tool mentions and search surface. |
 | RC7 | ChatGPT for Business Owners - If You Only Do 6 Things | AI Adoption | Live | Implemented locally as an evergreen guide. |
-| RC7 | Reuters Institute's Trends & Predictions 2026 | Owned Media | Live | Forms the current rented-channels article with Slide 3. |
-| RC7 | Reuters 2026 Trends & Predictions Report cont. | Owned Media | Live | Best used as the second half of the rented-channels article. |
+| RC7 | Reuters Institute's Trends & Predictions 2026 | Owned Media | Live | Forms the current Reuters / owned-media article with Slide 3. |
+| RC7 | Reuters 2026 Trends & Predictions Report cont. | Owned Media | Live | Best used as the second half of the Reuters / owned-media article. |
 | RC7 | OpenAI Is Bringing Ads To ChatGPT | Owned Media | Later | Useful paid-discovery/trust article, but too news-led for launch. |
 | RC7.5 | If your work happens on a screen, assume the shape of it is going to change | AI Adoption | Live | Implemented locally as a full article, not split by slide/page. |
 | RC8 | What is a Skill? | AI Skills | Live | Core skills article. Current route includes Slide 2 through the end of the issue. |
@@ -176,16 +182,16 @@ Status key:
 | Downloaded PDF | Something BIg is happening | AI Adoption | Next | RC7.5 PDF source for the screen/work-change article. Use the PDF as source material when mapping exact boundaries. |
 | Downloaded PDF | 10x AI Tips To Unlock What All the Hype is About | AI Skills | Next | Practical ChatGPT/AI fundamentals carousel. Candidate standalone resource if the full PDF works as an article. |
 | Downloaded PDF | Building AI Operating Systems in 2026 | AI Adoption | Live | Implemented locally from the PDF source. Strong operating-systems/adoption source. |
-| Downloaded PDF | The State of Play: AI Disruption in Media & Advertising | Owned Media | Next | Approved add/review. Futureweek AIMM 2025 takeouts; useful for media/ad leadership audience. |
+| Downloaded PDF | The State of Play: AI Disruption in Media & Advertising | Owned Media | Live | Implemented locally from the Futureweek AIMM 2025 PDF source. |
 | Downloaded PDF | Blueprint For AI Filmmaking | Owned Media | Later | Practical AI filmmaking playbook source. Keep as a media/creative candidate. |
 | Downloaded PDF | AI Filmmaking Update | Owned Media | Later | Updated version of the AI filmmaking workflow. Compare against the blueprint before publishing either. |
-| Downloaded PDF | AI Creative Summit 2025 | Owned Media | Next | Approved add/review. Larger PDF version of AI Creative Summit material. |
+| Downloaded PDF | AI Creative Summit 2025 | Owned Media | Live | Implemented locally from the downloaded PDF source. |
 
 Category conclusion from the audit:
 
 - Keep the six visible filters: `Commercial Intelligence`, `AI Adoption`, `AI Skills`, `AI Search`, `Owned Media`, `AI Products`.
 - Do not add more categories yet. Extra labels would make the strip heavier and most thin topics can sit inside these six.
-- The strongest next additions are locked in the approved article list above. First review priority is `Building AI Operating Systems in 2026`.
+- The approved 13-article launch set is now implemented locally. Next priority is second-pass enhancement across the live library.
 
 ## Downloaded PDF Source Materials
 
@@ -196,10 +202,10 @@ Moved into `/Users/jaymebaggio/Desktop/Rough Cut/Downloaded source PDFs/` on 30 
 | `Something BIg is happening .pdf` | Something big is happening / RC7.5 screen-work essay | AI Adoption | Use as the exact source material for the RC7.5 article. |
 | `Chat GPT 10x tips.pdf` | 10x AI Tips To Unlock What All the Hype is About | AI Skills | Add to the next-candidate list as a practical evergreen resource. |
 | `Building AI Operating Systems in 2026.pdf` | Building AI Operating Systems in 2026 | AI Adoption | Approved add and first-priority PDF review. |
-| `Future week AIIM.pdf` | The State of Play: AI Disruption in Media & Advertising | Owned Media | Approved add/review; map exact article boundaries before publishing. |
+| `Future week AIIM.pdf` | The State of Play: AI Disruption in Media & Advertising | Owned Media | Live. Exact article/takeout boundaries mapped and implemented locally. |
 | `AI Filmmaking blueprint .pdf` | Blueprint For AI Filmmaking | Owned Media | Keep as a later practical playbook candidate. |
 | `Ai Filmmaking update.pdf` | AI Filmmaking Update | Owned Media | Compare against the blueprint; publish only one canonical version unless Jayme approves both. |
-| `AI Creative Summit 2025.pdf` | AI Creative Summit 2025 | Owned Media | Approved add/review; map exact article boundaries before publishing. |
+| `AI Creative Summit 2025.pdf` | AI Creative Summit 2025 | Owned Media | Live. Exact signal boundaries mapped and implemented locally. |
 
 ## Article Source Notes
 

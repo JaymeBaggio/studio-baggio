@@ -17,7 +17,7 @@ Throughline: *argument → gap → what we build → proof → offer → promise
 
 Top-left block:
 `PRACTICAL SYSTEMS BUILT AROUND HOW YOUR BUSINESS WINS IN MARKET.`
-`CREATE VISIBILITY, GENERATE LEADS & COMMERCIAL ADVANTAGE`
+`CREATE VISIBILITY, GENERATE LEADS & WIN CLIENTS`
 `NOT AI THEORY.`
 `NOT GENERIC AUTOMATION.`
 
@@ -26,7 +26,7 @@ Large display (lower-right):
 
 Lower-right block (under display):
 `AI ENABLED GROWTH SYSTEMS FOR TRUST BASED BUSINESSES`
-`WE ENABLE EXPERT-LED FIRMS COMPETING IN HIGH VALUE MARKETS TO BUILD TRUST, CAPTURE DEMAND & FOLLOW UP SMARTER`
+`CREATING REAL COMMERCIAL ADVANTAGE FOR EXPERT-LED FIRMS IN HIGH VALUE MARKETS`
 
 ---
 
@@ -52,11 +52,18 @@ Eyebrow: `THE GAP`
 
 H1: `Adoption has run ahead of commercial return.`
 
-Body:
-`The UK government's 2026 AI Adoption Research found 16% of UK businesses use AI. Among those that do, 77% report no revenue change. Only 12% report a revenue increase.`
-*UK Government AI Adoption Research, 2026.*
+Stat blocks (matches live site sources — Deloitte 2026 + UK Gov 2026):
 
-Close: `Knowing where to effectivly apply AI creates real commercial advantage. Studio Baggio identifies where AI creates real value, then builds the system that delivers it.`
+**66%** — of organisations have adopted AI in at least one business function - yet most report only marginal efficiency gains, not commercial outcomes.
+*Source: Deloitte State of AI report, 2026.*
+
+**20%** — Only 20% of organisations using AI report some level of increased revenue. The gap between internal productivity and external revenue is where most AI investment breaks down.
+*Source: Deloitte State of AI report, 2026.*
+
+**12%** — Only 12% of businesses report meaningful revenue impact from their AI investments despite widespread adoption across industries.
+*Source: UK Government AI Adoption Research, 2026.*
+
+Close: `Knowing where to effectively apply AI creates real commercial advantage. Studio Baggio identifies where AI creates real value, then builds the commercial architecture that delivers it.`
 
 ---
 
@@ -64,70 +71,172 @@ Close: `Knowing where to effectivly apply AI creates real commercial advantage. 
 
 Eyebrow: `WHAT WE BUILD`
 
-1. SEO and AI search visibility
-Make your business easier to find when buyers are already looking for answers.
-This includes Google visibility, AI search visibility, specialist landing pages, topic maps, competitor gaps, proof assets and content shaped around real buyer questions.
-The goal: show up where your best prospects are searching, comparing and deciding.
-
-2. Market and competitor intelligence
-Use AI to understand what is happening in your market faster than your competitors.
-This includes competitor tracking, public signal research, customer language, content gaps, positioning analysis, market movement and opportunity mapping.
-Move before the market does.
-
-3. Lead capture and prospect intelligence
-Turn visibility into named prospects and better conversations.
-This includes lead magnets, diagnostics, email capture, website journeys, Business Tracker, lead scoring, qualification logic and next-action recommendations.
-Your team know who is showing interest, why they matter and what to say next.
-
-4. Authority and content systems
-Turn the expertise inside your business into public proof people can find, trust and act on.
-This includes LinkedIn, articles, case studies, playbooks, newsletters, proof pages, founder content and expert-led authority systems.
-Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold.
-
-5. Workflow acceleration
-Use AI to speed up the work that actually matters.
-This includes research, reporting, content production, sales preparation, client onboarding, proposal support, internal knowledge systems and decision support.
-The goal is not to automate everything. The goal is to remove low-value drag so your best people can move faster.
-
-6. Client-facing AI products and tools
-Create useful AI-supported tools that help prospects or clients understand their situation, make better decisions or move closer to buying.
-This includes diagnostics, calculators, simulators, personalised reports, onboarding tools and interactive lead magnets.
-Package your expertise into something people can experience.
+*Design note: single-open accordion. Each row collapsed by default, expands to show hook + "This includes" bulleted list + Goal.*
 
 ---
 
-## Section 5 — Proof
+**01 SEO AND AI SEARCH VISIBILITY**
 
-Live work
+*Hook:* Make your business easier to find when buyers are already looking for answers.
 
-`Calm Authority: ‘ Your Own Expertise. At Scale ‘Flagship product from Studio Baggio- turning adviser expertise into publish-ready authority content.`
-`Business Tracker: turning engagement into named follow-up and lead intelligence.`
-‘Fire Source’: Fire Source scans ~96% of the open web and answers your commercial questions in three minutes. Stack follow-ups to sharpen the picture and find the angle nobody else hasCompetitor moves, market shifts, who's buying what, who's hiring whom, pricing moves, prospect intelligence all in under three minutes. Cited, complete, with prompts to turn the intel into pitches, emails, or strategy notes. Built by Studio Baggio.
-‘Last30Days’: Pulls the last 30days worth of discussion and sentiment from Reddit. X. TikTok. Instagram. YouTube (inc comments and transcripts). The open web- Where markets form real opinions. Where trends emerge before the press catches up. Where your competitors are being discussed, praised, or quietly abandoned.
+*This includes:*
+- Google visibility
+- AI search visibility
+- Specialist landing pages
+- Topic maps
+- Competitor gaps
+- Proof assets
+- Content shaped around real buyer questions
+
+*Goal:* Show up where your best prospects are searching, comparing and deciding.
+
+---
+
+**02 MARKET AND COMPETITOR INTELLIGENCE**
+
+*Hook:* Use AI to understand what is happening in your market faster than your competitors.
+
+*This includes:*
+- Competitor tracking
+- Public signal research
+- Customer language
+- Content gaps
+- Positioning analysis
+- Market movement
+- Opportunity mapping
+
+*Goal:* Move before the market does.
+
+---
+
+**03 LEAD CAPTURE AND PROSPECT INTELLIGENCE**
+
+*Hook:* Turn visibility into named prospects and better conversations.
+
+*This includes:*
+- Lead magnets
+- Diagnostics
+- Email capture
+- Website journeys
+- Business Tracker
+- Lead scoring
+- Qualification logic
+- Next-action recommendations
+
+*Goal:* Your team know who is showing interest, why they matter and what to say next.
+
+---
+
+**04 AUTHORITY AND CONTENT SYSTEMS**
+
+*Hook:* Turn the expertise inside your business into public proof people can find, trust and act on.
+
+*This includes:*
+- LinkedIn
+- Articles
+- Case studies
+- Playbooks
+- Newsletters
+- Proof pages
+- Founder content
+- Expert-led authority systems
+
+*Goal:* Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold.
+
+---
+
+**05 WORKFLOW ACCELERATION**
+
+*Hook:* Use AI to speed up the work that actually matters.
+
+*This includes:*
+- Research
+- Reporting
+- Content production
+- Sales preparation
+- Client onboarding
+- Proposal support
+- Internal knowledge systems
+- Decision support
+
+*Goal:* The goal is not to automate everything. The goal is to remove low-value drag so your best people can move faster.
+
+---
+
+**06 CLIENT-FACING AI PRODUCTS AND TOOLS**
+
+*Hook:* Create useful AI-supported tools that help prospects or clients understand their situation, make better decisions or move closer to buying.
+
+*This includes:*
+- Diagnostics
+- Calculators
+- Simulators
+- Personalised reports
+- Onboarding tools
+- Interactive lead magnets
+
+*Goal:* Package your expertise into something people can experience.
+
+---
+
+## Section 5 — Live Work
+
+Eyebrow: `PRODUCTS`
+
+H1: `Live Work`
+
+**Calm Authority**
+`‘ Your Own Expertise. At Scale ‘Flagship product from Studio Baggio- turning adviser expertise into publish-ready authority content.`
+Links: `See more →` (→ /calm-authority) · `Visit live site →` (→ calmauthority.ai)
+
+**Business Tracker**
+`Turning engagement into named follow-up and lead intelligence.`
+Link: `See more →` (→ /business-tracker)
+
+**Fire Source**
+Fire Source scans ~96% of the open web and answers your commercial questions in three minutes. Stack follow-ups to sharpen the picture and find the angle nobody else has. Competitor moves, market shifts, who's buying what, who's hiring whom, pricing moves, prospect intelligence all in under three minutes. Cited, complete, with prompts to turn the intel into pitches, emails, or strategy notes. Built by Studio Baggio.
+Link: `Visit live site →` (→ fire-source.vercel.app)
+
+**Last30Days**
+Pulls the last 30 days worth of discussion and sentiment from Reddit. X. TikTok. Instagram. YouTube (inc comments and transcripts). The open web- Where markets form real opinions. Where trends emerge before the press catches up. Where your competitors are being discussed, praised, or quietly abandoned.
 Ask any question - Last30Days outputs a fully sourced report in under sixty seconds - every claim cited.
 Before you launch, pivot, or compete - know what the market is really saying right now.
+Link: `Visit live site →` (→ last30days.app)
 
 ---
 
 ## Section 6 — The offer
 
-Eyebrow: `AI OPPORTUNITY AUDIT`
+Eyebrow: `AI OPPORTUNITY AUDIT — 14 DAYS`
 
 H1: `A focused audit to find where AI creates the most commercial value in your business.`
 
 Deliverables:
-- Where AI can create value in the business.
-- The use cases worth prioritising first.
-- The buyer, market, and workflow signals already available to you.
-- A 30 to 90 day build plan.
+
+01. **Where AI can create value in the business** — a structured conversation to understand your current pipeline, how you win business, and where the friction lives.
+
+02. **The use cases worth prioritising first** — identification of the three to five highest-leverage points where AI can create measurable commercial impact.
+
+03. **The buyer, market, and workflow signals already available to you** — a clear, practical outline of what to build, in what order, and what outcomes to expect at each stage.
+
+04. **A 30 to 90 day build plan** — honest guidance on what you should build custom, what tools to deploy, and what to ignore entirely.
+
+CTA: `Discuss your AI opportunity`
 
 ---
 
 ## Section 7 — Working promise
 
-This is not- AI Training, Tool Recommendations
-or Prompt packs.
+Eyebrow: `WORKING PROMISE`
 
+*Design note: keep current treatment — strikethrough negative lines on the left, practical delivery copy on the right.*
+
+Strikethrough lines (left column):
+~~This is not AI training.~~
+~~Not tool recommendations.~~
+~~Not prompt packs.~~
+
+Body (right column):
 Every recommendation is practical, buildable and tied to a commercial outcome. If we recommend it, it is because it can be built, shipped or handed over as a working system.
 
 Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update.
@@ -138,32 +247,58 @@ Not to make you spend more time thinking about AI.
 
 ---
 
-## Section 8 — Fit
+## Section 8 — Who this is for
+
+Eyebrow: `WHO THIS IS FOR`
 
 H1: `For expert-led businesses that need AI connected to commercial outcomes.`
 
-Best for: Trust-led firms. Specialist advisers. Founder-led businesses. Professional services. Teams with valuable expertise and weak public proof.
+**Best for:**
+- Trust-led firms competing on expertise and reputation
+- Specialist advisers with valuable knowledge and weak public proof
+- Founder-led businesses wanting systems, not experiments
+- Professional services firms with longer sales cycles
+- Teams with valuable expertise and weak public proof
+- Businesses with strong delivery but inconsistent pipeline
 
-Not for: Generic AI training. One-off tools workshops. Cheap-lead volume plays.
+**Not for:**
+- Generic AI training or tool workshops
+- One-off tools and prompt pack requests
+- Cheap-lead volume plays and commodity pricing models
+- Businesses without a clear view of their ideal client
+- Companies seeking only a tool implementation partner
+- Organisations not ready to integrate AI into commercial operations
 
 ---
 
 ## Section 9 — FAQ
 
 **Is this AI training?**
-No. Training teaches your team to use tools. We build working systems that produce commercial outcomes, not generic AI education programmes.
+No. We don't run training programmes, workshops, or courses. We build practical systems that create commercial outcomes — systems your team operates, not courses they sit through. If you're looking for an AI literacy programme, we're not the right fit.
 
 **Is this automation?**
-Not in the Zapier or n8n sense. The work is the commercial system that drives revenue: visibility, search, market intelligence, lead quality, client conversations, workflows. Automation is one tool inside it.
+Automation is part of what we build, but it's not the point. The point is commercial advantage — visibility, pipeline, conversion. We use automation where it creates leverage. We don't automate for the sake of it. Every system we build is designed to deliver a measurable business outcome, not just to reduce manual effort.
 
 **Is this marketing?**
-Partly. The work connects AI, SEO, AI search, market intelligence, lead capture, authority-building, and workflow design. It is wider than what a marketing agency does.
+It's closer to commercial architecture. We work across the full pipeline — visibility, lead capture, nurture, proposal, and client retention. Some of what we build looks like marketing. Some looks like sales operations. All of it is designed to make your business easier to find, easier to buy from, and harder to compete with.
 
-**Is this only for wealth firms?**
-No. Wealth and advisory firms are a strong fit because trust and expertise matter most there. The same approach fits any expert-led business: professional services, specialist founder-led firms, and high-trust niches.
+**Is this only for wealth and financial advisory firms?**
+No. We work with any expert-led business that wins on trust — consulting, legal, accountancy, technology advisory, executive search, and specialist B2B services. The common thread is that the sale involves expertise, credibility, and a longer cycle. If that describes your business, we're likely a fit.
 
 **Do you build as well as advise?**
-Yes, once the commercial structure is agreed. Studio Baggio maps the opportunity, designs the system, builds the assets, and supports the work on an ongoing retainer.
+Yes — we build. The AI Opportunity Audit produces a clear plan. After that, most clients move into a build phase where we create the actual systems. We don't hand over a deck and wish you luck. We work in focused sprints with clear deliverables, and we hand over working systems your team can operate from day one.
+
+**How long does the AI Opportunity Audit take?**
+14 days. The audit identifies where AI can create commercial value, the use cases worth prioritising, and a 30 to 90 day build plan. You walk away with a clear plan; implementation starts from there.
+
+**Do you work with our existing marketing team or agency?**
+Yes. We design the commercial architecture. Your team or agency executes against it, or we take that work on ourselves. Either way, the work fits with what's already in place.
+
+**What's the first step?**
+Click 'Enquire now' below and share the core business details. If you're a good fit, we'll set up a short introductory call to discuss your priorities and where AI can create commercial value.
+
+**Can the Business Tracker be used for anything other than lead intelligence?**
+Yes. The same engine that scores leads against your Ideal Customer Profile scores candidates against your Ideal Employee Profile. CVs and applications go in, get enriched from public signals, scored against your bespoke criteria, and ranked with reasoning. Same logic, different intent. Recruitment is the most common second use case. The engine extends to anywhere humans need to be enriched, scored and ranked against your own criteria.
 
 ---
 

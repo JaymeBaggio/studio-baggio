@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
 
 const editorialOut = CustomEase.create("studioEditorialOut", "M0,0 C0.16,0.82 0.34,1 1,1");
-const scanOut = CustomEase.create("studioScanOut", "M0,0 C0.18,0.18 0.22,1 1,1");
+const scanOut = CustomEase.create("studioScanOut", "M0,0 C0.2,0.08 0.34,0.92 1,1");
 
 type SplitRecord = {
   element: HTMLElement;
@@ -19,12 +19,44 @@ type SplitRecord = {
 
 function splitIntoLines(element: HTMLElement): SplitRecord | null {
   const originalHTML = element.innerHTML;
-  const text = element.textContent?.replace(/\s+/g, " ").trim();
+  const hardLineNodes = Array.from(element.querySelectorAll<HTMLElement>("[data-split-hard-line]"));
+  const hardLines = hardLineNodes
+    .map((node) => node.textContent?.replace(/\s+/g, " ").trim())
+    .filter((line): line is string => Boolean(line));
+  const text = hardLines.length ? hardLines.join(" ") : element.textContent?.replace(/\s+/g, " ").trim();
 
   if (!text) return null;
 
   element.setAttribute("aria-label", text);
   element.replaceChildren();
+
+  if (hardLines.length) {
+    const targets: HTMLElement[] = [];
+    const rendered = document.createDocumentFragment();
+
+    hardLines.forEach((lineText) => {
+      const line = document.createElement("span");
+      const inner = document.createElement("span");
+      line.className = "split-line";
+      inner.className = "split-line-inner";
+      inner.textContent = lineText;
+      line.appendChild(inner);
+      rendered.appendChild(line);
+      targets.push(inner);
+    });
+
+    element.appendChild(rendered);
+
+    return {
+      element,
+      originalHTML,
+      targets,
+      revert: () => {
+        element.innerHTML = originalHTML;
+        element.removeAttribute("aria-label");
+      }
+    };
+  }
 
   const words = text.split(" ");
   const measure = document.createDocumentFragment();
@@ -331,11 +363,11 @@ export function PageReveals() {
               const headlineTargets = targetsFor(headline);
               const setupTargets = targetsFor(setup);
 
-              prepareScan(headlineTargets, { x: 24, blur: 12 });
-              if (qualifier) prepareScan(qualifier, { x: 14, blur: 6 });
-              if (setupTargets.length) prepareScan(setupTargets, { x: 18, blur: 8 });
-              if (support.length) prepareScan(support, { x: 16, blur: 8, scale: 0.992 });
-              if (emphasis) prepareScan(emphasis, { x: 22, blur: 10, scale: 0.985 });
+              prepareScan(headlineTargets, { x: 12, blur: 10 });
+              if (qualifier) prepareScan(qualifier, { x: 8, blur: 6 });
+              if (setupTargets.length) prepareScan(setupTargets, { x: 10, blur: 8 });
+              if (support.length) prepareScan(support, { x: 10, blur: 8, scale: 0.992 });
+              if (emphasis) prepareScan(emphasis, { x: 12, blur: 9, scale: 0.985 });
 
               const opening = gsap.timeline({
                 defaults: { ease: editorialOut },
@@ -344,26 +376,28 @@ export function PageReveals() {
                   trigger: section,
                   start: stickyStoryStart,
                   end: "bottom bottom",
-                  scrub: isDesktop ? 1.85 : 1.45,
+                  scrub: isDesktop ? 2.65 : 2.2,
                   invalidateOnRefresh: true
                 }
               });
 
-              revealScan(opening, headlineTargets, 0, { duration: 2.35, stagger: 0.42 });
-              if (qualifier) revealScan(opening, qualifier, 0.92, { duration: 1.64 });
-              opening.to({}, { duration: 1.32 }, 1.8);
-              if (top) opening.to(top, { autoAlpha: 0.28, duration: 1.95 }, 2.58);
+              headlineTargets.forEach((line, index) => {
+                revealScan(opening, line, index * 2.35, { duration: 2.8 });
+              });
+              if (qualifier) revealScan(opening, qualifier, 5.05, { duration: 2.05 });
+              opening.to({}, { duration: 1.44 }, 5.85);
+              if (top) opening.to(top, { autoAlpha: 0.28, duration: 2.15 }, 6.35);
               if (setupTargets.length) {
-                revealScan(opening, setupTargets, 3.36, { duration: 2.24, stagger: 0.28 });
+                revealScan(opening, setupTargets, 7.0, { duration: 2.75, stagger: 0.36 });
               }
               support.forEach((item, index) => {
-                revealScan(opening, item, 6.12 + index * 2.82, { duration: 2.18 });
+                revealScan(opening, item, 10.25 + index * 3.18, { duration: 2.65 });
               });
               if (emphasis) {
-                revealScan(opening, emphasis, 15.55, { duration: 2.55, scale: isDesktop ? 1.045 : 1.025 });
-                opening.to(emphasis, { scale: 1, duration: 1.28, ease: editorialOut }, 17.86);
+                revealScan(opening, emphasis, 20.6, { duration: 3.05, scale: isDesktop ? 1.045 : 1.025 });
+                opening.to(emphasis, { scale: 1, duration: 1.42, ease: editorialOut }, 23.34);
               }
-              opening.to({}, { duration: 3.8 });
+              opening.to({}, { duration: 4.2 });
               return;
             }
 

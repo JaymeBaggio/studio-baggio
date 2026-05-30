@@ -126,27 +126,34 @@ Suggested mobile scale:
 
 ## Colour System
 
-Keep the palette mostly monochrome.
+Keep the palette strictly monochrome.
+
+Hard rule:
+
+- Use black, white and true neutral greys only.
+- Do not use pink, purple, violet, lavender, purple-tinted grey, blue-grey or any colour-cast grey.
+- Do not introduce coloured accents unless Jayme explicitly reverses this instruction in writing.
+- If a grey looks even slightly pink, purple, blue or beige on screen, replace it with an actual neutral grey.
 
 Base:
 
-- White: `#F7F6F2` or `#F8F7F3`
+- White: `#FFFFFF`
+- Near-white: `#F5F5F3`
 - Ink: `#141414`
 - Black band: `#111111`
-- Mid grey: `#8E8A84`
-- Hairline grey: `#D8D4CC`
+- Mid grey: `#777773`
+- Hairline grey: `#D8D8D4`
 
 Accent:
 
-- One precise accent only, used sparingly for focus states, hover lines, selected states and proof markers.
-- Suggested options:
-  - Acid green: `#C9FE6E` as a nod to the Made With GSAP palette, but only as a small signal.
-  - Electric blue: `#3B82F6` if the site needs a clearer AI signal.
-  - Violet line: only if it is a thin editorial rule, not a gradient or theme.
+- No colour accent is approved for the Studio Baggio site direction.
+- Use contrast, typography, rules, active states and black/white inversion instead of colour accents.
 
 Avoid:
 
 - purple-blue gradient AI SaaS look
+- pink/purple/violet/lavender accents
+- purple-grey or blue-grey surfaces
 - beige-heavy lifestyle look
 - decorative blobs/orbs
 - glassmorphism as a primary visual system

@@ -84,12 +84,8 @@ export const workItems: WorkItem[] = [
       "It turns private expertise into public proof while keeping the adviser in control: every post is reviewed, edited and published manually.",
     proves:
       "Studio Baggio can turn expert judgement, compliance constraints and a market visibility gap into a practical AI-enabled product.",
-    href: "/calm-authority",
     external: "https://www.calmauthority.ai/",
-    homepageLinks: [
-      { label: "See more →", href: "/calm-authority" },
-      { label: "Visit live site →", href: "https://www.calmauthority.ai" }
-    ],
+    homepageLinks: [{ label: "Visit live site →", href: "https://www.calmauthority.ai" }],
     homepageImage: "/assets/products/calm-authority-og.png",
     image: "/assets/products/calm-authority.png",
     productPage: {
@@ -201,10 +197,7 @@ export const workItems: WorkItem[] = [
           href: "https://www.professionaladviser.com/news/4528430/risk-warnings-review-create-meaningful-shift-advice-communication"
         }
       ],
-      ctas: [
-        { label: "See more →", href: "/calm-authority" },
-        { label: "Visit live site →", href: "https://www.calmauthority.ai", external: true }
-      ]
+      ctas: [{ label: "Visit live site →", href: "https://www.calmauthority.ai", external: true }]
     }
   },
   {
@@ -223,8 +216,6 @@ export const workItems: WorkItem[] = [
       "It makes growth more feasible because teams can put time into conversations most likely to shift ROI.",
     proves:
       "Studio Baggio can connect visibility, market context and practical follow-up into one operating layer.",
-    href: "/business-tracker",
-    homepageLinks: [{ label: "See more →", href: "/business-tracker" }],
     homepageImage: "/assets/products/business-tracker-og.png",
     productPage: {
       tabLabel: "Business Tracker",
@@ -291,7 +282,7 @@ export const workItems: WorkItem[] = [
           ]
         }
       ],
-      ctas: [{ label: "See more →", href: "/business-tracker" }]
+      ctas: []
     }
   },
   {

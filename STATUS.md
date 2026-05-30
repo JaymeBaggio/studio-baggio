@@ -1,5 +1,359 @@
 # Studio Baggio Website - STATUS
-*Last updated: 28 May 2026*
+*Last updated: 30 May 2026*
+
+## 30 May Hide Standalone Product Pages - Local
+
+Scope:
+
+- Hide `/business-tracker` and `/calm-authority` standalone product pages for now.
+- Keep Business Tracker and Calm Authority visible inside `/work`.
+- Avoid Insights implementation files because another agent is currently working there.
+
+Implemented:
+
+- Moved the standalone route files into preserved, non-routed archive folders:
+  - `src/app/_archived-standalone-pages/business-tracker/page.tsx`
+  - `src/app/_archived-standalone-pages/calm-authority/page.tsx`
+- Added an archive README explaining that these pages are kept for later but not publicly routed.
+- Removed Business Tracker and Calm Authority from the primary navigation.
+- Removed `/business-tracker` and `/calm-authority` from the sitemap.
+- Removed internal product links that pointed to the hidden standalone pages.
+- Kept the products and their product-page content active on `/work`.
+
+Not touched:
+
+- `src/app/insights/[slug]/page.tsx`
+- `src/content/insights.ts`
+
+## 30 May Insights Firecrawl Article Design Pass - Local
+
+Scope:
+
+- `/insights` article system only, focused on `/insights/firecrawl-for-business`.
+- No homepage, About, Products, Business Tracker or other main-site page implementation changed.
+
+Implemented:
+
+- Added a native Studio Baggio Firecrawl workflow diagram to the Firecrawl article, rebuilt as code with Aileron, neutral surfaces, hairlines, square cards and restrained blue signal accents.
+- Added Firecrawl-only section-heading treatment for exact source lines already present in the article:
+  - `In real Terms:`
+  - `What does this mean for businesses?`
+  - `Public footprint is now part of how a business gets qualified.`
+- Tightened longform article typography and spacing so the article pages sit closer to the locked Studio Baggio design system.
+- Kept article words sourced from the current `sourceMarkdown`; this pass changed presentation/structure only, not article wording.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes and prerenders `/insights` plus the 11 approved article routes.
+- Content hygiene check found no issue/PDF furniture such as `ROUGH CUT`, `NEWSLETTER`, `Jayme Baggio`, `Views are my own`, `Pennies`, `per qualified`, `CONTINUES` or `RCC` in article source bodies.
+- Local route checks return `200` for `/insights` and `/insights/firecrawl-for-business`.
+- Removed split routes still return `404`:
+  - `/insights/ai-operating-systems-not-tools`
+  - `/insights/from-skill-to-product`
+
+Follow-up:
+
+- Reduced article-page body H1s to the locked Studio Baggio section-title scale instead of the oversized display scale.
+- Corrected `/insights/owned-vs-rented-audience` display title and metadata to `Reuters Institute’s Trends & Predictions 2026: What businesses should do next.`
+- Re-verified `npm run typecheck`, `npm run lint` and `npm run build`.
+- Fixed the article renderer list-continuation bug that caused `/insights/ai-adoption-value-gap` numbered item `2.` to swallow the following article sections.
+- Added exact-source section heading detection for the AI adoption article so the extracted PDF section lines render as headings instead of one large paragraph.
+- Re-opened `/insights/ai-adoption-value-gap` in the Codex in-app browser at `http://localhost:3006/insights/ai-adoption-value-gap`.
+- Hid the `THE REAL QUESTION:` source heading on `/insights/building-ai-operating-systems` so the article starts with `Most of us...` after the title; article body wording remains unchanged.
+- Added the two remaining approved article pages:
+  - `/insights/ai-creative-summit-2025`
+  - `/insights/ai-disruption-in-media-and-advertising`
+- Both new pages are built from the downloaded PDF source text, with repeated PDF furniture/hashtags/footers removed and source signal/takeout structure preserved.
+- Re-verified `npm run typecheck`, `npm run lint` and `npm run build`; build now prerenders `/insights` plus 13 article routes.
+
+## 30 May Repo Folder Cleanup - Local
+
+Scope:
+
+- Repository hygiene only. No site code, page layout, copy, styling or animation changed.
+
+Actions:
+
+- Moved untracked copy drafts, handover notes, source downloads, visual references, QA screenshots/videos and the Growth Intelligence reference project out of the website repo into:
+  - `/Users/jaymebaggio/Desktop/Studio Baggio/Website Local Archive/2026-05-30/`
+- Deleted obvious local junk:
+  - `.DS_Store`
+  - `src/app/about/.page.tsx.swp`
+
+Current state:
+
+- No untracked files remain in the website repo.
+- Tracked modified docs remain and were not reverted:
+  - `CLAUDE.md`
+  - `HOMEPAGE_COPY_DRAFT.md`
+  - `STATUS.md`
+  - `_strategy/Studio baggio consulting/Website_Build_Pack/03_DESIGN_AND_MOTION.md`
+  - `_strategy/Studio baggio consulting/design.md`
+- `.DS_Store` is deleted locally and should be removed from the repo in the next commit.
+
+## 30 May Calm Authority Standalone Page - Local
+
+Scope:
+
+- `/calm-authority` standalone page only, plus shared Calm Authority product copy in `src/content/work.ts`.
+- No `/business-tracker` implementation files edited.
+
+Implemented:
+
+- Reused the `/work` Calm Authority product panel for the standalone `/calm-authority` route so both surfaces stay visually and structurally aligned.
+- Removed the self-linking `See more →` CTA on the standalone page while keeping the live-site CTA.
+- Replaced the product panel `Built By` sentence with the 2025 Jayme Baggio / Harry Sims founder line Jayme wanted to keep.
+- Added live links to the Calm Authority `Featured in` publications: Financial Times, Professional Adviser and the temporary Money Marketing link.
+- Replaced raw React-rendered script tags with Next `Script` for structured data to clear the dev overlay script warning.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Local `/calm-authority` returns `200` and includes the Built in 2025 line plus all three publication links.
+
+Not done:
+
+- Not pushed.
+
+## 29 May Insights Section Direction - Local
+
+Source document:
+
+- `docs/rough-cut-insights-harvest-2026-05-29.md`
+- `docs/INSIGHTS_STATUS.md` is now the locked working brief for the Insights/newsletter section.
+- `docs/INSIGHTS_CONTENT_INVENTORY.md` is now the working curation list for article selection, category decisions, source files and launch order.
+
+Paper exploration:
+
+- `https://app.paper.design/file/01KSTAD8PWAYMXPFDSH6X0P7DE/1-0`
+- Artboards:
+  - `Insights Index 01 - Editorial Intelligence`
+  - `Insights Index 02 - Ruled Research Library`
+  - `Insights Index 03 - Dark Featured Front`
+  - `Article 01 - Longform Editorial`
+  - `Article 02 - Evidence Led Firecrawl`
+  - `Article 03 - Research Dossier`
+- Locked screenshot references:
+  - `/Users/jaymebaggio/Desktop/Screenshots/CleanShot 2026-05-29 at 18.44.19@2x.png` for the Insights index.
+  - `/Users/jaymebaggio/Desktop/Screenshots/CleanShot 2026-05-29 at 18.44.25@2x.png` for the article page.
+
+Decision:
+
+- Rough Cut is the source archive, not the visual template.
+- The Insights section should publish full individual article pages, not bundled RC issue pages.
+- Each strong Rough Cut article should get its own URL, metadata, related links and SEO surface.
+- Current category set: Commercial Intelligence, AI Adoption, AI Skills, AI Search, Owned Media and AI Products.
+- Articles should be redesigned into a consistent Studio Baggio article system using the locked site design system.
+- Critical guardrail: article body copy must be lifted verbatim from the chosen source. Do not rewrite, smooth, shorten, restructure, change punctuation, remove em dashes, change spelling or replace phrases.
+- Use `STUDIO_BAGGIO_DESIGN_SYSTEM.md`, `docs/studio-baggio-design-system.md`, `docs/studio-baggio-typography-system.md` and `src/app/globals.css` as the source of truth.
+- Any bold thesis lines, evidence blocks, comparison blocks or native SVG/info graphics must use the Studio Baggio grammar: Aileron, neutral tokens, hairlines, ruled rows, square corners and restrained emphasis.
+- The Firecrawl workflow graphic from Downloads is a logic reference only; it should be rebuilt as a native Studio Baggio diagram, not pasted in as a Rough Cut-style image.
+
+Implemented:
+
+- Added `/insights` as the hub/index page using the locked `Insights Index 01 - Editorial Intelligence` direction.
+- Added individual article pages at `/insights/[slug]` using the locked `Article 01 - Longform Editorial` direction.
+- Added launch article routes. Current rule: only real article boundaries get standalone routes. Do not split strong section headings into separate article pages.
+- Added `src/content/insights.ts` as the article/category source file.
+- Added `src/components/insights-article-accordion.tsx` for the ruled accordion article list.
+- Added the Insights nav item and sitemap entries.
+- Article bodies now render from exact `sourceMarkdown` blocks selected from the Rough Cut source files, including source headings/separators. The article renderer parses headings, paragraphs, lists, bold and italic markdown without rewriting the source words.
+
+Exploration notes:
+
+- Jayme prefers `Insights Index 01 - Editorial Intelligence` as the base direction.
+- `Insights Index 01` was revised after feedback:
+  - removed self-conscious source language like `Full articles from Rough Cut`
+  - removed the `What this proves` panel
+  - added a compact category/search strip under the featured article
+  - locked preferred strip order: `All` and category filters on the left, search field on the right
+  - article list should use the existing ruled accordion pattern so rows expand to show a preview on hover/focus/tap
+  - kept the page in the existing Studio Baggio design system
+- React Bits was checked for an accordion idea but did not surface a matching component; the build uses the existing local `ValueMap` / `ProofTiles` / `FaqAccordion` interaction pattern instead.
+- Jayme prefers `Article 01 - Longform Editorial` for the article pages themselves.
+- Article pages should use the longform editorial shell by default; diagrams/callouts can be embedded where useful, especially for Firecrawl, but should not turn the page into a diagram-led template.
+- `Insights Index 03 - Dark Featured Front` is strongest as a special opening/feature treatment, but may be too heavy if every archive visit starts on a dark page.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes and prerenders `/insights` plus the six article routes.
+- Local route checks return `200` for `/insights` and `/insights/firecrawl-open-web-commercial-intelligence`.
+- Source-body comparison passes for all implemented `sourceMarkdown` blocks against their selected Rough Cut source spans.
+- Playwright screenshots captured:
+  - `output/playwright/insights-index-desktop.png`
+  - `output/playwright/insights-firecrawl-desktop.png`
+  - `output/playwright/insights-index-mobile.png`
+  - `output/playwright/insights-firecrawl-mobile.png`
+
+Important caveat:
+
+- The final article body copy is source-exact for the selected spans, including source headings/separators. Metadata, preview copy, category labels and related links are page furniture and can be edited separately, but body text must remain locked unless Jayme explicitly approves a source-span or packaging change.
+- Follow-up: removed the right-side hero description from `/insights`; the hub hero now shows only `Insights` with the blue dot.
+- Follow-up: category labels tightened to `Commercial Intelligence`, `AI Adoption`, `AI Skills`, `AI Search`, `Owned Media` and `AI Products`.
+- Follow-up: index previews now come from the first one to two real paragraphs of each source article, and article-page display titles use the article title rather than source packaging like `Slide 2:` or `Article 2 —`.
+- Follow-up validation after the category label change: `npm run typecheck`, `npm run lint` and `npm run build` pass.
+- Follow-up: audited the RC2-RC10 Rough Cut archive plus Future Ideas/Playbooks against the six categories in `docs/INSIGHTS_CONTENT_INVENTORY.md`; kept the current category set rather than adding more filters.
+- Follow-up: `/insights` now labels the list as `Articles`, defaults to the full list, and the search index includes full article source text rather than only titles/previews.
+- Follow-up validation: local `/insights` opened in the Codex in-app browser at `http://127.0.0.1:3006/insights`; default active filter is `All`, all current articles render, and searching `Zapier` returns the Firecrawl article via full article body search.
+- Follow-up: added the title/refinement staging rule to the Insights docs. First pass keeps Jayme's original straightforward article titles. After the full article set is live, do a separate SEO/editorial pass for business-searcher framing, richer components, visuals, diagrams, metadata and internal links without rewriting article bodies.
+- Follow-up: removed `/insights/public-profile-is-no-longer-your-shop-window` because Jayme confirmed that public-profile/evidence-layer section belongs inside the Firecrawl article, not as its own standalone article. Do not re-add it as a route.
+- Follow-up: fixed the article JSON-LD script warning by rendering the schema as a plain inert `application/ld+json` script instead of using `next/script` inside the article component.
+- Follow-up: moved seven downloaded PDF source files from `~/Downloads` into `/Users/jaymebaggio/Desktop/Rough Cut/Downloaded source PDFs/` and added them to `docs/INSIGHTS_CONTENT_INVENTORY.md` as candidate/source material. They are not approved article splits; exact title/start/end mapping is required before any new page is added.
+- Follow-up: locked Jayme's approved Insights article list in `docs/INSIGHTS_CONTENT_INVENTORY.md`. Approved additions now include ChatGPT for Business Owners, RC7.5 screen-work article, Brands Lean into GEO, AI SEO Framework, Building AI Operating Systems in 2026, AI Creative Summit 2025, Futureweek AIMM, 2026 Predictions and Tools of the Year 2025.
+- Follow-up: added seven approved article pages locally:
+  - `/insights/chatgpt-for-business-owners`
+  - `/insights/ai-future-of-work`
+  - `/insights/geo-generative-engine-optimisation`
+  - `/insights/ai-seo-framework`
+  - `/insights/building-ai-operating-systems`
+  - `/insights/ai-predictions-2026`
+  - `/insights/best-ai-tools-2025`
+- Follow-up validation before correction: `npm run typecheck`, `npm run lint` and `npm run build` passed for the larger article set. The current corrected set is 11 article URLs because two accidental split routes have been removed.
+- Follow-up correction: merged the accidental RC6 split back into `/insights/ai-adoption-value-gap`. `High performers think in operating systems, not tools` is a section inside that article, not a standalone route.
+- Follow-up correction: merged the accidental RC8 split back into `/insights/what-is-an-ai-skill`. `From skill to product` is a section inside that article, not a standalone route.
+- Follow-up correction: `/insights/ai-operating-systems-not-tools` and `/insights/from-skill-to-product` must stay removed unless Jayme explicitly asks to split them later.
+- Follow-up correction: fixed the index preview extractor so list-style articles use the first one to two list items as preview blocks instead of treating an entire bullet list as one paragraph.
+- Follow-up correction: Insights accordion rows are now click-only. Rows no longer expand on hover/focus and no article is open by default.
+- Follow-up correction: removed the `next/script` article schema block from `/insights/[slug]` because it was causing the React script-tag dev overlay on article routes. Do not re-add schema as a rendered React script unless it is verified not to trigger the overlay.
+- Follow-up validation after corrections: `npm run typecheck`, `npm run lint` and `npm run build` pass. Local route checks return `200` for `/insights`, `/insights/ai-adoption-value-gap` and `/insights/what-is-an-ai-skill`, and `404` for the removed split routes `/insights/ai-operating-systems-not-tools` and `/insights/from-skill-to-product`.
+
+## 29 May New Homepage Section Prep - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Current source of truth:
+
+- Active project is `/Users/jaymebaggio/Desktop/Studio Baggio/Website`.
+- Local preview is already running at `http://127.0.0.1:3006/` and returns `200`.
+- Homepage implementation lives in `src/app/page.tsx`.
+- Main editable copy lives in `src/content/site.ts`.
+- Homepage visual system and section styles live in `src/app/globals.css`.
+- Homepage motion controller lives in `src/components/page-reveals.tsx`.
+
+Current homepage order:
+
+- Reference hero.
+- Opening argument.
+- The Gap.
+- What We Build / Value Map.
+- AI Opportunity Audit.
+- Working Promise.
+- Live Work.
+- Who This Is For.
+- FAQ.
+- Final CTA.
+
+Prep notes for the next section:
+
+- Add new homepage copy to the `home` object in `src/content/site.ts` where practical.
+- Add the section in `src/app/page.tsx` with the existing `home-section`, `editorial-container`, `data-home-section` and `data-motion-section` pattern.
+- Reuse existing type roles and ruled-list grammar unless the new section genuinely needs a custom component.
+- If adding a new `data-motion-section` type, extend `src/components/page-reveals.tsx`; otherwise the generic reveal branch is enough for label/title/body/rows.
+- Preserve the locked quiet monochrome system: Aileron only, neutral greys, sparse blue only for deliberate emphasis/active states, no gradients/blobs/cards.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+
+Not done:
+
+- No new website section implemented yet.
+- No build run because this was orientation/prep only.
+
+## 29 May Products Page Image + Motion Polish - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- `/work` products page only.
+- No `/business-tracker` implementation files edited.
+
+Implemented:
+
+- Added subtle Framer Motion entrance treatment to the products hero copy, display title and product tab row.
+- Added a short fade/settle transition when switching product panels.
+- Improved Calm Authority image quality by serving the original PNG directly for that product image instead of the default Next image optimizer output.
+- Kept all layout, copy and typography structure unchanged.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Local `/work` check at `1440x900` has no console errors and no horizontal overflow.
+- Calm Authority product panel now loads `public/assets/products/calm-authority-stat-feature-og.png` directly at `1493x1005`.
+- Product tab switching still works; Fire Source panel updates correctly.
+
+Not done:
+
+- Not pushed.
+
+Follow-up polish:
+
+- Removed the blue product-tab underline and blue panel rule; active tab state is now carried by ink/weight and subtle tap/settle motion.
+- Swapped the Calm Authority panel image to the cleaner `calm-authority-featured-in.png` asset from Downloads.
+- Gave the Calm Authority media column more desktop width so the image reads larger.
+- Updated the Business Tracker `/work` product-panel copy to the latest commercial intelligence / CRM differentiation / built-for copy.
+- Rebalanced the Business Tracker `/work` panel so `What it does` and `How it's different from a CRM` sit in the left copy column, with the product image, blue quote and `Built for` on the right.
+- Removed the temporary retainer/pricing line from the Business Tracker `/work` panel.
+- Re-verified `npm run typecheck`, `npm run lint`, `npm run build`.
+- Local `/work` check confirms no console errors, no horizontal overflow, active tab weight `700`, inactive tab weight `400`, and no blue tab/panel border.
+- Local `/work` Business Tracker tab check confirms the new copy, `See more →` CTA and no horizontal overflow.
+
+## 29 May Products Page Harvest - Local
+
+Branch:
+
+- `quiet-luxury-homepage-system`
+
+Scope:
+
+- `/work` products page only.
+- No `/business-tracker` implementation files edited.
+- Unrelated dirty copy/strategy drafts left untouched.
+
+Implemented:
+
+- Replaced the old simple Work rows with a Moonchild-inspired products page:
+  - full-frame Live Work hero
+  - `Products in market.` display headline
+  - four product tabs
+  - long-form editorial product panel
+- Mapped the imported layout into Studio Baggio typography rules:
+  - Aileron only
+  - regular-weight display type
+  - existing label/body/small text tokens
+  - no raw Moonchild inline style system
+- Added product-page content to `src/content/work.ts` so the page remains content-layer driven.
+- Added downloaded product images under `public/assets/products/` using clean asset names.
+- Swapped Calm Authority to the stat/proof image from Downloads rather than the simpler brand-only image.
+- Fixed the product hero dot line break and mobile hero gutter issue found during QA.
+
+Verified locally:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Desktop `/work` screenshot at `1440x900` has no horizontal overflow and matches the Moonchild hero structure.
+- Mobile `/work` screenshot at `390x844` has restored page gutters and no horizontal overflow.
+- Tab switching works; Fire Source panel changes title/image correctly.
+
+Not done:
+
+- Not pushed.
+- Awaiting Jayme review of the local preview.
 
 ## 28 May Homepage Section 2 Scan Reveal - Local
 
@@ -19,6 +373,7 @@ Implemented:
 - Split the setup line into measured visual lines for the same reveal system.
 - Kept the blue `Harder to compete with.` payoff as the final motion beat with a slightly larger resolve.
 - Extended the pinned opening section scroll range and increased the spacing between each support line so the reading beats do not collapse into each other.
+- Slowed the same pinned opening scroll reveal again on 29 May: desktop scroll range is now `450svh`, mobile `430svh`, with wider GSAP timing gaps and a slower scrub so each line has more time to land.
 
 Verified locally:
 

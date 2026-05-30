@@ -8,7 +8,7 @@ Implementation status:
 - First build implemented locally on 29 May 2026.
 - Hub route: `/insights`.
 - Article route pattern: `/insights/[slug]`.
-- Current local set: 11 individual article pages. The public-profile section is part of the Firecrawl article and must not be split into its own route. `High performers think in operating systems, not tools` is part of the AI adoption article, not a separate route. `From skill to product` is part of the AI skills article, not a separate route.
+- Current local set: 13 individual article pages. The public-profile section is part of the Firecrawl article and must not be split into its own route. `High performers think in operating systems, not tools` is part of the AI adoption article, not a separate route. `From skill to product` is part of the AI skills article, not a separate route.
 - Article body text is stored as exact `sourceMarkdown` in `src/content/insights.ts`, including source headings and separators from the selected source span.
 - Latest local verification: `npm run typecheck`, `npm run lint`, `npm run build`, route `200` checks and source-body comparison all pass.
 
@@ -29,6 +29,38 @@ Article wording must be lifted verbatim from the chosen source.
 - Page design, article shell, metadata, category labels, previews, related links and diagrams can be built around the article.
 - The article body itself must come from the selected source text exactly.
 - Do not remove source headings, slide labels, issue labels or separators from article pages unless Jayme explicitly approves that specific packaging rule.
+- Current approved packaging rule: remove or hide non-article PDF/issue furniture when it is clearly not part of the article, including page numbers, newsletter footer lines, raw diagram fragments, repeated issue labels and slide labels such as `Slide 2:`. This is presentation cleanup only, not copy editing.
+
+## Locked Extraction Workflow
+
+Use this workflow for every new Insights article.
+
+1. Confirm the real article boundary before adding a route.
+   - Do not split subsections into separate pages just because they have strong headings.
+   - `High performers think in operating systems, not tools` stays inside `AI adoption is high. Value is patchy.`
+   - `From skill to product` stays inside `A skill is an app without a user interface`.
+   - Public-profile/evidence-layer copy stays inside the Firecrawl article.
+
+2. Extract the source text from the best source file.
+   - Prefer clean `.md` source where it exists.
+   - Use the final/downloaded PDF only when that is the best or only source.
+   - Record the exact `sourcePath`, `sourceStart` and `sourceEnd` in `src/content/insights.ts`.
+
+3. Preserve article wording.
+   - Keep the article body wording, spelling, punctuation and examples exactly as sourced.
+   - Allowed cleanup is limited to removing obvious PDF/issue furniture and raw visual fragments that should become native page furniture instead.
+   - If a source line is ambiguous, keep it and ask Jayme later rather than silently rewriting it.
+
+4. Render with the shared article parser.
+   - Article body lives in `sourceMarkdown`.
+   - The renderer handles markdown headings, paragraphs, bold/italic, bullets and numbered lists.
+   - List continuation should only absorb genuinely indented wrapped lines. This prevents a numbered item from swallowing the following article sections.
+   - Article-specific section-heading maps are allowed when PDF extraction leaves obvious standalone section lines without markdown heading syntax.
+
+5. Verify before moving on.
+   - Run a source hygiene check for issue/PDF furniture such as `ROUGH CUT`, `NEWSLETTER`, `Jayme Baggio`, `Views are my own`, repeated page labels and raw diagram text.
+   - Check removed split routes still return `404` when relevant.
+   - Run `npm run typecheck`, `npm run lint` and `npm run build` after implementation changes.
 
 ## Title And Enhancement Staging
 
@@ -244,6 +276,33 @@ Required page structure:
 - Related articles.
 - Contextual links back to service/pillar/product pages.
 
+## Locked Article Design Style
+
+Use the Firecrawl article as the current article-page reference.
+
+Core rules:
+
+- White page, longform editorial, no Rough Cut/PDF visual style.
+- Use the Studio Baggio `.home-4b` token system.
+- Aileron only.
+- Type scale:
+  - Article H1 uses the locked section-title scale: `var(--sb-title-size)` / `var(--sb-title-line)`.
+  - H2s use the quieter article section scale.
+  - Body copy uses `--sb-body` colour, readable longform line height and a controlled reading width.
+- Layout:
+  - Main article reading lane is approximately `720px`.
+  - Wider diagrams can break out to `--sb-wide` but must still sit inside the page rhythm.
+  - No card-in-card, bento grids, heavy shadows, rounded SaaS cards, blobs or gradients.
+- Blue:
+  - Blue is a signal only.
+  - Use for active lines, diagram rules/arrows/bullets or one deliberate emphasis moment.
+  - Do not wash a page in blue or use it decoratively.
+- Article-specific components:
+  - Build native CSS/React diagrams or SVG-like components when they clarify the article.
+  - Do not paste PDF graphics into the page.
+  - Components are page furniture and must not replace or rewrite article text.
+  - If a PDF graphic contains useful logic, rebuild that logic in the Studio Baggio grammar.
+
 Article SEO requirements:
 
 - Unique title and meta description.
@@ -259,7 +318,7 @@ Firecrawl article design notes:
 
 - Use the attached Firecrawl content as source, not as visual layout.
 - Preserve the full argument.
-- Rebuild the Firecrawl workflow as a native Studio Baggio diagram:
+- Rebuilt and locked: the Firecrawl workflow is now a native Studio Baggio diagram:
   - Firecrawl reads public web sources.
   - Analysis surfaces commercial signals.
   - Claude/Codex applies ICP and qualification logic.
@@ -304,12 +363,27 @@ Implemented launch routes:
 - `/insights/geo-generative-engine-optimisation`
 - `/insights/ai-seo-framework`
 - `/insights/building-ai-operating-systems`
+- `/insights/ai-creative-summit-2025`
+- `/insights/ai-disruption-in-media-and-advertising`
 - `/insights/ai-predictions-2026`
 - `/insights/best-ai-tools-2025`
 
 Remaining approved articles not yet implemented:
 
-- `/insights/ai-creative-summit-2025`
-- `/insights/ai-disruption-in-media-and-advertising`
+- None. The approved 13-article launch set is now implemented locally.
 
 Do not re-add `/insights/public-profile-is-no-longer-your-shop-window`; Jayme confirmed that section belongs inside the Firecrawl article.
+
+## Next Step Recommendation
+
+Current recommendation:
+
+- Move to a second enhancement pass now that the full approved 13-article set is live locally.
+- Keep the locked longform editorial style.
+- Add only obvious, high-value native components where the article clearly benefits from structure.
+- Decide supporting diagrams, internal links, title/meta refinements and richer article-specific components across the whole library as one pass.
+
+Reason:
+
+- The SEO and usefulness benefit comes first from complete canonical article pages.
+- Once the complete set is visible, component decisions will be easier because we can see repeated patterns: frameworks, checklists, operating models, timelines, tool stacks and media/ad-industry maps.
