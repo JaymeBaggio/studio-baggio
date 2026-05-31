@@ -1,6 +1,28 @@
 # Studio Baggio Website - STATUS
 *Last updated: 31 May 2026*
 
+## 31 May Paper Mockup - AI Operating System Framework
+
+Scope:
+
+- Paper-only design exploration for the `Building AI Operating Systems in 2026` article.
+- No article source copy or website code changed.
+
+Implemented:
+
+- Created a Paper artboard called `AI Operating System Framework - Stance Stack Spine`.
+- Grounded the mockup in the current article source structure:
+  - `STANCE`: what you believe and protect.
+  - `STACK`: how AI lives in the organisation and whose judgement is scaled.
+  - `SPINE`: diverse human judgement at the centre of the system.
+- Added a second `Operating system test` section using the article's Q1 executive checklist.
+- Kept the visual direction aligned with the current Insights article style: white ground, Aileron, black text, neutral hairlines and restrained blue accents.
+
+Verified:
+
+- Paper screenshot reviewed for spacing, typography, contrast, alignment and artboard fit.
+- Artboard switched to `fit-content` after the first review showed the checklist clipping at the bottom.
+
 ## 31 May Insights Article Structure Styling - Local
 
 Scope:
