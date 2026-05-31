@@ -60,9 +60,14 @@ export function ProofTiles() {
         const summary = item.promise ?? item.proofCopy ?? item.eyebrow;
         const homepageImage = item.homepageImage;
         const imageIsReady = readyImages[item.slug] ?? false;
-        const bodyParagraphs = [item.proofCopy, item.built, item.whyItMatters].filter(
-          (paragraph): paragraph is string => Boolean(paragraph)
-        );
+        const bodyParagraphs = [item.proofCopy, item.built, item.whyItMatters]
+          .filter((paragraph): paragraph is string => Boolean(paragraph))
+          .flatMap((paragraph) =>
+            paragraph
+              .split(/\n{2,}/)
+              .map((part) => part.trim())
+              .filter(Boolean)
+          );
 
         return (
           <div key={item.slug} className={`proof-row ${isOpen ? "is-open" : ""}`} data-reveal>

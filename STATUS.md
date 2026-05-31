@@ -1,6 +1,35 @@
 # Studio Baggio Website - STATUS
 *Last updated: 31 May 2026*
 
+## 31 May Insights Article Structure Styling - Local
+
+Scope:
+
+- Insights article renderer and styling only.
+- No `src/content/insights.ts` article copy changed.
+
+Implemented:
+
+- Extended the source-preserving article renderer so exact labels such as `Insight`, `Why it matters`, `Opportunity`, `Action`, `Actionable takeaway` and `The takeaway` render as structured strategic callouts.
+- Added article-aware numbered section heading treatment for AI Creative Summit and State of Play.
+- Added source-preserving layouts for:
+  - ChatGPT article: ruled checklist/playbook list.
+  - 2026 Predictions: numbered prediction rows.
+  - Tools of the Year: tool-directory rows with `Use it for:` split into its own styled line.
+  - Future of Work: styled three-action list.
+  - Reuters / Owned Media: styled source subheadings and `Example: SheerLuxe` block.
+- Suppressed raw `---` slide separators so PDF/slide furniture does not render as article rules.
+- Hid the Reuters slide-continuation heading (`Reuters 2026 Trends & Predictions Report cont.`) as PDF furniture while preserving the article body copy.
+- Fixed the `Actionable takeaway` parser so it no longer misreads the label as `Action`.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Playwright route screenshots checked desktop layouts for Creative Summit, State of Play, ChatGPT, Predictions, Tools, AI Adoption, Reuters, GEO and Future of Work.
+- Desktop and 390px mobile overflow checks passed for Firecrawl plus the nine styled article routes.
+
 ## 31 May Insights Article Typography Tightening - Local
 
 Scope:

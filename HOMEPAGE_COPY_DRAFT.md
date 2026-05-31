@@ -194,8 +194,13 @@ Links: `See more →` (→ /calm-authority) · `Visit live site →` (→ calmau
 Link: `See more →` (→ /business-tracker)
 
 **Fire Source**
-Fire Source scans ~96% of the open web and answers your commercial questions in three minutes. Stack follow-ups to sharpen the picture and find the angle nobody else has. Competitor moves, market shifts, who's buying what, who's hiring whom, pricing moves, prospect intelligence all in under three minutes. Cited, complete, with prompts to turn the intel into pitches, emails, or strategy notes. Built by Studio Baggio.
-Link: `Visit live site →` (→ fire-source.vercel.app)
+`Market intelligence before the meeting.`
+
+Fire Source scans ~96% of the open web and answers your commercial questions in three minutes. Stack follow-up questions to sharpen the picture and find the angle nobody else has. Competitor moves, market shifts, who's spending in your sector, pricing changes, prospect, partner and hiring intelligence all in under three minutes. Cited, sourced & verified with prompts to turn the intel into pitches, emails, or strategy notes.
+
+Use it to find prospects in your niche, look for who specifically meets your ICP, or to research a potential partner or client before every meeting. Know who you're speaking with & what's important to them right now. Were they on a podcast recently talking about something relevant to your story? Have they got a reason to be buying from you? Do they have the credentials you're looking for to help partner on the next deal?
+
+Links: `See more →` (→ /work) · `Visit live site →` (→ fire-source.vercel.app)
 
 **Last30Days**
 Pulls the last 30 days worth of discussion and sentiment from Reddit. X. TikTok. Instagram. YouTube (inc comments and transcripts). The open web- Where markets form real opinions. Where trends emerge before the press catches up. Where your competitors are being discussed, praised, or quietly abandoned.

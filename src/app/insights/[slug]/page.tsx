@@ -118,11 +118,16 @@ const articleSectionHeadingsBySlug: Record<string, Set<string>> = {
     "The real blocker is not models. It is the “data tax”.",
     "High performers think in operating systems, not tools.",
     "End-of-year TLDR"
+  ]),
+  "ai-future-of-work": new Set(["Do three things this week:"]),
+  "ai-predictions-2026": new Set([
+    "2026 Predictions- What I think we’ll see in the next 12months."
   ])
 };
 
 const hiddenSourceHeadingsBySlug: Record<string, Set<string>> = {
-  "building-ai-operating-systems": new Set(["THE REAL QUESTION:"])
+  "building-ai-operating-systems": new Set(["THE REAL QUESTION:"]),
+  "owned-vs-rented-audience": new Set(["Reuters 2026 Trends & Predictions Report cont."])
 };
 
 function shouldShowSourceHeading(articleSlug: string, heading: string) {
@@ -136,7 +141,29 @@ type ArticleSignal = {
 };
 
 const articleSignalPattern =
-  /^(?:\*\*)?\s*(insight|why it matters|opportunity|action|actionable takeaway|takeout|signal)\s*:?\.*(?:\*\*)?\s*(.*)$/i;
+  /^(?:\*\*)?\s*(actionable takeaway|why it matters|the takeaway|opportunity|insight|action|takeout|signal)\s*:?\.*(?:\*\*)?\s*(.*)$/i;
+
+const sourceSubheadingPattern =
+  /^\*\*\s*(headline predictions|what it means in practice|what execs should do now|the takeaway)\s*:\s*\*\*\s*$/i;
+
+const toolEntryTitles = [
+  "ChatGPT",
+  "WhisperFlow",
+  "Perplexity",
+  "NotebookLM",
+  "Gemini + Google AI Studio",
+  "Figma",
+  "Calm Authority.ai",
+  "Krea.ai",
+  "Relay.app",
+  "Canva",
+  "Descript",
+  "Opus Clip",
+  "Gamma",
+  "YouTube",
+  "Speechify",
+  "Lovable.dev"
+];
 
 function getArticleSignal(paragraph: string): ArticleSignal | null {
   const match = paragraph.match(articleSignalPattern);
@@ -151,7 +178,7 @@ function getArticleSignal(paragraph: string): ArticleSignal | null {
     return null;
   }
 
-  const normalizedLabel = rawLabel.toUpperCase();
+  const normalizedLabel = rawLabel.toLowerCase() === "the takeaway" ? "THE TAKEAWAY" : rawLabel.toUpperCase();
   return {
     body,
     label: normalizedLabel,
@@ -186,27 +213,132 @@ function ArticleSignalBlock({ signal }: { signal: ArticleSignal }) {
   );
 }
 
+function getSourceSubheading(paragraph: string) {
+  const match = paragraph.match(sourceSubheadingPattern);
+  return match ? `${match[1]}:` : null;
+}
+
 function getExampleSplit(paragraph: string) {
+  const boldExampleMatch = paragraph.match(/^\*\*(Example:[^*]+)\*\*\s*(.*)$/i);
+
+  if (boldExampleMatch && boldExampleMatch[2].trim()) {
+    return {
+      before: "",
+      label: boldExampleMatch[1].trim(),
+      example: boldExampleMatch[2].trim()
+    };
+  }
+
   const marker = "Example:";
   const markerIndex = paragraph.indexOf(marker);
 
-  if (markerIndex <= 0) {
+  if (markerIndex < 0) {
     return null;
   }
 
   return {
     before: paragraph.slice(0, markerIndex).trim(),
+    label: marker,
     example: paragraph.slice(markerIndex + marker.length).trim()
   };
 }
 
-function ArticleExampleBlock({ text }: { text: string }) {
+function ArticleExampleBlock({ label, text }: { label: string; text: string }) {
   return (
     <aside className="insight-article-example">
-      <p className="insight-article-example-label">Example:</p>
+      <p className="insight-article-example-label">{label}</p>
       <p className="insight-article-example-body">{renderInlineMarkdown(text)}</p>
     </aside>
   );
+}
+
+function getToolEntry(paragraph: string) {
+  const trimmed = paragraph.trim();
+  const title = toolEntryTitles.find((toolTitle) => trimmed === toolTitle || trimmed.startsWith(`${toolTitle}:`) || trimmed.startsWith(`${toolTitle} `));
+
+  if (!title) {
+    return null;
+  }
+
+  const renderedTitle = trimmed.startsWith(`${title}:`) ? `${title}:` : title;
+  const remainder = trimmed.slice(renderedTitle.length).trim();
+  const useMarker = "Use it for:";
+  const useIndex = remainder.indexOf(useMarker);
+
+  return {
+    description: useIndex >= 0 ? remainder.slice(0, useIndex).trim() : remainder,
+    title: renderedTitle,
+    use: useIndex >= 0 ? remainder.slice(useIndex + useMarker.length).trim() : ""
+  };
+}
+
+function ArticleToolEntry({
+  description,
+  index,
+  title,
+  use
+}: {
+  description: string;
+  index: number;
+  title: string;
+  use: string;
+}) {
+  return (
+    <section className="insight-article-tool-entry">
+      <span className="insight-article-tool-index">{String(index).padStart(2, "0")}</span>
+      <div className="insight-article-tool-copy">
+        <h3>{title}</h3>
+        {description ? <p>{renderInlineMarkdown(description)}</p> : null}
+        {use ? (
+          <p className="insight-article-tool-use">
+            <span>Use it for:</span>
+            <span>{renderInlineMarkdown(use)}</span>
+          </p>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+function shouldRenderPredictionBlock(articleSlug: string, paragraph: string) {
+  return articleSlug === "ai-predictions-2026" && !paragraph.startsWith("2026 Predictions-");
+}
+
+function ArticlePredictionBlock({ index, text }: { index: number; text: string }) {
+  const colonIndex = text.indexOf(":");
+  const hasLead = colonIndex > 0 && colonIndex < 82;
+  const lead = hasLead ? text.slice(0, colonIndex + 1) : "";
+  const body = hasLead ? text.slice(colonIndex + 1).trim() : text;
+
+  return (
+    <section className="insight-article-prediction">
+      <span className="insight-article-prediction-index">{String(index).padStart(2, "0")}</span>
+      <p>
+        {lead ? <strong>{renderInlineMarkdown(lead)}</strong> : null}
+        {lead ? " " : null}
+        {renderInlineMarkdown(body)}
+      </p>
+    </section>
+  );
+}
+
+function isArticleSourceNote(articleSlug: string, paragraph: string) {
+  return articleSlug === "ai-adoption-value-gap" && paragraph.startsWith("McKinsey – ");
+}
+
+function ArticleHeading({ heading }: { heading: string }) {
+  const numberedMatch = heading.match(/^((?:INSIGHT\s+)?#\d+)(:.*)$/i);
+
+  if (numberedMatch) {
+    return (
+      <h2 className="insight-article-numbered-heading">
+        <span>{numberedMatch[1]}:</span>
+        <strong>{numberedMatch[2].replace(/^:\s*/, "").trim()}</strong>
+      </h2>
+    );
+  }
+
+  return <h2>{heading}</h2>;
 }
 
 const firecrawlWorkflow: Array<{ title: string; Icon: LucideIcon; items: string[] }> = [
@@ -299,6 +431,8 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
   let hasRenderedTitle = false;
   let paragraphLines: string[] = [];
   let lastBlockWasQuote = false;
+  let predictionIndex = 0;
+  let toolIndex = 0;
 
   const flushParagraph = () => {
     if (!paragraphLines.length) {
@@ -307,9 +441,40 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
 
     const paragraph = paragraphLines.join(" ");
     const signal = getArticleSignal(paragraph);
+    const sourceSubheading = getSourceSubheading(paragraph);
+    const toolEntry = articleSlug === "best-ai-tools-2025" ? getToolEntry(paragraph) : null;
 
     if (signal) {
       blocks.push(<ArticleSignalBlock key={`signal-${index}-${blocks.length}`} signal={signal} />);
+      lastBlockWasQuote = false;
+    } else if (sourceSubheading) {
+      blocks.push(
+        <h2 className="insight-article-source-subheading" key={`subheading-${index}-${blocks.length}`}>
+          {sourceSubheading}
+        </h2>
+      );
+      lastBlockWasQuote = false;
+    } else if (toolEntry) {
+      toolIndex += 1;
+      blocks.push(
+        <ArticleToolEntry
+          description={toolEntry.description}
+          index={toolIndex}
+          key={`tool-${index}-${blocks.length}`}
+          title={toolEntry.title}
+          use={toolEntry.use}
+        />
+      );
+      lastBlockWasQuote = false;
+    } else if (shouldRenderPredictionBlock(articleSlug, paragraph)) {
+      predictionIndex += 1;
+      blocks.push(
+        <ArticlePredictionBlock
+          index={predictionIndex}
+          key={`prediction-${index}-${blocks.length}`}
+          text={paragraph}
+        />
+      );
       lastBlockWasQuote = false;
     } else if (isStandaloneQuote(paragraph)) {
       blocks.push(
@@ -328,12 +493,26 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
     } else {
       const exampleSplit = getExampleSplit(paragraph);
       if (exampleSplit) {
+        if (exampleSplit.before) {
+          blocks.push(
+            <p key={`p-${index}-${blocks.length}`}>
+              {renderInlineMarkdown(exampleSplit.before)}
+            </p>
+          );
+        }
         blocks.push(
-          <p key={`p-${index}-${blocks.length}`}>
-            {renderInlineMarkdown(exampleSplit.before)}
+          <ArticleExampleBlock
+            key={`example-${index}-${blocks.length}`}
+            label={exampleSplit.label}
+            text={exampleSplit.example}
+          />
+        );
+      } else if (isArticleSourceNote(articleSlug, paragraph)) {
+        blocks.push(
+          <p className="insight-article-source-note" key={`source-${index}-${blocks.length}`}>
+            {renderInlineMarkdown(paragraph)}
           </p>
         );
-        blocks.push(<ArticleExampleBlock key={`example-${index}-${blocks.length}`} text={exampleSplit.example} />);
       } else {
         blocks.push(
           <p key={`p-${index}-${blocks.length}`}>
@@ -367,7 +546,6 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
     if (trimmed === "---") {
       flushParagraph();
       lastBlockWasQuote = false;
-      blocks.push(<hr key={index} />);
       index += 1;
       continue;
     }
@@ -380,7 +558,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       } else {
         const heading = cleanSourceHeading(trimmed.slice(2));
         if (shouldShowSourceHeading(articleSlug, heading)) {
-          blocks.push(<h2 key={index}>{heading}</h2>);
+          blocks.push(<ArticleHeading heading={heading} key={index} />);
           lastBlockWasQuote = false;
         }
       }
@@ -396,7 +574,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       } else {
         const heading = cleanSourceHeading(trimmed.slice(3));
         if (shouldShowSourceHeading(articleSlug, heading)) {
-          blocks.push(<h2 key={index}>{heading}</h2>);
+          blocks.push(<ArticleHeading heading={heading} key={index} />);
           lastBlockWasQuote = false;
         }
       }
@@ -534,7 +712,17 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       }
 
       blocks.push(
-        <ol className="insight-article-source-list is-numbered" key={index}>
+        <ol
+          className={[
+            "insight-article-source-list",
+            "is-numbered",
+            articleSlug === "chatgpt-for-business-owners" ? "is-playbook-list" : "",
+            articleSlug === "ai-future-of-work" ? "is-action-list" : ""
+          ]
+            .filter(Boolean)
+            .join(" ")}
+          key={index}
+        >
           {items.map((item) => (
             <li key={`${item.marker}-${item.text}`}>
               <span aria-hidden="true">{item.marker}</span>

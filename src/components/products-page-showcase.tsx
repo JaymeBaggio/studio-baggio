@@ -333,6 +333,14 @@ function ProductSection({ section }: { section: ProductPageData["sections"][numb
         </p>
       ))}
 
+      {section.bullets && section.bullets.length > 0 ? (
+        <ul className="products-bullet-list">
+          {section.bullets.map((bullet) => (
+            <li key={bullet}>{bullet}</li>
+          ))}
+        </ul>
+      ) : null}
+
       {section.closing?.map((paragraph) => (
         <p key={paragraph} className="products-closing-line">
           {paragraph}

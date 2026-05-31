@@ -43,6 +43,7 @@ export type WorkItem = {
         title: string;
         text: string;
       }>;
+      bullets?: string[];
       closing?: string[];
     }>;
     sideSections?: Array<{
@@ -85,8 +86,11 @@ export const workItems: WorkItem[] = [
     proves:
       "Studio Baggio can turn expert judgement, compliance constraints and a market visibility gap into a practical AI-enabled product.",
     external: "https://www.calmauthority.ai/",
-    homepageLinks: [{ label: "Visit live site →", href: "https://www.calmauthority.ai" }],
-    homepageImage: "/assets/products/calm-authority-og.png",
+    homepageLinks: [
+      { label: "Find out more →", href: "/work" },
+      { label: "Visit live site →", href: "https://www.calmauthority.ai" }
+    ],
+    homepageImage: "/assets/products/calm-authority-og-featured-16x9.png",
     image: "/assets/products/calm-authority.png",
     productPage: {
       tabLabel: "Calm Authority",
@@ -204,18 +208,19 @@ export const workItems: WorkItem[] = [
     slug: "business-tracker",
     title: "Business Tracker",
     eyebrow: "Lead intelligence / attribution / follow-up",
-    promise: "Lead intelligence for warmer follow-up.",
+    promise: "Commercial intelligence",
     status: "Live system",
     proofCopy:
-      "Turning engagement into named follow-up and lead intelligence.",
+      "A market-specific prospecting system that captures interactions, qualifies named leads, adds AI rationale and produces a prioritised follow-up pipeline.",
     problem:
       "Smaller expert-led teams often create visibility without knowing who is warming up, why they matter or what should happen next.",
     built:
-      "A market-specific prospecting system that captures interactions, qualifies named leads, adds AI rationale and produces a prioritised follow-up pipeline.",
+      "The operating system captures every interaction across SEO, LinkedIn, lead magnets and email, makes it visible, and produces a named follow-up pipeline. Live AI search adds current public context to every lead so your team knows who is warming up, why they matter, and what to say next.",
     whyItMatters:
-      "It makes growth more feasible because teams can put time into conversations most likely to shift ROI.",
+      "Built for expert-led firms where high-value leads need careful nurturing. Specialist advisers, founder-led firms, professional services, and trust-based businesses with touchpoints that currently sit apart.",
     proves:
       "Studio Baggio can connect visibility, market context and practical follow-up into one operating layer.",
+    homepageLinks: [{ label: "Find out more →", href: "/work" }],
     homepageImage: "/assets/products/business-tracker-og.png",
     productPage: {
       tabLabel: "Business Tracker",
@@ -289,16 +294,15 @@ export const workItems: WorkItem[] = [
     slug: "last30days",
     title: "Last30Days",
     eyebrow: "Live signal intelligence / multi-source research",
-    promise: "What the market is saying right now.",
+    promise: "Live Signal Intelligence",
     status: "Placeholder case study",
     proofCopy:
-      "Pulls the last 30 days worth of discussion and sentiment from Reddit. X. TikTok. Instagram. YouTube (inc comments and transcripts). The open web- Where markets form real opinions. Where trends emerge before the press catches up. Where your competitors are being discussed, praised, or quietly abandoned. Ask any question - Last30Days outputs a fully sourced report in under sixty seconds - every claim cited. Before you launch, pivot, or compete - know what the market is really saying right now.",
+      "Every business decision made without knowing what the market is saying right now is a guess dressed up as strategy.\n\nLast30Days scrapes Reddit. X. TikTok. Instagram. YouTube and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited.",
     problem:
       "Teams need to know what people are saying now, not what a stale report said months ago.",
     built:
-      "A reporting system that pulls recent discussion and sentiment from Reddit, X, TikTok, Instagram, YouTube and the open web, then turns it into a sourced market report.",
-    whyItMatters:
-      "It turns scattered current signals into structured intelligence that can support content, market mapping and commercial decisions.",
+      "This is where markets form their opinions. Where trends emerge before they reach the trade press. Where your competitors are being discussed, praised, or quietly abandoned.\n\nWhat used to take a research team, an agency brief, or a six-figure contract is now delivered in one search.",
+    whyItMatters: "Before you launch, pivot, or compete — know what the market is really saying right now.",
     proves:
       "Studio Baggio can build useful AI products that combine research, source discipline, synthesis and user-facing workflows.",
     href: "/last30days",
@@ -344,49 +348,58 @@ export const workItems: WorkItem[] = [
     slug: "fire-source",
     title: "Fire Source",
     eyebrow: "Commercial intelligence / cited web research",
-    promise: "Commercial intelligence from the open web.",
+    promise: "Market intelligence before the meeting.",
     status: "Placeholder case study",
     proofCopy:
-      "Fire Source scans ~96% of the open web and answers your commercial questions in three minutes. Stack follow-ups to sharpen the picture and find the angle nobody else has. Competitor moves, market shifts, who's buying what, who's hiring whom, pricing moves, prospect intelligence all in under three minutes. Cited, complete, with prompts to turn the intel into pitches, emails, or strategy notes. Built by Studio Baggio.",
+      "Fire Source scans ~96% of the open web and answers your commercial questions in minutes. Stack follow-up questions to sharpen the picture and find the angle nobody else has.",
     problem:
       "Commercial teams need competitor moves, market shifts, buyer signals and pitch intelligence faster than manual research allows.",
     built:
-      "A research system that scans the open web, answers commercial questions quickly and turns cited intelligence into pitches, emails and strategy notes.",
+      "Competitor moves, market shifts, who's spending in your sector, pricing changes, prospect, partner and hiring intelligence all in under three minutes. Cited, sourced & verified with prompts to turn the intel into pitches, emails, or strategy notes.",
     whyItMatters:
-      "It can turn research into usable artefacts like pitch hooks, cold emails, battle cards, strategy notes and creative briefs.",
+      "Use it to find prospects in your niche, identify who specifically meets your ICP, or research a potential partner or client before every meeting. Know who you're speaking with, what's important to them right now, why they might be buying, and whether they have the credentials to partner on the next deal.",
     proves:
       "Studio Baggio can build commercial intelligence products that preserve source discipline while accelerating decisions.",
     href: "/fire-source",
     external: "https://fire-source.vercel.app",
-    homepageLinks: [{ label: "Visit live site →", href: "https://fire-source.vercel.app" }],
-    homepageImage: "/assets/products/fire-source-og.png",
+    homepageLinks: [
+      { label: "Find out more →", href: "/work" },
+      { label: "Visit live site →", href: "https://fire-source.vercel.app" },
+    ],
+    homepageImage: "/assets/products/fire-source-og-new.png",
     image: "/assets/products/fire-source.png",
     productPage: {
       tabLabel: "Fire Source",
       category: "Commercial Intelligence",
       image: {
-        src: "/assets/products/fire-source-products-og.png",
+        src: "/assets/products/fire-source-og-new.png",
         alt: "Fire Source product graphic",
-        width: 1731,
-        height: 909
+        width: 5760,
+        height: 3240
       },
       sections: [
         {
           label: "Market Intelligence Before The Meeting",
           paragraphs: [
-            "Fire Source gives you the intelligence to walk into any client meeting, pitch, or competitive review with an unfair advantage. Research a market, a competitor, or a trend — and get a structured, cited briefing in minutes."
+            "Fire Source scans ~96% of the open web and answers your commercial questions in three minutes. Stack follow-up questions to sharpen the picture and find the angle nobody else has. Competitor moves, market shifts, who's spending in your sector, pricing changes, prospect, partner and hiring intelligence all in under three minutes. Cited, sourced & verified, with prompts to turn the intel into pitches, emails or strategy notes."
           ]
         },
         {
           label: "What It Replaces",
           paragraphs: [
-            "It replaces hours of manual research, briefings that go out of date, agency-commissioned reports, scattered Google searches and competitor benchmarking sessions."
+            "It replaces hours of manual research, briefings that go out of date, agency-commissioned reports, scattered Google searches and competitor benchmarking sessions you never had time to run properly."
           ]
         },
         {
           label: "Built for Firms That Move Fast",
           paragraphs: [
-            "Fire Source is designed for advisory firms, consultancies and product teams who need commercial intelligence before the meeting — not after. Competitors. Market shifts. Prospects. Cited sources."
+            "Fire Source is built for advisory & legal firms, consultancies and product teams who need commercial intelligence before the meeting, not after.",
+            "Use it before any client meeting, pitch or partnership conversation to know:"
+          ],
+          bullets: [
+            "Have they been on a podcast recently talking about something you offer?",
+            "Have they got a reason to be buying from you?",
+            "Do they have the credentials you're looking for to help partner on the next deal?"
           ]
         }
       ],

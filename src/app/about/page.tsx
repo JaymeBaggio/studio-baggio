@@ -40,11 +40,11 @@ export default function AboutPage() {
               <p className="eyebrow" data-reveal data-motion="label">
                 {about.eyebrow}
               </p>
-              <h1 className="about-hero-title" data-reveal>
+              <h1 className="about-hero-title">
                 {about.title}
                 <span aria-hidden="true" />
               </h1>
-              <p className="about-hero-statement" data-reveal>
+              <p className="about-hero-statement">
                 {about.intro}
               </p>
             </div>

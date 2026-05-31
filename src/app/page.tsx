@@ -48,6 +48,10 @@ export default function HomePage() {
   const openingHeadlineLines = openingHeadlineParts.map((line, index) =>
     index < openingHeadlineParts.length - 1 ? `${line}.` : line
   );
+  const openingSetupLines =
+    home.opening.setup === "Studio Baggio designs the AI systems that make expert-led businesses:"
+      ? ["Studio Baggio designs the AI systems", "that make expert-led businesses:"]
+      : [home.opening.setup];
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
   const problemStats = [
@@ -141,7 +145,11 @@ export default function HomePage() {
             </div>
             <div className="opening-outcome-block">
               <p className="opening-outcome-setup" data-reveal data-split>
-                {home.opening.setup}
+                {openingSetupLines.map((line) => (
+                  <span data-split-hard-line key={line}>
+                    {line}
+                  </span>
+                ))}
               </p>
               <OpeningOutcomeStack
                 lead={openingOutcomeLead}
