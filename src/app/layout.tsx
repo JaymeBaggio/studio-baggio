@@ -70,12 +70,9 @@ const organizationSchema = {
   name: "Studio Baggio Ltd",
   url: siteUrl,
   email: "jayme@studiobaggio.ai",
-  // TODO: no dedicated square Studio Baggio logo file exists in public/ yet.
-  // Using the canonical OG brand image as the Organization logo for now.
-  // Swap in a real square logo once Jayme provides one.
   logo: {
     "@type": "ImageObject",
-    url: `${siteUrl}${defaultOpenGraphImage.url}`
+    url: `${siteUrl}/assets/studio-baggio-logo-square.png`
   },
   founder: {
     "@type": "Person",
@@ -83,8 +80,13 @@ const organizationSchema = {
     url: `${siteUrl}/about`,
     jobTitle: "Founder"
   },
-  // TODO: add LinkedIn, Rough Cut Substack, and Companies House URLs to sameAs (awaiting confirmation from Jayme)
-  sameAs: ["https://www.calmauthority.ai/", "https://last30days.app", "https://fire-source.vercel.app"]
+  // sameAs: official/owned profiles. LinkedIn + Substack deliberately omitted for now (Jayme's choice).
+  sameAs: [
+    "https://find-and-update.company-information.service.gov.uk/company/16805728",
+    "https://www.calmauthority.ai/",
+    "https://last30days.app",
+    "https://fire-source.vercel.app"
+  ]
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

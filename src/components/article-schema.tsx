@@ -6,10 +6,8 @@ import { siteUrl } from "@/lib/utils";
 // OG paths in the page <head>, but JSON-LD must carry fully-qualified URLs.
 const absoluteImageUrl = `${siteUrl}${defaultOpenGraphImage.url}`;
 
-// TODO: no dedicated square Studio Baggio logo file exists in public/ yet.
-// Using the canonical OG brand image as the Organization logo for now.
-// Swap in a real square logo (ideally >=112x112) once Jayme provides one.
-const absoluteLogoUrl = `${siteUrl}${defaultOpenGraphImage.url}`;
+// Square Organization logo for publisher markup (separate from the 16:9 OG share image above).
+const absoluteLogoUrl = `${siteUrl}/assets/studio-baggio-logo-square.png`;
 
 type ArticleSchemaProps = {
   article: InsightArticle;
