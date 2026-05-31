@@ -2825,8 +2825,8 @@ svg {
   }
 
   .home-4b .problem-clarifier-frame {
-    min-height: 100svh;
-    padding-block: calc(4rem + 26px) 28px;
+    min-height: calc(100svh - 4rem);
+    padding-block: 28px 18px;
   }
 
   .home-4b .opening-argument-headline,
@@ -2859,7 +2859,7 @@ svg {
     column-gap: 16px;
     align-items: start;
     min-height: auto;
-    padding: 14px 0;
+    padding: 10px 0;
   }
 
   .home-4b .problem-stat-value {
@@ -2881,7 +2881,7 @@ svg {
 
   .home-4b .problem-clarifier-evidence,
   .home-4b .problem-clarifier-takeaway {
-    margin-top: 24px;
+    margin-top: 18px;
   }
 
   .home-4b .problem-stat-card + .problem-stat-card {
