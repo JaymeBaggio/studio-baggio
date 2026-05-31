@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { siteUrl } from "@/lib/utils";
 
 export const defaultOpenGraphImage = {
-  url: "/assets/og/studio-baggio-og-v2.png",
-  width: 5040,
-  height: 2835,
+  url: "/assets/og/studio-baggio-og-v3.png",
+  width: 1200,
+  height: 675,
   type: "image/png",
   alt: "Studio Baggio AI - practical systems built around how your business wins in market."
 };
