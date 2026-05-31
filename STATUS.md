@@ -1,5 +1,39 @@
 # Studio Baggio Website - STATUS
-*Last updated: 30 May 2026*
+*Last updated: 31 May 2026*
+
+## 31 May Insights Article Typography Tightening - Local
+
+Scope:
+
+- Insights article styling only. No article source copy changed.
+
+Implemented:
+
+- Reworked article section headings to match the Studio Baggio editorial/product-page rhythm: small uppercase labels, neutral top rules and tighter spacing.
+- Removed the blue horizontal heading treatment and neutralised the Firecrawl diagram card dividers.
+- Kept blue as a restrained signal colour on vertical quote/action accents, arrows and bullets.
+- Tightened article body, signal blocks and pull quotes so longform pages feel less oversized and closer to the reference treatment Jayme provided.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- In-app browser spot checks on `/insights/firecrawl-for-business` and `/insights/ai-creative-summit-2025` show no horizontal overflow and the article section headings render as 12px uppercase labels with neutral rules.
+
+Follow-up:
+
+- Reworked the article shell toward the Swiss editorial reference Jayme supplied:
+  - wide article header with breadcrumb, large title and meta bar
+  - body plus right-side `More articles` rail on desktop
+  - no Rough Cut promo card
+  - mobile stacks body and `More articles` cleanly
+- Removed the duplicate in-body title by moving article title rendering into the hero. Article body source text remains unchanged.
+- Tightened the Firecrawl workflow diagram so it stays inside the article column, removed the top/bottom rules around it and reduced the diagram card/outcome sizing to avoid clashing with the right-side `More articles` rail.
+- Removed the divider clutter from the article opening area: no full-width hero divider, no meta-bar rule, no intro underline and no row rules in the `More articles` rail.
+- Added an exact-copy rendering treatment for inline `Example:` markers so the label sits on its own styled line and the example body follows underneath, instead of being buried inside a long paragraph.
+- Added stacked article metadata for Author, Published date, Category and Read time, plus a quiet closing hairline after the article body.
+- Re-verified `npm run typecheck`, `npm run lint` and `npm run build`.
 
 ## 30 May Hide Standalone Product Pages - Local
 
@@ -46,7 +80,7 @@ Verified:
 
 - `npm run typecheck` passes.
 - `npm run lint` passes.
-- `npm run build` passes and prerenders `/insights` plus the 11 approved article routes.
+- `npm run build` passes and prerenders `/insights` plus the 12 approved article routes.
 - Content hygiene check found no issue/PDF furniture such as `ROUGH CUT`, `NEWSLETTER`, `Jayme Baggio`, `Views are my own`, `Pennies`, `per qualified`, `CONTINUES` or `RCC` in article source bodies.
 - Local route checks return `200` for `/insights` and `/insights/firecrawl-for-business`.
 - Removed split routes still return `404`:
@@ -66,7 +100,10 @@ Follow-up:
   - `/insights/ai-creative-summit-2025`
   - `/insights/ai-disruption-in-media-and-advertising`
 - Both new pages are built from the downloaded PDF source text, with repeated PDF furniture/hashtags/footers removed and source signal/takeout structure preserved.
-- Re-verified `npm run typecheck`, `npm run lint` and `npm run build`; build now prerenders `/insights` plus 13 article routes.
+- Removed `/insights/ai-seo-framework` from the live Insights set after Jayme flagged the source as a draft / not the final framework. Do not re-add until Jayme supplies or approves the refined framework.
+- Re-verified `npm run typecheck`, `npm run lint` and `npm run build`; build now prerenders `/insights` plus 12 article routes.
+- Added the first shared article styling pass using the locked Studio Baggio design system: exact-source `Insight`, `Why it matters`, `Opportunity`, `Action`, `Actionable takeaway`, `Takeout` and `Signal` labels now render as ruled article signals; standalone source quotes now render as italic pull quotes with a thin blue left rule and muted citation text. Article wording remains unchanged.
+- Re-verified `npm run typecheck`, `npm run lint` and `npm run build`; no horizontal overflow found in the in-app browser spot checks for AI Creative Summit, AI Adoption, State of Play and GEO.
 
 ## 30 May Repo Folder Cleanup - Local
 
@@ -205,12 +242,11 @@ Important caveat:
 - Follow-up: removed `/insights/public-profile-is-no-longer-your-shop-window` because Jayme confirmed that public-profile/evidence-layer section belongs inside the Firecrawl article, not as its own standalone article. Do not re-add it as a route.
 - Follow-up: fixed the article JSON-LD script warning by rendering the schema as a plain inert `application/ld+json` script instead of using `next/script` inside the article component.
 - Follow-up: moved seven downloaded PDF source files from `~/Downloads` into `/Users/jaymebaggio/Desktop/Rough Cut/Downloaded source PDFs/` and added them to `docs/INSIGHTS_CONTENT_INVENTORY.md` as candidate/source material. They are not approved article splits; exact title/start/end mapping is required before any new page is added.
-- Follow-up: locked Jayme's approved Insights article list in `docs/INSIGHTS_CONTENT_INVENTORY.md`. Approved additions now include ChatGPT for Business Owners, RC7.5 screen-work article, Brands Lean into GEO, AI SEO Framework, Building AI Operating Systems in 2026, AI Creative Summit 2025, Futureweek AIMM, 2026 Predictions and Tools of the Year 2025.
-- Follow-up: added seven approved article pages locally:
+- Follow-up: locked Jayme's approved Insights article list in `docs/INSIGHTS_CONTENT_INVENTORY.md`. Approved additions include ChatGPT for Business Owners, RC7.5 screen-work article, Brands Lean into GEO, Building AI Operating Systems in 2026, AI Creative Summit 2025, Futureweek AIMM, 2026 Predictions and Tools of the Year 2025. AI SEO Framework was later removed because Jayme flagged it as a draft.
+- Follow-up: added approved article pages locally:
   - `/insights/chatgpt-for-business-owners`
   - `/insights/ai-future-of-work`
   - `/insights/geo-generative-engine-optimisation`
-  - `/insights/ai-seo-framework`
   - `/insights/building-ai-operating-systems`
   - `/insights/ai-predictions-2026`
   - `/insights/best-ai-tools-2025`
@@ -841,6 +877,18 @@ Source of truth: `FAQ_COPY_DRAFT.md` (locked).
 
 ### 3. Fix text spacing issues
 Jayme spotted spacing issues during live review — TBC location once she walks me through them. Likely candidates: hero promise line breaks, Gap section caption widths, FAQ row spacing, mobile margins.
+
+### 4. Indexing and SEO
+Full site indexing + SEO pass. Includes:
+- Google Search Console verification + sitemap submission
+- `sitemap.xml` and `robots.txt` correct for all live pages (/, /about, /work, /business-tracker, /calm-authority, /contact, /privacy)
+- Per-page meta titles + descriptions + OG/Twitter cards (currently homepage-only or generic)
+- Canonical tags
+- Schema.org markup: Organization (Studio Baggio Ltd), Person (Jayme Baggio), Product (Calm Authority, Business Tracker, Last30Days, Fire Source)
+- Target keywords by page (e.g. "applied AI consultancy UK", "AI systems for financial advisers", "AI commercial advantage")
+- Internal linking audit (every product page linked from /work and homepage)
+- Image alt text pass
+- Lighthouse SEO score check post-deploy
 
 ---
 

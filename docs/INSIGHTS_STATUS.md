@@ -361,7 +361,6 @@ Implemented launch routes:
 - `/insights/ai-future-of-work`
 - `/insights/what-is-an-ai-skill`
 - `/insights/geo-generative-engine-optimisation`
-- `/insights/ai-seo-framework`
 - `/insights/building-ai-operating-systems`
 - `/insights/ai-creative-summit-2025`
 - `/insights/ai-disruption-in-media-and-advertising`
@@ -370,7 +369,11 @@ Implemented launch routes:
 
 Remaining approved articles not yet implemented:
 
-- None. The approved 13-article launch set is now implemented locally.
+- None. The approved 12-article launch set is now implemented locally.
+
+Removed from launch:
+
+- `/insights/ai-seo-framework` was removed on 30 May 2026. Jayme flagged the source as a draft / not the final framework. Do not re-add until Jayme supplies or approves the refined framework.
 
 Do not re-add `/insights/public-profile-is-no-longer-your-shop-window`; Jayme confirmed that section belongs inside the Firecrawl article.
 
@@ -378,7 +381,7 @@ Do not re-add `/insights/public-profile-is-no-longer-your-shop-window`; Jayme co
 
 Current recommendation:
 
-- Move to a second enhancement pass now that the full approved 13-article set is live locally.
+- Move to a second enhancement pass now that the full approved 12-article set is live locally.
 - Keep the locked longform editorial style.
 - Add only obvious, high-value native components where the article clearly benefits from structure.
 - Decide supporting diagrams, internal links, title/meta refinements and richer article-specific components across the whole library as one pass.

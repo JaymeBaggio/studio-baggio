@@ -758,14 +758,10 @@ export const about = {
       number: "01",
       label: "What we do",
       body: [
-        "Studio Baggio partners with the best operators in their field to use AI to supercharge what they're already great at. Our mission is to build practical AI systems that help businesses make their expertise visible, their output more valuable, understand their market, capture demand, and generate real ROI.",
-        "We work exclusively with companies and individuals who are the best at what they do. That principle shapes both who we work with and what we build."
+        "Our mission is to build practical AI systems that help businesses make their expertise visible, their output more valuable, understand their market, capture demand, and generate real ROI.",
+        "Studio Baggio partners exclusively with companies and individuals who are the best at what they do, using AI to supercharge and expand what they're already great at. That principle shapes both who we work with and what we build."
       ],
-    },
-    {
-      number: "02",
-      label: "Two routes in",
-      body: [],
+      kicker: "Two routes in:",
       routes: [
         {
           title: "Products in market.",
@@ -780,20 +776,27 @@ export const about = {
       ]
     },
     {
-      number: "03",
+      number: "02",
       label: "Who's behind it",
       lead: "Jayme Baggio — founder.",
       body: [
-        "A British media strategist, commercial operator, and applied AI specialist. Twelve years across media, brand-building, and practical AI. Worked with Channel 4, BBC Studios, Google, Coca-Cola, HSBC, M&S, National Lottery and Nestlé. Built campaigns and commercial systems for some of the largest commercial operators in the UK.",
-        "Built Calm Authority — the LinkedIn writing system for UK financial advisers — alongside founding adviser Harry Sims, Chartered Financial Planner. Featured in Financial Times, Money Marketing and Professional Adviser.",
-        "Presented her applied AI operating systems framework to the Unstereotype Alliance UK in partnership with UN Women."
-      ]
+        "Jayme Baggio is a British media executive, strategy consultant and applied AI specialist whose career has covered commercial content strategy, branded entertainment, and AI-driven workflow systems. She is best known for her extensive tenure at Channel 4 and her work bridging media creation with artificial intelligence frameworks. Jayme has over a decade's experience across media, brand-building, and practical AI, working with some of the UK's most established brands such as BBC Studios, ITV, Google, Coca-Cola, M&S and HSBC.",
+        "Built Calm Authority — a LinkedIn thought leadership writing system for UK financial advisers — alongside founding adviser Harry Sims, Chartered Financial Planner. The app has been featured in Financial Times, Money Marketing and Professional Adviser. Her work with firms in the financial services sector revealed a wider commercial gap: most firms know AI matters, but few are using it to drive real ROI by making their expertise visible, delivering more value to clients, and growing the business."
+      ],
+      press: {
+        title: "Press & Founder Availability",
+        body: [
+          "Jayme regularly presents frameworks to high-level advisory boards, including a notable AI Operating System workflow built for the Unstereotype Alliance UK in partnership with UN Women, emphasising how enterprises can scale operations ethically while preserving human taste and judgment.",
+          "Jayme Baggio · Founder\nApplied AI Strategy Specialist",
+          "Available for comment on AI systems strategy, AI in the workplace, AI in media & content, the broader AI & expertise economy, and the LinkedIn behaviour of UK financial advisers."
+        ]
+      }
     },
     {
-      number: "04",
+      number: "03",
       label: "How to engage",
       body: [
-        "Enquire below. If you're a good fit, we'll be in touch to arrange a bespoke AI Opportunity Audit — to find where AI can create the most commercial value in your business, what should be built first, and a 30 to 90 day build plan."
+        "Enquire below. If you're a good fit, we'll be in touch to arrange a bespoke AI Opportunity Audit."
       ],
       ctaLabel: "Discuss your AI opportunity →"
     }

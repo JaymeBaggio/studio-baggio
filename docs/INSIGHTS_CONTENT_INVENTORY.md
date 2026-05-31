@@ -75,16 +75,17 @@ Jayme approved this list on 30 May 2026. These are the articles to add or keep o
 | 7 | A skill is an app without a user interface | RC8, including `/Last30Days Skill`, `From Skill to Product` and the launch-stack sections | Live |
 | - | From skill to product | RC8 | Folded into #7. Not a standalone article. |
 | 9 | Brands Lean into GEO For Visibility | RC2 | Live |
-| 10 | AI SEO Framework | `Future Ideas/RC AI SEO Framework.pdf` | Live |
 | 11 | Building AI Operating Systems in 2026 | `Downloaded source PDFs/Building AI Operating Systems in 2026.pdf` | Live |
 | 12 | AI Creative Summit 2025 | `Downloaded source PDFs/AI Creative Summit 2025.pdf` | Live |
 | 13 | The State of Play: AI Disruption in Media & Advertising | `Downloaded source PDFs/Future week AIIM.pdf` | Live |
 | 14 | 2026 Predictions | RC6 | Live |
 | 15 | Tools of the Year 2025 | RC6 | Live |
 
+Removed from launch on 30 May 2026: `AI SEO Framework` from `Future Ideas/RC AI SEO Framework.pdf`. Jayme flagged this as a draft / likely not final authored framework. Do not republish until Jayme supplies or approves the refined framework.
+
 Priority review queue:
 
-- Complete for the approved 13-article launch set.
+- Complete for the approved 12-article launch set.
 - Next review queue should be for second-pass article enhancements: diagrams, internal links, metadata and any title refinements Jayme approves.
 
 | Priority | Article | Category | Slug | Source | Build note |
@@ -96,7 +97,6 @@ Priority review queue:
 | P1 | ChatGPT for Business Owners — If You Only Do 6 Things... | AI Adoption | `/insights/chatgpt-for-business-owners` | RC7 | Implemented locally. Publish exact selected source text; no rewriting. |
 | P1 | If your work happens on a screen, assume the shape of it is going to change | AI Adoption | `/insights/ai-future-of-work` | RC7.5, `Something BIg is happening .pdf` | Implemented locally. Uses the original full article/source, not split by slide/page. |
 | P1 | Brands Lean into GEO For Visibility | AI Search | `/insights/geo-generative-engine-optimisation` | RC2 | Implemented locally. Publish exact selected source text; no rewriting. |
-| P1 | AI SEO Framework | AI Search | `/insights/ai-seo-framework` | `Future Ideas/RC AI SEO Framework.pdf` | Implemented locally from the PDF source text. |
 | P1 | Building AI Operating Systems in 2026 | AI Adoption | `/insights/building-ai-operating-systems` | `Downloaded source PDFs/Building AI Operating Systems in 2026.pdf` | Implemented locally from the PDF source text. |
 | P1 | AI Creative Summit 2025 | Owned Media | `/insights/ai-creative-summit-2025` | `Downloaded source PDFs/AI Creative Summit 2025.pdf` | Live. PDF furniture removed; source signal/takeout structure preserved. |
 | P1 | The State of Play: AI Disruption in Media & Advertising | Owned Media | `/insights/ai-disruption-in-media-and-advertising` | `Downloaded source PDFs/Future week AIIM.pdf` | Live. PDF furniture removed; source insight/takeout structure preserved. |
@@ -112,16 +112,15 @@ Recommended first build order:
 5. If your work happens on a screen, assume the shape of it is going to change.
 6. A skill is an app without a user interface.
 7. Brands Lean into GEO For Visibility.
-8. AI SEO Framework.
-9. Building AI Operating Systems in 2026.
-10. 2026 Predictions.
-11. Tools of the Year 2025.
-12. AI Creative Summit 2025.
-13. The State of Play: AI Disruption in Media & Advertising.
+8. Building AI Operating Systems in 2026.
+9. 2026 Predictions.
+10. Tools of the Year 2025.
+11. AI Creative Summit 2025.
+12. The State of Play: AI Disruption in Media & Advertising.
 
-Current local status after adding the approved PDF articles:
+Current local status after removing the draft AI SEO article:
 
-- 13 article pages are live locally.
+- 12 article pages are live locally.
 - No approved article pages remain to add in the current launch set.
 - Recommended next move: do a second design/component enhancement pass across the full article library.
 
@@ -176,7 +175,7 @@ Status key:
 | RC9 | Firecrawl just gave any business access to 96% of the open web | Commercial Intelligence | Live | Strongest commercial intelligence article. |
 | RC10 | Firecrawl article version | Commercial Intelligence | Support | Duplicate source for the live Firecrawl article. Do not publish as a second page. |
 | RC10 | Your public profile is no longer your shop window | AI Search | Folded into Firecrawl | This is part of the Firecrawl article source, not a standalone route. |
-| Future Ideas | RC AI SEO Framework | AI Search | Live | Implemented locally from the PDF source. |
+| Future Ideas | RC AI SEO Framework | AI Search | Deferred | Removed from launch on 30 May 2026. Do not publish until Jayme supplies or approves the refined framework. |
 | Future Ideas | How I used NotebookLM to build a boardroom | AI Skills | Later | Needs source extraction from DOCX before deciding whether it is article-ready. |
 | Playbooks | AI Creative Summit material | Owned Media | Next | Approved add/review. Use the downloaded PDF as the richer source material. |
 | Downloaded PDF | Something BIg is happening | AI Adoption | Next | RC7.5 PDF source for the screen/work-change article. Use the PDF as source material when mapping exact boundaries. |
@@ -191,7 +190,7 @@ Category conclusion from the audit:
 
 - Keep the six visible filters: `Commercial Intelligence`, `AI Adoption`, `AI Skills`, `AI Search`, `Owned Media`, `AI Products`.
 - Do not add more categories yet. Extra labels would make the strip heavier and most thin topics can sit inside these six.
-- The approved 13-article launch set is now implemented locally. Next priority is second-pass enhancement across the live library.
+- The approved 12-article launch set is now implemented locally. Next priority is second-pass enhancement across the live library.
 
 ## Downloaded PDF Source Materials
 
@@ -338,7 +337,6 @@ Approved additions already tracked above:
 
 - `ChatGPT for Business Owners — If You Only Do 6 Things...`
 - `Brands Lean into GEO For Visibility`
-- `AI SEO Framework`
 - `Building AI Operating Systems in 2026`
 - `AI Creative Summit 2025`
 - `The State of Play: AI Disruption in Media & Advertising`

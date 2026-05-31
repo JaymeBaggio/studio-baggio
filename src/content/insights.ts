@@ -217,41 +217,10 @@ export const insightArticles: InsightArticle[] = [
     metaTitle: "Brands Lean into GEO For Visibility | Studio Baggio",
     metaDescription: "Generative Engine Optimisation is becoming critical for brand discoverability as behaviour shifts from search engines to AI-driven recommendations.",
     related: [
-      "ai-seo-framework",
       "firecrawl-for-business",
       "owned-vs-rented-audience"
     ],
     sourceMarkdown: "## Brands Lean into GEO For Visibility\n\nBrands like LinkedIn, Mars & Arla are adopting strategies to stay visible in AI answer engines - ChatGPT & Google AI Overviews. Generative Engine Optimisation (GEO) or simply AI SEO - is becoming critical for brand discoverability. Agencies are responding too - Ogilvy ANZ just launched 'Generative Impact' with Semrush, a service combining earned media and AI-optimised content to counter falling traffic from traditional search.\n\n**Why it matters:** As behaviour shifts from search engines to AI-driven recommendations, traditional SEO is no longer enough. Early GEO adopters secure a major \"share of voice\" advantage while competitors lag.\n\n**Actionable takeaway:** Audit your brand's visibility in AI answer engines. Media owners should pitch outlets with AI partnerships now and track citation share-of-voice."
-  },
-  {
-    slug: "ai-seo-framework",
-    title: "AI SEO Framework",
-    category: "AI Search",
-    categorySlug: "ai-search",
-    tags: [
-      "AI SEO",
-      "GEO",
-      "AI search",
-      "landing pages"
-    ],
-    source: "AI SEO Framework PDF",
-    sourcePath: "/Users/jaymebaggio/Desktop/Rough Cut/Future Ideas/RC AI SEO Framework.pdf",
-    sourceStart: "AI SEO Framework",
-    sourceEnd: "Fresh hires influence tool selections.",
-    readTime: "3 min read",
-    date: "2026-05-30",
-    updated: "2026-05-30",
-    summary: "A tactical framework for building visibility around AI search and AI-assisted buying journeys.",
-    preview: "Intent-mining through AI search. Run your product category through ChatGPT, Gemini, and Perplexity and note every question they surface.",
-    thesis: "AI search becomes a quiet distribution engine.",
-    metaTitle: "AI SEO Framework | Studio Baggio",
-    metaDescription: "A tactical framework for building visibility around AI search and AI-assisted buying journeys.",
-    related: [
-      "geo-generative-engine-optimisation",
-      "firecrawl-for-business",
-      "chatgpt-for-business-owners"
-    ],
-    sourceMarkdown: "# AI SEO Framework\n\n 1. Intent-mining through AI search. Run your product\n    category through ChatGPT, Gemini, and Perplexity and\n    note every question they surface. Build landing pages\n    that answer those questions with extreme clarity.\n 2. AI search. Run your entire category through ChatGPT,\n    Gemini, and Perplexity and list every question the\n    models surface. Then create landing pages that answer\n    those questions clearly. AI search becomes a quiet\n    distribution engine.\n 3. Make your product embedded in a framework. Create a\n    5-step tactical playbook that solves a common pain in\n    your market, and place your SaaS as one step inside the\n    system. People adopt tools embedded inside\n    frameworks. I think frameworks travel farther than\n    features.\n 4. Build a “coaching layer” on top of your product. Overlay\n    AI guidance that teaches users how leaders in their role\n    operate. A product that teaches while solving becomes\n    a habit, and habits create highly engaged early users.\n 5. “Best Of” industry directories. Build top 100 lists for\n    every niche in your industry. SEO goldmine.\n 6. Gamify everything. Onboarding, referrals, feature\n    unlocks. Users compete, you grow.\n 7. Workflow teardown series. Pick one real company each\n    week and rebuild a broken process using your product.\n    Operators share these because they learn from them.\n 8. Job change targeting. Target people who just changed\n    roles in your category and send them a workflow for\n    their new job. Fresh hires influence tool selections."
   },
   {
     slug: "building-ai-operating-systems",

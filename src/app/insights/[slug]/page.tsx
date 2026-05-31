@@ -3,12 +3,13 @@ import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Code2, Flame, ListChecks, PoundSterling, Search } from "lucide-react";
+import { ArrowRight, Code2, Flame, ListChecks, PoundSterling, Search } from "lucide-react";
 import { PageReveals } from "@/components/page-reveals";
 import {
   getInsightBySlug,
   getInsightPath,
   getRelatedInsights,
+  type InsightArticle,
   insightArticles
 } from "@/content/insights";
 import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
@@ -96,6 +97,14 @@ function cleanSourceHeading(heading: string) {
   return cleaned.toLowerCase() === "cover" ? "" : cleaned;
 }
 
+function formatArticleDate(date: string) {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(new Date(date));
+}
+
 const articleSectionHeadingsBySlug: Record<string, Set<string>> = {
   "firecrawl-for-business": new Set([
     "In real Terms:",
@@ -112,16 +121,92 @@ const articleSectionHeadingsBySlug: Record<string, Set<string>> = {
   ])
 };
 
-const articleMinorHeadingsBySlug: Record<string, Set<string>> = {
-  "ai-adoption-value-gap": new Set(["Action:"])
-};
-
 const hiddenSourceHeadingsBySlug: Record<string, Set<string>> = {
   "building-ai-operating-systems": new Set(["THE REAL QUESTION:"])
 };
 
 function shouldShowSourceHeading(articleSlug: string, heading: string) {
   return Boolean(heading) && !hiddenSourceHeadingsBySlug[articleSlug]?.has(heading);
+}
+
+type ArticleSignal = {
+  body: string;
+  label: string;
+  tone: "accent" | "neutral";
+};
+
+const articleSignalPattern =
+  /^(?:\*\*)?\s*(insight|why it matters|opportunity|action|actionable takeaway|takeout|signal)\s*:?\.*(?:\*\*)?\s*(.*)$/i;
+
+function getArticleSignal(paragraph: string): ArticleSignal | null {
+  const match = paragraph.match(articleSignalPattern);
+  if (!match) {
+    return null;
+  }
+
+  const [, rawLabel, rawBody] = match;
+  const body = rawBody.trim();
+
+  if (!body) {
+    return null;
+  }
+
+  const normalizedLabel = rawLabel.toUpperCase();
+  return {
+    body,
+    label: normalizedLabel,
+    tone: normalizedLabel.includes("ACTION") ? "accent" : "neutral"
+  };
+}
+
+function startsWithArticleSignal(text: string) {
+  return articleSignalPattern.test(text);
+}
+
+function isStandaloneQuote(paragraph: string) {
+  const trimmed = paragraph.trim();
+  return (
+    trimmed.length > 2 &&
+    ((trimmed.startsWith("“") && (trimmed.endsWith("”") || trimmed.endsWith("“"))) ||
+      (trimmed.startsWith("\"") && trimmed.endsWith("\"")))
+  );
+}
+
+function isLikelyQuoteCitation(paragraph: string) {
+  const trimmed = paragraph.trim();
+  return trimmed.length > 0 && trimmed.length <= 180 && !getArticleSignal(trimmed) && !isStandaloneQuote(trimmed);
+}
+
+function ArticleSignalBlock({ signal }: { signal: ArticleSignal }) {
+  return (
+    <aside className={`insight-article-signal is-${signal.tone}`}>
+      <p className="insight-article-signal-label">{signal.label}</p>
+      <p className="insight-article-signal-body">{renderInlineMarkdown(signal.body)}</p>
+    </aside>
+  );
+}
+
+function getExampleSplit(paragraph: string) {
+  const marker = "Example:";
+  const markerIndex = paragraph.indexOf(marker);
+
+  if (markerIndex <= 0) {
+    return null;
+  }
+
+  return {
+    before: paragraph.slice(0, markerIndex).trim(),
+    example: paragraph.slice(markerIndex + marker.length).trim()
+  };
+}
+
+function ArticleExampleBlock({ text }: { text: string }) {
+  return (
+    <aside className="insight-article-example">
+      <p className="insight-article-example-label">Example:</p>
+      <p className="insight-article-example-body">{renderInlineMarkdown(text)}</p>
+    </aside>
+  );
 }
 
 const firecrawlWorkflow: Array<{ title: string; Icon: LucideIcon; items: string[] }> = [
@@ -207,12 +292,13 @@ function FirecrawlWorkflowDiagram() {
   );
 }
 
-function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlug: string) {
+function renderSourceMarkdown(markdown: string, articleSlug: string) {
   const lines = markdown.split("\n");
   const blocks: ReactNode[] = [];
   let index = 0;
   let hasRenderedTitle = false;
   let paragraphLines: string[] = [];
+  let lastBlockWasQuote = false;
 
   const flushParagraph = () => {
     if (!paragraphLines.length) {
@@ -220,11 +306,43 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
     }
 
     const paragraph = paragraphLines.join(" ");
-    blocks.push(
-      <p key={`p-${index}-${blocks.length}`}>
-        {renderInlineMarkdown(paragraph)}
-      </p>
-    );
+    const signal = getArticleSignal(paragraph);
+
+    if (signal) {
+      blocks.push(<ArticleSignalBlock key={`signal-${index}-${blocks.length}`} signal={signal} />);
+      lastBlockWasQuote = false;
+    } else if (isStandaloneQuote(paragraph)) {
+      blocks.push(
+        <blockquote className="insight-article-pullquote" key={`quote-${index}-${blocks.length}`}>
+          <p>{renderInlineMarkdown(paragraph)}</p>
+        </blockquote>
+      );
+      lastBlockWasQuote = true;
+    } else if (lastBlockWasQuote && isLikelyQuoteCitation(paragraph)) {
+      blocks.push(
+        <p className="insight-article-quote-cite" key={`cite-${index}-${blocks.length}`}>
+          {renderInlineMarkdown(paragraph)}
+        </p>
+      );
+      lastBlockWasQuote = false;
+    } else {
+      const exampleSplit = getExampleSplit(paragraph);
+      if (exampleSplit) {
+        blocks.push(
+          <p key={`p-${index}-${blocks.length}`}>
+            {renderInlineMarkdown(exampleSplit.before)}
+          </p>
+        );
+        blocks.push(<ArticleExampleBlock key={`example-${index}-${blocks.length}`} text={exampleSplit.example} />);
+      } else {
+        blocks.push(
+          <p key={`p-${index}-${blocks.length}`}>
+            {renderInlineMarkdown(paragraph)}
+          </p>
+        );
+      }
+      lastBlockWasQuote = false;
+    }
 
     if (
       articleSlug === "firecrawl-for-business" &&
@@ -248,6 +366,7 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
 
     if (trimmed === "---") {
       flushParagraph();
+      lastBlockWasQuote = false;
       blocks.push(<hr key={index} />);
       index += 1;
       continue;
@@ -256,12 +375,13 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
     if (trimmed.startsWith("# ")) {
       flushParagraph();
       if (!hasRenderedTitle) {
-        blocks.push(<h1 key={index}>{displayTitle}</h1>);
         hasRenderedTitle = true;
+        lastBlockWasQuote = false;
       } else {
         const heading = cleanSourceHeading(trimmed.slice(2));
         if (shouldShowSourceHeading(articleSlug, heading)) {
           blocks.push(<h2 key={index}>{heading}</h2>);
+          lastBlockWasQuote = false;
         }
       }
       index += 1;
@@ -271,12 +391,13 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
     if (trimmed.startsWith("## ")) {
       flushParagraph();
       if (!hasRenderedTitle) {
-        blocks.push(<h1 key={index}>{displayTitle}</h1>);
         hasRenderedTitle = true;
+        lastBlockWasQuote = false;
       } else {
         const heading = cleanSourceHeading(trimmed.slice(3));
         if (shouldShowSourceHeading(articleSlug, heading)) {
           blocks.push(<h2 key={index}>{heading}</h2>);
+          lastBlockWasQuote = false;
         }
       }
       index += 1;
@@ -288,6 +409,7 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
       const heading = cleanSourceHeading(trimmed.slice(4));
       if (shouldShowSourceHeading(articleSlug, heading)) {
         blocks.push(<h3 key={index}>{heading}</h3>);
+        lastBlockWasQuote = false;
       }
       index += 1;
       continue;
@@ -303,17 +425,14 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
           {trimmed}
         </h2>
       );
+      lastBlockWasQuote = false;
       index += 1;
       continue;
     }
 
-    if (articleMinorHeadingsBySlug[articleSlug]?.has(trimmed)) {
+    if (startsWithArticleSignal(trimmed)) {
       flushParagraph();
-      blocks.push(
-        <h3 className="insight-article-minor-heading" key={index}>
-          {trimmed}
-        </h3>
-      );
+      paragraphLines.push(trimmed);
       index += 1;
       continue;
     }
@@ -371,6 +490,7 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
           ))}
         </ul>
       );
+      lastBlockWasQuote = false;
       continue;
     }
 
@@ -423,6 +543,7 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
           ))}
         </ol>
       );
+      lastBlockWasQuote = false;
       continue;
     }
 
@@ -435,6 +556,22 @@ function renderSourceMarkdown(markdown: string, displayTitle: string, articleSlu
   return blocks;
 }
 
+function ArticleMoreArticles({ articles }: { articles: InsightArticle[] }) {
+  return (
+    <aside className="insight-article-more" aria-label="More articles">
+      <p className="insight-article-more-label">More articles</p>
+      <div className="insight-article-more-list">
+        {articles.map((related) => (
+          <Link className="insight-article-more-row" href={getInsightPath(related)} key={related.slug}>
+            <span>{related.category}</span>
+            <strong>{related.title}</strong>
+          </Link>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
 export default async function InsightArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
   const article = getInsightBySlug(slug);
@@ -444,6 +581,13 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
   }
 
   const relatedArticles = getRelatedInsights(article);
+  const moreArticles = [
+    ...relatedArticles,
+    ...insightArticles.filter(
+      (candidate) =>
+        candidate.slug !== article.slug && !relatedArticles.some((related) => related.slug === candidate.slug)
+    )
+  ].slice(0, 3);
 
   return (
     <>
@@ -451,41 +595,46 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
       <article className="home-4b insight-article-page">
         <header className="insight-article-hero" data-home-section>
           <div className="editorial-container insight-article-hero-frame">
-            <Link href="/insights" className="insight-back-link" data-reveal>
-              <ArrowLeft aria-hidden="true" />
-              Insights
-            </Link>
-            <div className="insight-article-meta insight-article-source-meta" data-reveal>
-              <p>{article.category}</p>
-              <p>{article.readTime}</p>
-              <p>Updated {new Intl.DateTimeFormat("en-GB", { dateStyle: "medium" }).format(new Date(article.updated))}</p>
+            <div className="insight-article-kicker-row" data-reveal>
+              <Link href="/insights" className="insight-article-breadcrumb">
+                Insights <span aria-hidden="true">→</span> {article.category}
+              </Link>
+            </div>
+            <h1 className="insight-article-hero-title" data-reveal>
+              {article.title}
+            </h1>
+            <div className="insight-article-meta-bar" data-reveal>
+              <span className="insight-article-meta-item">
+                <span>Author</span>
+                <strong>Jayme Baggio</strong>
+              </span>
+              <span className="insight-article-meta-item">
+                <span>Published</span>
+                <time dateTime={article.date}>{formatArticleDate(article.date)}</time>
+              </span>
+              <span className="insight-article-meta-item">
+                <span>Category</span>
+                <strong>{article.category}</strong>
+              </span>
+              <span className="insight-article-meta-item">
+                <span>Read</span>
+                <strong>{article.readTime}</strong>
+              </span>
+              <a
+                href={`mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(`${siteUrl}${getInsightPath(article)}`)}`}
+              >
+                Share
+              </a>
             </div>
           </div>
         </header>
 
         <div className="editorial-container insight-article-layout is-source-exact">
           <div className="insight-article-body">
-            {renderSourceMarkdown(article.sourceMarkdown, article.title, article.slug)}
+            {renderSourceMarkdown(article.sourceMarkdown, article.slug)}
           </div>
+          <ArticleMoreArticles articles={moreArticles} />
         </div>
-
-        <section className="editorial-container insight-related-section" aria-labelledby="related-insights-title">
-          <div className="insight-related-header">
-            <p className="eyebrow" id="related-insights-title">
-              Related
-            </p>
-          </div>
-          <div className="insight-related-list">
-            {relatedArticles.map((related, index) => (
-              <Link href={getInsightPath(related)} className="insight-related-row" key={related.slug}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <span>{related.category}</span>
-                <strong>{related.title}</strong>
-                <ArrowUpRight aria-hidden="true" />
-              </Link>
-            ))}
-          </div>
-        </section>
       </article>
     </>
   );

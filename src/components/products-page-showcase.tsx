@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { workItems, type WorkItem } from "@/content/work";
@@ -17,8 +17,57 @@ const productsPanelEase = [0.23, 1, 0.32, 1] as const;
 
 export function ProductsPageShowcase() {
   const [activeSlug, setActiveSlug] = useState(productItems[0]?.slug ?? "");
+  const [isTabsVisible, setIsTabsVisible] = useState(true);
+  const hideTabsTimer = useRef<number | null>(null);
   const activeItem = productItems.find((item) => item.slug === activeSlug) ?? productItems[0];
   const shouldReduceMotion = useReducedMotion();
+
+  const clearHideTimer = useCallback(() => {
+    if (hideTabsTimer.current) {
+      window.clearTimeout(hideTabsTimer.current);
+      hideTabsTimer.current = null;
+    }
+  }, []);
+
+  const hideTabsWhenReading = useCallback(() => {
+    if (window.scrollY > 160) {
+      setIsTabsVisible(false);
+    }
+  }, []);
+
+  const queueHideTabs = useCallback(() => {
+    clearHideTimer();
+    hideTabsTimer.current = window.setTimeout(hideTabsWhenReading, 1400);
+  }, [clearHideTimer, hideTabsWhenReading]);
+
+  const revealTabs = useCallback(
+    (autoHide = true) => {
+      clearHideTimer();
+      setIsTabsVisible(true);
+      if (autoHide) {
+        queueHideTabs();
+      }
+    },
+    [clearHideTimer, queueHideTabs]
+  );
+
+  useEffect(() => {
+    const handleScroll = () => revealTabs(true);
+    const handlePointerMove = (event: PointerEvent) => {
+      if (event.clientY <= 150) {
+        revealTabs(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+
+    return () => {
+      clearHideTimer();
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("pointermove", handlePointerMove);
+    };
+  }, [clearHideTimer, revealTabs]);
 
   if (!activeItem) {
     return null;
@@ -52,7 +101,6 @@ export function ProductsPageShowcase() {
             >
               <p className="eyebrow">Live Work</p>
               <p>A selection of our live products. Available alongside our bespoke offering.</p>
-              <span aria-hidden="true" />
               <p>Each can also be embedded into client work as part of broader commercial implementation.</p>
             </motion.div>
             <motion.h1
@@ -68,6 +116,17 @@ export function ProductsPageShowcase() {
             </motion.h1>
           </div>
 
+        </div>
+      </section>
+
+      <div
+        className={`products-tabs-shell ${isTabsVisible ? "is-visible" : "is-idle"}`}
+        onMouseEnter={() => revealTabs(false)}
+        onMouseLeave={queueHideTabs}
+        onFocusCapture={() => revealTabs(false)}
+        onBlurCapture={queueHideTabs}
+      >
+        <div className="editorial-container">
           <motion.div
             className="products-tabs"
             role="tablist"
@@ -100,7 +159,7 @@ export function ProductsPageShowcase() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </div>
 
       <AnimatePresence mode="wait" initial={false}>
         <ProductDetailPanel
