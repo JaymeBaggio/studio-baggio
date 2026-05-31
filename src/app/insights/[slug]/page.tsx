@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Code2, Flame, ListChecks, PoundSterling, Search } from "lucide-react";
@@ -130,8 +131,33 @@ const hiddenSourceHeadingsBySlug: Record<string, Set<string>> = {
   "owned-vs-rented-audience": new Set(["Reuters 2026 Trends & Predictions Report cont."])
 };
 
+const sourceHeadingDisplayOverridesBySlug: Record<string, Record<string, string>> = {
+  "building-ai-operating-systems": {
+    "THE OS IN ONE VIEW:": "AI OPERATING SYSTEM FOR 2026"
+  }
+};
+
+const hiddenSourceSectionsBySlug: Record<string, Set<string>> = {
+  "what-is-an-ai-skill": new Set([
+    "Design Direction — Lando Norris-inspired",
+    "Design Direction — Bold, campaign-led",
+    "Design Direction — Premium editorial",
+    "Design Direction — Forbes media kit-inspired",
+    "Design Directions — Forbes continued + Glassmorphic",
+    "Design Directions — Glassmorphic + Brutalist + Cinematic"
+  ])
+};
+
 function shouldShowSourceHeading(articleSlug: string, heading: string) {
   return Boolean(heading) && !hiddenSourceHeadingsBySlug[articleSlug]?.has(heading);
+}
+
+function getSourceHeadingDisplay(articleSlug: string, heading: string) {
+  return sourceHeadingDisplayOverridesBySlug[articleSlug]?.[heading] ?? heading;
+}
+
+function shouldHideSourceSection(articleSlug: string, heading: string) {
+  return hiddenSourceSectionsBySlug[articleSlug]?.has(heading) ?? false;
 }
 
 type ArticleSignal = {
@@ -459,15 +485,47 @@ const operatingSystemSourceIntroParagraphs = [
   "The diverse human judgement at the centre of that system."
 ];
 
+const positioningAngles = [
+  {
+    angle: "Secret Weapon",
+    bestUsedFor: "Founder, exec & investor",
+    role: "Asymmetric advantage — you know what the market wants before competitors do"
+  },
+  {
+    angle: "The Expiry",
+    bestUsedFor: "Why DIY research fails",
+    role: "Reframes speed as necessity"
+  },
+  {
+    angle: "Honest Research",
+    bestUsedFor: "PR & thought leadership",
+    role: "Contrasts claimed opinions with real behaviour"
+  },
+  {
+    angle: "Decision Intelligence",
+    bestUsedFor: "Homepage & B2B",
+    role: "Reduces guesswork in business decisions"
+  },
+  {
+    angle: "Democratisation",
+    bestUsedFor: "Startup & challenger",
+    role: "Makes enterprise-grade research accessible"
+  },
+  {
+    angle: "Research Team in Your Pocket",
+    bestUsedFor: "Sales & comparison pages",
+    role: "Time & cost saved vs. traditional research"
+  }
+];
+
 function OperatingSystemFrameworkDiagram() {
   return (
     <aside className="insight-article-visual insight-operating-system" aria-label="Stance, stack and spine operating system framework">
       <div className="insight-operating-system-intro">
-        <p>The OS in one view</p>
+        <p>AI Operating System for 2026</p>
         <h3>
           Stance sets the rules. Stack carries the work. Spine keeps judgement in the system.
         </h3>
-        <span>This is the article&apos;s framework converted into a practical operating model.</span>
       </div>
       <div className="insight-operating-system-rows">
         {operatingSystemFramework.map((section, index) => (
@@ -491,6 +549,64 @@ function OperatingSystemFrameworkDiagram() {
   );
 }
 
+function PositioningAnglesTable() {
+  return (
+    <aside className="insight-article-visual insight-positioning-angles" aria-label="Positioning angles snapshot for Last30Days">
+      <div className="insight-positioning-angles-title">
+        <p>Snapshot of the output for /Last30Days</p>
+      </div>
+      <div className="insight-positioning-angles-table">
+        <div className="insight-positioning-angles-row is-head" aria-hidden="true">
+          <span>Angle</span>
+          <span>What it&apos;s doing</span>
+          <span>Best used for</span>
+        </div>
+        {positioningAngles.map((row) => (
+          <div className="insight-positioning-angles-row" key={row.angle}>
+            <div>
+              <span className="insight-positioning-angles-mobile-label">Angle</span>
+              <strong>{row.angle}</strong>
+            </div>
+            <div>
+              <span className="insight-positioning-angles-mobile-label">What it&apos;s doing</span>
+              <p>{row.role}</p>
+            </div>
+            <div>
+              <span className="insight-positioning-angles-mobile-label">Best used for</span>
+              <p>{row.bestUsedFor}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
+function Last30DaysContextCard() {
+  return (
+    <figure className="insight-article-visual insight-last30days-reference">
+      <div className="insight-last30days-card-media">
+        <Image
+          src="/assets/products/last30days-og.png"
+          alt="Last30Days product graphic"
+          width={1731}
+          height={909}
+          sizes="(max-width: 1023px) 100vw, 820px"
+        />
+      </div>
+      <figcaption className="insight-last30days-caption">
+        <span>Last30Days</span>
+        <div className="insight-last30days-card-actions">
+          <Link href="/last30days">View product page</Link>
+          <a href="https://last30days.app" target="_blank" rel="noreferrer">
+            Open live site
+          </a>
+        </div>
+      </figcaption>
+    </figure>
+  );
+}
+
 function renderSourceMarkdown(markdown: string, articleSlug: string) {
   const lines = markdown.split("\n");
   const blocks: ReactNode[] = [];
@@ -501,6 +617,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
   let predictionIndex = 0;
   let toolIndex = 0;
   let operatingSystemIntroIndex = -1;
+  let isSkippingHiddenSection = false;
 
   const flushParagraph = () => {
     if (!paragraphLines.length) {
@@ -621,12 +738,36 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       operatingSystemIntroIndex = 0;
     }
 
+    if (
+      articleSlug === "what-is-an-ai-skill" &&
+      paragraph.startsWith("*The official /last30days skill now includes")
+    ) {
+      blocks.push(<Last30DaysContextCard key="last30days-context-card" />);
+    }
+
+    if (
+      articleSlug === "what-is-an-ai-skill" &&
+      paragraph.startsWith("Behind these angles are frameworks")
+    ) {
+      blocks.splice(blocks.length - 1, 0, <PositioningAnglesTable key="positioning-angles-table" />);
+    }
+
     paragraphLines = [];
   };
 
   while (index < lines.length) {
     const line = lines[index];
     const trimmed = line.trim();
+    const isHeading = /^#{1,3}\s/.test(trimmed);
+
+    if (isSkippingHiddenSection && !isHeading) {
+      index += 1;
+      continue;
+    }
+
+    if (isHeading) {
+      isSkippingHiddenSection = false;
+    }
 
     if (!trimmed) {
       flushParagraph();
@@ -648,8 +789,14 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
         lastBlockWasQuote = false;
       } else {
         const heading = cleanSourceHeading(trimmed.slice(2));
+        if (shouldHideSourceSection(articleSlug, heading)) {
+          isSkippingHiddenSection = true;
+          lastBlockWasQuote = false;
+          index += 1;
+          continue;
+        }
         if (shouldShowSourceHeading(articleSlug, heading)) {
-          blocks.push(<ArticleHeading heading={heading} key={index} />);
+          blocks.push(<ArticleHeading heading={getSourceHeadingDisplay(articleSlug, heading)} key={index} />);
           lastBlockWasQuote = false;
         }
       }
@@ -664,8 +811,14 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
         lastBlockWasQuote = false;
       } else {
         const heading = cleanSourceHeading(trimmed.slice(3));
+        if (shouldHideSourceSection(articleSlug, heading)) {
+          isSkippingHiddenSection = true;
+          lastBlockWasQuote = false;
+          index += 1;
+          continue;
+        }
         if (shouldShowSourceHeading(articleSlug, heading)) {
-          blocks.push(<ArticleHeading heading={heading} key={index} />);
+          blocks.push(<ArticleHeading heading={getSourceHeadingDisplay(articleSlug, heading)} key={index} />);
           lastBlockWasQuote = false;
         }
       }
@@ -676,8 +829,14 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
     if (trimmed.startsWith("### ")) {
       flushParagraph();
       const heading = cleanSourceHeading(trimmed.slice(4));
+      if (shouldHideSourceSection(articleSlug, heading)) {
+        isSkippingHiddenSection = true;
+        lastBlockWasQuote = false;
+        index += 1;
+        continue;
+      }
       if (shouldShowSourceHeading(articleSlug, heading)) {
-        blocks.push(<h3 key={index}>{heading}</h3>);
+        blocks.push(<h3 key={index}>{getSourceHeadingDisplay(articleSlug, heading)}</h3>);
         lastBlockWasQuote = false;
       }
       index += 1;
