@@ -5,8 +5,8 @@
 
 Scope:
 
-- Paper-only design exploration for the `Building AI Operating Systems in 2026` article.
-- No article source copy or website code changed.
+- Paper design exploration and approved website implementation for the `Building AI Operating Systems in 2026` article.
+- No `src/content/insights.ts` article source copy changed.
 
 Implemented:
 
@@ -17,11 +17,18 @@ Implemented:
   - `SPINE`: diverse human judgement at the centre of the system.
 - Added a second `Operating system test` section using the article's Q1 executive checklist.
 - Kept the visual direction aligned with the current Insights article style: white ground, Aileron, black text, neutral hairlines and restrained blue accents.
+- Added the approved `STANCE / STACK / SPINE` framework as a dedicated article visual on `/insights/building-ai-operating-systems`.
+- Adapted the Paper layout for the live article column so it reads clearly beside the right-side `More articles` rail.
+- Fixed the article renderer to parse source numbering such as `1.We have...` as a proper styled checklist without changing the source text.
 
 Verified:
 
 - Paper screenshot reviewed for spacing, typography, contrast, alignment and artboard fit.
 - Artboard switched to `fit-content` after the first review showed the checklist clipping at the bottom.
+- Focused live-route screenshot reviewed for the operating-system component.
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
 
 ## 31 May Insights Article Structure Styling - Local
 

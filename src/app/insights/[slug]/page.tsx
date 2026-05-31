@@ -424,6 +424,73 @@ function FirecrawlWorkflowDiagram() {
   );
 }
 
+const operatingSystemFramework = [
+  {
+    definition: "What you believe and protect.",
+    items: ["What is encouraged.", "What is off limits.", "What is always protected."],
+    title: "STANCE"
+  },
+  {
+    definition: "How AI lives in your organisation & whose judgement you choose to scale.",
+    items: [
+      "Execution is becoming infrastructure.",
+      "Find your value gap.",
+      "Turn your ‘Human in the loop’ into an asset clients can see & Trust."
+    ],
+    title: "STACK"
+  },
+  {
+    definition: "The diverse human judgement at the centre of that system.",
+    items: [
+      "Name your future AI spine.",
+      "Build operating systems around your A+ players.",
+      "Make that cohort deliberately diverse."
+    ],
+    title: "SPINE"
+  }
+];
+
+const operatingSystemSourceIntroParagraphs = [
+  "STANCE",
+  "What you believe and protect.",
+  "STACK",
+  "How AI lives in your organisation & whose judgement you choose to scale.",
+  "SPINE",
+  "The diverse human judgement at the centre of that system."
+];
+
+function OperatingSystemFrameworkDiagram() {
+  return (
+    <aside className="insight-article-visual insight-operating-system" aria-label="Stance, stack and spine operating system framework">
+      <div className="insight-operating-system-intro">
+        <p>The OS in one view</p>
+        <h3>
+          Stance sets the rules. Stack carries the work. Spine keeps judgement in the system.
+        </h3>
+        <span>This is the article&apos;s framework converted into a practical operating model.</span>
+      </div>
+      <div className="insight-operating-system-rows">
+        {operatingSystemFramework.map((section, index) => (
+          <section className="insight-operating-system-row" key={section.title}>
+            <div className="insight-operating-system-index">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+            </div>
+            <div className="insight-operating-system-title">
+              <h3>{section.title}</h3>
+              <p>{section.definition}</p>
+            </div>
+            <ul>
+              {section.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
 function renderSourceMarkdown(markdown: string, articleSlug: string) {
   const lines = markdown.split("\n");
   const blocks: ReactNode[] = [];
@@ -433,6 +500,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
   let lastBlockWasQuote = false;
   let predictionIndex = 0;
   let toolIndex = 0;
+  let operatingSystemIntroIndex = -1;
 
   const flushParagraph = () => {
     if (!paragraphLines.length) {
@@ -440,6 +508,21 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
     }
 
     const paragraph = paragraphLines.join(" ");
+
+    if (
+      articleSlug === "building-ai-operating-systems" &&
+      operatingSystemIntroIndex >= 0 &&
+      paragraph === operatingSystemSourceIntroParagraphs[operatingSystemIntroIndex]
+    ) {
+      operatingSystemIntroIndex += 1;
+      if (operatingSystemIntroIndex >= operatingSystemSourceIntroParagraphs.length) {
+        operatingSystemIntroIndex = -1;
+      }
+      paragraphLines = [];
+      lastBlockWasQuote = false;
+      return;
+    }
+
     const signal = getArticleSignal(paragraph);
     const sourceSubheading = getSourceSubheading(paragraph);
     const toolEntry = articleSlug === "best-ai-tools-2025" ? getToolEntry(paragraph) : null;
@@ -528,6 +611,14 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       paragraph.includes("categry has unoccupied whitespace ready for the redbull of that sector to fill the gap?")
     ) {
       blocks.push(<FirecrawlWorkflowDiagram key="firecrawl-workflow-diagram" />);
+    }
+
+    if (
+      articleSlug === "building-ai-operating-systems" &&
+      paragraph === "For success in 2026- your AI operating system needs three things:"
+    ) {
+      blocks.push(<OperatingSystemFrameworkDiagram key="operating-system-framework-diagram" />);
+      operatingSystemIntroIndex = 0;
     }
 
     paragraphLines = [];
@@ -672,14 +763,14 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       continue;
     }
 
-    const orderedMatch = trimmed.match(/^(\d+[\.)])\s+(.*)$/);
+    const orderedMatch = trimmed.match(/^(\d+[\.)])\s*(.*)$/);
 
     if (orderedMatch) {
       flushParagraph();
       const items: Array<{ marker: string; text: string }> = [];
 
       while (index < lines.length) {
-        const currentMatch = lines[index].trim().match(/^(\d+[\.)])\s+(.*)$/);
+        const currentMatch = lines[index].trim().match(/^(\d+[\.)])\s*(.*)$/);
         if (!currentMatch) break;
         const item = { marker: currentMatch[1], text: currentMatch[2] };
         index += 1;
@@ -717,7 +808,8 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
             "insight-article-source-list",
             "is-numbered",
             articleSlug === "chatgpt-for-business-owners" ? "is-playbook-list" : "",
-            articleSlug === "ai-future-of-work" ? "is-action-list" : ""
+            articleSlug === "ai-future-of-work" ? "is-action-list" : "",
+            articleSlug === "building-ai-operating-systems" ? "is-os-checklist" : ""
           ]
             .filter(Boolean)
             .join(" ")}
