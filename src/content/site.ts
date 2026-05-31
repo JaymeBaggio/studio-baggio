@@ -18,7 +18,7 @@ export const metadata = {
       "Studio Baggio designs and builds AI-enabled growth systems for trust-based businesses: search visibility, market intelligence, lead capture, authority systems, workflow acceleration and client-facing AI tools."
   },
   work: {
-    title: "Studio Baggio Products | AI Systems and Commercial Intelligence",
+    title: "Products: AI Systems & Intelligence | Studio Baggio",
     description:
       "Live Studio Baggio products across Calm Authority, Business Tracker, Last30Days and Fire Source."
   },

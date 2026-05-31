@@ -305,7 +305,7 @@ export const workItems: WorkItem[] = [
     whyItMatters: "Before you launch, pivot, or compete — know what the market is really saying right now.",
     proves:
       "Studio Baggio can build useful AI products that combine research, source discipline, synthesis and user-facing workflows.",
-    href: "/last30days",
+    href: "/work",
     external: "https://last30days.app",
     homepageLinks: [{ label: "Visit live site →", href: "https://last30days.app" }],
     homepageImage: "/assets/products/last30days-og.png",
@@ -360,7 +360,7 @@ export const workItems: WorkItem[] = [
       "Use it to find prospects in your niche, identify who specifically meets your ICP, or research a potential partner or client before every meeting. Know who you're speaking with, what's important to them right now, why they might be buying, and whether they have the credentials to partner on the next deal.",
     proves:
       "Studio Baggio can build commercial intelligence products that preserve source discipline while accelerating decisions.",
-    href: "/fire-source",
+    href: "/work",
     external: "https://fire-source.vercel.app",
     homepageLinks: [
       { label: "Find out more →", href: "/work" },

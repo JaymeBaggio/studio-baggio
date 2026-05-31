@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { FaqSchema } from "@/components/faq-schema";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
@@ -81,6 +82,7 @@ export default function HomePage() {
 
   return (
     <>
+      <FaqSchema items={home.faq.items} />
       <PageReveals />
       <section className="home-reference-hero">
         <div className="editorial-container home-reference-frame">

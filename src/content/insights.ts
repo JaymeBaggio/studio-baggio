@@ -50,7 +50,7 @@ export const insightArticles: InsightArticle[] = [
     summary: "If you haven’t heard of Firecrawl yet, put it on your radar.",
     preview: "If you haven’t heard of Firecrawl yet, put it on your radar. Firecrawl is an API (a connector) which, when plugged into Codex or Claude- allows you to access 96% of the open web and return it in a format AI can read.",
     thesis: "Public footprint is now part of how a business gets qualified.",
-    metaTitle: "Firecrawl just gave any business access to 96% of the web | Studio Baggio",
+    metaTitle: "Firecrawl for Business: Access 96% of the Web | Studio Baggio",
     metaDescription: "If you haven’t heard of Firecrawl yet, put it on your radar.",
     related: [
       "owned-vs-rented-audience",
@@ -125,7 +125,7 @@ export const insightArticles: InsightArticle[] = [
     preview:
       "Search referrals are expected to keep falling. Audiences are spending more time with creators and personality-led formats.",
     thesis: "The channels you rent can change overnight, so build one you own.",
-    metaTitle: "Reuters Institute’s Trends & Predictions 2026: What businesses should do next. | Studio Baggio",
+    metaTitle: "Owned vs Rented Audience: Reuters 2026 Lessons | Studio Baggio",
     metaDescription:
       "Even if you're not a publisher, the lesson is the same: the channels you rent can change overnight, so build one you own.",
     related: [
@@ -155,7 +155,7 @@ export const insightArticles: InsightArticle[] = [
     summary: "Six practical ways business owners can make ChatGPT compound inside the way they work.",
     preview: "Build a Role Master Prompt so ChatGPT understands your business. Most people get generic answers because ChatGPT does not know who they are.",
     thesis: "Make it an Operating System.",
-    metaTitle: "ChatGPT for Business Owners — If You Only Do 6 Things... | Studio Baggio",
+    metaTitle: "ChatGPT for Business Owners: 6 Things to Do | Studio Baggio",
     metaDescription: "Six practical ways business owners can make ChatGPT compound inside the way they work.",
     related: [
       "ai-adoption-value-gap",
@@ -185,7 +185,7 @@ export const insightArticles: InsightArticle[] = [
     summary: "If your work happens on a screen, assume the shape of your job or business is going to change fast.",
     preview: "I do not get asked about AI much, which still surprises me. And when I do, I can usually feel how quickly people want the conversation to be over.",
     thesis: "If your work happens on a screen, assume the shape of your job or business is going to change fast.",
-    metaTitle: "If your work happens on a screen, assume the shape of it is going to change | Studio Baggio",
+    metaTitle: "Screen-Based Work Is About to Change Fast | Studio Baggio",
     metaDescription: "A Rough Cut essay on why screen-based work, AI literacy and business capability are about to change fast.",
     related: [
       "ai-adoption-value-gap",
@@ -485,7 +485,7 @@ In a two‑speed landscape, pace becomes strategy.`
     summary: "The 5x Key Takeouts from Futureweek AIMM 2025.",
     preview: "ISBA’s Nick Louisson shared how quickly advertisers are scaling GenAI- faster than most creative teams can respond.",
     thesis: "Human direction is central across all stages of the pipeline & areas of the business.",
-    metaTitle: "The State of Play: AI Disruption in Media & Advertising | Studio Baggio",
+    metaTitle: "AI Disruption in Media & Advertising | Studio Baggio",
     metaDescription: "The 5x key takeouts from Futureweek AIMM 2025 on AI disruption in media and advertising.",
     related: [
       "ai-creative-summit-2025",
@@ -660,7 +660,7 @@ The next wave of progress will come from people who can combine technical litera
     preview: "AI led firms win: Companies that redesign processes around what AI can do- with humans focused on oversight and creativity, massively outperform those that bolt AI onto old workflows.",
     thesis: "The gap between those who led early and those who dithered widens.",
     metaTitle: "2026 Predictions | Studio Baggio",
-    metaDescription: "2026 Predictions- What I think we’ll see in the next 12months.",
+    metaDescription: "2026 Predictions- What I think we’ll see in the next 12 months.",
     related: [
       "best-ai-tools-2025",
       "ai-future-of-work",
@@ -691,7 +691,7 @@ The next wave of progress will come from people who can combine technical litera
     preview: "ChatGPT: The anchor behind everything. I use it as a tutor & thinking partner for pretty much everything.",
     thesis: "The ones ill be bringing into 2026.",
     metaTitle: "Tools of the Year 2025 | Studio Baggio",
-    metaDescription: "Tools of the Year (2025): The ones ill be bringing into 2026.",
+    metaDescription: "Tools of the Year (2025): The ones I'll be bringing into 2026.",
     related: [
       "chatgpt-for-business-owners",
       "what-is-an-ai-skill",

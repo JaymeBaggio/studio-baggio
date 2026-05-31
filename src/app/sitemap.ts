@@ -6,8 +6,6 @@ const routes = [
   "",
   "/work",
   "/insights",
-  "/fire-source",
-  "/last30days",
   "/about",
   "/contact",
   "/privacy"

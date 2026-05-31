@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Code2, Flame, ListChecks, PoundSterling, Search } from "lucide-react";
+import { ArticleSchema } from "@/components/article-schema";
 import { PageReveals } from "@/components/page-reveals";
 import {
   getInsightBySlug,
@@ -1030,6 +1031,7 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
+      <ArticleSchema article={article} />
       <PageReveals />
       <article className="home-4b insight-article-page">
         <header className="insight-article-hero" data-home-section>
