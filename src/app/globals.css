@@ -3750,19 +3750,6 @@ svg {
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: 0;
-  opacity: 0;
-  animation: about-hero-title-fade 1.18s cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
-  will-change: opacity;
-}
-
-@keyframes about-hero-title-fade {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 .home-4b.about-page .about-hero-title span {
@@ -3784,15 +3771,11 @@ svg {
   line-height: 1.46;
   letter-spacing: 0;
   text-transform: none;
-  opacity: 0;
-  animation: about-hero-title-fade 0.9s cubic-bezier(0.16, 1, 0.3, 1) 520ms both;
-  will-change: opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .home-4b.about-page .about-hero-title,
   .home-4b.about-page .about-hero-statement {
-    opacity: 1;
     animation: none !important;
     will-change: auto;
   }
@@ -3951,7 +3934,12 @@ svg {
 
 @media (max-width: 767px) {
   .home-4b.about-page .about-hero-title {
-    font-size: clamp(44px, 13vw, 64px);
+    font-size: clamp(38px, 11.5vw, 48px);
+    white-space: nowrap;
+  }
+
+  .home-4b.about-page .about-hero-title span {
+    margin-left: 0.08em;
   }
 
   .home-4b.about-page .about-hero-statement {
@@ -4182,6 +4170,15 @@ svg {
 .home-4b.products-page .products-tab:hover,
 .home-4b.products-page .products-tab[aria-selected="true"] {
   color: var(--sb-ink);
+}
+
+.home-4b.products-page .products-tab:focus {
+  outline: none;
+}
+
+.home-4b.products-page .products-tab:focus-visible {
+  outline: 2px solid var(--sb-ink);
+  outline-offset: -2px;
 }
 
 .home-4b.products-page .products-tab[aria-selected="true"] {
@@ -4506,7 +4503,7 @@ svg {
     --products-display-size: clamp(54px, 16vw, 86px);
     --products-panel-title-size: clamp(42px, 14vw, 66px);
     --products-hero-min: auto;
-    --products-tabs-height: 56px;
+    --products-tabs-height: 52px;
   }
 
   .home-4b.products-page .products-hero {
@@ -4526,23 +4523,57 @@ svg {
     max-width: 100%;
   }
 
+  .home-4b.products-page .products-tabs-shell,
+  .home-4b.products-page .products-tabs-shell.is-idle {
+    top: 4rem;
+    padding-block: 8px;
+    background: var(--sb-paper);
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+    pointer-events: auto;
+    transition: none;
+  }
+
   .home-4b.products-page .products-tabs {
-    grid-template-columns: repeat(4, minmax(132px, 1fr));
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+    border-top: 1px solid var(--sb-rule);
+    border-left: 1px solid var(--sb-rule);
+    scrollbar-width: auto;
   }
 
   .home-4b.products-page .products-tabs::-webkit-scrollbar {
-    display: none;
+    display: initial;
   }
 
   .home-4b.products-page .products-tab {
+    min-width: 0;
     min-height: var(--products-tabs-height);
-    padding-inline: 12px;
-    font-size: 11px;
-    letter-spacing: 0.16em;
+    border-right: 1px solid var(--sb-rule);
+    border-bottom: 1px solid var(--sb-rule);
+    padding: 8px 10px;
+    font-size: 10.5px;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
     overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .home-4b.products-page .products-tab:nth-child(-n + 2) {
+    border-top: 0;
+  }
+
+  .home-4b.products-page .products-tab:nth-child(2n) {
+    border-right: 1px solid var(--sb-rule);
+  }
+
+  .home-4b.products-page .products-tab[aria-selected="true"] {
+    background: var(--sb-soft);
+  }
+
+  .home-4b.products-page .products-panel-shell {
+    scroll-margin-top: 220px;
   }
 
   .home-4b.products-page .products-panel-header {
@@ -5192,6 +5223,15 @@ svg {
   border-color: var(--sb-ink);
   background: var(--sb-ink);
   color: var(--sb-paper);
+}
+
+.home-4b.insights-page .insights-category-filter button:focus {
+  outline: none;
+}
+
+.home-4b.insights-page .insights-category-filter button:focus-visible {
+  outline: 2px solid var(--sb-ink);
+  outline-offset: -2px;
 }
 
 .home-4b.insights-page .insights-search {
@@ -6502,13 +6542,19 @@ svg {
   }
 
   .home-4b.insights-page .insights-category-filter {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 2px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+    padding-bottom: 0;
   }
 
   .home-4b.insights-page .insights-category-filter button {
-    flex: 0 0 auto;
+    min-height: 44px;
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 10.5px;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
   }
 
   .home-4b.insights-page .insights-list-heading {

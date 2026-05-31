@@ -12,7 +12,6 @@ type ProductPageData = NonNullable<WorkItem["productPage"]>;
 export type ProductWorkItem = WorkItem & { productPage: ProductPageData };
 
 const productItems = workItems.filter((item): item is ProductWorkItem => Boolean(item.productPage));
-const productsIntroEase = [0.16, 0.82, 0.34, 1] as const;
 const productsPanelEase = [0.23, 1, 0.32, 1] as const;
 
 export function ProductsPageShowcase() {
@@ -90,30 +89,26 @@ export function ProductsPageShowcase() {
 
   return (
     <div className="home-4b studio-page products-page">
-      <section className="products-hero" data-header-theme="light">
+      <section className="products-hero" data-header-theme="light" data-home-section>
         <div className="editorial-container products-hero-shell">
           <div className="products-hero-main">
-            <motion.div
+            <div
               className="products-hero-copy"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: shouldReduceMotion ? 0 : 0.62, ease: productsIntroEase, delay: 0.08 }}
+              data-reveal
             >
               <p className="eyebrow">Live Work</p>
               <p>A selection of our live products. Available alongside our bespoke offering.</p>
               <p>Each can also be embedded into client work as part of broader commercial implementation.</p>
-            </motion.div>
-            <motion.h1
+            </div>
+            <h1
               className="products-hero-title"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: shouldReduceMotion ? 0 : 0.72, ease: productsIntroEase, delay: 0.18 }}
+              data-reveal
             >
               <span>Products</span>
               <span>
                 in market<span className="products-blue-dot">.</span>
               </span>
-            </motion.h1>
+            </h1>
           </div>
 
         </div>
@@ -131,9 +126,6 @@ export function ProductsPageShowcase() {
             className="products-tabs"
             role="tablist"
             aria-label="Products"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.52, ease: productsIntroEase, delay: 0.3 }}
           >
             {productItems.map((item) => (
               <motion.button

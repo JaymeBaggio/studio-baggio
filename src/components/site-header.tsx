@@ -94,7 +94,7 @@ export function SiteHeader() {
         <Link
           href="/"
           className={cn(
-            "focus-ring text-sm uppercase tracking-[0.08em] transition-colors duration-300",
+            "focus-ring inline-flex min-h-11 items-center text-sm uppercase tracking-[0.08em] transition-colors duration-300",
             darkHeader ? "text-paper/[0.88] hover:text-paper" : homeTop ? "text-ink/70 hover:text-ink" : "text-ink"
           )}
           onClick={handleHomeClick}

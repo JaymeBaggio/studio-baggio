@@ -132,13 +132,29 @@ export function PageReveals() {
     const countTweens: gsap.core.Tween[] = [];
 
     const run = async () => {
-      await document.fonts?.ready;
-      if (!active) return;
-
       const homeRoot = document.querySelector<HTMLElement>(".home-4b");
       if (!homeRoot) return;
 
       const splitElements = Array.from(homeRoot.querySelectorAll<HTMLElement>("[data-split]"));
+      const initialRevealElements = Array.from(
+        homeRoot.querySelectorAll<HTMLElement>(
+          "[data-home-section] [data-reveal], [data-home-section] [data-cta-button]"
+        )
+      );
+      const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      if (!reduceMotionQuery.matches && initialRevealElements.length) {
+        gsap.set(initialRevealElements, {
+          y: 22,
+          autoAlpha: 0.001,
+          force3D: true,
+          willChange: "transform, opacity"
+        });
+      }
+
+      await document.fonts?.ready;
+      if (!active) return;
+
       splitElements.forEach((element) => {
         const split = splitIntoLines(element);
         if (split) splitRecords.push(split);
@@ -177,7 +193,7 @@ export function PageReveals() {
               autoAlpha: 1,
               y: 0,
               yPercent: 0,
-              clearProps: "transform"
+              clearProps: "transform,willChange"
             });
             setFinalNumbers();
             return;
@@ -189,11 +205,18 @@ export function PageReveals() {
           };
 
           const prepareRise = (targets: gsap.TweenTarget, y = 14, autoAlpha = 0.001) => {
-            gsap.set(targets, { y, autoAlpha });
+            gsap.set(targets, { y, autoAlpha, force3D: true, willChange: "transform, opacity" });
           };
 
           const prepareLines = (targets: HTMLElement[]) => {
-            if (targets.length) gsap.set(targets, { yPercent: 106, autoAlpha: 0.001 });
+            if (targets.length) {
+              gsap.set(targets, {
+                yPercent: 106,
+                autoAlpha: 0.001,
+                force3D: true,
+                willChange: "transform, opacity"
+              });
+            }
           };
 
           const prepareScan = (
@@ -229,11 +252,13 @@ export function PageReveals() {
                 duration: 1.08,
                 ease: editorialOut,
                 overwrite: "auto",
+                force3D: true,
+                clearProps: "willChange",
                 ...vars
-	              },
-	              position
-	            );
-	          };
+              },
+              position
+            );
+          };
 
           const revealRiseFromHidden = (
             timeline: gsap.core.Timeline,
@@ -249,6 +274,8 @@ export function PageReveals() {
                 duration: 1.16,
                 ease: editorialOut,
                 overwrite: "auto",
+                force3D: true,
+                clearProps: "willChange",
                 ...vars
               },
               position
@@ -270,7 +297,9 @@ export function PageReveals() {
                 duration: 1.18,
                 stagger,
                 ease: editorialOut,
-                overwrite: "auto"
+                overwrite: "auto",
+                force3D: true,
+                clearProps: "willChange"
               },
               position
             );
@@ -311,6 +340,13 @@ export function PageReveals() {
           ) => {
             playedTimelines.push(timeline);
             timeline.pause();
+
+            const startRatio = start === sectionStart ? (isDesktop ? 0.76 : 0.84) : 0.84;
+            if (section.getBoundingClientRect().top <= window.innerHeight * startRatio) {
+              timeline.play(0);
+              return;
+            }
+
             ScrollTrigger.create({
               id,
               trigger: section,

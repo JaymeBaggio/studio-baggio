@@ -1,6 +1,29 @@
 # Studio Baggio Website - STATUS
 *Last updated: 31 May 2026*
 
+## 31 May Mobile Responsiveness + Header Motion
+
+Scope:
+
+- Mobile responsiveness for the public site navigation/product selectors.
+- Page-header reveal smoothness for About and Products.
+- Avoided the active Insights article route work owned by another agent.
+
+Implemented:
+
+- Replaced the `/work` mobile product selector hidden horizontal scroll with a visible two-column grid so all products are discoverable without sideways scrolling.
+- Replaced the `/insights` mobile category filter hidden horizontal scroll with a visible two-column grid.
+- Increased tap/focus reliability for the site wordmark, product tabs and Insights filters.
+- Standardised About and Products hero reveal elements onto the shared GSAP page reveal path.
+- Scoped initial reveal pre-hiding to hero/home sections so below-fold page content does not disappear while the reveal system waits for fonts.
+
+Verified:
+
+- Mobile browser audit covered `/about`, `/work` and `/insights` at phone width.
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+
 ## 31 May Paper Mockup - AI Operating System Framework
 
 Scope:
