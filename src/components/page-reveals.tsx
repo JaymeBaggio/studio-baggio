@@ -138,7 +138,7 @@ export function PageReveals() {
       const splitElements = Array.from(homeRoot.querySelectorAll<HTMLElement>("[data-split]"));
       const initialRevealElements = Array.from(
         homeRoot.querySelectorAll<HTMLElement>(
-          "[data-home-section] [data-reveal], [data-home-section] [data-cta-button]"
+          "[data-home-section] [data-reveal]:not([data-split]), [data-home-section] [data-cta-button]"
         )
       );
       const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
