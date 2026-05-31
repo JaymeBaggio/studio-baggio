@@ -366,13 +366,13 @@ export const workItems: WorkItem[] = [
       { label: "Find out more →", href: "/work" },
       { label: "Visit live site →", href: "https://fire-source.vercel.app" },
     ],
-    homepageImage: "/assets/products/fire-source-og-new.png",
+    homepageImage: "/assets/products/fire-source-og-use-this.png",
     image: "/assets/products/fire-source.png",
     productPage: {
       tabLabel: "Fire Source",
       category: "Commercial Intelligence",
       image: {
-        src: "/assets/products/fire-source-og-new.png",
+        src: "/assets/products/fire-source-og-use-this.png",
         alt: "Fire Source product graphic",
         width: 5760,
         height: 3240
