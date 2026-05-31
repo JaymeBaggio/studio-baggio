@@ -50,7 +50,7 @@ export default function HomePage() {
   );
   const openingSetupLines =
     home.opening.setup === "Studio Baggio designs the AI systems that make expert-led businesses:"
-      ? ["Studio Baggio designs the AI systems", "that make expert-led businesses:"]
+      ? ["Studio Baggio designs the AI systems that make", "expert-led businesses:"]
       : [home.opening.setup];
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];

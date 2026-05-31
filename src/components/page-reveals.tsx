@@ -417,14 +417,21 @@ export function PageReveals() {
                 }
               });
 
+              const openingLineCadence = 2.35;
+              const openingLineDuration = 2.8;
+
               headlineTargets.forEach((line, index) => {
-                revealScan(opening, line, index * 2.35, { duration: 2.8 });
+                revealScan(opening, line, index * openingLineCadence, { duration: openingLineDuration });
               });
               if (qualifier) revealScan(opening, qualifier, 5.05, { duration: 2.05 });
               opening.to({}, { duration: 1.44 }, 5.85);
               if (top) opening.to(top, { autoAlpha: 0.28, duration: 2.15 }, 6.35);
               if (setupTargets.length) {
-                revealScan(opening, setupTargets, 7.0, { duration: 2.75, stagger: 0.36 });
+                setupTargets.forEach((line, index) => {
+                  revealScan(opening, line, 7.0 + index * openingLineCadence, {
+                    duration: openingLineDuration
+                  });
+                });
               }
               support.forEach((item, index) => {
                 revealScan(opening, item, 10.25 + index * 3.18, { duration: 2.65 });
