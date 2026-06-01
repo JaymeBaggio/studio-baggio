@@ -5,6 +5,7 @@ import { siteUrl } from "@/lib/utils";
 const routes = [
   "",
   "/work",
+  "/last30days",
   "/insights",
   "/about",
   "/contact",
@@ -14,9 +15,9 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = routes.map((route) => ({
     url: `${siteUrl}${route}`,
-    lastModified: new Date("2026-05-25"),
+    lastModified: new Date(route === "/last30days" ? "2026-06-01" : "2026-05-25"),
     changeFrequency: route === "" ? ("weekly" as const) : ("monthly" as const),
-    priority: route === "" ? 1 : 0.75
+    priority: route === "" ? 1 : route === "/last30days" ? 0.8 : 0.75
   }));
 
   const insightRoutes = insightArticles.map((article) => ({

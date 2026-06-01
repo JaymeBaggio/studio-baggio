@@ -22,6 +22,11 @@ export const metadata = {
     description:
       "Live Studio Baggio products across Calm Authority, Business Tracker, Last30Days and Fire Source."
   },
+  last30days: {
+    title: "Last30Days | Live Signal Intelligence",
+    description:
+      "Last30Days is a Studio Baggio product for AI research across Reddit, X, TikTok, Instagram, YouTube and the open web."
+  },
   businessTracker: {
     title: "Business Tracker | Commercial Intelligence",
     description:
@@ -816,7 +821,8 @@ export const footer = {
   company: "Studio Baggio Ltd",
   summary: "Practical AI systems for expert-led businesses.",
   email: "jayme@studiobaggio.ai",
-  privacyLabel: "Privacy"
+  privacyLabel: "Privacy",
+  productLinks: [{ label: "Last30Days", href: "/last30days" }]
 };
 
 export const contactPage = {
