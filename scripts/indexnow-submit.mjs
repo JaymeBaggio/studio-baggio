@@ -14,6 +14,7 @@ const ENDPOINT = "https://api.indexnow.org/indexnow";
 const urlList = [
   "https://www.studiobaggio.ai/",
   "https://www.studiobaggio.ai/work",
+  "https://www.studiobaggio.ai/last30days",
   "https://www.studiobaggio.ai/insights",
   "https://www.studiobaggio.ai/about",
   "https://www.studiobaggio.ai/contact",
