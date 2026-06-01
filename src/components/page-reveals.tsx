@@ -399,11 +399,11 @@ export function PageReveals() {
               const headlineTargets = targetsFor(headline);
               const setupTargets = targetsFor(setup);
 
-              prepareScan(headlineTargets, { x: 12, blur: 10 });
+              prepareScan(headlineTargets, { x: 0, blur: 10 });
               if (qualifier) prepareScan(qualifier, { x: 8, blur: 6 });
-              if (setupTargets.length) prepareScan(setupTargets, { x: 10, blur: 8 });
-              if (support.length) prepareScan(support, { x: 10, blur: 8, scale: 0.992 });
-              if (emphasis) prepareScan(emphasis, { x: 12, blur: 9, scale: 0.985 });
+              if (setupTargets.length) prepareScan(setupTargets, { x: 0, blur: 8 });
+              if (support.length) prepareScan(support, { x: 0, blur: 8, scale: 0.992 });
+              if (emphasis) prepareScan(emphasis, { x: 0, blur: 9, scale: 0.985 });
 
               const opening = gsap.timeline({
                 defaults: { ease: editorialOut },

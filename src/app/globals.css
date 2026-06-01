@@ -1704,7 +1704,7 @@ svg {
   --sb-opening-qualifier-size: clamp(15px, 1.15vw, 20px);
   --sb-opening-qualifier-tracking: 0.03em;
   --sb-opening-setup-size: var(--sb-opening-title-size);
-  --sb-opening-outcome-size: clamp(20px, 1.7vw, 28px);
+  --sb-opening-outcome-size: clamp(22px, 1.9vw, 32px);
   --sb-opening-outcome-emphasis-size: var(--sb-opening-outcome-size);
   --sb-stat-size: clamp(64px, 5.4vw, 86px);
   --sb-stat-caption-size: clamp(15px, 1.05vw, 17px);
@@ -1837,7 +1837,7 @@ svg {
 
 .home-4b .opening-argument-top {
   max-width: 1120px;
-  margin-right: auto;
+  margin-inline: 0 auto;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -1846,7 +1846,7 @@ svg {
 .home-4b .opening-argument-headline {
   order: 1;
   max-width: 1080px;
-  margin-right: auto;
+  margin-inline: 0 auto;
   font-size: var(--sb-opening-title-size);
   line-height: 1.12;
 }
@@ -1891,7 +1891,7 @@ svg {
 
 .home-4b .opening-outcome-block {
   max-width: 1060px;
-  margin-right: auto;
+  margin-inline: 0 auto;
   padding-top: 0;
   border-top: 0;
   text-align: left;
@@ -1899,7 +1899,7 @@ svg {
 
 .home-4b .opening-outcome-setup {
   max-width: 1040px;
-  margin-right: auto;
+  margin-inline: 0 auto;
   font-size: var(--sb-opening-setup-size);
   line-height: 1.08;
 }
@@ -2783,7 +2783,7 @@ svg {
     --sb-opening-title-size: clamp(25px, 6.8vw, 32px);
     --sb-opening-qualifier-size: clamp(13px, 3.9vw, 16px);
     --sb-opening-setup-size: var(--sb-opening-title-size);
-    --sb-opening-outcome-size: clamp(18px, 5.4vw, 24px);
+    --sb-opening-outcome-size: clamp(19px, 5.7vw, 26px);
     --sb-opening-outcome-emphasis-size: var(--sb-opening-outcome-size);
     --sb-small-size: 13px;
     --sb-small-line: 1.38;
@@ -2867,6 +2867,7 @@ svg {
   .home-4b .opening-argument-headline,
   .home-4b .opening-outcome-block,
   .home-4b .opening-outcome-setup {
+    margin-left: 0;
     max-width: 100%;
   }
 
