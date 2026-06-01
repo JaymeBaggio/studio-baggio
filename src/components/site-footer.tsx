@@ -13,15 +13,27 @@ export function SiteFooter() {
         </div>
         <div className="text-sm leading-relaxed text-ink/60">
           <p>{footer.email}</p>
-          {footer.productLinks?.map((link) => (
-            <Link
-              key={link.href}
-              className="focus-ring mt-2 block underline-offset-4 hover:underline"
-              href={link.href}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {footer.productLinks?.map((link) =>
+            link.href.startsWith("http") ? (
+              <a
+                key={link.href}
+                className="focus-ring mt-2 block underline-offset-4 hover:underline"
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                className="focus-ring mt-2 block underline-offset-4 hover:underline"
+                href={link.href}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <Link className="focus-ring mt-2 inline-flex underline-offset-4 hover:underline" href="/privacy">
             {footer.privacyLabel}
           </Link>
