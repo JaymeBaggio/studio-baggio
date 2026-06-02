@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { buildEnquiryConfirmationEmail } from "@/lib/contact-emails";
 import { contactSchema } from "@/lib/contact-schema";
 
 const hits = new Map<string, { count: number; resetAt: number }>();
@@ -90,7 +91,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ ok: true, id: result.data?.id });
+    const confirmationEmail = buildEnquiryConfirmationEmail(name);
+    const confirmation = await resend.emails.send({
+      from,
+      to: email,
+      replyTo: to,
+      subject: "Studio Baggio enquiry received",
+      html: confirmationEmail.html,
+      text: confirmationEmail.text
+    });
+
+    if (confirmation.error) {
+      console.error("Studio Baggio contact confirmation email failed", confirmation.error);
+    }
+
+    return NextResponse.json({
+      ok: true,
+      id: result.data?.id,
+      confirmationId: confirmation.data?.id || null
+    });
   } catch {
     return NextResponse.json(
       { message: "The message could not be sent. Email jayme@studiobaggio.ai directly." },
