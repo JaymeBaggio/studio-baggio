@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
@@ -106,6 +107,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           <main id="main">{children}</main>
           <SiteFooter />
         </div>
+        <Analytics />
         <Toaster />
       </body>
     </html>
