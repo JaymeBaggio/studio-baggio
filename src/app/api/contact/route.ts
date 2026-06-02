@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         message:
-          "Email is not configured yet. Add RESEND_API_KEY and CONTACT_FROM_EMAIL in Vercel, or email jayme@studiobaggio.ai directly."
+          "The message could not be sent. Email jayme@studiobaggio.ai directly."
       },
       { status: 503 }
     );
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
         "What are they trying to improve?",
         improvement,
         "",
-        "Where do they think AI could help?",
+        "Tell us what would make this useful.",
         aiOpportunity
       ].join("\n")
     });

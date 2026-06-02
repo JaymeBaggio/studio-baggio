@@ -76,7 +76,7 @@ export const workItems: WorkItem[] = [
     promise: "Your Own Expertise. At Scale.",
     status: "Live product",
     proofCopy:
-      "‘ Your Own Expertise. At Scale ‘Flagship product from Studio Baggio- turning adviser expertise into publish-ready authority content.",
+      "Your Own Expertise. At Scale. Flagship product from Studio Baggio, turning adviser expertise into publish-ready authority content.",
     problem:
       "37,136 UK financial advisers are authorised, but fewer than 300 post consistently on LinkedIn.",
     built:

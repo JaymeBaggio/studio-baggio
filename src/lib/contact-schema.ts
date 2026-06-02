@@ -7,11 +7,15 @@ export const contactSchema = z.object({
   website: z
     .string()
     .trim()
+    .transform((value) => {
+      if (!value || /^https?:\/\//i.test(value)) return value;
+      return `https://${value}`;
+    })
     .refine((value) => !value || /^https?:\/\/.+\..+/.test(value), {
-      message: "Use a full URL, for example https://example.com."
+      message: "Add a valid website, for example studiobaggio.ai."
     }),
-  improvement: z.string().trim().min(12, "Give Jayme a little more context."),
-  aiOpportunity: z.string().trim().min(12, "Tell Jayme where AI might help."),
+  improvement: z.string().trim().min(2, "Please add what you want to improve."),
+  aiOpportunity: z.string().trim().min(2, "Please add what would make this useful."),
   companyUrl: z.string().max(0, "Spam check failed.").optional()
 });
 

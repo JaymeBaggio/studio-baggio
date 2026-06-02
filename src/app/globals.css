@@ -3995,16 +3995,42 @@ svg {
   align-items: start;
 }
 
+.home-4b.contact-page .studio-contact-section {
+  padding-block: clamp(82px, 10vh, 112px) clamp(54px, 7vh, 84px);
+  border-top: 0;
+}
+
+.home-4b.contact-page .studio-contact-frame {
+  display: grid;
+  gap: clamp(26px, 3.2vw, 42px);
+}
+
+.home-4b.contact-page .studio-contact-intro {
+  max-width: var(--sb-reading);
+}
+
+.home-4b.contact-page .studio-contact-intro .eyebrow + .studio-page-title {
+  margin-top: 28px;
+}
+
+.home-4b.contact-page .studio-contact-title {
+  max-width: 760px;
+}
+
+.home-4b.contact-page .studio-contact-title-dot {
+  color: var(--sb-blue);
+}
+
 .home-4b .studio-contact-panel {
   width: min(100%, var(--sb-wide));
   border-top: 1px solid var(--sb-rule);
   border-bottom: 1px solid var(--sb-rule);
-  padding-block: clamp(24px, 3vw, 36px);
+  padding-block: clamp(20px, 2.5vw, 30px);
 }
 
 .home-4b .studio-contact-panel form,
 .home-4b .studio-contact-panel form > .grid {
-  gap: 24px;
+  gap: 20px;
 }
 
 .home-4b .studio-contact-panel label,
@@ -4026,16 +4052,47 @@ svg {
   font-size: var(--sb-body-size);
   line-height: var(--sb-body-line);
   border-bottom-color: var(--sb-rule);
+  outline: none;
+  box-shadow: none;
+  transition: border-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.home-4b .studio-contact-panel input {
+  min-height: 48px;
+  padding-block: 10px 11px;
+}
+
+.home-4b .studio-contact-panel textarea {
+  min-height: clamp(88px, 8vw, 108px);
+  margin-top: 8px;
+  border-top: 1px solid var(--sb-rule);
+  padding-block: 13px;
+  resize: vertical;
 }
 
 .home-4b .studio-contact-panel input:focus,
-.home-4b .studio-contact-panel textarea:focus {
+.home-4b .studio-contact-panel input:focus-visible,
+.home-4b .studio-contact-panel textarea:focus,
+.home-4b .studio-contact-panel textarea:focus-visible {
+  outline: none;
+  box-shadow: none;
   border-bottom-color: var(--sb-ink);
 }
 
 .home-4b .studio-contact-email {
   margin-top: 28px;
   display: inline-block;
+}
+
+.home-4b .studio-contact-status {
+  margin: 0;
+  color: var(--sb-body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.home-4b .studio-contact-status.is-error {
+  color: var(--sb-ink);
 }
 
 .home-4b .studio-page-cta {

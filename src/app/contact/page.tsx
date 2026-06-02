@@ -10,13 +10,14 @@ export default function ContactPage() {
   return (
     <>
       <PageReveals />
-      <div className="home-4b studio-page">
-        <section className="studio-page-hero">
-          <div className="editorial-container studio-page-frame">
-            <div>
+      <div className="home-4b studio-page contact-page">
+        <section className="studio-contact-section">
+          <div className="editorial-container studio-contact-frame">
+            <div className="studio-contact-intro">
               <p className="eyebrow" data-reveal data-motion="label">{contactPage.eyebrow}</p>
-              <h1 className="studio-page-title" data-split>
-                {contactPage.title}
+              <h1 className="studio-page-title studio-contact-title" data-reveal>
+                <span>{contactPage.title.replace(/\.$/, "")}</span>
+                <span className="studio-contact-title-dot" aria-hidden="true">.</span>
               </h1>
               <p className="studio-page-body" data-reveal>
                 {contactPage.body}
@@ -25,10 +26,6 @@ export default function ContactPage() {
                 {contactPage.email}
               </p>
             </div>
-          </div>
-        </section>
-        <section>
-          <div className="editorial-container">
             <div className="studio-contact-panel" data-reveal data-motion="evidence">
               <ContactForm />
             </div>
