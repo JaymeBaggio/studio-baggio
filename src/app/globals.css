@@ -4338,6 +4338,10 @@ svg {
   margin-top: clamp(34px, 4vw, 48px);
 }
 
+.home-4b.products-page .products-panel-grid.is-business-tracker .products-copy-section + .products-copy-section {
+  margin-top: clamp(26px, 3vw, 34px);
+}
+
 .home-4b.products-page .products-copy-section p:not(.products-section-label),
 .home-4b.products-page .products-side-section p:not(.products-section-label) {
   margin: 14px 0 0;
@@ -4415,6 +4419,10 @@ svg {
   margin-bottom: clamp(14px, 1.7vw, 22px);
 }
 
+.home-4b.products-page .products-panel-grid.is-business-tracker .products-panel-media.has-secondary-media {
+  margin-bottom: clamp(24px, 2.6vw, 32px);
+}
+
 .home-4b.products-page .products-panel-media-secondary {
   margin-bottom: clamp(28px, 3vw, 36px);
 }
@@ -4430,11 +4438,21 @@ svg {
   padding-top: 18px;
 }
 
+.home-4b.products-page .products-panel-copy .products-side-section-copy {
+  margin-top: clamp(26px, 3vw, 34px);
+  border-top: 0;
+  padding-top: 0;
+}
+
 .home-4b.products-page .products-side-quote {
   margin: 0 0 clamp(28px, 3vw, 36px);
   border-top: 1px solid var(--sb-rule);
   border-bottom: 1px solid var(--sb-rule);
   padding-block: 16px;
+}
+
+.home-4b.products-page .products-side-quote.is-between-media {
+  margin-bottom: clamp(24px, 2.6vw, 32px);
 }
 
 .home-4b.products-page .products-side-quote blockquote {
@@ -4443,6 +4461,53 @@ svg {
   font-size: var(--sb-small-size);
   font-weight: var(--sb-strong-weight);
   line-height: 1.58;
+}
+
+.home-4b.products-page .products-enquiry-section {
+  margin-bottom: clamp(28px, 3vw, 36px);
+  border-top: 1px solid var(--sb-rule);
+  padding-top: 18px;
+}
+
+.home-4b.products-page .products-enquiry-section p:not(.products-section-label) {
+  margin: 14px 0 0;
+  color: var(--sb-body);
+  font-size: var(--sb-small-size);
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: 0;
+}
+
+.home-4b.products-page .products-enquiry-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 100%;
+  min-height: 58px;
+  margin-top: 22px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border: 1px solid var(--sb-ink);
+  padding: 16px clamp(18px, 2vw, 24px);
+  color: var(--sb-ink);
+  font-size: var(--sb-label-size);
+  font-weight: var(--sb-cta-weight);
+  line-height: var(--sb-label-line);
+  letter-spacing: var(--sb-label-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.home-4b.products-page .products-enquiry-link svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  stroke-width: 1.8;
+}
+
+.home-4b.products-page .products-enquiry-link:hover {
+  background: var(--sb-ink);
+  color: var(--sb-paper);
 }
 
 .home-4b.products-page .products-side-quote + .products-side-section {

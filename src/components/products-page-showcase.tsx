@@ -179,6 +179,19 @@ export function ProductDetailPanel({
   const isCalmAuthority = item.slug === "calm-authority";
   const isBusinessTracker = item.slug === "business-tracker";
   const hasSecondaryImages = Boolean(productPage.secondaryImages?.length);
+  const sideSectionsInCopy = isBusinessTracker ? productPage.sideSections ?? [] : [];
+  const sideSectionsInAside = isBusinessTracker ? [] : productPage.sideSections ?? [];
+  const sideQuoteClassName = [
+    "products-side-quote",
+    isBusinessTracker ? "is-between-media" : ""
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const sideQuote = productPage.sideQuote ? (
+    <figure className={sideQuoteClassName}>
+      <blockquote>{productPage.sideQuote}</blockquote>
+    </figure>
+  ) : null;
   const titleId = `products-panel-title-${item.slug}`;
   const actions = productPage.ctas?.filter((cta) => cta.href !== currentPath);
   const panelGridClassName = [
@@ -216,6 +229,10 @@ export function ProductDetailPanel({
             {productPage.sections.map((section) => (
               <ProductSection key={section.label} section={section} />
             ))}
+
+            {sideSectionsInCopy.map((section) => (
+              <ProductSideSection key={section.label} section={section} className="products-side-section-copy" />
+            ))}
           </div>
 
           <aside className="products-panel-aside">
@@ -231,6 +248,8 @@ export function ProductDetailPanel({
               />
             </figure>
 
+            {isBusinessTracker ? sideQuote : null}
+
             {productPage.secondaryImages?.map((image) => (
               <figure key={image.src} className="products-panel-media products-panel-media-secondary">
                 <Image
@@ -243,13 +262,11 @@ export function ProductDetailPanel({
               </figure>
             ))}
 
-            {productPage.sideQuote ? (
-              <figure className="products-side-quote">
-                <blockquote>{productPage.sideQuote}</blockquote>
-              </figure>
-            ) : null}
+            {isBusinessTracker ? <ProductEnquiryBlock /> : null}
 
-            {productPage.sideSections?.map((section) => (
+            {isBusinessTracker ? null : sideQuote}
+
+            {sideSectionsInAside.map((section) => (
               <ProductSideSection key={section.label} section={section} />
             ))}
 
@@ -342,13 +359,31 @@ function ProductSection({ section }: { section: ProductPageData["sections"][numb
   );
 }
 
+function ProductEnquiryBlock() {
+  return (
+    <section className="products-enquiry-section">
+      <p className="products-section-label">Find out more</p>
+      <p>
+        Enquire below. If you&apos;re a good fit, we&apos;ll be in touch to arrange a bespoke AI
+        Opportunity Audit.
+      </p>
+      <Link href="/contact" className="focus-ring products-enquiry-link">
+        <span>Enquire Now</span>
+        <ArrowUpRight aria-hidden="true" />
+      </Link>
+    </section>
+  );
+}
+
 function ProductSideSection({
-  section
+  section,
+  className
 }: {
   section: NonNullable<ProductPageData["sideSections"]>[number];
+  className?: string;
 }) {
   return (
-    <section className="products-side-section">
+    <section className={["products-side-section", className].filter(Boolean).join(" ")}>
       <p className="products-section-label">{section.label}</p>
       {section.paragraphs?.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
