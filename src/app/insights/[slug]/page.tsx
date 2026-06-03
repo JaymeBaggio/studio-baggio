@@ -122,6 +122,7 @@ const articleSectionHeadingsBySlug: Record<string, Set<string>> = {
     "End-of-year TLDR"
   ]),
   "ai-future-of-work": new Set(["Do three things this week:"]),
+  "what-is-an-ai-skill": new Set(["SKILLS SPECIAL:"]),
   "ai-predictions-2026": new Set([
     "2026 Predictions- What I think we’ll see in the next 12months."
   ])
@@ -240,6 +241,181 @@ function ArticleSignalBlock({ signal }: { signal: ArticleSignal }) {
   );
 }
 
+type EditorialTextChunk = {
+  highlight?: string;
+  text: string;
+  tone?: "emphasis" | "heading" | "paragraph";
+};
+
+const paragraphChunkOverridesBySlug: Record<string, Array<{ startsWith: string; chunks: EditorialTextChunk[] }>> = {
+  "firecrawl-for-business": [
+    {
+      startsWith: "You can now scrape every competitor’s website",
+      chunks: [
+        {
+          text: "You can now scrape every competitor’s website, pull out their pricing models, & analyse how they position themselves in the market."
+        },
+        {
+          text: "You can find out-who’s spending in which sectors- as well as how much. Performance metrics, who’s offer is strongest against any criteria, which prospects are worth pursuing based on your own specific ICP- You can even search every two-bedroom flat in London and build a live property database around any given criteria."
+        },
+        {
+          text: "Firecrawl enables you to find all publically available information on any practitioner in any niche, assess their public profile, then rate them against a quality framework your business has defined."
+        },
+        {
+          text: "What used to sit across the likes of Salesforce, Tubular, a prospect database or a research agency can now be accessed in seconds, for pennies a queery and its made parts of the old intelligence market suddenly look distinctly exposed."
+        },
+        {
+          highlight: "Bespoke curation of data and a collapse in cost and speed of commercial intelligence.",
+          text: "When just last week we saw Salesforce’s own Marc Benicoff announce their own API ‘connector’- it’s clear the direction we’re headed in- Bespoke curation of data and a collapse in cost and speed of commercial intelligence.",
+          tone: "emphasis"
+        },
+        {
+          text: "What stikes me is the ease with which this is accessible. Copy one API key into Claude or codex and you now have a purpose built dashboard plugged into every piece of information publicly available- live."
+        }
+      ]
+    },
+    {
+      startsWith: "There is now near zero barrier to entry",
+      chunks: [
+        {
+          text: "There is now near zero barrier to entry for anybody to launch a vertical saas for any niche; Aim Firecrawl at job boards & career pages- you have built a niche Indeed. Add scrapecreators or supadata & you have “Tubular for fitness creators” or “Rephonic for B2B podcasters” in under an hour- without any company wide data engineering project."
+        },
+        {
+          text: "Firecrawl makes it easier to build a niche data company. But it also makes the niche data company easier to replace."
+        },
+        {
+          text: "If a product is just public web data, AI classification & a dashboard, then the buyer won’t need to buy it for long. It begs the question “Why would we pay for a genralised view of the market when we can build a private view of the market around our own priorities?”"
+        }
+      ]
+    },
+    {
+      startsWith: "Now you are not just looking at brands with budget",
+      chunks: [
+        {
+          text: "Now you are not just looking at brands with budget. You are looking at brands with budget, category literacy and a visible gap your business is positioned to fill."
+        }
+      ]
+    },
+    {
+      startsWith: "If your company is looking at a stale dashboard",
+      chunks: [
+        {
+          text: "If your company is looking at a stale dashboard built around someone elses view of the market, you are now at a distinct disadvantage versus those with hands and eyes on the whole of the internet."
+        },
+        {
+          highlight: "More data only helps if the business has a sharp enough filter- vague thinking just became a lot more expensive.",
+          text: "When access to data is this easily accessible the onus shifts towards understanding what to do with it. More data only helps if the business has a sharp enough filter- vague thinking just became a lot more expensive.",
+          tone: "emphasis"
+        },
+        {
+          text: "The more data you can access, the more important a clear ICP, positioning and sharp qualification criteria become."
+        },
+        {
+          text: "If your business can use public data to qualify the market, the market can use public data to qualify your business."
+        }
+      ]
+    },
+    {
+      startsWith: "Salesforce & HubSpot are not replaced overnight",
+      chunks: [
+        {
+          text: "Salesforce & HubSpot are not replaced overnight, but the manually maintained CRM, does now start to look like a pre-AI artefact. An old-school CRM told you who made an enquiry, clicked on an AD, signed up to your newsletter."
+        },
+        {
+          text: "The new era lead tracker pulls public information about any person or company, then qualifies them against a rubric your business defines. Do they fit the ICP? Do they have budget? What did their CEO post on LinkedIn this week? Are they a standard commercial opportunity or a reputation play?"
+        },
+        {
+          text: "The output becomes a rationale & a recommended angle for approach. It starts to look a lot less like a leads trakcer and a lot more like a prospecting machine."
+        },
+        {
+          text: "Example: A production company working with brands to help scale their owned & operated platforms. They can now find out which brands are spending heavily on creator marketing; Of those- which have underdeveloped owned channels? Which brands are growing on Tiktok but haven’t yet managed to extend to longer form on YouTube? Which categry has unoccupied whitespace ready for the redbull of that sector to fill the gap?"
+        }
+      ]
+    },
+    {
+      startsWith: "As public data becomes easier to analyse",
+      chunks: [
+        {
+          text: "As public data becomes easier to analyse, unclear positioning and weak public proof become harder to hide."
+        },
+        {
+          text: "Your website, SEO, case studies, press, reviews & public content need to give buyers, partners & AI systems enough evidence to understand what you do and why you are credible."
+        },
+        {
+          text: "A strong digital footprint becomes a stronger qualification metric. A thin website, poor search presence, limited proof and weak third-party evidence make the business harder to understand and easier to discount."
+        },
+        {
+          text: "A business may have strong clients, strong results and a solid offline reputation. But if those signals are trapped in private conversations, they are harder for new buyers to verify and harder for AI systems to qualify- which becomes a real commercial risk."
+        },
+        {
+          text: "That applies to businesses and individuals- There is another side to this shift. If public data can be used to qualify the market, it can also be used to qualify you."
+        }
+      ]
+    }
+  ]
+};
+
+function getParagraphChunks(articleSlug: string, paragraph: string): EditorialTextChunk[] {
+  const override = paragraphChunkOverridesBySlug[articleSlug]?.find((entry) =>
+    paragraph.startsWith(entry.startsWith)
+  );
+
+  if (override) {
+    return override.chunks;
+  }
+
+  if (paragraph.length < 460 || paragraph.includes("Use it for:")) {
+    return [{ text: paragraph }];
+  }
+
+  const sentences = paragraph.split(/(?<=[.!?])\s+/).filter(Boolean);
+  if (sentences.length < 3) {
+    return [{ text: paragraph }];
+  }
+
+  const chunks: string[] = [];
+  let current = "";
+
+  for (const sentence of sentences) {
+    const next = current ? `${current} ${sentence}` : sentence;
+    if (current && next.length > 330) {
+      chunks.push(current);
+      current = sentence;
+    } else {
+      current = next;
+    }
+  }
+
+  if (current) {
+    chunks.push(current);
+  }
+
+  return chunks.map((text) => ({ text }));
+}
+
+function renderHighlightedText(text: string, highlight?: string) {
+  if (!highlight || !text.includes(highlight)) {
+    return renderInlineMarkdown(text);
+  }
+
+  const [before, afterStart] = text.split(highlight);
+  return [
+    ...renderInlineMarkdown(before),
+    <span className="insight-article-emphasis-highlight" key={highlight}>
+      {highlight}
+    </span>,
+    ...renderInlineMarkdown(afterStart)
+  ];
+}
+
+function ArticleEmphasisBlock({ chunk }: { chunk: EditorialTextChunk }) {
+  return (
+    <aside className="insight-article-emphasis">
+      <p>{renderHighlightedText(chunk.text, chunk.highlight)}</p>
+    </aside>
+  );
+}
+
 function getSourceSubheading(paragraph: string) {
   const match = paragraph.match(sourceSubheadingPattern);
   return match ? `${match[1]}:` : null;
@@ -276,6 +452,16 @@ function ArticleExampleBlock({ label, text }: { label: string; text: string }) {
       <p className="insight-article-example-label">{label}</p>
       <p className="insight-article-example-body">{renderInlineMarkdown(text)}</p>
     </aside>
+  );
+}
+
+function ArticleListItemBody({ articleSlug, text }: { articleSlug: string; text: string }) {
+  return (
+    <div className="insight-article-source-list-copy">
+      {getParagraphChunks(articleSlug, text).map((chunk, chunkIndex) => (
+        <p key={`${chunk.text}-${chunkIndex}`}>{renderHighlightedText(chunk.text, chunk.highlight)}</p>
+      ))}
+    </div>
   );
 }
 
@@ -620,6 +806,55 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
   let operatingSystemIntroIndex = -1;
   let isSkippingHiddenSection = false;
 
+  const pushParagraphChunk = (chunk: EditorialTextChunk) => {
+    if (chunk.tone === "heading") {
+      blocks.push(
+        <h2
+          className={`insight-article-section-heading${articleSlug === "firecrawl-for-business" ? " is-accent" : ""}`}
+          key={`heading-${index}-${blocks.length}`}
+        >
+          {chunk.text}
+        </h2>
+      );
+      return;
+    }
+
+    if (chunk.tone === "emphasis") {
+      blocks.push(<ArticleEmphasisBlock chunk={chunk} key={`emphasis-${index}-${blocks.length}`} />);
+      return;
+    }
+
+    const exampleSplit = getExampleSplit(chunk.text);
+    if (exampleSplit) {
+      if (exampleSplit.before) {
+        blocks.push(
+          <p key={`p-${index}-${blocks.length}`}>
+            {renderInlineMarkdown(exampleSplit.before)}
+          </p>
+        );
+      }
+      blocks.push(
+        <ArticleExampleBlock
+          key={`example-${index}-${blocks.length}`}
+          label={exampleSplit.label}
+          text={exampleSplit.example}
+        />
+      );
+    } else if (isArticleSourceNote(articleSlug, chunk.text)) {
+      blocks.push(
+        <p className="insight-article-source-note" key={`source-${index}-${blocks.length}`}>
+          {renderInlineMarkdown(chunk.text)}
+        </p>
+      );
+    } else {
+      blocks.push(
+        <p key={`p-${index}-${blocks.length}`}>
+          {renderInlineMarkdown(chunk.text)}
+        </p>
+      );
+    }
+  };
+
   const flushParagraph = () => {
     if (!paragraphLines.length) {
       return;
@@ -692,35 +927,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       );
       lastBlockWasQuote = false;
     } else {
-      const exampleSplit = getExampleSplit(paragraph);
-      if (exampleSplit) {
-        if (exampleSplit.before) {
-          blocks.push(
-            <p key={`p-${index}-${blocks.length}`}>
-              {renderInlineMarkdown(exampleSplit.before)}
-            </p>
-          );
-        }
-        blocks.push(
-          <ArticleExampleBlock
-            key={`example-${index}-${blocks.length}`}
-            label={exampleSplit.label}
-            text={exampleSplit.example}
-          />
-        );
-      } else if (isArticleSourceNote(articleSlug, paragraph)) {
-        blocks.push(
-          <p className="insight-article-source-note" key={`source-${index}-${blocks.length}`}>
-            {renderInlineMarkdown(paragraph)}
-          </p>
-        );
-      } else {
-        blocks.push(
-          <p key={`p-${index}-${blocks.length}`}>
-            {renderInlineMarkdown(paragraph)}
-          </p>
-        );
-      }
+      getParagraphChunks(articleSlug, paragraph).forEach(pushParagraphChunk);
       lastBlockWasQuote = false;
     }
 
@@ -914,7 +1121,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
           {items.map((item) => (
             <li key={`${item.marker}-${item.text}`}>
               <span aria-hidden="true">{item.marker}</span>
-              <p>{renderInlineMarkdown(item.text)}</p>
+              <ArticleListItemBody articleSlug={articleSlug} text={item.text} />
             </li>
           ))}
         </ul>
@@ -978,7 +1185,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
           {items.map((item) => (
             <li key={`${item.marker}-${item.text}`}>
               <span aria-hidden="true">{item.marker}</span>
-              <p>{renderInlineMarkdown(item.text)}</p>
+              <ArticleListItemBody articleSlug={articleSlug} text={item.text} />
             </li>
           ))}
         </ol>

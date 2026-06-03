@@ -1,5 +1,54 @@
 # Studio Baggio Website - STATUS
-*Last updated: 31 May 2026*
+*Last updated: 3 June 2026*
+
+## 3 June Insights Article Readability Pass - Local
+
+Scope:
+
+- Insights article renderer and longform article CSS only.
+- No `src/content/insights.ts` source article copy changed.
+
+Implemented:
+
+- Added presentation-only paragraph chunking for long article text so oversized blocks render as readable editorial paragraphs while preserving the original wording.
+- Added exact Firecrawl chunking for the long commercial-intelligence passages Jayme flagged, including two restrained blue left-rule emphasis moments.
+- Applied the same rhythm to rendered source lists and numbered playbook items, fixing the long ChatGPT operating-system checklist item without changing the copy.
+- Standardised article body paragraph width, line-height and internal list spacing so paragraph gaps stay consistent instead of random.
+- Added `text-wrap: pretty` and controlled max widths to reduce awkward line breaks and orphan-style wraps where the browser supports it.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `next build --webpack` passes.
+- In-app browser audit across all 12 article routes found no horizontal overflow.
+- Firecrawl presentation chunks were checked against the renderer's source paragraph boundaries and reconstruct the source text exactly, with whitespace normalised only.
+- Longest rendered paragraph after this pass:
+  - Firecrawl: 408 characters.
+  - AI adoption: 428 characters.
+  - ChatGPT playbook: 378 characters, down from roughly 600.
+
+Follow-up:
+
+- Tightened the article hero type scale after Jayme flagged the Firecrawl title as oversized:
+  - article hero title now uses `clamp(36px, 3.45vw, 56px)` on desktop instead of the previous display-scale `clamp(44px, 4.7vw, 76px)`.
+  - mobile article title now uses `clamp(31px, 8.4vw, 42px)`.
+  - hero top padding, hero internal gap, meta gap, article top padding and heading margins were reduced onto a tighter, more consistent spacing rhythm.
+- Re-verified the Firecrawl article in the in-app browser: first article paragraph now appears within the first screen, with no horizontal overflow.
+- Simplified the article typography after Jayme flagged the page as visually messy:
+  - article body, right-rail titles, callout bodies, lists and article visuals now share one copy size.
+  - metadata, category labels, side-rail labels and small UI text now share one label size.
+  - the H1 is the only separate display tier.
+  - article-specific hairlines now use a quieter local rule token.
+  - article breadcrumbs now sit clear of the fixed header on desktop and mobile.
+- Re-verified the Firecrawl article in the in-app browser at `http://127.0.0.1:3017/insights/firecrawl-for-business`; no horizontal overflow and the visible article copy uses the simplified 16px / 12px mobile scale.
+- Re-verified `npm run typecheck`, `npm run lint` and `next build --webpack`.
+- Follow-up after Jayme approved the Firecrawl treatment:
+  - constrained article H1s to the body-copy column width so titles no longer run across the right rail.
+  - applied the same hero spacing, H1 width and breadcrumb clearance globally across all `/insights/[slug]` article pages.
+  - audited all 12 live article routes in the Codex browser at `http://127.0.0.1:3006`; no horizontal overflow found, all routes use the same body/label type scales, and article-specific visual blocks stay inside the article column.
+  - styled the exact `SKILLS SPECIAL:` source line on `/insights/what-is-an-ai-skill` as the same small uppercase section heading treatment used for `WHAT IS A SKILL?`; no article copy changed.
+  - removed the global first/two-paragraph intro override from article bodies so openings now use the same body font, colour and spacing rhythm as the rest of each article.
 
 ## 31 May Mobile Responsiveness + Header Motion
 
