@@ -49,6 +49,7 @@ Follow-up:
   - audited all 12 live article routes in the Codex browser at `http://127.0.0.1:3006`; no horizontal overflow found, all routes use the same body/label type scales, and article-specific visual blocks stay inside the article column.
   - styled the exact `SKILLS SPECIAL:` source line on `/insights/what-is-an-ai-skill` as the same small uppercase section heading treatment used for `WHAT IS A SKILL?`; no article copy changed.
   - removed the global first/two-paragraph intro override from article bodies so openings now use the same body font, colour and spacing rhythm as the rest of each article.
+  - fixed the article signal parser so `Insight, strategy Taste, Brave ideas.` in `/insights/building-ai-operating-systems` no longer renders as a broken `INSIGHT` callout with a comma-led body; source copy was not changed.
 
 ## 31 May Mobile Responsiveness + Header Motion
 

@@ -169,7 +169,7 @@ type ArticleSignal = {
 };
 
 const articleSignalPattern =
-  /^(?:\*\*)?\s*(actionable takeaway|why it matters|the takeaway|opportunity|insight|action|takeout|signal)\s*:?\.*(?:\*\*)?\s*(.*)$/i;
+  /^(?:\*\*)?\s*(actionable takeaway|why it matters|the takeaway|opportunity|insight|action|takeout|signal)\s*:\.*(?:\*\*)?\s*(.*)$/i;
 
 const sourceSubheadingPattern =
   /^\*\*\s*(headline predictions|what it means in practice|what execs should do now|the takeaway)\s*:\s*\*\*\s*$/i;
