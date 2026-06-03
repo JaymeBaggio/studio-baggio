@@ -2280,6 +2280,10 @@ svg {
   color: var(--sb-muted);
 }
 
+.home-4b .value-map-detail-copy > .value-map-detail-label:first-child {
+  margin-top: 0;
+}
+
 .home-4b .value-map-includes {
   display: grid;
   gap: 8px;
