@@ -433,6 +433,7 @@ export function PageReveals() {
                   });
                 });
               }
+              if (setup) opening.to(setup, { autoAlpha: 0.28, duration: 2.15 }, 11.35);
               support.forEach((item, index) => {
                 revealScan(opening, item, 10.25 + index * 3.18, { duration: 2.65 });
               });
