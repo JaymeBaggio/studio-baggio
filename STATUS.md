@@ -1,6 +1,40 @@
 # Studio Baggio Website - STATUS
 *Last updated: 4 June 2026*
 
+## 4 June GEO Insights Article - Local Preview
+
+Scope:
+
+- Added one new Insights article route only: `/insights/generative-engine-optimisation`.
+- Used the locked reader copy from `~/Desktop/Studio Baggio/SEO/GEO Pillar Page - CLEAN READ.md`.
+- Used the SEO metadata and source notes from `~/Desktop/Studio Baggio/SEO/GEO Pillar Page - Draft Copy.md`.
+
+Implemented:
+
+- Added `Generative Engine Optimisation for Professional Services` under the `AI Search` category.
+- Added article metadata, tags, preview, related links, and source provenance.
+- Added FAQ schema support to the article route using the existing schema components.
+- Added a closing CTA renderer for the final `Find out where AI search is leaving your firm invisible` section, linking to `/contact`.
+- Added restrained article callout styling for the definition and AI-readability blocks, matching the current Insights article system.
+
+Verified:
+
+- Embedded article body matches the clean-read source copy exactly, character for character.
+- `/insights/generative-engine-optimisation` returns the article title.
+- `/insights` links to the new article.
+- Page source includes `BlogPosting`, `BreadcrumbList`, and `FAQPage` JSON-LD.
+- FAQ schema contains 6 Q&A entries.
+- CTA link to `/contact` is present.
+- Fixed a duplicate React key warning on the new article by replacing raw line-number keys with block-scoped renderer keys. No article copy changed.
+- URL allocation checked:
+  - canonical, Open Graph URL, article schema URL and breadcrumb URL all point to `https://www.studiobaggio.ai/insights/generative-engine-optimisation`.
+  - sitemap includes `https://www.studiobaggio.ai/insights/generative-engine-optimisation`.
+  - new article related links point to Firecrawl, Reuters/Owned Media and AI Adoption.
+  - Reuters/Owned Media related link now points to this new GEO pillar URL instead of the older short GEO note.
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build -- --webpack` passes.
+
 ## 4 June Homepage Header Auto-Hide - Local
 
 Scope:

@@ -9,6 +9,10 @@ export type InsightArticle = {
   category: string;
   categorySlug: string;
   tags: string[];
+  faq?: Array<{
+    question: string;
+    answer: string;
+  }>;
   source: string;
   sourcePath: string;
   sourceStart: string;
@@ -131,7 +135,7 @@ export const insightArticles: InsightArticle[] = [
     related: [
       "firecrawl-for-business",
       "ai-adoption-value-gap",
-      "geo-generative-engine-optimisation",
+      "generative-engine-optimisation",
     ],
     sourceMarkdown: "## Slide 2: Reuters Institute's Trends & Predictions 2026 — What Businesses Should Do Next\n\nThe Reuters Institute's Trends & Predictions Report is an annual survey-led read on where media leaders think the industry is heading. This year's message: Search is sending less traffic, platforms are keeping more users inside their own interfaces, and media businesses need to build stronger direct relationships with audiences.\n\n**Headline Predictions:**\n\n1) **Search referrals are expected to almost halve.** Media leaders expect search traffic to fall by 43% over the next three years as AI summaries and chat-style search reduce the need to click through to publisher sites.\n\n2) **Publishers are being hit from two sides at once.** On one side, AI reduces clicks by answering the question upfront. On the other, attention keeps moving towards creators and personality-led formats, where audiences follow people and series, not pages.\n\n3) **The middle gets squeezed first (the barbell effect).** You end up with two ends that hold value: Premium, distinctive, human-led work people actively seek out vs utility content produced efficiently at scale. The hardest place to sit is the middle: routine reporting and generic service content that can be summarised, scraped, or replaced.\n\n4) **\"Personalised briefings\"** are becoming a normal way people consume news. More people will get their news through assistants that assemble and summarise what they need.\n\n**What it means in practice:**\n- Creator strategy is no longer a nice-to-have. 76% of publishers say they plan to encourage journalists to behave more like creators and build personal brands.\n- This is not \"do more socials\". It's a distribution decision.\n- If audiences can choose voices and formats directly, you're less exposed to whatever search or platform UX decides to prioritise.\n\nEven if you're not a publisher, the lesson is the same: the channels you rent can change overnight, so build one you own.\n\n**Example: SheerLuxe** have demonstrated how to execute on this strategy. SL was an email newsletter-1st, but they expanded into YouTube, social video & podcasts & put their people the forefront of the product. Personalities become a route to distribution & that direct relationship compounds over time. They formalised it with BLUSH Talent MGMT, so the business participates in the commercial upside of employee influence - instead of treating it as a risk to manage. The market has just validated the model.\n\n---\n\n## Slide 3: Reuters 2026 Trends & Predictions Report cont.\n\nFuture acquired SheerLuxe for £39.9m upfront, with total consideration capped at £80m based on future performance. Publishers can still build meaningful value, but it's coming from direct audience habits, recognisable voices, and formats people seek out on purpose.\n\n**What execs should do now:**\n\n- **Demote old-style SEO:** Keep it, but stop treating it as the growth engine. Put leadership focus on return paths you control: newsletters, podcasts, app experiences, membership, repeat viewing.\n\n- **Plan for discovery through summaries and briefings.** Assume your work will be encountered through an AI layer.\n\n- **Structure content so it survives that layer:** clear headlines, clear sourcing, strong \"what it means,\" and a version that can travel (clips, charts, short explainers).\n\n- **Invest in formats people choose directly.** Video, audio, and personality-led series build familiarity and loyalty. They are also harder to reduce into a single substitute answer.\n\n- **Treat creator strategy as an operating decision with incentives.** If staff are building personal brands, decide the structure up front: what the company gets (distribution, series IP, loyalty), what talent gets (support, upside), and how you keep value in-house where it makes sense.\n\n- **Build repeatable franchises, not one-off posts.** If links are weaker and feeds are noisier, repeatable formats win. Series create habit. Habit creates direct audience.\n\n- **Diversify revenue away from page views.** Prioritise streams that don't depend on referrals: events, bundles that reduce churn, commerce, and premium products.\n\n**The takeaway:**\nSearch referrals are expected to keep falling. Audiences are spending more time with creators and personality-led formats. More consumption will happen through personalised briefings. The practical response is not complicated: build direct audience habits, make formats people actively choose, and design a creator strategy that strengthens the business rather than sitting awkwardly beside it."
   },
@@ -222,6 +226,154 @@ export const insightArticles: InsightArticle[] = [
       "owned-vs-rented-audience"
     ],
     sourceMarkdown: "## Brands Lean into GEO For Visibility\n\nBrands like LinkedIn, Mars & Arla are adopting strategies to stay visible in AI answer engines - ChatGPT & Google AI Overviews. Generative Engine Optimisation (GEO) or simply AI SEO - is becoming critical for brand discoverability. Agencies are responding too - Ogilvy ANZ just launched 'Generative Impact' with Semrush, a service combining earned media and AI-optimised content to counter falling traffic from traditional search.\n\n**Why it matters:** As behaviour shifts from search engines to AI-driven recommendations, traditional SEO is no longer enough. Early GEO adopters secure a major \"share of voice\" advantage while competitors lag.\n\n**Actionable takeaway:** Audit your brand's visibility in AI answer engines. Media owners should pitch outlets with AI partnerships now and track citation share-of-voice."
+  },
+  {
+    slug: "generative-engine-optimisation",
+    title: "Generative Engine Optimisation for Professional Services",
+    category: "AI Search",
+    categorySlug: "ai-search",
+    tags: [
+      "GEO",
+      "AEO",
+      "AI search visibility",
+      "AI SEO",
+      "professional services",
+      "expert-led firms"
+    ],
+    faq: [
+      {
+        question: "What is generative engine optimisation (GEO)?",
+        answer: "Structuring your content so AI systems like ChatGPT and Perplexity cite you when they answer a question. SEO ranks you in a list; GEO makes you the source."
+      },
+      {
+        question: "Is GEO different from AEO, AI search visibility or AI SEO?",
+        answer: "No. Same objective, different names. The tactics are identical."
+      },
+      {
+        question: "How is GEO different from SEO?",
+        answer: "SEO competes for a place in a list the user clicks. GEO competes to be cited inside the answer, where there is often no list and no click."
+      },
+      {
+        question: "Does it matter for professional services?",
+        answer: "More than for most. Your buyers ask AI for recommendations. If your credibility is not visible and verifiable online, AI leaves you out."
+      },
+      {
+        question: "How do you get cited?",
+        answer: "Answer directly, back claims with named sources, structure it for machines, build third-party corroboration, keep your details consistent, and track it monthly."
+      },
+      {
+        question: "How long does it take?",
+        answer: "It compounds. Citations on low-competition questions within weeks, broader authority over months."
+      }
+    ],
+    source: "Studio Baggio SEO draft",
+    sourcePath: "/Users/jaymebaggio/Desktop/Studio Baggio/SEO/GEO Pillar Page - Draft Copy.md",
+    sourceStart: "Generative Engine Optimisation for Professional Services",
+    sourceEnd: "→ **Discuss your AI opportunity**",
+    readTime: "6 min read",
+    date: "2026-06-04",
+    updated: "2026-06-04",
+    summary: "GEO, AEO and AI search visibility for expert-led firms. How AI decides who to cite, why your authority is invisible to it, and how to fix it.",
+    preview: "Generative engine optimisation (GEO) is structuring what you publish so AI systems - ChatGPT, Perplexity, Google's AI Overviews, Gemini, Claude - cite you when they answer a question. SEO earns a position in a list of links. GEO earns a citation inside the answer itself.",
+    thesis: "SEO competes for position. GEO competes for trust.",
+    metaTitle: "Generative Engine Optimisation for Professional Services",
+    metaDescription: "GEO, AEO and AI search visibility for expert-led firms. How AI decides who to cite, why your authority is invisible to it, and how to fix it.",
+    related: [
+      "firecrawl-for-business",
+      "owned-vs-rented-audience",
+      "ai-adoption-value-gap"
+    ],
+    sourceMarkdown: `# Generative Engine Optimisation for Professional Services
+
+GEO, AEO and AI search visibility for expert-led firms. How AI decides who to cite, why your authority is invisible to it, and how to fix it.
+
+---
+
+Generative engine optimisation (GEO) is structuring what you publish so AI systems - ChatGPT, Perplexity, Google's AI Overviews, Gemini, Claude - cite you when they answer a question. SEO earns a position in a list of links. GEO earns a citation inside the answer itself.
+
+You may also hear it called answer engine optimisation (AEO) or AI search visibility OR just "AI SEO". These are all the same concept - with the same objective - just under different labels.
+
+> **SEO:** How websites end up at the top of Google when someone searches. SEO ranks your page in a list of links. The user clicks and decides.
+>
+> **AI SEO | GEO | AEO:** How AI decides which websites or services to recommend. GEO gets you cited inside an AI answer. The AI reads the web, decides who is credible, and names its sources.
+
+SEO competes for position. GEO competes for trust.
+
+Not adverts or Paid Placements - your site has to earn its way there.
+
+## Why it matters
+
+Around half of Google searches now show an AI summary, heading past 75% by 2028, and most people who use AI search say it's now their main way of deciding who to buy from (McKinsey, August 2025).
+
+An AI recommendation is a stronger lead than a name pulled from a generic search list. The buyer has asked specific questions around their own particular criteria- so the recommendation is trusted and buyers arrive warm, not cold.
+
+## Why expert-led firms are the most exposed
+
+For expert-led firms this matters more than for most. AI search assesses whether the public web can substantiate you.
+
+> Your public profile is now not only your shop window, it's your evidence layer.
+
+Many professionals are credible in ways AI can't surface: client relationships, closed networks, warm introductions and internal reputation. Those things still matter, but they don't automatically transfer into AI search.
+
+AI systems need enough evidence to understand what you do and why you are credible. A strong digital footprint becomes a stronger qualification metric. A thin website, poor search presence, limited proof and weak third-party evidence make a firm harder to understand and easier to discount.
+
+A firm may have strong clients, strong results and a solid offline reputation. But if those signals are trapped in private conversations, they are harder for new buyers to verify and harder for AI systems to qualify, which becomes a real commercial risk.
+
+Public content is how private expertise becomes visible, readable and verifiable. LinkedIn posts that show judgement, articles that explain thinking, case studies that prove results, press mentions that substantiate claims. They matter more than they ever have.
+
+The firms that win the next few years will be the most credible in private and the easiest to verify in public.
+
+## How AI decides who to cite
+
+AI engines do not rank you. They decide whether your expertise is visible and verifiable enough to stand behind. When buyers name a brand in an AI query, nearly half the sources the AI cites back are earned media, editorial mentions, reviews, forums and independent sites, not the brand's own pages (analysis of 23,000+ AI citations, January 2026).
+
+For an expert-led firm that means two things. Specificity wins: "many firms see results" gets skipped, while a named figure from a named source gets quoted. And third-party mentions outweigh your own claims, so press, an independent roundup or a credible review does more for you than anything you say about yourself.
+
+The work, then, is to be specific, sourced and corroborated, rather than to sound impressive.
+
+## What to do first
+
+Open ChatGPT or Perplexity. Ask the questions your best prospects might ask, starting with the obvious one: *"Who are the best [wealth managers / litigation firms / financial advisers] in [your city]?"*
+
+If your firm is not in the answer, that is a structural visibility gap.
+
+Then check what AI can actually see. Your AI-readability score:
+
+> - Can a model understand what you do?
+> - Can it verify who you serve?
+> - Can it find proof that you're credible?
+> - Can it see testimonials, press, case studies, reviews, partnerships, client signals and a clear explanation of your work?
+
+Every "no" is a gap between your real authority and the version AI can read. The rest of this page is how you close it.
+
+## How to get cited in AI search
+
+1. **Answer the question directly, near the top.** AI quotes clean, self-contained answers. Buried points never get read.
+2. **Back claims with named statistics and sources.** Specific and sourced gets cited; vague gets skipped.
+3. **Structure it for machines.** Headings that mirror real buyer questions, FAQ blocks, and the right schema behind the scenes.
+4. **Build corroboration beyond your own site.** Press, directories, expert roundups, a consistent profile. AI trusts what is confirmed in more than one place, and favours earned media over self-claims.
+5. **Keep your details consistent.** Same name, description and service detail across your site, LinkedIn and listings, so AI builds one coherent picture of you.
+6. **Track it.** Ask the AI engines, monthly, the questions your buyers ask. Log whether you appear. Citation is measurable.
+## Common questions
+
+**What is generative engine optimisation (GEO)?** Structuring your content so AI systems like ChatGPT and Perplexity cite you when they answer a question. SEO ranks you in a list; GEO makes you the source.
+
+**Is GEO different from AEO, AI search visibility or AI SEO?** No. Same objective, different names. The tactics are identical.
+
+**How is GEO different from SEO?** SEO competes for a place in a list the user clicks. GEO competes to be cited inside the answer, where there is often no list and no click.
+
+**Does it matter for professional services?** More than for most. Your buyers ask AI for recommendations. If your credibility is not visible and verifiable online, AI leaves you out.
+
+**How do you get cited?** Answer directly, back claims with named sources, structure it for machines, build third-party corroboration, keep your details consistent, and track it monthly.
+
+**How long does it take?** It compounds. Citations on low-competition questions within weeks, broader authority over months.
+
+## Find out where AI search is leaving your firm invisible
+
+The AI Opportunity Audit maps what is hidden and what to fix first.
+
+→ **Discuss your AI opportunity**
+`
   },
   {
     slug: "building-ai-operating-systems",

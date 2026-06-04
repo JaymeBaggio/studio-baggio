@@ -6,6 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Code2, Flame, ListChecks, PoundSterling, Search } from "lucide-react";
 import { ArticleSchema } from "@/components/article-schema";
+import { FaqSchema } from "@/components/faq-schema";
 import { PageReveals } from "@/components/page-reveals";
 import {
   getInsightBySlug,
@@ -455,6 +456,86 @@ function ArticleExampleBlock({ label, text }: { label: string; text: string }) {
   );
 }
 
+function ArticleQuotedBlock({ lines }: { lines: string[] }) {
+  const nonEmptyLines = lines.map((line) => line.trim()).filter(Boolean);
+  const listLines = nonEmptyLines.filter((line) => line.startsWith("- "));
+
+  if (listLines.length && listLines.length === nonEmptyLines.length) {
+    return (
+      <aside className="insight-article-definition-callout is-list">
+        <ul>
+          {listLines.map((line) => (
+            <li key={line}>{renderInlineMarkdown(line.slice(2))}</li>
+          ))}
+        </ul>
+      </aside>
+    );
+  }
+
+  const paragraphs: string[] = [];
+  let currentParagraph: string[] = [];
+
+  const flushParagraph = () => {
+    if (currentParagraph.length) {
+      paragraphs.push(currentParagraph.join(" "));
+      currentParagraph = [];
+    }
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      flushParagraph();
+      continue;
+    }
+    currentParagraph.push(trimmed);
+  }
+
+  flushParagraph();
+
+  const isDefinitionCallout =
+    paragraphs.length > 1 || paragraphs.some((paragraph) => paragraph.includes("SEO:") || paragraph.includes("GEO"));
+
+  if (isDefinitionCallout) {
+    return (
+      <aside className="insight-article-definition-callout">
+        {paragraphs.map((paragraph) => (
+          <p key={paragraph}>{renderInlineMarkdown(paragraph)}</p>
+        ))}
+      </aside>
+    );
+  }
+
+  return (
+    <blockquote className="insight-article-pullquote">
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph}>{renderInlineMarkdown(paragraph)}</p>
+      ))}
+    </blockquote>
+  );
+}
+
+function ArticleClosingCta({ heading, paragraphs }: { heading: string; paragraphs: string[] }) {
+  return (
+    <aside className="insight-article-closing-cta">
+      <h2>{heading}</h2>
+      {paragraphs.map((paragraph) => {
+        if (paragraph.startsWith("→ ")) {
+          const label = paragraph.replace(/^→\s*/, "").replace(/\*\*/g, "");
+          return (
+            <Link href="/contact" key={paragraph}>
+              <span aria-hidden="true">→</span>
+              <strong>{label}</strong>
+            </Link>
+          );
+        }
+
+        return <p key={paragraph}>{renderInlineMarkdown(paragraph)}</p>;
+      })}
+    </aside>
+  );
+}
+
 function ArticleListItemBody({ articleSlug, text }: { articleSlug: string; text: string }) {
   return (
     <div className="insight-article-source-list-copy">
@@ -671,6 +752,14 @@ const operatingSystemSourceIntroParagraphs = [
   "SPINE",
   "The diverse human judgement at the centre of that system."
 ];
+
+const articleClosingCtaHeadingsBySlug: Record<string, Set<string>> = {
+  "generative-engine-optimisation": new Set(["Find out where AI search is leaving your firm invisible"])
+};
+
+function isArticleClosingCtaHeading(articleSlug: string, heading: string) {
+  return articleClosingCtaHeadingsBySlug[articleSlug]?.has(heading) ?? false;
+}
 
 const positioningAngles = [
   {
@@ -1004,7 +1093,9 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
           continue;
         }
         if (shouldShowSourceHeading(articleSlug, heading)) {
-          blocks.push(<ArticleHeading heading={getSourceHeadingDisplay(articleSlug, heading)} key={index} />);
+          blocks.push(
+            <ArticleHeading heading={getSourceHeadingDisplay(articleSlug, heading)} key={`h1-${index}`} />
+          );
           lastBlockWasQuote = false;
         }
       }
@@ -1019,6 +1110,38 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
         lastBlockWasQuote = false;
       } else {
         const heading = cleanSourceHeading(trimmed.slice(3));
+        if (isArticleClosingCtaHeading(articleSlug, heading)) {
+          const ctaParagraphs: string[] = [];
+          let currentCtaParagraph: string[] = [];
+
+          const flushCtaParagraph = () => {
+            if (currentCtaParagraph.length) {
+              ctaParagraphs.push(currentCtaParagraph.join(" "));
+              currentCtaParagraph = [];
+            }
+          };
+
+          index += 1;
+
+          while (index < lines.length) {
+            const nextTrimmed = lines[index].trim();
+            if (/^#{1,3}\s/.test(nextTrimmed)) {
+              break;
+            }
+            if (!nextTrimmed || nextTrimmed === "---") {
+              flushCtaParagraph();
+              index += 1;
+              continue;
+            }
+            currentCtaParagraph.push(nextTrimmed);
+            index += 1;
+          }
+
+          flushCtaParagraph();
+          blocks.push(<ArticleClosingCta heading={heading} key={`cta-${index}`} paragraphs={ctaParagraphs} />);
+          lastBlockWasQuote = false;
+          continue;
+        }
         if (shouldHideSourceSection(articleSlug, heading)) {
           isSkippingHiddenSection = true;
           lastBlockWasQuote = false;
@@ -1026,7 +1149,9 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
           continue;
         }
         if (shouldShowSourceHeading(articleSlug, heading)) {
-          blocks.push(<ArticleHeading heading={getSourceHeadingDisplay(articleSlug, heading)} key={index} />);
+          blocks.push(
+            <ArticleHeading heading={getSourceHeadingDisplay(articleSlug, heading)} key={`h2-${index}`} />
+          );
           lastBlockWasQuote = false;
         }
       }
@@ -1044,10 +1169,28 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
         continue;
       }
       if (shouldShowSourceHeading(articleSlug, heading)) {
-        blocks.push(<h3 key={index}>{getSourceHeadingDisplay(articleSlug, heading)}</h3>);
+        blocks.push(<h3 key={`h3-${index}`}>{getSourceHeadingDisplay(articleSlug, heading)}</h3>);
         lastBlockWasQuote = false;
       }
       index += 1;
+      continue;
+    }
+
+    if (trimmed.startsWith(">")) {
+      flushParagraph();
+      const quoteLines: string[] = [];
+
+      while (index < lines.length) {
+        const currentLine = lines[index].trim();
+        if (!currentLine.startsWith(">")) {
+          break;
+        }
+        quoteLines.push(currentLine.replace(/^>\s?/, ""));
+        index += 1;
+      }
+
+      blocks.push(<ArticleQuotedBlock key={`quote-block-${index}-${blocks.length}`} lines={quoteLines} />);
+      lastBlockWasQuote = false;
       continue;
     }
 
@@ -1056,7 +1199,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       blocks.push(
         <h2
           className={`insight-article-section-heading${articleSlug === "firecrawl-for-business" ? " is-accent" : ""}`}
-          key={index}
+          key={`section-heading-${index}`}
         >
           {trimmed}
         </h2>
@@ -1117,7 +1260,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       }
 
       blocks.push(
-        <ul className="insight-article-source-list" key={index}>
+        <ul className="insight-article-source-list" key={`ul-${index}`}>
           {items.map((item) => (
             <li key={`${item.marker}-${item.text}`}>
               <span aria-hidden="true">{item.marker}</span>
@@ -1180,7 +1323,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
           ]
             .filter(Boolean)
             .join(" ")}
-          key={index}
+          key={`ol-${index}`}
         >
           {items.map((item) => (
             <li key={`${item.marker}-${item.text}`}>
@@ -1239,6 +1382,7 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
   return (
     <>
       <ArticleSchema article={article} />
+      {article.faq?.length ? <FaqSchema items={article.faq} /> : null}
       <PageReveals />
       <article className="home-4b insight-article-page">
         <header className="insight-article-hero" data-home-section>
