@@ -1347,7 +1347,28 @@ svg {
 
 .site-header-shell {
   animation: site-header-enter 720ms cubic-bezier(0.16, 0.82, 0.34, 1) 120ms both;
+  transition:
+    opacity 360ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 360ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease;
   will-change: transform, opacity;
+}
+
+.site-header-shell.home-header-soft-hidden {
+  animation: none;
+  opacity: 0.14;
+  transform: translate3d(0, -16px, 0);
+}
+
+.home-header-reveal-zone {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 60;
+  height: 80px;
+  background: transparent;
+  cursor: default;
 }
 
 @keyframes site-header-enter {

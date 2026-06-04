@@ -12,10 +12,26 @@ export function SiteHeader() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [overDarkSection, setOverDarkSection] = React.useState(false);
+  const [homeHeaderHidden, setHomeHeaderHidden] = React.useState(false);
+  const [headerInteracting, setHeaderInteracting] = React.useState(false);
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
   const darkHeader = pathname === "/" && overDarkSection && !open;
   const homeTop = pathname === "/" && !scrolled && !open && !darkHeader;
+  const softHidden = pathname === "/" && homeHeaderHidden && !open && !headerInteracting;
+
+  const revealHomeHeader = React.useCallback((event?: React.PointerEvent<HTMLElement>) => {
+    setHomeHeaderHidden(false);
+    if (event?.pointerType === "mouse") {
+      setHeaderInteracting(true);
+    }
+  }, []);
+
+  const handleRevealZonePointerDown = React.useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setHomeHeaderHidden(false);
+  }, []);
 
   const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     setOpen(false);
@@ -35,13 +51,30 @@ export function SiteHeader() {
 
   React.useEffect(() => {
     let frame = 0;
+    let lastScrollY = window.scrollY;
 
     const updateHeaderState = () => {
-      setScrolled(window.scrollY > 16);
+      const currentScrollY = window.scrollY;
+      const atTop = currentScrollY <= 24;
+
+      setScrolled(currentScrollY > 16);
 
       if (pathname !== "/") {
         setOverDarkSection(false);
+        setHomeHeaderHidden(false);
+        lastScrollY = currentScrollY;
         return;
+      }
+
+      const scrollingDown = currentScrollY > lastScrollY + 4;
+      const scrollingUp = currentScrollY < lastScrollY - 4;
+
+      if (atTop) {
+        setHomeHeaderHidden(false);
+      } else if (scrollingDown && currentScrollY > 120) {
+        setHomeHeaderHidden(true);
+      } else if (scrollingUp) {
+        setHomeHeaderHidden(false);
       }
 
       const sampleY = 66;
@@ -52,6 +85,8 @@ export function SiteHeader() {
           return rect.top <= sampleY && rect.bottom > sampleY;
         })
       );
+
+      lastScrollY = currentScrollY;
     };
 
     const requestUpdate = () => {
@@ -73,17 +108,37 @@ export function SiteHeader() {
   }, [pathname]);
 
   return (
-    <motion.header
-      initial={false}
-      className={cn(
-        "site-header-shell fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300",
-        darkHeader
-          ? "border-paper/15 bg-ink/[0.92] text-paper backdrop-blur-xl"
-          : homeTop
-            ? "border-transparent bg-transparent"
-            : "border-ink/10 bg-paper/[0.92] text-ink backdrop-blur-xl"
-      )}
-    >
+    <>
+      {softHidden ? (
+        <div
+          aria-hidden="true"
+          className="home-header-reveal-zone"
+          onPointerEnter={revealHomeHeader}
+          onPointerMove={revealHomeHeader}
+          onPointerDown={handleRevealZonePointerDown}
+        />
+      ) : null}
+      <motion.header
+        initial={false}
+        onPointerEnter={() => setHeaderInteracting(true)}
+        onPointerLeave={() => setHeaderInteracting(false)}
+        onFocusCapture={() => setHeaderInteracting(true)}
+        onBlurCapture={(event) => {
+          const nextFocus = event.relatedTarget;
+          if (!(nextFocus instanceof Node) || !event.currentTarget.contains(nextFocus)) {
+            setHeaderInteracting(false);
+          }
+        }}
+        className={cn(
+          "site-header-shell fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300",
+          softHidden ? "home-header-soft-hidden pointer-events-none" : "pointer-events-auto",
+          darkHeader
+            ? "border-paper/15 bg-ink/[0.92] text-paper backdrop-blur-xl"
+            : homeTop
+              ? "border-transparent bg-transparent"
+              : "border-ink/10 bg-paper/[0.92] text-ink backdrop-blur-xl"
+        )}
+      >
       <a
         href="#main"
         className="focus-ring sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-paper focus:px-4 focus:py-3"
@@ -187,6 +242,7 @@ export function SiteHeader() {
           </motion.nav>
         ) : null}
       </AnimatePresence>
-    </motion.header>
+      </motion.header>
+    </>
   );
 }

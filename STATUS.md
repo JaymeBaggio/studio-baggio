@@ -1,5 +1,24 @@
 # Studio Baggio Website - STATUS
-*Last updated: 3 June 2026*
+*Last updated: 4 June 2026*
+
+## 4 June Homepage Header Auto-Hide - Local
+
+Scope:
+
+- Homepage header behaviour only.
+- No page copy or non-homepage layout changed.
+
+Implemented:
+
+- Added a recoverable soft-hide behaviour for the homepage header while scrolling down.
+- Header now returns on scroll-up, focus, desktop pointer movement into the top page area, or a tap in the top page area on mobile.
+- Header stays faintly visible rather than disappearing completely.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- In-app browser check on `http://localhost:3006/` verified visible-at-top, soft-hidden-on-down-scroll, restored-on-scroll-up, restored-on-top-hover, and restored-on-top-tap behaviour.
 
 ## 3 June Insights Article Readability Pass - Local
 
