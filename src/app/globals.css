@@ -1356,13 +1356,13 @@ svg {
   will-change: transform, opacity;
 }
 
-.site-header-shell.home-header-soft-hidden {
+.site-header-shell.site-header-soft-hidden {
   animation: none;
   opacity: 0.14;
   transform: translate3d(0, -16px, 0);
 }
 
-.home-header-reveal-zone {
+.site-header-reveal-zone {
   position: fixed;
   inset: 0 0 auto;
   z-index: 60;

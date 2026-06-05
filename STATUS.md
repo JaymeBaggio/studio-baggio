@@ -35,24 +35,29 @@ Verified:
 - `npm run lint` passes.
 - `npm run build -- --webpack` passes.
 
-## 4 June Homepage Header Auto-Hide - Local
+## 5 June Global Header Auto-Hide - Local
 
 Scope:
 
-- Homepage header behaviour only.
-- No page copy or non-homepage layout changed.
+- Header auto-hide behaviour across the public site.
+- Non-disruptive transparent top header treatment across the public site.
+- No page copy or page layout changed.
 
 Implemented:
 
-- Added a recoverable soft-hide behaviour for the homepage header while scrolling down.
+- Added a recoverable soft-hide behaviour for the site header while scrolling down.
 - Header now returns on scroll-up, focus, desktop pointer movement into the top page area, or a tap in the top page area on mobile.
 - Header stays faintly visible rather than disappearing completely.
+- Top-of-page header now uses the lighter transparent treatment on every route.
+- Homepage-only dark-section header colour detection remains homepage-only.
 
 Verified:
 
 - `npm run typecheck` passes.
 - `npm run lint` passes.
 - In-app browser check on `http://localhost:3006/` verified visible-at-top, soft-hidden-on-down-scroll, restored-on-scroll-up, restored-on-top-hover, and restored-on-top-tap behaviour.
+- In-app browser check on `/about` verified the same global soft-hide behaviour outside the homepage.
+- In-app browser check on `/work` verified the top-of-page header is transparent instead of the heavier white bar, then soft-hides and restores correctly.
 
 ## 3 June Insights Article Readability Pass - Local
 

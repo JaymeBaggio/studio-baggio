@@ -12,16 +12,16 @@ export function SiteHeader() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [overDarkSection, setOverDarkSection] = React.useState(false);
-  const [homeHeaderHidden, setHomeHeaderHidden] = React.useState(false);
+  const [headerHidden, setHeaderHidden] = React.useState(false);
   const [headerInteracting, setHeaderInteracting] = React.useState(false);
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
   const darkHeader = pathname === "/" && overDarkSection && !open;
-  const homeTop = pathname === "/" && !scrolled && !open && !darkHeader;
-  const softHidden = pathname === "/" && homeHeaderHidden && !open && !headerInteracting;
+  const quietTop = !scrolled && !open && !darkHeader;
+  const softHidden = headerHidden && !open && !headerInteracting;
 
-  const revealHomeHeader = React.useCallback((event?: React.PointerEvent<HTMLElement>) => {
-    setHomeHeaderHidden(false);
+  const revealHeader = React.useCallback((event?: React.PointerEvent<HTMLElement>) => {
+    setHeaderHidden(false);
     if (event?.pointerType === "mouse") {
       setHeaderInteracting(true);
     }
@@ -30,7 +30,7 @@ export function SiteHeader() {
   const handleRevealZonePointerDown = React.useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     event.preventDefault();
     event.stopPropagation();
-    setHomeHeaderHidden(false);
+    setHeaderHidden(false);
   }, []);
 
   const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -59,22 +59,21 @@ export function SiteHeader() {
 
       setScrolled(currentScrollY > 16);
 
-      if (pathname !== "/") {
-        setOverDarkSection(false);
-        setHomeHeaderHidden(false);
-        lastScrollY = currentScrollY;
-        return;
-      }
-
       const scrollingDown = currentScrollY > lastScrollY + 4;
       const scrollingUp = currentScrollY < lastScrollY - 4;
 
       if (atTop) {
-        setHomeHeaderHidden(false);
+        setHeaderHidden(false);
       } else if (scrollingDown && currentScrollY > 120) {
-        setHomeHeaderHidden(true);
+        setHeaderHidden(true);
       } else if (scrollingUp) {
-        setHomeHeaderHidden(false);
+        setHeaderHidden(false);
+      }
+
+      if (pathname !== "/") {
+        setOverDarkSection(false);
+        lastScrollY = currentScrollY;
+        return;
       }
 
       const sampleY = 66;
@@ -112,9 +111,9 @@ export function SiteHeader() {
       {softHidden ? (
         <div
           aria-hidden="true"
-          className="home-header-reveal-zone"
-          onPointerEnter={revealHomeHeader}
-          onPointerMove={revealHomeHeader}
+          className="site-header-reveal-zone"
+          onPointerEnter={revealHeader}
+          onPointerMove={revealHeader}
           onPointerDown={handleRevealZonePointerDown}
         />
       ) : null}
@@ -131,10 +130,10 @@ export function SiteHeader() {
         }}
         className={cn(
           "site-header-shell fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300",
-          softHidden ? "home-header-soft-hidden pointer-events-none" : "pointer-events-auto",
+          softHidden ? "site-header-soft-hidden pointer-events-none" : "pointer-events-auto",
           darkHeader
             ? "border-paper/15 bg-ink/[0.92] text-paper backdrop-blur-xl"
-            : homeTop
+            : quietTop
               ? "border-transparent bg-transparent"
               : "border-ink/10 bg-paper/[0.92] text-ink backdrop-blur-xl"
         )}
@@ -150,7 +149,7 @@ export function SiteHeader() {
           href="/"
           className={cn(
             "focus-ring inline-flex min-h-11 items-center text-sm uppercase tracking-[0.08em] transition-colors duration-300",
-            darkHeader ? "text-paper/[0.88] hover:text-paper" : homeTop ? "text-ink/70 hover:text-ink" : "text-ink"
+            darkHeader ? "text-paper/[0.88] hover:text-paper" : quietTop ? "text-ink/70 hover:text-ink" : "text-ink"
           )}
           onClick={handleHomeClick}
         >
@@ -159,7 +158,7 @@ export function SiteHeader() {
         <nav
           className={cn(
             "hidden items-center gap-7 transition-colors duration-300 lg:flex",
-            darkHeader ? "text-paper/[0.64]" : homeTop ? "text-ink/[0.58]" : "text-ink/60"
+            darkHeader ? "text-paper/[0.64]" : quietTop ? "text-ink/[0.58]" : "text-ink/60"
           )}
           aria-label="Primary navigation"
         >
@@ -182,7 +181,7 @@ export function SiteHeader() {
             "focus-ring hidden min-h-11 items-center border px-4 text-xs uppercase tracking-[0.07em] transition-colors lg:inline-flex",
             darkHeader
               ? "border-paper/75 text-paper hover:bg-paper hover:text-ink"
-              : homeTop
+              : quietTop
                 ? "border-ink bg-white/[0.45] text-ink/[0.72] hover:bg-ink hover:text-paper"
                 : "border-ink text-ink hover:bg-ink hover:text-paper"
           )}
@@ -200,7 +199,7 @@ export function SiteHeader() {
             "focus-ring inline-flex h-11 w-11 items-center justify-center border transition-colors duration-300 lg:hidden",
             darkHeader
               ? "border-paper/25 text-paper"
-              : homeTop
+              : quietTop
                 ? "border-ink/20 bg-white/[0.45] text-ink/[0.72]"
                 : "border-ink/20 text-ink"
           )}
