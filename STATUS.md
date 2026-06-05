@@ -42,14 +42,19 @@ Scope:
 - Header auto-hide behaviour across the public site.
 - Non-disruptive transparent top header treatment across the public site.
 - No page copy or page layout changed.
+- Mobile `/work` product selector behaviour.
 
 Implemented:
 
 - Added a recoverable soft-hide behaviour for the site header while scrolling down.
-- Header now returns on scroll-up, focus, desktop pointer movement into the top page area, or a tap in the top page area on mobile.
-- Header stays faintly visible rather than disappearing completely.
+- Header now returns on scroll-up, focus, or desktop pointer movement into the top page area.
+- Header stays faintly visible on desktop while hidden; on mobile it fully clears so it does not overlap content.
 - Top-of-page header now uses the lighter transparent treatment on every route.
 - Homepage-only dark-section header colour detection remains homepage-only.
+- Mobile `/work` product selector now sits in normal page flow as a swipeable rail, not a sticky overlay or boxed grid.
+- Mobile `/work` product rail no longer attaches mobile scroll listeners, keeping vertical scrolling smooth.
+- Mobile `/work` header stays fully hidden while reading product detail content so it does not overlap product headings or the selector.
+- Added a mobile-only "Back to products" link after product detail content.
 
 Verified:
 
@@ -58,6 +63,7 @@ Verified:
 - In-app browser check on `http://localhost:3006/` verified visible-at-top, soft-hidden-on-down-scroll, restored-on-scroll-up, restored-on-top-hover, and restored-on-top-tap behaviour.
 - In-app browser check on `/about` verified the same global soft-hide behaviour outside the homepage.
 - In-app browser check on `/work` verified the top-of-page header is transparent instead of the heavier white bar, then soft-hides and restores correctly.
+- In-app browser mobile check on `/work` verified the product rail no longer floats over text, the header no longer ghosts over Last30Days content, and there is no horizontal page overflow.
 
 ## 3 June Insights Article Readability Pass - Local
 

@@ -18,6 +18,7 @@ export function ProductsPageShowcase() {
   const [activeSlug, setActiveSlug] = useState(productItems[0]?.slug ?? "");
   const [isTabsVisible, setIsTabsVisible] = useState(true);
   const hideTabsTimer = useRef<number | null>(null);
+  const lastScrollY = useRef(0);
   const activeItem = productItems.find((item) => item.slug === activeSlug) ?? productItems[0];
   const shouldReduceMotion = useReducedMotion();
 
@@ -51,7 +52,32 @@ export function ProductsPageShowcase() {
   );
 
   useEffect(() => {
-    const handleScroll = () => revealTabs(true);
+    lastScrollY.current = window.scrollY;
+    const isMobileTabsLayout = () => window.matchMedia("(max-width: 760px)").matches;
+
+    if (isMobileTabsLayout()) {
+      clearHideTimer();
+      return () => clearHideTimer();
+    }
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      const scrollingDown = currentScrollY > lastScrollY.current + 4;
+      const scrollingUp = currentScrollY < lastScrollY.current - 4;
+
+      if (currentScrollY < 160) {
+        revealTabs(false);
+      } else if (scrollingDown) {
+        clearHideTimer();
+        setIsTabsVisible(false);
+      } else if (scrollingUp) {
+        revealTabs(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
     const handlePointerMove = (event: PointerEvent) => {
       if (event.clientY <= 150) {
         revealTabs(true);
@@ -115,6 +141,7 @@ export function ProductsPageShowcase() {
       </section>
 
       <div
+        id="products-tabs"
         className={`products-tabs-shell ${isTabsVisible ? "is-visible" : "is-idle"}`}
         onMouseEnter={() => revealTabs(false)}
         onMouseLeave={queueHideTabs}
@@ -315,6 +342,13 @@ export function ProductDetailPanel({
           </div>
         </div>
       ) : null}
+
+      <div className="editorial-container products-mobile-back">
+        <Link href="#products-tabs" className="focus-ring products-panel-link">
+          Back to products
+          <ArrowUpRight aria-hidden="true" />
+        </Link>
+      </div>
     </motion.section>
   );
 }

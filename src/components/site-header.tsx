@@ -56,6 +56,8 @@ export function SiteHeader() {
     const updateHeaderState = () => {
       const currentScrollY = window.scrollY;
       const atTop = currentScrollY <= 24;
+      const keepMobileWorkHeaderHidden =
+        pathname === "/work" && window.matchMedia("(max-width: 1023px)").matches;
 
       setScrolled(currentScrollY > 16);
 
@@ -64,6 +66,8 @@ export function SiteHeader() {
 
       if (atTop) {
         setHeaderHidden(false);
+      } else if (keepMobileWorkHeaderHidden) {
+        setHeaderHidden(true);
       } else if (scrollingDown && currentScrollY > 120) {
         setHeaderHidden(true);
       } else if (scrollingUp) {
@@ -130,6 +134,8 @@ export function SiteHeader() {
         }}
         className={cn(
           "site-header-shell fixed left-0 right-0 top-0 z-50 border-b transition-colors duration-300",
+          open ? "site-header-open" : "",
+          darkHeader ? "site-header-dark" : "",
           softHidden ? "site-header-soft-hidden pointer-events-none" : "pointer-events-auto",
           darkHeader
             ? "border-paper/15 bg-ink/[0.92] text-paper backdrop-blur-xl"
