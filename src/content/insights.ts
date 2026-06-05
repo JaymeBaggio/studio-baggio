@@ -222,6 +222,7 @@ export const insightArticles: InsightArticle[] = [
     metaTitle: "Brands Lean into GEO For Visibility | Studio Baggio",
     metaDescription: "Generative Engine Optimisation is becoming critical for brand discoverability as behaviour shifts from search engines to AI-driven recommendations.",
     related: [
+      "generative-engine-optimisation",
       "firecrawl-for-business",
       "owned-vs-rented-audience"
     ],
@@ -281,7 +282,8 @@ export const insightArticles: InsightArticle[] = [
     related: [
       "firecrawl-for-business",
       "owned-vs-rented-audience",
-      "ai-adoption-value-gap"
+      "ai-adoption-value-gap",
+      "geo-generative-engine-optimisation"
     ],
     sourceMarkdown: `# Generative Engine Optimisation for Professional Services
 
