@@ -221,11 +221,10 @@ export default function HomePage() {
             <div className="commercial-deliverables">
               {home.commercialSprint.deliverables.map((item, index) => (
                 <div key={item.lead} className="commercial-deliverable-row" data-reveal>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <p>
-                    <strong>{item.lead}</strong>
-                    {" — "}
-                    {item.detail}
+                  <span className="commercial-deliverable-index">{String(index + 1).padStart(2, "0")}</span>
+                  <p className="commercial-deliverable-copy">
+                    <strong>{item.lead}:</strong>
+                    <span>{item.detail}</span>
                   </p>
                 </div>
               ))}

@@ -1772,7 +1772,7 @@ svg {
 
 .home-4b .eyebrow,
 .home-4b .problem-source,
-.home-4b .commercial-deliverable-row span,
+.home-4b .commercial-deliverable-index,
 .home-4b .fit-list-column h3,
 .home-4b [data-cta-button] a > span {
   margin: 0;
@@ -2402,9 +2402,9 @@ svg {
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
   gap: clamp(22px, 2.5vw, 32px);
-  padding-block: clamp(16px, 1.65vw, 22px);
+  padding-block: clamp(18px, 1.9vw, 26px);
   border-bottom: 1px solid var(--sb-rule);
-  align-items: baseline;
+  align-items: start;
 }
 
 .home-4b .commercial-deliverable-row p {
@@ -2414,8 +2414,20 @@ svg {
   color: var(--sb-ink);
 }
 
+.home-4b .commercial-deliverable-copy {
+  display: grid;
+  gap: 5px;
+}
+
 .home-4b .commercial-deliverable-row p strong {
+  display: block;
   font-weight: var(--sb-strong-weight);
+}
+
+.home-4b .commercial-deliverable-row p span {
+  display: block;
+  max-width: 1100px;
+  color: var(--sb-body);
 }
 
 .home-4b .commercial-sprint-cta-wrap {

@@ -112,7 +112,7 @@ export const home = {
     title: ""
   },
   commercialSprint: {
-    eyebrow: "AI OPPORTUNITY AUDIT — 14 DAYS",
+    eyebrow: "AI OPPORTUNITY AUDIT: 14 DAYS",
     title: "A focused audit to find where AI creates the most value in your business.",
     subline: "",
     body: "",
