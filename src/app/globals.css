@@ -6289,6 +6289,13 @@ svg {
   font-weight: 700;
 }
 
+.home-4b.insight-article-page .insight-article-body a {
+  color: var(--sb-blue);
+  font-weight: var(--sb-label-weight);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
 .home-4b.insight-article-page .insight-article-body em {
   font-style: italic;
 }

@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
 function renderInlineMarkdown(text: string): ReactNode[] {
   const nodes: ReactNode[] = [];
-  const pattern = /(\*\*[^*]+\*\*|\*[^*]+\*)/g;
+  const pattern = /(\[[^\]]+\]\((?:https?:\/\/|\/)[^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
@@ -77,14 +77,31 @@ function renderInlineMarkdown(text: string): ReactNode[] {
     }
 
     const token = match[0];
-    const content = token.startsWith("**") ? token.slice(2, -2) : token.slice(1, -1);
-    nodes.push(
-      token.startsWith("**") ? (
-        <strong key={`${token}-${match.index}`}>{content}</strong>
-      ) : (
-        <em key={`${token}-${match.index}`}>{content}</em>
-      )
-    );
+    const linkMatch = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+
+    if (linkMatch) {
+      const [, label, href] = linkMatch;
+      nodes.push(
+        href.startsWith("/") ? (
+          <Link href={href} key={`${token}-${match.index}`}>
+            {label}
+          </Link>
+        ) : (
+          <a href={href} key={`${token}-${match.index}`} rel="noreferrer" target="_blank">
+            {label}
+          </a>
+        )
+      );
+    } else {
+      const content = token.startsWith("**") ? token.slice(2, -2) : token.slice(1, -1);
+      nodes.push(
+        token.startsWith("**") ? (
+          <strong key={`${token}-${match.index}`}>{content}</strong>
+        ) : (
+          <em key={`${token}-${match.index}`}>{content}</em>
+        )
+      );
+    }
     lastIndex = match.index + token.length;
   }
 
@@ -177,12 +194,20 @@ const sourceSubheadingPattern =
 
 const toolEntryTitles = [
   "ChatGPT",
+  "Codex",
+  "Claude",
   "WhisperFlow",
   "Perplexity",
+  "Last30Days",
   "NotebookLM",
   "Gemini + Google AI Studio",
   "Figma",
   "Calm Authority.ai",
+  "ElevenLabs",
+  "Freepik, Seedance and HyperFrames",
+  "GPT Image 2",
+  "Runway, Sora and Veo",
+  "Krea",
   "Krea.ai",
   "Relay.app",
   "Canva",
@@ -191,8 +216,12 @@ const toolEntryTitles = [
   "Gamma",
   "YouTube",
   "Speechify",
+  "Planner",
+  "Lovable",
   "Lovable.dev"
 ];
+
+const toolDirectoryArticleSlugs = new Set(["best-ai-tools-2025", "best-ai-tools-content-production-2026"]);
 
 function getArticleSignal(paragraph: string): ArticleSignal | null {
   const match = paragraph.match(articleSignalPattern);
@@ -548,32 +577,50 @@ function ArticleListItemBody({ articleSlug, text }: { articleSlug: string; text:
 
 function getToolEntry(paragraph: string) {
   const trimmed = paragraph.trim();
-  const title = toolEntryTitles.find((toolTitle) => trimmed === toolTitle || trimmed.startsWith(`${toolTitle}:`) || trimmed.startsWith(`${toolTitle} `));
+  const normalized = trimmed.replace(/^\*\*([^*]+)\*\*/, "$1").trim();
+  const title = toolEntryTitles.find(
+    (toolTitle) =>
+      normalized === toolTitle ||
+      normalized.startsWith(`${toolTitle}:`) ||
+      normalized.startsWith(`${toolTitle} `) ||
+      normalized.startsWith(`${toolTitle} — `) ||
+      normalized.startsWith(`${toolTitle} - `)
+  );
 
   if (!title) {
     return null;
   }
 
-  const renderedTitle = trimmed.startsWith(`${title}:`) ? `${title}:` : title;
-  const remainder = trimmed.slice(renderedTitle.length).trim();
+  const renderedTitle = normalized.startsWith(`${title}:`) ? `${title}:` : title;
+  const remainder = normalized
+    .slice(renderedTitle.length)
+    .replace(/^\s*(?:—|-)\s*/, "")
+    .trim();
   const useMarker = "Use it for:";
+  const topTipMarker = "Top tip:";
   const useIndex = remainder.indexOf(useMarker);
+  const topTipIndex = remainder.indexOf(topTipMarker);
+  const descriptionEndIndex = [useIndex, topTipIndex].filter((markerIndex) => markerIndex >= 0).sort((a, b) => a - b)[0];
+  const useEndIndex = topTipIndex >= 0 && topTipIndex > useIndex ? topTipIndex : undefined;
 
   return {
-    description: useIndex >= 0 ? remainder.slice(0, useIndex).trim() : remainder,
+    description: descriptionEndIndex >= 0 ? remainder.slice(0, descriptionEndIndex).trim() : remainder,
+    tip: topTipIndex >= 0 ? remainder.slice(topTipIndex + topTipMarker.length).trim() : "",
     title: renderedTitle,
-    use: useIndex >= 0 ? remainder.slice(useIndex + useMarker.length).trim() : ""
+    use: useIndex >= 0 ? remainder.slice(useIndex + useMarker.length, useEndIndex).trim() : ""
   };
 }
 
 function ArticleToolEntry({
   description,
   index,
+  tip,
   title,
   use
 }: {
   description: string;
   index: number;
+  tip: string;
   title: string;
   use: string;
 }) {
@@ -587,6 +634,12 @@ function ArticleToolEntry({
           <p className="insight-article-tool-use">
             <span>Use it for:</span>
             <span>{renderInlineMarkdown(use)}</span>
+          </p>
+        ) : null}
+        {tip ? (
+          <p className="insight-article-tool-use">
+            <span>Top tip:</span>
+            <span>{renderInlineMarkdown(tip)}</span>
           </p>
         ) : null}
       </div>
@@ -967,7 +1020,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
 
     const signal = getArticleSignal(paragraph);
     const sourceSubheading = getSourceSubheading(paragraph);
-    const toolEntry = articleSlug === "best-ai-tools-2025" ? getToolEntry(paragraph) : null;
+    const toolEntry = toolDirectoryArticleSlugs.has(articleSlug) ? getToolEntry(paragraph) : null;
 
     if (signal) {
       blocks.push(<ArticleSignalBlock key={`signal-${index}-${blocks.length}`} signal={signal} />);
@@ -986,6 +1039,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
           description={toolEntry.description}
           index={toolIndex}
           key={`tool-${index}-${blocks.length}`}
+          tip={toolEntry.tip}
           title={toolEntry.title}
           use={toolEntry.use}
         />

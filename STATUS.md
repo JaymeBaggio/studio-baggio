@@ -1,5 +1,30 @@
 # Studio Baggio Website - STATUS
-*Last updated: 4 June 2026*
+*Last updated: 8 June 2026*
+
+## 8 June Content Production Tools Article - Local
+
+Scope:
+
+- Added and styled `/insights/best-ai-tools-content-production-2026`.
+- Touched the Insights renderer, Insights content source, article link styling and global header idle-hide behaviour.
+- No homepage, About, Products or unrelated page copy changed.
+
+Implemented:
+
+- Added the content production tools article to the Insights content source and `/insights` index.
+- Added metadata, tags, related links, source provenance, visible FAQ content and FAQ schema.
+- Updated the tool-directory renderer so this article supports Codex, Claude, Last30Days, Freepik/Seedance/HyperFrames, GPT Image 2, Planner, Lovable, inline links and top-tip lines.
+- Added Last30Days and Planner links in the article body.
+- Removed only the unwanted paragraph beginning `The make-it tools keep improving...`.
+- Updated the Lovable copy per Jayme's direction.
+- Updated the header so a revealed header soft-hides again after one second of no header interaction once a reader is scrolled into the page.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- Local route HTML includes `BlogPosting`, `FAQPage`, `https://last30days.app`, and `https://www.get-planner.com`.
+- Local route HTML no longer includes the removed `The make-it tools keep improving...` paragraph.
 
 ## 4 June GEO Insights Article - Local Preview
 

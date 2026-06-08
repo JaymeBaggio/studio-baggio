@@ -110,6 +110,20 @@ export function SiteHeader() {
     };
   }, [pathname]);
 
+  React.useEffect(() => {
+    if (open || headerInteracting || !scrolled) {
+      return;
+    }
+
+    const idleHideTimer = window.setTimeout(() => {
+      setHeaderHidden(true);
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(idleHideTimer);
+    };
+  }, [headerInteracting, open, scrolled]);
+
   return (
     <>
       {softHidden ? (

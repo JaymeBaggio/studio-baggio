@@ -63,6 +63,154 @@ export const insightArticles: InsightArticle[] = [
     sourceMarkdown: "# Firecrawl just gave any business access to 96% of the web:\n\nIf you haven’t heard of Firecrawl yet, put it on your radar.\n\nFirecrawl is an API (a connector) which, when plugged into\nCodex or Claude- allows you to access 96% of the open\nweb and return it in a format AI can read.\n\nYou can now scrape every competitor’s website, pull out their pricing models, &\nanalyse how they position themselves in the market. You can find out-who’s\nspending in which sectors- as well as how much. Performance metrics, who’s offer is\nstrongest against any criteria, which prospects are worth pursuing based on your\nown specific ICP- You can even search every two-bedroom flat in London and build a\nlive property database around any given criteria.\nFirecrawl enables you to find all publically available\ninformation on any practitioner in any niche, assess\ntheir public profile, then rate them against a quality\nframework your business has defined.\nWhat used to sit across the likes of Salesforce,\nTubular, a prospect database or a research agency\ncan now be accessed in seconds, for pennies a queery\nand its made parts of the old intelligence market\nsuddenly look distinctly exposed.\nWhen just last week we saw Salesforce’s own\nMarc Benicoff announce their own API ‘connector’- it’s clear the direction we’re\nheaded in- Bespoke curation of data and a collapse in cost and speed of\ncommercial intelligence.\nWhat stikes me is the ease with which this is accessible. Copy one API key into Claude\nor codex and you now have a purpose built dashboard plugged into every piece of\ninformation publicly available- live.\nIn real Terms:\nThere is now near zero barrier to entry for anybody to launch a\nvertical saas for any niche; Aim Firecrawl at job boards &\ncareer pages- you have built a niche Indeed. Add\nscrapecreators or supadata & you have “Tubular for fitness\ncreators” or “Rephonic for B2B podcasters” in under an\nhour- without any company wide data engineering project.\nFirecrawl makes it easier to build a niche data company.\nBut it also makes the niche data company easier to replace.\nIf a product is just public web data, AI classification & a\ndashboard, then the buyer won’t need to buy it for long. It\nbegs the question “Why would we pay for a genralised view of\nthe market when we can build a private view of the market\naround our own priorities?”\n\nSalesforce & HubSpot are not replaced overnight, but the manually maintained CRM,\ndoes now start to look like a pre-AI artefact. An old-school CRM told you who made\nan enquiry, clicked on an AD, signed up to your newsletter.\nThe new era lead tracker pulls public information about any person or company, then\nqualifies them against a rubric your business defines. Do they fit the ICP? Do they\nhave budget? What did their CEO post on LinkedIn this week? Are they a standard\ncommercial opportunity or a reputation play?\nThe output becomes a rationale & a recommended angle for approach. It starts to\nlook a lot less like a leads trakcer and a lot more like a prospecting machine.\nExample: A production company working with brands to help scale their owned &\noperated platforms.\nThey can now find out which brands are spending heavily on creator marketing; Of\nthose- which have underdeveloped owned channels? Which brands are growing on\nTiktok but haven’t yet managed to extend to longer form on YouTube? Which\ncategry has unoccupied whitespace ready for the redbull of that sector to fill the\ngap?\n\nNow you are not just looking at brands with budget. You are looking at brands with\nbudget, category literacy and a visible gap your business is positioned to fill.\nWhat does this mean for businesses?\n  If your company is looking at a stale dashboard built around someone elses view\n  of the market, you are now at a distinct disadvantage versus those with hands\n  and eyes on the whole of the internet.\n  When access to data is this easily accessible the onus shifts towards\n  understanding what to do with it. More data only helps if the business has a\n  sharp enough filter- vague thinking just became a lot more expensive. The\n  more data you can access, the more important a clear ICP, positioning and sharp\n  qualification criteria become.\n  If your business can use public data to qualify the market, the market can use\n  public data to qualify your business.\n\nPublic footprint is now part of how a business gets qualified.\nAs public data becomes easier to analyse, unclear positioning and weak public\nproof become harder to hide.\nYour website, SEO, case studies, press, reviews & public content need to give\nbuyers, partners & AI systems enough evidence to understand what you do\nand why you are credible. A strong digital footprint becomes a stronger\nqualification metric.\nA thin website, poor search presence, limited proof and weak third-party\nevidence make the business harder to understand and easier to discount.\nA business may have strong clients, strong results and a solid offline reputation.\nBut if those signals are trapped in private conversations, they are harder for new\nbuyers to verify and harder for AI systems to qualify- which becomes a real\ncommercial risk.\nThat applies to businesses and\nindividuals- There is another side to\nthis shift.\nIf public data can be used to qualify\nthe market, it can also be used to\nqualify you.\n\nThat changes the value of public\nprofile. If Firecrawl can be used to\nqualify prospects, then every\nprospect ’s public footprint becomes\npart of how they are assessed. AI\nsearch assesses whether the public\nweb can substantiate you. Your public\nprofile is now not only your shop\nwindow, it ’s your evidence layer.\n\nThe flip side of exposure is under-evidence. The new risk is not that professionals\n.lack authority. It is that their authority is trapped somewhere AI cannot read.\nMany professionals are credible in ways AI can’t surface- client relationships,\nclosed networks, warm introductions &internal reputation, Those things still\nmatter- but they don’t automatically transfer into AI search.\nPublic content is not just distribution. It’s is how private expertise becomes\nvisible, readable and verifiable. That means LinkedIn posts that show judgement,\narticles that explain thinking, case studies that prove results, press mentions that\nsubstantiate claims, podcast appearances, they all matter more than they ever\nhave previously.\nThe professionals who win in the next few years will not just be the most credible\nin private. They will be the easiest to verify in public."
   },
   {
+    slug: "best-ai-tools-content-production-2026",
+    title: "The Best AI Tools for Content Production in 2026",
+    category: "AI Skills",
+    categorySlug: "ai-skills",
+    tags: [
+      "AI tools",
+      "content production",
+      "video production",
+      "AI production scheduling",
+      "Codex",
+      "Claude",
+      "Last30Days",
+      "Freepik",
+      "Seedance",
+      "HyperFrames",
+      "GPT Image 2",
+      "Descript",
+      "Planner",
+      "MCP"
+    ],
+    source: "Studio Baggio Insights",
+    sourcePath: "/Users/jaymebaggio/Desktop/Planner/seo-marketing/studio-baggio-best-ai-tools-content-production-DRAFT.md",
+    faq: [
+      {
+        question: "What are the best AI tools for content production in 2026?",
+        answer:
+          "Codex and Claude for scripts and research, Perplexity, Last30Days and NotebookLM for research, ElevenLabs for voice, Freepik, Seedance and HyperFrames for generated and repeatable video, GPT Image 2 for images, Descript and Opus Clip for editing and clips, Canva and Gamma for design and decks, Planner for scheduling and running the production, and Lovable for building simple workflow tools."
+      },
+      {
+        question: "Which AI tools are best for research and scripting?",
+        answer:
+          "Codex, Claude, Perplexity, Last30Days and NotebookLM. Codex and Claude help with scripts, structure and workflows; Perplexity and Last30Days help with live context and market signal; NotebookLM helps turn complex source material into something publishable."
+      },
+      {
+        question: "What is the best AI tool for planning and running a production?",
+        answer:
+          "Planner. It is built for production rather than adapted from a project board, and it connects to Claude through an MCP so AI can work against your live schedule with you approving the changes."
+      },
+      {
+        question: "What is Last30Days used for in content production?",
+        answer:
+          "Last30Days scrapes Reddit, X, TikTok, Instagram and the web to show what is trending in a market, category or audience, which formats are cutting through, and which angles people are already responding to."
+      },
+      {
+        question: "Which AI tools are best for turning long-form into short-form?",
+        answer: "Descript for editing by transcript and Opus Clip for clip selection, reframing and captions."
+      }
+    ],
+    sourceStart: "The Best AI Tools for Content Production in 2026",
+    sourceEnd: "Descript for editing by transcript and Opus Clip for clip selection, reframing and captions.",
+    readTime: "6 min read",
+    date: "2026-06-08",
+    updated: "2026-06-08",
+    summary: "The AI tools I'd build a content production workflow around in 2026 - and the stage most lists skip.",
+    preview:
+      "The AI tools I'd build a content production workflow around in 2026. Grouped by where they sit in the workflow, from research through to the stage most lists skip- running the production.",
+    thesis: "The make-it tools are settled. The advantage now is the tool that runs the production.",
+    metaTitle: "Best AI Tools for Content Production in 2026 | Studio Baggio",
+    metaDescription:
+      "The AI tools I'd build a content production workflow around in 2026 - research, video, editing, and the stage most lists skip: running the production.",
+    related: [
+      "best-ai-tools-2025",
+      "what-is-an-ai-skill",
+      "ai-future-of-work",
+      "building-ai-operating-systems"
+    ],
+    sourceMarkdown: `# The Best AI Tools for Content Production in 2026
+
+The AI tools I'd build a content production workflow around in 2026. Grouped by where they sit in the workflow, from research through to the stage most lists skip- running the production.
+
+## Research and scripting
+
+**Codex** — The anchor. One project. One chat. One browser. One window. You can build, write, test, browse, generate images, create videos and preview what you are making in the browser panel all in one place.
+Use it for: script outlines, stress-testing the through-line, structuring content, storyboarding, mapping workflows, testing and learning a new skill in real time, and turning the thinking into something you can actually build.
+Top tip: multitasking is now the advantage. You can be shaping the script in one chat, building the landing page in another, and making the launch assets in a third. When one task is processing, move to the next instead of sitting there waiting.
+
+**Claude** — Some prefer claude still for long-form writing and nuance. Also plugs into your own tools and data through MCP.
+Use it for: scripts, long-form, and connecting AI to the apps you actually work in (see Planner below).
+
+**Perplexity** — The fastest way to get context-driven research across reliable, wide-ranging sources.
+Use it for: building a source pack before you write or pitch, and checking what an audience is really saying.
+
+**Last30Days** — Our research app for seeing what is moving right now. It scrapes Reddit, X, TikTok, Instagram and the web, then turns that live signal into a structured read on what people are talking about.
+Use it for: seeing what is trending in a market, category or audience, spotting which formats are cutting through, and finding the angles people are already responding to. [Last30Days](https://last30days.app)
+
+**NotebookLM** — Understand a lot of complex material fast, then turn it into something publishable.
+Use it for: turning research, transcripts or reports into briefs, summaries or a podcast.
+
+## Voice and video
+
+**ElevenLabs** — The best AI voice, and now music and sound effects too.
+Use it for: voiceover, narration, dubbing, and scratch tracks while you cut.
+
+**Freepik, Seedance and HyperFrames** — The useful shift is not just better AI video. It is workflow. Creators are using Freepik Spaces to chain reference images, product context, prompts and Seedance video generation into repeatable UGC and brand-video workflows. Seedance looks strongest when the scene is simple and the prompt is specific; HyperFrames is where I would take the repeatable, premium, controllable version.
+Use it for: AI UGC tests, product clips, brand videos, product launches, motion graphic explainers, graphic overlays and repeatable video formats.
+Top tip: use Freepik and Seedance for fast shot exploration, but expect reruns. Complex movement, exact faces, speech, physics and moderation can still break. Use HyperFrames when the final asset needs to be structured, reusable and easier to edit.
+
+**GPT Image 2** — Has to be on this list. The quality jump is not just prettier images. It can understand what you are asking for, reason through references where needed, and make useful creative decisions without you having to upload a huge folder of examples.
+Use it for: brand photography images, product mockups, visual references, QR-code product images, layout changes, object edits, and art/photo director level image prompts.
+Top tip: give it the use case, constraints and references first. It is strongest when you treat it like a visual reasoning partner, not just an image generator.
+
+## Edit and repurpose
+
+**Descript** — Editing video by editing a transcript is still the biggest practical time-saver going.
+Use it for: cutting long-form, removing filler, cleaning audio, pulling highlights.
+Top tip: import straight from YouTube to grab clips and examples.
+
+**Opus Clip** — The strongest long-to-short clip selection I've used.
+Use it for: turning long-form into short-form, with reframing, captions, and a virality score per clip.
+
+## Design and decks
+
+**Canva** — The place I use to bring a visual idea together quickly before feeding it into Codex to turn it into a real site or product element.
+Use it for: carousels, one-pagers, thumbnails, visual references, layout sketches, and rough compositions when you need to see the idea before building it.
+Top tip: do not treat Canva as the final destination for every asset. Use it to get the visual shape clear, then pass that direction into Codex when it needs to become a real component, page section or product element.
+
+**Gamma** — Decks that look professional from the first draft.
+Use it for: pitch decks and web-published one-pagers.
+Top tip: paste your text and use --- to control the slide breaks.
+
+## Run the production (the stage most lists skip)
+
+**Planner** — The one I'd add to the stack this year. Production scheduling built for the work, not adapted from a project board- one live schedule everyone reads in their own view, so no one's on the wrong copy.
+Use it for: planning across several productions without rebuilding the schedule each time, and keeping crew, dates and handoffs in one place.
+Top tip: it's the first scheduler I've seen that connects to Claude through an MCP- so you can ask the AI to read your live schedule, build and move blocks, or turn a Google Sheet into a real plan, and you approve the changes. [Planner](https://www.get-planner.com)
+
+**Lovable** — If you feel overwhelmed by starting in Codex or Claude, I cannot recommend Lovable highly enough. When nothing off-the-shelf fits your workflow, build the thing yourself, no coding or technical setup required. It is now branching out into slide decks and design kits too.
+Use it for: turning a repeatable workflow into a small app, prototype, deck or design kit instead of a one-off.
+Top tip: a strong product requirements prompt is everything- spend the time there.
+
+## FAQ
+
+**What are the best AI tools for content production in 2026?**
+Codex and Claude for scripts and research, Perplexity, Last30Days and NotebookLM for research, ElevenLabs for voice, Freepik, Seedance and HyperFrames for generated and repeatable video, GPT Image 2 for images, Descript and Opus Clip for editing and clips, Canva and Gamma for design and decks, Planner for scheduling and running the production, and Lovable for building simple workflow tools.
+
+**Which AI tools are best for research and scripting?**
+Codex, Claude, Perplexity, Last30Days and NotebookLM. Codex and Claude help with scripts, structure and workflows; Perplexity and Last30Days help with live context and market signal; NotebookLM helps turn complex source material into something publishable.
+
+**What is the best AI tool for planning and running a production?**
+Planner. It is built for production rather than adapted from a project board, and it connects to Claude through an MCP so AI can work against your live schedule with you approving the changes.
+
+**What is Last30Days used for in content production?**
+Last30Days scrapes Reddit, X, TikTok, Instagram and the web to show what is trending in a market, category or audience, which formats are cutting through, and which angles people are already responding to.
+
+**Which AI tools are best for turning long-form into short-form?**
+Descript for editing by transcript and Opus Clip for clip selection, reframing and captions.`
+  },
+  {
     slug: "ai-adoption-value-gap",
     title: "AI adoption is high. Value is patchy.",
     category: "AI Adoption",
@@ -848,6 +996,7 @@ The next wave of progress will come from people who can combine technical litera
     metaTitle: "Tools of the Year 2025 | Studio Baggio",
     metaDescription: "Tools of the Year (2025): The ones I'll be bringing into 2026.",
     related: [
+      "best-ai-tools-content-production-2026",
       "chatgpt-for-business-owners",
       "what-is-an-ai-skill",
       "building-ai-operating-systems",
