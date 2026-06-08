@@ -6236,8 +6236,8 @@ svg {
 
 .home-4b.insight-article-page .insight-article-body .insight-article-tool-use {
   display: grid;
-  grid-template-columns: minmax(84px, 0.26fr) minmax(0, 1fr);
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 4px;
   margin-top: 2px;
 }
 
