@@ -818,7 +818,13 @@ export const about = {
       quote:
         "Before working with Jayme, SEO was something we were never able to master. In a remarkably short time, she changed that completely. We went from page 4 to page 1 on Google, ranking first above Microsoft.",
       name: "Emma Corbett",
-      role: "Co-Founder, Planner"
+      role: "Co-founder, Get-Planner App"
+    },
+    {
+      quote:
+        "Jayme was fantastic. The marketing strategy and business model she put together were first class. Her expertise really shone through, and it was clear why she is leading the way in this space. Strongly recommend.",
+      name: "Luke",
+      role: "Head of Growth, independent financial advisory firm"
     }
   ],
   closingQuote:

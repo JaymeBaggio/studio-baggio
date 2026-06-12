@@ -1,6 +1,25 @@
 # Studio Baggio Website - STATUS
 *Last updated: 12 June 2026*
 
+## 12 June Luke Testimonial Added - Local
+
+Scope:
+
+- About page testimonial proof band only.
+- Local preview change, then pushed to `main`.
+
+Implemented:
+
+- Added Luke as the fourth About-page testimonial using cautious attribution: `Head of Growth, independent financial advisory firm`.
+- Lightly polished the supplied Luke quote for grammar and credibility while preserving the meaning.
+- Changed Emma Corbett's attribution to `Co-founder, Get-Planner App`.
+- Changed the About testimonial band from 3 columns to a cleaner 2x2 desktop grid now that there are four quotes.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+
 ## 12 June About Testimonials Preview - Local
 
 Scope:

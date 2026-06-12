@@ -4001,7 +4001,7 @@ svg {
 
 .home-4b.about-page .about-testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(20px, 2.5vw, 32px);
 }
 
