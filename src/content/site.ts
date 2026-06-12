@@ -801,6 +801,26 @@ export const about = {
       ctaLabel: "Discuss your AI opportunity →"
     }
   ],
+  testimonials: [
+    {
+      quote:
+        "What I love about Studio Baggio is that it feels like a genuinely thoughtful solution to a challenge so many businesses face. It helps expert-led businesses turn their expertise into real commercial advantage in a way that still feels authentic and true to them.",
+      name: "Charlotte Evans MBE",
+      role: "Financial Planner, DipFA"
+    },
+    {
+      quote:
+        "The biggest difference was that it never felt like AI. What Jayme helped me build wasn't a content strategy; it was an operating system: a way to turn my expertise into visibility, useful conversations and measurable commercial opportunity.",
+      name: "Harry Sims APFS",
+      role: "Chartered Financial Planner, Fairstone Wealth Management Ltd"
+    },
+    {
+      quote:
+        "Before working with Jayme, SEO was something we were never able to master. In a remarkably short time, she changed that completely. We went from page 4 to page 1 on Google, ranking first above Microsoft.",
+      name: "Emma Corbett",
+      role: "Co-Founder, Planner"
+    }
+  ],
   closingQuote:
     "Studio Baggio develops systems to turn your business's internal expertise into visible public proof. Enables you to show up consistently and provide real value where your prospects already are. Then connect the dots between who is engaging, what they care about and how the business should follow up to earn the right to win in market."
 };

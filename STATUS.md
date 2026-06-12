@@ -1,5 +1,26 @@
 # Studio Baggio Website - STATUS
-*Last updated: 8 June 2026*
+*Last updated: 12 June 2026*
+
+## 12 June About Testimonials Preview - Local
+
+Scope:
+
+- About page only.
+- Added a temporary client-words proof band so Jayme can judge the treatment in context.
+- Luke/Hanbury quote not added because approval has not been received yet.
+
+Implemented:
+
+- Added held About-page quotes for Charlotte Evans MBE, Harry Sims APFS and Emma Corbett to `src/content/site.ts`.
+- Rendered those quotes after `What we do` on `/about` so they support the core Studio Baggio claim earlier in the page.
+- Styled the section as a restrained ruled editorial proof band, not a full testimonials section.
+- Harry attribution uses Fairstone rather than Calm Authority founder/co-founder wording.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- In-app browser check on `http://127.0.0.1:3006/about` confirms all three quotes render and there is no horizontal overflow at the current browser width.
 
 ## 8 June Content Production Tools Article - Local
 

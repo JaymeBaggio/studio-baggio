@@ -30,6 +30,23 @@ function getCtaLabel(section: AboutSection) {
 }
 
 export default function AboutPage() {
+  const testimonialBand = (
+    <aside className="about-testimonials" aria-label="Client testimonials" data-reveal>
+      <p className="about-testimonials-label">Client words</p>
+      <div className="about-testimonials-grid">
+        {about.testimonials.map((testimonial) => (
+          <figure key={testimonial.name} className="about-testimonial">
+            <blockquote>{testimonial.quote}</blockquote>
+            <figcaption>
+              <span className="about-testimonial-name">{testimonial.name}</span>
+              <span className="about-testimonial-role">{testimonial.role}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </aside>
+  );
+
   return (
     <>
       <PageReveals />
@@ -116,6 +133,8 @@ export default function AboutPage() {
                       ) : null}
                     </div>
                   </article>
+
+                  {section.number === "01" ? testimonialBand : null}
                 </Fragment>
               );
             })}
