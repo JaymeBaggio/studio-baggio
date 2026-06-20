@@ -96,7 +96,7 @@ updates `.next/types` during build.
 ## Visual Rules
 
 - Premium monochrome editorial direction.
-- Hard colour rule: black, white and true neutral greys only. No pink, purple, violet, lavender, purple-grey, blue-grey or any grey with a colour cast. No colour accents unless Jayme explicitly reverses this in writing.
+- Hard colour rule: black, white and true neutral greys as the base system, with one approved Studio Baggio blue accent: `#2563EB` / `--sb-accent-blue`. No pink, purple, violet, lavender, purple-grey, blue-grey or any grey with a colour cast. Do not introduce any other colour accents unless Jayme explicitly approves them.
 - Aileron loaded locally from `public/fonts/aileron`.
 - Large typographic compositions, sparse whitespace, strong section rhythm.
 - No purple gradients, blobs, generic SaaS bento layout, fake proof or stock imagery.

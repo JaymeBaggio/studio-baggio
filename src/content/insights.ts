@@ -188,6 +188,7 @@ Top tip: paste your text and use --- to control the slide breaks.
 **Planner** — The one I'd add to the stack this year. Production scheduling built for the work, not adapted from a project board- one live schedule everyone reads in their own view, so no one's on the wrong copy.
 Use it for: planning across several productions without rebuilding the schedule each time, and keeping crew, dates and handoffs in one place.
 Top tip: it's the first scheduler I've seen that connects to Claude through an MCP- so you can ask the AI to read your live schedule, build and move blocks, or turn a Google Sheet into a real plan, and you approve the changes. [Planner](https://www.get-planner.com)
+Read the Planner Claude/MCP page for the production scheduling workflow: [production scheduling tool that connects to Claude](https://www.get-planner.com/resources/blog/production-scheduling-tool-that-connects-to-claude).
 
 **Lovable** — If you feel overwhelmed by starting in Codex or Claude, I cannot recommend Lovable highly enough. When nothing off-the-shelf fits your workflow, build the thing yourself, no coding or technical setup required. It is now branching out into slide decks and design kits too.
 Use it for: turning a repeatable workflow into a small app, prototype, deck or design kit instead of a one-off.

@@ -126,13 +126,14 @@ Suggested mobile scale:
 
 ## Colour System
 
-Keep the palette strictly monochrome.
+Keep the palette strictly monochrome with one approved blue accent.
 
 Hard rule:
 
-- Use black, white and true neutral greys only.
+- Use black, white and true neutral greys as the base system.
+- The only approved colour accent is Studio Baggio blue: `#2563EB`.
 - Do not use pink, purple, violet, lavender, purple-tinted grey, blue-grey or any colour-cast grey.
-- Do not introduce coloured accents unless Jayme explicitly reverses this instruction in writing.
+- Do not introduce any additional coloured accents without explicit approval from Jayme.
 - If a grey looks even slightly pink, purple, blue or beige on screen, replace it with an actual neutral grey.
 
 Base:
@@ -146,8 +147,12 @@ Base:
 
 Accent:
 
-- No colour accent is approved for the Studio Baggio site direction.
-- Use contrast, typography, rules, active states and black/white inversion instead of colour accents.
+- Studio Baggio blue: `#2563EB`
+- CSS token: `--sb-accent-blue: #2563EB`
+- Alias token: `--sb-blue: var(--sb-accent-blue)`
+- Use sparingly for blue dots, active links, selected stats, key emphasis, article accents and primary directional cues.
+- Do not use the blue as a large background wash, gradient base, decorative blob, or SaaS-style brand wash.
+- Use contrast, typography, rules, active states and black/white inversion first; use blue only when it adds orientation or emphasis.
 
 Avoid:
 

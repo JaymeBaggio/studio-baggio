@@ -1,5 +1,28 @@
 # Studio Baggio Website - STATUS
-*Last updated: 12 June 2026*
+*Last updated: 20 June 2026*
+
+## 20 June Blue Accent Docs + Planner MCP Link - Live Push
+
+Scope:
+
+- Documentation alignment for the approved Studio Baggio blue accent.
+- Insights article only: `/insights/best-ai-tools-content-production-2026`.
+
+Implemented:
+
+- Updated `CLAUDE.md` and `_strategy/Studio baggio consulting/design.md` so future agents know the site uses black, white and true neutral greys as the base system, with one approved Studio Baggio blue accent: `#2563EB` / `--sb-accent-blue`.
+- Added a contextual Planner Claude/MCP deep link to the 2026 AI tools article:
+  `https://www.get-planner.com/resources/blog/production-scheduling-tool-that-connects-to-claude`
+
+Verified locally before push:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+
+Live verification:
+
+- Push to `main`, wait for Vercel deployment, then verify the deep link on `https://www.studiobaggio.ai/insights/best-ai-tools-content-production-2026`.
 
 ## 12 June Luke Testimonial Added - Local
 
@@ -1466,7 +1489,7 @@ Jayme approved and implemented a revised homepage direction. It is saved in:
 Key decisions:
 
 - Keep the existing hero/header reference direction locked.
-- Hard colour rule: black, white and true neutral greys only. No pink, no purple, no purple-tinted grey, no lavender/blue-grey cast and no coloured accents in the Studio Baggio homepage/site direction unless Jayme explicitly reverses this in writing.
+- Hard colour rule: black, white and true neutral greys as the base system, with one approved Studio Baggio blue accent: `#2563EB` / `--sb-accent-blue`. No pink, no purple, no purple-tinted grey, no lavender/blue-grey cast and no other coloured accents in the Studio Baggio homepage/site direction unless Jayme explicitly approves them.
 - Rebuild the homepage sequence as: hero/header, opening commercial argument, problem/clarifier, expertise-to-proof bridge, value areas, Commercial AI Sprint, working promise, proof, fit/not fit and CTA.
 - Replace `Findability` with `Discoverability`.
 - Use Studio Graphene's 2026 AI ROI figures carefully: 78% of UK businesses using AI tools, 31% reporting positive ROI, and 41% clearly defining success.
