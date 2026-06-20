@@ -3,7 +3,7 @@ import { z } from "zod";
 export const contactSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name."),
   email: z.string().trim().email("Please enter a valid email address."),
-  business: z.string().trim().min(2, "Please add your business or firm."),
+  business: z.string().trim().min(2, "Please add your company name."),
   website: z
     .string()
     .trim()
@@ -14,8 +14,10 @@ export const contactSchema = z.object({
     .refine((value) => !value || /^https?:\/\/.+\..+/.test(value), {
       message: "Add a valid website, for example studiobaggio.ai."
     }),
-  improvement: z.string().trim().min(2, "Please add what you want to improve."),
-  aiOpportunity: z.string().trim().min(2, "Please add what would make this useful."),
+  biggestChallenge: z.string().trim().max(1200, "Keep this under 1,200 characters.").optional(),
+  alreadyTried: z.string().trim().max(1200, "Keep this under 1,200 characters.").optional(),
+  whyNow: z.string().trim().max(1200, "Keep this under 1,200 characters.").optional(),
+  successfulOutcome: z.string().trim().max(1200, "Keep this under 1,200 characters.").optional(),
   companyUrl: z.string().max(0, "Spam check failed.").optional()
 });
 

@@ -26,8 +26,10 @@ export function ContactForm() {
       email: "",
       business: "",
       website: "",
-      improvement: "",
-      aiOpportunity: "",
+      biggestChallenge: "",
+      alreadyTried: "",
+      whyNow: "",
+      successfulOutcome: "",
       companyUrl: ""
     }
   });
@@ -72,8 +74,10 @@ export function ContactForm() {
       fieldErrors.email?.message ||
       fieldErrors.business?.message ||
       fieldErrors.website?.message ||
-      fieldErrors.improvement?.message ||
-      fieldErrors.aiOpportunity?.message ||
+      fieldErrors.biggestChallenge?.message ||
+      fieldErrors.alreadyTried?.message ||
+      fieldErrors.whyNow?.message ||
+      fieldErrors.successfulOutcome?.message ||
       "Please check the fields above and try again.";
 
     setFormStatus({
@@ -83,12 +87,12 @@ export function ContactForm() {
   }
 
   return (
-    <form className="grid gap-8" onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
+    <form className="contact-form" onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate>
       <div aria-hidden="true" className="hidden">
         <label htmlFor="companyUrl">Company URL</label>
         <input id="companyUrl" tabIndex={-1} autoComplete="off" {...register("companyUrl")} />
       </div>
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="contact-form-grid">
         <Field>
           <Label htmlFor="name" required>Name</Label>
           <Input id="name" autoComplete="name" {...register("name")} />
@@ -99,10 +103,8 @@ export function ContactForm() {
           <Input id="email" type="email" autoComplete="email" {...register("email")} />
           <FieldError message={errors.email?.message} />
         </Field>
-      </div>
-      <div className="grid gap-8 md:grid-cols-2">
         <Field>
-          <Label htmlFor="business" required>Business / firm</Label>
+          <Label htmlFor="business" required>Company name</Label>
           <Input id="business" autoComplete="organization" {...register("business")} />
           <FieldError message={errors.business?.message} />
         </Field>
@@ -112,19 +114,37 @@ export function ContactForm() {
           <FieldError message={errors.website?.message} />
         </Field>
       </div>
-      <div className="grid gap-8 md:grid-cols-2">
-        <Field>
-          <Label htmlFor="improvement" required>What are you trying to improve?</Label>
-          <Textarea id="improvement" {...register("improvement")} />
-          <FieldError message={errors.improvement?.message} />
-        </Field>
-        <Field>
-          <Label htmlFor="aiOpportunity" required>Tell us what would make this useful.</Label>
-          <Textarea id="aiOpportunity" {...register("aiOpportunity")} />
-          <FieldError message={errors.aiOpportunity?.message} />
-        </Field>
+
+      <div className="contact-form-briefing">
+        <div className="contact-form-briefing-copy">
+          <p>Optional context</p>
+          <span>These help us prepare before we speak.</span>
+        </div>
+        <div className="contact-form-grid contact-form-grid-briefing">
+          <Field>
+            <Label htmlFor="biggestChallenge">What is the biggest challenge you’re trying to solve right now?</Label>
+            <Textarea id="biggestChallenge" {...register("biggestChallenge")} />
+            <FieldError message={errors.biggestChallenge?.message} />
+          </Field>
+          <Field>
+            <Label htmlFor="alreadyTried">What have you already tried?</Label>
+            <Textarea id="alreadyTried" {...register("alreadyTried")} />
+            <FieldError message={errors.alreadyTried?.message} />
+          </Field>
+          <Field>
+            <Label htmlFor="whyNow">Why is now the right time to address this?</Label>
+            <Textarea id="whyNow" {...register("whyNow")} />
+            <FieldError message={errors.whyNow?.message} />
+          </Field>
+          <Field>
+            <Label htmlFor="successfulOutcome">What would a successful outcome look like for your business 6 months from now?</Label>
+            <Textarea id="successfulOutcome" {...register("successfulOutcome")} />
+            <FieldError message={errors.successfulOutcome?.message} />
+          </Field>
+        </div>
       </div>
-      <div className="grid gap-4">
+
+      <div className="contact-form-actions">
         <SubmitButton disabled={isSubmitting}>
           {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Send className="h-4 w-4" aria-hidden="true" />}
           {isSubmitting ? "Sending" : "Send enquiry"}

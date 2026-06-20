@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
   }
 
   const resend = new Resend(apiKey);
-  const { name, email, business, website, improvement, aiOpportunity } = parsed.data;
+  const { name, email, business, website, biggestChallenge, alreadyTried, whyNow, successfulOutcome } = parsed.data;
 
   try {
     const result = await resend.emails.send({
@@ -73,14 +73,20 @@ export async function POST(request: NextRequest) {
       text: [
         `Name: ${name}`,
         `Email: ${email}`,
-        `Business / firm: ${business}`,
+        `Company name: ${business}`,
         `Website: ${website || "Not supplied"}`,
         "",
-        "What are they trying to improve?",
-        improvement,
+        "What is the biggest challenge they are trying to solve right now?",
+        biggestChallenge || "Not supplied",
         "",
-        "Tell us what would make this useful.",
-        aiOpportunity
+        "What have they already tried?",
+        alreadyTried || "Not supplied",
+        "",
+        "Why is now the right time to address this?",
+        whyNow || "Not supplied",
+        "",
+        "What would a successful outcome look like 6 months from now?",
+        successfulOutcome || "Not supplied"
       ].join("\n")
     });
 

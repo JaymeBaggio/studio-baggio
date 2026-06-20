@@ -848,9 +848,8 @@ export const footer = {
 
 export const contactPage = {
   eyebrow: "Contact",
-  title: "Discuss your AI opportunity.",
-  body:
-    "Bring the business, market or workflow you want to improve. Studio Baggio will help you work out where AI can create real commercial value, what should be built first and how it should connect to visibility, pipeline, workflow or client experience.",
+  title: "Enquire now.",
+  body: "Tell us what you are trying to solve.",
   email: "jayme@studiobaggio.ai"
 };
 
