@@ -1,7 +1,7 @@
 # Studio Baggio Website - STATUS
 *Last updated: 20 June 2026*
 
-## 20 June Contact Page Enquiry Form Refresh - Live Push
+## 20 June Contact Page Enquiry Form Refresh - Local
 
 Scope:
 
@@ -10,22 +10,28 @@ Scope:
 Implemented:
 
 - Reworked `/contact` into a cleaner Studio Baggio enquiry frame with a smaller `Enquire now.` heading and blue dot.
-- Tightened the desktop layout so the contact content fits in-frame with the footer visible at `1440x900`.
+- Tightened the desktop layout so the contact content fits in-frame at `1440x900`.
+- Hid the footer on `/contact` so the page behaves as a single-frame enquiry surface.
 - Updated the required fields to `Name`, `Email`, `Company name` and `Website`.
 - Replaced the two required textarea prompts with four optional context questions:
   `What is the biggest challenge you’re trying to solve right now?`,
   `What have you already tried?`,
   `Why is now the right time to address this?`,
   and `What would a successful outcome look like for your business 6 months from now?`
-- Made the optional context section lighter and non-bold so it fits the Studio Baggio design system.
+- Made the optional context section collapsed by default with one quieter rule and non-bold prompt labels.
 - Updated the contact API email text to include the new questions while allowing them to be blank.
 
-Verified locally before push:
+Verified locally:
 
 - `npm run typecheck` passes.
 - `npm run lint` passes.
 - `npm run build` passes.
-- Headless Chrome screenshots checked at desktop `1440x900` and mobile `390x844`; desktop fits in frame and mobile no longer clips the intro copy.
+- Headless Chrome screenshots checked at desktop `1440x900`.
+- Mobile emulation checked at `390x844`; `scrollWidth` equals `390`, the content fits in-frame and the intro copy no longer clips.
+
+Status:
+
+- Not pushed yet. Awaiting visual sign-off.
 
 ## 20 June Blue Accent Docs + Planner MCP Link - Live Push
 

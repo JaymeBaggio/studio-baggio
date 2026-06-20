@@ -115,11 +115,12 @@ export function ContactForm() {
         </Field>
       </div>
 
-      <div className="contact-form-briefing">
-        <div className="contact-form-briefing-copy">
-          <p>Optional context</p>
-          <span>These help us prepare before we speak.</span>
-        </div>
+      <details className="contact-form-optional">
+        <summary>
+          <span className="contact-form-optional-label">Add optional context</span>
+          <small>These help us prepare before we speak with your team.</small>
+          <span className="contact-form-optional-icon" aria-hidden="true">+</span>
+        </summary>
         <div className="contact-form-grid contact-form-grid-briefing">
           <Field>
             <Label htmlFor="biggestChallenge">What is the biggest challenge you’re trying to solve right now?</Label>
@@ -142,7 +143,7 @@ export function ContactForm() {
             <FieldError message={errors.successfulOutcome?.message} />
           </Field>
         </div>
-      </div>
+      </details>
 
       <div className="contact-form-actions">
         <SubmitButton disabled={isSubmitting}>

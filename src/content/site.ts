@@ -860,7 +860,7 @@ export const privacyPage = {
     {
       title: "What the form collects",
       body:
-        "The contact form asks for your name, email address, business or firm, website, what you are trying to improve and what would make the work useful."
+        "The contact form asks for your name, email address, company name and website. You can also add optional context about the challenge, what you have tried, why now matters and what success would look like."
     },
     {
       title: "Why it is collected",

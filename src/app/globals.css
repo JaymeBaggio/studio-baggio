@@ -56,6 +56,10 @@ svg {
     var(--background);
 }
 
+body:has(.home-4b.contact-page) footer {
+  display: none;
+}
+
 .editorial-container {
   width: min(calc(100% - 48px), 1680px);
   margin-inline: auto;
@@ -4123,8 +4127,10 @@ svg {
 }
 
 .home-4b.contact-page .studio-contact-section {
-  min-height: calc(100svh - 150px);
-  padding-block: clamp(70px, 8vh, 90px) clamp(26px, 4vh, 44px);
+  display: grid;
+  min-height: 100svh;
+  align-items: center;
+  padding-block: clamp(112px, 14vh, 148px) clamp(44px, 6vh, 64px);
   border-top: 0;
   overflow-x: clip;
 }
@@ -4150,7 +4156,7 @@ svg {
 
 .home-4b.contact-page .studio-contact-title {
   max-width: 460px;
-  font-size: clamp(42px, 4.3vw, 64px);
+  font-size: clamp(42px, 4vw, 60px);
   line-height: 0.94;
   white-space: nowrap;
 }
@@ -4170,9 +4176,7 @@ svg {
 .home-4b .studio-contact-panel {
   width: 100%;
   max-width: 100%;
-  border-top: 1px solid var(--sb-rule);
-  border-bottom: 1px solid var(--sb-rule);
-  padding-block: clamp(16px, 2vw, 22px);
+  padding-block: 0;
 }
 
 .home-4b .studio-contact-panel .contact-form {
@@ -4191,21 +4195,29 @@ svg {
   min-width: 0;
 }
 
-.home-4b .studio-contact-panel .contact-form-briefing {
+.home-4b .studio-contact-panel .contact-form-optional {
   display: grid;
-  gap: 12px;
   border-top: 1px solid var(--sb-rule);
-  padding-top: clamp(14px, 1.8vw, 18px);
 }
 
-.home-4b .studio-contact-panel .contact-form-briefing-copy {
+.home-4b .studio-contact-panel .contact-form-optional summary {
+  position: relative;
   display: grid;
-  gap: 5px;
-  max-width: 760px;
-  min-width: 0;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr) auto;
+  gap: clamp(18px, 2vw, 28px);
+  align-items: baseline;
+  min-height: 54px;
+  padding-block: 15px;
+  padding-right: 28px;
+  cursor: pointer;
+  list-style: none;
 }
 
-.home-4b .studio-contact-panel .contact-form-briefing-copy p {
+.home-4b .studio-contact-panel .contact-form-optional summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-4b .studio-contact-panel .contact-form-optional-label {
   margin: 0;
   color: var(--sb-ink);
   font-size: var(--sb-label-size);
@@ -4215,11 +4227,25 @@ svg {
   text-transform: uppercase;
 }
 
-.home-4b .studio-contact-panel .contact-form-briefing-copy span {
+.home-4b .studio-contact-panel .contact-form-optional-icon {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  width: 18px;
+  color: var(--sb-blue);
+  font-size: 18px;
+  line-height: 1;
+  text-align: right;
+}
+
+.home-4b .studio-contact-panel .contact-form-optional summary small {
+  display: block;
+  min-width: 0;
+  margin: 0;
   color: var(--sb-body);
   font-size: 14px;
-  line-height: 1.45;
-  overflow-wrap: normal;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 .home-4b .studio-contact-panel label,
@@ -4255,7 +4281,6 @@ svg {
 .home-4b .studio-contact-panel textarea {
   min-height: 82px;
   margin-top: 5px;
-  border-top: 1px solid var(--sb-rule);
   padding-block: 9px;
   resize: vertical;
 }
@@ -4268,6 +4293,10 @@ svg {
   letter-spacing: 0;
   text-transform: none;
   overflow-wrap: anywhere;
+}
+
+.home-4b .studio-contact-panel .contact-form-grid-briefing {
+  padding-block: 14px 18px;
 }
 
 .home-4b .studio-contact-panel .contact-form-grid-briefing textarea {
@@ -6928,7 +6957,8 @@ svg {
 
   .home-4b.contact-page .studio-contact-section {
     min-height: auto;
-    padding-block: 92px 44px;
+    align-items: start;
+    padding-block: clamp(124px, 16svh, 144px) 40px;
   }
 
   .home-4b.contact-page .studio-contact-title {
@@ -6943,14 +6973,28 @@ svg {
   .home-4b.contact-page .studio-page-body,
   .home-4b.contact-page .studio-contact-panel,
   .home-4b .studio-contact-panel .contact-form,
-  .home-4b .studio-contact-panel .contact-form-briefing-copy,
-  .home-4b .studio-contact-panel .contact-form-briefing-copy span {
+  .home-4b .studio-contact-panel .contact-form-optional,
+  .home-4b .studio-contact-panel .contact-form-optional summary,
+  .home-4b .studio-contact-panel .contact-form-optional summary small {
     width: 100%;
     max-width: 100%;
   }
 
   .home-4b.contact-page .studio-page-body {
     max-width: calc(100vw - 48px);
+  }
+
+  .home-4b .studio-contact-panel .contact-form-optional summary {
+    grid-template-columns: minmax(0, 1fr) 18px;
+    gap: 5px 12px;
+  }
+
+  .home-4b .studio-contact-panel .contact-form-optional summary small {
+    grid-column: 1 / 2;
+  }
+
+  .home-4b .studio-contact-panel .contact-form-optional-icon {
+    top: 14px;
   }
 
   .home-4b.insights-page .insights-filter-strip {
