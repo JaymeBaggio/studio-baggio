@@ -117,8 +117,7 @@ export function ContactForm() {
 
       <details className="contact-form-optional">
         <summary>
-          <span className="contact-form-optional-label">Add optional context</span>
-          <small>These help us prepare before we speak with your team.</small>
+          <span className="contact-form-optional-label">Additional Details</span>
           <span className="contact-form-optional-icon" aria-hidden="true">+</span>
         </summary>
         <div className="contact-form-grid contact-form-grid-briefing">

@@ -4197,14 +4197,12 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b .studio-contact-panel .contact-form-optional {
   display: grid;
-  border-top: 1px solid var(--sb-rule);
 }
 
 .home-4b .studio-contact-panel .contact-form-optional summary {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr) auto;
-  gap: clamp(18px, 2vw, 28px);
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
   min-height: 54px;
   padding-block: 15px;
@@ -4246,16 +4244,6 @@ body:has(.home-4b.contact-page) footer {
   content: "-";
   color: var(--sb-blue);
   font-size: 18px;
-}
-
-.home-4b .studio-contact-panel .contact-form-optional summary small {
-  display: block;
-  min-width: 0;
-  margin: 0;
-  color: var(--sb-body);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.4;
 }
 
 .home-4b .studio-contact-panel label,
@@ -6997,8 +6985,7 @@ body:has(.home-4b.contact-page) footer {
   .home-4b.contact-page .studio-contact-panel,
   .home-4b .studio-contact-panel .contact-form,
   .home-4b .studio-contact-panel .contact-form-optional,
-  .home-4b .studio-contact-panel .contact-form-optional summary,
-  .home-4b .studio-contact-panel .contact-form-optional summary small {
+  .home-4b .studio-contact-panel .contact-form-optional summary {
     width: 100%;
     max-width: 100%;
   }
@@ -7010,10 +6997,6 @@ body:has(.home-4b.contact-page) footer {
   .home-4b .studio-contact-panel .contact-form-optional summary {
     grid-template-columns: minmax(0, 1fr) 18px;
     gap: 5px 12px;
-  }
-
-  .home-4b .studio-contact-panel .contact-form-optional summary small {
-    grid-column: 1 / 2;
   }
 
   .home-4b .studio-contact-panel .contact-form-optional-icon {

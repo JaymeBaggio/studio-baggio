@@ -18,7 +18,8 @@ Implemented:
   `What have you already tried?`,
   `Why is now the right time to address this?`,
   and `What would success look like for your business 6 months from now?`
-- Made the optional context section collapsed by default with one quieter rule and non-bold prompt labels.
+- Renamed the optional disclosure row to `Additional Details`, removed the helper sentence, and removed the extra optional top rule so the website field underline does not double with a second separator.
+- Made the optional context section collapsed by default with non-bold prompt labels.
 - Tightened the optional open state so paired textarea underlines align even when labels wrap.
 - Changed the optional open-state control from `+` to `-`.
 - Updated the contact API email text to include the new questions while allowing them to be blank.
