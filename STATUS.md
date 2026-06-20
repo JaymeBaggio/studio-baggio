@@ -1,7 +1,7 @@
 # Studio Baggio Website - STATUS
 *Last updated: 20 June 2026*
 
-## 20 June Contact Page Enquiry Form Refresh - Local
+## 20 June Contact Page Enquiry Form Refresh - Live Push
 
 Scope:
 
@@ -17,21 +17,24 @@ Implemented:
   `What is the biggest challenge you’re trying to solve right now?`,
   `What have you already tried?`,
   `Why is now the right time to address this?`,
-  and `What would a successful outcome look like for your business 6 months from now?`
+  and `What would success look like for your business 6 months from now?`
 - Made the optional context section collapsed by default with one quieter rule and non-bold prompt labels.
+- Tightened the optional open state so paired textarea underlines align even when labels wrap.
+- Changed the optional open-state control from `+` to `-`.
 - Updated the contact API email text to include the new questions while allowing them to be blank.
 
-Verified locally:
+Verified:
 
 - `npm run typecheck` passes.
 - `npm run lint` passes.
 - `npm run build` passes.
 - Headless Chrome screenshots checked at desktop `1440x900`.
+- Headless Chrome open-state measurement confirms paired optional textarea underline deltas are `0px`.
 - Mobile emulation checked at `390x844`; `scrollWidth` equals `390`, the content fits in-frame and the intro copy no longer clips.
 
 Status:
 
-- Not pushed yet. Awaiting visual sign-off.
+- Pushed to `main` and verified live.
 
 ## 20 June Blue Accent Docs + Planner MCP Link - Live Push
 

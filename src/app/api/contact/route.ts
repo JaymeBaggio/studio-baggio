@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
         "Why is now the right time to address this?",
         whyNow || "Not supplied",
         "",
-        "What would a successful outcome look like 6 months from now?",
+        "What would success look like for their business 6 months from now?",
         successfulOutcome || "Not supplied"
       ].join("\n")
     });

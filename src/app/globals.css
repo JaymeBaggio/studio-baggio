@@ -4238,6 +4238,16 @@ body:has(.home-4b.contact-page) footer {
   text-align: right;
 }
 
+.home-4b .studio-contact-panel .contact-form-optional[open] .contact-form-optional-icon {
+  color: transparent;
+}
+
+.home-4b .studio-contact-panel .contact-form-optional[open] .contact-form-optional-icon::before {
+  content: "-";
+  color: var(--sb-blue);
+  font-size: 18px;
+}
+
 .home-4b .studio-contact-panel .contact-form-optional summary small {
   display: block;
   min-width: 0;
@@ -4299,7 +4309,20 @@ body:has(.home-4b.contact-page) footer {
   padding-block: 14px 18px;
 }
 
+.home-4b .studio-contact-panel .contact-form-briefing-field {
+  display: grid;
+  grid-template-rows: 36px auto auto;
+  gap: 8px;
+}
+
+.home-4b .studio-contact-panel .contact-form-briefing-field > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .home-4b .studio-contact-panel .contact-form-grid-briefing textarea {
+  height: 86px;
+  min-height: 86px;
   font-size: 14px;
   line-height: 1.5;
 }

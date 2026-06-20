@@ -122,23 +122,23 @@ export function ContactForm() {
           <span className="contact-form-optional-icon" aria-hidden="true">+</span>
         </summary>
         <div className="contact-form-grid contact-form-grid-briefing">
-          <Field>
+          <Field className="contact-form-briefing-field">
             <Label htmlFor="biggestChallenge">What is the biggest challenge you’re trying to solve right now?</Label>
             <Textarea id="biggestChallenge" {...register("biggestChallenge")} />
             <FieldError message={errors.biggestChallenge?.message} />
           </Field>
-          <Field>
+          <Field className="contact-form-briefing-field">
             <Label htmlFor="alreadyTried">What have you already tried?</Label>
             <Textarea id="alreadyTried" {...register("alreadyTried")} />
             <FieldError message={errors.alreadyTried?.message} />
           </Field>
-          <Field>
+          <Field className="contact-form-briefing-field">
             <Label htmlFor="whyNow">Why is now the right time to address this?</Label>
             <Textarea id="whyNow" {...register("whyNow")} />
             <FieldError message={errors.whyNow?.message} />
           </Field>
-          <Field>
-            <Label htmlFor="successfulOutcome">What would a successful outcome look like for your business 6 months from now?</Label>
+          <Field className="contact-form-briefing-field">
+            <Label htmlFor="successfulOutcome">What would success look like for your business 6 months from now?</Label>
             <Textarea id="successfulOutcome" {...register("successfulOutcome")} />
             <FieldError message={errors.successfulOutcome?.message} />
           </Field>
