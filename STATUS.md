@@ -20,9 +20,10 @@ Verified locally before push:
 - `npm run lint` passes.
 - `npm run build` passes.
 
-Live verification:
+Verified live:
 
-- Push to `main`, wait for Vercel deployment, then verify the deep link on `https://www.studiobaggio.ai/insights/best-ai-tools-content-production-2026`.
+- Pushed to `main` in commit `138c91d`.
+- Production HTML for `https://www.studiobaggio.ai/insights/best-ai-tools-content-production-2026` contains the Planner Claude/MCP deep link.
 
 ## 12 June Luke Testimonial Added - Local
 
