@@ -4075,6 +4075,55 @@ body:has(.home-4b.contact-page) footer {
   line-height: 1.62;
 }
 
+.home-4b.about-page .about-featured-press {
+  width: min(100%, var(--about-reading));
+  max-width: var(--about-reading);
+  margin-top: clamp(30px, 4vw, 52px);
+  border-top: 1px solid var(--sb-rule);
+  padding-top: clamp(20px, 2.8vw, 30px);
+}
+
+.home-4b.about-page .about-featured-press-link {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 34px);
+  max-width: 100%;
+  color: var(--sb-ink);
+  text-decoration: none;
+}
+
+.home-4b.about-page .about-featured-press-copy {
+  color: var(--sb-muted);
+  font-size: var(--sb-label-size);
+  font-weight: var(--sb-label-weight);
+  line-height: var(--sb-label-line);
+  letter-spacing: var(--sb-label-tracking);
+  text-transform: uppercase;
+}
+
+.home-4b.about-page .about-featured-press-copy strong {
+  color: var(--sb-ink);
+  font-weight: inherit;
+}
+
+.home-4b.about-page .about-featured-press-logo {
+  display: block;
+  width: clamp(156px, 17vw, 220px);
+  flex: 0 0 auto;
+  opacity: 0.94;
+  transition: opacity 180ms ease;
+}
+
+.home-4b.about-page .about-featured-press-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-4b.about-page .about-featured-press-link:hover .about-featured-press-logo {
+  opacity: 1;
+}
+
 @media (max-width: 1023px) {
   .home-4b.about-page .about-hero-frame {
     grid-template-columns: 1fr;
@@ -4116,6 +4165,15 @@ body:has(.home-4b.contact-page) footer {
   .home-4b.about-page .about-testimonial blockquote {
     font-size: 15px;
     line-height: 1.58;
+  }
+
+  .home-4b.about-page .about-featured-press-link {
+    display: grid;
+    gap: 16px;
+  }
+
+  .home-4b.about-page .about-featured-press-logo {
+    width: min(180px, 62vw);
   }
 }
 

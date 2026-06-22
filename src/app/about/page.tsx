@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Fragment } from "react";
 import { PageReveals } from "@/components/page-reveals";
 import { ButtonLink } from "@/components/ui/button";
@@ -6,6 +7,9 @@ import { about, metadata as siteMetadata, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
+
+const moneyMarketingFeatureUrl =
+  "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/";
 
 type AboutSection = (typeof about.sections)[number];
 
@@ -138,6 +142,28 @@ export default function AboutPage() {
                 </Fragment>
               );
             })}
+
+            <aside className="about-featured-press" aria-label="Featured press" data-reveal>
+              <a
+                href={moneyMarketingFeatureUrl}
+                className="about-featured-press-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="about-featured-press-copy">
+                  Featured in <strong>Money Marketing</strong>
+                </span>
+                <span className="about-featured-press-logo">
+                  <Image
+                    src="/assets/logos/money-marketing.png"
+                    alt="Money Marketing"
+                    width={440}
+                    height={132}
+                    sizes="(max-width: 767px) 180px, 220px"
+                  />
+                </span>
+              </a>
+            </aside>
           </div>
         </section>
       </div>
