@@ -10,8 +10,30 @@ export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/
 
 const moneyMarketingFeatureUrl =
   "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/";
+const aboutProductLinks: Record<string, string> = {
+  "Calm Authority": "https://www.calmauthority.ai/",
+  Last30Days: "https://last30days.app",
+  "Last30Days.app": "https://last30days.app"
+};
+const aboutProductLinkPattern = /(Calm Authority|Last30Days\.app|Last30Days)/g;
 
 type AboutSection = (typeof about.sections)[number];
+
+function renderLinkedText(text: string) {
+  return text.split(aboutProductLinkPattern).map((part, index) => {
+    const href = aboutProductLinks[part];
+
+    if (!href) {
+      return part;
+    }
+
+    return (
+      <a key={`${part}-${index}`} href={href} target="_blank" rel="noopener noreferrer">
+        {part}
+      </a>
+    );
+  });
+}
 
 function getLead(section: AboutSection) {
   return "lead" in section ? section.lead : null;
@@ -100,8 +122,8 @@ export default function AboutPage() {
 
                       {section.body.length > 0 ? (
                         <div className="about-body">
-                          {section.body.map((paragraph) => (
-                            <p key={paragraph}>{paragraph}</p>
+                          {section.body.map((paragraph, index) => (
+                            <p key={`${section.label}-${index}`}>{renderLinkedText(paragraph)}</p>
                           ))}
                         </div>
                       ) : null}
@@ -113,7 +135,7 @@ export default function AboutPage() {
                           {routes.map((route) => (
                             <div key={route.title} className="about-route">
                               <h3>{route.title}</h3>
-                              <p>{route.body}</p>
+                              <p>{renderLinkedText(route.body)}</p>
                             </div>
                           ))}
                         </div>

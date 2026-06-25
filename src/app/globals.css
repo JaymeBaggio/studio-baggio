@@ -3923,6 +3923,22 @@ body:has(.home-4b.contact-page) footer {
   letter-spacing: 0;
 }
 
+.home-4b.about-page .about-copy a,
+.home-4b.about-page .about-route a {
+  color: var(--sb-ink);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--sb-ink) 46%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.home-4b.about-page .about-copy a:hover,
+.home-4b.about-page .about-route a:hover {
+  color: var(--sb-blue);
+  text-decoration-color: currentColor;
+}
+
 .home-4b.about-page .about-copy .about-subsection-label {
   color: var(--sb-muted);
   font-size: var(--sb-label-size);
