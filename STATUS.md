@@ -1,7 +1,7 @@
 # Studio Baggio Website - STATUS
 *Last updated: 26 June 2026*
 
-## 26 June Last30Days Standalone Product Page - Local
+## 26 June Last30Days Standalone Product Page - Live Push
 
 Scope:
 
@@ -35,10 +35,26 @@ Verified:
 - Local `GET /work/last30days` returns `308` to `/last30days`.
 - Generated HTML includes the Last30Days title, canonical, H1, SoftwareApplication schema, footer link and live app link.
 - Local sitemap includes `https://www.studiobaggio.ai/last30days`.
+- Live `https://www.studiobaggio.ai/last30days` returns `200`.
+- Live `https://www.studiobaggio.ai/sitemap.xml` includes `/last30days`.
+- Google Search Console URL Inspection requested indexing for
+  `https://www.studiobaggio.ai/last30days`.
+- Search Console sitemap submission refreshed successfully for
+  `https://www.studiobaggio.ai/sitemap.xml`.
+- Pushed to `main` in commit `54b05cd Add Last30Days SEO product page`.
+
+Why:
+
+- Gives Studio Baggio a crawlable owner/product page for Last30Days rather than
+  relying only on the `/work` tab and the app domain.
+- Creates a relevant first-party backlink and entity signal from Studio Baggio
+  to `last30days.app`.
+- Supports the app-domain SEO pass by giving Google a cleaner Studio Baggio
+  source page to connect with the Last30Days WebApplication schema.
 
 Status:
 
-- Local only. Not pushed yet.
+- Pushed to `main`, deployed, live, sitemap submitted and indexing requested.
 
 ## 20 June Contact Page Enquiry Form Refresh - Live Push
 
