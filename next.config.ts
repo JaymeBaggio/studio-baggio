@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/fire-source", destination: "/work", permanent: true },
-      { source: "/last30days", destination: "/work", permanent: true }
+      { source: "/work/last30days", destination: "/last30days", permanent: true }
     ];
   }
 };

@@ -195,12 +195,18 @@ export function ProductDetailPanel({
   item,
   panelId = "products-panel",
   labelledBy,
-  currentPath
+  currentPath,
+  headingLevel = "h2",
+  showMobileBack = true,
+  animateOnMount = true
 }: {
   item: ProductWorkItem;
   panelId?: string;
   labelledBy?: string;
   currentPath?: string;
+  headingLevel?: "h1" | "h2";
+  showMobileBack?: boolean;
+  animateOnMount?: boolean;
 }) {
   const { productPage } = item;
   const isCalmAuthority = item.slug === "calm-authority";
@@ -221,6 +227,7 @@ export function ProductDetailPanel({
   ) : null;
   const titleId = `products-panel-title-${item.slug}`;
   const actions = productPage.ctas?.filter((cta) => cta.href !== currentPath);
+  const Heading = headingLevel;
   const panelGridClassName = [
     "products-panel-grid",
     isCalmAuthority ? "is-calm-authority" : "",
@@ -236,16 +243,16 @@ export function ProductDetailPanel({
       className="products-panel-shell"
       role={labelledBy ? "tabpanel" : undefined}
       aria-labelledby={labelledBy ?? titleId}
-      initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+      initial={!animateOnMount || shouldReduceMotion ? false : { opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
       transition={{ duration: shouldReduceMotion ? 0 : 0.34, ease: productsPanelEase }}
     >
       <header className="editorial-container products-panel-header">
         <p className="products-panel-category">{productPage.category}</p>
-        <h2 id={titleId} className="products-panel-title">
+        <Heading id={titleId} className="products-panel-title">
           {item.title}
-        </h2>
+        </Heading>
       </header>
 
       <div className="products-panel-rule" />
@@ -343,12 +350,14 @@ export function ProductDetailPanel({
         </div>
       ) : null}
 
-      <div className="editorial-container products-mobile-back">
-        <Link href="#products-tabs" className="focus-ring products-panel-link">
-          Back to products
-          <ArrowUpRight aria-hidden="true" />
-        </Link>
-      </div>
+      {showMobileBack ? (
+        <div className="editorial-container products-mobile-back">
+          <Link href="#products-tabs" className="focus-ring products-panel-link">
+            Back to products
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
+        </div>
+      ) : null}
     </motion.section>
   );
 }
@@ -356,7 +365,7 @@ export function ProductDetailPanel({
 function ProductSection({ section }: { section: ProductPageData["sections"][number] }) {
   return (
     <section className="products-copy-section">
-      <p className="products-section-label">{section.label}</p>
+      <h2 className="products-section-label">{section.label}</h2>
 
       {section.paragraphs?.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>

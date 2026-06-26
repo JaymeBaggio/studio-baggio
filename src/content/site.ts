@@ -844,7 +844,7 @@ export const footer = {
   summary: "Practical AI systems for expert-led businesses.",
   email: "jayme@studiobaggio.ai",
   privacyLabel: "Privacy",
-  productLinks: [{ label: "Last30Days", href: "https://last30days.app" }]
+  productLinks: [{ label: "Last30Days", href: "/last30days" }]
 };
 
 export const contactPage = {

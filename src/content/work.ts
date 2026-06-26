@@ -297,7 +297,7 @@ export const workItems: WorkItem[] = [
     promise: "Live Signal Intelligence",
     status: "Placeholder case study",
     proofCopy:
-      "Every business decision made without knowing what the market is saying right now is a guess dressed up as strategy.\n\nLast30Days scrapes Reddit. X. TikTok. Instagram. YouTube and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited.",
+      "Last30Days scrapes Reddit. X. TikTok. Instagram. YouTube, Polymarket and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited.\n\nEvery business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing. Last30Days gives you the market intelligence your competitors are paying £40,000 a year to access — in under 60 seconds.",
     problem:
       "Teams need to know what people are saying now, not what a stale report said months ago.",
     built:
@@ -305,9 +305,12 @@ export const workItems: WorkItem[] = [
     whyItMatters: "Before you launch, pivot, or compete — know what the market is really saying right now.",
     proves:
       "Studio Baggio can build useful AI products that combine research, source discipline, synthesis and user-facing workflows.",
-    href: "/work",
+    href: "/last30days",
     external: "https://last30days.app",
-    homepageLinks: [{ label: "Visit live site →", href: "https://last30days.app" }],
+    homepageLinks: [
+      { label: "View product page →", href: "/last30days" },
+      { label: "Visit live site →", href: "https://last30days.app" }
+    ],
     homepageImage: "/assets/products/last30days-og.png",
     image: "/assets/products/last30days.png",
     productPage: {
@@ -315,7 +318,7 @@ export const workItems: WorkItem[] = [
       category: "Live Signal Intelligence",
       image: {
         src: "/assets/products/last30days-products-og.png",
-        alt: "Last30Days product graphic",
+        alt: "Last30Days AI market intelligence product graphic",
         width: 1731,
         height: 909
       },
@@ -323,8 +326,18 @@ export const workItems: WorkItem[] = [
         {
           label: "What it is",
           paragraphs: [
-            "Every business decision made without knowing what the market is saying right now is a guess dressed up as strategy.",
-            "Last30Days scrapes Reddit. X. TikTok. Instagram. YouTube and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited."
+            "Last30Days scrapes Reddit. X. TikTok. Instagram. YouTube, Polymarket and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited.",
+            "Every business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing. Last30Days gives you the market intelligence your competitors are paying £40,000 a year to access — in under 60 seconds."
+          ]
+        },
+        {
+          label: "Useful for",
+          bullets: [
+            "Competitor research before a pitch, launch or positioning decision.",
+            "Category research when you need to know what buyers are asking now.",
+            "Trend research across Reddit, X, TikTok, Instagram, YouTube, Polymarket and the open web.",
+            "Content angles, messaging gaps and market sentiment before you publish.",
+            "Cited market intelligence that can be checked back to the original source."
           ]
         },
         {

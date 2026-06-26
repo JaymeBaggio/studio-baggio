@@ -1,5 +1,44 @@
 # Studio Baggio Website - STATUS
-*Last updated: 20 June 2026*
+*Last updated: 26 June 2026*
+
+## 26 June Last30Days Standalone Product Page - Local
+
+Scope:
+
+- Last30Days product/case-study page only, plus crawlability links.
+- No main navigation changes.
+
+Implemented:
+
+- Added `/last30days` as a real standalone Studio Baggio product page.
+- Reused the existing Last30Days `/work` content so the page stays concise.
+- Removed the old permanent redirect from `/last30days` to `/work`.
+- Added a permanent redirect from `/work/last30days` to `/last30days`.
+- Added page metadata, canonical URL and SoftwareApplication schema for Last30Days.
+- Added `/last30days` to the sitemap with a 26 June 2026 `lastmod`.
+- Pointed the footer Last30Days link to the local `/last30days` page.
+- Updated Last30Days work/home links so internal links point to the product page before the live app.
+- Kept the standalone page visible in static HTML while preserving the existing animated `/work` product tab behaviour.
+- Updated the Last30Days opening copy to include Polymarket, the £40,000/year intelligence comparison, and the "customers don't know they're producing" line.
+- Updated the standalone page metadata/schema description to include Polymarket.
+- Converted product section labels to semantic H2 headings.
+- Added a concise Last30Days "Useful for" bullet list.
+- Expanded Last30Days schema with feature list, image, free offer metadata and breadcrumb schema.
+- Updated the Last30Days product image alt text for AI market intelligence context.
+
+Verified:
+
+- `npm run typecheck` passes.
+- `npm run lint` passes.
+- `npm run build` passes.
+- Local `GET /last30days` returns `200`.
+- Local `GET /work/last30days` returns `308` to `/last30days`.
+- Generated HTML includes the Last30Days title, canonical, H1, SoftwareApplication schema, footer link and live app link.
+- Local sitemap includes `https://www.studiobaggio.ai/last30days`.
+
+Status:
+
+- Local only. Not pushed yet.
 
 ## 20 June Contact Page Enquiry Form Refresh - Live Push
 
