@@ -112,6 +112,13 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
       />
+      <script
+        id="services-prestate"
+        dangerouslySetInnerHTML={{
+          __html:
+            '(function(){if(document.getElementById("sv-prestate"))return;var s=document.createElement("style");s.id="sv-prestate";s.textContent="[data-sv-hero]{opacity:0}.sv-hero-line{transform:translateY(110%)}@media (prefers-reduced-motion: reduce){[data-sv-hero]{opacity:1}.sv-hero-line{transform:none}}";document.head.appendChild(s);})();'
+        }}
+      />
       <ServicesMotion />
       <div className="home-4b" data-services-root>
         <section className="py-16 md:py-24">

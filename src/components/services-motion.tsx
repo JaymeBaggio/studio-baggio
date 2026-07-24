@@ -45,7 +45,7 @@ export function ServicesMotion() {
         const heroLine = root.querySelector<HTMLElement>("[data-sv-hero-line]");
         const heroBits = root.querySelectorAll<HTMLElement>("[data-sv-hero]");
 
-        if (heroLine) gsap.set(heroLine, { yPercent: 110 });
+        if (heroLine) gsap.set(heroLine, { y: 0, yPercent: 110 });
         gsap.set(heroBits, { autoAlpha: 0, y: 22 });
 
         const hero = gsap.timeline({ defaults: { ease: servicesOut } });
