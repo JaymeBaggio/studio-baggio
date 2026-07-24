@@ -1,5 +1,31 @@
 # Studio Baggio Website - STATUS
-*Last updated: 26 June 2026*
+*Last updated: 24 July 2026*
+
+## 24 July Services Page + Intro PDF Download - Live Push
+
+Scope:
+
+- New /services page (the crawlable HTML version of the Studio Baggio intro document) + the intro PDF as a site download.
+
+Implemented:
+
+- `/services`: four offers as definition blocks with includes lists and examples (AI Operating System Audit, Commercial AI Growth Strategy incl. Business Tracker sub-section, SEO and AI Search Opportunity Audit, Bespoke AI Software and Systems), How Studio Baggio works, Ways to work together, Ongoing advisory support, Last30Days proof point (linked to /last30days), download CTA, services FAQ (7 items).
+- Schema: Service + OfferCatalog (all four offers), BreadcrumbList, FAQPage (via FaqSchema).
+- `public/downloads/studio-baggio-introduction.pdf` served at /downloads/studio-baggio-introduction.pdf (source of truth: `Studio Baggio/New Business/Intro One-Pager/Studio Baggio Introduction.pdf` — re-copy on every doc update).
+- Homepage: "Or download the Studio Baggio introduction" link under the audit-section CTA. Footer: "Studio Baggio introduction (PDF)" link.
+- Nav: "Services" added (site.ts navItems). Sitemap: /services (priority 0.85, lastmod 24 July).
+- Content layer: `servicesPage`, `introDownload`, `metadata.services` in src/content/site.ts.
+- Spacing: eyebrow sub-heads use padding-top (`.home-4b .eyebrow` zeroes margins by design); sub-blocks standardised at 40px.
+
+Verified:
+
+- typecheck, lint, build pass; /services static in route table.
+- Live https://www.studiobaggio.ai/services 200; /downloads/studio-baggio-introduction.pdf 200 application/pdf; sitemap includes /services; homepage + footer links present.
+- Live visual check via playwriter (spacing rhythm, blue accents, example highlights).
+
+Next (outlined for Jayme, not yet approved): homepage offer section alignment with the four-offer structure; proof tiles / case numbers refresh (Harry set now 9 clients / £5.3m / £93.4k); testimonials section (Charlotte/Harry/Luke approved set, Emma gated); internal links from relevant insights articles to /services; GSC re-index request for /services.
+
+---
 
 ## 26 June Last30Days Standalone Product Page - Live Push
 
