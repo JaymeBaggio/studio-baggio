@@ -7550,7 +7550,14 @@ body:has(.home-4b.contact-page) footer {
 
 @media (min-width: 1024px) {
   .sv-card {
+    position: sticky;
+    top: 88px;
     padding: 48px 56px;
+    will-change: transform;
+  }
+
+  .sv-stack {
+    padding-bottom: 32px;
   }
 }
 

@@ -25,31 +25,24 @@ export function ServicesMotion() {
         desktop: "(min-width: 1024px)"
       },
       (context) => {
-        const { motionOk } = context.conditions as {
+        const { motionOk, desktop } = context.conditions as {
           motionOk: boolean;
           reduceMotion: boolean;
           desktop: boolean;
         };
 
         if (!motionOk) {
-          gsap.set(
-            root.querySelectorAll("[data-sv-hero], [data-sv-title], [data-sv-reveal]"),
-            { clearProps: "all", autoAlpha: 1 }
-          );
+          gsap.set(root.querySelectorAll("[data-sv-reveal]"), {
+            clearProps: "all",
+            autoAlpha: 1
+          });
           return;
         }
 
-        // ── Entrance: plain staggered fade-up. No masks, no splitting —
-        // nothing that can clip or fight hydration. ──
-        const title = root.querySelector<HTMLElement>("[data-sv-title]");
-        const heroBits = root.querySelectorAll<HTMLElement>("[data-sv-hero]");
-
-        if (title) gsap.set(title, { autoAlpha: 0, y: 24, force3D: true });
-        gsap.set(heroBits, { autoAlpha: 0, y: 20, force3D: true });
-
-        // Pre-hide every scroll target with cheap writes now; their
-        // triggers are created only after the entrance has finished, so
-        // the hero animates on a quiet main thread.
+        // ── Entrance: pure CSS in page.tsx. The hero must stay OFF the GSAP
+        // ticker — lagSmoothing(0) is set globally for Lenis, so load-time
+        // frame drops make JS tweens jump forward in visible steps. A CSS
+        // animation runs on the compositor thread, which cannot stutter. ──
         const revealTargets = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-reveal]"));
         const listTargets = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-list]"));
         const exampleBlocks = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-example]"));
@@ -69,19 +62,8 @@ export function ServicesMotion() {
         gsap.set(accentBars, { scaleX: 0, transformOrigin: "left center" });
         gsap.set(logos, { autoAlpha: 0, y: 10 });
 
-        const hero = gsap.timeline({
-          paused: true,
-          defaults: { ease: servicesOut, force3D: true }
-        });
-
-        if (title) hero.to(title, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.05);
-        hero.to(heroBits, { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.08 }, 0.25);
-
-        // Let hydration finish its frames before the entrance plays.
-        requestAnimationFrame(() => requestAnimationFrame(() => hero.play()));
-
-        // ── Scroll layer: created immediately (the homepage pattern) so
-        // content is never stranded hidden if the user scrolls at once. ──
+        // ── Scroll layer: created immediately so content is never stranded
+        // hidden if the user scrolls at once. ──
         setupScroll();
 
         function setupScroll() {
@@ -136,6 +118,30 @@ export function ServicesMotion() {
               ease: servicesOut,
               stagger: 0.09,
               scrollTrigger: { trigger: logos[0], start: "top 92%", once: true }
+            });
+          }
+
+          if (desktop) {
+            const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
+            cards.forEach((card, index) => {
+              const next = cards[index + 1];
+              if (!next) return;
+              // Settled card keeps easing back for the whole overlap — a
+              // frozen held card is what reads as "stuck". scrub: true, never
+              // numeric: Lenis already smooths, numeric double-smooths.
+              gsap.to(card, {
+                scale: 0.94,
+                autoAlpha: 0.72,
+                transformOrigin: "center top",
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: next,
+                  start: "top bottom",
+                  end: "top top",
+                  scrub: true
+                }
+              });
             });
           }
 

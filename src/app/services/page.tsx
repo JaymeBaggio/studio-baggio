@@ -112,18 +112,28 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
       />
-      <script
-        id="services-prestate"
+      {/* Entrance runs as pure CSS on the compositor thread: it starts at
+          first paint (before hydration) and main-thread work cannot make it
+          stutter — unlike a GSAP tween under lagSmoothing(0). */}
+      <style
+        id="services-entrance"
         dangerouslySetInnerHTML={{
-          __html:
-            '(function(){if(document.getElementById("sv-prestate"))return;var s=document.createElement("style");s.id="sv-prestate";s.textContent="[data-sv-hero],[data-sv-title]{opacity:0}@media (prefers-reduced-motion: reduce){[data-sv-hero],[data-sv-title]{opacity:1}}";document.head.appendChild(s);})();'
+          __html: [
+            "@keyframes svHeroIn{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}",
+            "[data-sv-title],[data-sv-hero]{animation:svHeroIn 0.85s cubic-bezier(0.16,0.84,0.32,1) both}",
+            "[data-sv-title]{animation-delay:0.12s}",
+            "[data-sv-hero]{animation-delay:0.28s}",
+            '[data-sv-hero="lead"]{animation-delay:0s}',
+            '[data-sv-hero="late"]{animation-delay:0.42s}',
+            "@media (prefers-reduced-motion: reduce){[data-sv-title],[data-sv-hero]{animation:none}}"
+          ].join("")
         }}
       />
       <ServicesMotion />
       <div className="home-4b" data-services-root>
         <section className="py-16 md:py-24">
           <div className="editorial-container">
-            <p className="eyebrow" data-sv-hero>
+            <p className="eyebrow" data-sv-hero="lead">
               {servicesPage.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl leading-[1.08] md:text-5xl" data-sv-title>
@@ -140,7 +150,7 @@ export default function ServicesPage() {
                 </p>
               ))}
             </div>
-            <div className="mt-12" data-sv-hero>
+            <div className="mt-12" data-sv-hero="late">
               <ServicesOffersIndex items={offers.map(({ id, name }) => ({ id, name }))} />
             </div>
           </div>
