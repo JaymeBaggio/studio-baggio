@@ -11,6 +11,63 @@ const servicesOut =
   CustomEase.get("servicesEditorialOut") ??
   CustomEase.create("servicesEditorialOut", "M0,0 C0.16,0.82 0.34,1 1,1");
 
+// Split a heading into masked lines (house pattern from PageReveals,
+// trimmed): measure word wrap, then rebuild as .sv-hero-mask/.sv-hero-line
+// pairs so each visual line can rise independently.
+function splitTitleIntoLines(element: HTMLElement): HTMLElement[] {
+  const text = element.textContent?.replace(/\s+/g, " ").trim();
+  if (!text) return [];
+
+  element.setAttribute("aria-label", text);
+  const words = text.split(" ");
+  const measure = document.createDocumentFragment();
+
+  words.forEach((word, index) => {
+    const span = document.createElement("span");
+    span.className = "sv-measure-word";
+    span.textContent = index === words.length - 1 ? word : `${word} `;
+    measure.appendChild(span);
+  });
+
+  element.replaceChildren(measure);
+
+  const wordNodes = Array.from(element.querySelectorAll<HTMLElement>(".sv-measure-word"));
+  const lines: string[][] = [];
+  let currentTop: number | null = null;
+  let currentWords: string[] = [];
+
+  wordNodes.forEach((wordNode) => {
+    const word = wordNode.textContent?.trim();
+    if (!word) return;
+    const top = Math.round(wordNode.getBoundingClientRect().top);
+    if (currentTop === null || Math.abs(top - currentTop) <= 2) {
+      currentTop = currentTop ?? top;
+      currentWords.push(word);
+      return;
+    }
+    lines.push(currentWords);
+    currentWords = [word];
+    currentTop = top;
+  });
+  if (currentWords.length) lines.push(currentWords);
+
+  element.replaceChildren();
+  const targets: HTMLElement[] = [];
+
+  lines.forEach((lineWords) => {
+    const mask = document.createElement("span");
+    const inner = document.createElement("span");
+    mask.className = "sv-hero-mask";
+    inner.className = "sv-hero-line";
+    inner.textContent = lineWords.join(" ");
+    mask.appendChild(inner);
+    element.appendChild(mask);
+    targets.push(inner);
+  });
+
+  return targets;
+}
+
 export function ServicesMotion() {
   useGSAP(() => {
     const root = document.querySelector<HTMLElement>("[data-services-root]");
@@ -33,129 +90,135 @@ export function ServicesMotion() {
 
         if (!motionOk) {
           gsap.set(
-            root.querySelectorAll(
-              "[data-sv-hero], [data-sv-reveal], [data-sv-accent], [data-sv-logo], .sv-borderline"
-            ),
+            root.querySelectorAll("[data-sv-hero], [data-sv-title], [data-sv-reveal]"),
             { clearProps: "all", autoAlpha: 1 }
           );
           return;
         }
 
-        // Hero: masked headline rise, eyebrow and intro stagger.
-        const heroLine = root.querySelector<HTMLElement>("[data-sv-hero-line]");
+        // ── Entrance: everything needed for the hero, nothing else. ──
+        const title = root.querySelector<HTMLElement>("[data-sv-title]");
         const heroBits = root.querySelectorAll<HTMLElement>("[data-sv-hero]");
+        const lines = title ? splitTitleIntoLines(title) : [];
 
-        if (heroLine) gsap.set(heroLine, { y: 0, yPercent: 110 });
-        gsap.set(heroBits, { autoAlpha: 0, y: 22 });
+        gsap.set(lines, { yPercent: 110, force3D: true });
+        if (title) gsap.set(title, { autoAlpha: 1 });
+        gsap.set(heroBits, { autoAlpha: 0, y: 20, force3D: true });
 
-        const hero = gsap.timeline({ defaults: { ease: servicesOut } });
-        hero
-          .to(heroLine, { yPercent: 0, duration: 0.95 }, 0.1)
-          .to(heroBits, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.09 }, 0.32);
+        // Pre-hide every scroll target with cheap writes now; their
+        // triggers are created only after the entrance has finished, so
+        // the hero animates on a quiet main thread.
+        const revealTargets = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-reveal]"));
+        const listTargets = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-list]"));
+        const exampleBlocks = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-example]"));
+        const accentBars = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-accent]"));
+        const logos = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-logo]"));
 
-        // Scroll reveals: one pattern for every marked block.
-        root.querySelectorAll<HTMLElement>("[data-sv-reveal]").forEach((el) => {
-          gsap.fromTo(
-            el,
-            { autoAlpha: 0, y: 24 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.75,
-              ease: servicesOut,
-              scrollTrigger: { trigger: el, start: "top 86%", once: true }
-            }
-          );
+        gsap.set(revealTargets, { autoAlpha: 0, y: 24 });
+        listTargets.forEach((list) => gsap.set(list.children, { autoAlpha: 0, y: 14 }));
+        exampleBlocks.forEach((block) => {
+          gsap.set(block.querySelectorAll(":scope > *:not(.sv-borderline)"), {
+            autoAlpha: 0,
+            y: 14
+          });
+          const line = block.querySelector<HTMLElement>(".sv-borderline");
+          if (line) gsap.set(line, { scaleY: 0, transformOrigin: "top center" });
+        });
+        gsap.set(accentBars, { scaleX: 0, transformOrigin: "left center" });
+        gsap.set(logos, { autoAlpha: 0, y: 10 });
+
+        const hero = gsap.timeline({
+          paused: true,
+          defaults: { ease: servicesOut, force3D: true },
+          onComplete: setupScroll
         });
 
-        // Blue accent bars draw their width.
-        root.querySelectorAll<HTMLElement>("[data-sv-accent]").forEach((el) => {
-          gsap.fromTo(
-            el,
-            { scaleX: 0, transformOrigin: "left center" },
-            {
+        hero
+          .to(lines, { yPercent: 0, duration: 0.9, stagger: 0.09 }, 0.05)
+          .to(heroBits, { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.08 }, 0.3);
+
+        // Let hydration finish its frames before the entrance plays —
+        // with lagSmoothing(0) (required for Lenis sync) any main-thread
+        // work during the timeline shows as dropped frames.
+        requestAnimationFrame(() => requestAnimationFrame(() => hero.play()));
+
+        // ── Scroll layer: created once the entrance is done. ──
+        function setupScroll() {
+          revealTargets.forEach((el) => {
+            gsap.to(el, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.7,
+              ease: servicesOut,
+              scrollTrigger: { trigger: el, start: "top 86%", once: true }
+            });
+          });
+
+          accentBars.forEach((el) => {
+            gsap.to(el, {
               scaleX: 1,
               duration: 0.6,
               ease: servicesOut,
               scrollTrigger: { trigger: el, start: "top 88%", once: true }
-            }
-          );
-        });
+            });
+          });
 
-        // Lists: bullet rows stagger in.
-        root.querySelectorAll<HTMLElement>("[data-sv-list]").forEach((list) => {
-          gsap.fromTo(
-            list.children,
-            { autoAlpha: 0, y: 14 },
-            {
+          listTargets.forEach((list) => {
+            gsap.to(list.children, {
               autoAlpha: 1,
               y: 0,
               duration: 0.5,
               ease: servicesOut,
               stagger: 0.04,
               scrollTrigger: { trigger: list, start: "top 88%", once: true }
-            }
-          );
-        });
-
-        // Example blocks: blue border draws down, content follows.
-        root.querySelectorAll<HTMLElement>("[data-sv-example]").forEach((block) => {
-          const line = block.querySelector<HTMLElement>(".sv-borderline");
-          const tl = gsap.timeline({
-            scrollTrigger: { trigger: block, start: "top 86%", once: true }
+            });
           });
-          if (line) {
-            tl.fromTo(
-              line,
-              { scaleY: 0, transformOrigin: "top center" },
-              { scaleY: 1, duration: 0.55, ease: servicesOut }
-            );
-          }
-          tl.fromTo(
-            block.querySelectorAll(":scope > *:not(.sv-borderline)"),
-            { autoAlpha: 0, y: 14 },
-            { autoAlpha: 1, y: 0, duration: 0.55, ease: servicesOut, stagger: 0.07 },
-            line ? 0.12 : 0
-          );
-        });
 
-        // Press logos: quiet stagger.
-        const logos = root.querySelectorAll<HTMLElement>("[data-sv-logo]");
-        if (logos.length) {
-          gsap.fromTo(
-            logos,
-            { autoAlpha: 0, y: 10 },
-            {
+          exampleBlocks.forEach((block) => {
+            const line = block.querySelector<HTMLElement>(".sv-borderline");
+            const tl = gsap.timeline({
+              scrollTrigger: { trigger: block, start: "top 86%", once: true }
+            });
+            if (line) tl.to(line, { scaleY: 1, duration: 0.55, ease: servicesOut });
+            tl.to(
+              block.querySelectorAll(":scope > *:not(.sv-borderline)"),
+              { autoAlpha: 1, y: 0, duration: 0.55, ease: servicesOut, stagger: 0.07 },
+              line ? 0.12 : 0
+            );
+          });
+
+          if (logos.length) {
+            gsap.to(logos, {
               autoAlpha: 1,
               y: 0,
               duration: 0.5,
               ease: servicesOut,
               stagger: 0.09,
               scrollTrigger: { trigger: logos[0], start: "top 92%", once: true }
-            }
-          );
-        }
-
-        // Desktop signature: the four offers stack — each settled card eases
-        // back as the next one slides over it.
-        if (desktop) {
-          const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-sv-card]"));
-          cards.forEach((card, index) => {
-            const next = cards[index + 1];
-            if (!next) return;
-            gsap.to(card, {
-              scale: 0.965,
-              yPercent: -1.5,
-              transformOrigin: "center top",
-              ease: "none",
-              scrollTrigger: {
-                trigger: next,
-                start: "top bottom",
-                end: "top 12%",
-                scrub: 0.4
-              }
             });
-          });
+          }
+
+          if (desktop) {
+            const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
+            cards.forEach((card, index) => {
+              const next = cards[index + 1];
+              if (!next) return;
+              gsap.to(card, {
+                scale: 0.965,
+                transformOrigin: "center top",
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: next,
+                  start: "top bottom",
+                  end: "top 12%",
+                  scrub: true
+                }
+              });
+            });
+          }
+
+          ScrollTrigger.refresh();
         }
       }
     );
