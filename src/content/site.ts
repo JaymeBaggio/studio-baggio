@@ -924,12 +924,10 @@ export const servicesPage = {
       includes: [
         "Where AI can create the greatest measurable value",
         "How current roles and workflows should change",
-        "What shared business knowledge the system needs",
-        "Which role-specific capabilities should be built",
-        "How useful work is retained and improved",
+        "The shared knowledge and role-specific capabilities the system needs",
+        "How useful work, learning and progress will be retained and measured",
         "What should be implemented first",
-        "Where AI should not yet be used",
-        "How progress should be measured"
+        "Where AI should not yet be used"
       ],
       outro: [
         "The audit delivers a prioritised implementation plan that the business can implement itself.",
@@ -974,9 +972,6 @@ export const servicesPage = {
           "The system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
         ]
       },
-      outro: [
-        "The work is usually built around one or two priority areas first, giving the business measurable evidence before deciding where to expand."
-      ],
       example: {
         paras: [
           "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, added £5.3 million in assets under management and generated £93,400 in first-year revenue. Four of those client journeys began with a recommendation from ChatGPT."
@@ -992,21 +987,16 @@ export const servicesPage = {
         "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
       paras: [
         "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
-        "Prospective clients are already using Google, ChatGPT and other AI platforms to research problems, compare providers and decide who to contact. When the business does not appear in those answers, valuable enquiries and revenue are being directed elsewhere.",
-        "We identify the highest-value demand the business is currently missing and provide the strategy needed to become the organisation prospective clients find, trust and choose.",
-        "The audit defines the priority searches, pages, authority, content and technical changes required to create a measurable new route to enquiries and revenue."
+        "Prospective clients are already using Google, ChatGPT and other AI platforms to research problems, compare providers and decide who to contact. We identify the highest-value demand the business is missing and define the searches, pages, authority, content and technical changes needed to become the organisation they find, trust and choose."
       ],
       includesLabel: "What the audit covers",
       includes: [
-        "Current Google rankings",
-        "AI-answer visibility and citations",
-        "Competitor performance",
-        "High-value search questions",
-        "Technical and content gaps",
-        "Priority pages and resources",
-        "Site structure",
-        "Implementation priorities",
-        "Measurement and reporting"
+        "High-value client searches and questions",
+        "Current Google and AI-search visibility",
+        "Competitor and citation performance",
+        "Technical, content and authority gaps",
+        "Priority pages and site structure",
+        "Implementation and measurement plan"
       ],
       outro: [
         "The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
@@ -1050,7 +1040,7 @@ export const servicesPage = {
     paras: [
       "Every engagement starts with the business problem and the result the client needs.",
       "Studio Baggio handles the research, strategy, system design, build and implementation. The client provides the subject-matter expertise, strategic steer and approvals.",
-      "We do not recommend technology and leave the business to make it work. We build and implement practical systems that fit the organisation, deliver measurable value and improve over time."
+      "We build practical systems that fit the organisation, deliver measurable value and improve over time."
     ]
   },
   ways: {
