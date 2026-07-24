@@ -25,7 +25,7 @@ export function ServicesMotion() {
         desktop: "(min-width: 1024px)"
       },
       (context) => {
-        const { motionOk, desktop } = context.conditions as {
+        const { motionOk } = context.conditions as {
           motionOk: boolean;
           reduceMotion: boolean;
           desktop: boolean;
@@ -136,29 +136,6 @@ export function ServicesMotion() {
               ease: servicesOut,
               stagger: 0.09,
               scrollTrigger: { trigger: logos[0], start: "top 92%", once: true }
-            });
-          }
-
-          if (desktop) {
-            const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
-            cards.forEach((card, index) => {
-              const next = cards[index + 1];
-              if (!next) return;
-              // Keep the settled card moving for the entire overlap —
-              // a static held card is what reads as "sticky".
-              gsap.to(card, {
-                scale: 0.94,
-                autoAlpha: 0.72,
-                transformOrigin: "center top",
-                ease: "none",
-                force3D: true,
-                scrollTrigger: {
-                  trigger: next,
-                  start: "top bottom",
-                  end: "top top",
-                  scrub: true
-                }
-              });
             });
           }
 
