@@ -916,7 +916,7 @@ export const servicesPage = {
       paras: [
         "For businesses that want to build a company-wide AI system around how their people work.",
         "We examine the business, its teams, roles, knowledge and workflows to identify where AI can create the greatest measurable value.",
-        "We then define the operating system needed to deliver it: the shared business context, role-specific capabilities, connected workflows, knowledge structure and safeguards required for AI to support the organisation and improve over time.",
+        "We then define the operating system needed to deliver it: the shared business context, role-specific capabilities, processes and safeguards required for AI to support the organisation and improve over time.",
         "This is not a review of individual tools or a generic training programme.",
         "It is a practical plan for building AI into the way the business operates, so each person has the right context and capability built into their working environment from the start."
       ],
