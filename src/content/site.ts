@@ -914,7 +914,7 @@ export const servicesPage = {
       summary:
         "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and workflows.",
       paras: [
-        "For businesses that want to build a company-wide AI system around how their people actually work.",
+        "For businesses that want to build a company-wide AI system around how their people work.",
         "We examine the business, its teams, roles, knowledge and workflows to identify where AI can create the greatest measurable value.",
         "We then define the operating system needed to deliver it: the shared business context, role-specific capabilities, connected workflows, knowledge structure and safeguards required for AI to support the organisation and improve over time.",
         "This is not a review of individual tools or a generic training programme.",
@@ -1096,7 +1096,7 @@ export const servicesPage = {
       {
         question: "What is an AI Operating System Audit?",
         answer:
-          "The AI Operating System Audit is for businesses that want to build a company-wide AI system around how their people actually work. We examine the business, its teams, roles, knowledge and workflows to identify where AI can create the greatest measurable value, then define the operating system needed to deliver it. The audit delivers a prioritised implementation plan that the business can implement itself, or Studio Baggio can be appointed to design, build and implement the full operating system."
+          "The AI Operating System Audit is for businesses that want to build a company-wide AI system around how their people work. We examine the business, its teams, roles, knowledge and workflows to identify where AI can create the greatest measurable value, then define the operating system needed to deliver it. The audit delivers a prioritised implementation plan that the business can implement itself, or Studio Baggio can be appointed to design, build and implement the full operating system."
       },
       {
         question: "What is a Commercial AI Growth Strategy?",
