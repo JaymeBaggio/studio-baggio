@@ -979,7 +979,7 @@ export const servicesPage = {
       ],
       example: {
         paras: [
-          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in just eight months, added £5.3 million in assets under management and generated £93,400 in first-year revenue."
+          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, added £5.3 million in assets under management and generated £93,400 in first-year revenue. Four of those client journeys began with a recommendation from ChatGPT."
         ],
         highlight:
           "£5.3 million in assets under management and generated £93,400 in first-year revenue"
@@ -989,7 +989,7 @@ export const servicesPage = {
       id: "seo-and-ai-search-opportunity-audit",
       name: "SEO and AI Search Opportunity Audit",
       summary:
-        "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the answer.",
+        "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
       paras: [
         "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
         "Prospective clients are already using Google, ChatGPT and other AI platforms to research problems, compare providers and decide who to contact. When the business does not appear in those answers, valuable enquiries and revenue are being directed elsewhere.",
@@ -1032,21 +1032,19 @@ export const servicesPage = {
       includes: [
         "Problem and opportunity definition",
         "Industry and user research",
-        "Workflow mapping",
-        "Product strategy",
-        "System and data design",
-        "Prototype development",
-        "Live testing",
-        "Implementation",
+        "Workflow and data design",
+        "Product strategy and prototyping",
+        "Live testing and implementation",
         "Ongoing refinement"
-      ]
+      ],
+      example: {
+        paras: [
+          "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. More than 200 people have used it to research markets, competitors, customer questions and emerging opportunities."
+        ],
+        highlight: "More than 200 people have used it"
+      }
     }
   ],
-  proof: {
-    eyebrow: "PROOF",
-    para:
-      "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. More than 200 people have used it to investigate markets, competitors, customer questions and emerging opportunities."
-  },
   howWeWork: {
     eyebrow: "HOW STUDIO BAGGIO WORKS",
     triad: "Find the value. Build the system. Put it into real work.",
@@ -1074,10 +1072,28 @@ export const servicesPage = {
       }
     ]
   },
-  ongoing: {
-    eyebrow: "ONGOING ADVISORY SUPPORT",
-    para:
-      "After an audit or implementation, Studio Baggio can remain embedded as an external AI partner, providing priority advice, monthly working sessions and ongoing support as the business and its operating system develop."
+  press: {
+    label: "Featured in",
+    items: [
+      {
+        name: "FT Adviser",
+        href: "https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d",
+        logo: "/assets/logos/financial-times.png",
+        width: 55
+      },
+      {
+        name: "Money Marketing",
+        href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/",
+        logo: "/assets/logos/money-marketing.png",
+        width: 53
+      },
+      {
+        name: "Professional Adviser",
+        href: "https://www.professionaladviser.com/news/4407649/could-linkedin-ai-platform-financial-advisers-best-kept-secret",
+        logo: "/assets/logos/professional-adviser-print.png",
+        width: 193
+      }
+    ]
   },
   download: {
     eyebrow: "TAKE THIS WITH YOU",

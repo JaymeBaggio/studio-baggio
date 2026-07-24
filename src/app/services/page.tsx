@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/faq-accordion";
@@ -227,26 +228,6 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <p className="eyebrow pt-12">{servicesPage.ongoing.eyebrow}</p>
-            <p className="mt-4 text-sm leading-relaxed text-ink/70 md:text-base">
-              {servicesPage.ongoing.para}
-            </p>
-          </div>
-        </section>
-
-        <section className="border-t border-ink/10 py-14 md:py-20">
-          <div className="editorial-container max-w-3xl">
-            <p className="eyebrow">{servicesPage.proof.eyebrow}</p>
-            <p className="mt-4 text-sm leading-relaxed text-ink/70 md:text-base">
-              {servicesPage.proof.para.split("Last30Days")[0]}
-              <Link
-                className="focus-ring underline underline-offset-4 hover:text-ink"
-                href="/last30days"
-              >
-                Last30Days
-              </Link>
-              {servicesPage.proof.para.split(/Last30Days(.*)/s)[1]}
-            </p>
           </div>
         </section>
 
@@ -291,6 +272,29 @@ export default function ServicesPage() {
             <div className="mt-8">
               <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
             </div>
+          </div>
+        </section>
+
+        <section className="border-t border-ink/10 py-10 md:py-12">
+          <div className="editorial-container flex flex-wrap items-center gap-x-9 gap-y-4">
+            <span className="eyebrow">{servicesPage.press.label}</span>
+            {servicesPage.press.items.map((item) => (
+              <a
+                key={item.name}
+                className="focus-ring inline-flex items-center"
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src={item.logo}
+                  alt={item.name}
+                  width={item.width}
+                  height={16}
+                  className="h-4 w-auto"
+                />
+              </a>
+            ))}
           </div>
         </section>
       </div>
