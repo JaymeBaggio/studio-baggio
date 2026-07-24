@@ -71,19 +71,19 @@ export function ServicesMotion() {
 
         const hero = gsap.timeline({
           paused: true,
-          defaults: { ease: servicesOut, force3D: true },
-          onComplete: setupScroll
+          defaults: { ease: servicesOut, force3D: true }
         });
 
         if (title) hero.to(title, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.05);
         hero.to(heroBits, { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.08 }, 0.25);
 
-        // Let hydration finish its frames before the entrance plays —
-        // with lagSmoothing(0) (required for Lenis sync) any main-thread
-        // work during the timeline shows as dropped frames.
+        // Let hydration finish its frames before the entrance plays.
         requestAnimationFrame(() => requestAnimationFrame(() => hero.play()));
 
-        // ── Scroll layer: created once the entrance is done. ──
+        // ── Scroll layer: created immediately (the homepage pattern) so
+        // content is never stranded hidden if the user scrolls at once. ──
+        setupScroll();
+
         function setupScroll() {
           revealTargets.forEach((el) => {
             gsap.to(el, {
