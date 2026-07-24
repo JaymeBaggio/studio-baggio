@@ -1047,11 +1047,10 @@ export const servicesPage = {
   ],
   howWeWork: {
     eyebrow: "HOW STUDIO BAGGIO WORKS",
-    triad: "Find the value. Build the system. Put it into real work.",
     paras: [
-      "Every engagement begins by identifying the commercial or operational opportunity with the greatest value.",
+      "Every engagement starts with the business problem and the result the client needs.",
       "Studio Baggio handles the research, strategy, system design, build and implementation. The client provides the subject-matter expertise, strategic steer and approvals.",
-      "The aim is not to recommend technology and leave the business to work out what to do with it. The aim is to build something practical that works inside the organisation, produces measurable value and improves over time."
+      "We do not recommend technology and leave the business to make it work. We build and implement practical systems that fit the organisation, deliver measurable value and improve over time."
     ]
   },
   ways: {

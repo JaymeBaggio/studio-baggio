@@ -207,9 +207,6 @@ export default function ServicesPage() {
         <section className="border-t border-ink/10 py-14 md:py-20">
           <div className="editorial-container max-w-3xl">
             <p className="eyebrow">{servicesPage.howWeWork.eyebrow}</p>
-            <p className="mt-5 text-lg font-semibold tracking-[0.02em] md:text-xl">
-              {servicesPage.howWeWork.triad}
-            </p>
             <div className="mt-5 space-y-4">
               {servicesPage.howWeWork.paras.map((para) => (
                 <p key={para} className="text-sm leading-relaxed text-ink/70 md:text-base">
