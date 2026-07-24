@@ -129,15 +129,17 @@ export function ServicesMotion() {
             // A sticky card releases when ITS OWN bottom hits the parent's
             // bottom — unequal heights release at different times, so tall
             // early cards get shoved up past the pin line while the short
-            // last card is still arriving. Equal heights hold the pin and
-            // exit as one stack.
+            // last card is still arriving. The sticky clamp uses the MARGIN
+            // box, so transparent margin-bottom equalises the release without
+            // stretching any card into an empty bordered void.
             const equalize = () => {
               cards.forEach((c) => {
-                c.style.minHeight = "";
+                c.style.marginBottom = "";
               });
               const max = Math.max(...cards.map((c) => c.offsetHeight));
               cards.forEach((c) => {
-                c.style.minHeight = `${max}px`;
+                const delta = max - c.offsetHeight;
+                if (delta > 0) c.style.marginBottom = `${delta}px`;
               });
             };
             equalize();
@@ -150,7 +152,7 @@ export function ServicesMotion() {
             cleanup = () => {
               window.removeEventListener("resize", reEqualize);
               cards.forEach((c) => {
-                c.style.minHeight = "";
+                c.style.marginBottom = "";
               });
             };
 
