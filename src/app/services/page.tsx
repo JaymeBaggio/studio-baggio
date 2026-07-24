@@ -116,7 +116,7 @@ export default function ServicesPage() {
         id="services-prestate"
         dangerouslySetInnerHTML={{
           __html:
-            '(function(){if(document.getElementById("sv-prestate"))return;var s=document.createElement("style");s.id="sv-prestate";s.textContent="[data-sv-hero]{opacity:0}.sv-hero-line{transform:translateY(110%)}@media (prefers-reduced-motion: reduce){[data-sv-hero]{opacity:1}.sv-hero-line{transform:none}}";document.head.appendChild(s);})();'
+            '(function(){if(document.getElementById("sv-prestate"))return;var s=document.createElement("style");s.id="sv-prestate";s.textContent="[data-sv-hero],[data-sv-title]{opacity:0}@media (prefers-reduced-motion: reduce){[data-sv-hero],[data-sv-title]{opacity:1}}";document.head.appendChild(s);})();'
         }}
       />
       <ServicesMotion />
@@ -126,12 +126,8 @@ export default function ServicesPage() {
             <p className="eyebrow" data-sv-hero>
               {servicesPage.eyebrow}
             </p>
-            <h1 className="mt-4 max-w-3xl text-4xl leading-[1.08] md:text-5xl">
-              <span className="sv-hero-mask">
-                <span className="sv-hero-line" data-sv-hero-line>
-                  {servicesPage.title}
-                </span>
-              </span>
+            <h1 className="mt-4 max-w-3xl text-4xl leading-[1.08] md:text-5xl" data-sv-title>
+              {servicesPage.title}
             </h1>
             <div className="mt-8 max-w-3xl space-y-4">
               {servicesPage.intro.map((para) => (
