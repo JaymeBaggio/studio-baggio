@@ -144,7 +144,7 @@ export default function ServicesPage() {
                       </p>
                     ))}
                   </div>
-                  <h3 className="eyebrow mt-8">{offer.includesLabel}</h3>
+                  <h3 className="eyebrow pt-10">{offer.includesLabel}</h3>
                   <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
                     {offer.includes.map((item) => (
                       <li
@@ -160,7 +160,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   {offer.subSection ? (
-                    <div className="mt-8">
+                    <div className="mt-10">
                       <h3 className="eyebrow">{offer.subSection.label}</h3>
                       <div className="mt-4 space-y-4">
                         {offer.subSection.paras.map((para) => (
@@ -184,7 +184,7 @@ export default function ServicesPage() {
                     </div>
                   ) : null}
                   {offer.example ? (
-                    <div className="mt-8 border-l-2 border-[color:var(--sb-accent-blue)] pl-5">
+                    <div className="mt-10 border-l-2 border-[color:var(--sb-accent-blue)] pl-5">
                       <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
                       <div className="mt-3 space-y-3">
                         {offer.example.paras.map((para) => (
@@ -217,7 +217,7 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <p className="eyebrow mt-12">{servicesPage.ways.eyebrow}</p>
+            <p className="eyebrow pt-12">{servicesPage.ways.eyebrow}</p>
             <div className="mt-5 space-y-5">
               {servicesPage.ways.items.map((item) => (
                 <p key={item.lead} className="text-sm leading-relaxed text-ink/70 md:text-base">
@@ -227,7 +227,7 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <p className="eyebrow mt-12">{servicesPage.ongoing.eyebrow}</p>
+            <p className="eyebrow pt-12">{servicesPage.ongoing.eyebrow}</p>
             <p className="mt-4 text-sm leading-relaxed text-ink/70 md:text-base">
               {servicesPage.ongoing.para}
             </p>
