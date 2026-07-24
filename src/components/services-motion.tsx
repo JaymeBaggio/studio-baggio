@@ -123,6 +123,18 @@ export function ServicesMotion() {
 
           if (desktop) {
             const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
+            // Flow position via the offsetParent chain: sticky displacement
+            // never shows up here, so ranges are correct even when the page
+            // loads (or refreshes) mid-scroll with cards already pinned.
+            const pageTop = (el: HTMLElement) => {
+              let y = 0;
+              let node: HTMLElement | null = el;
+              while (node) {
+                y += node.offsetTop;
+                node = node.offsetParent as HTMLElement | null;
+              }
+              return y;
+            };
             cards.forEach((card, index) => {
               const next = cards[index + 1];
               if (!next) return;
@@ -136,10 +148,10 @@ export function ServicesMotion() {
                 ease: "none",
                 force3D: true,
                 scrollTrigger: {
-                  trigger: next,
-                  start: "top bottom",
-                  end: "top top",
-                  scrub: true
+                  start: () => pageTop(next) - window.innerHeight,
+                  end: () => pageTop(next) - 88,
+                  scrub: true,
+                  invalidateOnRefresh: true
                 }
               });
             });
