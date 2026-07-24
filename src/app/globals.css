@@ -7545,11 +7545,15 @@ body:has(.home-4b.contact-page) footer {
 .sv-hero-mask {
   display: block;
   overflow: hidden;
+  padding-block: 0.12em 0.34em;
+  margin-block: -0.12em -0.34em;
 }
 
 .sv-hero-line {
   display: block;
   will-change: transform;
+  padding-block: 0.04em 0.12em;
+  margin-block: -0.04em -0.12em;
 }
 
 .sv-card {

@@ -203,15 +203,18 @@ export function ServicesMotion() {
             cards.forEach((card, index) => {
               const next = cards[index + 1];
               if (!next) return;
+              // Keep the settled card moving for the entire overlap —
+              // a static held card is what reads as "sticky".
               gsap.to(card, {
-                scale: 0.965,
+                scale: 0.94,
+                autoAlpha: 0.72,
                 transformOrigin: "center top",
                 ease: "none",
                 force3D: true,
                 scrollTrigger: {
                   trigger: next,
                   start: "top bottom",
-                  end: "top 12%",
+                  end: "top top",
                   scrub: true
                 }
               });
