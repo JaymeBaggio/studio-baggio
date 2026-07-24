@@ -11,63 +11,6 @@ const servicesOut =
   CustomEase.get("servicesEditorialOut") ??
   CustomEase.create("servicesEditorialOut", "M0,0 C0.16,0.82 0.34,1 1,1");
 
-// Split a heading into masked lines (house pattern from PageReveals,
-// trimmed): measure word wrap, then rebuild as .sv-hero-mask/.sv-hero-line
-// pairs so each visual line can rise independently.
-function splitTitleIntoLines(element: HTMLElement): HTMLElement[] {
-  const text = element.textContent?.replace(/\s+/g, " ").trim();
-  if (!text) return [];
-
-  element.setAttribute("aria-label", text);
-  const words = text.split(" ");
-  const measure = document.createDocumentFragment();
-
-  words.forEach((word, index) => {
-    const span = document.createElement("span");
-    span.className = "sv-measure-word";
-    span.textContent = index === words.length - 1 ? word : `${word} `;
-    measure.appendChild(span);
-  });
-
-  element.replaceChildren(measure);
-
-  const wordNodes = Array.from(element.querySelectorAll<HTMLElement>(".sv-measure-word"));
-  const lines: string[][] = [];
-  let currentTop: number | null = null;
-  let currentWords: string[] = [];
-
-  wordNodes.forEach((wordNode) => {
-    const word = wordNode.textContent?.trim();
-    if (!word) return;
-    const top = Math.round(wordNode.getBoundingClientRect().top);
-    if (currentTop === null || Math.abs(top - currentTop) <= 2) {
-      currentTop = currentTop ?? top;
-      currentWords.push(word);
-      return;
-    }
-    lines.push(currentWords);
-    currentWords = [word];
-    currentTop = top;
-  });
-  if (currentWords.length) lines.push(currentWords);
-
-  element.replaceChildren();
-  const targets: HTMLElement[] = [];
-
-  lines.forEach((lineWords) => {
-    const mask = document.createElement("span");
-    const inner = document.createElement("span");
-    mask.className = "sv-hero-mask";
-    inner.className = "sv-hero-line";
-    inner.textContent = lineWords.join(" ");
-    mask.appendChild(inner);
-    element.appendChild(mask);
-    targets.push(inner);
-  });
-
-  return targets;
-}
-
 export function ServicesMotion() {
   useGSAP(() => {
     const root = document.querySelector<HTMLElement>("[data-services-root]");
@@ -96,13 +39,12 @@ export function ServicesMotion() {
           return;
         }
 
-        // ── Entrance: everything needed for the hero, nothing else. ──
+        // ── Entrance: plain staggered fade-up. No masks, no splitting —
+        // nothing that can clip or fight hydration. ──
         const title = root.querySelector<HTMLElement>("[data-sv-title]");
         const heroBits = root.querySelectorAll<HTMLElement>("[data-sv-hero]");
-        const lines = title ? splitTitleIntoLines(title) : [];
 
-        gsap.set(lines, { yPercent: 110, force3D: true });
-        if (title) gsap.set(title, { autoAlpha: 1 });
+        if (title) gsap.set(title, { autoAlpha: 0, y: 24, force3D: true });
         gsap.set(heroBits, { autoAlpha: 0, y: 20, force3D: true });
 
         // Pre-hide every scroll target with cheap writes now; their
@@ -133,9 +75,8 @@ export function ServicesMotion() {
           onComplete: setupScroll
         });
 
-        hero
-          .to(lines, { yPercent: 0, duration: 0.9, stagger: 0.09 }, 0.05)
-          .to(heroBits, { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.08 }, 0.3);
+        if (title) hero.to(title, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.05);
+        hero.to(heroBits, { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.08 }, 0.25);
 
         // Let hydration finish its frames before the entrance plays —
         // with lagSmoothing(0) (required for Lenis sync) any main-thread

@@ -7542,20 +7542,6 @@ body:has(.home-4b.contact-page) footer {
 
 /* ── Services page: motion + offer stack ───────────────────────────── */
 
-.sv-hero-mask {
-  display: block;
-  overflow: hidden;
-  padding-block: 0.12em 0.34em;
-  margin-block: -0.12em -0.34em;
-}
-
-.sv-hero-line {
-  display: block;
-  will-change: transform;
-  padding-block: 0.04em 0.12em;
-  margin-block: -0.04em -0.12em;
-}
-
 .sv-card {
   background: #ffffff;
   border: 1px solid rgba(20, 20, 20, 0.12);
