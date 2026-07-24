@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footer, primaryCta } from "@/content/site";
+import { footer, introDownload, primaryCta } from "@/content/site";
 
 export function SiteFooter() {
   return (
@@ -34,6 +34,13 @@ export function SiteFooter() {
               </Link>
             )
           )}
+          <a
+            className="focus-ring mt-2 block underline-offset-4 hover:underline"
+            href={introDownload.href}
+            download
+          >
+            {introDownload.footerLabel}
+          </a>
           <Link className="focus-ring mt-2 inline-flex underline-offset-4 hover:underline" href="/privacy">
             {footer.privacyLabel}
           </Link>

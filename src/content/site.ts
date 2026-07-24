@@ -1,5 +1,6 @@
 export const navItems = [
   { label: "Studio Baggio", href: "/" },
+  { label: "Services", href: "/services" },
   { label: "Products", href: "/work" },
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
@@ -9,6 +10,12 @@ export const navItems = [
 export const primaryCta = {
   label: "Discuss your AI opportunity",
   href: "/contact"
+};
+
+export const introDownload = {
+  label: "Or download the Studio Baggio introduction",
+  footerLabel: "Studio Baggio introduction (PDF)",
+  href: "/downloads/studio-baggio-introduction.pdf"
 };
 
 export const metadata = {
@@ -50,6 +57,11 @@ export const metadata = {
   privacy: {
     title: "Privacy | Studio Baggio",
     description: "How Studio Baggio handles contact-form information."
+  },
+  services: {
+    title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
+    description:
+      "What you can hire Studio Baggio for: AI Operating System Audit, Commercial AI Growth Strategy, SEO and AI Search Opportunity Audit, and bespoke AI software and systems."
   }
 };
 
@@ -884,4 +896,233 @@ export const privacyPage = {
         "This phase-1 build does not install analytics or tracking scripts. If analytics are added later, this page should be updated before launch."
     }
   ]
+};
+
+export const servicesPage = {
+  eyebrow: "SERVICES",
+  title: "AI strategy, systems and implementation",
+  intro: [
+    "Studio Baggio helps businesses identify where AI can create measurable commercial value, then designs, builds and implements the systems needed to deliver it.",
+    "That might mean building AI into how a team works, generating new client demand, improving visibility across Google and AI search, or creating specialist software around an industry problem.",
+    "We start with the business problem, not a predetermined tool or generic AI programme."
+  ],
+  offersEyebrow: "WHAT YOU CAN HIRE US FOR",
+  offers: [
+    {
+      id: "ai-operating-system-audit",
+      name: "AI Operating System Audit",
+      summary:
+        "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and workflows.",
+      paras: [
+        "For businesses that want to build a company-wide AI system around how their people actually work.",
+        "We examine the business, its teams, roles, knowledge and workflows to identify where AI can create the greatest measurable value.",
+        "We then define the operating system needed to deliver it: the shared business context, role-specific capabilities, connected workflows, knowledge structure and safeguards required for AI to support the organisation and improve over time.",
+        "This is not a review of individual tools or a generic training programme.",
+        "It is a practical plan for building AI into the way the business operates, so each person has the right context and capability built into their working environment from the start."
+      ],
+      includesLabel: "What the audit covers",
+      includes: [
+        "Where AI can create the greatest measurable value",
+        "How current roles and workflows should change",
+        "What shared business knowledge the system needs",
+        "Which role-specific capabilities should be built",
+        "How useful work is retained and improved",
+        "What should be implemented first",
+        "Where AI should not yet be used",
+        "How progress should be measured"
+      ],
+      outro: [
+        "The audit delivers a prioritised implementation plan that the business can implement itself.",
+        "Studio Baggio can also be appointed to design, build and implement the full operating system."
+      ],
+      example: {
+        paras: [
+          "Studio Baggio built the AI operating system that now underpins how a London creative agency works.",
+          "The system understands the company, its brand, clients, people and roles. It guides the team inside live work, retains useful knowledge, identifies repeated tasks and helps turn successful work into reusable capability across the business.",
+          "It was designed for a non-technical team and removes the need for separate AI training. Early use indicates an estimated 10–15 hours saved each week."
+        ],
+        highlight: "an estimated 10–15 hours saved each week"
+      }
+    },
+    {
+      id: "commercial-ai-growth-strategy",
+      name: "Commercial AI Growth Strategy",
+      summary:
+        "Find valuable client demand and build the route from search visibility to qualified enquiries, instructions and revenue. Includes a bespoke Business Tracker that captures engagement, qualifies opportunities and recommends follow-up.",
+      paras: [
+        "For trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base.",
+        "We identify the client questions and live concerns with the strongest commercial value, then build the route from visibility to engagement, qualified follow-up, instructions and fees."
+      ],
+      includesLabel: "This can include",
+      includes: [
+        "Client-demand research",
+        "Commercial positioning",
+        "Google and AI-search visibility",
+        "Client-facing guides, diagnostics and tools",
+        "Engagement capture",
+        "Business Tracker implementation",
+        "Lead qualification",
+        "Follow-up recommendations",
+        "Monthly commercial reporting"
+      ],
+      subSection: {
+        label: "Business Tracker",
+        paras: [
+          "Each Commercial AI Growth Strategy is supported by Studio Baggio's Business Tracker.",
+          "It brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds public professional and company context to show who each person is and why they may matter.",
+          "Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action.",
+          "The system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
+        ]
+      },
+      outro: [
+        "The work is usually built around one or two priority areas first, giving the business measurable evidence before deciding where to expand."
+      ],
+      example: {
+        paras: [
+          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in just eight months, added £5.3 million in assets under management and generated £93,400 in first-year revenue."
+        ],
+        highlight:
+          "£5.3 million in assets under management and generated £93,400 in first-year revenue"
+      }
+    },
+    {
+      id: "seo-and-ai-search-opportunity-audit",
+      name: "SEO and AI Search Opportunity Audit",
+      summary:
+        "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the answer.",
+      paras: [
+        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
+        "Prospective clients are already using Google, ChatGPT and other AI platforms to research problems, compare providers and decide who to contact. When the business does not appear in those answers, valuable enquiries and revenue are being directed elsewhere.",
+        "We identify the highest-value demand the business is currently missing and provide the strategy needed to become the organisation prospective clients find, trust and choose.",
+        "The audit defines the priority searches, pages, authority, content and technical changes required to create a measurable new route to enquiries and revenue."
+      ],
+      includesLabel: "What the audit covers",
+      includes: [
+        "Current Google rankings",
+        "AI-answer visibility and citations",
+        "Competitor performance",
+        "High-value search questions",
+        "Technical and content gaps",
+        "Priority pages and resources",
+        "Site structure",
+        "Implementation priorities",
+        "Measurement and reporting"
+      ],
+      outro: [
+        "The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
+      ],
+      example: {
+        paras: [
+          "A software product moved from page four to first on Google, above Microsoft, and began appearing directly in ChatGPT & Perplexity answers. It generated more than 20 enquiries in the first two weeks."
+        ],
+        highlight: "more than 20 enquiries in the first two weeks"
+      }
+    },
+    {
+      id: "bespoke-ai-software-and-systems",
+      name: "Bespoke AI Software and Systems",
+      summary:
+        "Design and build specialist software for valuable industry problems that off-the-shelf tools cannot solve.",
+      paras: [
+        "For valuable business problems that cannot be solved with an off-the-shelf tool.",
+        "Studio Baggio works closely with industry experts to understand the commercial problem, the real workflow, the available data and the decisions the system needs to support.",
+        "We then design, build, test and implement specialist software around how the business actually operates."
+      ],
+      includesLabel: "This can include",
+      includes: [
+        "Problem and opportunity definition",
+        "Industry and user research",
+        "Workflow mapping",
+        "Product strategy",
+        "System and data design",
+        "Prototype development",
+        "Live testing",
+        "Implementation",
+        "Ongoing refinement"
+      ]
+    }
+  ],
+  proof: {
+    eyebrow: "PROOF",
+    para:
+      "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. More than 200 people have used it to investigate markets, competitors, customer questions and emerging opportunities."
+  },
+  howWeWork: {
+    eyebrow: "HOW STUDIO BAGGIO WORKS",
+    triad: "Find the value. Build the system. Put it into real work.",
+    paras: [
+      "Every engagement begins by identifying the commercial or operational opportunity with the greatest value.",
+      "Studio Baggio handles the research, strategy, system design, build and implementation. The client provides the subject-matter expertise, strategic steer and approvals.",
+      "The aim is not to recommend technology and leave the business to work out what to do with it. The aim is to build something practical that works inside the organisation, produces measurable value and improves over time."
+    ]
+  },
+  ways: {
+    eyebrow: "WAYS TO WORK TOGETHER",
+    items: [
+      {
+        lead: "Audit",
+        detail: "Identify the opportunity, define the system and provide a prioritised implementation plan."
+      },
+      {
+        lead: "Build and implementation",
+        detail: "Design, build and embed the required operating system, workflows or specialist software."
+      },
+      {
+        lead: "Ongoing AI partner",
+        detail:
+          "Provide continuity, priority advice and practical support as the business, its systems and its priorities develop."
+      }
+    ]
+  },
+  ongoing: {
+    eyebrow: "ONGOING ADVISORY SUPPORT",
+    para:
+      "After an audit or implementation, Studio Baggio can remain embedded as an external AI partner, providing priority advice, monthly working sessions and ongoing support as the business and its operating system develop."
+  },
+  download: {
+    eyebrow: "TAKE THIS WITH YOU",
+    title: "Download the Studio Baggio introduction",
+    body: "The full introduction to these services, with examples and results, as a shareable PDF.",
+    label: "Download the introduction (PDF)"
+  },
+  faq: {
+    eyebrow: "SERVICES: FREQUENTLY ASKED QUESTIONS",
+    items: [
+      {
+        question: "What is an AI Operating System Audit?",
+        answer:
+          "The AI Operating System Audit is for businesses that want to build a company-wide AI system around how their people actually work. We examine the business, its teams, roles, knowledge and workflows to identify where AI can create the greatest measurable value, then define the operating system needed to deliver it. The audit delivers a prioritised implementation plan that the business can implement itself, or Studio Baggio can be appointed to design, build and implement the full operating system."
+      },
+      {
+        question: "What is a Commercial AI Growth Strategy?",
+        answer:
+          "A Commercial AI Growth Strategy is for trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base. We identify the client questions and live concerns with the strongest commercial value, then build the route from visibility to engagement, qualified follow-up, instructions and fees. Each engagement is supported by Studio Baggio's Business Tracker."
+      },
+      {
+        question: "What is the Business Tracker?",
+        answer:
+          "The Business Tracker brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds public professional and company context to show who each person is and why they may matter. Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action. It can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
+      },
+      {
+        question: "What does the SEO and AI Search Opportunity Audit cover?",
+        answer:
+          "It covers current Google rankings, AI-answer visibility and citations, competitor performance, high-value search questions, technical and content gaps, priority pages and resources, site structure, implementation priorities, and measurement. The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
+      },
+      {
+        question: "What kind of software does Studio Baggio build?",
+        answer:
+          "Specialist software for valuable business problems that cannot be solved with an off-the-shelf tool. Studio Baggio works closely with industry experts to understand the commercial problem, the real workflow, the available data and the decisions the system needs to support, then designs, builds, tests and implements the software around how the business actually operates."
+      },
+      {
+        question: "How does an engagement begin?",
+        answer:
+          "An engagement can begin with a focused audit, a 90-day strategy and implementation project, or a bespoke build. Every engagement begins by identifying the commercial or operational opportunity with the greatest value. Studio Baggio handles the research, strategy, system design, build and implementation; the client provides the subject-matter expertise, strategic steer and approvals."
+      },
+      {
+        question: "What support is available after an audit or implementation?",
+        answer:
+          "Studio Baggio can remain embedded as an external AI partner, providing priority advice, monthly working sessions and ongoing support as the business and its operating system develop."
+      }
+    ]
+  }
 };

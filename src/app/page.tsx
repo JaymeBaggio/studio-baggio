@@ -6,7 +6,7 @@ import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
 import { ValueMap } from "@/components/value-map";
-import { hero, home, metadata as siteMetadata, primaryCta } from "@/content/site";
+import { hero, home, introDownload, metadata as siteMetadata, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
@@ -233,6 +233,13 @@ export default function HomePage() {
               <ButtonLink href={primaryCta.href} className="commercial-sprint-cta">
                 {primaryCta.label}
               </ButtonLink>
+              <a
+                className="focus-ring mt-4 block text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
+                href={introDownload.href}
+                download
+              >
+                {introDownload.label}
+              </a>
             </div>
           </div>
         </section>
