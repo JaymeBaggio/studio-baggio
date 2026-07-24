@@ -143,7 +143,7 @@ export function ServicesMotion() {
               // numeric: Lenis already smooths, numeric double-smooths.
               gsap.to(card, {
                 scale: 0.94,
-                autoAlpha: 0.72,
+                "--sv-veil": 0.55,
                 transformOrigin: "center top",
                 ease: "none",
                 force3D: true,

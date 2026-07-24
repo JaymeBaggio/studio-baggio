@@ -7543,9 +7543,22 @@ body:has(.home-4b.contact-page) footer {
 /* ── Services page: motion + offer stack ───────────────────────────── */
 
 .sv-card {
+  position: relative;
   background: #ffffff;
   border: 1px solid rgba(20, 20, 20, 0.12);
   padding: 32px 26px;
+}
+
+/* Recede veil: the covered card is dimmed by a white overlay fading in ON
+   TOP of it. The card itself must never lose opacity — translucent pinned
+   cards show through each other the moment three share the pin line. */
+.sv-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: #ffffff;
+  opacity: var(--sv-veil, 0);
+  pointer-events: none;
 }
 
 @media (min-width: 1024px) {
