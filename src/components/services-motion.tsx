@@ -64,7 +64,7 @@ export function ServicesMotion() {
 
         // ── Scroll layer: created immediately so content is never stranded
         // hidden if the user scrolls at once. ──
-        setupScroll();
+        return setupScroll();
 
         function setupScroll() {
           revealTargets.forEach((el) => {
@@ -121,8 +121,39 @@ export function ServicesMotion() {
             });
           }
 
+          let cleanup: (() => void) | undefined;
+
           if (desktop) {
             const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
+
+            // A sticky card releases when ITS OWN bottom hits the parent's
+            // bottom — unequal heights release at different times, so tall
+            // early cards get shoved up past the pin line while the short
+            // last card is still arriving. Equal heights hold the pin and
+            // exit as one stack.
+            const equalize = () => {
+              cards.forEach((c) => {
+                c.style.minHeight = "";
+              });
+              const max = Math.max(...cards.map((c) => c.offsetHeight));
+              cards.forEach((c) => {
+                c.style.minHeight = `${max}px`;
+              });
+            };
+            equalize();
+            const reEqualize = () => {
+              equalize();
+              ScrollTrigger.refresh();
+            };
+            window.addEventListener("resize", reEqualize);
+            document.fonts?.ready.then(reEqualize).catch(() => {});
+            cleanup = () => {
+              window.removeEventListener("resize", reEqualize);
+              cards.forEach((c) => {
+                c.style.minHeight = "";
+              });
+            };
+
             // Flow position via the offsetParent chain: sticky displacement
             // never shows up here, so ranges are correct even when the page
             // loads (or refreshes) mid-scroll with cards already pinned.
@@ -158,6 +189,7 @@ export function ServicesMotion() {
           }
 
           ScrollTrigger.refresh();
+          return cleanup;
         }
       }
     );
