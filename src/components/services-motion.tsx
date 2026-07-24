@@ -64,7 +64,7 @@ export function ServicesMotion() {
 
         // ── Scroll layer: created immediately so content is never stranded
         // hidden if the user scrolls at once. ──
-        return setupScroll();
+        setupScroll();
 
         function setupScroll() {
           revealTargets.forEach((el) => {
@@ -121,40 +121,8 @@ export function ServicesMotion() {
             });
           }
 
-          let cleanup: (() => void) | undefined;
-
           if (desktop) {
             const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
-
-            // A sticky card releases when ITS OWN bottom hits the parent's
-            // bottom — unequal heights release at different times, so tall
-            // early cards get shoved up past the pin line while the short
-            // last card is still arriving. The sticky clamp uses the MARGIN
-            // box, so transparent margin-bottom equalises the release without
-            // stretching any card into an empty bordered void.
-            const equalize = () => {
-              cards.forEach((c) => {
-                c.style.marginBottom = "";
-              });
-              const max = Math.max(...cards.map((c) => c.offsetHeight));
-              cards.forEach((c) => {
-                const delta = max - c.offsetHeight;
-                if (delta > 0) c.style.marginBottom = `${delta}px`;
-              });
-            };
-            equalize();
-            const reEqualize = () => {
-              equalize();
-              ScrollTrigger.refresh();
-            };
-            window.addEventListener("resize", reEqualize);
-            document.fonts?.ready.then(reEqualize).catch(() => {});
-            cleanup = () => {
-              window.removeEventListener("resize", reEqualize);
-              cards.forEach((c) => {
-                c.style.marginBottom = "";
-              });
-            };
 
             // Flow position via the offsetParent chain: sticky displacement
             // never shows up here, so ranges are correct even when the page
@@ -171,12 +139,16 @@ export function ServicesMotion() {
             cards.forEach((card, index) => {
               const next = cards[index + 1];
               if (!next) return;
-              // Settled card keeps easing back for the whole overlap — a
-              // frozen held card is what reads as "stuck". scrub: true, never
-              // numeric: Lenis already smooths, numeric double-smooths.
+              // The covered card recedes and dissolves FULLY by the time the
+              // next card pins. Partially-faded pinned cards layer up and
+              // show through each other; an invisible card can't ghost, peek
+              // below a shorter front card, or pop out under the header —
+              // so release order stops mattering and no height filler is
+              // needed after the short last card. scrub: true, never numeric:
+              // Lenis already smooths, numeric double-smooths.
               gsap.to(card, {
                 scale: 0.94,
-                "--sv-veil": 0.55,
+                autoAlpha: 0,
                 transformOrigin: "center top",
                 ease: "none",
                 force3D: true,
@@ -191,7 +163,6 @@ export function ServicesMotion() {
           }
 
           ScrollTrigger.refresh();
-          return cleanup;
         }
       }
     );
