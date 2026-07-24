@@ -912,10 +912,10 @@ export const servicesPage = {
       id: "ai-operating-system-audit",
       name: "AI Operating System Audit",
       summary:
-        "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and workflows.",
+        "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and processes.",
       paras: [
         "For businesses that want to build a company-wide AI system around how their people work.",
-        "We examine the business, its teams, roles, knowledge and workflows to identify where AI can create the greatest measurable value.",
+        "We examine the business, its teams, roles, knowledge and processes to identify where AI can create the greatest measurable value.",
         "We then define the operating system needed to deliver it: the shared business context, role-specific capabilities, processes and safeguards required for AI to support the organisation and improve over time.",
         "This is not a review of individual tools or a generic training programme.",
         "It is a practical plan for building AI into the way the business operates, so each person has the right context and capability built into their working environment from the start."
@@ -923,7 +923,7 @@ export const servicesPage = {
       includesLabel: "What the audit covers",
       includes: [
         "Where AI can create the greatest measurable value",
-        "How current roles and workflows should change",
+        "How current roles and processes should change",
         "The shared knowledge and role-specific capabilities the system needs",
         "How useful work, learning and progress will be retained and measured",
         "What should be implemented first",
@@ -1052,7 +1052,7 @@ export const servicesPage = {
       },
       {
         lead: "Build and implementation",
-        detail: "Design, build and embed the required operating system, workflows or specialist software."
+        detail: "Design, build and embed the required operating system, processes or specialist software."
       },
       {
         lead: "Ongoing AI partner",
@@ -1096,7 +1096,7 @@ export const servicesPage = {
       {
         question: "What is an AI Operating System Audit?",
         answer:
-          "The AI Operating System Audit is for businesses that want to build a company-wide AI system around how their people work. We examine the business, its teams, roles, knowledge and workflows to identify where AI can create the greatest measurable value, then define the operating system needed to deliver it. The audit delivers a prioritised implementation plan that the business can implement itself, or Studio Baggio can be appointed to design, build and implement the full operating system."
+          "The AI Operating System Audit is for businesses that want to build a company-wide AI system around how their people work. We examine the business, its teams, roles, knowledge and processes to identify where AI can create the greatest measurable value, then define the operating system needed to deliver it. The audit delivers a prioritised implementation plan that the business can implement itself, or Studio Baggio can be appointed to design, build and implement the full operating system."
       },
       {
         question: "What is a Commercial AI Growth Strategy?",
