@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { FaqSchema } from "@/components/faq-schema";
+import { ServicesMotion } from "@/components/services-motion";
+import { ServicesOffersIndex } from "@/components/services-offers-index";
 import {
   introDownload,
   metadata as siteMetadata,
@@ -110,33 +112,55 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
       />
-      <div className="home-4b">
+      <ServicesMotion />
+      <div className="home-4b" data-services-root>
         <section className="py-16 md:py-24">
           <div className="editorial-container">
-            <p className="eyebrow">{servicesPage.eyebrow}</p>
+            <p className="eyebrow" data-sv-hero>
+              {servicesPage.eyebrow}
+            </p>
             <h1 className="mt-4 max-w-3xl text-4xl leading-[1.08] md:text-5xl">
-              {servicesPage.title}
+              <span className="sv-hero-mask">
+                <span className="sv-hero-line" data-sv-hero-line>
+                  {servicesPage.title}
+                </span>
+              </span>
             </h1>
             <div className="mt-8 max-w-3xl space-y-4">
               {servicesPage.intro.map((para) => (
-                <p key={para} className="text-base leading-relaxed text-ink/70 md:text-lg">
+                <p
+                  key={para}
+                  className="text-base leading-relaxed text-ink/70 md:text-lg"
+                  data-sv-hero
+                >
                   {para}
                 </p>
               ))}
+            </div>
+            <div className="mt-12" data-sv-hero>
+              <ServicesOffersIndex items={offers.map(({ id, name }) => ({ id, name }))} />
             </div>
           </div>
         </section>
 
         <section className="border-t border-ink/10 py-14 md:py-20">
           <div className="editorial-container">
-            <p className="eyebrow">{servicesPage.offersEyebrow}</p>
-            <div className="mt-10 space-y-16 md:space-y-20">
+            <p className="eyebrow" data-sv-reveal>
+              {servicesPage.offersEyebrow}
+            </p>
+            <div className="sv-stack mt-10 space-y-16 md:space-y-20">
               {offers.map((offer) => (
-                <article key={offer.id} id={offer.id} className="max-w-3xl scroll-mt-28">
+                <article
+                  key={offer.id}
+                  id={offer.id}
+                  className="sv-card mx-auto max-w-3xl scroll-mt-28"
+                  data-sv-card
+                >
                   <h2 className="text-2xl md:text-3xl">{offer.name}</h2>
                   <div
                     className="mt-3 h-0.5 w-9 bg-[color:var(--sb-accent-blue)]"
                     aria-hidden="true"
+                    data-sv-accent
                   />
                   <div className="mt-6 space-y-4">
                     {offer.paras.map((para) => (
@@ -146,7 +170,7 @@ export default function ServicesPage() {
                     ))}
                   </div>
                   <h3 className="eyebrow pt-10">{offer.includesLabel}</h3>
-                  <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                  <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2" data-sv-list>
                     {offer.includes.map((item) => (
                       <li
                         key={item}
@@ -161,7 +185,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   {offer.subSection ? (
-                    <div className="mt-10">
+                    <div className="mt-10" data-sv-reveal>
                       <h3 className="eyebrow">{offer.subSection.label}</h3>
                       <div className="mt-4 space-y-4">
                         {offer.subSection.paras.map((para) => (
@@ -176,7 +200,7 @@ export default function ServicesPage() {
                     </div>
                   ) : null}
                   {offer.outro ? (
-                    <div className="mt-6 space-y-4">
+                    <div className="mt-6 space-y-4" data-sv-reveal>
                       {offer.outro.map((para) => (
                         <p key={para} className="text-sm leading-relaxed text-ink/70 md:text-base">
                           {para}
@@ -185,7 +209,8 @@ export default function ServicesPage() {
                     </div>
                   ) : null}
                   {offer.example ? (
-                    <div className="mt-10 border-l-2 border-[color:var(--sb-accent-blue)] pl-5">
+                    <div className="sv-example relative mt-10 pl-5" data-sv-example>
+                      <span className="sv-borderline" aria-hidden="true" />
                       <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
                       <div className="mt-3 space-y-3">
                         {offer.example.paras.map((para) => (
@@ -206,8 +231,10 @@ export default function ServicesPage() {
 
         <section className="border-t border-ink/10 py-14 md:py-20">
           <div className="editorial-container max-w-3xl">
-            <p className="eyebrow">{servicesPage.howWeWork.eyebrow}</p>
-            <div className="mt-5 space-y-4">
+            <p className="eyebrow" data-sv-reveal>
+              {servicesPage.howWeWork.eyebrow}
+            </p>
+            <div className="mt-5 space-y-4" data-sv-reveal>
               {servicesPage.howWeWork.paras.map((para) => (
                 <p key={para} className="text-sm leading-relaxed text-ink/70 md:text-base">
                   {para}
@@ -215,8 +242,10 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <p className="eyebrow pt-12">{servicesPage.ways.eyebrow}</p>
-            <div className="mt-5 space-y-5">
+            <p className="eyebrow pt-12" data-sv-reveal>
+              {servicesPage.ways.eyebrow}
+            </p>
+            <div className="mt-5 space-y-5" data-sv-list>
               {servicesPage.ways.items.map((item) => (
                 <p key={item.lead} className="text-sm leading-relaxed text-ink/70 md:text-base">
                   <strong className="block text-ink">{item.lead}</strong>
@@ -230,12 +259,16 @@ export default function ServicesPage() {
 
         <section className="border-t border-ink/10 py-14 md:py-20">
           <div className="editorial-container max-w-3xl">
-            <p className="eyebrow">{servicesPage.download.eyebrow}</p>
-            <h2 className="mt-4 text-2xl md:text-3xl">{servicesPage.download.title}</h2>
-            <p className="mt-4 text-sm leading-relaxed text-ink/70 md:text-base">
+            <p className="eyebrow" data-sv-reveal>
+              {servicesPage.download.eyebrow}
+            </p>
+            <h2 className="mt-4 text-2xl md:text-3xl" data-sv-reveal>
+              {servicesPage.download.title}
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-ink/70 md:text-base" data-sv-reveal>
               {servicesPage.download.body}
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-6">
+            <div className="mt-6 flex flex-wrap items-center gap-6" data-sv-reveal>
               <a
                 className="focus-ring inline-flex min-h-11 items-center gap-2 border border-ink px-5 py-3 text-sm uppercase tracking-[0.06em] transition-colors hover:bg-ink hover:text-paper"
                 href={introDownload.href}
@@ -255,18 +288,20 @@ export default function ServicesPage() {
 
         <section className="border-t border-ink/10 py-14 md:py-20">
           <div className="editorial-container">
-            <p className="eyebrow">{servicesPage.faq.eyebrow}</p>
+            <p className="eyebrow" data-sv-reveal>
+              {servicesPage.faq.eyebrow}
+            </p>
             <FaqAccordion items={servicesPage.faq.items} />
           </div>
         </section>
 
         <section className="border-t border-ink/10 py-16 md:py-24" data-header-theme="dark">
           <div className="editorial-container max-w-3xl">
-            <h2 className="text-2xl md:text-3xl">
+            <h2 className="text-2xl md:text-3xl" data-sv-reveal>
               A 30-minute conversation to identify where AI could create the most measurable value
               in your business and which starting point is right.
             </h2>
-            <div className="mt-8">
+            <div className="mt-8" data-sv-reveal>
               <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
             </div>
           </div>
@@ -274,11 +309,14 @@ export default function ServicesPage() {
 
         <section className="border-t border-ink/10 py-10 md:py-12">
           <div className="editorial-container flex flex-wrap items-center gap-x-9 gap-y-4">
-            <span className="eyebrow">{servicesPage.press.label}</span>
+            <span className="eyebrow" data-sv-reveal>
+              {servicesPage.press.label}
+            </span>
             {servicesPage.press.items.map((item) => (
               <a
                 key={item.name}
                 className="focus-ring inline-flex items-center"
+                data-sv-logo
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"

@@ -7539,3 +7539,43 @@ body:has(.home-4b.contact-page) footer {
     display: none;
   }
 }
+
+/* ── Services page: motion + offer stack ───────────────────────────── */
+
+.sv-hero-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.sv-hero-line {
+  display: block;
+  will-change: transform;
+}
+
+.sv-card {
+  background: #ffffff;
+  border: 1px solid rgba(20, 20, 20, 0.12);
+  padding: 32px 26px;
+}
+
+@media (min-width: 1024px) {
+  .sv-card {
+    position: sticky;
+    top: 88px;
+    padding: 48px 56px;
+    will-change: transform;
+  }
+
+  .sv-stack {
+    padding-bottom: 32px;
+  }
+}
+
+.sv-example .sv-borderline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--sb-accent-blue);
+}
