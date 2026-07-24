@@ -1,6 +1,12 @@
 # Studio Baggio Website - STATUS
 *Last updated: 24 July 2026*
 
+## 24 July (eve) Services Proof Pass - Live Push
+
+- SEO offer wording final ("recommended as the solution when prospective clients ask them"); Harry example now nine clients in eight months + "Four of those client journeys began with a recommendation from ChatGPT."; Bespoke list compressed to six + Last30Days example ("research markets", 200+ users highlight); standalone proof + ongoing-advisory sections removed (Ways to work together covers ongoing); "Featured in" press strip at page bottom — FT Adviser / Money Marketing / Professional Adviser (print-safe recoloured logo, white "Professional" → ink), each linked to its article; updated intro PDF (now with matching content + press strip) re-synced to /downloads/.
+- PDF source of truth unchanged: `Studio Baggio/New Business/Intro One-Pager/` ("Studio Baggio Introduction.pdf"). Testimonials permanent in the PDF (Jayme explicit 24 July).
+- Verified live: /services content greps + playwriter screenshot of the strip; PDF 200 at 212.9KB.
+
 ## 24 July Services Page + Intro PDF Download - Live Push
 
 Scope:
