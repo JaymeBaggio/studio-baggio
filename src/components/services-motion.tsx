@@ -64,7 +64,7 @@ export function ServicesMotion() {
 
         // ── Scroll layer: created immediately so content is never stranded
         // hidden if the user scrolls at once. ──
-        setupScroll();
+        return setupScroll();
 
         function setupScroll() {
           const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
@@ -156,7 +156,37 @@ export function ServicesMotion() {
             });
           }
 
+          let cleanup: (() => void) | undefined;
+
           if (desktop) {
+            // Cards that fit the viewport pin whole at 88px, fully visible.
+            // Cards TALLER than the viewport anchor with their bottom 16px
+            // above the fold — the maximum of the card that can physically
+            // be on screen, and the reader has already read the top on the
+            // way in. A fixed 88px pin cut tall cards' bottoms off on
+            // laptop screens (below-fold content of a pinned card can never
+            // rise into view).
+            const pinTop = (el: HTMLElement) =>
+              Math.min(88, window.innerHeight - el.offsetHeight - 16);
+            const layoutTops = () => {
+              cards.forEach((card) => {
+                card.style.top = `${pinTop(card)}px`;
+              });
+            };
+            layoutTops();
+            const onResize = () => {
+              layoutTops();
+              ScrollTrigger.refresh();
+            };
+            window.addEventListener("resize", onResize);
+            document.fonts?.ready.then(onResize).catch(() => {});
+            cleanup = () => {
+              window.removeEventListener("resize", onResize);
+              cards.forEach((card) => {
+                card.style.top = "";
+              });
+            };
+
             // Flow position via the offsetParent chain: sticky displacement
             // never shows up here, so ranges are correct even when the page
             // loads (or refreshes) mid-scroll with cards already pinned.
@@ -187,7 +217,7 @@ export function ServicesMotion() {
                 force3D: true,
                 scrollTrigger: {
                   start: () => pageTop(next) - window.innerHeight,
-                  end: () => pageTop(next) - 88,
+                  end: () => pageTop(next) - pinTop(next),
                   scrub: true,
                   invalidateOnRefresh: true
                 }
@@ -196,6 +226,7 @@ export function ServicesMotion() {
           }
 
           ScrollTrigger.refresh();
+          return cleanup;
         }
       }
     );

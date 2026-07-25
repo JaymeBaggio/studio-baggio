@@ -9,6 +9,7 @@
 - Hover index cards: Framer Motion lift + blue underline draw (unchanged).
 - Copy tightening (~15%, ChatGPT review approved by Jayme, mirrored in doc + page + FAQ): AI OS audit list 8→6 (two combined pairs), Growth expansion sentence cut, SEO intro halved + list 9→6, How-SB-works negation line cut, "measurable value" (no "commercial"), "how their people work" (no "actually"), "processes and safeguards" (no "connected workflows"/"knowledge structure"), workflows→processes in card summary/examine/bullet/Ways lines. Master copy record: `New Business/Intro One-Pager/MASTER_COPY.md`.
 - Residual (unapproved): "Workflow and data design" bullet in Bespoke (singular, flagged to Jayme); homepage strip still has 3 "workflows" uses (site.ts ~427-437) — same plain-English rule whenever the homepage is next touched.
+- POST-MERGE FIX (same night, Jayme flagged missing examples): element-triggered reveals never fire inside a pinned sticky card (child tops never cross the viewport threshold) — the card-bottom examples were invisible. Card internals now reveal as one sequence off the CARD trigger ("top 85%"); non-card sections keep per-element reveals. Verified live: Harry example opacity 1 + text present. KNOWN TRADE: cards (~1112px) taller than short viewports leave their bottom strip unreadable once pinned (covered before it can rise) — fix if flagged: per-card `top: min(88px, vh − height)` so tall cards pin bottom-at-fold.
 
 ## 24 July (eve) Services Proof Pass - Live Push
 
