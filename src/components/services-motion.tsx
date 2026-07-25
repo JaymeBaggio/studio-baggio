@@ -67,7 +67,10 @@ export function ServicesMotion() {
         setupScroll();
 
         function setupScroll() {
-          revealTargets.forEach((el) => {
+          const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
+          const outsideCard = (el: HTMLElement) => !el.closest("[data-sv-card]");
+
+          revealTargets.filter(outsideCard).forEach((el) => {
             gsap.to(el, {
               autoAlpha: 1,
               y: 0,
@@ -77,7 +80,7 @@ export function ServicesMotion() {
             });
           });
 
-          accentBars.forEach((el) => {
+          accentBars.filter(outsideCard).forEach((el) => {
             gsap.to(el, {
               scaleX: 1,
               duration: 0.6,
@@ -86,7 +89,7 @@ export function ServicesMotion() {
             });
           });
 
-          listTargets.forEach((list) => {
+          listTargets.filter(outsideCard).forEach((list) => {
             gsap.to(list.children, {
               autoAlpha: 1,
               y: 0,
@@ -97,7 +100,7 @@ export function ServicesMotion() {
             });
           });
 
-          exampleBlocks.forEach((block) => {
+          exampleBlocks.filter(outsideCard).forEach((block) => {
             const line = block.querySelector<HTMLElement>(".sv-borderline");
             const tl = gsap.timeline({
               scrollTrigger: { trigger: block, start: "top 86%", once: true }
@@ -108,6 +111,38 @@ export function ServicesMotion() {
               { autoAlpha: 1, y: 0, duration: 0.55, ease: servicesOut, stagger: 0.07 },
               line ? 0.12 : 0
             );
+          });
+
+          // Inside a pinned sticky card a child's own top never crosses the
+          // viewport threshold — the card is stuck and the next one covers
+          // it — so element-triggered reveals never fire and card-bottom
+          // content (the examples) stays hidden forever. Card internals
+          // therefore reveal as ONE sequence when the CARD arrives.
+          cards.forEach((card) => {
+            const tl = gsap.timeline({
+              scrollTrigger: { trigger: card, start: "top 85%", once: true }
+            });
+            const accent = card.querySelector<HTMLElement>("[data-sv-accent]");
+            if (accent) tl.to(accent, { scaleX: 1, duration: 0.6, ease: servicesOut }, 0);
+            card.querySelectorAll<HTMLElement>("[data-sv-list]").forEach((list) => {
+              tl.to(
+                list.children,
+                { autoAlpha: 1, y: 0, duration: 0.5, ease: servicesOut, stagger: 0.04 },
+                0.1
+              );
+            });
+            card.querySelectorAll<HTMLElement>("[data-sv-reveal]").forEach((el, i) => {
+              tl.to(el, { autoAlpha: 1, y: 0, duration: 0.6, ease: servicesOut }, 0.18 + i * 0.08);
+            });
+            card.querySelectorAll<HTMLElement>("[data-sv-example]").forEach((block) => {
+              const line = block.querySelector<HTMLElement>(".sv-borderline");
+              if (line) tl.to(line, { scaleY: 1, duration: 0.55, ease: servicesOut }, 0.25);
+              tl.to(
+                block.querySelectorAll(":scope > *:not(.sv-borderline)"),
+                { autoAlpha: 1, y: 0, duration: 0.55, ease: servicesOut, stagger: 0.07 },
+                0.32
+              );
+            });
           });
 
           if (logos.length) {
@@ -122,8 +157,6 @@ export function ServicesMotion() {
           }
 
           if (desktop) {
-            const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
-
             // Flow position via the offsetParent chain: sticky displacement
             // never shows up here, so ranges are correct even when the page
             // loads (or refreshes) mid-scroll with cards already pinned.

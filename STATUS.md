@@ -1,6 +1,15 @@
 # Studio Baggio Website - STATUS
 *Last updated: 24 July 2026*
 
+## 24 July (night) Services Motion + Copy Tightening - Merged Live
+
+- `feat/services-motion` merged to main on Jayme's word; verified live post-deploy (playwriter: 6 entrance CSS animations firing, cards `position: sticky`, new copy serving, /downloads PDF = 211,941 bytes = tonight's final render).
+- Motion: stacked offer cards — each card pins at 88px, the next slides over it; covered card recedes (scale 0.94 + white `--sv-veil` overlay via ::after — the card itself NEVER loses opacity, translucent pinned cards ghost through each other). Cards' release equalised with transparent margin-bottom fillers (sticky clamp uses the margin box) so the whole stack pins and exits together; scrub ranges from flow offsets (offsetParent chain) so pinned-state refresh can't mis-measure. `scrub: true` only (numeric double-smooths under Lenis).
+- Entrance: pure CSS keyframe cascade (SERVICES → H1 → paragraphs → index cards) served in the page HTML — starts at first paint on the compositor. PERMANENT RULE: `lagSmoothing(0)` (required for Lenis) makes GSAP load-time tweens jump on dropped frames ("tick-tick-tick") — entrances belong in CSS; GSAP owns scroll-linked work only.
+- Hover index cards: Framer Motion lift + blue underline draw (unchanged).
+- Copy tightening (~15%, ChatGPT review approved by Jayme, mirrored in doc + page + FAQ): AI OS audit list 8→6 (two combined pairs), Growth expansion sentence cut, SEO intro halved + list 9→6, How-SB-works negation line cut, "measurable value" (no "commercial"), "how their people work" (no "actually"), "processes and safeguards" (no "connected workflows"/"knowledge structure"), workflows→processes in card summary/examine/bullet/Ways lines. Master copy record: `New Business/Intro One-Pager/MASTER_COPY.md`.
+- Residual (unapproved): "Workflow and data design" bullet in Bespoke (singular, flagged to Jayme); homepage strip still has 3 "workflows" uses (site.ts ~427-437) — same plain-English rule whenever the homepage is next touched.
+
 ## 24 July (eve) Services Proof Pass - Live Push
 
 - SEO offer wording final ("recommended as the solution when prospective clients ask them"); Harry example now nine clients in eight months + "Four of those client journeys began with a recommendation from ChatGPT."; Bespoke list compressed to six + Last30Days example ("research markets", 200+ users highlight); standalone proof + ongoing-advisory sections removed (Ways to work together covers ongoing); "Featured in" press strip at page bottom — FT Adviser / Money Marketing / Professional Adviser (print-safe recoloured logo, white "Professional" → ink), each linked to its article; updated intro PDF (now with matching content + press strip) re-synced to /downloads/.
