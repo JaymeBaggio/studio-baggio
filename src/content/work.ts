@@ -295,9 +295,9 @@ export const workItems: WorkItem[] = [
     title: "Last30Days",
     eyebrow: "Live signal intelligence / multi-source research",
     promise: "Live Signal Intelligence",
-    status: "Placeholder case study",
+    status: "Live product",
     proofCopy:
-      "Last30Days scrapes Reddit. X. TikTok. Instagram. YouTube, Polymarket and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited.\n\nEvery business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing. Last30Days gives you the market intelligence your competitors are paying £40,000 a year to access — in under 60 seconds.",
+      "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. More than 200 people have used it to research markets, competitors, customer questions and emerging opportunities.\n\nLast30Days scrapes Reddit. X. TikTok. Instagram. YouTube, Polymarket and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited.\n\nEvery business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing. Last30Days gives you the market intelligence your competitors are paying £40,000 a year to access — in under 60 seconds.",
     problem:
       "Teams need to know what people are saying now, not what a stale report said months ago.",
     built:
@@ -326,6 +326,7 @@ export const workItems: WorkItem[] = [
         {
           label: "What it is",
           paragraphs: [
+            "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. More than 200 people have used it to research markets, competitors, customer questions and emerging opportunities.",
             "Last30Days scrapes Reddit. X. TikTok. Instagram. YouTube, Polymarket and the open web, pulling every conversation from the last thirty days. Ask any question — search a competitor, a trend, a product category, a new release — and get a structured, sourced report in under 60 seconds. Every claim cited.",
             "Every business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing. Last30Days gives you the market intelligence your competitors are paying £40,000 a year to access — in under 60 seconds."
           ]
