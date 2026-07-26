@@ -962,9 +962,9 @@ export const servicesPage = {
         label: "Business Tracker",
         paras: [
           "Each Commercial AI Growth Strategy is supported by Studio Baggio's Business Tracker.",
-          "It brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds public professional and company context to show who each person is and why they may matter.",
+          "It brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds live public professional and company context to show who each person is and why they may matter.",
           "Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action.",
-          "The system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
+          "The system prioritises prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
         ]
       },
       example: {
@@ -1100,7 +1100,7 @@ export const servicesPage = {
       {
         question: "What is the Business Tracker?",
         answer:
-          "The Business Tracker brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds public professional and company context to show who each person is and why they may matter. Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action. It can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
+          "The Business Tracker brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds live public professional and company context to show who each person is and why they may matter. Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action. It can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
       },
       {
         question: "What does the SEO and AI Search Opportunity Audit cover?",
