@@ -130,7 +130,7 @@ export const home = {
     title: "AI strategy, systems and implementation.",
     subline: "",
     body: "",
-    moreLink: { label: "See how each one works", href: "/services" }
+    moreLink: { label: "See our services", href: "/services" }
   },
   workingPromise: {
     eyebrow: "WORKING PROMISE",
