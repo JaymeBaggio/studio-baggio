@@ -1010,7 +1010,7 @@ export const servicesPage = {
         "Design and build specialist software for valuable industry problems that off-the-shelf tools cannot solve.",
       paras: [
         "For valuable business problems that cannot be solved with an off-the-shelf tool.",
-        "Studio Baggio works closely with industry experts to understand the commercial problem, the real workflow, the available data and the decisions the system needs to support.",
+        "We work closely with industry experts to understand the commercial problem, the real workflow, the available data and the decisions the system needs to support.",
         "We then design, build, test and implement specialist software around how the business actually operates."
       ],
       includesLabel: "This can include",
@@ -1034,8 +1034,7 @@ export const servicesPage = {
     eyebrow: "HOW STUDIO BAGGIO WORKS",
     paras: [
       "Every engagement starts with the business problem and the result the client needs.",
-      "Studio Baggio handles the research, strategy, system design, build and implementation. The client provides the subject-matter expertise, strategic steer and approvals.",
-      "We build practical systems that fit the organisation, deliver measurable value and improve over time."
+      "Studio Baggio handles the research, strategy, system design, build and implementation. The client provides the subject-matter expertise, strategic steer and approvals."
     ]
   },
   ways: {
