@@ -914,24 +914,19 @@ export const servicesPage = {
       summary:
         "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and processes.",
       paras: [
-        "For businesses that want to build a company-wide AI system around how their people work.",
-        "We examine the business, its teams, roles, knowledge and processes to identify where AI can create the greatest measurable value.",
-        "We then define the operating system needed to deliver it: the shared business context, role-specific capabilities, processes and safeguards required for AI to support the organisation and improve over time.",
-        "This is not a review of individual tools or a generic training programme.",
-        "It is a practical plan for building AI into the way the business operates, so each person has the right context and capability built into their working environment from the start."
+        "For businesses that want to build a company-wide AI system around how their people work. We examine the business, its teams, roles, knowledge and processes to identify where AI can create the greatest measurable value. Then define the operating system needed to deliver it: the shared business context, role-specific capabilities, processes and safeguards required for AI to support the organisation and to grow and improve with them over time."
       ],
       includesLabel: "What the audit covers",
       includes: [
         "Where AI can create the greatest measurable value",
-        "How current roles and processes should change",
         "The shared knowledge and role-specific capabilities the system needs",
-        "How useful work, learning and progress will be retained and measured",
-        "What should be implemented first",
-        "Where AI should not yet be used"
+        "Role-specific recommendations and a sequenced 30 and 90-day plan",
+        "A structure for valuable workflows to be shared, retained and improved across the team",
+        "What should be implemented first and where not to invest yet"
       ],
       outro: [
-        "The audit delivers a prioritised implementation plan that the business can implement itself.",
-        "Studio Baggio can also be appointed to design, build and implement the full operating system."
+        "This is not a review of individual tools or a generic training programme. It is a practical plan for building AI into the way the business operates, so each person has the right context and capability built into their working environment from the outset.",
+        "The audit delivers a prioritised implementation plan that the business can implement itself, or Studio Baggio can be appointed to design, build and implement the full operating system as a done-for-you service."
       ],
       example: {
         paras: [
