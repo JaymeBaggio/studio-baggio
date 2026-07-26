@@ -949,7 +949,7 @@ export const servicesPage = {
         "Find valuable client demand and build the route from search visibility to qualified enquiries, instructions and revenue. Includes a bespoke Business Tracker that captures engagement, qualifies opportunities and recommends follow-up.",
       paras: [
         "For trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base.",
-        "We identify the client questions and live concerns with the strongest commercial value, then build the route from visibility to engagement, qualified follow-up, instructions and fees."
+        "We identify the client questions and live concerns with the strongest commercial value, turn the expertise behind them into visible public proof, and build the route from visibility to engagement, qualified follow-up, instructions and fees."
       ],
       includesLabel: "This can include",
       includes: [
@@ -1101,7 +1101,7 @@ export const servicesPage = {
       {
         question: "What is a Commercial AI Growth Strategy?",
         answer:
-          "A Commercial AI Growth Strategy is for trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base. We identify the client questions and live concerns with the strongest commercial value, then build the route from visibility to engagement, qualified follow-up, instructions and fees. Each engagement is supported by Studio Baggio's Business Tracker."
+          "A Commercial AI Growth Strategy is for trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base. We identify the client questions and live concerns with the strongest commercial value, turn the expertise behind them into visible public proof, and build the route from visibility to engagement, qualified follow-up, instructions and fees. Each engagement is supported by Studio Baggio's Business Tracker."
       },
       {
         question: "What is the Business Tracker?",
