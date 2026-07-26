@@ -13,9 +13,14 @@ const moneyMarketingFeatureUrl =
 const aboutProductLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
   Last30Days: "https://last30days.app",
-  "Last30Days.app": "https://last30days.app"
+  "Last30Days.app": "https://last30days.app",
+  "AI Operating System Audit": "/services",
+  "Commercial AI Growth Strategy": "/services",
+  "SEO and AI Search Opportunity Audit": "/services",
+  "Bespoke AI Software and Systems": "/services"
 };
-const aboutProductLinkPattern = /(Calm Authority|Last30Days\.app|Last30Days)/g;
+const aboutProductLinkPattern =
+  /(Calm Authority|Last30Days\.app|Last30Days|AI Operating System Audit|Commercial AI Growth Strategy|SEO and AI Search Opportunity Audit|Bespoke AI Software and Systems)/g;
 
 type AboutSection = (typeof about.sections)[number];
 
@@ -25,6 +30,14 @@ function renderLinkedText(text: string) {
 
     if (!href) {
       return part;
+    }
+
+    if (href.startsWith("/")) {
+      return (
+        <a key={`${part}-${index}`} href={href}>
+          {part}
+        </a>
+      );
     }
 
     return (

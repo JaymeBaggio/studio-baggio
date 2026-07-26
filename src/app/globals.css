@@ -2436,6 +2436,9 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b .commercial-sprint-cta-wrap {
   display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(18px, 2vw, 28px);
   margin-top: clamp(34px, 4vw, 46px);
 }
 

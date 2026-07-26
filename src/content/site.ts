@@ -124,32 +124,13 @@ export const home = {
     title: ""
   },
   commercialSprint: {
-    eyebrow: "AI OPPORTUNITY AUDIT: 14 DAYS",
-    title: "A focused audit to find where AI creates the most value in your business.",
+    // Rows are rendered from servicesPage.offers so the homepage and /services
+    // can never drift apart. Edit the offers there, not here.
+    eyebrow: "WHAT YOU CAN HIRE US FOR",
+    title: "AI strategy, systems and implementation.",
     subline: "",
     body: "",
-    deliverables: [
-      {
-        lead: "Where AI can create value in the business",
-        detail:
-          "a structured conversation to understand your current pipeline, how you win business, and where the friction lives."
-      },
-      {
-        lead: "The use cases worth prioritising first",
-        detail:
-          "identification of the three to five highest-leverage points where AI can create measurable commercial impact."
-      },
-      {
-        lead: "The buyer, market, and workflow signals already available to you",
-        detail:
-          "a clear, practical outline of what to build, in what order, and what outcomes to expect at each stage."
-      },
-      {
-        lead: "A 30 to 90 day build plan",
-        detail:
-          "honest guidance on what you should build custom, what tools to deploy, and what to ignore entirely."
-      }
-    ]
+    moreLink: { label: "See how each one works", href: "/services" }
   },
   workingPromise: {
     eyebrow: "WORKING PROMISE",
@@ -199,27 +180,27 @@ export const home = {
       {
         question: "Is this AI training?",
         answer:
-          "No. We don't run training programmes, workshops, or courses. We build practical systems that create commercial outcomes — systems your team operates, not courses they sit through. If you're looking for an AI literacy programme, we're not the right fit."
+          "No. We don't run training programmes, workshops, or courses. We build practical systems that create commercial outcomes: systems your team operates, not courses they sit through. If you're looking for an AI literacy programme, we're not the right fit."
       },
       {
         question: "Is this automation?",
         answer:
-          "Automation is part of what we build, but it's not the point. The point is commercial advantage — visibility, pipeline, conversion. We use automation where it creates leverage. We don't automate for the sake of it. Every system we build is designed to deliver a measurable business outcome, not just to reduce manual effort."
+          "Automation is part of what we build, but it's not the point. The point is commercial advantage: visibility, pipeline, conversion. We use automation where it creates leverage. We don't automate for the sake of it. Every system we build is designed to deliver a measurable business outcome, not just to reduce manual effort."
       },
       {
         question: "Is this marketing?",
         answer:
-          "It's closer to commercial architecture. We work across the full pipeline — visibility, lead capture, nurture, proposal, and client retention. Some of what we build looks like marketing. Some looks like sales operations. All of it is designed to make your business easier to find, easier to buy from, and harder to compete with."
+          "It's closer to commercial architecture. We work across the full pipeline: visibility, lead capture, nurture, proposal, and client retention. Some of what we build looks like marketing. Some looks like sales operations. All of it is designed to make your business easier to find, easier to buy from, and harder to compete with."
       },
       {
         question: "Is this only for wealth and financial advisory firms?",
         answer:
-          "No. We work with any expert-led business that wins on trust — consulting, legal, accountancy, technology advisory, executive search, and specialist B2B services. The common thread is that the sale involves expertise, credibility, and a longer cycle. If that describes your business, we're likely a fit."
+          "No. We work with any expert-led business that wins on trust: consulting, legal, accountancy, technology advisory, executive search, and specialist B2B services. The common thread is that the sale involves expertise, credibility, and a longer cycle. If that describes your business, we're likely a fit."
       },
       {
         question: "Do you build as well as advise?",
         answer:
-          "Yes — we build. The AI Opportunity Audit produces a clear plan. After that, most clients move into a build phase where we create the actual systems. We don't hand over a deck and wish you luck. We work in focused sprints with clear deliverables, and we hand over working systems your team can operate from day one."
+          "Yes. We build. The AI Opportunity Audit produces a clear plan. After that, most clients move into a build phase where we create the actual systems. We don't hand over a deck and wish you luck. We work in focused sprints with clear deliverables, and we hand over working systems your team can operate from day one."
       },
       {
         question: "How long does the AI Opportunity Audit take?",
@@ -424,17 +405,17 @@ export const systemBlocks = [
   {
     title: "Lead Capture And Qualification",
     promise: "Turn attention into better prospects and clearer next steps.",
-    examples: "Lead magnets, diagnostic tools, forms, Business Tracker, scoring and follow-up workflows."
+    examples: "Lead magnets, diagnostic tools, forms, Business Tracker, scoring and follow-up processes."
   },
   {
     title: "Authority And Proof",
     promise: "Turn expert thinking into public evidence buyers can trust.",
-    examples: "LinkedIn systems, articles, case studies, guides, briefings and thought-leadership workflows."
+    examples: "LinkedIn systems, articles, case studies, guides, briefings and thought-leadership processes."
   },
   {
     title: "Workflow And Client Experience",
     promise: "Use AI to speed up the work that actually matters.",
-    examples: "Research workflows, reporting, proposal support, onboarding and client-facing AI tools."
+    examples: "Research processes, reporting, proposal support, onboarding and client-facing AI tools."
   }
 ];
 
@@ -695,7 +676,7 @@ export const calmAuthority = {
   builtLine: "Built 2025. Live at calmauthority.ai.",
   featuredIn: ["Financial Times", "Professional Adviser", "Money Marketing"],
   productIntro:
-    "Calm Authority is the flagship product of Studio Baggio — a LinkedIn writing system for UK financial advisers that maps each adviser's real writing voice from samples, surfaces relevant weekly angles, and generates publish-ready drafts the adviser edits and posts manually. Built in 2025 by Jayme Baggio, a content and systems strategist, with founding adviser Harry Sims, a Chartered Financial Planner with eleven years in financial services. Together they identified a structural visibility gap in the UK advice market — and built a system to close it.",
+    "Calm Authority is the flagship product of Studio Baggio, a LinkedIn writing system for UK financial advisers that maps each adviser's real writing voice from samples, surfaces relevant weekly angles, and generates publish-ready drafts the adviser edits and posts manually. Built in 2025 by Jayme Baggio, a content and systems strategist, with founding adviser Harry Sims, a Chartered Financial Planner with eleven years in financial services. Together they identified a structural visibility gap in the UK advice market, and built a system to close it.",
   commercialThesis: [
     "Your firm has valuable thinking. Too much of it disappears before it becomes growth. That expertise is only commercially useful if the market can understand it, trust it and act on it.",
     "Studio Baggio develops systems to turn your business's internal expertise into visible public proof. Enables you to show up consistently and provide real value where your prospects already are. Then connect the dots between who is engaging, what they care about and how the business should follow up to earn the right to win in market."
@@ -726,7 +707,7 @@ export const calmAuthority = {
         "\"Since I started using Calm Authority, I've been able to kick off quite a few conversations on LinkedIn and have been booking around 2–3 meetings a week over the past couple of months. A great tool for building my personal brand.\" — Nicola Podda DipPFS"
     },
     {
-      metric: "£20,000 initial fees plus £18,000 ongoing annual revenue from two inbound LinkedIn enquiries in a single month — roughly 44× the cost of a monthly licence.",
+      metric: "£20,000 initial fees plus £18,000 ongoing annual revenue from two inbound LinkedIn enquiries in a single month, roughly 44× the cost of a monthly licence.",
       body: ""
     },
     {
@@ -741,7 +722,7 @@ export const calmAuthority = {
     name: "Harry Sims",
     role: "Founding Adviser and First User",
     body:
-      "Chartered Financial Planner with eleven years in financial services. Holds the Advanced Diploma in Regulated Financial Planning from the Chartered Insurance Institute. The first person to use Calm Authority in practice — the product is built around the compliance sensitivities and trust dynamics of the advisory profession, not retrofitted to them."
+      "Chartered Financial Planner with eleven years in financial services. Holds the Advanced Diploma in Regulated Financial Planning from the Chartered Insurance Institute. The first person to use Calm Authority in practice, so the product is built around the compliance sensitivities and trust dynamics of the advisory profession, not retrofitted to them."
   },
   builtBy: {
     name: "Jayme Baggio",
@@ -778,23 +759,23 @@ export const about = {
         {
           title: "Products in market.",
           body:
-            "Live AI systems built alongside deep specialists in their field to capitalise on their own authority and expertise — Calm Authority, Business Tracker, Last30Days, Fire Source. Each is available standalone to the wider market and can be embedded into broader commercial implementation plans."
+            "Live AI systems built alongside deep specialists in their field to capitalise on their own authority and expertise: Calm Authority, Business Tracker, Last30Days, Fire Source. Each is available standalone to the wider market and can be embedded into broader commercial implementation plans."
         },
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: AI Operating System Audit, Commercial AI Growth Strategy, SEO and AI Search Opportunity Audit, and Bespoke AI Software and Systems. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
         }
       ]
     },
     {
       number: "02",
       label: "Who's behind it",
-      lead: "Jayme Baggio — founder.",
+      lead: "Jayme Baggio, founder.",
       body: [
         "Jayme Baggio is a British media executive, strategy consultant and applied AI specialist whose career has covered commercial content strategy, branded entertainment, and AI-driven workflow systems. She is best known for her extensive tenure at Channel 4 and her work bridging media creation with artificial intelligence frameworks. Jayme has over a decade's experience across media and practical AI, working with some of the UK's most established brands such as BBC Studios, ITV, Google, Coca-Cola, M&S and HSBC.",
-        "Built Calm Authority — a LinkedIn thought leadership writing system for UK financial advisers — alongside founding adviser Harry Sims, Chartered Financial Planner. The app has been featured in Financial Times, Money Marketing and Professional Adviser. Her work with firms in the financial services sector revealed a wider commercial gap: most firms know AI matters, but few are using it to drive real ROI by making their expertise visible, delivering more value to clients, and growing the business.",
-        "Built Last30Days.app — an AI market intelligence app that turns live web, social and community signals into cited reports in under 60 seconds. It gives Studio Baggio a practical engine for SEO and AI search strategy: finding what people are asking now, where demand is forming, and which expert answers deserve to become searchable proof."
+        "Built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers, alongside founding adviser Harry Sims, Chartered Financial Planner. The app has been featured in Financial Times, Money Marketing and Professional Adviser. Her work with firms in the financial services sector revealed a wider commercial gap: most firms know AI matters, but few are using it to drive real ROI by making their expertise visible, delivering more value to clients, and growing the business.",
+        "Built Last30Days.app, an AI market intelligence app that turns live web, social and community signals into cited reports in under 60 seconds. More than 200 people have used it to research markets, competitors, customer questions and emerging opportunities. It gives Studio Baggio a practical engine for SEO and AI search strategy: finding what people are asking now, where demand is forming, and which expert answers deserve to become searchable proof."
       ],
       press: {
         title: "Press & Founder Availability",
@@ -1090,7 +1071,7 @@ export const servicesPage = {
       {
         question: "What is an AI Operating System Audit?",
         answer:
-          "The AI Operating System Audit is for businesses that want to build a company-wide AI system around how their people work. We examine the business, its teams, roles, knowledge and processes to identify where AI can create the greatest measurable value, then define the operating system needed to deliver it. The audit delivers a prioritised implementation plan that the business can implement itself, or Studio Baggio can be appointed to design, build and implement the full operating system."
+          "The AI Operating System Audit is for businesses that want to build a company-wide AI system around how their people work. We examine the business, its teams, roles, knowledge and processes to identify where AI can create the greatest measurable value, then define the operating system needed to deliver it. The audit delivers a prioritised implementation plan that the business can implement itself, or Studio Baggio can be appointed to design, build and implement the full operating system as a done-for-you service."
       },
       {
         question: "What is a Commercial AI Growth Strategy?",
@@ -1100,7 +1081,7 @@ export const servicesPage = {
       {
         question: "What is the Business Tracker?",
         answer:
-          "The Business Tracker brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds live public professional and company context to show who each person is and why they may matter. Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action. It can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
+          "The Business Tracker brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds live public professional and company context to show who each person is and why they may matter. Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action. It prioritises prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
       },
       {
         question: "What does the SEO and AI Search Opportunity Audit cover?",

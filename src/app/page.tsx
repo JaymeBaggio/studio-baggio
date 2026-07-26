@@ -6,7 +6,7 @@ import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
 import { ValueMap } from "@/components/value-map";
-import { hero, home, introDownload, metadata as siteMetadata, primaryCta } from "@/content/site";
+import { hero, home, introDownload, metadata as siteMetadata, primaryCta, servicesPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
@@ -219,12 +219,12 @@ export default function HomePage() {
               </p>
             ) : null}
             <div className="commercial-deliverables">
-              {home.commercialSprint.deliverables.map((item, index) => (
-                <div key={item.lead} className="commercial-deliverable-row" data-reveal>
+              {servicesPage.offers.map((offer, index) => (
+                <div key={offer.id} className="commercial-deliverable-row" data-reveal>
                   <span className="commercial-deliverable-index">{String(index + 1).padStart(2, "0")}</span>
                   <p className="commercial-deliverable-copy">
-                    <strong>{item.lead}:</strong>
-                    <span>{item.detail}</span>
+                    <strong>{offer.name}:</strong>
+                    <span>{offer.summary}</span>
                   </p>
                 </div>
               ))}
@@ -234,7 +234,13 @@ export default function HomePage() {
                 {primaryCta.label}
               </ButtonLink>
               <a
-                className="focus-ring mt-4 block text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
+                className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
+                href={home.commercialSprint.moreLink.href}
+              >
+                {home.commercialSprint.moreLink.label}
+              </a>
+              <a
+                className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
                 href={introDownload.href}
                 download
               >
