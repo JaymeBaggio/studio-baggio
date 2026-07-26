@@ -829,9 +829,9 @@ export const about = {
     },
     {
       quote:
-        "Before working with Jayme, SEO was something we were never able to master. In a remarkably short time, she changed that completely. We went from page 4 to page 1 on Google, ranking first above Microsoft.",
+        "SEO & AI SEO were something we were never able to master. Jayme changed that completely: we went from page four on Google to first, above Microsoft, and we show up in AI search for the key questions our customers ask. The advantage this gives us is invaluable.",
       name: "Emma Corbett",
-      role: "Co-founder, Get-Planner App"
+      role: "Product Specialist and Co-founder, Get-Planner"
     },
     {
       quote:
