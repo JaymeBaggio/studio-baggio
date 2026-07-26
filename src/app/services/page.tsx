@@ -183,11 +183,11 @@ export default function ServicesPage() {
                     ))}
                   </div>
                   <h3 className="eyebrow pt-10">{offer.includesLabel}</h3>
-                  <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2" data-sv-list>
+                  <ul className="mt-4 -mb-2 gap-x-8 sm:columns-2" data-sv-list>
                     {offer.includes.map((item) => (
                       <li
                         key={item}
-                        className="flex items-baseline gap-3 text-sm leading-relaxed text-ink/70 md:text-base"
+                        className="mb-2 flex break-inside-avoid items-baseline gap-3 text-sm leading-relaxed text-ink/70 md:text-base"
                       >
                         <span
                           className="h-1 w-1 flex-none translate-y-[-2px] rounded-full bg-[color:var(--sb-accent-blue)]"
