@@ -311,8 +311,8 @@ export default function ServicesPage() {
         <section className="border-t border-ink/10 py-16 md:py-24" data-header-theme="dark">
           <div className="editorial-container max-w-3xl">
             <h2 className="text-2xl md:text-3xl" data-sv-reveal>
-              A 30-minute conversation to identify where AI could create the most measurable value
-              in your business and which starting point is right.
+              Book a 30-minute conversation to identify where AI could create the most value in
+              your business and the right place to start.
             </h2>
             <div className="mt-8" data-sv-reveal>
               <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
