@@ -896,7 +896,7 @@ export const servicesPage = {
         "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and processes.",
       paras: [
         "For businesses that want a company-wide AI system built around how their people work.",
-        "We examine the company's teams, roles, knowledge and processes to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs."
+        "We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs."
       ],
       includesLabel: "What the audit covers",
       includes: [
@@ -1066,7 +1066,7 @@ export const servicesPage = {
       {
         question: "What is an AI Operating System Audit and Build?",
         answer:
-          "The AI Operating System Audit and Build is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and processes to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
+          "The AI Operating System Audit and Build is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
       },
       {
         question: "What is a Commercial AI Growth Strategy?",
