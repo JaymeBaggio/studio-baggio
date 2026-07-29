@@ -130,27 +130,28 @@ export default function ServicesPage() {
         }}
       />
       <ServicesMotion />
-      <div className="home-4b" data-services-root>
-        <section className="py-16 md:py-24">
+      <div className="home-4b services-page" data-services-root>
+        <section className="sv-hero">
           <div className="editorial-container">
             <p className="eyebrow" data-sv-hero="lead">
               {servicesPage.eyebrow}
             </p>
-            <h1 className="mt-4 max-w-3xl text-4xl leading-[1.08] md:text-5xl" data-sv-title>
-              {servicesPage.title}
-            </h1>
-            <div className="mt-8 max-w-3xl space-y-4">
-              {servicesPage.intro.map((para) => (
-                <p
-                  key={para}
-                  className="text-base leading-relaxed text-ink/70 md:text-lg"
-                  data-sv-hero
-                >
-                  {para}
-                </p>
-              ))}
+            <div className="sv-hero-frame">
+              <h1 className="sv-hero-title" data-sv-title>
+                <span>AI strategy,</span>
+                <span>systems and</span>
+                <span>
+                  implementation
+                  <span className="sv-hero-dot" aria-hidden="true" />
+                </span>
+              </h1>
+              <div className="sv-hero-copy" data-sv-hero>
+                {servicesPage.intro.map((para) => (
+                  <p key={para}>{para}</p>
+                ))}
+              </div>
             </div>
-            <div className="mt-12" data-sv-hero="late">
+            <div className="sv-hero-index" data-sv-hero="late">
               <ServicesOffersIndex items={offers.map(({ id, name }) => ({ id, name }))} />
             </div>
           </div>

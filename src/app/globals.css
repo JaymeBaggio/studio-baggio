@@ -7545,6 +7545,125 @@ body:has(.home-4b.contact-page) footer {
 
 /* ── Services page: motion + offer stack ───────────────────────────── */
 
+/* Hero — display grammar shared with the Insights and Products heroes:
+   eyebrow, large regular-weight left-aligned title with blue dot, then
+   intro copy offset to the right half of the grid. */
+.home-4b.services-page .sv-hero {
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding-block: clamp(104px, 13vh, 148px) clamp(40px, 6vh, 64px);
+}
+
+.home-4b.services-page .sv-hero > .editorial-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - clamp(104px, 13vh, 148px) - clamp(40px, 6vh, 64px));
+}
+
+.home-4b.services-page .sv-hero-frame {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(24rem, 0.82fr);
+  gap: clamp(44px, 6vw, 108px);
+  align-items: end;
+  align-content: center;
+  flex: 1;
+  margin-top: 28px;
+}
+
+.home-4b.services-page .sv-hero-title {
+  margin: 0;
+  color: var(--sb-ink);
+  font-size: clamp(52px, 6.2vw, 100px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.home-4b.services-page .sv-hero-title > span {
+  display: block;
+}
+
+.home-4b.services-page .sv-hero-title > span:last-child {
+  white-space: nowrap;
+}
+
+/* Wide screens: the frame is capped at 1280px, so trade a little title
+   size for a copy column wide enough that the opening clause holds one
+   line at 18px. */
+@media (min-width: 1400px) {
+  .home-4b.services-page .sv-hero-frame {
+    grid-template-columns: minmax(0, 1fr) 40rem;
+    gap: 64px;
+  }
+
+  .home-4b.services-page .sv-hero-title {
+    font-size: 80px;
+  }
+}
+
+.home-4b.services-page .sv-hero-copy {
+  max-width: 710px;
+  padding-bottom: 10px;
+}
+
+.home-4b.services-page .sv-hero-copy p {
+  margin: 0;
+  color: var(--sb-body);
+  font-size: clamp(16px, 1.1vw, 18px);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.home-4b.services-page .sv-hero-copy p + p {
+  margin-top: 22px;
+}
+
+.home-4b.services-page .sv-hero-dot {
+  display: inline-block;
+  width: 0.14em;
+  height: 0.14em;
+  margin-left: 0.12em;
+  background: var(--sb-blue);
+  border-radius: 999px;
+  vertical-align: baseline;
+}
+
+.home-4b.services-page .sv-hero-index {
+  margin-top: auto;
+  padding-top: clamp(56px, 8vh, 96px);
+}
+
+@media (max-width: 1023px) {
+  .home-4b.services-page .sv-hero {
+    min-height: auto;
+    padding-block: clamp(96px, 13vh, 128px) 48px;
+  }
+
+  .home-4b.services-page .sv-hero > .editorial-container {
+    min-height: 0;
+  }
+
+  .home-4b.services-page .sv-hero-frame {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .home-4b.services-page .sv-hero-title {
+    font-size: clamp(40px, 9.6vw, 64px);
+  }
+
+  .home-4b.services-page .sv-hero-copy {
+    max-width: 34rem;
+    padding-bottom: 0;
+  }
+
+  .home-4b.services-page .sv-hero-index {
+    margin-top: 48px;
+  }
+}
+
 .sv-card {
   position: relative;
   background: #ffffff;
