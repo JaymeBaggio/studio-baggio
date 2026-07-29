@@ -4455,7 +4455,7 @@ body:has(.home-4b.contact-page) footer {
   --products-display-size: clamp(58px, 8.2vw, 126px);
   --products-panel-title-size: clamp(46px, 5.9vw, 92px);
   --products-copy-measure: 700px;
-  --products-hero-min: clamp(560px, 66svh, 680px);
+  --products-hero-min: max(560px, calc(100svh - var(--products-tabs-height) - 24px));
   --products-tabs-height: 68px;
 }
 
@@ -4483,7 +4483,7 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .home-4b.products-page .products-hero-copy {
-  width: min(100%, 430px);
+  width: min(100%, 470px);
   color: var(--sb-muted);
 }
 
@@ -4495,9 +4495,9 @@ body:has(.home-4b.contact-page) footer {
 .home-4b.products-page .products-hero-copy p:not(.eyebrow) {
   margin: 0;
   color: var(--sb-body);
-  font-size: var(--sb-body-size);
+  font-size: clamp(16px, 1.1vw, 18px);
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.65;
   letter-spacing: 0;
 }
 
