@@ -4340,7 +4340,8 @@ body:has(.home-4b.contact-page) footer {
 .home-4b .studio-contact-panel input,
 .home-4b .studio-contact-panel textarea {
   color: var(--sb-ink);
-  font-size: var(--sb-body-size);
+  /* 16px floor: iOS Safari auto-zooms into any field below 16px */
+  font-size: max(16px, var(--sb-body-size));
   line-height: var(--sb-body-line);
   border-bottom-color: var(--sb-rule);
   outline: none;
@@ -4388,7 +4389,8 @@ body:has(.home-4b.contact-page) footer {
 .home-4b .studio-contact-panel .contact-form-grid-briefing textarea {
   height: 86px;
   min-height: 86px;
-  font-size: 14px;
+  /* 16px floor: iOS Safari auto-zooms into any field below 16px */
+  font-size: 16px;
   line-height: 1.5;
 }
 
