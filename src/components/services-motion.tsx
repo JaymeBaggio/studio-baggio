@@ -159,23 +159,12 @@ export function ServicesMotion() {
           let cleanup: (() => void) | undefined;
 
           if (desktop) {
-            // Cards that fit the viewport pin whole at 88px, fully visible.
-            // Cards TALLER than the viewport anchor with their bottom 16px
-            // above the fold — the maximum of the card that can physically
-            // be on screen, and the reader has already read the top on the
-            // way in. A fixed 88px pin cut tall cards' bottoms off on
-            // laptop screens (below-fold content of a pinned card can never
-            // rise into view).
-            const pinTop = (el: HTMLElement) =>
-              Math.min(88, window.innerHeight - el.offsetHeight - 16);
-            const layoutTops = () => {
-              cards.forEach((card) => {
-                card.style.top = `${pinTop(card)}px`;
-              });
-            };
-            layoutTops();
+            // Every card pins at 88px — top always visible, uniform stack.
+            // (Jayme, 29 July 2026: no per-card special-casing.)
+            cards.forEach((card) => {
+              card.style.top = "88px";
+            });
             const onResize = () => {
-              layoutTops();
               ScrollTrigger.refresh();
             };
             window.addEventListener("resize", onResize);
@@ -217,7 +206,7 @@ export function ServicesMotion() {
                 force3D: true,
                 scrollTrigger: {
                   start: () => pageTop(next) - window.innerHeight,
-                  end: () => pageTop(next) - pinTop(next),
+                  end: () => pageTop(next) - 88,
                   scrub: true,
                   invalidateOnRefresh: true
                 }
