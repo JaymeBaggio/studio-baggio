@@ -68,7 +68,7 @@ export type ResearchEditionDefinition = {
 };
 
 export const researchFranchise = {
-  name: "The Studio Baggio AI Search Benchmark",
+  name: "The Studio Baggio AI Discovery Benchmark",
   title: "Research",
   description:
     "Reproducible evidence on how expert-led firms appear in grounded AI search answers.",
@@ -80,7 +80,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   slug: "uk-financial-advice-2026",
   franchise: researchFranchise.name,
   title: "UK Financial Advice 2026",
-  metaTitle: "UK Financial Advice AI Search Benchmark 2026 | Studio Baggio",
+  metaTitle: "Studio Baggio AI Discovery Benchmark | UK Financial Advice 2026",
   metaDescription:
     "Evidence from a reproducible benchmark of grounded AI search visibility across UK financial advice firms.",
   summary:

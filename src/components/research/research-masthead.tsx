@@ -15,7 +15,7 @@ export function ResearchMasthead({ edition }: { edition: ResearchEditionMasthead
       <div className="editorial-container research-masthead__grid">
         <div className="research-masthead__edition">
           <p className="eyebrow" data-research-masthead-item>
-            {edition.eyebrow ?? "Studio Baggio AI Search Benchmark"}
+            {edition.eyebrow ?? "Studio Baggio AI Discovery Benchmark"}
           </p>
           <p className={`research-edition-status research-edition-status--${status}`} data-research-masthead-item>
             {statusLabels[status]}
