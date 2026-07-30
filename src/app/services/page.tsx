@@ -162,12 +162,12 @@ export default function ServicesPage() {
             <p className="eyebrow" data-sv-reveal>
               {servicesPage.offersEyebrow}
             </p>
-            <div className="sv-stack mt-10 space-y-16 md:space-y-20">
+            <div className="sv-stack mt-10 space-y-16 md:space-y-20 lg:space-y-[40vh]">
               {offers.map((offer) => (
                 <article
                   key={offer.id}
                   id={offer.id}
-                  className="sv-card mx-auto max-w-3xl scroll-mt-28"
+                  className="sv-card mx-auto max-w-5xl scroll-mt-28"
                   data-sv-card
                 >
                   <h2 className="text-2xl md:text-3xl">{offer.name}</h2>
@@ -183,8 +183,11 @@ export default function ServicesPage() {
                       </p>
                     ))}
                   </div>
-                  <h3 className="eyebrow pt-10">{offer.includesLabel}</h3>
-                  <ul className="mt-4 -mb-2 gap-x-8 sm:columns-2" data-sv-list>
+                  <h3 className="eyebrow pt-8">{offer.includesLabel}</h3>
+                  <ul
+                    className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 ? " lg:columns-3" : ""}`}
+                    data-sv-list
+                  >
                     {offer.includes.map((item) => (
                       <li
                         key={item}
@@ -198,45 +201,84 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  {offer.subSection ? (
-                    <div className="mt-10" data-sv-reveal>
-                      <h3 className="eyebrow">{offer.subSection.label}</h3>
-                      <div className="mt-4 space-y-4">
-                        {offer.subSection.paras.map((para) => (
-                          <p
-                            key={para}
-                            className="text-sm leading-relaxed text-ink/70 md:text-base"
-                          >
-                            {para}
-                          </p>
-                        ))}
+                  {offer.subSection && offer.example ? (
+                    // Sub-section and example side by side at desktop: this
+                    // card must fit the viewport so its pinned state cuts
+                    // nothing off.
+                    <div className="mt-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12">
+                      <div data-sv-reveal>
+                        <h3 className="eyebrow">{offer.subSection.label}</h3>
+                        <div className="mt-4 space-y-4">
+                          {offer.subSection.paras.map((para) => (
+                            <p
+                              key={para}
+                              className="text-sm leading-relaxed text-ink/70 md:text-base"
+                            >
+                              {para}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="sv-example relative mt-10 pl-5 lg:mt-0" data-sv-example>
+                        <span className="sv-borderline" aria-hidden="true" />
+                        <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
+                        <div className="mt-3 space-y-3">
+                          {offer.example.paras.map((para) => (
+                            <ExampleParagraph
+                              key={para}
+                              text={para}
+                              highlight={offer.example?.highlight}
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  ) : null}
-                  {offer.outro ? (
-                    <div className="mt-6 space-y-4" data-sv-reveal>
-                      {offer.outro.map((para) => (
-                        <p key={para} className="text-sm leading-relaxed text-ink/70 md:text-base">
-                          {para}
-                        </p>
-                      ))}
-                    </div>
-                  ) : null}
-                  {offer.example ? (
-                    <div className="sv-example relative mt-10 pl-5" data-sv-example>
-                      <span className="sv-borderline" aria-hidden="true" />
-                      <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
-                      <div className="mt-3 space-y-3">
-                        {offer.example.paras.map((para) => (
-                          <ExampleParagraph
-                            key={para}
-                            text={para}
-                            highlight={offer.example?.highlight}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  ) : null}
+                  ) : (
+                    <>
+                      {offer.subSection ? (
+                        <div className="mt-10" data-sv-reveal>
+                          <h3 className="eyebrow">{offer.subSection.label}</h3>
+                          <div className="mt-4 space-y-4">
+                            {offer.subSection.paras.map((para) => (
+                              <p
+                                key={para}
+                                className="text-sm leading-relaxed text-ink/70 md:text-base"
+                              >
+                                {para}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+                      {offer.outro ? (
+                        <div className="mt-6 space-y-4" data-sv-reveal>
+                          {offer.outro.map((para) => (
+                            <p
+                              key={para}
+                              className="text-sm leading-relaxed text-ink/70 md:text-base"
+                            >
+                              {para}
+                            </p>
+                          ))}
+                        </div>
+                      ) : null}
+                      {offer.example ? (
+                        <div className="sv-example relative mt-10 pl-5" data-sv-example>
+                          <span className="sv-borderline" aria-hidden="true" />
+                          <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
+                          <div className="mt-3 space-y-3">
+                            {offer.example.paras.map((para) => (
+                              <ExampleParagraph
+                                key={para}
+                                text={para}
+                                highlight={offer.example?.highlight}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+                    </>
+                  )}
                 </article>
               ))}
             </div>
