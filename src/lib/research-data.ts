@@ -306,13 +306,15 @@ const REQUIRED_JSON_FILES = [
   "firm_summary.json"
 ] as const;
 
-const ALLOWED_PACKAGE_FILES = new Set([
+const PUBLIC_DOWNLOAD_FILES = [
   ...REQUIRED_JSON_FILES,
   "observations.csv",
   "firm_evidence.csv",
   "cells.csv",
   "firm_summary.csv"
-]);
+] as const;
+
+const ALLOWED_PACKAGE_FILES = new Set<string>(PUBLIC_DOWNLOAD_FILES);
 
 const UK_FINANCIAL_ADVICE_PACKAGE = {
   directory: path.join(
@@ -356,26 +358,11 @@ const UK_FINANCIAL_ADVICE_PACKAGE = {
     "uk-financial-advice-2026",
     "firm_summary.json"
   ),
-  publicObservationsCsv: path.join(
+  publicDownloadDirectory: path.join(
     /* turbopackIgnore: true */ process.cwd(),
     "public",
     "research-data",
-    "uk-financial-advice-2026",
-    "observations.csv"
-  ),
-  publicFirmEvidenceJson: path.join(
-    /* turbopackIgnore: true */ process.cwd(),
-    "public",
-    "research-data",
-    "uk-financial-advice-2026",
-    "firm_evidence.json"
-  ),
-  publicFirmSummaryCsv: path.join(
-    /* turbopackIgnore: true */ process.cwd(),
-    "public",
-    "research-data",
-    "uk-financial-advice-2026",
-    "firm_summary.csv"
+    "uk-financial-advice-2026"
   )
 } as const;
 
@@ -739,15 +726,45 @@ function buildViewModel(
       description: "Query, engine, run date, validity and grounding metadata; no raw answer text."
     },
     {
+      label: "Processed observations",
+      filename: "observations.json",
+      format: "JSON",
+      description: "Query, engine, run date, validity and grounding metadata; no raw answer text."
+    },
+    {
+      label: "Reviewed firm evidence",
+      filename: "firm_evidence.csv",
+      format: "CSV",
+      description: "Reviewed named, cited-domain and source-only classifications."
+    },
+    {
       label: "Reviewed firm evidence",
       filename: "firm_evidence.json",
       format: "JSON",
       description: "Reviewed named, cited-domain and source-only classifications."
     },
     {
+      label: "Query-engine cells",
+      filename: "cells.csv",
+      format: "CSV",
+      description: "Three-repetition states and majority classifications with valid denominators."
+    },
+    {
+      label: "Query-engine cells",
+      filename: "cells.json",
+      format: "JSON",
+      description: "Three-repetition states and majority classifications with valid denominators."
+    },
+    {
       label: "Firm summary",
       filename: "firm_summary.csv",
       format: "CSV",
+      description: "Sector-report evidence counts and valid denominators; no ranks or bands."
+    },
+    {
+      label: "Firm summary",
+      filename: "firm_summary.json",
+      format: "JSON",
       description: "Sector-report evidence counts and valid denominators; no ranks or bands."
     }
   ]
@@ -817,16 +834,12 @@ async function readVerifiedPackage(
   };
   validateDatasetGrid(dataset, edition);
 
-  const publicDownloads = [
-    ["observations.csv", packagePaths.publicObservationsCsv],
-    ["firm_evidence.json", packagePaths.publicFirmEvidenceJson],
-    ["firm_summary.csv", packagePaths.publicFirmSummaryCsv]
-  ] as const;
-  for (const [filename, filenamePath] of publicDownloads) {
+  for (const filename of PUBLIC_DOWNLOAD_FILES) {
     const expectedHash = manifest.files[filename];
     if (!expectedHash) {
       throw new ResearchDataError(`Reviewed package does not declare ${filename}`);
     }
+    const filenamePath = path.join(packagePaths.publicDownloadDirectory, filename);
     const downloadBuffer = await readFile(/* turbopackIgnore: true */ filenamePath);
     if (sha256(downloadBuffer) !== expectedHash) {
       throw new ResearchDataError(`${filename} public download does not match the reviewed package`);

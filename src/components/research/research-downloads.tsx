@@ -23,7 +23,7 @@ export function ResearchDownloads({
       ) : (
         <ul>
           {downloads.map((download) => (
-            <li key={`${download.format}-${download.version}`}>
+            <li key={download.href}>
               <a className="research-download-link" href={download.href} download>
                 <span>
                   <strong>{download.label}</strong>
