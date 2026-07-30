@@ -312,11 +312,17 @@ export default function ServicesPage() {
         <section className="border-t border-ink/10 py-16 md:py-24" data-header-theme="dark">
           <div className="editorial-container max-w-3xl">
             <h2 className="text-2xl md:text-3xl" data-sv-reveal>
-              Book a 30-minute conversation to identify where AI could create the most value in
-              your business and the right place to start.
+              Book a 30-minute conversation to identify where Studio Baggio AI could create the
+              most value in your business and the right place to start.
             </h2>
-            <div className="mt-8" data-sv-reveal>
+            <div className="mt-8 flex flex-wrap items-center gap-6" data-sv-reveal>
               <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>
+              <a
+                className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
+                href="mailto:jayme@studiobaggio.ai?subject=Booking%20a%20conversation%20%E2%80%94%20Studio%20Baggio"
+              >
+                Or email jayme@studiobaggio.ai
+              </a>
             </div>
           </div>
         </section>
