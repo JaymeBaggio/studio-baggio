@@ -744,6 +744,12 @@ function buildViewModel(
 
   const downloads = [
     {
+      label: "Package manifest",
+      filename: "manifest.json",
+      format: "JSON",
+      description: "Run, method, QA, provenance and SHA-256 records for the reviewed package."
+    },
+    {
       label: "Processed observations",
       filename: "observations.csv",
       format: "CSV",
@@ -792,7 +798,10 @@ function buildViewModel(
       description: "Sector-report evidence counts and valid denominators; no ranks or bands."
     }
   ]
-    .filter((download) => manifest.files[download.filename])
+    .filter(
+      (download) =>
+        download.filename === "manifest.json" || manifest.files[download.filename]
+    )
     .map((download) => ({
       label: download.label,
       href: `${edition.publicDownloadBasePath}/${download.filename}`,
@@ -868,6 +877,12 @@ async function readVerifiedPackage(
     if (sha256(downloadBuffer) !== expectedHash) {
       throw new ResearchDataError(`${filename} public download does not match the reviewed package`);
     }
+  }
+  const publicManifest = await readFile(
+    /* turbopackIgnore: true */ path.join(packagePaths.publicDownloadDirectory, "manifest.json")
+  );
+  if (!publicManifest.equals(manifestBuffer)) {
+    throw new ResearchDataError("manifest.json public download does not match the reviewed package");
   }
   return dataset;
 }
