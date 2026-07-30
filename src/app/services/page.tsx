@@ -7,6 +7,7 @@ import { FaqSchema } from "@/components/faq-schema";
 import { ServicesMotion } from "@/components/services-motion";
 import { ServicesOffersIndex } from "@/components/services-offers-index";
 import {
+  about,
   introDownload,
   metadata as siteMetadata,
   primaryCta,
@@ -315,10 +316,7 @@ export default function ServicesPage() {
 
         <section className="border-t border-ink/10 py-14 md:py-20">
           <div className="editorial-container max-w-3xl">
-            <p className="eyebrow" data-sv-reveal>
-              {servicesPage.download.eyebrow}
-            </p>
-            <h2 className="mt-4 text-2xl md:text-3xl" data-sv-reveal>
+            <h2 className="text-2xl md:text-3xl" data-sv-reveal>
               {servicesPage.download.title}
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-ink/70 md:text-base" data-sv-reveal>
@@ -351,6 +349,30 @@ export default function ServicesPage() {
           </div>
         </section>
 
+        <section className="border-t border-ink/10 py-14 md:py-20">
+          <div className="editorial-container">
+            <p className="eyebrow" data-sv-reveal>
+              What clients say
+            </p>
+            <div className="mt-8 grid gap-x-12 gap-y-10 lg:grid-cols-2" data-sv-list>
+              {about.testimonials.map((testimonial) => (
+                <figure key={testimonial.name} className="relative pl-5">
+                  <span
+                    className="absolute bottom-0 left-0 top-0 w-0.5 bg-[color:var(--sb-accent-blue)]"
+                    aria-hidden="true"
+                  />
+                  <blockquote className="text-sm leading-relaxed text-[color:var(--sb-accent-blue)] md:text-base">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
+                    {testimonial.name} &middot; {testimonial.role}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="border-t border-ink/10 py-16 md:py-24" data-header-theme="dark">
           <div className="editorial-container max-w-3xl">
             <h2 className="text-2xl md:text-3xl" data-sv-reveal>
@@ -363,7 +385,7 @@ export default function ServicesPage() {
                 className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
                 href="mailto:jayme@studiobaggio.ai?subject=Booking%20a%20conversation%20%E2%80%94%20Studio%20Baggio"
               >
-                Or email jayme@studiobaggio.ai
+                Email: Jayme@studiobaggio.ai
               </a>
             </div>
           </div>
