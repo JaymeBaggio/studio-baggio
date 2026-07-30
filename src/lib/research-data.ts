@@ -873,7 +873,7 @@ function buildViewModel(
     }));
 
   return {
-    headlineFinding: `Only ${observedFirms} of ${manifest.firm_count} firms were repeatedly named or cited in AI search.`,
+    headlineFinding: `Only ${observedFirms} of ${manifest.firm_count} firms showed any consistent AI search visibility.`,
     validResponseSummary: `${validCount} of ${planned} grounded responses were valid.`,
     runWindow,
     preparedForReview: formatDate(edition.preparedForReview),

@@ -107,15 +107,6 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
   const { edition, dataset, view } = result;
   const methodPath = getResearchMethodPath(edition);
   const engineNames = [...edition.expected.engines];
-  const firmsNeverAppeared = dataset.firmSummaries.filter(
-    (firm) => firm.observed_observations === 0
-  ).length;
-  const firmsNamedRepeatedly = dataset.firmSummaries.filter(
-    (firm) => firm.majority_named_cells > 0
-  ).length;
-  const firmsCitedWithoutRepeatedNaming = dataset.firmSummaries.filter(
-    (firm) => firm.majority_observed_cells > 0 && firm.majority_named_cells === 0
-  ).length;
 
   return (
     <div className="home-4b research-page" data-research-page>
@@ -126,8 +117,8 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           eyebrow: edition.franchise,
           title: "UK financial advice firms in AI search · 2026",
           finding: view.headlineFinding,
-          description: "We asked 25 real buyer questions three times on OpenAI, Gemini and Perplexity, with web search and sources switched on.",
-          summary: `${firmsNamedRepeatedly} firms were repeatedly named in the answer. ${firmsCitedWithoutRepeatedNaming} were repeatedly used as sources without being named. This measures visibility, not quality.`,
+          description: "We examined AI visibility across the UK financial advice sector by tracking 52 accredited firms through 25 buyer questions and 225 answers from OpenAI, Gemini and Perplexity.",
+          summary: "Here is what the results reveal about who gets named, whose content gets cited and where the biggest visibility gaps remain.",
           sampleQuestions: [
             "Can I retire at 60 with a £500,000 pension?",
             "How can I reduce inheritance tax legally in the UK?",
@@ -166,10 +157,69 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         }}
       />
 
+      <section
+        className="research-executive-summary"
+        aria-labelledby="research-executive-summary-title"
+      >
+        <div className="editorial-container research-executive-summary__inner">
+          <header className="research-executive-summary__header">
+            <p className="eyebrow">Executive summary</p>
+            <h2 id="research-executive-summary-title">What this benchmark found</h2>
+            <p className="research-executive-summary__lead">
+              Most firms are absent when prospective clients use AI to find financial advice.
+              Even when a firm&apos;s content helps produce an answer, the firm may not be introduced
+              to the buyer.
+            </p>
+          </header>
+
+          <ul className="research-executive-summary__findings">
+            <li>
+              <h3>Most firms are invisible in AI search.</h3>
+              <p>
+                Forty-one of the 52 firms were neither named nor cited in any of the 225 answers.
+                Only AAB Wealth and Penguin Wealth were named consistently for any buyer question.
+              </p>
+            </li>
+            <li>
+              <h3>Visibility appears closest to a buying decision.</h3>
+              <p>
+                Firms surfaced when buyers asked who to choose, particularly for a location or
+                specialism. General advice, retirement scenarios and tax questions did not name a
+                firm.
+              </p>
+            </li>
+            <li>
+              <h3>Retirement planning is the clearest visibility gap.</h3>
+              <p>
+                None of the 52 firms appeared in the answer or its sources across the 45 retirement
+                and pension scenario answers, despite retirement planning being a core service
+                across the cohort.
+              </p>
+            </li>
+            <li>
+              <h3>Useful content does not guarantee brand discovery.</h3>
+              <p>
+                Pyrford Financial Planning and Chesterton House had content used as evidence, but
+                the firms were not consistently named to the buyer. Citation authority and brand
+                discovery are different outcomes.
+              </p>
+            </li>
+            <li>
+              <h3>No firm has dependable visibility across AI platforms.</h3>
+              <p>
+                No firm achieved consistent visibility on OpenAI, and only one firm-and-question
+                result held across more than one platform. A single AI search gives firms a
+                misleading picture of their visibility.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <VisibilityStandings
         rows={view.rows}
         engines={engineNames}
-        summary={`${firmsNeverAppeared} of ${dataset.manifest.signal.firm_count} firms did not appear once. Open a firm name for its evidence snapshot, or search the full cohort.`}
+        summary={`${dataset.manifest.signal.firm_count} accredited UK financial planning firms. Search the full cohort or open a firm name for its evidence.`}
       />
 
       <section className="research-key-findings" aria-labelledby="research-key-findings-title" data-research-findings>

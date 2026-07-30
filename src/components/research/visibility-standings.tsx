@@ -10,9 +10,9 @@ import {
 } from "./types";
 
 const resultLabels: Record<FirmResultState, string> = {
-  "named-repeated": "Named repeatedly",
-  "website-cited-repeated": "Website cited repeatedly",
-  "appeared-not-repeated": "Appeared, but not repeatedly",
+  "named-repeated": "Named in 2-3 test answers",
+  "website-cited-repeated": "Website cited in 2-3 test answers",
+  "appeared-not-repeated": "Appeared only in isolated answers",
   "no-appearance": "No appearance in this test",
   incomplete: "Incomplete coverage"
 };
@@ -92,10 +92,10 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
   const platformResult = (row: EvidenceRow, engineName: string) => {
     const repeated = row.repeatedEvidence.filter((item) => item.engine === engineName);
     if (repeated.some((item) => item.namedCount >= 2)) {
-      return { label: "Named repeatedly", state: "named" };
+      return { label: "Named in 2-3 answers", state: "named" };
     }
     if (repeated.some((item) => item.citedCount >= 2)) {
-      return { label: "Website cited repeatedly", state: "cited" };
+      return { label: "Website cited in 2-3 answers", state: "cited" };
     }
     if (row.isolatedEvidence.some((item) => item.engine === engineName)) {
       return { label: "Appeared once", state: "once" };
@@ -105,17 +105,17 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
 
   return (
     <section
+      id="firm-results"
       className="research-section research-standings"
       aria-labelledby="research-standings-title"
       data-research-standings
     >
       <div className="editorial-container">
         <div className="research-section-heading research-standings__heading">
-          <p className="eyebrow">Firm results</p>
+          <p className="eyebrow">The Studio Baggio AI Discovery Benchmark</p>
           <div>
-            <h2 id="research-standings-title">Where firms appeared</h2>
+            <h2 id="research-standings-title">AI Visibility Rankings</h2>
             <p id="research-standings-summary">{summary}</p>
-            <p className="research-standings-explainer">Each question was asked three times on every platform. “Named repeatedly” means the firm appeared in at least two answer texts. “Website cited repeatedly” means its site was used in at least two source lists, even if the firm was not named to the buyer.</p>
           </div>
         </div>
 
@@ -175,7 +175,7 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
 
         <div className="research-standings-toolbar">
           <p role="status" aria-live="polite">
-            Showing {displayedRows.length} of {rows.length} firms. Search checks all {rows.length}. Repeated results first; alphabetical within each result.
+            Showing {displayedRows.length} of {rows.length} firms. Search checks all {rows.length}. Firms named or cited in 2-3 answers appear first; alphabetical within each result.
           </p>
         </div>
 
@@ -187,9 +187,8 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
         >
           <table className="research-standings-table" aria-describedby="research-standings-summary">
             <caption className="sr-only">
-              Repeated appearances are shown first, then firms are alphabetical within each result. Each question was asked three times on every engine. A repeated
-              appearance requires at least two appearances in the same three-answer set. This is not
-              a rank, recommendation or quality judgement.
+              Firms named or cited in two or three test answers are shown first, then firms are
+              alphabetical within each result. This is not a recommendation or quality judgement.
             </caption>
             <thead>
               <tr>
