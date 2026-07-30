@@ -97,7 +97,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
     packageStatus: "qa_reviewed_candidate",
     captureMode: "fresh_homogeneous_production",
     methodVersion: "fa-pilot-method-0.4",
-    matcherVersion: "fa-matcher-0.2",
+    matcherVersion: "fa-matcher-0.3",
     corpusVersion: "fa-queries-0.1",
     cohortVersion: "cisi-afpf-2026-07-30",
     firmCount: 52,
