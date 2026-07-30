@@ -3,6 +3,7 @@ export const navItems = [
   { label: "Services", href: "/services" },
   { label: "Products", href: "/work" },
   { label: "Insights", href: "/insights" },
+  { label: "Research", href: "/research" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }
 ];
@@ -837,7 +838,10 @@ export const footer = {
   summary: "Practical AI systems for expert-led businesses.",
   email: "jayme@studiobaggio.ai",
   privacyLabel: "Privacy",
-  productLinks: [{ label: "Last30Days", href: "/last30days" }]
+  productLinks: [
+    { label: "Research", href: "/research" },
+    { label: "Last30Days", href: "/last30days" }
+  ]
 };
 
 export const contactPage = {

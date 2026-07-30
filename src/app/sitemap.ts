@@ -1,5 +1,10 @@
 import type { MetadataRoute } from "next";
 import { insightArticles, getInsightPath } from "@/content/insights";
+import {
+  getResearchEditionPath,
+  getResearchMethodPath,
+  researchEditions
+} from "@/content/research";
 import { siteUrl } from "@/lib/utils";
 
 // One entry per static route. Bump lastModified whenever a page's copy changes,
@@ -16,6 +21,7 @@ const routes: Array<{
   { path: "/last30days", lastModified: "2026-07-26", changeFrequency: "monthly", priority: 0.85 },
   { path: "/about", lastModified: "2026-07-26", changeFrequency: "monthly", priority: 0.75 },
   { path: "/insights", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/research", lastModified: "2026-07-30", changeFrequency: "monthly", priority: 0.8 },
   { path: "/contact", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
   { path: "/privacy", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 }
 ];
@@ -35,5 +41,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7
   }));
 
-  return [...staticRoutes, ...insightRoutes];
+  const researchRoutes = researchEditions.flatMap((edition) => [
+    {
+      url: `${siteUrl}${getResearchEditionPath(edition)}`,
+      lastModified: new Date(edition.preparedForReview),
+      changeFrequency: "monthly" as const,
+      priority: 0.8
+    },
+    {
+      url: `${siteUrl}${getResearchMethodPath(edition)}`,
+      lastModified: new Date(edition.preparedForReview),
+      changeFrequency: "monthly" as const,
+      priority: 0.65
+    }
+  ]);
+
+  return [...staticRoutes, ...insightRoutes, ...researchRoutes];
 }
