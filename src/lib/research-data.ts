@@ -69,6 +69,23 @@ const manifestSchema = z
     firm_count: z.number().int().positive(),
     archive_sha256: sha256Schema,
     package_status: z.literal("qa_reviewed_candidate"),
+    band_thresholds_approved: z.literal(false),
+    firm_bands_allowed: z.literal(false),
+    firm_bands_recommendation: z.literal("use_sector_report"),
+    publication_mode: z.literal("sector_report_only"),
+    signal: z
+      .object({
+        classification: z.literal("sparse"),
+        firm_count: z.number().int().positive(),
+        firms_with_majority_evidence: z.number().int().nonnegative(),
+        firms_with_majority_evidence_rate: z.number().min(0).max(1),
+        firms_with_repeated_majority_evidence: z.number().int().nonnegative(),
+        majority_observed_cell_range: z.number().int().nonnegative(),
+        reason: z.string().min(1),
+        stable_present_cells: z.number().int().nonnegative(),
+        variable_cells: z.number().int().nonnegative()
+      })
+      .strict(),
     source_manifest_sha256: sha256Schema,
     qa_template_sha256: sha256Schema,
     qa_decisions_sha256: sha256Schema,
@@ -450,6 +467,11 @@ function validateManifest(
   assertEqual(manifest.corpus_version, expected.corpusVersion, "Unexpected corpus version");
   assertEqual(manifest.cohort_version, expected.cohortVersion, "Unexpected cohort version");
   assertEqual(manifest.firm_count, expected.firmCount, "Unexpected cohort size");
+  assertEqual(
+    manifest.signal.firm_count,
+    manifest.firm_count,
+    "Signal summary identifies another cohort"
+  );
 
   const planned = expected.queryCount * expected.engines.length * expected.repetitions;
   const perEngine = expected.queryCount * expected.repetitions;
