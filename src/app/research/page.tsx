@@ -10,11 +10,20 @@ import {
 } from "@/content/research";
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Research | Studio Baggio",
-  description: researchFranchise.description,
-  path: "/research"
-});
+const hasPublishedEdition = researchEditions.some(
+  (edition) => edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
+);
+
+export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "Research | Studio Baggio",
+    description: researchFranchise.description,
+    path: "/research"
+  }),
+  robots: hasPublishedEdition
+    ? { index: true, follow: true }
+    : { index: false, follow: false, noarchive: true }
+};
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("en-GB", {

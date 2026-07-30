@@ -35,6 +35,10 @@ export async function generateMetadata({ params }: ResearchMethodPageProps): Pro
   return {
     title,
     description,
+    robots:
+      edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
+        ? { index: true, follow: true }
+        : { index: false, follow: false, noarchive: true },
     alternates: { canonical: route },
     openGraph: {
       type: "article",
@@ -163,6 +167,10 @@ export default async function ResearchMethodPage({ params }: ResearchMethodPageP
             <p className="eyebrow">02 / Cohort</p>
             <h2 id="cohort-title">A reproducible published universe</h2>
             <p><strong>{edition.cohort.label}</strong>, snapshot {formatDate(edition.cohort.snapshotDate)}.</p>
+            <p>
+              Source: <a href={edition.cohort.sourceUrl}>{edition.cohort.source}</a>. The dated source
+              snapshot, source order and linked domains are retained in the private cohort registry.
+            </p>
             <p>{edition.cohort.inclusionRule}</p>
             <p>{edition.cohort.disclosure}</p>
           </section>

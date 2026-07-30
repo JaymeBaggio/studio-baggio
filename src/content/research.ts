@@ -17,7 +17,11 @@ export type ResearchEditionDefinition = {
   metaDescription: string;
   summary: string;
   preparedForReview: string;
-  statusLabel: "Prepared for review";
+  publicationStatus: "review" | "published" | "corrected" | "superseded";
+  statusLabel: "Prepared for review" | "Published" | "Corrected edition" | "Superseded edition";
+  publishedAt?: string;
+  correctedAt?: string;
+  supersededBy?: string;
   geography: string;
   sector: string;
   cadence: string;
@@ -38,6 +42,7 @@ export type ResearchEditionDefinition = {
   cohort: {
     label: string;
     source: string;
+    sourceUrl: string;
     snapshotDate: string;
     inclusionRule: string;
     disclosure: string;
@@ -81,6 +86,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   summary:
     "A sector-level study of where UK financial advice firms are observed across repeated, grounded answers from three AI search engines.",
   preparedForReview: "2026-07-30",
+  publicationStatus: "review",
   statusLabel: "Prepared for review",
   geography: "United Kingdom",
   sector: "Financial advice",
@@ -102,6 +108,8 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   cohort: {
     label: "52 CISI Current Accredited Financial Planning Firms",
     source: "CISI Current Accredited Financial Planning Firms register",
+    sourceUrl:
+      "https://cisi.org/cisiweb2/cisi-website/who-we-are/accredited-financial-planning-firms",
     snapshotDate: "2026-07-30",
     inclusionRule:
       "Every active firm in the dated CISI register snapshot was included after legal-entity, regulatory and domain verification. Firms discovered elsewhere were not added to the measured cohort.",

@@ -33,6 +33,15 @@ export function generateStaticParams() {
   return researchEditions.map((edition) => ({ edition: edition.slug }));
 }
 
+function formatResearchDate(date: string) {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC"
+  }).format(new Date(date));
+}
+
 export async function generateMetadata({ params }: ResearchEditionPageProps): Promise<Metadata> {
   const { edition: slug } = await params;
   const edition = getResearchEditionDefinition(slug);
@@ -42,6 +51,10 @@ export async function generateMetadata({ params }: ResearchEditionPageProps): Pr
   return {
     title: edition.metaTitle,
     description: edition.metaDescription,
+    robots:
+      edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
+        ? { index: true, follow: true }
+        : { index: false, follow: false, noarchive: true },
     alternates: { canonical: route },
     openGraph: {
       type: "article",
@@ -111,13 +124,36 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           eyebrow: edition.franchise,
           title: edition.title,
           summary: edition.summary,
-          publicationDate: view.preparedForReview,
-          dateLabel: "Prepared for review",
+          publicationDate:
+            edition.publicationStatus === "corrected" && edition.correctedAt
+              ? formatResearchDate(edition.correctedAt)
+              : edition.publishedAt
+                ? formatResearchDate(edition.publishedAt)
+                : view.preparedForReview,
+          dateLabel:
+            edition.publicationStatus === "corrected"
+              ? "Corrected"
+              : edition.publicationStatus === "published"
+                ? "Published"
+                : edition.publicationStatus === "superseded"
+                  ? "Superseded"
+                  : "Prepared for review",
           runWindow: view.runWindow,
           methodVersion: dataset.manifest.method_version,
-          status: "prepared",
+          status:
+            edition.publicationStatus === "published"
+              ? "current"
+              : edition.publicationStatus === "corrected"
+                ? "corrected"
+                : edition.publicationStatus === "superseded"
+                  ? "superseded"
+                  : "prepared",
           statusDetail:
-            "Prepared for local review. Legal, compliance and publication approval remain separate gates."
+            edition.publicationStatus === "superseded" && edition.supersededBy
+              ? `Superseded by ${edition.supersededBy}.`
+              : edition.publicationStatus === "review"
+                ? "Prepared for local review. Legal, compliance and publication approval remain separate gates."
+                : undefined
         }}
       />
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Search, X } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { StabilityMarker, stabilityLabels } from "./stability-marker";
 import {
   researchEngineLabel,
@@ -28,6 +28,7 @@ const engineStatusLabels: Record<EvidenceEngineStatus, string> = {
 };
 
 const alphabetical = new Intl.Collator("en-GB", { numeric: true, sensitivity: "base" });
+const subscribeToHydration = () => () => {};
 
 function ratio(count: number, denominator: number) {
   return `${count}/${denominator}`;
@@ -54,6 +55,11 @@ export function EvidenceTable({
   const [stability, setStability] = useState<"all" | StabilityState>("all");
   const [sort, setSort] = useState<EvidenceSort>("alphabetical");
   const [showAllColumns, setShowAllColumns] = useState(false);
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    () => true,
+    () => false
+  );
 
   const visibleRows = useMemo(() => {
     const normalisedQuery = query.trim().toLocaleLowerCase("en-GB");
@@ -198,21 +204,23 @@ export function EvidenceTable({
           <p role="status" aria-live="polite">
             Showing {visibleRows.length} of {rows.length} firms. {sort === "alphabetical" ? "Default order: firm A–Z." : ""}
           </p>
-          <button
-            type="button"
-            className="research-full-table-toggle"
-            aria-pressed={showAllColumns}
-            onClick={() => setShowAllColumns((current) => !current)}
-          >
-            {showAllColumns ? "Show mobile summary" : "Show full table"}
-          </button>
+          {isHydrated ? (
+            <button
+              type="button"
+              className="research-full-table-toggle"
+              aria-pressed={showAllColumns}
+              onClick={() => setShowAllColumns((current) => !current)}
+            >
+              {showAllColumns ? "Show mobile summary" : "Show full table"}
+            </button>
+          ) : null}
         </div>
 
         <div
-          className={`research-evidence-table-frame ${showAllColumns ? "is-expanded" : ""}`}
+          className={`research-evidence-table-frame ${isHydrated ? "is-enhanced" : ""} ${showAllColumns ? "is-expanded" : ""}`}
           role="region"
           aria-label="Scrollable full evidence table"
-          tabIndex={showAllColumns ? 0 : -1}
+          tabIndex={0}
         >
           <table className="research-evidence-table" aria-describedby="research-evidence-summary">
             <caption>

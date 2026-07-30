@@ -21,7 +21,6 @@ const routes: Array<{
   { path: "/last30days", lastModified: "2026-07-26", changeFrequency: "monthly", priority: 0.85 },
   { path: "/about", lastModified: "2026-07-26", changeFrequency: "monthly", priority: 0.75 },
   { path: "/insights", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
-  { path: "/research", lastModified: "2026-07-30", changeFrequency: "monthly", priority: 0.8 },
   { path: "/contact", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
   { path: "/privacy", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 }
 ];
@@ -41,20 +40,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7
   }));
 
-  const researchRoutes = researchEditions.flatMap((edition) => [
+  const publishedResearchEditions = researchEditions.filter(
+    (edition) => edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
+  );
+  const researchRoutes = [
+    ...(publishedResearchEditions.length
+      ? [
+          {
+            url: `${siteUrl}/research`,
+            lastModified: new Date(
+              publishedResearchEditions
+                .map((edition) => edition.correctedAt ?? edition.publishedAt ?? edition.preparedForReview)
+                .sort()
+                .at(-1) ?? "2026-07-30"
+            ),
+            changeFrequency: "monthly" as const,
+            priority: 0.8
+          }
+        ]
+      : []),
+    ...publishedResearchEditions.flatMap((edition) => [
     {
       url: `${siteUrl}${getResearchEditionPath(edition)}`,
-      lastModified: new Date(edition.preparedForReview),
+      lastModified: new Date(edition.correctedAt ?? edition.publishedAt ?? edition.preparedForReview),
       changeFrequency: "monthly" as const,
       priority: 0.8
     },
     {
       url: `${siteUrl}${getResearchMethodPath(edition)}`,
-      lastModified: new Date(edition.preparedForReview),
+      lastModified: new Date(edition.correctedAt ?? edition.publishedAt ?? edition.preparedForReview),
       changeFrequency: "monthly" as const,
       priority: 0.65
     }
-  ]);
+    ])
+  ];
 
   return [...staticRoutes, ...insightRoutes, ...researchRoutes];
 }

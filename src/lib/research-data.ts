@@ -10,6 +10,7 @@ import {
 } from "@/content/research";
 
 const sha256Schema = z.string().regex(/^[a-f0-9]{64}$/);
+const runDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 const engineSchema = z.enum(RESEARCH_ENGINE_IDS);
 const repetitionSchema = z.number().int().min(1).max(3);
 const nullableBooleanSchema = z.boolean().nullable();
@@ -58,11 +59,13 @@ const manifestSchema = z
     git_commit: z.string().min(1),
     git_dirty: z.literal(false),
     processing_commit: z.string().min(1),
+    processing_git_dirty: z.literal(false),
     processing_config_sha256: sha256Schema,
     provider_models: z.record(engineSchema, z.string().min(1)),
     planned_observations: z.number().int().positive(),
     valid_observations: z.number().int().nonnegative(),
     invalid_observations: z.number().int().nonnegative(),
+    null_observations: z.number().int().nonnegative(),
     firm_count: z.number().int().positive(),
     archive_sha256: sha256Schema,
     package_status: z.literal("qa_reviewed_candidate"),
@@ -87,6 +90,7 @@ const manifestSchema = z
 const observationSchema = z
   .object({
     phase: z.literal("production"),
+    run_date: runDateSchema,
     method_version: z.string().min(1),
     capture_method_version: z.string().min(1),
     processing_method_version: z.string().min(1),
@@ -122,6 +126,7 @@ const observationSchema = z
 const firmEvidenceSchema = z
   .object({
     phase: z.literal("production"),
+    run_date: runDateSchema,
     query_id: z.string().min(1),
     intent_group: z.string().min(1),
     locale: z.string().min(1),
@@ -350,6 +355,27 @@ const UK_FINANCIAL_ADVICE_PACKAGE = {
     "research",
     "uk-financial-advice-2026",
     "firm_summary.json"
+  ),
+  publicObservationsCsv: path.join(
+    /* turbopackIgnore: true */ process.cwd(),
+    "public",
+    "research-data",
+    "uk-financial-advice-2026",
+    "observations.csv"
+  ),
+  publicFirmEvidenceJson: path.join(
+    /* turbopackIgnore: true */ process.cwd(),
+    "public",
+    "research-data",
+    "uk-financial-advice-2026",
+    "firm_evidence.json"
+  ),
+  publicFirmSummaryCsv: path.join(
+    /* turbopackIgnore: true */ process.cwd(),
+    "public",
+    "research-data",
+    "uk-financial-advice-2026",
+    "firm_summary.csv"
   )
 } as const;
 
@@ -531,6 +557,11 @@ function validateDatasetGrid(
     manifest.invalid_observations,
     observations.length - validCount,
     "Manifest invalid-response count drifted"
+  );
+  assertEqual(
+    manifest.null_observations,
+    observations.length - validCount,
+    "Manifest null-response count drifted"
   );
 
   const firmIds = new Set(firmSummaries.map((row) => row.firm_id));
@@ -785,6 +816,22 @@ async function readVerifiedPackage(
     )
   };
   validateDatasetGrid(dataset, edition);
+
+  const publicDownloads = [
+    ["observations.csv", packagePaths.publicObservationsCsv],
+    ["firm_evidence.json", packagePaths.publicFirmEvidenceJson],
+    ["firm_summary.csv", packagePaths.publicFirmSummaryCsv]
+  ] as const;
+  for (const [filename, filenamePath] of publicDownloads) {
+    const expectedHash = manifest.files[filename];
+    if (!expectedHash) {
+      throw new ResearchDataError(`Reviewed package does not declare ${filename}`);
+    }
+    const downloadBuffer = await readFile(/* turbopackIgnore: true */ filenamePath);
+    if (sha256(downloadBuffer) !== expectedHash) {
+      throw new ResearchDataError(`${filename} public download does not match the reviewed package`);
+    }
+  }
   return dataset;
 }
 

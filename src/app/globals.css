@@ -7699,6 +7699,7 @@ body:has(.home-4b.contact-page) footer {
 /* AI Search Benchmark — editorial research system */
 .research-page {
   --research-control-height: 46px;
+  --sb-muted: #666666;
   min-height: 100svh;
   background: var(--sb-paper, #ffffff);
   color: var(--sb-ink, #111111);
@@ -8822,20 +8823,20 @@ body:has(.home-4b.contact-page) footer {
     flex: 0 0 auto;
   }
 
-  .research-evidence-table-frame {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) {
     overflow-x: visible;
   }
 
-  .research-evidence-table {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table {
     min-width: 0;
   }
 
-  .research-evidence-table caption {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table caption {
     display: block;
     width: 100%;
   }
 
-  .research-evidence-table thead {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table thead {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -8845,22 +8846,22 @@ body:has(.home-4b.contact-page) footer {
     white-space: nowrap;
   }
 
-  .research-evidence-table,
-  .research-evidence-table tbody,
-  .research-evidence-table tr,
-  .research-evidence-table th,
-  .research-evidence-table td {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table,
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody,
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tr,
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table th,
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table td {
     display: block;
     width: 100%;
   }
 
-  .research-evidence-table tbody tr {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody tr {
     padding-block: 18px;
     border-top: 1px solid var(--sb-rule, #d8d8d8);
   }
 
-  .research-evidence-table tbody th,
-  .research-evidence-table tbody td {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody th,
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody td {
     position: static;
     display: grid;
     grid-template-columns: minmax(8rem, 0.7fr) minmax(0, 1fr);
@@ -8871,8 +8872,8 @@ body:has(.home-4b.contact-page) footer {
     box-shadow: none;
   }
 
-  .research-evidence-table tbody th::before,
-  .research-evidence-table tbody td::before {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody th::before,
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody td::before {
     content: attr(data-label);
     color: var(--sb-muted, #8a8a8a);
     font-size: 10px;
@@ -8882,29 +8883,29 @@ body:has(.home-4b.contact-page) footer {
     text-transform: uppercase;
   }
 
-  .research-evidence-table tbody td:nth-child(4),
-  .research-evidence-table tbody td:nth-child(5),
-  .research-evidence-table tbody td:nth-child(6),
-  .research-evidence-table tbody td:nth-child(n + 7):not(:last-child) {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody td:nth-child(4),
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody td:nth-child(5),
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody td:nth-child(6),
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody td:nth-child(n + 7):not(:last-child) {
     display: none;
   }
 
-  .research-evidence-table tbody th {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody th {
     margin-bottom: 5px;
     background: transparent;
     font-size: 16px;
   }
 
-  .research-evidence-table tbody td small {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-table tbody td small {
     grid-column: 2;
   }
 
-  .research-evidence-empty td {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-empty td {
     display: block;
     padding: 38px 0;
   }
 
-  .research-evidence-empty td::before {
+  .research-evidence-table-frame.is-enhanced:not(.is-expanded) .research-evidence-empty td::before {
     content: none;
   }
 
