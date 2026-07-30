@@ -3,18 +3,18 @@ import { ResearchActionLink } from "./ResearchActionLink.client";
 
 export function ResearchAuditCta({
   href,
-  title = "Understand why your firm appears—or does not—and what to do next.",
-  body = "The SEO and AI Search Opportunity Audit turns public evidence into a firm-specific diagnosis and practical implementation plan."
+  title = "Get a clear view of your firm's AI search visibility and opportunities.",
+  body = "The SEO and AI Search Opportunity Audit explains why the result appears and what to do next."
 }: {
   href: string;
   title?: string;
   body?: string;
 }) {
   return (
-    <section className="research-audit-cta" aria-labelledby="research-audit-cta-title">
+    <section className="research-audit-cta" aria-labelledby="research-audit-cta-title" data-research-cta>
       <div className="editorial-container research-audit-cta__grid">
-        <p className="eyebrow">SEO and AI Search Opportunity Audit</p>
-        <div>
+        <p className="eyebrow" data-research-cta-item>SEO and AI Search Opportunity Audit</p>
+        <div data-research-cta-item>
           <h2 id="research-audit-cta-title">{title}</h2>
           <p>{body}</p>
           <ResearchActionLink

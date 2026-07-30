@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
 
@@ -20,6 +21,8 @@ const selectAll = (root: ParentNode, selector: string) =>
  * evidence UI usable when JavaScript is unavailable.
  */
 export function ResearchPageMotion() {
+  const pathname = usePathname();
+
   useGSAP(() => {
     const root = document.querySelector<HTMLElement>("[data-research-page]");
     if (!root) return;
@@ -34,13 +37,25 @@ export function ResearchPageMotion() {
     const engineComparison = root.querySelector<HTMLElement>(
       "[data-research-engine-comparison]"
     );
+    const standings = root.querySelector<HTMLElement>("[data-research-standings]");
+    const findings = root.querySelector<HTMLElement>("[data-research-findings]");
+    const cta = root.querySelector<HTMLElement>("[data-research-cta]");
     const methodStrip = root.querySelector<HTMLElement>("[data-research-method-strip]");
 
     const mastheadItems = selectAll(root, "[data-research-masthead-item]");
     const stats = selectAll(root, "[data-research-stat]");
     const engineBars = selectAll(root, "[data-research-engine-bar]");
+    const findingItems = selectAll(root, "[data-research-finding-item]");
+    const ctaItems = selectAll(root, "[data-research-cta-item]");
     const methodItems = selectAll(root, "[data-research-method-item]");
-    const revealTargets = [...mastheadItems, ...stats, ...methodItems];
+    const revealTargets = [
+      ...mastheadItems,
+      ...stats,
+      ...(standings ? [standings] : []),
+      ...findingItems,
+      ...ctaItems,
+      ...methodItems
+    ];
 
     const media = gsap.matchMedia();
     let refreshFrame = 0;
@@ -83,46 +98,25 @@ export function ResearchPageMotion() {
         // A composed first-load reveal. Four or five grouped targets feel
         // editorial; individual letters and animated counters do not.
         if (masthead && mastheadItems.length) {
-          gsap.set(mastheadItems, {
+          gsap.from(mastheadItems, {
             autoAlpha: 0,
             y: 18,
             force3D: true,
-            willChange: "transform, opacity"
+            duration: 0.62,
+            stagger: 0.06,
+            ease: researchEditorialEase,
+            clearProps: "opacity,visibility,transform"
           });
-
-          gsap
-            .timeline({
-              defaults: { ease: researchEditorialEase },
-              scrollTrigger: {
-                trigger: masthead,
-                start: "clamp(top 96%)",
-                once: true,
-                id: "research-masthead"
-              }
-            })
-            .to(mastheadItems, {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.62,
-              stagger: 0.07,
-              onComplete: () => gsap.set(mastheadItems, { clearProps: "willChange" })
-            });
         }
 
         // The small rail reads as one typographic sequence, never a counter.
         if (statRail && stats.length) {
-          gsap.set(stats, {
+          gsap.from(stats, {
             autoAlpha: 0,
             y: 14,
-            force3D: true,
-            willChange: "transform, opacity"
-          });
-
-          gsap.to(stats, {
-            autoAlpha: 1,
-            y: 0,
             duration: 0.54,
             stagger: 0.06,
+            immediateRender: false,
             ease: researchEditorialEase,
             scrollTrigger: {
               trigger: statRail,
@@ -130,20 +124,68 @@ export function ResearchPageMotion() {
               once: true,
               id: "research-stat-rail"
             },
-            onComplete: () => gsap.set(stats, { clearProps: "willChange" })
+            clearProps: "opacity,visibility,transform"
+          });
+        }
+
+        // Standings arrive as one composed evidence surface. Filtering remains
+        // immediate because no row receives animation state.
+        if (standings) {
+          gsap.from(standings, {
+            autoAlpha: 0,
+            y: 16,
+            duration: 0.62,
+            immediateRender: false,
+            ease: researchEditorialEase,
+            scrollTrigger: {
+              trigger: standings,
+              start: "clamp(top 84%)",
+              once: true,
+              id: "research-standings"
+            },
+            clearProps: "opacity,visibility,transform"
+          });
+        }
+
+        if (findings && findingItems.length) {
+          gsap.from(findingItems, {
+            autoAlpha: 0,
+            y: 14,
+            duration: 0.56,
+            stagger: 0.06,
+            immediateRender: false,
+            ease: researchEditorialEase,
+            scrollTrigger: {
+              trigger: findings,
+              start: "clamp(top 84%)",
+              once: true,
+              id: "research-findings"
+            },
+            clearProps: "opacity,visibility,transform"
+          });
+        }
+
+        if (cta && ctaItems.length) {
+          gsap.from(ctaItems, {
+            autoAlpha: 0,
+            y: 12,
+            duration: 0.54,
+            stagger: 0.05,
+            immediateRender: false,
+            ease: researchEditorialEase,
+            scrollTrigger: {
+              trigger: cta,
+              start: "clamp(top 88%)",
+              once: true,
+              id: "research-cta"
+            },
+            clearProps: "opacity,visibility,transform"
           });
         }
 
         // One explanatory pass across the complete 25 x 3 matrix. Cells are
         // deliberately not cascaded: the data remains available immediately.
         if (matrix) {
-          gsap.set(matrix, {
-            autoAlpha: 0,
-            y: 16,
-            force3D: true,
-            willChange: "transform, opacity"
-          });
-
           if (matrixScan) {
             gsap.set(matrixScan, {
               autoAlpha: 0,
@@ -163,11 +205,12 @@ export function ResearchPageMotion() {
             }
           });
 
-          matrixTimeline.to(matrix, {
-            autoAlpha: 1,
-            y: 0,
+          matrixTimeline.from(matrix, {
+            autoAlpha: 0,
+            y: 16,
             duration: 0.62,
-            onComplete: () => gsap.set(matrix, { clearProps: "willChange" })
+            immediateRender: false,
+            clearProps: "opacity,visibility,transform"
           });
 
           if (matrixScan) {
@@ -196,17 +239,12 @@ export function ResearchPageMotion() {
         // Bars resolve to their CSS-defined measured widths. Animating scale
         // avoids layout work and never fabricates an intermediate number.
         if (engineComparison && engineBars.length) {
-          gsap.set(engineBars, {
+          gsap.from(engineBars, {
             scaleX: 0,
             transformOrigin: "left center",
-            force3D: true,
-            willChange: "transform"
-          });
-
-          gsap.to(engineBars, {
-            scaleX: 1,
             duration: 0.72,
             stagger: 0.08,
+            immediateRender: false,
             ease: researchEditorialEase,
             scrollTrigger: {
               trigger: engineComparison,
@@ -214,23 +252,17 @@ export function ResearchPageMotion() {
               once: true,
               id: "research-engine-comparison"
             },
-            onComplete: () => gsap.set(engineBars, { clearProps: "willChange" })
+            clearProps: "transform"
           });
         }
 
         if (methodStrip && methodItems.length) {
-          gsap.set(methodItems, {
+          gsap.from(methodItems, {
             autoAlpha: 0,
             y: 12,
-            force3D: true,
-            willChange: "transform, opacity"
-          });
-
-          gsap.to(methodItems, {
-            autoAlpha: 1,
-            y: 0,
             duration: 0.48,
             stagger: 0.05,
+            immediateRender: false,
             ease: researchEditorialEase,
             scrollTrigger: {
               trigger: methodStrip,
@@ -238,7 +270,7 @@ export function ResearchPageMotion() {
               once: true,
               id: "research-method-strip"
             },
-            onComplete: () => gsap.set(methodItems, { clearProps: "willChange" })
+            clearProps: "opacity,visibility,transform"
           });
         }
 
@@ -256,7 +288,7 @@ export function ResearchPageMotion() {
       window.cancelAnimationFrame(refreshFrame);
       media.revert();
     };
-  });
+  }, { dependencies: [pathname], revertOnUpdate: true });
 
   return null;
 }

@@ -82,7 +82,12 @@ export function QueryCoverageMatrix({
                       const stability = cell?.stability ?? "not-measured";
 
                       return (
-                        <td key={engine} className={`research-matrix-cell research-matrix-cell--${status}`} data-research-matrix-cell>
+                        <td
+                          key={engine}
+                          className={`research-matrix-cell research-matrix-cell--${status}`}
+                          data-label={researchEngineLabel(engine)}
+                          data-research-matrix-cell
+                        >
                           <span className="research-matrix-mark" aria-hidden="true">
                             {coverageMarks[status]}
                           </span>

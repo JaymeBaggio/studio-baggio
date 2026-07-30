@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ResearchAuditCta } from "@/components/research";
+import {
+  EngineComparison,
+  EvidenceTable,
+  MethodVersionStrip,
+  QueryCoverageMatrix,
+  ResearchAuditCta,
+  ResearchDownloads,
+  ResearchStatRail
+} from "@/components/research";
+import { ResearchDatasetSchema } from "@/components/research/ResearchDatasetSchema";
 import { ResearchMethodSchema } from "@/components/research/ResearchMethodSchema";
 import { researchEngineLabel } from "@/components/research/types";
 import {
@@ -95,10 +104,13 @@ export default async function ResearchMethodPage({ params }: ResearchMethodPageP
 
   const { edition, dataset, view } = result;
   const editionPath = getResearchEditionPath(edition);
+  const engineNames = [...edition.expected.engines];
+  const evidenceSummary = `${view.headlineFinding} ${view.validResponseSummary} The complete processed table is alphabetical by default and does not assign ranks or bands.`;
 
   return (
     <div className="home-4b research-page research-method-page" data-research-page>
       <ResearchMethodSchema edition={edition} />
+      <ResearchDatasetSchema edition={edition} dataset={dataset} view={view} />
 
       <header className="research-method-masthead">
         <div className="editorial-container">
@@ -112,22 +124,65 @@ export default async function ResearchMethodPage({ params }: ResearchMethodPageP
         </div>
       </header>
 
-      <div className="editorial-container research-method-layout">
-        <nav className="research-method-nav" aria-label="Method contents">
-          <p className="eyebrow">On this page</p>
-          <ol>
-            <li><a href="#scope">Scope and run</a></li>
-            <li><a href="#cohort">Cohort</a></li>
-            <li><a href="#corpus">Query corpus</a></li>
-            <li><a href="#classification">Classification</a></li>
-            <li><a href="#formulas">Formulas</a></li>
-            <li><a href="#limitations">Limitations</a></li>
-            <li><a href="#disclosure">Disclosure</a></li>
-            <li><a href="#versions">Version history</a></li>
-            <li><a href="#corrections">Corrections</a></li>
-          </ol>
-        </nav>
+      <nav className="editorial-container research-method-nav research-method-nav--top" aria-label="Method contents">
+        <p className="eyebrow">On this page</p>
+        <ol>
+          <li><a href="#engine-evidence">Engine evidence</a></li>
+          <li><a href="#query-matrix">Query matrix</a></li>
+          <li><a href="#evidence-table">Full evidence table</a></li>
+          <li><a href="#downloads">Downloads</a></li>
+          <li><a href="#scope">Scope and run</a></li>
+          <li><a href="#cohort">Cohort</a></li>
+          <li><a href="#corpus">Query corpus</a></li>
+          <li><a href="#classification">Classification</a></li>
+          <li><a href="#formulas">Formulas</a></li>
+          <li><a href="#limitations">Limitations</a></li>
+          <li><a href="#disclosure">Disclosure</a></li>
+          <li><a href="#versions">Version history</a></li>
+          <li><a href="#corrections">Corrections</a></li>
+        </ol>
+      </nav>
 
+      <ResearchStatRail stats={view.stats} />
+
+      <div id="engine-evidence">
+        <EngineComparison
+          engines={view.engines}
+          summary="Counts show valid grounded responses that observed at least one firm in the frozen cohort. Invalid responses remain outside the denominator."
+        />
+      </div>
+
+      <div id="query-matrix">
+        <QueryCoverageMatrix
+          queries={view.queries}
+          engines={engineNames}
+          summary="The 25-question instrument is shown in full. Each engine cell reports grounded validity across three repetitions; instability remains explicit."
+        />
+      </div>
+
+      <div id="evidence-table">
+        <EvidenceTable
+          rows={view.rows}
+          engines={engineNames}
+          summary={evidenceSummary}
+          cohortLabel={edition.cohort.label}
+          runWindow={view.runWindow}
+          methodVersion={dataset.manifest.method_version}
+        />
+      </div>
+
+      <div className="editorial-container research-downloads-frame" id="downloads">
+        <ResearchDownloads
+          downloads={view.downloads}
+          error={
+            view.downloads.length
+              ? undefined
+              : "The reviewed package did not include a verified public download."
+          }
+        />
+      </div>
+
+      <div className="editorial-container research-method-layout research-method-layout--single">
         <article className="research-method-content">
           <section id="scope" className="research-method-section" aria-labelledby="scope-title">
             <p className="eyebrow">01 / Scope</p>
@@ -287,6 +342,33 @@ export default async function ResearchMethodPage({ params }: ResearchMethodPageP
           </section>
         </article>
       </div>
+
+      <MethodVersionStrip
+        items={[
+          {
+            label: "Scope and run",
+            href: "#scope",
+            detail: `Method ${dataset.manifest.method_version}`
+          },
+          {
+            label: "Processed evidence",
+            href: "#evidence-table",
+            detail: `${view.rows.length} cohort firms`
+          },
+          {
+            label: "Downloads",
+            href: "#downloads",
+            detail: `${view.downloads.length} verified public files`
+          },
+          {
+            label: "Corrections",
+            href: "#corrections",
+            detail: edition.corrections.length
+              ? `${edition.corrections.length} recorded`
+              : "No corrections recorded"
+          }
+        ]}
+      />
 
       <ResearchAuditCta
         href={edition.auditCta.href}

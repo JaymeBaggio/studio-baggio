@@ -10,8 +10,28 @@ export type EvidenceEngineStatus = "observed" | "not-observed" | "invalid" | "no
 
 export type EvidenceVisibilityState = "observed" | "not-observed" | "partial";
 
+export type FirmResultState =
+  | "named-repeated"
+  | "website-cited-repeated"
+  | "appeared-not-repeated"
+  | "no-appearance"
+  | "incomplete";
+
+export type FirmEvidenceDetail = {
+  queryId: string;
+  question: string;
+  engine: string;
+  namedCount: number;
+  citedCount: number;
+  sourceOnlyCount: number;
+  validCount: number;
+};
+
 export type ResearchEditionMasthead = {
   title: string;
+  finding?: string;
+  description?: string;
+  sampleQuestions?: string[];
   eyebrow?: string;
   summary: string;
   publicationDate: string;
@@ -67,13 +87,18 @@ export type EvidenceCount = {
 export type EvidenceRow = {
   firmId: string;
   firmName: string;
+  firmDomain: string;
   firmHref?: string;
   visibilityState: EvidenceVisibilityState;
+  resultState: FirmResultState;
   stability: StabilityState;
   namedObservations: EvidenceCount;
   citedDomainObservations: EvidenceCount;
+  sourceOnlyObservations: EvidenceCount;
   queryBreadth: EvidenceCount;
   engineBreadth: EvidenceCount;
+  repeatedEvidence: FirmEvidenceDetail[];
+  isolatedEvidence: FirmEvidenceDetail[];
   perEngine: EvidenceEngineResult[];
 };
 

@@ -190,9 +190,9 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   },
   corrections: [],
   auditCta: {
-    title: "Understand what sits behind your result.",
+    title: "Get a clear view of your firm's AI search visibility and opportunities.",
     body:
-      "Understand why your firm appears—or does not—and what to do next: SEO and AI Search Opportunity Audit.",
+      "The SEO and AI Search Opportunity Audit explains why the result appears and what to do next.",
     href: "/contact?utm_source=research&utm_medium=benchmark&utm_campaign=uk-financial-advice-2026&utm_content=audit-cta"
   }
 };

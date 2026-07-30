@@ -15,16 +15,16 @@ import {
 type EvidenceSort = "alphabetical" | "observed" | "query-breadth" | "engine-breadth";
 
 const visibilityLabels: Record<EvidenceVisibilityState, string> = {
-  observed: "Observed",
-  "not-observed": "Not observed",
-  partial: "Partial coverage"
+  observed: "Repeated appearance",
+  "not-observed": "No repeated appearance",
+  partial: "Incomplete coverage"
 };
 
 const engineStatusLabels: Record<EvidenceEngineStatus, string> = {
-  observed: "Observed",
-  "not-observed": "Not observed",
-  invalid: "Invalid",
-  "not-measured": "Not measured"
+  observed: "Repeated appearance",
+  "not-observed": "No repeated appearance",
+  invalid: "Incomplete coverage",
+  "not-measured": "Not tested"
 };
 
 const alphabetical = new Intl.Collator("en-GB", { numeric: true, sensitivity: "base" });
@@ -232,6 +232,7 @@ export function EvidenceTable({
                 <th scope="col">Visibility</th>
                 <th scope="col">Named observations</th>
                 <th scope="col">Cited-domain observations</th>
+                <th scope="col">Source-only observations</th>
                 <th scope="col">Query breadth</th>
                 <th scope="col">Engine breadth</th>
                 {engines.map((item) => (
@@ -260,6 +261,9 @@ export function EvidenceTable({
                     <td data-label="Cited-domain observations">
                       {ratio(row.citedDomainObservations.count, row.citedDomainObservations.denominator)}
                     </td>
+                    <td data-label="Source-only observations">
+                      {ratio(row.sourceOnlyObservations.count, row.sourceOnlyObservations.denominator)}
+                    </td>
                     <td data-label="Query breadth">{ratio(row.queryBreadth.count, row.queryBreadth.denominator)}</td>
                     <td data-label="Engine breadth">{ratio(row.engineBreadth.count, row.engineBreadth.denominator)}</td>
                     {engines.map((item) => {
@@ -287,7 +291,7 @@ export function EvidenceTable({
                 ))
               ) : (
                 <tr className="research-evidence-empty">
-                  <td colSpan={7 + engines.length}>
+                  <td colSpan={8 + engines.length}>
                     <strong>No firms match those filters.</strong>
                     <span>Clear or change a filter to return to the complete evidence set.</span>
                     <button type="button" onClick={clearFilters}>

@@ -2,10 +2,10 @@ import { CircleCheck, CircleDashed, CircleHelp, CircleMinus } from "lucide-react
 import type { StabilityState } from "./types";
 
 const stabilityLabels: Record<StabilityState, string> = {
-  "stable-present": "Stable present",
-  variable: "Variable",
-  "not-observed": "Not observed",
-  "not-measured": "Not measured"
+  "stable-present": "Appeared in all three repeats",
+  variable: "Appeared in one or two repeats",
+  "not-observed": "No appearance in three repeats",
+  "not-measured": "Incomplete repeats"
 };
 
 const stabilityIcons = {

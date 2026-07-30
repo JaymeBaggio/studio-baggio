@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  forwardRef,
   type ReactNode,
   useId,
   useState
@@ -71,10 +72,14 @@ export function ResearchDisclosure({
             key={panelId}
             id={panelId}
             className="research-disclosure-panel"
-            initial={instant ? false : { opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={instant ? { opacity: 0 } : { opacity: 0, y: -4 }}
-            transition={{ duration: instant ? 0 : 0.2, ease: editorialEase }}
+            initial={instant ? false : { opacity: 0, transform: "translate3d(0, -6px, 0)" }}
+            animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
+            exit={
+              instant
+                ? { opacity: 0 }
+                : { opacity: 0, transform: "translate3d(0, -4px, 0)" }
+            }
+            transition={{ duration: instant ? 0 : isOpen ? 0.22 : 0.14, ease: editorialEase }}
             onAnimationComplete={refreshScrollMeasurements}
           >
             <div className="research-disclosure-content">{children}</div>
@@ -90,7 +95,7 @@ type ResearchPressableProps = Omit<HTMLMotionProps<"button">, "animate" | "trans
 };
 
 /** Pointer-only press feedback; keyboard activation remains immediate. */
-export function ResearchPressable({
+export const ResearchPressable = forwardRef<HTMLButtonElement, ResearchPressableProps>(function ResearchPressable({
   children,
   className,
   disabled,
@@ -100,12 +105,13 @@ export function ResearchPressable({
   onPointerDown,
   onPointerUp,
   ...props
-}: ResearchPressableProps) {
+}, ref) {
   const [isPointerPressed, setIsPointerPressed] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.button
+      ref={ref}
       type="button"
       {...props}
       disabled={disabled}
@@ -145,4 +151,4 @@ export function ResearchPressable({
       {children}
     </motion.button>
   );
-}
+});

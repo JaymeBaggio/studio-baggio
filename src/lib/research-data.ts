@@ -278,12 +278,38 @@ export type ResearchEditionViewModel = {
   rows: Array<{
     firmId: string;
     firmName: string;
+    firmDomain: string;
     namedObservations: { count: number; denominator: number };
     citedDomainObservations: { count: number; denominator: number };
+    sourceOnlyObservations: { count: number; denominator: number };
     queryBreadth: { count: number; denominator: number };
     engineBreadth: { count: number; denominator: number };
     visibilityState: "observed" | "not-observed" | "partial";
+    resultState:
+      | "named-repeated"
+      | "website-cited-repeated"
+      | "appeared-not-repeated"
+      | "no-appearance"
+      | "incomplete";
     stability: PublicStabilityState;
+    repeatedEvidence: Array<{
+      queryId: string;
+      question: string;
+      engine: ResearchEngineId;
+      namedCount: number;
+      citedCount: number;
+      sourceOnlyCount: number;
+      validCount: number;
+    }>;
+    isolatedEvidence: Array<{
+      queryId: string;
+      question: string;
+      engine: ResearchEngineId;
+      namedCount: number;
+      citedCount: number;
+      sourceOnlyCount: number;
+      validCount: number;
+    }>;
     perEngine: Array<{
       engine: ResearchEngineId;
       status: "observed" | "not-observed" | "invalid" | "not-measured";
@@ -688,6 +714,25 @@ function buildViewModel(
     .map((summary) => {
       const partial =
         summary.complete_cell_denominator < expected.queryCount * expected.engines.length;
+      const firmCells = cells.filter((cell) => cell.firm_id === summary.firm_id);
+      const mapEvidenceDetail = (cell: ResearchCell) => ({
+        queryId: cell.query_id,
+        question: queryById.get(cell.query_id)?.label ?? cell.query_id,
+        engine: cell.engine,
+        namedCount: cell.named_in_answer_positive_repetitions,
+        citedCount: cell.cited_domain_positive_repetitions,
+        sourceOnlyCount: cell.source_only_positive_repetitions,
+        validCount: cell.valid_repetitions
+      });
+      const repeatedEvidence = firmCells
+        .filter((cell) => cell.majority_observed === true)
+        .map(mapEvidenceDetail);
+      const isolatedEvidence = firmCells
+        .filter(
+          (cell) =>
+            cell.majority_observed === false && cell.observed_positive_repetitions > 0
+        )
+        .map(mapEvidenceDetail);
       const perEngine = expected.engines.map((engine) => {
         const engineSummary = summary.per_engine.find((item) => item.engine === engine);
         if (!engineSummary) {
@@ -715,12 +760,17 @@ function buildViewModel(
       return {
         firmId: summary.firm_id,
         firmName: summary.display_name,
+        firmDomain: summary.canonical_domain,
         namedObservations: {
           count: summary.named_observations,
           denominator: summary.valid_observation_denominator
         },
         citedDomainObservations: {
           count: summary.cited_domain_observations,
+          denominator: summary.valid_observation_denominator
+        },
+        sourceOnlyObservations: {
+          count: summary.source_only_observations,
           denominator: summary.valid_observation_denominator
         },
         queryBreadth: {
@@ -736,7 +786,18 @@ function buildViewModel(
           : summary.majority_observed_cells > 0
             ? ("observed" as const)
             : ("not-observed" as const),
+        resultState: partial
+          ? ("incomplete" as const)
+          : summary.majority_named_cells > 0
+            ? ("named-repeated" as const)
+            : summary.majority_cited_cells > 0
+              ? ("website-cited-repeated" as const)
+              : summary.observed_observations > 0
+                ? ("appeared-not-repeated" as const)
+                : ("no-appearance" as const),
         stability: mapStability(summary),
+        repeatedEvidence,
+        isolatedEvidence,
         perEngine
       };
     })
@@ -812,7 +873,7 @@ function buildViewModel(
     }));
 
   return {
-    headlineFinding: `${observedFirms} of ${manifest.firm_count} cohort firms were observed in at least one majority-positive query and engine cell.`,
+    headlineFinding: `Only ${observedFirms} of ${manifest.firm_count} firms were repeatedly named or cited in AI search.`,
     validResponseSummary: `${validCount} of ${planned} grounded responses were valid.`,
     runWindow,
     preparedForReview: formatDate(edition.preparedForReview),
@@ -820,7 +881,7 @@ function buildViewModel(
       { label: "Cohort", value: String(manifest.firm_count), detail: edition.cohort.label },
       { label: "Valid responses", value: `${validCount}/${planned}`, detail: "Invalid responses remain null" },
       { label: "Engine coverage", value: String(expected.engines.length), detail: "Three independent repetitions" },
-      { label: "Firms observed", value: `${observedFirms}/${manifest.firm_count}`, detail: "At least one majority-positive cell" }
+      { label: "Firms observed", value: `${observedFirms}/${manifest.firm_count}`, detail: "Appeared in at least two of three repeated answers" }
     ],
     queries,
     engines,
