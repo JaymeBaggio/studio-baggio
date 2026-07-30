@@ -66,7 +66,7 @@ export const researchFranchise = {
   name: "The Studio Baggio AI Search Benchmark",
   title: "Research",
   description:
-    "Independent, reproducible evidence on how expert-led firms appear in grounded AI search answers.",
+    "Reproducible evidence on how expert-led firms appear in grounded AI search answers.",
   methodologyPrinciple:
     "The benchmark reports where firms were observed. It does not rank firms, recommend advisers or diagnose why a result occurred."
 } as const;
@@ -164,6 +164,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
     limitations: [
       "The edition is a dated snapshot, not a live market feed.",
       "AI search answers can vary between repetitions, users, locations and later model versions.",
+      "These are grounded API measurements and are not presented as identical to consumer ChatGPT, Google AI Mode or Perplexity interfaces.",
       "The cohort is a reproducible published universe; it is not a list of every UK advice firm.",
       "Observation is not a recommendation, quality judgement or measure of suitability for financial advice.",
       "The public evidence shows where firms appeared. Causal diagnosis and remediation are outside the benchmark."

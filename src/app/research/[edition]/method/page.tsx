@@ -143,7 +143,17 @@ export default async function ResearchMethodPage({ params }: ResearchMethodPageP
             <ul>
               {edition.expected.engines.map((engine) => (
                 <li key={engine}>
-                  <strong>{researchEngineLabel(engine)}</strong>: {dataset.manifest.provider_models[engine]}
+                  <strong>{researchEngineLabel(engine)}</strong>: model{" "}
+                  <code>{dataset.manifest.provider_models[engine]}</code>; grounded API surface{" "}
+                  <code>
+                    {[
+                      ...new Set(
+                        dataset.observations
+                          .filter((row) => row.engine === engine)
+                          .map((row) => row.tool_surface)
+                      )
+                    ].join(", ")}
+                  </code>
                 </li>
               ))}
             </ul>
