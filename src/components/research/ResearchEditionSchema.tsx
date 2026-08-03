@@ -1,29 +1,41 @@
 import type { ResearchEditionDefinition } from "@/content/research";
-import type { PublicResearchDataset } from "@/lib/research-data";
+import { defaultOpenGraphImage } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 
 type ResearchEditionSchemaProps = {
   edition: ResearchEditionDefinition;
-  dataset: PublicResearchDataset;
 };
 
 function safeJson(value: unknown) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
-export function ResearchEditionSchema({ edition, dataset }: ResearchEditionSchemaProps) {
+export function ResearchEditionSchema({ edition }: ResearchEditionSchemaProps) {
   const editionUrl = `${siteUrl}/research/${edition.slug}`;
-  const articleSchema = {
+  const reportSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: `${edition.franchise} — ${edition.title}`,
-    description: edition.summary,
-    dateCreated: edition.preparedForReview,
-    dateModified: dataset.manifest.finished_at,
+    "@type": "Report",
+    "@id": `${editionUrl}#report`,
+    name: edition.metaTitle,
+    headline: edition.metaTitle,
+    alternativeHeadline: "How AI chooses UK financial advisers",
+    description: edition.metaDescription,
+    abstract: edition.summary,
+    url: editionUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": editionUrl
+    },
+    image: `${siteUrl}${defaultOpenGraphImage.url}`,
+    datePublished: edition.pageUpdatedAt,
+    dateModified: edition.pageUpdatedAt,
+    temporalCoverage: "2026-07-30/2026-07-31",
+    inLanguage: "en-GB",
+    isAccessibleForFree: true,
     author: {
-      "@type": "Person",
-      name: "Jayme Baggio",
-      url: `${siteUrl}/about`
+      "@type": "Organization",
+      name: "Studio Baggio Ltd",
+      url: siteUrl
     },
     publisher: {
       "@type": "Organization",
@@ -34,11 +46,16 @@ export function ResearchEditionSchema({ edition, dataset }: ResearchEditionSchem
         url: `${siteUrl}/assets/studio-baggio-logo-square.png`
       }
     },
-    mainEntityOfPage: editionUrl,
-    isAccessibleForFree: true,
     about: [
       { "@type": "Thing", name: "AI search visibility" },
-      { "@type": "Thing", name: "UK financial advice" }
+      { "@type": "Thing", name: "UK financial advice" },
+      { "@type": "Thing", name: "AI-generated financial adviser recommendations" }
+    ],
+    keywords: [
+      "AI search",
+      "UK financial advice",
+      "financial adviser visibility",
+      "AI recommendations"
     ]
   };
 
@@ -71,7 +88,7 @@ export function ResearchEditionSchema({ edition, dataset }: ResearchEditionSchem
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: safeJson(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJson(reportSchema) }}
       />
       <script
         type="application/ld+json"

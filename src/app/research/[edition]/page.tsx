@@ -7,6 +7,7 @@ import {
   Fa3QuestionExplorer
 } from "@/components/research/fa3-firm-selection-report";
 import { ResearchAuditCta } from "@/components/research";
+import { ResearchEditionSchema } from "@/components/research/ResearchEditionSchema";
 import {
   getResearchEditionDefinition,
   getResearchEditionPath,
@@ -66,8 +67,9 @@ const combinedSources = [
 ] as const;
 
 export default async function ResearchEditionPage({ params }: ResearchEditionPageProps) {
-  const { edition } = await params;
-  if (edition !== "uk-financial-advice-2026") notFound();
+  const { edition: slug } = await params;
+  const edition = getResearchEditionDefinition(slug);
+  if (!edition || slug !== "uk-financial-advice-2026") notFound();
 
   const report = await loadFa3ReportView();
   const findings = report.headline_findings;
@@ -77,7 +79,9 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
   ) / 10;
 
   return (
-    <main className="home-4b research-page fa3-report" data-research-page>
+    <>
+      <ResearchEditionSchema edition={edition} />
+      <main className="home-4b research-page fa3-report" data-research-page>
       <header className="fa3-masthead">
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
@@ -330,6 +334,7 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         body="Studio Baggio audits the buyer questions that matter, identifies the sources shaping the answers and sets out the evidence your firm needs to enter those consideration sets."
         linkLabel="Discuss your firm's visibility"
       />
-    </main>
+      </main>
+    </>
   );
 }
