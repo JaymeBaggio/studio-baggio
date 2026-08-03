@@ -62,6 +62,19 @@ export function ServicesMotion() {
         gsap.set(accentBars, { scaleX: 0, transformOrigin: "left center" });
         gsap.set(logos, { autoAlpha: 0, y: 10 });
 
+        // How-Studio-Baggio-works flow diagram: built left to right —
+        // card, accent, connector draws, dot lands, next card.
+        const flow = root.querySelector<HTMLElement>("[data-svf]");
+        const flowCards = flow ? Array.from(flow.querySelectorAll<HTMLElement>("[data-svf-card]")) : [];
+        const flowLines = flow ? Array.from(flow.querySelectorAll<HTMLElement>("[data-svf-line]")) : [];
+        const flowDots = flow ? Array.from(flow.querySelectorAll<HTMLElement>("[data-svf-dot]")) : [];
+        const flowAccents = flow ? Array.from(flow.querySelectorAll<HTMLElement>("[data-svf-accent]")) : [];
+        gsap.set(flowCards, { autoAlpha: 0, y: 14 });
+        gsap.set(flowLines, { scaleX: 0 });
+        // Dots pop from a visible size, never from nothing.
+        gsap.set(flowDots, { autoAlpha: 0, scale: 0.5 });
+        gsap.set(flowAccents, { scaleX: 0, transformOrigin: "left center" });
+
         // ── Scroll layer: created immediately so content is never stranded
         // hidden if the user scrolls at once. ──
         return setupScroll();
@@ -69,6 +82,19 @@ export function ServicesMotion() {
         function setupScroll() {
           const cards = Array.from(root!.querySelectorAll<HTMLElement>("[data-sv-card]"));
           const outsideCard = (el: HTMLElement) => !el.closest("[data-sv-card]");
+
+          // Flow position via the offsetParent chain: sticky displacement
+          // never shows up here, so ranges are correct even when the page
+          // loads (or refreshes) mid-scroll with cards already pinned.
+          const pageTop = (el: HTMLElement) => {
+            let y = 0;
+            let node: HTMLElement | null = el;
+            while (node) {
+              y += node.offsetTop;
+              node = node.offsetParent as HTMLElement | null;
+            }
+            return y;
+          };
 
           revealTargets.filter(outsideCard).forEach((el) => {
             gsap.to(el, {
@@ -156,6 +182,53 @@ export function ServicesMotion() {
             });
           }
 
+          if (flow && flowCards.length) {
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                // Absolute position via pageTop: rect-based "top 82%" is
+                // corrupted when a refresh happens with cards pinned above,
+                // which made the build fire below the fold and finish
+                // before the reader arrived.
+                start: () => pageTop(flow) - window.innerHeight * 0.82,
+                once: true,
+                invalidateOnRefresh: true
+              }
+            });
+            flowCards.forEach((card, i) => {
+              const at = i * 0.28;
+              tl.to(
+                card,
+                {
+                  autoAlpha: 1,
+                  y: 0,
+                  duration: 0.55,
+                  ease: servicesOut,
+                  // Release the inline transform so the CSS hover lift can
+                  // take over once the entrance has finished.
+                  onComplete: () => gsap.set(card, { clearProps: "transform" })
+                },
+                at
+              );
+              if (flowAccents[i]) {
+                tl.to(flowAccents[i], { scaleX: 1, duration: 0.4, ease: servicesOut }, at + 0.18);
+              }
+              // Connector i sits BEFORE card i+1: the blue thread stitches
+              // the cards together as the next one arrives, then dissolves —
+              // the dots stay as the resting punctuation.
+              if (flowLines[i]) {
+                tl.to(flowLines[i], { scaleX: 1, duration: 0.3, ease: "none" }, at + 0.16);
+                tl.to(flowLines[i], { autoAlpha: 0, duration: 0.4, ease: "none" }, at + 0.95);
+              }
+              if (flowDots[i]) {
+                tl.to(
+                  flowDots[i],
+                  { autoAlpha: 1, scale: 1, duration: 0.25, ease: servicesOut },
+                  at + 0.34
+                );
+              }
+            });
+          }
+
           let cleanup: (() => void) | undefined;
 
           if (desktop) {
@@ -176,18 +249,6 @@ export function ServicesMotion() {
               });
             };
 
-            // Flow position via the offsetParent chain: sticky displacement
-            // never shows up here, so ranges are correct even when the page
-            // loads (or refreshes) mid-scroll with cards already pinned.
-            const pageTop = (el: HTMLElement) => {
-              let y = 0;
-              let node: HTMLElement | null = el;
-              while (node) {
-                y += node.offsetTop;
-                node = node.offsetParent as HTMLElement | null;
-              }
-              return y;
-            };
             cards.forEach((card, index) => {
               const next = cards[index + 1];
               if (!next) return;

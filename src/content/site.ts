@@ -1022,7 +1022,7 @@ export const servicesPage = {
     items: [
       {
         lead: "Audit",
-        detail: "Identify the opportunity, define the system and provide a prioritised implementation plan."
+        detail: "Identify the opportunity, set the strategy and define the system, with a prioritised implementation plan."
       },
       {
         lead: "Build and implementation",
@@ -1031,7 +1031,7 @@ export const servicesPage = {
       {
         lead: "Ongoing AI partner",
         detail:
-          "Provide continuity, priority advice and practical support as the business, its systems and its priorities develop."
+          "Priority advice and practical support, developing the strategy and taking new opportunities as the business grows."
       }
     ]
   },
