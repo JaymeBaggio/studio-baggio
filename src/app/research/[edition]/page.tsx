@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  ResearchAuditCta,
-  ResearchDrawer,
-  ResearchMasthead,
-  VisibilityStandings
-} from "@/components/research";
-import { ResearchEditionSchema } from "@/components/research/ResearchEditionSchema";
+  Fa3BreadthExplorer,
+  Fa3FamilyViews,
+  Fa3LocalView,
+  Fa3MethodDrawer,
+  Fa3QuestionExplorer
+} from "@/components/research/fa3-firm-selection-report";
+import { ResearchAuditCta } from "@/components/research";
 import {
   getResearchEditionDefinition,
   getResearchEditionPath,
-  getResearchMethodPath,
   researchEditions
 } from "@/content/research";
+import { loadFa3ReportView } from "@/lib/fa3-report-data";
 import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
-import { loadResearchEdition } from "@/lib/research-data";
 import { siteUrl } from "@/lib/utils";
 
 type ResearchEditionPageProps = {
@@ -28,282 +28,335 @@ export function generateStaticParams() {
   return researchEditions.map((edition) => ({ edition: edition.slug }));
 }
 
-function formatResearchDate(date: string) {
-  return new Intl.DateTimeFormat("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC"
-  }).format(new Date(date));
-}
-
 export async function generateMetadata({ params }: ResearchEditionPageProps): Promise<Metadata> {
   const { edition: slug } = await params;
   const edition = getResearchEditionDefinition(slug);
   if (!edition) return {};
   const route = getResearchEditionPath(edition);
+  const title = "How AI chooses UK financial advisers | Studio Baggio";
+  const description =
+    "50 tests and 450 AI responses reveal which UK financial advisers become visible, which sources shape the answer and where firms disappear.";
 
   return {
-    title: edition.metaTitle,
-    description: edition.metaDescription,
-    robots:
-      edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
-        ? { index: true, follow: true }
-        : { index: false, follow: false, noarchive: true },
+    title,
+    description,
+    robots: { index: true, follow: true },
     alternates: { canonical: route },
     openGraph: {
       type: "article",
       siteName: "Studio Baggio",
       url: `${siteUrl}${route}`,
-      title: edition.metaTitle,
-      description: edition.metaDescription,
+      title,
+      description,
       images: [defaultOpenGraphImage]
     },
     twitter: {
       card: "summary_large_image",
-      title: edition.metaTitle,
-      description: edition.metaDescription,
+      title,
+      description,
       images: [defaultTwitterImage]
     }
   };
 }
 
-function UnavailableEdition({
-  edition,
-  message
-}: {
-  edition: NonNullable<ReturnType<typeof getResearchEditionDefinition>>;
-  message: string;
-}) {
-  return (
-    <div className="home-4b research-page" data-research-page>
-      <header className="research-method-masthead">
-        <div className="editorial-container">
-          <p className="eyebrow">{edition.franchise}</p>
-          <h1>{edition.title}</h1>
-          <p>{edition.statusLabel}</p>
-        </div>
-      </header>
-      <section className="research-unavailable" aria-labelledby="research-unavailable-title">
-        <div className="editorial-container">
-          <h2 id="research-unavailable-title">Evidence unavailable</h2>
-          <p>{message}</p>
-          <p>No pilot, diagnostic, composite or raw-response data has been substituted.</p>
-          <Link href="/research">Return to research</Link>
-        </div>
-      </section>
-    </div>
-  );
-}
+const formatNumber = new Intl.NumberFormat("en-GB");
+
+const combinedSources = [
+  { name: "Unbiased", answers: 168, share: "37.3%" },
+  { name: "MoneyHelper", answers: 127, share: "28.2%" },
+  { name: "VouchedFor", answers: 118, share: "26.2%" },
+  { name: "FCA", answers: 66, share: "14.7%" },
+  { name: "Nephos Group", answers: 47, share: "10.4%" }
+] as const;
 
 export default async function ResearchEditionPage({ params }: ResearchEditionPageProps) {
-  const { edition: slug } = await params;
-  const result = await loadResearchEdition(slug);
-  if (!result) notFound();
-  if (result.status === "unavailable") {
-    return <UnavailableEdition edition={result.edition} message={result.message} />;
-  }
+  const { edition } = await params;
+  if (edition !== "uk-financial-advice-2026") notFound();
 
-  const { edition, dataset, view } = result;
-  const methodPath = getResearchMethodPath(edition);
-  const engineNames = [...edition.expected.engines];
+  const report = await loadFa3ReportView();
+  const findings = report.headline_findings;
+  const validCandidateOccurrences = findings.candidate_occurrence_count;
+  const ownDomainShare = Math.round(
+    (findings.candidate_occurrences_with_own_domain_citation / validCandidateOccurrences) * 1000
+  ) / 10;
 
   return (
-    <div className="home-4b research-page" data-research-page>
-      <ResearchEditionSchema edition={edition} dataset={dataset} />
+    <main className="home-4b research-page fa3-report" data-research-page>
+      <header className="fa3-masthead">
+        <div className="editorial-container fa3-masthead__grid">
+          <div className="fa3-masthead__title">
+            <p className="fa3-kicker">UK financial advice · AI search study</p>
+            <h1>How AI chooses UK financial advisers<span aria-hidden="true">.</span></h1>
+          </div>
+          <div className="fa3-masthead__intro">
+            <p className="fa3-masthead__standfirst">
+              Nearly two-thirds of 150 UK financial advice firms were invisible in our study. AI
+              repeatedly relied on directories, publishers and commercial rankings to explain
+              financial decisions and assemble firm shortlists.
+            </p>
+            <p>
+              This investigation follows the buyer journey from asking what to do- to asking which
+              firm to choose. It records what three grounded AI systems returned, three times per
+              test, across two consecutive capture days.
+            </p>
+            <div className="fa3-masthead__meta" aria-label="Study summary">
+              <span><strong>50</strong> questions</span>
+              <span><strong>450</strong> responses</span>
+              <span><strong>3</strong> AI providers</span>
+              <span><strong>3</strong> runs per question</span>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      <ResearchMasthead
-        edition={{
-          eyebrow: edition.franchise,
-          title: "UK financial advice firms in AI search · 2026",
-          finding: view.headlineFinding,
-          description: "We examined AI visibility across the UK financial advice sector by tracking 52 accredited firms through 25 buyer questions and 225 answers from OpenAI, Gemini and Perplexity.",
-          summary: "Here is what the results reveal about who gets named, whose content gets cited and where the biggest visibility gaps remain.",
-          sampleQuestions: [
-            "Can I retire at 60 with a £500,000 pension?",
-            "How can I reduce inheritance tax legally in the UK?",
-            "Which UK financial advice firms specialise in retirement planning?"
-          ],
-          publicationDate:
-            edition.publicationStatus === "corrected" && edition.correctedAt
-              ? formatResearchDate(edition.correctedAt)
-              : edition.publishedAt
-                ? formatResearchDate(edition.publishedAt)
-                : view.preparedForReview,
-          dateLabel:
-            edition.publicationStatus === "corrected"
-              ? "Corrected"
-              : edition.publicationStatus === "published"
-                ? "Published"
-                : edition.publicationStatus === "superseded"
-                  ? "Superseded"
-                  : "Prepared for review",
-          runWindow: view.runWindow,
-          methodVersion: dataset.manifest.method_version,
-          status:
-            edition.publicationStatus === "published"
-              ? "current"
-              : edition.publicationStatus === "corrected"
-                ? "corrected"
-                : edition.publicationStatus === "superseded"
-                  ? "superseded"
-                  : "prepared",
-          statusDetail:
-            edition.publicationStatus === "superseded" && edition.supersededBy
-              ? `Superseded by ${edition.supersededBy}.`
-              : edition.publicationStatus === "review"
-                ? "Legal, compliance and publication approval remain separate gates."
-                : undefined
-        }}
-      />
+      <section className="fa3-section fa3-executive" aria-labelledby="fa3-executive-title">
+        <div className="editorial-container fa3-executive__grid">
+          <div className="fa3-executive__statement">
+            <p className="fa3-kicker">Headline finding</p>
+            <h2 id="fa3-executive-title">
+              Nearly two-thirds of the established-market panel disappeared from view.
+            </h2>
+          </div>
+          <div className="fa3-executive__evidence">
+            <p className="fa3-executive__ratio"><strong>93</strong> of 150</p>
+            <p>
+              firms were neither named nor had their website cited in the discoverability analysis.
+              This is a visibility finding about the exact dated study, rather than a judgement on
+              adviser quality or market position.
+            </p>
+            <p className="fa3-executive__thesis">
+              AI visibility is a source-to-selection problem: a firm must be useful enough to inform
+              the answer, then clear and credible enough to become a named candidate.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <section
-        className="research-executive-summary"
-        aria-labelledby="research-executive-summary-title"
-      >
-        <div className="editorial-container research-executive-summary__inner">
-          <header className="research-executive-summary__header">
-            <p className="eyebrow">Executive summary</p>
-            <h2 id="research-executive-summary-title">What this benchmark found</h2>
-            <p className="research-executive-summary__lead">
-              Most firms are absent when prospective clients use AI to find financial advice.
-              Even when a firm&apos;s content helps produce an answer, the firm may not be introduced
-              to the buyer.
+      <section className="fa3-section fa3-journey" aria-labelledby="fa3-journey-title">
+        <div className="editorial-container">
+          <header className="fa3-section-heading">
+            <div>
+              <p className="fa3-kicker">The 50 questions</p>
+              <h2 id="fa3-journey-title">The questions buyers ask before choosing an adviser</h2>
+            </div>
+            <p>
+              We tested the questions people ask as they move from understanding a financial need
+              to finding and choosing an adviser.
             </p>
           </header>
 
-          <ul className="research-executive-summary__findings">
-            <li>
-              <h3>Most firms are invisible in AI search.</h3>
+          <div className="fa3-journey__questions">
+            <article>
+              <p>13 guidance questions</p>
+              <h3>What should I do?</h3>
               <p>
-                Forty-one of the 52 firms were neither named nor cited in any of the 225 answers.
-                Only AAB Wealth and Penguin Wealth were named consistently for any buyer question.
+                These questions examined how AI explained financial decisions and which sources it
+                used to support the answer.
               </p>
-            </li>
-            <li>
-              <h3>Visibility appears closest to a buying decision.</h3>
+              <dl>
+                <div><dt>Guidance answers naming a panel firm</dt><dd>5 of 117</dd></div>
+              </dl>
+            </article>
+            <article>
+              <p>12 discoverability questions</p>
+              <h3>Who could help me?</h3>
               <p>
-                Firms surfaced when buyers asked who to choose, particularly for a location or
-                specialism. General advice, retirement scenarios and tax questions did not name a
-                firm.
+                These questions measured which established firms AI named or cited when buyers
+                searched for advice.
               </p>
-            </li>
-            <li>
-              <h3>Retirement planning is the clearest visibility gap.</h3>
+              <dl>
+                <div><dt>Firms invisible</dt><dd>93 of 150</dd></div>
+              </dl>
+            </article>
+            <article>
+              <p>25 direct firm-selection questions</p>
+              <h3>Which firm should I choose?</h3>
               <p>
-                None of the 52 firms appeared in the answer or its sources across the 45 retirement
-                and pension scenario answers, despite retirement planning being a core service
-                across the cohort.
+                Explicit selection tests measured verified candidates, repeatability, sources and
+                how the shortlist changed by buyer need, provider and run.
               </p>
-            </li>
-            <li>
-              <h3>Useful content does not guarantee brand discovery.</h3>
-              <p>
-                Pyrford Financial Planning and Chesterton House had content used as evidence, but
-                the firms were not consistently named to the buyer. Citation authority and brand
-                discovery are different outcomes.
-              </p>
-            </li>
-            <li>
-              <h3>No firm has dependable visibility across AI platforms.</h3>
-              <p>
-                No firm achieved consistent visibility on OpenAI, and only one firm-and-question
-                result held across more than one platform. A single AI search gives firms a
-                misleading picture of their visibility.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <VisibilityStandings
-        rows={view.rows}
-        engines={engineNames}
-        summary={`${dataset.manifest.signal.firm_count} accredited UK financial planning firms. Search the full cohort or open a firm name for its evidence.`}
-      />
-
-      <section className="research-key-findings" aria-labelledby="research-key-findings-title" data-research-findings>
-        <div className="editorial-container">
-          <div className="research-section-heading">
-            <p className="eyebrow">What the results show</p>
-            <div>
-              <h2 id="research-key-findings-title">What the 225 answers reveal</h2>
-              <p>The results show a sparse, uneven discovery market. They do not assess advice quality or recommend a firm.</p>
-            </div>
+              <dl>
+                <div><dt>National answers with candidates</dt><dd>{findings.national_answers_with_candidates} of {findings.national_answer_count}</dd></div>
+                <div><dt>Distinct national candidates</dt><dd>{findings.national_unique_candidate_entities}</dd></div>
+              </dl>
+            </article>
           </div>
-          <ol className="research-findings-list">
-            <li data-research-finding-item>
-              <span>01</span>
-              <div>
-                <h3>Firms appeared when buyers asked who to choose</h3>
-                <p>Only 21 of 225 answers named a cohort firm. Every one came from a local recommendation or adviser-selection question. General advice, retirement and tax questions named none.</p>
-              </div>
-            </li>
-            <li data-research-finding-item>
-              <span>02</span>
-              <div>
-                <h3>Retirement questions produced no cohort visibility</h3>
-                <p>Across all 45 answers to the five retirement and pension questions, none of the 52 firms appeared in the answer or its sources.</p>
-              </div>
-            </li>
-            <li data-research-finding-item>
-              <span>03</span>
-              <div>
-                <h3>Visibility did not transfer cleanly between platforms</h3>
-                <p>OpenAI produced no repeated firm result; Gemini and Perplexity produced three each. Only one firm-and-question result repeated on more than one platform.</p>
-              </div>
-            </li>
-            <li data-research-finding-item>
-              <span>04</span>
-              <div>
-                <h3>Being used as a source is different from being named</h3>
-                <p>Two of the four firms with a repeated result were repeatedly cited as sources without being repeatedly named in the answer shown to the buyer.</p>
-              </div>
-            </li>
-            <li data-research-finding-item>
-              <span>05</span>
-              <div>
-                <h3>Local discovery was sharply uneven</h3>
-                <p>The same recommendation question produced no cohort firm for Manchester, but repeated results for Penguin Wealth in Cardiff and AAB Wealth in Belfast.</p>
-              </div>
-            </li>
-            <li data-research-finding-item>
-              <span>06</span>
-              <div>
-                <h3>Repeating the test changed the result</h3>
-                <p>Twenty firm, question and platform combinations produced at least one appearance. Fifteen changed across the three runs, which is why a single answer is not a reliable visibility test.</p>
-              </div>
-            </li>
-          </ol>
         </div>
       </section>
 
-      <section className="research-method-disclosure" aria-labelledby="research-method-disclosure-title">
+      <section className="fa3-section fa3-credit-gap" aria-labelledby="fa3-credit-gap-title">
+        <div className="editorial-container fa3-credit-gap__grid">
+          <div>
+            <p className="fa3-kicker">The credit gap</p>
+            <h2 id="fa3-credit-gap-title">A firm can inform the answer and remain invisible to the buyer</h2>
+          </div>
+          <div>
+            <p className="fa3-credit-gap__lead">
+              In the 117 guidance answers, panel-firm websites were cited 76 times. In 74 of those
+              76 citations, the answer used the firm&apos;s evidence without naming the firm.
+            </p>
+            <p>
+              Direct firm-selection questions exposed the other side of the gap. Only {ownDomainShare}% of the {formatNumber.format(validCandidateOccurrences)}
+              {" "}valid adviser-candidate occurrences cited the candidate&apos;s own domain. Firms were
+              frequently selected using directories, rankings, reviews and other third-party evidence.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="fa3-section fa3-source-ecology" aria-labelledby="fa3-source-title">
         <div className="editorial-container">
-          <p className="eyebrow">Method at a glance</p>
-          <h2 id="research-method-disclosure-title">How we measured this</h2>
-          <ResearchDrawer
-            eyebrow="Method at a glance"
-            title="How we measured this"
-            trigger="Open methodology"
-            triggerClassName="research-method-drawer-trigger"
-          >
-            <p>We tested 25 fixed buyer questions across OpenAI, Gemini and Perplexity, repeated every question three times with web search and sources enabled, and evaluated the results against 52 firms from the dated CISI Current Accredited Financial Planning Firms source. <Link href={methodPath}>Read the full method, evidence table and processed downloads</Link>.</p>
-            <dl className="research-drawer-definition-list">
-              <div><dt>Questions</dt><dd>25 buyer questions</dd></div>
-              <div><dt>Platforms</dt><dd>OpenAI, Gemini and Perplexity</dd></div>
-              <div><dt>Repeats</dt><dd>Three answers per question and platform</dd></div>
-              <div><dt>Firms checked</dt><dd>52</dd></div>
-            </dl>
-          </ResearchDrawer>
+          <header className="fa3-section-heading">
+            <div>
+              <p className="fa3-kicker">Source landscape</p>
+              <h2 id="fa3-source-title">A small group of third parties repeatedly framed the market</h2>
+            </div>
+            <p>
+              These are answer-level citation counts across the complete 450-answer raw archive.
+              They show repeated retrieval, not that a source caused any recommendation.
+            </p>
+          </header>
+
+          <div className="fa3-source-table" role="region" aria-label="Most frequently cited source brands" tabIndex={0}>
+            <table>
+              <thead>
+                <tr><th scope="col">Source brand</th><th scope="col">Answers citing it</th><th scope="col">Share of 450 answers</th></tr>
+              </thead>
+              <tbody>
+                {combinedSources.map((source) => (
+                  <tr key={source.name}><th scope="row">{source.name}</th><td>{source.answers}</td><td>{source.share}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <aside className="fa3-nephos-note" aria-labelledby="fa3-nephos-title">
+            <div>
+              <p className="fa3-kicker">Entity and source case study</p>
+              <h3 id="fa3-nephos-title">When a commercial ranking becomes evidence</h3>
+            </div>
+            <div>
+              <p>
+                A self-authored Nephos page titled “10 Best Financial Advisers in the UK” appeared
+                as a source 21 times. In the direct firm-selection answers, the systems also presented the non-adviser
+                Nephos Group umbrella as an adviser candidate in 12 reviewed occurrences.
+              </p>
+              <p>
+                Those 12 occurrences are preserved as an AI identity error and excluded from valid
+                adviser rankings. Three explicit “Nephos Wealth Management” occurrences were
+                separately resolved to Nephos Wealth Limited, an appointed representative. Page
+                retrieval and candidate selection remain separate observations.
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
 
-      <ResearchAuditCta
-        href={edition.auditCta.href}
-        title={edition.auditCta.title}
-        body={edition.auditCta.body}
-      />
-    </div>
+      <section className="fa3-section fa3-findings" aria-labelledby="fa3-findings-title">
+        <div className="editorial-container">
+          <header className="fa3-section-heading">
+            <div>
+              <p className="fa3-kicker">Firm-selection findings</p>
+              <h2 id="fa3-findings-title">AI does not reproduce one stable “best advisers” market</h2>
+            </div>
+            <p>
+              The useful commercial unit is the consideration set for a real buyer question, not a
+              universal visibility score.
+            </p>
+          </header>
+
+          <div className="fa3-findings__list">
+            <article>
+              <strong>{findings.questions_without_candidate_shared_by_all_three_providers} of 25</strong>
+              <h3>No common candidate across all providers</h3>
+              <p>The shortlist changed materially with the provider, question and run.</p>
+            </article>
+            <article>
+              <strong>{findings.national_outside_panel_candidate_entities} of {findings.national_unique_candidate_entities}</strong>
+              <h3>National candidates came from outside the panel</h3>
+              <p>The established 150-brand benchmark captured only part of the market AI presented.</p>
+            </article>
+            <article>
+              <strong>{findings.national_answer_count - findings.national_answers_with_candidates} of {findings.national_answer_count}</strong>
+              <h3>Explicit requests still produced no firm</h3>
+              <p>These answers returned guidance, directories or authorities instead of a verified candidate.</p>
+            </article>
+            <article>
+              <strong>{findings.entities_reaching_all_four_national_families.length}</strong>
+              <h3>Firms reached all four national needs</h3>
+              <p>Most visibility was specialist, narrow or one-off rather than broad and repeatable.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <Fa3QuestionExplorer questions={report.questions} />
+      <Fa3FamilyViews families={report.nationalFamilies} />
+      <Fa3BreadthExplorer entities={report.breadth} />
+      <Fa3LocalView questions={report.questions} />
+
+      <section className="fa3-section fa3-concepts" aria-labelledby="fa3-concepts-title">
+        <div className="editorial-container">
+          <header className="fa3-section-heading">
+            <div>
+              <p className="fa3-kicker">What the answers contained</p>
+              <h2 id="fa3-concepts-title">Recommendation, evidence and mention are different</h2>
+            </div>
+            <p>
+              Every adviser-related entity was assigned one semantic role. Only verified adviser
+              candidates enter the selection views above.
+            </p>
+          </header>
+          <dl className="fa3-concept-list">
+            <div><dt>Valid adviser candidates</dt><dd>{formatNumber.format(report.conceptCounts.valid_adviser_candidate ?? 0)}</dd><p>Firm or adviser presented as an option for the buyer.</p></div>
+            <div><dt>Directory, regulator or authority</dt><dd>{formatNumber.format(report.conceptCounts.directory_regulator_authority ?? 0)}</dd><p>A route to information or verification, rather than a candidate.</p></div>
+            <div><dt>Comparison-only mention</dt><dd>{formatNumber.format(report.conceptCounts.comparison_only ?? 0)}</dd><p>Named for contrast, context or a directory example.</p></div>
+            <div><dt>Invalid candidate identity</dt><dd>{formatNumber.format(report.conceptCounts.invalid_candidate_identity ?? 0)}</dd><p>Presented as a candidate by AI but excluded because the named identity was not a valid adviser entity.</p></div>
+          </dl>
+        </div>
+      </section>
+
+      <section className="fa3-section fa3-experiment" aria-labelledby="fa3-experiment-title">
+        <div className="editorial-container fa3-experiment__grid">
+          <div>
+            <p className="fa3-kicker">The live intervention</p>
+            <h2 id="fa3-experiment-title">Can transparent evidence enter the same answers?</h2>
+          </div>
+          <div>
+            <p>
+              Calm Authority has published independently evidenced comparison pages with explicit
+              inclusion criteria, regulatory routes, named authorship and source links. The same
+              frozen questions will be rerun at fixed checkpoints to measure citations, mentions
+              and shortlist entry.
+            </p>
+            <p>
+              This turns the report into a controlled before-and-after test. Any change will be
+              reported as an observed association, with repetition required before it becomes proof.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="fa3-section fa3-method" aria-labelledby="fa3-method-title">
+        <div className="editorial-container fa3-method__grid">
+          <div>
+            <p className="fa3-kicker">Method, evidence and limitations</p>
+            <h2 id="fa3-method-title">How the study was run</h2>
+          </div>
+          <div>
+            <p>
+              We asked 50 questions across guidance, discoverability and direct firm selection.
+              Five selection questions were deliberately repeated, giving us 45 distinct wordings.
+              Every finding keeps the correct denominator. The results describe grounded API
+              captures on 30 and 31 July 2026, not every consumer interface or future answer.
+            </p>
+            <Fa3MethodDrawer report={report} />
+            <Link className="fa3-method__link" href="/research/uk-financial-advice-2026/method">Read the full method</Link>
+          </div>
+        </div>
+      </section>
+
+      <ResearchAuditCta href="/contact?intent=ai-search-audit" />
+    </main>
   );
 }

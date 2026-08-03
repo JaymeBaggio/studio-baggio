@@ -63,11 +63,13 @@ export function ResearchPageMotion() {
 
     const showFinalState = () => {
       gsap.set(revealTargets, { autoAlpha: 1, y: 0, clearProps: "willChange" });
-      gsap.set(engineBars, {
-        scaleX: 1,
-        transformOrigin: "left center",
-        clearProps: "willChange"
-      });
+      if (engineBars.length) {
+        gsap.set(engineBars, {
+          scaleX: 1,
+          transformOrigin: "left center",
+          clearProps: "willChange"
+        });
+      }
 
       if (matrix) gsap.set(matrix, { autoAlpha: 1, y: 0, clearProps: "willChange" });
       if (matrixScan) {

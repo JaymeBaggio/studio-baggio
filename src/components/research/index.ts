@@ -2,6 +2,7 @@ export { EngineComparison } from "./engine-comparison";
 export { EvidenceTable } from "./evidence-table";
 export { MethodVersionStrip } from "./method-version-strip";
 export { QueryCoverageMatrix } from "./query-coverage-matrix";
+export { QuestionEvidenceExplorer } from "./question-evidence-explorer";
 export { ResearchAuditCta } from "./research-audit-cta";
 export { ResearchDownloads } from "./research-downloads";
 export { ResearchDrawer } from "./ResearchDrawer.client";

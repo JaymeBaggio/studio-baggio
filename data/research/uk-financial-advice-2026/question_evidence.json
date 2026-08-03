@@ -1,0 +1,5475 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-30T20:29:43.686Z",
+  "sourceRunId": "20260730-uk-financial-advice-market-panel-v2",
+  "sourceArchiveSha256": "58dfb29d818045d8a0e54d4891c5b3308b188e7f0b087a3c0d2c2713ae6638a7",
+  "questions": [
+    {
+      "id": "FA-SN-01",
+      "text": "How do I choose a financial adviser in the UK?",
+      "intentGroup": "adviser_selection_national_discovery",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "fca.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "My Pension Expert",
+              "answers": 3
+            },
+            {
+              "name": "Charles Stanley",
+              "answers": 2
+            },
+            {
+              "name": "Pareto Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "The Private Office",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "foresight-ifp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "mypensionexpert.com",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "agilityfinancial.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "baggette.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "charles-stanley.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "citizensadvice.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "arkwm.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "buckinghamgate.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "chadwicks.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "chestertonhouse.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fca.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 1
+            },
+            {
+              "domain": "holbornassets.com",
+              "answers": 1
+            },
+            {
+              "domain": "humboldtfinancial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "investnmore.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "lv.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 1
+            },
+            {
+              "domain": "paretofp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "premierjobsuk.com",
+              "answers": 1
+            },
+            {
+              "domain": "royallondon.com",
+              "answers": 1
+            },
+            {
+              "domain": "saga.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "service.gov.uk",
+              "answers": 1
+            },
+            {
+              "domain": "thepfs.org",
+              "answers": 1
+            },
+            {
+              "domain": "theprivateoffice.com",
+              "answers": 1
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Fairstone",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "alanboswell.com",
+              "answers": 3
+            },
+            {
+              "domain": "citizensadvice.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "fairstone.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "forbes.com",
+              "answers": 3
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 3
+            },
+            {
+              "domain": "moneysmart.gov.au",
+              "answers": 3
+            },
+            {
+              "domain": "nerdwallet.com",
+              "answers": 3
+            },
+            {
+              "domain": "theguardian.com",
+              "answers": 3
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-SN-02",
+      "text": "How much does a financial adviser cost in the UK?",
+      "intentGroup": "adviser_selection_national_discovery",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "fca.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            },
+            {
+              "name": "Wren Sterling",
+              "answers": 2
+            }
+          ],
+          "sources": [
+            {
+              "domain": "arkwm.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "farsightwealth.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "everystepfs.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "lv.com",
+              "answers": 2
+            },
+            {
+              "domain": "nextwealth.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "wrensterling.com",
+              "answers": 2
+            },
+            {
+              "domain": "abodefinancial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "balancewealth.uk",
+              "answers": 1
+            },
+            {
+              "domain": "brightonfinancial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "chadwicks.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "saga.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "thefamilywealthpartnership.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "assets.publishing.service.gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "everystepfs.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hoa.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "lucentfinancialplanning.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "pyrfordfp.com",
+              "answers": 3
+            },
+            {
+              "domain": "saga.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-SN-03",
+      "text": "How can I check that a financial adviser is FCA-authorised and trustworthy?",
+      "intentGroup": "adviser_selection_national_discovery",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "fca.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "financial-ombudsman.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "protected.fscs.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "register.fca.org.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "fca.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "chatifa.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "ergsy.com",
+              "answers": 2
+            },
+            {
+              "domain": "investnmore.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "pennymatters.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "ageuk.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "almondfinancial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "asukl.com",
+              "answers": 1
+            },
+            {
+              "domain": "bbc-law.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "cbscreening.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ccfps.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "citizensadvice.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "cnmv.es",
+              "answers": 1
+            },
+            {
+              "domain": "credence.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "dulifinanceadvisory.com",
+              "answers": 1
+            },
+            {
+              "domain": "fi.ee",
+              "answers": 1
+            },
+            {
+              "domain": "fla.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "frc.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "furnleyhouse.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "milestonefp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "mysociety.org",
+              "answers": 1
+            },
+            {
+              "domain": "oxoniancapital.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "saga.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "thecompliancecompany.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "vcse.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "cotswoldsfinancialadvisors.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "fca.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "financialadvisers.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "globalinvestments.net",
+              "answers": 3
+            },
+            {
+              "domain": "investnmore.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "vcse.uk",
+              "answers": 3
+            },
+            {
+              "domain": "asukl.com",
+              "answers": 2
+            },
+            {
+              "domain": "trustevo.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "knowledge.unbiased.co.uk",
+              "answers": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-SN-04",
+      "text": "I want a large national financial advice firm rather than a local adviser. Which firms should I consider?",
+      "intentGroup": "adviser_selection_national_discovery",
+      "locale": "UK national",
+      "includedInPrimary": false,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            },
+            {
+              "name": "Evelyn Partners",
+              "answers": 2
+            },
+            {
+              "name": "Fidelius",
+              "answers": 2
+            },
+            {
+              "name": "Quilter Financial Advisers",
+              "answers": 2
+            },
+            {
+              "name": "Rathbones",
+              "answers": 2
+            },
+            {
+              "name": "AAB Wealth",
+              "answers": 1
+            },
+            {
+              "name": "Amber River",
+              "answers": 1
+            },
+            {
+              "name": "Azets Wealth Management",
+              "answers": 1
+            },
+            {
+              "name": "Barclays Wealth Management",
+              "answers": 1
+            },
+            {
+              "name": "Charles Stanley",
+              "answers": 1
+            },
+            {
+              "name": "Fairstone",
+              "answers": 1
+            },
+            {
+              "name": "Forvis Mazars Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "NatWest Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "Schroders Personal Wealth",
+              "answers": 1
+            },
+            {
+              "name": "The Private Office",
+              "answers": 1
+            },
+            {
+              "name": "Westminster Wealth Management",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Fairstone",
+              "answers": 1
+            },
+            {
+              "name": "Rathbones",
+              "answers": 1
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 1
+            },
+            {
+              "name": "Westminster Wealth Management",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "fca.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "2025-fta-top100.ftadviser.com",
+              "answers": 1
+            },
+            {
+              "domain": "7im.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fairstone.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "guide.vouchedfor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "intelligentpensions.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 1
+            },
+            {
+              "domain": "rathbones.com",
+              "answers": 1
+            },
+            {
+              "domain": "reddit.com",
+              "answers": 1
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ukwealthmanagement.com",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "westminster-wealth.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Evelyn Partners",
+              "answers": 3
+            },
+            {
+              "name": "RBC Brewin Dolphin",
+              "answers": 3
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            },
+            {
+              "name": "Schroders Personal Wealth",
+              "answers": 2
+            },
+            {
+              "name": "Ascot Lloyd",
+              "answers": 1
+            },
+            {
+              "name": "Foster Denovo",
+              "answers": 1
+            },
+            {
+              "name": "Quilter Financial Advisers",
+              "answers": 1
+            },
+            {
+              "name": "Rathbones",
+              "answers": 1
+            },
+            {
+              "name": "The Private Office",
+              "answers": 1
+            },
+            {
+              "name": "TrinityBridge",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "arkwm.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "baggette.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fca.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 1
+            },
+            {
+              "domain": "magnifymoney.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 1
+            },
+            {
+              "domain": "nephosgroup.com",
+              "answers": 1
+            },
+            {
+              "domain": "portfolio-adviser.com",
+              "answers": 1
+            },
+            {
+              "domain": "privatebankerinternational.com",
+              "answers": 1
+            },
+            {
+              "domain": "smartasset.com",
+              "answers": 1
+            },
+            {
+              "domain": "startupintros.com",
+              "answers": 1
+            },
+            {
+              "domain": "uksif.org",
+              "answers": 1
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "builtin.com",
+              "answers": 3
+            },
+            {
+              "domain": "cnbc.com",
+              "answers": 3
+            },
+            {
+              "domain": "inven.ai",
+              "answers": 3
+            },
+            {
+              "domain": "money.usnews.com",
+              "answers": 3
+            },
+            {
+              "domain": "nerdwallet.com",
+              "answers": 3
+            },
+            {
+              "domain": "smartasset.com",
+              "answers": 3
+            },
+            {
+              "domain": "wsj.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-SN-05",
+      "text": "Can you recommend a UK financial adviser for someone with £500,000 to invest?",
+      "intentGroup": "adviser_selection_national_discovery",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "St. James's Place",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "St. James's Place",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "fca.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 2
+            },
+            {
+              "domain": "register.fca.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "discover.vouchedfor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "guide.vouchedfor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "waymarkfinancial.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Evelyn Partners",
+              "answers": 3
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            },
+            {
+              "name": "Charles Stanley",
+              "answers": 2
+            },
+            {
+              "name": "Saltus",
+              "answers": 2
+            },
+            {
+              "name": "Cazenove Capital",
+              "answers": 1
+            },
+            {
+              "name": "Fidelius",
+              "answers": 1
+            },
+            {
+              "name": "Forvis Mazars Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "Gerald Pepper Financial Management",
+              "answers": 1
+            },
+            {
+              "name": "Just Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "RBC Brewin Dolphin",
+              "answers": 1
+            },
+            {
+              "name": "Schroders Personal Wealth",
+              "answers": 1
+            },
+            {
+              "name": "The Private Office",
+              "answers": 1
+            },
+            {
+              "name": "True Potential",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Forvis Mazars Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "Pareto Financial Planning",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "goodmoneyguide.com",
+              "answers": 2
+            },
+            {
+              "domain": "positiveadvisers.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "comparewealthmanagers.com",
+              "answers": 1
+            },
+            {
+              "domain": "forvismazars.com",
+              "answers": 1
+            },
+            {
+              "domain": "issmarketintelligence.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneymarketingawards.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 1
+            },
+            {
+              "domain": "nephosgroup.com",
+              "answers": 1
+            },
+            {
+              "domain": "paretofp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "professionaladviser.com",
+              "answers": 1
+            },
+            {
+              "domain": "reddit.com",
+              "answers": 1
+            },
+            {
+              "domain": "spearswms.com",
+              "answers": 1
+            },
+            {
+              "domain": "ukdirectormagazines.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "EQ Investors",
+              "answers": 3
+            },
+            {
+              "name": "Partners Wealth Management",
+              "answers": 3
+            },
+            {
+              "name": "Saltus",
+              "answers": 3
+            },
+            {
+              "name": "Cazenove Capital",
+              "answers": 2
+            },
+            {
+              "name": "Evelyn Partners",
+              "answers": 2
+            },
+            {
+              "name": "Fiscal Engineers",
+              "answers": 2
+            },
+            {
+              "name": "Rathbones",
+              "answers": 2
+            },
+            {
+              "name": "Charles Stanley",
+              "answers": 1
+            },
+            {
+              "name": "Craven Street Wealth",
+              "answers": 1
+            },
+            {
+              "name": "Forvis Mazars Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "Johnston Carmichael Wealth",
+              "answers": 1
+            },
+            {
+              "name": "Quilter Financial Advisers",
+              "answers": 1
+            },
+            {
+              "name": "Schroders Personal Wealth",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Perspective Financial Group",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "2024-fta-top100.ftadviser.com",
+              "answers": 3
+            },
+            {
+              "domain": "cathedralwealthmanagement.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "goodmoneyguide.com",
+              "answers": 3
+            },
+            {
+              "domain": "insights.vouchedfor.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "nephosgroup.com",
+              "answers": 3
+            },
+            {
+              "domain": "pfgl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "spearswms.com",
+              "answers": 3
+            },
+            {
+              "domain": "topfs.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-RP-01",
+      "text": "How much money do I need to retire comfortably in the UK?",
+      "intentGroup": "retirement_pensions",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "plsa.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            },
+            {
+              "name": "Quilter Financial Advisers",
+              "answers": 2
+            },
+            {
+              "name": "Saltus",
+              "answers": 2
+            },
+            {
+              "name": "Shackleton",
+              "answers": 2
+            }
+          ],
+          "sources": [
+            {
+              "domain": "retirementlivingstandards.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "lboro.ac.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "pensionbee.com",
+              "answers": 2
+            },
+            {
+              "domain": "poundsense.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "quilter.com",
+              "answers": 2
+            },
+            {
+              "domain": "restless.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "saltus.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "shackletonadvisers.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "standardlifeplc.com",
+              "answers": 2
+            },
+            {
+              "domain": "ajbell.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fidelity.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "forbes.com",
+              "answers": 1
+            },
+            {
+              "domain": "homecroftwealth.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "oaknorth.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "peoplespension.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "trustnet.com",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "wolseleygroupretirementbenefitsplan.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 2
+            },
+            {
+              "name": "Wesleyan",
+              "answers": 2
+            }
+          ],
+          "sources": [
+            {
+              "domain": "keyadvice.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "retirementlivingstandards.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "fidelity.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 2
+            },
+            {
+              "domain": "restless.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "wesleyan.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "global.morningstar.com",
+              "answers": 1
+            },
+            {
+              "domain": "lboro.ac.uk",
+              "answers": 1
+            },
+            {
+              "domain": "lottie.org",
+              "answers": 1
+            },
+            {
+              "domain": "lv.com",
+              "answers": 1
+            },
+            {
+              "domain": "pensionsuk.org.uk",
+              "answers": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-RP-02",
+      "text": "Can I retire at 60 with a £500,000 pension?",
+      "intentGroup": "retirement_pensions",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 1
+            },
+            {
+              "domain": "pension-helper.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Saltus",
+              "answers": 2
+            },
+            {
+              "name": "Hilltop Financial Planning",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "pensionbible.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "excelergy.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "pension-helper.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "saltus.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "vanguardinvestor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "youtube.com",
+              "answers": 2
+            },
+            {
+              "domain": "fidelity.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hilltopfinance.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "pantheralife.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "pensionbee.com",
+              "answers": 1
+            },
+            {
+              "domain": "reddit.com",
+              "answers": 1
+            },
+            {
+              "domain": "retirementlivingstandards.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "royallondon.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Hilltop Financial Planning",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "blog.moneyfarm.com",
+              "answers": 3
+            },
+            {
+              "domain": "fidelity.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hilltopfinance.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "householdmoneysaving.com",
+              "answers": 3
+            },
+            {
+              "domain": "maviscofinancial.com",
+              "answers": 3
+            },
+            {
+              "domain": "pensionbee.com",
+              "answers": 3
+            },
+            {
+              "domain": "youtube.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-RP-03",
+      "text": "Should I combine my old workplace pensions before I retire?",
+      "intentGroup": "retirement_pensions",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "fca.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 2
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 1
+            },
+            {
+              "domain": "thepensionsregulator.gov.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Evelyn Partners",
+              "answers": 1
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            },
+            {
+              "name": "Rathbones",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "8fp.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "aviva.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 2
+            },
+            {
+              "domain": "titanwealthinternational.com",
+              "answers": 2
+            },
+            {
+              "domain": "alanboswell.com",
+              "answers": 1
+            },
+            {
+              "domain": "blacktowerfm.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "burges-salmon.com",
+              "answers": 1
+            },
+            {
+              "domain": "cheltenhamifa.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "evelyn.com",
+              "answers": 1
+            },
+            {
+              "domain": "financialfortress.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "george-square.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "integritasfp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "lloydswealth.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 1
+            },
+            {
+              "domain": "pensionbible.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "pensiontracingservice.com",
+              "answers": 1
+            },
+            {
+              "domain": "piercefieldoliver.com",
+              "answers": 1
+            },
+            {
+              "domain": "rathbones.com",
+              "answers": 1
+            },
+            {
+              "domain": "restless.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "standardlife.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "traverssmith.com",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "vanguardinvestor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "vitality.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "youtube.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "aviva.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "blog.moneyfarm.com",
+              "answers": 3
+            },
+            {
+              "domain": "marsh.com",
+              "answers": 3
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 3
+            },
+            {
+              "domain": "moneysupermarket.com",
+              "answers": 3
+            },
+            {
+              "domain": "pensiontracingservice.com",
+              "answers": 3
+            },
+            {
+              "domain": "standardlife.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "wealthify.com",
+              "answers": 3
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-RP-04",
+      "text": "Should I take the 25% tax-free lump sum from my pension?",
+      "intentGroup": "retirement_pensions",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Boolers",
+              "answers": 1
+            },
+            {
+              "name": "Flying Colours",
+              "answers": 1
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            },
+            {
+              "name": "Quilter Financial Advisers",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "fidelity.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "royallondon.com",
+              "answers": 2
+            },
+            {
+              "domain": "titanwealthinternational.com",
+              "answers": 2
+            },
+            {
+              "domain": "youtube.com",
+              "answers": 2
+            },
+            {
+              "domain": "aberdeenadviser.com",
+              "answers": 1
+            },
+            {
+              "domain": "advancedasset.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "aegon.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "almondfinancial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "aviva.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "boolers.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fcadvice.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hscfinancial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "legalandgeneral.com",
+              "answers": 1
+            },
+            {
+              "domain": "pensionbible.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "peoplespension.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "piercefieldoliver.com",
+              "answers": 1
+            },
+            {
+              "domain": "quilter.com",
+              "answers": 1
+            },
+            {
+              "domain": "restless.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "schwab.com",
+              "answers": 1
+            },
+            {
+              "domain": "scottishwidows.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "skyboundwealth.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "aviva.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "btps.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "calchub.uk",
+              "answers": 3
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "retirementline.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "techzone.aberdeenadviser.com",
+              "answers": 3
+            },
+            {
+              "domain": "wenntownsend.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-RP-05",
+      "text": "Can you recommend a UK financial adviser who specialises in retirement income and pension drawdown?",
+      "intentGroup": "retirement_pensions",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "thepfs.org",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "api.vouchedfor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "bound4retirement.com",
+              "answers": 1
+            },
+            {
+              "domain": "ffpgroup.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "heathcotefp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ifp-anglia.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 1
+            },
+            {
+              "domain": "pyrfordfp.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "The Private Office",
+              "answers": 3
+            },
+            {
+              "name": "Chase de Vere",
+              "answers": 1
+            },
+            {
+              "name": "Fidelius",
+              "answers": 1
+            },
+            {
+              "name": "Progeny",
+              "answers": 1
+            },
+            {
+              "name": "Saltus",
+              "answers": 1
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 1
+            },
+            {
+              "name": "Strategic Solutions",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "The Private Office",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "kelland-hale.com",
+              "answers": 2
+            },
+            {
+              "domain": "bexley.gov.uk",
+              "answers": 1
+            },
+            {
+              "domain": "corporate-adviser.com",
+              "answers": 1
+            },
+            {
+              "domain": "lucentfinancialplanning.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneyfactsgroup.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "professionaladviser.com",
+              "answers": 1
+            },
+            {
+              "domain": "restless.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "rowleyturton.com",
+              "answers": 1
+            },
+            {
+              "domain": "theprivateoffice.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            },
+            {
+              "name": "Foster Denovo",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Flying Colours",
+              "answers": 3
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "fcadvice.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "lv.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LC-01",
+      "text": "How can I reduce inheritance tax legally in the UK?",
+      "intentGroup": "inheritance_later_life_care",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "assets.publishing.service.gov.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Ascot Lloyd",
+              "answers": 2
+            },
+            {
+              "name": "Foster Denovo",
+              "answers": 2
+            },
+            {
+              "name": "Wesleyan",
+              "answers": 2
+            },
+            {
+              "name": "Charles Stanley",
+              "answers": 1
+            },
+            {
+              "name": "Saltus",
+              "answers": 1
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 1
+            },
+            {
+              "name": "The Private Office",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "askaccountantsukltd.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "devonalds.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "joneswhyte.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 3
+            },
+            {
+              "domain": "youtube.com",
+              "answers": 3
+            },
+            {
+              "domain": "al-lawassociates.com",
+              "answers": 2
+            },
+            {
+              "domain": "alexanderjacob.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "alexanders-estates.com",
+              "answers": 2
+            },
+            {
+              "domain": "ascotlloyd.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "aslsolicitors.com",
+              "answers": 2
+            },
+            {
+              "domain": "fosterdenovo.com",
+              "answers": 2
+            },
+            {
+              "domain": "hoa.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "ibissandco.com",
+              "answers": 2
+            },
+            {
+              "domain": "mpestateplanning.uk",
+              "answers": 2
+            },
+            {
+              "domain": "tcyoung.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "thecooperway.com",
+              "answers": 2
+            },
+            {
+              "domain": "thepennygroup.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "visionconsulting.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "wesleyan.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "awdprojects.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "charles-stanley.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "coodes.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "daviesandpartners.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hensoncrisp.com",
+              "answers": 1
+            },
+            {
+              "domain": "indicator.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "jamesmillard.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "jesellars.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "lewisnedas.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "millbanks.com",
+              "answers": 1
+            },
+            {
+              "domain": "morganandassociates.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "nrla.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "probatebureau.com",
+              "answers": 1
+            },
+            {
+              "domain": "saltus.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "service.gov.uk",
+              "answers": 1
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "theprivateoffice.com",
+              "answers": 1
+            },
+            {
+              "domain": "titanwealthinternational.com",
+              "answers": 1
+            },
+            {
+              "domain": "ukpersonal.finance",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            },
+            {
+              "name": "Wesleyan",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "burtons-solicitors.com",
+              "answers": 3
+            },
+            {
+              "domain": "hoa.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 3
+            },
+            {
+              "domain": "probatebureau.com",
+              "answers": 3
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "telegraph.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "thepath.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "wesleyan.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LC-02",
+      "text": "What should I do with a £250,000 inheritance?",
+      "intentGroup": "inheritance_later_life_care",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "fca.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fscs.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Chase de Vere",
+              "answers": 1
+            },
+            {
+              "name": "Evelyn Partners",
+              "answers": 1
+            },
+            {
+              "name": "NFU Mutual Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 2
+            },
+            {
+              "domain": "saga.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "bentleyreid.com",
+              "answers": 1
+            },
+            {
+              "domain": "cartridgeslaw.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "chasedevere.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "closesavings.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "dentonspensions.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "evelyn.com",
+              "answers": 1
+            },
+            {
+              "domain": "farrer.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fca.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "financialadvisor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "foresight-ifp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fscs.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ii.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "investnmore.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "nfumutual.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "nsandi-corporate.com",
+              "answers": 1
+            },
+            {
+              "domain": "pensionbee.com",
+              "answers": 1
+            },
+            {
+              "domain": "pricebailey.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "tcyoung.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "theguardian.com",
+              "answers": 1
+            },
+            {
+              "domain": "tidewaywealth.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "wardgoodman.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "zoopla.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "forums.moneysavingexpert.com",
+              "answers": 3
+            },
+            {
+              "domain": "ii.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "inheritancemoneyadvice.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "reddit.com",
+              "answers": 3
+            },
+            {
+              "domain": "thisismoney.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "abcnews.go.com",
+              "answers": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LC-03",
+      "text": "How can I plan for care home fees without running out of money?",
+      "intentGroup": "inheritance_later_life_care",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "ageuk.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "nhs.uk",
+              "answers": 2
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "mpestateplanning.uk",
+              "answers": 3
+            },
+            {
+              "domain": "ageuk.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "carehome.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "nhs.uk",
+              "answers": 2
+            },
+            {
+              "domain": "oathhealthcare.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "rightcarehome.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "saga.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "acjfinancialplanning.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "aprilking.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "arrowchc.org",
+              "answers": 1
+            },
+            {
+              "domain": "bupa.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "burtons-solicitors.com",
+              "answers": 1
+            },
+            {
+              "domain": "careadvocate.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "careconfidence.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "coles-miller.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "continuing-healthcare.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "elder.org",
+              "answers": 1
+            },
+            {
+              "domain": "mha.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "oaklandcare.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "parliament.uk",
+              "answers": 1
+            },
+            {
+              "domain": "payingforcare.org",
+              "answers": 1
+            },
+            {
+              "domain": "radfieldhomecare.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ringroselaw.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "rosebankcarehome.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "spurandco.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "switalskis.com",
+              "answers": 1
+            },
+            {
+              "domain": "wearejust.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "yorkcarerscentre.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "youtube.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "ageuk.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "ashberry-care-homes.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "autumna.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "carehome.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "dunhamcarehomes.com",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "nhs.uk",
+              "answers": 3
+            },
+            {
+              "domain": "thetimes.com",
+              "answers": 3
+            },
+            {
+              "domain": "wuhld.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LC-04",
+      "text": "Can you recommend a UK financial adviser who specialises in inheritance tax and estate planning?",
+      "intentGroup": "inheritance_later_life_care",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "step.org",
+              "answers": 3
+            },
+            {
+              "domain": "guide.vouchedfor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "thepfs.org",
+              "answers": 2
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "about.vouchedfor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "which.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "The Private Office",
+              "answers": 3
+            },
+            {
+              "name": "Evelyn Partners",
+              "answers": 2
+            },
+            {
+              "name": "HFMC Wealth",
+              "answers": 1
+            },
+            {
+              "name": "Mearns & Company",
+              "answers": 1
+            },
+            {
+              "name": "MKC Wealth",
+              "answers": 1
+            },
+            {
+              "name": "Progeny",
+              "answers": 1
+            },
+            {
+              "name": "Strategic Solutions",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 1
+            },
+            {
+              "name": "Strategic Solutions",
+              "answers": 1
+            },
+            {
+              "name": "The Private Office",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "advisingfamilies.org",
+              "answers": 1
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 1
+            },
+            {
+              "domain": "armstrongwatson.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fiduciawealth.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "greenwoods.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "guestwalker.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "holden-partners.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "milestonefp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "mkcwealth.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "nephosgroup.com",
+              "answers": 1
+            },
+            {
+              "domain": "osg.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ourfamilyoffice.ca",
+              "answers": 1
+            },
+            {
+              "domain": "platinumgroup.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "spallclark.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ssfs.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "theprivateoffice.com",
+              "answers": 1
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "whistonwealth.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            },
+            {
+              "name": "NFU Mutual Financial Planning",
+              "answers": 3
+            },
+            {
+              "name": "Amber River",
+              "answers": 2
+            },
+            {
+              "name": "Evelyn Partners",
+              "answers": 2
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            },
+            {
+              "name": "NFU Mutual Financial Planning",
+              "answers": 3
+            },
+            {
+              "name": "Amber River",
+              "answers": 2
+            },
+            {
+              "name": "Evelyn Partners",
+              "answers": 2
+            },
+            {
+              "name": "Hazlewoods Financial Planning",
+              "answers": 2
+            },
+            {
+              "name": "RBC Brewin Dolphin",
+              "answers": 1
+            },
+            {
+              "name": "True Potential",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "hl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "nfumutual.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 2
+            },
+            {
+              "domain": "armstrongwatson.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "evelyn.com",
+              "answers": 2
+            },
+            {
+              "domain": "hazlewoods.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "irwinmitchell.com",
+              "answers": 2
+            },
+            {
+              "domain": "rpgcrouchchapman.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "skipton.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "apw-ifa.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "bkl.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "geraldedelman.com",
+              "answers": 1
+            },
+            {
+              "domain": "pkf-francisclark.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "rbcwealthmanagement.com",
+              "answers": 1
+            },
+            {
+              "domain": "truepotential.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "wardgoodman.co.uk",
+              "answers": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LC-05",
+      "text": "Can you recommend a UK financial adviser who specialises in later-life and care-fees planning?",
+      "intentGroup": "inheritance_later_life_care",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            },
+            {
+              "name": "Care Fees Planning",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            },
+            {
+              "name": "Care Fees Planning",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "centurioncfp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "societyoflaterlifeadvisers.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 2
+            },
+            {
+              "domain": "carefeesplanning.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "lucentfinancialplanning.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 3
+            },
+            {
+              "name": "Wren Sterling",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 2
+            }
+          ],
+          "sources": [
+            {
+              "domain": "centurioncfp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "payingforcare.org",
+              "answers": 3
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 2
+            },
+            {
+              "domain": "lbhf.gov.uk",
+              "answers": 2
+            },
+            {
+              "domain": "birkettlongifa.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "brownlow.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "carehome.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneysavingexpert.com",
+              "answers": 1
+            },
+            {
+              "domain": "societyoflaterlifeadvisers.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "wbw.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Care Fees Planning",
+              "answers": 3
+            },
+            {
+              "name": "Amber River",
+              "answers": 2
+            },
+            {
+              "name": "Financial Care Solutions",
+              "answers": 1
+            },
+            {
+              "name": "Truly Independent",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 3
+            },
+            {
+              "name": "Boolers",
+              "answers": 3
+            },
+            {
+              "name": "Care Fees Planning",
+              "answers": 3
+            },
+            {
+              "name": "Truly Independent",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "absolutesense.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "ageuk.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 3
+            },
+            {
+              "domain": "boolers.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "carefeesplanning.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "centurioncfp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "trulyifa.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LE-01",
+      "text": "Do I need financial advice before agreeing a financial settlement in a divorce?",
+      "intentGroup": "divorce_business_sale_liquidity",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "advicenow.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "assets.publishing.service.gov.uk",
+              "answers": 1
+            },
+            {
+              "domain": "citizensadvice.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "familymediationcouncil.org.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "barristerconnect.com",
+              "answers": 2
+            },
+            {
+              "domain": "bannerjones.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "barcankirby.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "berwins.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "blanchardslaw.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "endeavour-law.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fcfcoa.gov.au",
+              "answers": 1
+            },
+            {
+              "domain": "fortefamilylawyers.com.au",
+              "answers": 1
+            },
+            {
+              "domain": "fosterjohnson.com.au",
+              "answers": 1
+            },
+            {
+              "domain": "glanvilles.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hegarty.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "janofamilylaw.com.au",
+              "answers": 1
+            },
+            {
+              "domain": "kirkrice.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "lodders.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "marinolaw.com.au",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "nelsonslaw.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "rooneyfamilylaw.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "roselegal.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "stewartslaw.com",
+              "answers": 1
+            },
+            {
+              "domain": "taylor-rose.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "turcanconnell.com",
+              "answers": 1
+            },
+            {
+              "domain": "weightmans.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "ameriprise.com",
+              "answers": 3
+            },
+            {
+              "domain": "comerica.com",
+              "answers": 3
+            },
+            {
+              "domain": "fidelity.com",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "morganstanley.com",
+              "answers": 3
+            },
+            {
+              "domain": "protective.com",
+              "answers": 3
+            },
+            {
+              "domain": "rbcroyalbank.com",
+              "answers": 3
+            },
+            {
+              "domain": "thetimes.com",
+              "answers": 3
+            },
+            {
+              "domain": "troweprice.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LE-02",
+      "text": "Can you recommend a UK financial adviser who specialises in divorce and pension sharing?",
+      "intentGroup": "divorce_business_sale_liquidity",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "The Divorce IFA",
+              "answers": 2
+            },
+            {
+              "name": "East Anglian Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "Shackleton",
+              "answers": 1
+            },
+            {
+              "name": "True Potential",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "The Divorce IFA",
+              "answers": 2
+            },
+            {
+              "name": "Shackleton",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "resolution.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "centurioncfp.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "thedivorceifa.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "blueskyifas.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "divorce.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "shackletonadvisers.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "thepode.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Evelyn Partners",
+              "answers": 3
+            },
+            {
+              "name": "The Divorce IFA",
+              "answers": 3
+            },
+            {
+              "name": "MKC Wealth",
+              "answers": 2
+            },
+            {
+              "name": "Shackleton",
+              "answers": 2
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Shackleton",
+              "answers": 2
+            },
+            {
+              "name": "East Anglian Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "Evelyn Partners",
+              "answers": 1
+            },
+            {
+              "name": "The Divorce IFA",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "centurioncfp.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "resolution.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "shackletonadvisers.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "blueskyifas.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "chattertons.com",
+              "answers": 1
+            },
+            {
+              "domain": "churchillwealthmanagement.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "collinspensionactuaries.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "eafp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "evelyn.com",
+              "answers": 1
+            },
+            {
+              "domain": "farnworthrose.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "marywaring.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "mkcwealth.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ofm.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "pensionsdivorce.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "thedivorceifa.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [
+            {
+              "name": "M&G Advice",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "adviser.royallondon.com",
+              "answers": 3
+            },
+            {
+              "domain": "assets.publishing.service.gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "kingsleynapley.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "legalandgeneral.com",
+              "answers": 3
+            },
+            {
+              "domain": "mandg.com",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "nuffieldfoundation.org",
+              "answers": 3
+            },
+            {
+              "domain": "youtube.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LE-03",
+      "text": "What financial advice should I get before selling my business?",
+      "intentGroup": "divorce_business_sale_liquidity",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "gov.uk",
+              "answers": 3
+            },
+            {
+              "domain": "bdo.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "icaew.com",
+              "answers": 1
+            },
+            {
+              "domain": "irs.gov",
+              "answers": 1
+            },
+            {
+              "domain": "kiplinger.com",
+              "answers": 1
+            },
+            {
+              "domain": "xero.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "bakertilly.com",
+              "answers": 2
+            },
+            {
+              "domain": "aberdeenadvisors.com",
+              "answers": 1
+            },
+            {
+              "domain": "advisorlegacy.com",
+              "answers": 1
+            },
+            {
+              "domain": "anchin.com",
+              "answers": 1
+            },
+            {
+              "domain": "andreawardcpa.com",
+              "answers": 1
+            },
+            {
+              "domain": "armanino.com",
+              "answers": 1
+            },
+            {
+              "domain": "boxwoodpartners.com",
+              "answers": 1
+            },
+            {
+              "domain": "claconnect.com",
+              "answers": 1
+            },
+            {
+              "domain": "cohenco.com",
+              "answers": 1
+            },
+            {
+              "domain": "ctacquisitions.com",
+              "answers": 1
+            },
+            {
+              "domain": "dunnrush.com",
+              "answers": 1
+            },
+            {
+              "domain": "fiduciary-trust.com",
+              "answers": 1
+            },
+            {
+              "domain": "fisart.com",
+              "answers": 1
+            },
+            {
+              "domain": "gnslawpllc.com",
+              "answers": 1
+            },
+            {
+              "domain": "janney.com",
+              "answers": 1
+            },
+            {
+              "domain": "lutz.us",
+              "answers": 1
+            },
+            {
+              "domain": "madisonstreetcapital.com",
+              "answers": 1
+            },
+            {
+              "domain": "meadenmoore.com",
+              "answers": 1
+            },
+            {
+              "domain": "medium.com",
+              "answers": 1
+            },
+            {
+              "domain": "midstreet.com",
+              "answers": 1
+            },
+            {
+              "domain": "oamic.com",
+              "answers": 1
+            },
+            {
+              "domain": "startupfundraising.com",
+              "answers": 1
+            },
+            {
+              "domain": "tworld.com",
+              "answers": 1
+            },
+            {
+              "domain": "wallstreetprep.com",
+              "answers": 1
+            },
+            {
+              "domain": "warrenaverett.com",
+              "answers": 1
+            },
+            {
+              "domain": "wealthenhancement.com",
+              "answers": 1
+            },
+            {
+              "domain": "whitleypenn.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "amandaredmanfp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "baggette.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "business.gov.au",
+              "answers": 3
+            },
+            {
+              "domain": "businessesforsale.com",
+              "answers": 3
+            },
+            {
+              "domain": "morganstanley.com",
+              "answers": 3
+            },
+            {
+              "domain": "sba.gov",
+              "answers": 3
+            },
+            {
+              "domain": "theygotacquired.com",
+              "answers": 3
+            },
+            {
+              "domain": "usbank.com",
+              "answers": 3
+            },
+            {
+              "domain": "wealthag.com",
+              "answers": 3
+            },
+            {
+              "domain": "wolterskluwer.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LE-04",
+      "text": "Can you recommend a UK financial adviser who specialises in helping business owners after a company sale?",
+      "intentGroup": "divorce_business_sale_liquidity",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Evelyn Partners",
+              "answers": 1
+            },
+            {
+              "name": "Her Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "Rathbones",
+              "answers": 1
+            },
+            {
+              "name": "Succession Wealth",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Her Financial Planning",
+              "answers": 1
+            },
+            {
+              "name": "Rathbones",
+              "answers": 1
+            },
+            {
+              "name": "Succession Wealth",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "coutts.com",
+              "answers": 1
+            },
+            {
+              "domain": "en.wikipedia.org",
+              "answers": 1
+            },
+            {
+              "domain": "eot.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "exitpartners.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ftadviser.com",
+              "answers": 1
+            },
+            {
+              "domain": "herfinancialplanning.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "rathbones.com",
+              "answers": 1
+            },
+            {
+              "domain": "successionwealth.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Cazenove Capital",
+              "answers": 3
+            },
+            {
+              "name": "The Private Office",
+              "answers": 2
+            },
+            {
+              "name": "Evelyn Partners",
+              "answers": 1
+            },
+            {
+              "name": "LGT Wealth Management",
+              "answers": 1
+            },
+            {
+              "name": "RBC Brewin Dolphin",
+              "answers": 1
+            },
+            {
+              "name": "Strategic Solutions",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Cazenove Capital",
+              "answers": 2
+            },
+            {
+              "name": "Investment Quorum",
+              "answers": 1
+            },
+            {
+              "name": "RBC Brewin Dolphin",
+              "answers": 1
+            },
+            {
+              "name": "Strategic Solutions",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "arbuthnotlatham.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "cazenovecapital.com",
+              "answers": 2
+            },
+            {
+              "domain": "chadwicks.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "firstwealth.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "uk.com",
+              "answers": 2
+            },
+            {
+              "domain": "accountsandlegal.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "comparewealthmanagers.com",
+              "answers": 1
+            },
+            {
+              "domain": "franklyn.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "frazerjames.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "goodmoneyguide.com",
+              "answers": 1
+            },
+            {
+              "domain": "investmentquorum.com",
+              "answers": 1
+            },
+            {
+              "domain": "logros.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "melo.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "milestonefp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "nephosgroup.com",
+              "answers": 1
+            },
+            {
+              "domain": "rbcwealthmanagement.com",
+              "answers": 1
+            },
+            {
+              "domain": "ssfs.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Flying Colours",
+              "answers": 3
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Flying Colours",
+              "answers": 3
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "baggette.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "chapterscapital.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "fcadvice.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "ifamagazine.com",
+              "answers": 3
+            },
+            {
+              "domain": "kbscorporate.com",
+              "answers": 3
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "youtube.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-LE-05",
+      "text": "How should I invest a £100,000 lump sum in the UK?",
+      "intentGroup": "divorce_business_sale_liquidity",
+      "locale": "UK national",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 3
+            },
+            {
+              "domain": "gov.uk",
+              "answers": 2
+            },
+            {
+              "domain": "fca.org.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "St. James's Place",
+              "answers": 2
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            },
+            {
+              "name": "HSBC Financial Advice",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "gov.uk",
+              "answers": 2
+            },
+            {
+              "domain": "moneyfactscompare.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "anthonyquirk.com",
+              "answers": 1
+            },
+            {
+              "domain": "att.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "castletrust.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fidelity.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "fscs.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "greenstones.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hsbc.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "investengine.com",
+              "answers": 1
+            },
+            {
+              "domain": "nsandi.com",
+              "answers": 1
+            },
+            {
+              "domain": "schroders.com",
+              "answers": 1
+            },
+            {
+              "domain": "simplybusiness.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "starlingbank.com",
+              "answers": 1
+            },
+            {
+              "domain": "tembomoney.com",
+              "answers": 1
+            },
+            {
+              "domain": "theguardian.com",
+              "answers": 1
+            },
+            {
+              "domain": "trustnet.com",
+              "answers": 1
+            },
+            {
+              "domain": "whyfield.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "NatWest Financial Planning",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "baroncabot.com",
+              "answers": 3
+            },
+            {
+              "domain": "blog.moneyfarm.com",
+              "answers": 3
+            },
+            {
+              "domain": "fool.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "ii.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneytothemasses.com",
+              "answers": 3
+            },
+            {
+              "domain": "natwest.com",
+              "answers": 3
+            },
+            {
+              "domain": "totalpropertygroup.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "wallstreetoasis.com",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-GD-01",
+      "text": "Can you recommend a financial adviser based in Manchester who specialises in retirement planning?",
+      "intentGroup": "geographic_discovery",
+      "locale": "Manchester, England",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hilltop Financial Planning",
+              "answers": 2
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hilltop Financial Planning",
+              "answers": 2
+            }
+          ],
+          "sources": [
+            {
+              "domain": "hilltopfinance.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "retirementprofessionals.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "gideonkasler.com",
+              "answers": 1
+            },
+            {
+              "domain": "hammondfp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "htfinancialservices.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "iabltd.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "keylinefs.com",
+              "answers": 1
+            },
+            {
+              "domain": "moneyhelper.org.uk",
+              "answers": 1
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 1
+            },
+            {
+              "domain": "sherrardfm.com",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Evelyn Partners",
+              "answers": 3
+            },
+            {
+              "name": "Hilltop Financial Planning",
+              "answers": 2
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 2
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            },
+            {
+              "name": "Pareto Financial Planning",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            },
+            {
+              "name": "Paradigm Norton",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "top10financialadvisors.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "concerva.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "fawcettwm.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "3-sfinancial.com",
+              "answers": 1
+            },
+            {
+              "domain": "eadonco.com",
+              "answers": 1
+            },
+            {
+              "domain": "mottram-fs.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "paradigmnorton.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "retirementprofessionals.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "trustpilot.com",
+              "answers": 1
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            },
+            {
+              "name": "Hilltop Financial Planning",
+              "answers": 3
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            },
+            {
+              "name": "Hilltop Financial Planning",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "aviva.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "edwardam.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hilltopfinance.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "retirementprofessionals.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "suttonsifa.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-GD-02",
+      "text": "Can you recommend a financial adviser based in Bristol who specialises in retirement planning?",
+      "intentGroup": "geographic_discovery",
+      "locale": "Bristol, England",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            }
+          ],
+          "sources": [
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "aspirellp.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "lampiers.com",
+              "answers": 2
+            },
+            {
+              "domain": "leafifa.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "haroldstephens.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "sovereign-ifa.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "sunrise-ifa.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            },
+            {
+              "name": "The Private Office",
+              "answers": 3
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "The Private Office",
+              "answers": 2
+            },
+            {
+              "name": "Amber River",
+              "answers": 1
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "churchillwealthmanagement.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "advisersup.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "cleevefinancialplanning.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "hartsfield.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "theprivateoffice.com",
+              "answers": 2
+            },
+            {
+              "domain": "top10financialadvisors.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 1
+            },
+            {
+              "domain": "aspirellp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "bishopstonmatters.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ifamax.com",
+              "answers": 1
+            },
+            {
+              "domain": "theguardian.com",
+              "answers": 1
+            },
+            {
+              "domain": "trustpilot.com",
+              "answers": 1
+            },
+            {
+              "domain": "ukfinancialadviser.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 3
+            },
+            {
+              "name": "The Private Office",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "4-fp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "aviva.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "churchillwealthmanagement.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "cleevefinancialplanning.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "frazerjames.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "nextdoor.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "top10financialadvisors.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "yourbristolaccountants.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-GD-03",
+      "text": "Can you recommend a financial adviser based in Edinburgh who specialises in retirement planning?",
+      "intentGroup": "geographic_discovery",
+      "locale": "Edinburgh, Scotland",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "AAB Wealth",
+              "answers": 1
+            },
+            {
+              "name": "True Potential",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "andersonstrathernam.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "calliduswm.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "ewsfinancialadvisers.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hamilton-financial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "purposefp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "sbcfinancial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "thepfs.org",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Mearns & Company",
+              "answers": 2
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 2
+            },
+            {
+              "name": "AAB Wealth",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "St. James's Place",
+              "answers": 2
+            },
+            {
+              "name": "AAB Wealth",
+              "answers": 1
+            },
+            {
+              "name": "Amber River",
+              "answers": 1
+            },
+            {
+              "name": "Mearns & Company",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "keithroseburgh.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "thebestedinburgh.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "financialadvisers.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "headsupwealth.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "reddit.com",
+              "answers": 2
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "tweedwealth.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "aabwealth.uk",
+              "answers": 1
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 1
+            },
+            {
+              "domain": "ewsfinancialadvisers.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "hamilton-financial.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "mearnscompany.com",
+              "answers": 1
+            },
+            {
+              "domain": "mi-plc.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "purposefp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "smartbrit.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 3
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 3
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "acwealth.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 3
+            },
+            {
+              "domain": "ewsfinancialadvisers.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hamilton-financial.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "keithroseburgh.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "torphinfinancialplanning.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-GD-04",
+      "text": "Can you recommend a financial adviser based in Cardiff who specialises in retirement planning?",
+      "intentGroup": "geographic_discovery",
+      "locale": "Cardiff, Wales",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [],
+          "citedPanelFirms": [],
+          "sources": [
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "fca.org.uk",
+              "answers": 2
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "acumenafs.com",
+              "answers": 1
+            },
+            {
+              "domain": "adviserselect.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "cardiff-ifa.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "jkifa.com",
+              "answers": 1
+            },
+            {
+              "domain": "wfs.wales",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Penguin Wealth",
+              "answers": 3
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 2
+            },
+            {
+              "name": "Truly Independent",
+              "answers": 2
+            },
+            {
+              "name": "Amber River",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 2
+            },
+            {
+              "name": "Penguin Wealth",
+              "answers": 2
+            },
+            {
+              "name": "Truly Independent",
+              "answers": 2
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "abrampartnership.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 2
+            },
+            {
+              "domain": "gcfcltd.com",
+              "answers": 2
+            },
+            {
+              "domain": "penguinwealth.com",
+              "answers": 2
+            },
+            {
+              "domain": "trulyifa.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "advisersup.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "bhifa.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "burleyfox.com",
+              "answers": 1
+            },
+            {
+              "domain": "cardiff-ifa.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "sjp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "tfp-fp.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Penguin Wealth",
+              "answers": 3
+            },
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 2
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Hargreaves Lansdown Financial Advice",
+              "answers": 3
+            },
+            {
+              "name": "Penguin Wealth",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "cardiff-ifa.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "hl.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "localfinancialadvice.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "penguinwealth.com",
+              "answers": 3
+            },
+            {
+              "domain": "pensionfinancialadvice.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "sanfp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "ttwealth.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "wisewealthmanagement.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FA-GD-05",
+      "text": "Can you recommend a financial adviser based in Belfast who specialises in retirement planning?",
+      "intentGroup": "geographic_discovery",
+      "locale": "Belfast, Northern Ireland",
+      "includedInPrimary": true,
+      "engines": [
+        {
+          "engine": "openai",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Fairstone",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Fairstone",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "bartjames.com",
+              "answers": 3
+            },
+            {
+              "domain": "foursquarefm.com",
+              "answers": 3
+            },
+            {
+              "domain": "lanyonfp.com",
+              "answers": 3
+            },
+            {
+              "domain": "moneyweek.com",
+              "answers": 3
+            },
+            {
+              "domain": "torchfp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "newbridgefinancialplanning.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "platinumgroup.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "prometheanfinancial.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "belfastfinancialadvisors.com",
+              "answers": 1
+            },
+            {
+              "domain": "fairstone.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "navigateifa.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "gemini",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "AAB Wealth",
+              "answers": 3
+            },
+            {
+              "name": "Amber River",
+              "answers": 3
+            },
+            {
+              "name": "St. James's Place",
+              "answers": 2
+            },
+            {
+              "name": "Wren Sterling",
+              "answers": 1
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "AAB Wealth",
+              "answers": 3
+            },
+            {
+              "name": "Amber River",
+              "answers": 3
+            },
+            {
+              "name": "Wren Sterling",
+              "answers": 1
+            }
+          ],
+          "sources": [
+            {
+              "domain": "aabwealth.uk",
+              "answers": 3
+            },
+            {
+              "domain": "amberriver.com",
+              "answers": 3
+            },
+            {
+              "domain": "newbridgefinancialplanning.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "davyuk.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "platinumgroup.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "rmcfp.co.uk",
+              "answers": 2
+            },
+            {
+              "domain": "bestlocalrated.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "carletonfp.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "elevatefinancial.ie",
+              "answers": 1
+            },
+            {
+              "domain": "reddit.com",
+              "answers": 1
+            },
+            {
+              "domain": "trustpilot.com",
+              "answers": 1
+            },
+            {
+              "domain": "uk.com",
+              "answers": 1
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 1
+            },
+            {
+              "domain": "wrensterling.com",
+              "answers": 1
+            }
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "validAnswers": 3,
+          "namedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 3
+            },
+            {
+              "name": "True Potential",
+              "answers": 3
+            }
+          ],
+          "citedPanelFirms": [
+            {
+              "name": "Amber River",
+              "answers": 3
+            }
+          ],
+          "sources": [
+            {
+              "domain": "amberriver.com",
+              "answers": 3
+            },
+            {
+              "domain": "davyuk.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "financialadvisernorthernireland.com",
+              "answers": 3
+            },
+            {
+              "domain": "lanyonfp.com",
+              "answers": 3
+            },
+            {
+              "domain": "localfinancialadvice.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "moneyhelp.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "newbridgefinancialplanning.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "unbiased.co.uk",
+              "answers": 3
+            },
+            {
+              "domain": "vouchedfor.co.uk",
+              "answers": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -53,7 +53,9 @@ const manifestSchema = z
     source_archive_sha256: sha256Schema,
     corpus_version: z.string().min(1),
     cohort_version: z.string().min(1),
+    capture_matcher_version: z.string().min(1),
     matcher_version: z.string().min(1),
+    processing_matcher_version: z.string().min(1),
     config_sha256: sha256Schema,
     registry_sha256: sha256Schema,
     git_commit: z.string().min(1),
@@ -69,13 +71,18 @@ const manifestSchema = z
     firm_count: z.number().int().positive(),
     archive_sha256: sha256Schema,
     package_status: z.literal("qa_reviewed_candidate"),
+    qa_all_hard_gates_pass: z.literal(true),
+    qa_gate_report_sha256: sha256Schema,
     band_thresholds_approved: z.literal(false),
     firm_bands_allowed: z.literal(false),
-    firm_bands_recommendation: z.literal("use_sector_report"),
+    firm_bands_recommendation: z.enum([
+      "use_sector_report",
+      "eligible_for_preproduction_threshold_decision"
+    ]),
     publication_mode: z.literal("sector_report_only"),
     signal: z
       .object({
-        classification: z.literal("sparse"),
+        classification: z.enum(["sparse", "unstable", "substantive"]),
         firm_count: z.number().int().positive(),
         firms_with_majority_evidence: z.number().int().nonnegative(),
         firms_with_majority_evidence_rate: z.number().min(0).max(1),
@@ -229,11 +236,49 @@ const firmEvidenceRowsSchema = z.array(firmEvidenceSchema);
 const cellsSchema = z.array(cellSchema);
 const firmSummariesSchema = z.array(firmSummarySchema);
 
+const questionEvidenceSchema = z
+  .object({
+    version: z.literal(1),
+    generatedAt: z.string().datetime(),
+    sourceRunId: z.string().min(1),
+    sourceArchiveSha256: sha256Schema,
+    questions: z.array(
+      z
+        .object({
+          id: z.string().min(1),
+          text: z.string().min(1),
+          intentGroup: z.string().min(1),
+          locale: z.string().min(1),
+          includedInPrimary: z.boolean(),
+          engines: z.array(
+            z
+              .object({
+                engine: engineSchema,
+                validAnswers: z.number().int().min(0).max(3),
+                namedPanelFirms: z.array(
+                  z.object({ name: z.string().min(1), answers: repetitionSchema }).strict()
+                ),
+                citedPanelFirms: z.array(
+                  z.object({ name: z.string().min(1), answers: repetitionSchema }).strict()
+                ),
+                sources: z.array(
+                  z.object({ domain: z.string().min(1), answers: repetitionSchema }).strict()
+                )
+              })
+              .strict()
+          )
+        })
+        .strict()
+    )
+  })
+  .strict();
+
 export type ResearchManifest = z.infer<typeof manifestSchema>;
 export type ResearchObservation = z.infer<typeof observationSchema>;
 export type ResearchFirmEvidence = z.infer<typeof firmEvidenceSchema>;
 export type ResearchCell = z.infer<typeof cellSchema>;
 export type ResearchFirmSummary = z.infer<typeof firmSummarySchema>;
+export type ResearchQuestionEvidence = z.infer<typeof questionEvidenceSchema>;
 
 export type PublicResearchDataset = {
   manifest: ResearchManifest;
@@ -241,6 +286,7 @@ export type PublicResearchDataset = {
   firmEvidence: ResearchFirmEvidence[];
   cells: ResearchCell[];
   firmSummaries: ResearchFirmSummary[];
+  questionEvidence: ResearchQuestionEvidence;
 };
 
 export type PublicStabilityState =
@@ -326,6 +372,7 @@ export type ResearchEditionViewModel = {
     lastUpdated: string;
     description: string;
   }>;
+  questionEvidence: ResearchQuestionEvidence["questions"];
 };
 
 export type ResearchEditionLoadResult =
@@ -349,7 +396,7 @@ const REQUIRED_JSON_FILES = [
   "firm_summary.json"
 ] as const;
 
-const PUBLIC_DOWNLOAD_FILES = [
+const PACKAGE_DATA_FILES = [
   ...REQUIRED_JSON_FILES,
   "observations.csv",
   "firm_evidence.csv",
@@ -357,7 +404,19 @@ const PUBLIC_DOWNLOAD_FILES = [
   "firm_summary.csv"
 ] as const;
 
-const ALLOWED_PACKAGE_FILES = new Set<string>(PUBLIC_DOWNLOAD_FILES);
+// Firm-evidence files retain reviewed source URLs for audit integrity. They stay
+// server-side and are deliberately excluded from the public download surface.
+const PUBLIC_SAFE_DOWNLOAD_FILES = [
+  "observations.json",
+  "cells.json",
+  "firm_summary.json",
+  "observations.csv",
+  "cells.csv",
+  "firm_summary.csv"
+] as const;
+
+const ALLOWED_PACKAGE_FILES = new Set<string>(PACKAGE_DATA_FILES);
+const PUBLIC_SAFE_DOWNLOAD_FILE_SET = new Set<string>(PUBLIC_SAFE_DOWNLOAD_FILES);
 
 const UK_FINANCIAL_ADVICE_PACKAGE = {
   directory: path.join(
@@ -400,6 +459,13 @@ const UK_FINANCIAL_ADVICE_PACKAGE = {
     "research",
     "uk-financial-advice-2026",
     "firm_summary.json"
+  ),
+  questionEvidence: path.join(
+    /* turbopackIgnore: true */ process.cwd(),
+    "data",
+    "research",
+    "uk-financial-advice-2026",
+    "question_evidence.json"
   ),
   publicDownloadDirectory: path.join(
     /* turbopackIgnore: true */ process.cwd(),
@@ -446,13 +512,6 @@ function formatRunWindow(start: string, finish: string) {
   return startDate === finishDate ? startDate : `${startDate}–${finishDate}`;
 }
 
-function mapStability(summary: ResearchFirmSummary): PublicStabilityState {
-  if (summary.complete_cell_denominator === 0) return "not-measured";
-  if (summary.variable_cells > 0) return "variable";
-  if (summary.stable_present_cells > 0) return "stable-present";
-  return "not-observed";
-}
-
 function validateManifest(
   manifest: ResearchManifest,
   edition: ResearchEditionDefinition
@@ -465,6 +524,11 @@ function validateManifest(
     manifest.package_status,
     expected.packageStatus,
     "The production package has not completed deterministic QA review"
+  );
+  assertEqual(
+    manifest.qa_all_hard_gates_pass,
+    true,
+    "The production package has not passed every hard QA gate"
   );
   assertEqual(
     manifest.capture_mode,
@@ -490,6 +554,11 @@ function validateManifest(
     "Processing method differs from the frozen method"
   );
   assertEqual(manifest.matcher_version, expected.matcherVersion, "Unexpected matcher version");
+  assertEqual(
+    manifest.processing_matcher_version,
+    expected.matcherVersion,
+    "Reviewed evidence was produced with another matcher version"
+  );
   assertEqual(manifest.corpus_version, expected.corpusVersion, "Unexpected corpus version");
   assertEqual(manifest.cohort_version, expected.cohortVersion, "Unexpected cohort version");
   assertEqual(manifest.firm_count, expected.firmCount, "Unexpected cohort size");
@@ -547,7 +616,7 @@ function validateDatasetGrid(
   dataset: PublicResearchDataset,
   edition: ResearchEditionDefinition
 ) {
-  const { manifest, observations, firmEvidence, cells, firmSummaries } = dataset;
+  const { manifest, observations, firmEvidence, cells, firmSummaries, questionEvidence } = dataset;
   const { expected } = edition;
   const planned = expected.queryCount * expected.engines.length * expected.repetitions;
   assertEqual(observations.length, planned, "Processed observation grid is incomplete");
@@ -632,17 +701,71 @@ function validateDatasetGrid(
     if (cellKeys.has(key)) throw new ResearchDataError(`Duplicate stability cell: ${key}`);
     cellKeys.add(key);
   }
+
+  assertEqual(
+    questionEvidence.sourceRunId,
+    manifest.run_id,
+    "Question evidence identifies another production run"
+  );
+  assertEqual(
+    questionEvidence.sourceArchiveSha256,
+    manifest.source_archive_sha256,
+    "Question evidence identifies another source archive"
+  );
+  assertEqual(
+    questionEvidence.questions.length,
+    expected.queryCount,
+    "Question evidence does not cover the complete corpus"
+  );
+  const questionEvidenceIds = new Set<string>();
+  for (const question of questionEvidence.questions) {
+    if (!queryMetadata.has(question.id)) {
+      throw new ResearchDataError(`Question evidence identifies an unknown query: ${question.id}`);
+    }
+    if (questionEvidenceIds.has(question.id)) {
+      throw new ResearchDataError(`Duplicate question evidence: ${question.id}`);
+    }
+    questionEvidenceIds.add(question.id);
+    assertEqual(
+      question.engines.length,
+      expected.engines.length,
+      `Question evidence has incomplete engine coverage for ${question.id}`
+    );
+    const engineIds = new Set(question.engines.map((engine) => engine.engine));
+    for (const engine of expected.engines) {
+      if (!engineIds.has(engine)) {
+        throw new ResearchDataError(`Question evidence is missing ${engine} for ${question.id}`);
+      }
+    }
+  }
 }
 
 function buildViewModel(
   edition: ResearchEditionDefinition,
   dataset: PublicResearchDataset
 ): ResearchEditionViewModel {
-  const { manifest, observations, firmEvidence, cells, firmSummaries } = dataset;
+  const { manifest, observations, firmEvidence, cells, firmSummaries, questionEvidence } = dataset;
   const { expected } = edition;
-  const planned = observations.length;
-  const validCount = observations.filter((row) => row.valid_grounded_response).length;
-  const observedFirms = firmSummaries.filter((row) => row.majority_observed_cells > 0).length;
+  const excludedQueryIds = new Set(edition.primaryAnalysis.excludedQueryIds);
+  const primaryObservations = observations.filter((row) => !excludedQueryIds.has(row.query_id));
+  const primaryFirmEvidence = firmEvidence.filter((row) => !excludedQueryIds.has(row.query_id));
+  const primaryCells = cells.filter((row) => !excludedQueryIds.has(row.query_id));
+  const planned = primaryObservations.length;
+  const validCount = primaryObservations.filter((row) => row.valid_grounded_response).length;
+  const observedFirms = new Set(
+    primaryFirmEvidence.filter((row) => row.observed).map((row) => row.firm_id)
+  ).size;
+  const primaryQuestionCount = expected.queryCount - excludedQueryIds.size;
+  assertEqual(
+    primaryQuestionCount,
+    edition.primaryAnalysis.includedQuestionCount,
+    "Primary analysis question count does not match the edition definition"
+  );
+  assertEqual(
+    planned,
+    edition.primaryAnalysis.includedAnswerCount,
+    "Primary analysis answer count does not match the edition definition"
+  );
   const runWindow = formatRunWindow(manifest.started_at, manifest.finished_at);
 
   const queryById = new Map(
@@ -693,10 +816,10 @@ function buildViewModel(
     }));
 
   const engines = expected.engines.map((engine) => {
-    const engineObservations = observations.filter((row) => row.engine === engine);
+    const engineObservations = primaryObservations.filter((row) => row.engine === engine);
     const valid = engineObservations.filter((row) => row.valid_grounded_response).length;
     const observedObservationKeys = new Set(
-      firmEvidence
+      primaryFirmEvidence
         .filter((row) => row.engine === engine && row.observed === true)
         .map((row) => `${row.query_id}|${row.repetition}`)
     );
@@ -713,8 +836,19 @@ function buildViewModel(
   const rows = firmSummaries
     .map((summary) => {
       const partial =
-        summary.complete_cell_denominator < expected.queryCount * expected.engines.length;
-      const firmCells = cells.filter((cell) => cell.firm_id === summary.firm_id);
+        primaryCells.filter(
+          (cell) => cell.firm_id === summary.firm_id && cell.valid_repetitions === expected.repetitions
+        ).length < primaryQuestionCount * expected.engines.length;
+      const firmCells = primaryCells.filter((cell) => cell.firm_id === summary.firm_id);
+      const firmObservations = primaryFirmEvidence.filter(
+        (row) => row.firm_id === summary.firm_id
+      );
+      const namedObservations = firmObservations.filter((row) => row.named_in_answer).length;
+      const citedDomainObservations = firmObservations.filter((row) => row.cited_domain).length;
+      const sourceOnlyObservations = firmObservations.filter((row) => row.source_only).length;
+      const validObservationDenominator = firmObservations.filter(
+        (row) => row.valid_grounded_response
+      ).length;
       const mapEvidenceDetail = (cell: ResearchCell) => ({
         queryId: cell.query_id,
         question: queryById.get(cell.query_id)?.label ?? cell.query_id,
@@ -734,68 +868,76 @@ function buildViewModel(
         )
         .map(mapEvidenceDetail);
       const perEngine = expected.engines.map((engine) => {
-        const engineSummary = summary.per_engine.find((item) => item.engine === engine);
-        if (!engineSummary) {
-          return {
-            engine,
-            status: "not-measured" as const,
-            observedCount: 0,
-            validCount: 0,
-            totalCount: expected.queryCount
-          };
-        }
+        const engineCells = firmCells.filter((cell) => cell.engine === engine);
+        const completeCells = engineCells.filter(
+          (cell) => cell.valid_repetitions === expected.repetitions
+        ).length;
+        const repeatedCells = engineCells.filter((cell) => cell.majority_observed).length;
         return {
           engine,
           status:
-            engineSummary.complete_query_denominator < expected.queryCount
+            completeCells < primaryQuestionCount
               ? ("invalid" as const)
-              : engineSummary.majority_observed_cells > 0
+              : repeatedCells > 0
                 ? ("observed" as const)
                 : ("not-observed" as const),
-          observedCount: engineSummary.majority_observed_cells,
-          validCount: engineSummary.complete_query_denominator,
-          totalCount: expected.queryCount
+          observedCount: repeatedCells,
+          validCount: completeCells,
+          totalCount: primaryQuestionCount
         };
       });
+      const repeatedQueryIds = new Set(
+        firmCells.filter((cell) => cell.majority_observed).map((cell) => cell.query_id)
+      );
+      const repeatedEngineIds = new Set(
+        firmCells.filter((cell) => cell.majority_observed).map((cell) => cell.engine)
+      );
+      const stability: PublicStabilityState = partial
+        ? "not-measured"
+        : firmCells.some((cell) => cell.observed_state === "variable")
+          ? "variable"
+          : firmCells.some((cell) => cell.observed_state === "stable_present")
+            ? "stable-present"
+            : "not-observed";
       return {
         firmId: summary.firm_id,
         firmName: summary.display_name,
         firmDomain: summary.canonical_domain,
         namedObservations: {
-          count: summary.named_observations,
-          denominator: summary.valid_observation_denominator
+          count: namedObservations,
+          denominator: validObservationDenominator
         },
         citedDomainObservations: {
-          count: summary.cited_domain_observations,
-          denominator: summary.valid_observation_denominator
+          count: citedDomainObservations,
+          denominator: validObservationDenominator
         },
         sourceOnlyObservations: {
-          count: summary.source_only_observations,
-          denominator: summary.valid_observation_denominator
+          count: sourceOnlyObservations,
+          denominator: validObservationDenominator
         },
         queryBreadth: {
-          count: summary.query_breadth,
-          denominator: summary.query_breadth_denominator
+          count: repeatedQueryIds.size,
+          denominator: primaryQuestionCount
         },
         engineBreadth: {
-          count: summary.engine_breadth,
-          denominator: summary.engine_breadth_denominator
+          count: repeatedEngineIds.size,
+          denominator: expected.engines.length
         },
         visibilityState: partial
           ? ("partial" as const)
-          : summary.majority_observed_cells > 0
+          : firmCells.some((cell) => cell.majority_observed)
             ? ("observed" as const)
             : ("not-observed" as const),
         resultState: partial
           ? ("incomplete" as const)
-          : summary.majority_named_cells > 0
+          : firmCells.some((cell) => cell.majority_named_in_answer)
             ? ("named-repeated" as const)
-            : summary.majority_cited_cells > 0
+            : firmCells.some((cell) => cell.majority_cited_domain)
               ? ("website-cited-repeated" as const)
-              : summary.observed_observations > 0
+              : firmObservations.some((row) => row.observed)
                 ? ("appeared-not-repeated" as const)
                 : ("no-appearance" as const),
-        stability: mapStability(summary),
+        stability,
         repeatedEvidence,
         isolatedEvidence,
         perEngine
@@ -814,54 +956,56 @@ function buildViewModel(
       label: "Processed observations",
       filename: "observations.csv",
       format: "CSV",
-      description: "Query, engine, run date, validity and grounding metadata; no raw answer text."
+      description: "Complete 225-answer capture, including excluded question FA-SN-04; query, engine, validity and grounding metadata only."
     },
     {
       label: "Processed observations",
       filename: "observations.json",
       format: "JSON",
-      description: "Query, engine, run date, validity and grounding metadata; no raw answer text."
+      description: "Complete 225-answer capture, including excluded question FA-SN-04; query, engine, validity and grounding metadata only."
     },
     {
       label: "Reviewed firm evidence",
       filename: "firm_evidence.csv",
       format: "CSV",
-      description: "Reviewed named, cited-domain and source-only classifications."
+      description: "Complete reviewed capture, including FA-SN-04; filter that query out to reproduce the 216-answer primary analysis."
     },
     {
       label: "Reviewed firm evidence",
       filename: "firm_evidence.json",
       format: "JSON",
-      description: "Reviewed named, cited-domain and source-only classifications."
+      description: "Complete reviewed capture, including FA-SN-04; filter that query out to reproduce the 216-answer primary analysis."
     },
     {
       label: "Query-engine cells",
       filename: "cells.csv",
       format: "CSV",
-      description: "Three-repetition states and majority classifications with valid denominators."
+      description: "Complete three-repetition cells, including FA-SN-04; majority classifications with valid denominators."
     },
     {
       label: "Query-engine cells",
       filename: "cells.json",
       format: "JSON",
-      description: "Three-repetition states and majority classifications with valid denominators."
+      description: "Complete three-repetition cells, including FA-SN-04; majority classifications with valid denominators."
     },
     {
       label: "Firm summary",
       filename: "firm_summary.csv",
       format: "CSV",
-      description: "Sector-report evidence counts and valid denominators; no ranks or bands."
+      description: "Full 225-answer capture summary including excluded question FA-SN-04; this is an audit file, not the 216-answer primary ranking."
     },
     {
       label: "Firm summary",
       filename: "firm_summary.json",
       format: "JSON",
-      description: "Sector-report evidence counts and valid denominators; no ranks or bands."
+      description: "Full 225-answer capture summary including excluded question FA-SN-04; this is an audit file, not the 216-answer primary ranking."
     }
   ]
     .filter(
       (download) =>
-        download.filename === "manifest.json" || manifest.files[download.filename]
+        download.filename === "manifest.json" ||
+        (PUBLIC_SAFE_DOWNLOAD_FILE_SET.has(download.filename) &&
+          manifest.files[download.filename])
     )
     .map((download) => ({
       label: download.label,
@@ -873,20 +1017,21 @@ function buildViewModel(
     }));
 
   return {
-    headlineFinding: `Only ${observedFirms} of ${manifest.firm_count} firms showed any consistent AI search visibility.`,
-    validResponseSummary: `${validCount} of ${planned} grounded responses were valid.`,
+    headlineFinding: `${observedFirms} of ${manifest.firm_count} firms had a name or website appearance in the primary UK analysis.`,
+    validResponseSummary: `${validCount} of ${planned} included answers were valid.`,
     runWindow,
     preparedForReview: formatDate(edition.preparedForReview),
     stats: [
       { label: "Cohort", value: String(manifest.firm_count), detail: edition.cohort.label },
-      { label: "Valid responses", value: `${validCount}/${planned}`, detail: "Invalid responses remain null" },
+      { label: "Included answers", value: `${validCount}/${planned}`, detail: `${edition.primaryAnalysis.includedQuestionCount} conforming UK questions` },
       { label: "Engine coverage", value: String(expected.engines.length), detail: "Three independent repetitions" },
-      { label: "Firms observed", value: `${observedFirms}/${manifest.firm_count}`, detail: "Appeared in at least two of three repeated answers" }
+      { label: "Firms appearing", value: `${observedFirms}/${manifest.firm_count}`, detail: "Named or cited at least once" }
     ],
     queries,
     engines,
     rows,
-    downloads
+    downloads,
+    questionEvidence: questionEvidence.questions
   };
 }
 
@@ -915,6 +1060,9 @@ async function readVerifiedPackage(
     })
   );
   const files = Object.fromEntries(buffers);
+  const questionEvidenceBuffer = await readFile(
+    /* turbopackIgnore: true */ packagePaths.questionEvidence
+  );
   const dataset: PublicResearchDataset = {
     manifest,
     observations: observationsSchema.parse(parseJson(files["observations.json"], "observations.json")),
@@ -924,11 +1072,14 @@ async function readVerifiedPackage(
     cells: cellsSchema.parse(parseJson(files["cells.json"], "cells.json")),
     firmSummaries: firmSummariesSchema.parse(
       parseJson(files["firm_summary.json"], "firm_summary.json")
+    ),
+    questionEvidence: questionEvidenceSchema.parse(
+      parseJson(questionEvidenceBuffer, "question_evidence.json")
     )
   };
   validateDatasetGrid(dataset, edition);
 
-  for (const filename of PUBLIC_DOWNLOAD_FILES) {
+  for (const filename of PUBLIC_SAFE_DOWNLOAD_FILES) {
     const expectedHash = manifest.files[filename];
     if (!expectedHash) {
       throw new ResearchDataError(`Reviewed package does not declare ${filename}`);

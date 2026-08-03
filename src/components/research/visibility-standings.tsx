@@ -3,19 +3,7 @@
 import { Search, X } from "lucide-react";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { ResearchDrawer } from "./ResearchDrawer.client";
-import {
-  researchEngineLabel,
-  type EvidenceRow,
-  type FirmResultState
-} from "./types";
-
-const resultLabels: Record<FirmResultState, string> = {
-  "named-repeated": "Named in 2-3 test answers",
-  "website-cited-repeated": "Website cited in 2-3 test answers",
-  "appeared-not-repeated": "Appeared only in isolated answers",
-  "no-appearance": "No appearance in this test",
-  incomplete: "Incomplete coverage"
-};
+import { type EvidenceRow } from "./types";
 
 const alphabetical = new Intl.Collator("en-GB", {
   numeric: true,
@@ -23,61 +11,100 @@ const alphabetical = new Intl.Collator("en-GB", {
 });
 const subscribeToHydration = () => () => {};
 const DEFAULT_VISIBLE_FIRMS = 20;
-const resultOrder: Record<FirmResultState, number> = {
-  "named-repeated": 0,
-  "website-cited-repeated": 1,
-  "appeared-not-repeated": 2,
-  "no-appearance": 3,
-  incomplete: 4
-};
+
+function repeatedNamedCells(row: EvidenceRow) {
+  return row.repeatedEvidence.filter((item) => item.namedCount >= 2).length;
+}
+
+function repeatedCitedCells(row: EvidenceRow) {
+  return row.repeatedEvidence.filter((item) => item.citedCount >= 2).length;
+}
+
+function evidenceSignature(row: EvidenceRow) {
+  return [
+    row.namedObservations.count,
+    repeatedNamedCells(row),
+    row.citedDomainObservations.count,
+    repeatedCitedCells(row),
+    row.queryBreadth.count
+  ].join("|");
+}
+
+function compareEvidence(left: EvidenceRow, right: EvidenceRow) {
+  return (
+    right.namedObservations.count - left.namedObservations.count ||
+    repeatedNamedCells(right) - repeatedNamedCells(left) ||
+    right.citedDomainObservations.count - left.citedDomainObservations.count ||
+    repeatedCitedCells(right) - repeatedCitedCells(left) ||
+    right.queryBreadth.count - left.queryBreadth.count ||
+    alphabetical.compare(left.firmName, right.firmName)
+  );
+}
 
 function ratio(count: number, denominator: number) {
   return `${count} of ${denominator}`;
 }
 
+function percentage(count: number, denominator: number) {
+  if (!denominator) return "0%";
+  const value = (count / denominator) * 100;
+  return `${value < 1 && value > 0 ? value.toFixed(1) : Number(value.toFixed(1))}%`;
+}
+
+function questionsWhereVisible(row: EvidenceRow) {
+  return Array.from(
+    new Set(
+      [...row.repeatedEvidence, ...row.isolatedEvidence].map((item) => item.question)
+    )
+  );
+}
+
 type VisibilityStandingsProps = {
-  engines: string[];
   rows: EvidenceRow[];
   summary: string;
 };
 
 /**
- * A progressively enhanced, alphabetical view of the complete firm cohort.
+ * A progressively enhanced evidence ranking of the complete firm cohort.
  * The initial server render contains every row; filtering begins after hydration
- * and never animates or assigns an ordinal position.
+ * and never animates table rows.
  */
-export function VisibilityStandings({ engines, rows, summary }: VisibilityStandingsProps) {
+export function VisibilityStandings({ rows, summary }: VisibilityStandingsProps) {
   const [query, setQuery] = useState("");
-  const [engine, setEngine] = useState("all");
-  const [result, setResult] = useState<"all" | FirmResultState>("all");
   const isHydrated = useSyncExternalStore(
     subscribeToHydration,
     () => true,
     () => false
   );
 
+  const rankedRows = useMemo(() => [...rows].sort(compareEvidence), [rows]);
+  const rankByFirm = useMemo(() => {
+    const ranks = new Map<string, number>();
+    let previousSignature = "";
+    let currentRank = 0;
+
+    rankedRows.forEach((row, index) => {
+      const signature = evidenceSignature(row);
+      if (signature !== previousSignature) currentRank = index + 1;
+      ranks.set(row.firmId, currentRank);
+      previousSignature = signature;
+    });
+
+    return ranks;
+  }, [rankedRows]);
+
   const visibleRows = useMemo(() => {
     const normalisedQuery = query.trim().toLocaleLowerCase("en-GB");
 
-    return rows
+    return rankedRows
       .filter((row) => {
         const matchesFirm =
           !normalisedQuery || row.firmName.toLocaleLowerCase("en-GB").includes(normalisedQuery);
-        const matchesResult = result === "all" || row.resultState === result;
-        const selectedEngine = row.perEngine.find((item) => item.engine === engine);
-        const matchesEngine =
-          engine === "all" || Boolean(selectedEngine && selectedEngine.status === "observed");
+        return matchesFirm;
+      });
+  }, [query, rankedRows]);
 
-        return matchesFirm && matchesResult && matchesEngine;
-      })
-      .sort(
-        (left, right) =>
-          resultOrder[left.resultState] - resultOrder[right.resultState] ||
-          alphabetical.compare(left.firmName, right.firmName)
-      );
-  }, [engine, query, result, rows]);
-
-  const hasActiveFilters = query !== "" || engine !== "all" || result !== "all";
+  const hasActiveFilters = query !== "";
   const displayedRows =
     isHydrated && !hasActiveFilters
       ? visibleRows.slice(0, DEFAULT_VISIBLE_FIRMS)
@@ -85,22 +112,6 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
 
   const clearFilters = () => {
     setQuery("");
-    setEngine("all");
-    setResult("all");
-  };
-
-  const platformResult = (row: EvidenceRow, engineName: string) => {
-    const repeated = row.repeatedEvidence.filter((item) => item.engine === engineName);
-    if (repeated.some((item) => item.namedCount >= 2)) {
-      return { label: "Named in 2-3 answers", state: "named" };
-    }
-    if (repeated.some((item) => item.citedCount >= 2)) {
-      return { label: "Website cited in 2-3 answers", state: "cited" };
-    }
-    if (row.isolatedEvidence.some((item) => item.engine === engineName)) {
-      return { label: "Appeared once", state: "once" };
-    }
-    return { label: "No appearance", state: "none" };
   };
 
   return (
@@ -112,14 +123,14 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
     >
       <div className="editorial-container">
         <div className="research-section-heading research-standings__heading">
-          <p className="eyebrow">The Studio Baggio AI Discovery Benchmark</p>
+          <p className="eyebrow">150-firm index</p>
           <div>
             <h2 id="research-standings-title">AI Visibility Rankings</h2>
             <p id="research-standings-summary">{summary}</p>
           </div>
         </div>
 
-        <div className="research-standings-controls" aria-label="Filter visibility standings">
+        <div className="research-standings-controls" aria-label="Search visibility rankings">
           <label className="research-control research-control--search">
             <span>Find a firm</span>
             <span className="research-search-field">
@@ -133,51 +144,25 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
             </span>
           </label>
 
-          <label className="research-control">
-            <span>Engine</span>
-            <select value={engine} onChange={(event) => setEngine(event.target.value)}>
-              <option value="all">Any engine</option>
-              {engines.map((item) => (
-                <option key={item} value={item}>
-                  Repeated appearance on {researchEngineLabel(item)}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label className="research-control">
-            <span>Result</span>
-            <select
-              value={result}
-              onChange={(event) =>
-                setResult(event.target.value as "all" | FirmResultState)
-              }
+          {hasActiveFilters ? (
+            <button
+              type="button"
+              className="research-filter-reset"
+              onClick={clearFilters}
             >
-              <option value="all">All states</option>
-              {Object.entries(resultLabels).map(([value, label]) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <button
-            type="button"
-            className="research-filter-reset"
-            onClick={clearFilters}
-            disabled={!hasActiveFilters}
-          >
-            <X aria-hidden="true" />
-            Clear filters
-          </button>
+              <X aria-hidden="true" />
+              Clear search
+            </button>
+          ) : null}
         </div>
 
-        <div className="research-standings-toolbar">
-          <p role="status" aria-live="polite">
-            Showing {displayedRows.length} of {rows.length} firms. Search checks all {rows.length}. Firms named or cited in 2-3 answers appear first; alphabetical within each result.
-          </p>
-        </div>
+        {hasActiveFilters ? (
+          <div className="research-standings-toolbar">
+            <p role="status" aria-live="polite">
+              Showing {displayedRows.length} matching firms from all {rows.length} firms.
+            </p>
+          </div>
+        ) : null}
 
         <div
           className="research-standings-table-frame"
@@ -187,18 +172,15 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
         >
           <table className="research-standings-table" aria-describedby="research-standings-summary">
             <caption className="sr-only">
-              Firms named or cited in two or three test answers are shown first, then firms are
-              alphabetical within each result. This is not a recommendation or quality judgement.
+              Firms are ranked by total name appearances, then repeat-named evidence, website
+              citations, repeat-cited evidence and question breadth. This is not a recommendation or quality judgement.
             </caption>
             <thead>
               <tr>
-                <th scope="col">Firm</th>
-                <th scope="col">Result in this test</th>
-                {engines.map((item) => (
-                  <th key={item} scope="col">
-                    {researchEngineLabel(item)}
-                  </th>
-                ))}
+                <th scope="col">Ranked firm</th>
+                <th scope="col">Named to the buyer</th>
+                <th scope="col">Website cited as a source</th>
+                <th scope="col">Buyer questions reached</th>
               </tr>
             </thead>
             <tbody>
@@ -206,96 +188,79 @@ export function VisibilityStandings({ engines, rows, summary }: VisibilityStandi
                 displayedRows.map((row) => (
                   <tr key={row.firmId}>
                     <th scope="row" data-label="Firm">
+                      <span className="research-firm-rank" aria-label={`Rank ${rankByFirm.get(row.firmId)}`}>
+                        {rankByFirm.get(row.firmId)}
+                      </span>
                       <ResearchDrawer
+                        className="research-drawer-panel--firm"
                         eyebrow="Firm evidence snapshot"
                         title={row.firmName}
                         trigger={row.firmName}
                         triggerClassName="research-firm-drawer-trigger"
                       >
                         <p className="research-drawer-domain">{row.firmDomain}</p>
-                        <p className="research-drawer-lead">
-                          {row.resultState === "named-repeated"
-                            ? "The firm was named in at least two of three answers for the same question on the same platform."
-                            : row.resultState === "website-cited-repeated"
-                              ? "The firm’s website was cited in at least two of three answers for the same question on the same platform, but the firm itself was not named repeatedly."
-                              : row.resultState === "appeared-not-repeated"
-                                ? "The firm name or website appeared in this test, but never in at least two of three runs for the same question on the same platform."
-                                : row.resultState === "no-appearance"
-                                  ? "Across all 225 answers, the firm’s name did not appear and its website was not cited."
-                                  : "Some answers were incomplete, so this firm does not have full coverage."}
-                        </p>
-                        <dl className="research-drawer-definition-list">
-                          <div><dt>Result in this test</dt><dd>{resultLabels[row.resultState]}</dd></div>
-                          <div><dt>Test scope</dt><dd>25 questions · 3 platforms · 3 runs · 225 answers</dd></div>
-                          <div><dt>Named in answers</dt><dd>{ratio(row.namedObservations.count, row.namedObservations.denominator)}</dd></div>
-                          <div><dt>Website cited</dt><dd>{ratio(row.citedDomainObservations.count, row.citedDomainObservations.denominator)}</dd></div>
-                          <div><dt>Used as a source without being named</dt><dd>{ratio(row.sourceOnlyObservations.count, row.sourceOnlyObservations.denominator)}</dd></div>
+                        <dl className="research-firm-summary">
+                          <div>
+                            <dt>AI visibility rank</dt>
+                            <dd><strong>{rankByFirm.get(row.firmId)}</strong><span>of {rows.length}</span></dd>
+                          </div>
+                          <div>
+                            <dt>Named in answers</dt>
+                            <dd><strong>{percentage(row.namedObservations.count, row.namedObservations.denominator)}</strong><span>{ratio(row.namedObservations.count, row.namedObservations.denominator)}</span></dd>
+                          </div>
+                          <div>
+                            <dt>Website cited</dt>
+                            <dd><strong>{percentage(row.citedDomainObservations.count, row.citedDomainObservations.denominator)}</strong><span>{ratio(row.citedDomainObservations.count, row.citedDomainObservations.denominator)}</span></dd>
+                          </div>
+                          <div>
+                            <dt>Buyer questions reached</dt>
+                            <dd><strong>{row.queryBreadth.count}</strong><span>of {row.queryBreadth.denominator}</span></dd>
+                          </div>
+                          <div>
+                            <dt>Used as a source without being named</dt>
+                            <dd><strong>{percentage(row.sourceOnlyObservations.count, row.sourceOnlyObservations.denominator)}</strong><span>{ratio(row.sourceOnlyObservations.count, row.sourceOnlyObservations.denominator)}</span></dd>
+                          </div>
                         </dl>
 
-                        {row.repeatedEvidence.length ? (
-                          <>
-                            <h3>Where it repeated</h3>
-                            <ul className="research-drawer-evidence-list">
-                              {row.repeatedEvidence.map((item) => (
-                                <li key={`${item.queryId}-${item.engine}`}>
-                                  <blockquote>“{item.question}”</blockquote>
-                                  <p>{researchEngineLabel(item.engine)} · Named in {item.namedCount} of {item.validCount} answers · Website cited in {item.citedCount} of {item.validCount}</p>
-                                </li>
+                        {questionsWhereVisible(row).length ? (
+                          <div className="research-firm-questions">
+                            <h3>Buyer questions where the firm appeared</h3>
+                            <ul>
+                              {questionsWhereVisible(row).map((question) => (
+                                <li key={question}>{question}</li>
                               ))}
                             </ul>
-                          </>
-                        ) : null}
-
-                        {row.isolatedEvidence.length ? (
-                          <>
-                            <h3>Other one-off appearances</h3>
-                            <ul className="research-drawer-evidence-list research-drawer-evidence-list--secondary">
-                              {row.isolatedEvidence.map((item) => (
-                                <li key={`${item.queryId}-${item.engine}`}>
-                                  <blockquote>“{item.question}”</blockquote>
-                                  <p>{researchEngineLabel(item.engine)} · Named in {item.namedCount} of {item.validCount} answers · Website cited in {item.citedCount} of {item.validCount}</p>
-                                </li>
-                              ))}
-                            </ul>
-                          </>
-                        ) : null}
-                        <h3>Platform results</h3>
-                        <ul className="research-drawer-engine-list">
-                          {engines.map((engineName) => {
-                            return (
-                              <li key={engineName}>
-                                <span>{researchEngineLabel(engineName)}</span>
-                                <strong>{platformResult(row, engineName).label}</strong>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                        <p className="research-drawer-caveat">This snapshot reports where the firm appeared in this dated test. It does not assess advice quality, explain why the result occurred or recommend the firm.</p>
+                          </div>
+                        ) : (
+                          <p className="research-firm-no-visibility">
+                            The firm was not named and its website was not cited in the 216 answers.
+                          </p>
+                        )}
                       </ResearchDrawer>
                     </th>
-                    <td data-label="Result">
-                      <span
-                        className={`research-visibility-state research-visibility-state--${row.resultState}`}
-                      >
-                        {resultLabels[row.resultState]}
+                    <td data-label="Named to the buyer">
+                      <span className="research-ranking-metric">
+                        <strong>{percentage(row.namedObservations.count, row.namedObservations.denominator)}</strong>
+                        <small>{ratio(row.namedObservations.count, row.namedObservations.denominator)} answers</small>
                       </span>
                     </td>
-                    {engines.map((item) => {
-                      const platform = platformResult(row, item);
-
-                      return (
-                        <td key={item} data-label={researchEngineLabel(item)}>
-                          <span className={`research-engine-state research-engine-state--${platform.state}`}>
-                            {platform.label}
-                          </span>
-                        </td>
-                      );
-                    })}
+                    <td data-label="Website cited as a source">
+                      <span className="research-ranking-metric">
+                        <strong>{percentage(row.citedDomainObservations.count, row.citedDomainObservations.denominator)}</strong>
+                        <small>{ratio(row.citedDomainObservations.count, row.citedDomainObservations.denominator)} answers</small>
+                      </span>
+                    </td>
+                    <td data-label="Buyer questions reached">
+                      <span className="research-ranking-metric">
+                        <strong>{row.queryBreadth.count}</strong>
+                        <small>of {row.queryBreadth.denominator} questions</small>
+                      </span>
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr className="research-standings-empty">
-                  <td colSpan={2 + engines.length}>
+                  <td colSpan={4}>
                     <strong>No firms match those filters.</strong>
                     <span>Clear or change a filter to return to the complete cohort.</span>
                     <button type="button" onClick={clearFilters}>

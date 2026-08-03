@@ -1,15 +1,6 @@
 import type { ResearchEditionMasthead } from "./types";
 
-const statusLabels = {
-  prepared: "Prepared for review",
-  current: "Current edition",
-  corrected: "Corrected edition",
-  superseded: "Superseded edition"
-} as const;
-
 export function ResearchMasthead({ edition }: { edition: ResearchEditionMasthead }) {
-  const status = edition.status ?? "prepared";
-
   return (
     <header className="research-masthead" data-research-masthead>
       <div className="editorial-container research-masthead__shell">
@@ -39,29 +30,21 @@ export function ResearchMasthead({ edition }: { edition: ResearchEditionMasthead
             <p className="research-masthead__summary" data-research-masthead-item>
               {edition.summary}
             </p>
-            {edition.sampleQuestions?.length ? (
-              <div className="research-masthead__questions" data-research-masthead-item>
-                <p className="eyebrow">Examples from the test</p>
-                <ul>
-                  {edition.sampleQuestions.map((question) => (
-                    <li key={question}>&ldquo;{question}&rdquo;</li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-            <dl className="research-masthead__metadata" data-research-masthead-item>
-              <div>
-                <dt>{edition.dateLabel ?? "Prepared for review"}</dt>
-                <dd>{edition.publicationDate}</dd>
-              </div>
-            </dl>
-            {edition.statusDetail ? (
-              <aside className={`research-version-notice research-version-notice--${status}`} data-research-masthead-item>
-                <strong>{statusLabels[status]}.</strong> {edition.statusDetail}
-              </aside>
-            ) : null}
           </div>
         </div>
+
+        {edition.sampleQuestions?.length ? (
+          <div className="research-masthead__questions" data-research-masthead-item>
+            <p className="eyebrow">Example buyer questions</p>
+            <ul>
+              {edition.sampleQuestions.map((question) => (
+                <li key={question}>
+                  <strong>&ldquo;{question}&rdquo;</strong>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </div>
     </header>
   );

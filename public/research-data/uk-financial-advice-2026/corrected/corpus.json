@@ -1,0 +1,159 @@
+{
+  "corpus_version": "fa-queries-0.3",
+  "edition": "uk-financial-advice-firm-selection-2026",
+  "status": "frozen",
+  "endpoint_question": "When a UK buyer asks AI search which financial adviser to choose, which firms enter the consideration set?",
+  "description": "25 demand-informed, pre-defined UK firm-selection questions.",
+  "questions": [
+    {
+      "query_id": "FA3-CORE-01",
+      "family": "core",
+      "score_scope": "national",
+      "query_text": "Can you recommend a financial adviser in the UK?"
+    },
+    {
+      "query_id": "FA3-CORE-02",
+      "family": "core",
+      "score_scope": "national",
+      "query_text": "Which financial advice firms in the UK should I consider?"
+    },
+    {
+      "query_id": "FA3-CORE-03",
+      "family": "core",
+      "score_scope": "national",
+      "query_text": "Which independent financial adviser firms in the UK would you recommend?"
+    },
+    {
+      "query_id": "FA3-CORE-04",
+      "family": "core",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial advice firm with Chartered Financial Planners?"
+    },
+    {
+      "query_id": "FA3-CORE-05",
+      "family": "core",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser who offers one-off advice for a fixed fee, without ongoing management?"
+    },
+    {
+      "query_id": "FA3-WEALTH-01",
+      "family": "wealth",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser to help me invest a £100,000 lump sum?"
+    },
+    {
+      "query_id": "FA3-WEALTH-02",
+      "family": "wealth",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser for someone with £500,000 to invest?"
+    },
+    {
+      "query_id": "FA3-WEALTH-03",
+      "family": "wealth",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser for someone with more than £1 million to invest?"
+    },
+    {
+      "query_id": "FA3-WEALTH-04",
+      "family": "wealth",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK wealth management firm that also provides personal financial planning and advice?"
+    },
+    {
+      "query_id": "FA3-WEALTH-05",
+      "family": "wealth",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser who specialises in sustainable or ethical investing?"
+    },
+    {
+      "query_id": "FA3-PENSION-01",
+      "family": "pensions",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser to help me plan for retirement?"
+    },
+    {
+      "query_id": "FA3-PENSION-02",
+      "family": "pensions",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser who specialises in retirement income and pension drawdown?"
+    },
+    {
+      "query_id": "FA3-PENSION-03",
+      "family": "pensions",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser to help me decide whether to combine several old defined-contribution workplace pensions?"
+    },
+    {
+      "query_id": "FA3-PENSION-04",
+      "family": "pensions",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser to help me choose between an annuity and pension drawdown?"
+    },
+    {
+      "query_id": "FA3-PENSION-05",
+      "family": "pensions",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK pension-transfer specialist to advise on a defined-benefit or final-salary pension?"
+    },
+    {
+      "query_id": "FA3-LIFE-01",
+      "family": "life_events",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser to help me decide what to do with a £250,000 inheritance?"
+    },
+    {
+      "query_id": "FA3-LIFE-02",
+      "family": "life_events",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser who specialises in inheritance tax and estate planning?"
+    },
+    {
+      "query_id": "FA3-LIFE-03",
+      "family": "life_events",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser who specialises in later-life and care-fees planning?"
+    },
+    {
+      "query_id": "FA3-LIFE-04",
+      "family": "life_events",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser who specialises in divorce and pension sharing?"
+    },
+    {
+      "query_id": "FA3-LIFE-05",
+      "family": "life_events",
+      "score_scope": "national",
+      "query_text": "Can you recommend a UK financial adviser who helps business owners plan before and after selling a company?"
+    },
+    {
+      "query_id": "FA3-LOCAL-01",
+      "family": "local",
+      "score_scope": "local_only",
+      "query_text": "Can you recommend a financial adviser based in London, England?"
+    },
+    {
+      "query_id": "FA3-LOCAL-02",
+      "family": "local",
+      "score_scope": "local_only",
+      "query_text": "Can you recommend a financial adviser based in Manchester, England?"
+    },
+    {
+      "query_id": "FA3-LOCAL-03",
+      "family": "local",
+      "score_scope": "local_only",
+      "query_text": "Can you recommend a financial adviser based in Edinburgh, Scotland?"
+    },
+    {
+      "query_id": "FA3-LOCAL-04",
+      "family": "local",
+      "score_scope": "local_only",
+      "query_text": "Can you recommend a financial adviser based in Cardiff, Wales?"
+    },
+    {
+      "query_id": "FA3-LOCAL-05",
+      "family": "local",
+      "score_scope": "local_only",
+      "query_text": "Can you recommend a financial adviser based in Belfast, Northern Ireland?"
+    }
+  ]
+}
