@@ -62,7 +62,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: AI Operating System Audit and Build, Commercial AI Growth Strategy, SEO and AI Search Opportunity Audit, and bespoke AI software and systems."
+      "What you can hire Studio Baggio for: AI Operating System Audit and Implementation, Commercial Growth Strategy, SEO and AI Search Opportunity Audit, and Bespoke Software & Systems Build."
   }
 };
 
@@ -765,7 +765,7 @@ export const about = {
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: AI Operating System Audit and Build, Commercial AI Growth Strategy, SEO and AI Search Opportunity Audit, and Bespoke AI Software and Systems. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: AI Operating System Audit and Implementation, Commercial Growth Strategy, SEO and AI Search Opportunity Audit, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
         }
       ]
     },
@@ -895,7 +895,7 @@ export const servicesPage = {
   offers: [
     {
       id: "ai-operating-system-audit",
-      name: "AI Operating System Audit and Build",
+      name: "AI Operating System Audit and Implementation",
       summary:
         "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and processes.",
       paras: [
@@ -922,7 +922,7 @@ export const servicesPage = {
     },
     {
       id: "commercial-ai-growth-strategy",
-      name: "Commercial AI Growth Strategy",
+      name: "Commercial Growth Strategy",
       summary:
         "Find valuable client demand and build the route from search visibility to qualified enquiries, instructions and revenue. Includes a bespoke Business Tracker that captures engagement, qualifies opportunities and recommends follow-up.",
       paras: [
@@ -944,7 +944,7 @@ export const servicesPage = {
       subSection: {
         label: "Business Tracker",
         paras: [
-          "Every Commercial AI Growth Strategy includes Studio Baggio's bespoke Business Tracker.",
+          "Every Commercial Growth Strategy includes Studio Baggio's bespoke Business Tracker.",
           "It brings together engagement from guides, diagnostics, email, LinkedIn and other channels, then adds current professional and company information to show who each person is and why they may matter.",
           "Each contact is qualified against the business's commercial priorities, with a clear rationale and recommended next action. Depending on the objective, the system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners."
         ]
@@ -986,7 +986,7 @@ export const servicesPage = {
     },
     {
       id: "bespoke-ai-software-and-systems",
-      name: "Bespoke AI Software and Systems",
+      name: "Bespoke Software & Systems Build",
       summary:
         "Design and build specialist software for valuable industry problems that off-the-shelf tools cannot solve.",
       paras: [
@@ -1068,14 +1068,14 @@ export const servicesPage = {
     eyebrow: "SERVICES: FREQUENTLY ASKED QUESTIONS",
     items: [
       {
-        question: "What is an AI Operating System Audit and Build?",
+        question: "What is an AI Operating System Audit and Implementation?",
         answer:
-          "The AI Operating System Audit and Build is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
+          "The AI Operating System Audit and Implementation is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
       },
       {
-        question: "What is a Commercial AI Growth Strategy?",
+        question: "What is a Commercial Growth Strategy?",
         answer:
-          "A Commercial AI Growth Strategy is for trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base. We identify the client questions and live concerns with the strongest commercial value, turn the expertise behind them into visible public proof, and build the route from visibility to engagement, qualified follow-up, instructions and fees. Each engagement is supported by Studio Baggio's Business Tracker."
+          "A Commercial Growth Strategy is for trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base. We identify the client questions and live concerns with the strongest commercial value, turn the expertise behind them into visible public proof, and build the route from visibility to engagement, qualified follow-up, instructions and fees. Each engagement is supported by Studio Baggio's Business Tracker."
       },
       {
         question: "What is the Business Tracker?",
