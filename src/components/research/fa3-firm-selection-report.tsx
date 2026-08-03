@@ -523,15 +523,15 @@ function FirmEvidenceContent({
   return (
     <div className="fa3-firm-evidence">
       <div className="fa3-firm-evidence__summary" aria-label="Firm evidence summary">
-        <div><strong>{groupedQuestions.length}</strong><span>questions appeared in</span></div>
-        <div><strong>{occurrences.length}</strong><span>AI answers selected it</span></div>
-        <div><strong>{ownSiteCitations}</strong><span>appearances cited its website</span></div>
-        <div><strong>{supportedSelections}</strong><span>recommendations had citation support</span></div>
+        <div><strong>{groupedQuestions.length}</strong><span>questions</span></div>
+        <div><strong>{occurrences.length}</strong><span>selections</span></div>
+        <div><strong>{ownSiteCitations}</strong><span>website citations</span></div>
+        <div><strong>{supportedSelections}</strong><span>supported selections</span></div>
       </div>
 
       <div className="fa3-firm-evidence__heading">
-        <p className="fa3-kicker">Question-by-question evidence</p>
-        <h3>Where this firm appeared</h3>
+        <h3>Question-by-question evidence</h3>
+        <span>{groupedQuestions.length} {groupedQuestions.length === 1 ? "question" : "questions"}</span>
       </div>
 
       <div className="fa3-firm-evidence__questions">
@@ -559,15 +559,12 @@ function FirmEvidenceContent({
                     .join(", ");
 
                   return (
-                    <div key={group.provider}>
+                    <p key={group.provider}>
                       <strong>{providerLabel(group.provider)}</strong>
-                      <dl>
-                        <div><dt>Selected</dt><dd>{group.occurrences.length} of 3 runs</dd></div>
-                        <div><dt>Shortlist position</dt><dd>{positions}</dd></div>
-                        <div><dt>Firm website cited</dt><dd>{cited} of {group.occurrences.length}</dd></div>
-                        <div><dt>Recommendation supported</dt><dd>{supported} of {group.occurrences.length}</dd></div>
-                      </dl>
-                    </div>
+                      <span>
+                        {group.occurrences.length}/3 runs · position {positions} · own site {cited}/{group.occurrences.length} · supported {supported}/{group.occurrences.length}
+                      </span>
+                    </p>
                   );
                 })}
               </div>
@@ -577,9 +574,8 @@ function FirmEvidenceContent({
       </div>
 
       <p className="fa3-firm-evidence__note">
-        “Firm website cited” means the firm&rsquo;s own domain appeared among the answer&rsquo;s
-        sources. “Recommendation supported” means a citation backed the selection claim.
-        Exact source URLs are not included in the corrected public dataset.
+        Website citations use the firm&rsquo;s own domain; supported selections have a citation
+        backing the recommendation.
       </p>
     </div>
   );
