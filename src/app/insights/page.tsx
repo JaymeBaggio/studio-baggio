@@ -15,7 +15,9 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.insights, path: "/insights" });
 
-const articlePreviews = insightArticles.map((article) => ({
+const articlePreviews = [...insightArticles]
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .map((article) => ({
   slug: article.slug,
   title: article.title,
   category: article.category,
