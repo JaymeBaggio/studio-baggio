@@ -100,26 +100,14 @@ function sourceProviderLabel(
   return `${providerLabel(provider.provider)} ${provider.answer_count}/3${runs}`;
 }
 
-function sourcePath(url: string) {
-  try {
-    const parsed = new URL(url);
-    return `${parsed.hostname.replace(/^www\./, "")}${parsed.pathname === "/" ? "" : parsed.pathname}`;
-  } catch {
-    return url;
-  }
-}
-
 function StudyQuestionDrawerContent({ question }: { question: StudyQuestion }) {
   const { evidence } = question;
   const isSelection = evidence.kind === "verified_selection";
+  const visibleFirms = evidence.firms.slice(0, 6);
+  const visibleSources = evidence.sources.slice(0, 8);
 
   return (
     <div className="fa3-drawer-stack">
-      <p className="fa3-question-evidence__intro">
-        {isSelection
-          ? "This view separates the firms AI recommended from the sources it cited across the nine answers. Only semantically verified firm selections are counted."
-          : "This view shows which established panel firms appeared in the answer and which source domains AI cited. A cited firm was not necessarily recommended or even named."}
-      </p>
       <div className="fa3-drawer-summary">
         <div>
           <span>Answers checked</span>
@@ -135,102 +123,88 @@ function StudyQuestionDrawerContent({ question }: { question: StudyQuestion }) {
         </div>
       </div>
 
-      <div>
-        <div className="fa3-drawer-section-heading">
-          <h3>{isSelection ? "Firms recommended" : "Established firms named or cited"}</h3>
-          <p>
-            {isSelection
-              ? "Counts show how many of the nine answers included each firm as a genuine candidate."
-              : "This earlier phase tracked the 150-firm benchmark. Named and cited are separate signals, not recommendation coding."}
-          </p>
-        </div>
-        {evidence.firms.length ? (
-          <div className="fa3-question-evidence__firms">
-            {evidence.firms.map((firm) => (
-              <article key={firm.name}>
-                <header>
-                  <strong>{firm.name}</strong>
+      <div className="fa3-question-evidence__columns">
+        <section aria-labelledby={`${question.query_id}-firms`}>
+          <header>
+            <h3 id={`${question.query_id}-firms`}>
+              {isSelection ? "Firms recommended" : "Firms named or cited"}
+            </h3>
+            <span>{visibleFirms.length} shown</span>
+          </header>
+          {visibleFirms.length ? (
+            <ol className="fa3-question-evidence__compact-list">
+              {visibleFirms.map((firm) => (
+                <li key={firm.name}>
+                  <div>
+                    <strong>{firm.name}</strong>
+                    <small>
+                      {firm.providers.map((provider) =>
+                        providerEvidenceLabel(provider, evidence.kind)
+                      ).join(" · ")}
+                    </small>
+                  </div>
                   <span>
                     {isSelection
-                      ? `Recommended in ${firm.recommended_answers} of 9 answers`
+                      ? `${firm.recommended_answers}/9 recommended`
                       : [
-                          firm.named_answers ? `Named in ${firm.named_answers} of 9` : null,
-                          firm.cited_answers ? `Website cited in ${firm.cited_answers} of 9` : null
+                          firm.named_answers ? `${firm.named_answers}/9 named` : null,
+                          firm.cited_answers ? `${firm.cited_answers}/9 cited` : null
                         ].filter(Boolean).join(" · ")}
                   </span>
-                </header>
-                <div className="fa3-question-evidence__providers">
-                  {firm.providers.map((provider) => (
-                    <span key={provider.provider}>
-                      {providerEvidenceLabel(provider, evidence.kind)}
-                    </span>
-                  ))}
-                </div>
-                {isSelection && (firm.cited_answers || firm.supported_answers) ? (
-                  <p>
-                    {firm.cited_answers
-                      ? `Firm website cited in ${firm.cited_answers} recommendation${firm.cited_answers === 1 ? "" : "s"}. `
-                      : ""}
-                    {firm.supported_answers
-                      ? `Recommendation supported by a citation in ${firm.supported_answers}.`
-                      : ""}
-                  </p>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        ) : (
-          <p className="fa3-empty-result">
-            {isSelection
-              ? "No adviser was semantically verified as a candidate in any of the nine answers."
-              : "No firm from the established 150-firm panel was named or cited in these answers."}
-          </p>
-        )}
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p className="fa3-empty-result">
+              {isSelection ? "No verified firm recommendation." : "No panel firm named or cited."}
+            </p>
+          )}
+          {evidence.firms.length > visibleFirms.length ? (
+            <p className="fa3-question-evidence__more">
+              +{evidence.firms.length - visibleFirms.length} lower-frequency firms
+            </p>
+          ) : null}
+        </section>
+
+        <section aria-labelledby={`${question.query_id}-sources`}>
+          <header>
+            <h3 id={`${question.query_id}-sources`}>Most-cited sources</h3>
+            <span>{visibleSources.length} shown</span>
+          </header>
+          {visibleSources.length ? (
+            <ol className="fa3-question-evidence__compact-list">
+              {visibleSources.map((source) => (
+                <li key={source.domain}>
+                  <div>
+                    <a
+                      href={source.urls[0] ?? `https://${source.domain}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {source.domain}
+                    </a>
+                    <small>{source.providers.map(sourceProviderLabel).join(" · ")}</small>
+                  </div>
+                  <span>{source.answer_count}/{evidence.valid_answer_count} answers</span>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p className="fa3-empty-result">No recoverable source domain.</p>
+          )}
+          {evidence.sources.length > visibleSources.length ? (
+            <p className="fa3-question-evidence__more">
+              +{evidence.sources.length - visibleSources.length} lower-frequency sources
+            </p>
+          ) : null}
+        </section>
       </div>
 
-      <div>
-        <div className="fa3-drawer-section-heading">
-          <h3>Sources cited</h3>
-          <p>Source counts show the number of answers in which each domain appeared.</p>
-        </div>
-        {evidence.sources.length ? (
-          <div className="fa3-question-evidence__sources">
-            {evidence.sources.map((source) => (
-              <article key={source.domain}>
-                <header>
-                  <a
-                    href={source.urls[0] ?? `https://${source.domain}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {source.domain}
-                  </a>
-                  <strong>{source.answer_count} of {evidence.valid_answer_count} answers</strong>
-                </header>
-                <p>{source.providers.map(sourceProviderLabel).join(" · ")}</p>
-                {source.urls.length ? (
-                  <details>
-                    <summary>
-                      {source.urls.length} cited page{source.urls.length === 1 ? "" : "s"}
-                    </summary>
-                    <ul>
-                      {source.urls.map((url) => (
-                        <li key={url}>
-                          <a href={url} target="_blank" rel="noreferrer">
-                            {sourcePath(url)}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        ) : (
-          <p className="fa3-empty-result">No recoverable source domain was recorded for this question.</p>
-        )}
-      </div>
+      <p className="fa3-question-evidence__caveat">
+        {isSelection
+          ? "Only semantically verified recommendations are counted."
+          : "Named and cited are separate signals; a citation is not a recommendation."}
+      </p>
     </div>
   );
 }

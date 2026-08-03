@@ -58,11 +58,11 @@ export async function generateMetadata({ params }: ResearchEditionPageProps): Pr
 }
 
 const combinedSources = [
-  { name: "Unbiased", answers: 168, share: "37.3%" },
-  { name: "MoneyHelper", answers: 127, share: "28.2%" },
-  { name: "VouchedFor", answers: 118, share: "26.2%" },
-  { name: "FCA", answers: 66, share: "14.7%" },
-  { name: "Nephos Group", answers: 47, share: "10.4%" }
+  { name: "Unbiased", type: "Directory", answers: 168 },
+  { name: "MoneyHelper", type: "Public guidance", answers: 127 },
+  { name: "VouchedFor", type: "Directory", answers: 118 },
+  { name: "FCA", type: "Regulator", answers: 66 },
+  { name: "Nephos Group", type: "Commercial content", answers: 47 }
 ] as const;
 
 export default async function ResearchEditionPage({ params }: ResearchEditionPageProps) {
@@ -241,36 +241,6 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         </div>
       </section>
 
-      <section className="fa3-section fa3-source-ecology" aria-labelledby="fa3-source-title">
-        <div className="editorial-container">
-          <header className="fa3-section-heading">
-            <div>
-              <p className="fa3-kicker">Source landscape</p>
-              <h2 id="fa3-source-title">A small group of third parties repeatedly framed the market</h2>
-            </div>
-            <p>
-              Across all 450 responses, AI repeatedly drew on the same directories, regulators and
-              publishers. The sources included commercial &ldquo;best firm&rdquo; rankings, some
-              self-authored, with no visible explanation of how firms were assessed or ordered.
-            </p>
-          </header>
-
-          <div className="fa3-source-table" role="region" aria-label="Most frequently cited source brands" tabIndex={0}>
-            <table>
-              <thead>
-                <tr><th scope="col">Source brand</th><th scope="col">Answers citing it</th><th scope="col">Share of 450 answers</th></tr>
-              </thead>
-              <tbody>
-                {combinedSources.map((source) => (
-                  <tr key={source.name}><th scope="row">{source.name}</th><td>{source.answers}</td><td>{source.share}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-      </section>
-
       <section className="fa3-section fa3-findings" aria-labelledby="fa3-findings-title">
         <div className="editorial-container">
           <header className="fa3-section-heading">
@@ -310,18 +280,34 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
       </section>
 
       <section className="fa3-section fa3-implication" aria-labelledby="fa3-implication-title">
-        <div className="editorial-container fa3-implication__grid">
-          <div>
-            <p className="fa3-kicker">What firms should take from this</p>
-            <h2 id="fa3-implication-title">Most firms are invisible where buyers are already looking</h2>
-          </div>
-          <div>
+        <div className="editorial-container">
+          <header className="fa3-implication__header">
+            <div>
+              <p className="fa3-kicker">Who shaped the answer</p>
+              <h2 id="fa3-implication-title">AI kept returning to the same five sources.</h2>
+            </div>
             <p>
-              A small number of directories and publishers control the information AI uses to build
-              its answers. Firms that do not appear in those sources, or do not produce clear,
-              citable evidence of their own, are absent from the consideration set entirely.
+              Unbiased, MoneyHelper, VouchedFor, the FCA and Nephos Group were the five most
+              frequently cited source brands across the 450 responses. Their material appeared
+              repeatedly while most established advice firms remained absent.
             </p>
-          </div>
+          </header>
+
+          <ol className="fa3-implication__sources" aria-label="Five most frequently cited source brands">
+            {combinedSources.map((source, index) => (
+              <li key={source.name}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{source.name}</strong>
+                <small>{source.type}</small>
+                <p><b>{source.answers}</b> of 450 answers</p>
+              </li>
+            ))}
+          </ol>
+
+          <p className="fa3-implication__note">
+            Firms need evidence AI can retrieve and credible third-party surfaces that can carry
+            their name into the answer.
+          </p>
         </div>
       </section>
 
