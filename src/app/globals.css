@@ -14004,4 +14004,42 @@ body:has(.home-4b.contact-page) footer {
     max-height: 100dvh;
     margin-right: 0;
   }
+/* AI Set Up Guide article figures */
+.home-4b.insight-article-page .insight-article-setup-figure {
+  margin: 44px 0 12px;
+}
+
+.home-4b.insight-article-page .insight-article-setup-figure figcaption {
+  border-top: 1px solid #e4e4e4;
+  padding-top: 12px;
+  margin-bottom: 16px;
+  color: var(--sb-accent-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.home-4b.insight-article-page .insight-article-setup-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Share button in the article meta bar */
+.home-4b.insight-article-page .insight-article-meta-bar button.insight-article-share {
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  font-weight: var(--sb-label-weight);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-4b.insight-article-page .insight-article-meta-bar button.insight-article-share:hover {
+  color: var(--sb-ink);
 }

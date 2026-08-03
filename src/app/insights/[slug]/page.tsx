@@ -6,6 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Code2, Flame, ListChecks, PoundSterling, Search } from "lucide-react";
 import { ArticleSchema } from "@/components/article-schema";
+import { InsightShareButton } from "@/components/insight-share-button";
 import { FaqSchema } from "@/components/faq-schema";
 import { PageReveals } from "@/components/page-reveals";
 import {
@@ -740,6 +741,26 @@ const firecrawlWorkflow: Array<{ title: string; Icon: LucideIcon; items: string[
   }
 ];
 
+function ArticleSetupFigure({
+  caption,
+  src,
+  alt,
+  maxWidth
+}: {
+  caption: string;
+  src: string;
+  alt: string;
+  maxWidth?: number;
+}) {
+  return (
+    <figure className="insight-article-setup-figure">
+      <figcaption>{caption}</figcaption>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} style={maxWidth ? { maxWidth } : undefined} />
+    </figure>
+  );
+}
+
 function FirecrawlWorkflowDiagram() {
   return (
     <aside className="insight-article-visual insight-firecrawl-flow" aria-label="Firecrawl lead qualification workflow">
@@ -1101,6 +1122,41 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       paragraph.startsWith("Behind these angles are frameworks")
     ) {
       blocks.splice(blocks.length - 1, 0, <PositioningAnglesTable key="positioning-angles-table" />);
+    }
+
+    if (articleSlug === "ai-set-up-guide") {
+      if (paragraph === "Don't spend an afternoon designing this. It grows as you use it.") {
+        blocks.push(
+          <ArticleSetupFigure
+            alt="The set up at a glance: Claude or Codex working from one main folder holding the instruction files and project folders, with connected tools alongside"
+            caption="The set up, at a glance"
+            key="setup-figure-hero"
+            src="/insights/ai-set-up-guide/setup-at-a-glance.png"
+          />
+        );
+      }
+      if (paragraph.startsWith("Top Tip: Ask Claude or Codex to review the memory")) {
+        blocks.push(
+          <ArticleSetupFigure
+            alt="Key files: CLAUDE.md, USER.md, NOW.md, STATUS.md and memory.md"
+            caption="Key files"
+            key="setup-figure-key-files"
+            maxWidth={520}
+            src="/insights/ai-set-up-guide/key-files.png"
+          />
+        );
+      }
+      if (paragraph.startsWith("Your enterprise set up will give the full organization")) {
+        blocks.push(
+          <ArticleSetupFigure
+            alt="Your skills pushed to a shared repository, made into a plugin, and installed by the whole team on the same version"
+            caption="One repository, one plugin, one version for everyone"
+            key="setup-figure-team"
+            maxWidth={700}
+            src="/insights/ai-set-up-guide/team.png"
+          />
+        );
+      }
     }
 
     paragraphLines = [];
@@ -1466,11 +1522,7 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
                 <span>Read</span>
                 <strong>{article.readTime}</strong>
               </span>
-              <a
-                href={`mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(`${siteUrl}${getInsightPath(article)}`)}`}
-              >
-                Share
-              </a>
+              <InsightShareButton title={article.title} url={`${siteUrl}${getInsightPath(article)}`} />
             </div>
           </div>
         </header>
