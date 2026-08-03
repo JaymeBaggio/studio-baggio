@@ -66,7 +66,30 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   };
 }
 
-function renderInlineMarkdown(text: string): ReactNode[] {
+function accentArrowNodes(nodes: ReactNode[]): ReactNode[] {
+  const out: ReactNode[] = [];
+  nodes.forEach((node, nodeIndex) => {
+    if (typeof node !== "string" || !node.includes("\u2192")) {
+      out.push(node);
+      return;
+    }
+    node.split("\u2192").forEach((part, partIndex) => {
+      if (partIndex > 0) {
+        out.push(
+          <span aria-hidden="true" className="insight-setup-arrow" key={`arrow-${nodeIndex}-${partIndex}`}>
+            {"\u2192"}
+          </span>
+        );
+      }
+      if (part) {
+        out.push(part);
+      }
+    });
+  });
+  return out;
+}
+
+function renderInlineMarkdown(text: string, accentArrows = false): ReactNode[] {
   const nodes: ReactNode[] = [];
   const pattern = /(\[[^\]]+\]\((?:https?:\/\/|\/)[^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/g;
   let lastIndex = 0;
@@ -110,7 +133,7 @@ function renderInlineMarkdown(text: string): ReactNode[] {
     nodes.push(text.slice(lastIndex));
   }
 
-  return nodes;
+  return accentArrows ? accentArrowNodes(nodes) : nodes;
 }
 
 function cleanSourceHeading(heading: string) {
@@ -486,7 +509,7 @@ function ArticleExampleBlock({ label, text }: { label: string; text: string }) {
   );
 }
 
-function ArticleQuotedBlock({ lines }: { lines: string[] }) {
+function ArticleQuotedBlock({ lines, accentArrows = false }: { lines: string[]; accentArrows?: boolean }) {
   const nonEmptyLines = lines.map((line) => line.trim()).filter(Boolean);
   const listLines = nonEmptyLines.filter((line) => line.startsWith("- "));
 
@@ -530,7 +553,7 @@ function ArticleQuotedBlock({ lines }: { lines: string[] }) {
     return (
       <aside className="insight-article-definition-callout">
         {paragraphs.map((paragraph) => (
-          <p key={paragraph}>{renderInlineMarkdown(paragraph)}</p>
+          <p key={paragraph}>{renderInlineMarkdown(paragraph, accentArrows)}</p>
         ))}
       </aside>
     );
@@ -1012,7 +1035,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
     } else {
       blocks.push(
         <p key={`p-${index}-${blocks.length}`}>
-          {renderInlineMarkdown(chunk.text)}
+          {renderInlineMarkdown(chunk.text, articleSlug === "ai-set-up-guide")}
         </p>
       );
     }
@@ -1036,6 +1059,27 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       }
       paragraphLines = [];
       lastBlockWasQuote = false;
+      return;
+    }
+
+    if (articleSlug === "ai-set-up-guide" && paragraph.startsWith("Top Tip:")) {
+      blocks.push(
+        <p className="insight-setup-tip" key={`tip-${index}-${blocks.length}`}>
+          <b>Top tip</b>
+          {renderInlineMarkdown(paragraph.slice(8).trim(), true)}
+        </p>
+      );
+      blocks.push(
+        <ArticleSetupFigure
+          alt="Key files: CLAUDE.md, USER.md, NOW.md, STATUS.md and memory.md"
+          caption="Key files"
+          key="setup-figure-key-files"
+          maxWidth={520}
+          src="/insights/ai-set-up-guide/key-files.png"
+        />
+      );
+      lastBlockWasQuote = false;
+      paragraphLines = [];
       return;
     }
 
@@ -1132,17 +1176,6 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
             caption="The set up, at a glance"
             key="setup-figure-hero"
             src="/insights/ai-set-up-guide/setup-at-a-glance.png"
-          />
-        );
-      }
-      if (paragraph.startsWith("Top Tip: Ask Claude or Codex to review the memory")) {
-        blocks.push(
-          <ArticleSetupFigure
-            alt="Key files: CLAUDE.md, USER.md, NOW.md, STATUS.md and memory.md"
-            caption="Key files"
-            key="setup-figure-key-files"
-            maxWidth={520}
-            src="/insights/ai-set-up-guide/key-files.png"
           />
         );
       }
@@ -1299,7 +1332,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
         index += 1;
       }
 
-      blocks.push(<ArticleQuotedBlock key={`quote-block-${index}-${blocks.length}`} lines={quoteLines} />);
+      blocks.push(<ArticleQuotedBlock accentArrows={articleSlug === "ai-set-up-guide"} key={`quote-block-${index}-${blocks.length}`} lines={quoteLines} />);
       lastBlockWasQuote = false;
       continue;
     }
@@ -1494,7 +1527,7 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
       <ArticleSchema article={article} />
       {article.faq?.length ? <FaqSchema items={article.faq} /> : null}
       <PageReveals />
-      <article className="home-4b insight-article-page">
+      <article className={`home-4b insight-article-page${article.slug === "ai-set-up-guide" ? " is-setup-guide" : ""}`}>
         <header className="insight-article-hero" data-home-section>
           <div className="editorial-container insight-article-hero-frame">
             <div className="insight-article-kicker-row" data-reveal>

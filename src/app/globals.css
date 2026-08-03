@@ -14043,3 +14043,77 @@ body:has(.home-4b.contact-page) footer {
 .home-4b.insight-article-page .insight-article-meta-bar button.insight-article-share:hover {
   color: var(--sb-ink);
 }
+
+/* AI Set Up Guide — PDF treatment */
+.home-4b.insight-article-page.is-setup-guide .insight-article-hero-title::after {
+  content: ".";
+  color: var(--sb-accent-blue);
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-article-body {
+  counter-reset: setupsec;
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-article-body h2 {
+  counter-increment: setupsec;
+  color: var(--sb-ink);
+  font-size: clamp(21px, 2.3vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.28;
+  text-transform: none;
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-article-body h2::before {
+  content: counter(setupsec, decimal-leading-zero);
+  display: block;
+  margin-bottom: 10px;
+  color: var(--sb-muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-article-body h2::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  margin-top: 13px;
+  background: var(--sb-accent-blue);
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-setup-arrow {
+  color: var(--sb-accent-blue);
+  font-weight: 700;
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-article-source-list li strong {
+  color: var(--sb-accent-blue);
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-article-body .insight-article-definition-callout {
+  border-left: 2px solid var(--sb-accent-blue);
+  border-radius: 0;
+  background: #f4f7fe;
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-article-body .insight-article-definition-callout::before {
+  content: "Copy and paste";
+  display: block;
+  margin-bottom: 12px;
+  color: var(--sb-accent-blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.home-4b.insight-article-page.is-setup-guide .insight-setup-tip b {
+  margin-right: 10px;
+  color: var(--sb-accent-blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
