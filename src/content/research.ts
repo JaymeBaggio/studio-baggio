@@ -21,6 +21,7 @@ export type ResearchEditionDefinition = {
   statusLabel: "Prepared for review" | "Published" | "Corrected edition" | "Superseded edition";
   publishedAt?: string;
   correctedAt?: string;
+  pageUpdatedAt?: string;
   supersededBy?: string;
   geography: string;
   sector: string;
@@ -92,6 +93,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   summary:
     "A 50-question investigation into how AI explains financial decisions, which sources it uses and which advisers enter buyer shortlists.",
   preparedForReview: "2026-07-31",
+  pageUpdatedAt: "2026-08-03",
   publicationStatus: "published",
   statusLabel: "Published",
   geography: "United Kingdom",

@@ -50,7 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${siteUrl}/research`,
             lastModified: new Date(
               publishedResearchEditions
-                .map((edition) => edition.correctedAt ?? edition.publishedAt ?? edition.preparedForReview)
+                .map(
+                  (edition) =>
+                    edition.pageUpdatedAt ??
+                    edition.correctedAt ??
+                    edition.publishedAt ??
+                    edition.preparedForReview
+                )
                 .sort()
                 .at(-1) ?? "2026-07-30"
             ),
@@ -62,7 +68,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...publishedResearchEditions.flatMap((edition) => [
     {
       url: `${siteUrl}${getResearchEditionPath(edition)}`,
-      lastModified: new Date(edition.correctedAt ?? edition.publishedAt ?? edition.preparedForReview),
+      lastModified: new Date(
+        edition.pageUpdatedAt ?? edition.correctedAt ?? edition.publishedAt ?? edition.preparedForReview
+      ),
       changeFrequency: "monthly" as const,
       priority: 0.8
     },
