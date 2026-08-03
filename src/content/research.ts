@@ -87,11 +87,11 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   slug: "uk-financial-advice-2026",
   franchise: researchFranchise.name,
   title: "UK Financial Advice 2026",
-  metaTitle: "How AI chooses UK financial advisers | Studio Baggio",
+  metaTitle: "93 of the UK's top 150 financial advice firms were invisible in AI search",
   metaDescription:
-    "50 tests and 450 AI responses reveal which UK financial advisers become visible and which sources shape the answer.",
+    "Across 450 answers, AI relied on a narrow source ecosystem while 93 of 150 established UK financial advice firms remained invisible.",
   summary:
-    "A 50-question investigation into how AI explains financial decisions, which sources it uses and which advisers enter buyer shortlists.",
+    "A 50-question investigation found that AI used a narrow source ecosystem while much of the established UK advice market remained invisible.",
   preparedForReview: "2026-07-31",
   pageUpdatedAt: "2026-08-03",
   publicationStatus: "published",

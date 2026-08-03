@@ -397,11 +397,14 @@ export function Fa3BreadthExplorer({
         <header className="fa3-section-heading fa3-section-heading--compact">
           <div>
             <p className="fa3-kicker">Selection breadth</p>
-            <h2 id="fa3-breadth-title">Which firms entered more consideration sets</h2>
+            <h2 id="fa3-breadth-title">Which firms appeared across more buyer needs</h2>
           </div>
           <p>
-            The first 20 national candidates are shown by default. Search covers every national or
-            local candidate and every firm in the 150-firm panel, including firms not selected.
+            The first 20 firms and advisers found in national answers are shown by default. Search
+            covers every national or local candidate and every firm in the 150-firm panel,
+            including firms not selected.
+            Percentages show the firm&rsquo;s share of all recommendation slots in that buyer-need
+            category. Every question and platform counts equally.
           </p>
         </header>
 
@@ -414,17 +417,17 @@ export function Fa3BreadthExplorer({
             </span>
           </label>
           <label>
-            <span>Cohort</span>
+            <span>Firm group</span>
             <select value={scope} onChange={(event) => setScope(event.target.value)}>
-              <option value="all">Open universe</option>
+              <option value="all">All firms found</option>
               <option value="panel">150-firm panel</option>
               <option value="outside_panel">Outside panel</option>
             </select>
           </label>
           <label>
-            <span>Selection tier</span>
+            <span>Visibility pattern</span>
             <select value={tier} onChange={(event) => setTier(event.target.value)}>
-              <option value="all">All tiers</option>
+              <option value="all">All visibility patterns</option>
               {Object.entries(tierLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
             </select>
           </label>
@@ -432,18 +435,18 @@ export function Fa3BreadthExplorer({
 
         <p className="fa3-result-count" aria-live="polite">
           {!search && scope === "all" && tier === "all"
-            ? `Showing ${visible.length} of ${entities.length} national candidates.`
+            ? `Showing ${visible.length} of ${entities.length} firms and advisers found in national answers.`
             : `Showing ${visible.length} ${visible.length === 1 ? "firm" : "firms"}.`}
         </p>
 
-        <div className="fa3-breadth-table-wrap" role="region" aria-label="Cross-scenario selection breadth" tabIndex={0}>
+        <div className="fa3-breadth-table-wrap" role="region" aria-label="Firm visibility across buyer-need categories" tabIndex={0}>
           <table className="fa3-breadth-table">
             <thead>
               <tr>
                 <th scope="col">Candidate</th>
-                <th scope="col">Selection tier</th>
-                <th scope="col">Families reached</th>
-                <th scope="col">Core</th>
+                <th scope="col">Visibility pattern</th>
+                <th scope="col">Buyer-need categories reached</th>
+                <th scope="col">Choosing</th>
                 <th scope="col">Wealth</th>
                 <th scope="col">Pensions</th>
                 <th scope="col">Life events</th>

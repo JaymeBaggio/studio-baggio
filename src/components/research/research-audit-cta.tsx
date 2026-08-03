@@ -4,11 +4,13 @@ import { ResearchActionLink } from "./ResearchActionLink.client";
 export function ResearchAuditCta({
   href,
   title = "Get a clear view of your firm's AI search visibility and opportunities.",
-  body = "The SEO and AI Search Opportunity Audit explains why the result appears and what to do next."
+  body = "The SEO and AI Search Opportunity Audit explains why the result appears and what to do next.",
+  linkLabel = "Discuss an audit"
 }: {
   href: string;
   title?: string;
   body?: string;
+  linkLabel?: string;
 }) {
   return (
     <section className="research-audit-cta" aria-labelledby="research-audit-cta-title" data-research-cta>
@@ -22,7 +24,7 @@ export function ResearchAuditCta({
             analyticsEvent="research_audit_cta_clicked"
             analyticsProperties={{ destination: href }}
           >
-            Discuss an audit
+            {linkLabel}
             <ArrowUpRight aria-hidden="true" />
           </ResearchActionLink>
         </div>

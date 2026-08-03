@@ -31,9 +31,9 @@ export async function generateMetadata({ params }: ResearchEditionPageProps): Pr
   const edition = getResearchEditionDefinition(slug);
   if (!edition) return {};
   const route = getResearchEditionPath(edition);
-  const title = "How AI chooses UK financial advisers | Studio Baggio";
+  const title = "93 of the UK's top 150 financial advice firms were invisible in AI search";
   const description =
-    "50 tests and 450 AI responses reveal which UK financial advisers become visible, which sources shape the answer and where firms disappear.";
+    "Across 450 answers, AI relied on a narrow source ecosystem while 93 of 150 established UK financial advice firms remained invisible.";
 
   return {
     title,
@@ -81,27 +81,23 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
       <header className="fa3-masthead">
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
-            <p className="fa3-kicker">UK financial advice · AI search study</p>
-            <h1>How AI chooses UK financial advisers<span aria-hidden="true">.</span></h1>
+            <p className="fa3-kicker">How AI chooses UK financial advisers</p>
+            <h1>93 of the UK&rsquo;s top 150 financial advice firms were invisible in AI search<span aria-hidden="true">.</span></h1>
           </div>
           <div className="fa3-masthead__intro">
             <p className="fa3-masthead__standfirst">
-              <span className="fa3-masthead__highlight">
-                Nearly two-thirds of the top 150 UK financial advice firms were invisible in our
-                study.
-              </span>{" "}
-              AI repeatedly relied on directories, publishers and commercial rankings to explain
-              financial decisions and assemble firm shortlists.
+              Across 450 answers, AI repeatedly relied on a small group of directories, public
+              bodies and commercial pages to explain financial decisions and build adviser
+              shortlists.
             </p>
             <p>
-              We asked the questions a real buyer would ask — from &ldquo;what should I do?&rdquo;
-              to &ldquo;which firm should I choose?&rdquo; — and recorded what AI returned.
+              Adviser websites often supplied the evidence without the firm ever being named.
             </p>
             <div className="fa3-masthead__meta" aria-label="Study summary">
-              <span><strong>50</strong> questions</span>
-              <span><strong>450</strong> responses</span>
-              <span><strong>3</strong> AI providers</span>
-              <span><strong>3</strong> runs per question</span>
+              <span><strong>150</strong> firms</span>
+              <span><strong>50</strong> buyer questions</span>
+              <span><strong>450</strong> answers</span>
+              <span><strong>3</strong> AI platforms</span>
             </div>
             <Fa3MethodDrawer
               corpusVersion={report.corpus_version}
@@ -114,109 +110,34 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
       <section className="fa3-section fa3-executive" aria-labelledby="fa3-executive-title">
         <div className="editorial-container fa3-executive__grid">
           <div className="fa3-executive__statement">
-            <p className="fa3-kicker">Executive summary</p>
+            <p className="fa3-kicker">Four headline findings</p>
             <h2 id="fa3-executive-title">
-              Nearly two thirds of the established advisory market was invisible in AI search.
+              AI assembled recommendations from a narrow source ecosystem.
             </h2>
             <p className="fa3-executive__thesis">
-              AI visibility is a source-to-selection problem: firms must first inform the answer,
-              then be clear and credible enough to become a named, cited source.
+              Advice firms supplied much of the expertise. Directories, publishers and commercial
+              rankings often carried the visibility and shaped the shortlist.
             </p>
           </div>
           <div className="fa3-executive__evidence">
             <ul className="fa3-executive__summary-list">
               <li>
-                <strong>93 of 150</strong>
-                <span>established firms were neither named nor had their website cited.</span>
+                <strong>62%</strong>
+                <span><b>93 of 150 firms were invisible.</b> They were neither named nor cited.</span>
               </li>
               <li>
-                <strong>74 of 76</strong>
-                <span>guidance citations used a panel firm&rsquo;s expertise without naming it.</span>
+                <strong>97%</strong>
+                <span><b>74 of 76 citations gave no visible credit.</b> The firm supplied expertise but was not named.</span>
               </li>
               <li>
-                <strong>15 of 25</strong>
-                <span>
-                  selection questions had no single firm recommended by all three AI providers,
-                  despite frequent use of adviser websites as sources across the wider study.
-                </span>
+                <strong>70%</strong>
+                <span><b>Most selections depended on other sources.</b> Only {ownDomainShare}% cited the selected firm&rsquo;s own website.</span>
+              </li>
+              <li>
+                <strong>60%</strong>
+                <span><b>The platforms produced no shared recommendation.</b> For 15 of 25 questions, they had no firm in common.</span>
               </li>
             </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="fa3-section fa3-context" aria-labelledby="fa3-context-title">
-        <div className="editorial-container">
-          <header className="fa3-section-heading">
-            <div>
-              <p className="fa3-kicker">Why this matters now</p>
-              <h2 id="fa3-context-title">
-                AI search is becoming more important in client decision-making
-              </h2>
-            </div>
-            <p>
-              Buyers increasingly use AI search to research their options, compare firms and decide
-              who to contact.
-            </p>
-          </header>
-          <div className="fa3-context__stats">
-            <article>
-              <strong>51%</strong>
-              <p>of consumers say generative AI has changed how they research.</p>
-              <cite>Gartner, 2026</cite>
-            </article>
-            <article>
-              <strong>75%</strong>
-              <p>More than 75% of Google searches are expected to include AI summaries by 2028.</p>
-              <cite>McKinsey, 2025</cite>
-            </article>
-            <article>
-              <strong>42%</strong>
-              <p>AI searchers are 42% more likely to convert than non-AI traffic.</p>
-              <cite>Adobe Analytics, 2026</cite>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="fa3-section fa3-journey" aria-labelledby="fa3-journey-title">
-        <div className="editorial-container">
-          <header className="fa3-section-heading">
-            <div>
-              <p className="fa3-kicker">The 50 questions</p>
-              <h2 id="fa3-journey-title">The questions buyers ask before choosing an adviser</h2>
-            </div>
-            <p>
-              We tested the questions people ask as they move from understanding a financial need
-              to finding and choosing an adviser.
-            </p>
-          </header>
-
-          <div className="fa3-journey__questions">
-            <article>
-              <p>13 guidance questions</p>
-              <h3>What should I do?</h3>
-              <p>
-                These questions examined how AI explained financial decisions and which sources it
-                used to support the answer.
-              </p>
-            </article>
-            <article>
-              <p>12 discoverability questions</p>
-              <h3>Who could help me?</h3>
-              <p>
-                These questions measured which established firms AI named or cited when buyers
-                searched for advice.
-              </p>
-            </article>
-            <article>
-              <p>25 direct firm-selection questions</p>
-              <h3>Which firm should I choose?</h3>
-              <p>
-                Explicit selection tests measured verified candidates, repeatability, sources and
-                how the shortlist changed by buyer need, provider and run.
-              </p>
-            </article>
           </div>
         </div>
       </section>
@@ -225,17 +146,18 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         <div className="editorial-container fa3-credit-gap__grid">
           <div>
             <p className="fa3-kicker">The credit gap</p>
-            <h2 id="fa3-credit-gap-title">A firm can inform the answer and remain invisible to the buyer</h2>
+            <h2 id="fa3-credit-gap-title">Financial advice firms are helping AI answer the question, but almost never receiving the credit.</h2>
           </div>
           <div>
             <p className="fa3-credit-gap__lead">
-              In the 117 guidance answers, panel-firm websites were cited 76 times. In 74 of those
-              76, the answer used the firm&apos;s expertise without ever naming the firm.
+              In 97% of guidance answers that cited a panel firm&rsquo;s website, AI used the
+              firm&rsquo;s expertise without naming the firm to the buyer.
             </p>
             <p>
-              When AI did select firms directly, only {ownDomainShare}% of selections cited the
-              firm&apos;s own website. The rest relied on directories, rankings and reviews. Firms
-              feed the evidence but the buyer never sees them.
+              Panel-firm websites were cited 76 times across 117 guidance answers. The firm was
+              named in only two of those 76 citations. When AI selected a firm directly, only
+              {" "}{ownDomainShare}% of selections cited that firm&rsquo;s own website. The remaining
+              selections relied on other sources, including directories, rankings and reviews.
             </p>
           </div>
         </div>
@@ -247,12 +169,12 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
             <div>
               <p className="fa3-kicker">What happened when AI was asked to choose</p>
               <h2 id="fa3-findings-title">
-                The recommended firms changed from one answer to the next
+                There was no dependable AI shortlist
               </h2>
             </div>
             <p>
-              There was no dependable shortlist. Different platforms, questions and repeated runs
-              produced different firms, and sometimes no firm at all.
+              The firms changed with the platform, the buyer&rsquo;s question and the repeated run.
+              Some answers did not name a firm at all.
             </p>
           </header>
 
@@ -260,20 +182,20 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
             <article>
               <strong>60%</strong>
               <span>{findings.questions_without_candidate_shared_by_all_three_providers} of 25 questions</span>
-              <h3>The three platforms did not agree</h3>
-              <p>For 15 questions, no firm was recommended by OpenAI, Gemini and Perplexity alike.</p>
+              <h3>No firm appeared across all three platforms</h3>
+              <p>For 15 questions, OpenAI, Gemini and Perplexity had no recommended firm in common.</p>
             </article>
             <article>
               <strong>26%</strong>
               <span>{findings.national_answer_count - findings.national_answers_with_candidates} of {findings.national_answer_count} answers</span>
               <h3>AI named no firm at all</h3>
-              <p>Even when asked to choose a firm, 46 answers returned guidance, directories or regulators instead.</p>
+              <p>Across the 20 national firm-selection questions, 46 of 180 answers returned guidance, directories or authorities instead of a financial advice firm.</p>
             </article>
             <article>
               <strong>{findings.entities_reaching_all_four_national_families.length}</strong>
-              <span>of {findings.national_unique_candidate_entities} firms named</span>
-              <h3>Only four had broad visibility</h3>
-              <p>Most firms appeared for one specialist need or in a single answer, rather than across the buyer journey.</p>
+              <span>of {findings.national_unique_candidate_entities} candidates</span>
+              <h3>Only four appeared across every buyer need</h3>
+              <p>Only four of 303 candidates appeared across all four national buyer-need categories. Most visibility was narrow or one-off.</p>
             </article>
           </div>
         </div>
@@ -284,18 +206,18 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <header className="fa3-implication__header">
             <div>
               <p className="fa3-kicker">Who shaped the answer</p>
-              <h2 id="fa3-implication-title">AI kept returning to the same five sources.</h2>
+              <h2 id="fa3-implication-title">Five source brands appeared again and again.</h2>
             </div>
             <div className="fa3-implication__framing">
               <p>
-                A study of 150 UK financial advice firms found that AI recommendations were heavily
-                influenced by a small number of third-party pages, including self-authored commercial
-                rankings with no visible methodology.
+                Directories, public bodies and commercial pages repeatedly supplied the information
+                AI used to explain decisions and build firm shortlists.
               </p>
               <p>
-                One of the most frequently cited commercial sources was a self-authored ranking
-                published by a financial-services firm that placed itself first. The page contained
-                no visible selection methodology.
+                Nephos Group appeared in 47 of 450 answers, making its commercial content the fifth
+                most-cited source brand in the study. One frequently cited Nephos page was a
+                self-authored ranking that placed the group first and showed no visible selection
+                methodology.
               </p>
             </div>
           </header>
@@ -312,13 +234,13 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           </ol>
 
           <p className="fa3-implication__note">
-            Firms need evidence AI can retrieve and credible third-party surfaces that can carry
-            their name into the answer.
+            This finding concerns source influence, not adviser quality. Commercial pages from one
+            financial-services group sat alongside Unbiased, MoneyHelper, VouchedFor and the FCA
+            while most of the established 150-firm panel remained invisible.
           </p>
         </div>
       </section>
 
-      <Fa3QuestionExplorer studyQuestions={report.studyQuestions} />
       <Fa3FamilyViews families={report.nationalFamilies} />
       <Fa3BreadthExplorer
         entities={report.breadth}
@@ -326,7 +248,88 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         questions={report.questions}
       />
 
-      <ResearchAuditCta href="/contact?intent=ai-search-audit" />
+      <section className="fa3-section fa3-context fa3-context--compact" aria-labelledby="fa3-context-title">
+        <div className="editorial-container">
+          <header className="fa3-section-heading">
+            <div>
+              <p className="fa3-kicker">Why this matters now</p>
+              <h2 id="fa3-context-title">AI is becoming part of how clients choose</h2>
+            </div>
+            <p>
+              Buyers increasingly use AI to research options, compare firms and decide who to
+              contact. The route to the shortlist is becoming commercially important.
+            </p>
+          </header>
+          <div className="fa3-context__stats">
+            <article>
+              <strong>75%</strong>
+              <p>More than 75% of Google searches are expected to include AI summaries by 2028.</p>
+              <cite>McKinsey, 2025</cite>
+            </article>
+            <article>
+              <strong>51%</strong>
+              <p>of consumers say generative AI has changed how they research.</p>
+              <cite>Gartner, 2026</cite>
+            </article>
+            <article>
+              <strong>42%</strong>
+              <p>AI searchers are 42% more likely to convert than non-AI traffic.</p>
+              <cite>Adobe Analytics, 2026</cite>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <Fa3QuestionExplorer studyQuestions={report.studyQuestions} />
+
+      <section className="fa3-section fa3-conclusion" aria-labelledby="fa3-conclusion-title">
+        <div className="editorial-container fa3-conclusion__grid">
+          <div>
+            <p className="fa3-kicker">What firms should take from this</p>
+            <h2 id="fa3-conclusion-title">Credibility alone did not produce visibility.</h2>
+          </div>
+          <div className="fa3-conclusion__body">
+            <p>
+              The firms in this study already possess expertise, qualifications and market
+              authority. AI can only use evidence it can retrieve, understand and connect to a
+              buyer&rsquo;s question.
+            </p>
+            <ol>
+              <li>
+                <div>
+                  <strong>Answer the questions buyers actually ask.</strong>
+                  <span>Structure the firm&rsquo;s expertise so AI can retrieve and use it.</span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <strong>Connect that expertise to the firm&rsquo;s name.</strong>
+                  <span>Build credible first-party and third-party evidence that carries the firm into the shortlist.</span>
+                </div>
+              </li>
+            </ol>
+            <p>
+              Without both, a firm may help produce the answer while remaining invisible to the
+              buyer.
+            </p>
+            <div className="fa3-conclusion__experiment">
+              <strong>The next test</strong>
+              <p>
+                Through Calm Authority, we have published transparent, evidence-backed sources
+                built around the same buyer questions. We will repeat the frozen study to test
+                whether better sources change the firms AI recommends.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ResearchAuditCta
+        href="/contact?intent=ai-search-audit"
+        title="Find out why your firm appears, disappears or gets cited without credit."
+        body="Studio Baggio audits the buyer questions that matter, identifies the sources shaping the answers and sets out the evidence your firm needs to enter those consideration sets."
+        linkLabel="Discuss your firm's visibility"
+      />
     </main>
   );
 }
