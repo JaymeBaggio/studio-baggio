@@ -11993,7 +11993,13 @@ body:has(.home-4b.contact-page) footer {
   line-height: 1;
 }
 
-.fa3-implication__header > p {
+.fa3-implication__framing {
+  display: grid;
+  max-width: 62ch;
+  gap: 10px;
+}
+
+.fa3-implication__framing p {
   max-width: 62ch;
   margin: 0;
   color: #3f4655;

@@ -286,11 +286,18 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               <p className="fa3-kicker">Who shaped the answer</p>
               <h2 id="fa3-implication-title">AI kept returning to the same five sources.</h2>
             </div>
-            <p>
-              Unbiased, MoneyHelper, VouchedFor, the FCA and Nephos Group were the five most
-              frequently cited source brands across the 450 responses. Their material appeared
-              repeatedly while most established advice firms remained absent.
-            </p>
+            <div className="fa3-implication__framing">
+              <p>
+                A study of 150 UK financial advice firms found that AI recommendations were heavily
+                influenced by a small number of third-party pages, including self-authored commercial
+                rankings with no visible methodology.
+              </p>
+              <p>
+                One of the most frequently cited commercial sources was a self-authored ranking
+                published by a financial-services firm that placed itself first. The page contained
+                no visible selection methodology.
+              </p>
+            </div>
           </header>
 
           <ol className="fa3-implication__sources" aria-label="Five most frequently cited source brands">
