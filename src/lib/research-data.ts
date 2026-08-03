@@ -517,8 +517,12 @@ function validateManifest(
   edition: ResearchEditionDefinition
 ) {
   const { expected } = edition;
-  assertEqual(manifest.benchmark_name, edition.franchise, "Unexpected benchmark name");
-  assertEqual(manifest.edition, edition.title, "Unexpected benchmark edition");
+  assertEqual(
+    manifest.benchmark_name,
+    "The Studio Baggio AI Discovery Benchmark",
+    "Unexpected frozen study identifier"
+  );
+  assertEqual(manifest.edition, edition.title, "Unexpected study edition");
   assertEqual(manifest.phase, "production", "Only a production package can be rendered");
   assertEqual(
     manifest.package_status,

@@ -75,7 +75,7 @@ export type ResearchEditionDefinition = {
 };
 
 export const researchFranchise = {
-  name: "The Studio Baggio AI Discovery Benchmark",
+  name: "The Studio Baggio AI Discovery Study",
   title: "Research",
   description:
     "Reproducible evidence on how expert-led firms appear in grounded AI search answers.",
@@ -128,7 +128,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
     inclusionRule:
       "The frozen panel contains 91 eligible consumer-facing brands from FTAdviser's 2025 Top 100, nine direct-consumer boutique replacements, 25 additional national brands and 25 regional or specialist firms. Every active brand passed the same domain, legal-entity and FCA-relationship checks.",
     disclosure:
-      "FTAdviser, the FCA and the other sources used to construct and verify the panel did not sponsor, review or endorse this benchmark. The panel is designed to cover recognisable national firms alongside regional and specialist practices; it is not a list of the UK's 150 largest advisers or a census of FCA-authorised firms."
+      "FTAdviser, the FCA and the other sources used to construct and verify the panel did not sponsor, review or endorse this study. The panel is designed to cover recognisable national firms alongside regional and specialist practices; it is not a list of the UK's 150 largest advisers or a census of FCA-authorised firms."
   },
   method: {
     overview:
@@ -191,10 +191,10 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
       "The matcher measures the frozen 150-firm panel. Firms outside the panel can appear in an answer but do not enter the panel ranking.",
       "Observation is not a recommendation, quality judgement or measure of suitability for financial advice.",
       "Source-backed means that provider grounding evidence was recoverable; it does not by itself prove factual accuracy, jurisdictional relevance, suitability or buyer usefulness.",
-      "The public evidence shows where firms appeared. Causal diagnosis and remediation are outside the benchmark."
+      "The public evidence shows where firms appeared. Causal diagnosis and remediation are outside the study."
     ],
     disclosure:
-      "Studio Baggio provides paid SEO and AI Search Opportunity Audits. Buying an audit cannot change a firm's inclusion, evidence or treatment in this benchmark.",
+      "Studio Baggio provides paid SEO and AI Search Opportunity Audits. Buying an audit cannot change a firm's inclusion, evidence or treatment in this study.",
     changeLog: [
       {
         version: "fa-market-panel-method-1.0",
@@ -217,7 +217,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
     title: "Get a clear view of your firm's AI search visibility and opportunities.",
     body:
       "The SEO and AI Search Opportunity Audit investigates the likely causes, identifies what to test and sets out what to do next.",
-    href: "/contact?utm_source=research&utm_medium=benchmark&utm_campaign=uk-financial-advice-2026&utm_content=audit-cta"
+    href: "/contact?utm_source=research&utm_medium=study&utm_campaign=uk-financial-advice-2026&utm_content=audit-cta"
   }
 };
 

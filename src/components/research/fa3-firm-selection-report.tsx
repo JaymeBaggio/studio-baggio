@@ -326,7 +326,7 @@ export function Fa3FamilyViews({ families }: { families: FamilyView[] }) {
         <header className="fa3-section-heading">
           <div>
             <p className="fa3-kicker">Different needs, different leaders</p>
-            <h2 id="fa3-families-title">No firm led every type of question</h2>
+            <h2 id="fa3-families-title">AI recommended different firms for different buyer needs</h2>
           </div>
           <p>
             The firm recommended most often changed with the buyer&rsquo;s financial need.
@@ -397,7 +397,7 @@ export function Fa3BreadthExplorer({
         <header className="fa3-section-heading fa3-section-heading--compact">
           <div>
             <p className="fa3-kicker">Selection breadth</p>
-            <h2 id="fa3-breadth-title">Which firms appeared across more buyer needs</h2>
+            <h2 id="fa3-breadth-title">Only four firms appeared across all four buyer needs</h2>
           </div>
           <p>
             The first 20 firms and advisers found in national answers are shown by default. Search

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   Fa3BreadthExplorer,
@@ -98,10 +99,10 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               Adviser websites often supplied the evidence without the firm ever being named.
             </p>
             <div className="fa3-masthead__meta" aria-label="Study summary">
-              <span><strong>150</strong> firms</span>
               <span><strong>50</strong> buyer questions</span>
               <span><strong>450</strong> answers</span>
               <span><strong>3</strong> AI platforms</span>
+              <span><strong>150</strong> firms</span>
             </div>
             <Fa3MethodDrawer
               corpusVersion={report.corpus_version}
@@ -139,12 +140,21 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               </li>
               <li>
                 <strong>60%</strong>
-                <span><b>The platforms produced no shared recommendation.</b> For 15 of 25 questions, they had no firm in common.</span>
+                <span><b>When AI was asked to choose a firm, the platforms produced no shared recommendation 60% of the time.</b></span>
               </li>
             </ul>
           </div>
         </div>
       </section>
+
+      <aside className="fa3-inline-cta" aria-label="AI Search Opportunity Audit">
+        <div className="editorial-container">
+          <p>Want to know where your firm appears in AI search?</p>
+          <Link href="/contact?intent=ai-search-audit&utm_content=research-inline-cta">
+            See what an AI Search Opportunity Audit covers →
+          </Link>
+        </div>
+      </aside>
 
       <section className="fa3-section fa3-credit-gap" aria-labelledby="fa3-credit-gap-title">
         <div className="editorial-container fa3-credit-gap__grid">
@@ -185,15 +195,15 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <div className="fa3-findings__list">
             <article>
               <strong>60%</strong>
-              <span>{findings.questions_without_candidate_shared_by_all_three_providers} of 25 questions</span>
-              <h3>No firm appeared across all three platforms</h3>
-              <p>For 15 questions, OpenAI, Gemini and Perplexity had no recommended firm in common.</p>
+              <span>when AI was asked to choose a firm</span>
+              <h3>The platforms often returned entirely different shortlists</h3>
+              <p>OpenAI, Gemini and Perplexity had no recommended firm in common 60% of the time.</p>
             </article>
             <article>
               <strong>26%</strong>
               <span>{findings.national_answer_count - findings.national_answers_with_candidates} of {findings.national_answer_count} answers</span>
               <h3>AI named no firm at all</h3>
-              <p>Across the 20 national firm-selection questions, 46 of 180 answers returned guidance, directories or authorities instead of a financial advice firm.</p>
+              <p>When AI was asked to choose a firm nationally, 46 of 180 answers returned guidance, directories or authorities instead of a financial advice firm.</p>
             </article>
             <article>
               <strong>{findings.entities_reaching_all_four_national_families.length}</strong>
@@ -218,10 +228,17 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
                 AI used to explain decisions and build firm shortlists.
               </p>
               <p>
-                Nephos Group appeared in 47 of 450 answers, making its commercial content the fifth
-                most-cited source brand in the study. One frequently cited Nephos page was a
-                self-authored ranking that placed the group first and showed no visible selection
-                methodology.
+                For example, Nephos Group&rsquo;s{" "}
+                <a
+                  href="https://www.nephosgroup.com/nephos-blog/10-best-financial-advisers-in-the-uk/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  “10 best financial advisers in the UK”
+                </a>{" "}
+                page was cited 21 times and tied as the most-cited individual direct page in the
+                firm-selection questions. The commercial ranking placed Nephos first and showed no
+                visible selection methodology.
               </p>
             </div>
           </header>
@@ -246,11 +263,6 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
       </section>
 
       <Fa3FamilyViews families={report.nationalFamilies} />
-      <Fa3BreadthExplorer
-        entities={report.breadth}
-        searchEntities={report.searchEntities}
-        questions={report.questions}
-      />
 
       <section className="fa3-section fa3-context fa3-context--compact" aria-labelledby="fa3-context-title">
         <div className="editorial-container">
@@ -286,6 +298,12 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
 
       <Fa3QuestionExplorer studyQuestions={report.studyQuestions} />
 
+      <Fa3BreadthExplorer
+        entities={report.breadth}
+        searchEntities={report.searchEntities}
+        questions={report.questions}
+      />
+
       <section className="fa3-section fa3-conclusion" aria-labelledby="fa3-conclusion-title">
         <div className="editorial-container fa3-conclusion__grid">
           <div>
@@ -316,14 +334,6 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               Without both, a firm may help produce the answer while remaining invisible to the
               buyer.
             </p>
-            <div className="fa3-conclusion__experiment">
-              <strong>The next test</strong>
-              <p>
-                Through Calm Authority, we have published transparent, evidence-backed sources
-                built around the same buyer questions. We will repeat the frozen study to test
-                whether better sources change the firms AI recommends.
-              </p>
-            </div>
           </div>
         </div>
       </section>

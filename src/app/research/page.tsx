@@ -46,7 +46,7 @@ export default function ResearchIndexPage() {
               <p>{researchFranchise.methodologyPrinciple}</p>
               <Link
                 className="research-index-audit-link"
-                href="/contact?utm_source=research&utm_medium=benchmark&utm_campaign=research-index&utm_content=audit-cta"
+                href="/contact?utm_source=research&utm_medium=study&utm_campaign=research-index&utm_content=audit-cta"
               >
                 Need your firm&apos;s view? Discuss an audit →
               </Link>
@@ -75,7 +75,7 @@ export default function ResearchIndexPage() {
                   </div>
                 </dl>
                 <ResearchActionLink href={getResearchEditionPath(edition)}>
-                  Open the benchmark
+                  Open the study
                   <ArrowRight aria-hidden="true" />
                 </ResearchActionLink>
               </li>
