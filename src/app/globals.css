@@ -14004,6 +14004,8 @@ body:has(.home-4b.contact-page) footer {
     max-height: 100dvh;
     margin-right: 0;
   }
+}
+
 /* AI Set Up Guide article figures */
 .home-4b.insight-article-page .insight-article-setup-figure {
   margin: 44px 0 12px;
