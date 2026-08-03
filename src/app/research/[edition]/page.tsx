@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   Fa3BreadthExplorer,
   Fa3FamilyViews,
-  Fa3LocalView,
   Fa3MethodDrawer,
   Fa3QuestionExplorer
 } from "@/components/research/fa3-firm-selection-report";
@@ -59,8 +57,6 @@ export async function generateMetadata({ params }: ResearchEditionPageProps): Pr
   };
 }
 
-const formatNumber = new Intl.NumberFormat("en-GB");
-
 const combinedSources = [
   { name: "Unbiased", answers: 168, share: "37.3%" },
   { name: "MoneyHelper", answers: 127, share: "28.2%" },
@@ -90,8 +86,11 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           </div>
           <div className="fa3-masthead__intro">
             <p className="fa3-masthead__standfirst">
-              Nearly two-thirds of 150 UK financial advice firms were invisible in our study. AI
-              repeatedly relied on directories, publishers and commercial rankings to explain
+              <span className="fa3-masthead__highlight">
+                Nearly two-thirds of the top 150 UK financial advice firms were invisible in our
+                study.
+              </span>{" "}
+              AI repeatedly relied on directories, publishers and commercial rankings to explain
               financial decisions and assemble firm shortlists.
             </p>
             <p>
@@ -104,6 +103,10 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               <span><strong>3</strong> AI providers</span>
               <span><strong>3</strong> runs per question</span>
             </div>
+            <Fa3MethodDrawer
+              corpusVersion={report.corpus_version}
+              selectionQuestionCount={report.denominators.questions}
+            />
           </div>
         </div>
       </header>
@@ -111,20 +114,67 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
       <section className="fa3-section fa3-executive" aria-labelledby="fa3-executive-title">
         <div className="editorial-container fa3-executive__grid">
           <div className="fa3-executive__statement">
-            <p className="fa3-kicker">Headline finding</p>
+            <p className="fa3-kicker">Executive summary</p>
             <h2 id="fa3-executive-title">
-              Nearly two-thirds of the established-market panel disappeared from view.
+              Nearly two thirds of the established advisory market was invisible in AI search.
             </h2>
+            <p className="fa3-executive__thesis">
+              AI visibility is a source-to-selection problem: firms must first inform the answer,
+              then be clear and credible enough to become a named, cited source.
+            </p>
           </div>
           <div className="fa3-executive__evidence">
-            <p className="fa3-executive__ratio"><strong>93</strong> of 150</p>
+            <ul className="fa3-executive__summary-list">
+              <li>
+                <strong>93 of 150</strong>
+                <span>established firms were neither named nor had their website cited.</span>
+              </li>
+              <li>
+                <strong>74 of 76</strong>
+                <span>guidance citations used a panel firm&rsquo;s expertise without naming it.</span>
+              </li>
+              <li>
+                <strong>15 of 25</strong>
+                <span>
+                  selection questions had no single firm recommended by all three AI providers,
+                  despite frequent use of adviser websites as sources across the wider study.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="fa3-section fa3-context" aria-labelledby="fa3-context-title">
+        <div className="editorial-container">
+          <header className="fa3-section-heading">
+            <div>
+              <p className="fa3-kicker">Why this matters now</p>
+              <h2 id="fa3-context-title">
+                AI search is becoming more important in client decision-making
+              </h2>
+            </div>
             <p>
-              firms were neither named nor had their website cited across the study.
+              Buyers increasingly use AI search to research their options, compare firms and decide
+              who to contact.
             </p>
-            <p className="fa3-executive__thesis">
-              AI visibility is a source-to-selection problem: a firm must be useful enough to inform
-              the answer, then clear and credible enough to become a named candidate.
-            </p>
+          </header>
+          <div className="fa3-context__stats">
+            <article>
+              <strong>51%</strong>
+              <p>of consumers say generative AI has changed how they research.</p>
+              <cite>Gartner, 2026</cite>
+            </article>
+            <article>
+              <strong>75%</strong>
+              <p>More than 75% of Google searches are expected to include AI summaries by 2028.</p>
+              <cite>McKinsey, 2025</cite>
+            </article>
+            <article>
+              <strong>42%</strong>
+              <p>AI searchers are 42% more likely to convert than non-AI traffic.</p>
+              <cite>Adobe Analytics, 2026</cite>
+            </article>
           </div>
         </div>
       </section>
@@ -150,9 +200,6 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
                 These questions examined how AI explained financial decisions and which sources it
                 used to support the answer.
               </p>
-              <dl>
-                <div><dt>Guidance answers naming a panel firm</dt><dd>5 of 117</dd></div>
-              </dl>
             </article>
             <article>
               <p>12 discoverability questions</p>
@@ -161,9 +208,6 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
                 These questions measured which established firms AI named or cited when buyers
                 searched for advice.
               </p>
-              <dl>
-                <div><dt>Firms invisible</dt><dd>93 of 150</dd></div>
-              </dl>
             </article>
             <article>
               <p>25 direct firm-selection questions</p>
@@ -172,10 +216,6 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
                 Explicit selection tests measured verified candidates, repeatability, sources and
                 how the shortlist changed by buyer need, provider and run.
               </p>
-              <dl>
-                <div><dt>National answers with candidates</dt><dd>{findings.national_answers_with_candidates} of {findings.national_answer_count}</dd></div>
-                <div><dt>Distinct national candidates</dt><dd>{findings.national_unique_candidate_entities}</dd></div>
-              </dl>
             </article>
           </div>
         </div>
@@ -209,7 +249,9 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               <h2 id="fa3-source-title">A small group of third parties repeatedly framed the market</h2>
             </div>
             <p>
-              These are answer-level citation counts across all 450 responses.
+              Across all 450 responses, AI repeatedly drew on the same directories, regulators and
+              publishers. The sources included commercial &ldquo;best firm&rdquo; rankings, some
+              self-authored, with no visible explanation of how firms were assessed or ordered.
             </p>
           </header>
 
@@ -233,72 +275,35 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         <div className="editorial-container">
           <header className="fa3-section-heading">
             <div>
-              <p className="fa3-kicker">Firm-selection findings</p>
-              <h2 id="fa3-findings-title">AI does not reproduce one stable “best advisers” market</h2>
+              <p className="fa3-kicker">What happened when AI was asked to choose</p>
+              <h2 id="fa3-findings-title">
+                The recommended firms changed from one answer to the next
+              </h2>
             </div>
             <p>
-              There is no single AI &ldquo;best advisers&rdquo; list. The shortlist changes with
-              every question.
+              There was no dependable shortlist. Different platforms, questions and repeated runs
+              produced different firms, and sometimes no firm at all.
             </p>
           </header>
 
           <div className="fa3-findings__list">
             <article>
-              <strong>{findings.questions_without_candidate_shared_by_all_three_providers} of 25</strong>
-              <h3>No common candidate across all providers</h3>
-              <p>The shortlist changed materially with the provider, question and run.</p>
+              <strong>60%</strong>
+              <span>{findings.questions_without_candidate_shared_by_all_three_providers} of 25 questions</span>
+              <h3>The three platforms did not agree</h3>
+              <p>For 15 questions, no firm was recommended by OpenAI, Gemini and Perplexity alike.</p>
             </article>
             <article>
-              <strong>{findings.national_outside_panel_candidate_entities} of {findings.national_unique_candidate_entities}</strong>
-              <h3>National candidates came from outside the panel</h3>
-              <p>The established 150-brand benchmark captured only part of the market AI presented.</p>
-            </article>
-            <article>
-              <strong>{findings.national_answer_count - findings.national_answers_with_candidates} of {findings.national_answer_count}</strong>
-              <h3>Explicit requests still produced no firm</h3>
-              <p>These answers returned guidance, directories or authorities instead of a verified candidate.</p>
+              <strong>26%</strong>
+              <span>{findings.national_answer_count - findings.national_answers_with_candidates} of {findings.national_answer_count} answers</span>
+              <h3>AI named no firm at all</h3>
+              <p>Even when asked to choose a firm, 46 answers returned guidance, directories or regulators instead.</p>
             </article>
             <article>
               <strong>{findings.entities_reaching_all_four_national_families.length}</strong>
-              <h3>Firms reached all four national needs</h3>
-              <p>Most visibility was specialist, narrow or one-off rather than broad and repeatable.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <Fa3QuestionExplorer questions={report.questions} />
-      <Fa3FamilyViews families={report.nationalFamilies} />
-      <Fa3BreadthExplorer entities={report.breadth} searchEntities={report.searchEntities} />
-      <Fa3LocalView questions={report.questions} />
-
-      <section className="fa3-section fa3-context" aria-labelledby="fa3-context-title">
-        <div className="editorial-container">
-          <header className="fa3-section-heading">
-            <div>
-              <p className="fa3-kicker">Why this matters now</p>
-              <h2 id="fa3-context-title">AI is becoming the decision layer</h2>
-            </div>
-            <p>
-              AI answers are not a niche channel. They are fast becoming the primary route buyers
-              use to make decisions.
-            </p>
-          </header>
-          <div className="fa3-context__stats">
-            <article>
-              <strong>70%</strong>
-              <p>Top 3 Google search results take 70% of clicks.</p>
-              <cite>First Page Sage, 2026</cite>
-            </article>
-            <article>
-              <strong>75%</strong>
-              <p>AI search is expected to reach 75% adoption by 2028.</p>
-              <cite>McKinsey, 2025</cite>
-            </article>
-            <article>
-              <strong>42%</strong>
-              <p>AI searchers are 42% more likely to convert than non-AI traffic.</p>
-              <cite>Adobe Analytics, 2026</cite>
+              <span>of {findings.national_unique_candidate_entities} firms named</span>
+              <h3>Only four had broad visibility</h3>
+              <p>Most firms appeared for one specialist need or in a single answer, rather than across the buyer journey.</p>
             </article>
           </div>
         </div>
@@ -313,30 +318,20 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <div>
             <p>
               A small number of directories and publishers control the information AI uses to build
-              its answers. Firms that do not appear in those sources — or do not produce clear,
-              citable evidence of their own — are absent from the consideration set entirely.
+              its answers. Firms that do not appear in those sources, or do not produce clear,
+              citable evidence of their own, are absent from the consideration set entirely.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="fa3-section fa3-method" aria-labelledby="fa3-method-title">
-        <div className="editorial-container fa3-method__grid">
-          <div>
-            <p className="fa3-kicker">Method, evidence and limitations</p>
-            <h2 id="fa3-method-title">How the study was run</h2>
-          </div>
-          <div>
-            <p>
-              50 questions across guidance, discoverability and direct firm selection, run through
-              OpenAI, Gemini and Perplexity on 30 and 31 July 2026. Five questions were deliberately
-              repeated, giving 45 distinct wordings.
-            </p>
-            <Fa3MethodDrawer report={report} />
-            <Link className="fa3-method__link" href="/research/uk-financial-advice-2026/method">Read the full method</Link>
-          </div>
-        </div>
-      </section>
+      <Fa3QuestionExplorer studyQuestions={report.studyQuestions} />
+      <Fa3FamilyViews families={report.nationalFamilies} />
+      <Fa3BreadthExplorer
+        entities={report.breadth}
+        searchEntities={report.searchEntities}
+        questions={report.questions}
+      />
 
       <ResearchAuditCta href="/contact?intent=ai-search-audit" />
     </main>
