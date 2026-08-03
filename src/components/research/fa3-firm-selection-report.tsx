@@ -21,10 +21,12 @@ const familyLabels: Record<string, string> = {
 };
 
 const tierLabels: Record<string, string> = {
-  broad_repeat_confirmed_selection: "Broad, repeat-confirmed",
-  multi_family_selection: "Selected across several scenarios",
-  specialist_repeat_confirmed_selection: "Specialist, repeat-confirmed",
-  one_off_selection: "One-off selection"
+  broad_repeat_confirmed_selection: "Selected repeatedly across topics",
+  multi_family_selection: "Selected across several topics",
+  specialist_repeat_confirmed_selection: "Selected for one specialism",
+  one_off_selection: "Selected once",
+  local_only_selection: "Local only",
+  not_selected: "Not selected"
 };
 
 const pct = new Intl.NumberFormat("en-GB", {
@@ -110,11 +112,6 @@ function QuestionDrawerContent({ question }: { question: QuestionView }) {
         )}
       </div>
 
-      <p className="fa3-drawer-note">
-        This view reports candidate selection, not adviser quality or suitability. Outside-panel
-        candidates are retained. Eligibility is applied only in the separate partial
-        opportunity-adjusted analysis.
-      </p>
     </div>
   );
 }
@@ -220,12 +217,11 @@ export function Fa3FamilyViews({ families }: { families: FamilyView[] }) {
       <div className="editorial-container">
         <header className="fa3-section-heading">
           <div>
-            <p className="fa3-kicker">National family views</p>
-            <h2 id="fa3-families-title">Different needs produce different shortlists</h2>
+            <p className="fa3-kicker">Different needs, different shortlists</p>
+            <h2 id="fa3-families-title">The shortlist changes with the question</h2>
           </div>
           <p>
-            Ranked by how many of the 45 answers in each five-question family recommended each
-            firm. This records selection in this capture, not adviser quality.
+            Ranked by how many of the 45 answers in each five-question group recommended each firm.
           </p>
         </header>
         <div className="fa3-family-columns">
@@ -236,34 +232,42 @@ export function Fa3FamilyViews({ families }: { families: FamilyView[] }) {
   );
 }
 
-export function Fa3BreadthExplorer({ entities }: { entities: ReportEntity[] }) {
+export function Fa3BreadthExplorer({
+  entities,
+  searchEntities
+}: {
+  entities: ReportEntity[];
+  searchEntities: ReportEntity[];
+}) {
   const [search, setSearch] = useState("");
   const [scope, setScope] = useState("all");
   const [tier, setTier] = useState("all");
 
   const visible = useMemo(() => {
     const query = search.trim().toLocaleLowerCase("en-GB");
-    const filtered = entities.filter((entity) => {
+    const isFiltering = Boolean(query || scope !== "all" || tier !== "all");
+    const source = isFiltering ? searchEntities : entities;
+    const filtered = source.filter((entity) => {
       const matchesSearch = !query || entity.canonical_name.toLocaleLowerCase("en-GB").includes(query);
       const matchesScope = scope === "all" || entity.panel_status === scope;
       const matchesTier = tier === "all" || entity.display_tier === tier;
       return matchesSearch && matchesScope && matchesTier;
     });
-    if (query || scope !== "all" || tier !== "all") return filtered;
+    if (isFiltering) return filtered;
     return filtered.slice(0, 20);
-  }, [entities, scope, search, tier]);
+  }, [entities, scope, search, searchEntities, tier]);
 
   return (
     <section className="fa3-section fa3-breadth-section" aria-labelledby="fa3-breadth-title">
       <div className="editorial-container">
         <header className="fa3-section-heading fa3-section-heading--compact">
           <div>
-            <p className="fa3-kicker">Cross-scenario selection breadth</p>
+            <p className="fa3-kicker">Selection breadth</p>
             <h2 id="fa3-breadth-title">Which firms entered more consideration sets</h2>
           </div>
           <p>
-            The order changes materially when an engine or question family is removed. The primary
-            view therefore uses tiers; the first 20 are shown until you search or filter.
+            The first 20 national candidates are shown by default. Search covers every national or
+            local candidate and every firm in the 150-firm panel, including firms not selected.
           </p>
         </header>
 
@@ -272,7 +276,7 @@ export function Fa3BreadthExplorer({ entities }: { entities: ReportEntity[] }) {
             <span>Find a firm or adviser</span>
             <span className="fa3-search-field">
               <Search aria-hidden="true" />
-              <input value={search} onChange={(event) => setSearch(event.target.value)} type="search" placeholder="Search all candidates" />
+              <input value={search} onChange={(event) => setSearch(event.target.value)} type="search" placeholder="Search every firm" />
             </span>
           </label>
           <label>
@@ -293,7 +297,9 @@ export function Fa3BreadthExplorer({ entities }: { entities: ReportEntity[] }) {
         </div>
 
         <p className="fa3-result-count" aria-live="polite">
-          Showing {visible.length}{!search && scope === "all" && tier === "all" ? ` of ${entities.length}` : ""} candidates.
+          {!search && scope === "all" && tier === "all"
+            ? `Showing ${visible.length} of ${entities.length} national candidates.`
+            : `Showing ${visible.length} ${visible.length === 1 ? "firm" : "firms"}.`}
         </p>
 
         <div className="fa3-breadth-table-wrap" role="region" aria-label="Cross-scenario selection breadth" tabIndex={0}>
@@ -307,6 +313,7 @@ export function Fa3BreadthExplorer({ entities }: { entities: ReportEntity[] }) {
                 <th scope="col">Wealth</th>
                 <th scope="col">Pensions</th>
                 <th scope="col">Life events</th>
+                <th scope="col">Local</th>
               </tr>
             </thead>
             <tbody>
@@ -321,6 +328,7 @@ export function Fa3BreadthExplorer({ entities }: { entities: ReportEntity[] }) {
                   {familyOrder.slice(0, 4).map((family) => (
                     <td key={family}>{percentage(entity.family_scores?.[family])}</td>
                   ))}
+                  <td>{entity.local_score ? percentage(entity.local_score) : "—"}</td>
                 </tr>
               ))}
             </tbody>
@@ -342,8 +350,7 @@ export function Fa3LocalView({ questions }: { questions: QuestionView[] }) {
             <h2 id="fa3-local-title">Five matched city questions</h2>
           </div>
           <p>
-            The wording changes only the location. These results never enter the national breadth
-            view, and “based in” requires verified local presence in the eligibility analysis.
+            The wording changes only the location. These results are separate from the national view.
           </p>
         </header>
         <div className="fa3-local-grid">

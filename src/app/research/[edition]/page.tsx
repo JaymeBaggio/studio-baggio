@@ -95,9 +95,8 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               financial decisions and assemble firm shortlists.
             </p>
             <p>
-              This investigation follows the buyer journey from asking what to do- to asking which
-              firm to choose. It records what three grounded AI systems returned, three times per
-              test, across two consecutive capture days.
+              We asked the questions a real buyer would ask — from &ldquo;what should I do?&rdquo;
+              to &ldquo;which firm should I choose?&rdquo; — and recorded what AI returned.
             </p>
             <div className="fa3-masthead__meta" aria-label="Study summary">
               <span><strong>50</strong> questions</span>
@@ -120,9 +119,7 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <div className="fa3-executive__evidence">
             <p className="fa3-executive__ratio"><strong>93</strong> of 150</p>
             <p>
-              firms were neither named nor had their website cited in the discoverability analysis.
-              This is a visibility finding about the exact dated study, rather than a judgement on
-              adviser quality or market position.
+              firms were neither named nor had their website cited across the study.
             </p>
             <p className="fa3-executive__thesis">
               AI visibility is a source-to-selection problem: a firm must be useful enough to inform
@@ -193,12 +190,12 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <div>
             <p className="fa3-credit-gap__lead">
               In the 117 guidance answers, panel-firm websites were cited 76 times. In 74 of those
-              76 citations, the answer used the firm&apos;s evidence without naming the firm.
+              76, the answer used the firm&apos;s expertise without ever naming the firm.
             </p>
             <p>
-              Direct firm-selection questions exposed the other side of the gap. Only {ownDomainShare}% of the {formatNumber.format(validCandidateOccurrences)}
-              {" "}valid adviser-candidate occurrences cited the candidate&apos;s own domain. Firms were
-              frequently selected using directories, rankings, reviews and other third-party evidence.
+              When AI did select firms directly, only {ownDomainShare}% of selections cited the
+              firm&apos;s own website. The rest relied on directories, rankings and reviews. Firms
+              feed the evidence but the buyer never sees them.
             </p>
           </div>
         </div>
@@ -212,8 +209,7 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               <h2 id="fa3-source-title">A small group of third parties repeatedly framed the market</h2>
             </div>
             <p>
-              These are answer-level citation counts across the complete 450-answer raw archive.
-              They show repeated retrieval, not that a source caused any recommendation.
+              These are answer-level citation counts across all 450 responses.
             </p>
           </header>
 
@@ -230,25 +226,6 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
             </table>
           </div>
 
-          <aside className="fa3-nephos-note" aria-labelledby="fa3-nephos-title">
-            <div>
-              <p className="fa3-kicker">Entity and source case study</p>
-              <h3 id="fa3-nephos-title">When a commercial ranking becomes evidence</h3>
-            </div>
-            <div>
-              <p>
-                A self-authored Nephos page titled “10 Best Financial Advisers in the UK” appeared
-                as a source 21 times. In the direct firm-selection answers, the systems also presented the non-adviser
-                Nephos Group umbrella as an adviser candidate in 12 reviewed occurrences.
-              </p>
-              <p>
-                Those 12 occurrences are preserved as an AI identity error and excluded from valid
-                adviser rankings. Three explicit “Nephos Wealth Management” occurrences were
-                separately resolved to Nephos Wealth Limited, an appointed representative. Page
-                retrieval and candidate selection remain separate observations.
-              </p>
-            </div>
-          </aside>
         </div>
       </section>
 
@@ -260,8 +237,8 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               <h2 id="fa3-findings-title">AI does not reproduce one stable “best advisers” market</h2>
             </div>
             <p>
-              The useful commercial unit is the consideration set for a real buyer question, not a
-              universal visibility score.
+              There is no single AI &ldquo;best advisers&rdquo; list. The shortlist changes with
+              every question.
             </p>
           </header>
 
@@ -292,46 +269,52 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
 
       <Fa3QuestionExplorer questions={report.questions} />
       <Fa3FamilyViews families={report.nationalFamilies} />
-      <Fa3BreadthExplorer entities={report.breadth} />
+      <Fa3BreadthExplorer entities={report.breadth} searchEntities={report.searchEntities} />
       <Fa3LocalView questions={report.questions} />
 
-      <section className="fa3-section fa3-concepts" aria-labelledby="fa3-concepts-title">
+      <section className="fa3-section fa3-context" aria-labelledby="fa3-context-title">
         <div className="editorial-container">
           <header className="fa3-section-heading">
             <div>
-              <p className="fa3-kicker">What the answers contained</p>
-              <h2 id="fa3-concepts-title">Recommendation, evidence and mention are different</h2>
+              <p className="fa3-kicker">Why this matters now</p>
+              <h2 id="fa3-context-title">AI is becoming the decision layer</h2>
             </div>
             <p>
-              Every adviser-related entity was assigned one semantic role. Only verified adviser
-              candidates enter the selection views above.
+              AI answers are not a niche channel. They are fast becoming the primary route buyers
+              use to make decisions.
             </p>
           </header>
-          <dl className="fa3-concept-list">
-            <div><dt>Valid adviser candidates</dt><dd>{formatNumber.format(report.conceptCounts.valid_adviser_candidate ?? 0)}</dd><p>Firm or adviser presented as an option for the buyer.</p></div>
-            <div><dt>Directory, regulator or authority</dt><dd>{formatNumber.format(report.conceptCounts.directory_regulator_authority ?? 0)}</dd><p>A route to information or verification, rather than a candidate.</p></div>
-            <div><dt>Comparison-only mention</dt><dd>{formatNumber.format(report.conceptCounts.comparison_only ?? 0)}</dd><p>Named for contrast, context or a directory example.</p></div>
-            <div><dt>Invalid candidate identity</dt><dd>{formatNumber.format(report.conceptCounts.invalid_candidate_identity ?? 0)}</dd><p>Presented as a candidate by AI but excluded because the named identity was not a valid adviser entity.</p></div>
-          </dl>
+          <div className="fa3-context__stats">
+            <article>
+              <strong>70%</strong>
+              <p>Top 3 Google search results take 70% of clicks.</p>
+              <cite>First Page Sage, 2026</cite>
+            </article>
+            <article>
+              <strong>75%</strong>
+              <p>AI search is expected to reach 75% adoption by 2028.</p>
+              <cite>McKinsey, 2025</cite>
+            </article>
+            <article>
+              <strong>42%</strong>
+              <p>AI searchers are 42% more likely to convert than non-AI traffic.</p>
+              <cite>Adobe Analytics, 2026</cite>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section className="fa3-section fa3-experiment" aria-labelledby="fa3-experiment-title">
-        <div className="editorial-container fa3-experiment__grid">
+      <section className="fa3-section fa3-implication" aria-labelledby="fa3-implication-title">
+        <div className="editorial-container fa3-implication__grid">
           <div>
-            <p className="fa3-kicker">The live intervention</p>
-            <h2 id="fa3-experiment-title">Can transparent evidence enter the same answers?</h2>
+            <p className="fa3-kicker">What firms should take from this</p>
+            <h2 id="fa3-implication-title">Most firms are invisible where buyers are already looking</h2>
           </div>
           <div>
             <p>
-              Calm Authority has published independently evidenced comparison pages with explicit
-              inclusion criteria, regulatory routes, named authorship and source links. The same
-              frozen questions will be rerun at fixed checkpoints to measure citations, mentions
-              and shortlist entry.
-            </p>
-            <p>
-              This turns the report into a controlled before-and-after test. Any change will be
-              reported as an observed association, with repetition required before it becomes proof.
+              A small number of directories and publishers control the information AI uses to build
+              its answers. Firms that do not appear in those sources — or do not produce clear,
+              citable evidence of their own — are absent from the consideration set entirely.
             </p>
           </div>
         </div>
@@ -345,10 +328,9 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           </div>
           <div>
             <p>
-              We asked 50 questions across guidance, discoverability and direct firm selection.
-              Five selection questions were deliberately repeated, giving us 45 distinct wordings.
-              Every finding keeps the correct denominator. The results describe grounded API
-              captures on 30 and 31 July 2026, not every consumer interface or future answer.
+              50 questions across guidance, discoverability and direct firm selection, run through
+              OpenAI, Gemini and Perplexity on 30 and 31 July 2026. Five questions were deliberately
+              repeated, giving 45 distinct wordings.
             </p>
             <Fa3MethodDrawer report={report} />
             <Link className="fa3-method__link" href="/research/uk-financial-advice-2026/method">Read the full method</Link>

@@ -23,6 +23,7 @@ export type ReportEntity = {
   repeat_confirmed_question_engine_cells?: number;
   one_off_question_engine_cells?: number;
   display_tier?: string;
+  local_score?: number;
 };
 
 export type QuestionView = {
@@ -81,6 +82,7 @@ export type Fa3ReportView = {
   nationalFamilies: FamilyView[];
   local: FamilyView;
   breadth: ReportEntity[];
+  searchEntities: ReportEntity[];
   opportunityAdjusted: Array<
     ReportEntity & {
       verified_eligible_question_count: number;
@@ -115,15 +117,83 @@ const reportPath = path.join(
   "fa03_report_data.json"
 );
 
+const panelRegistryPath = path.join(
+  process.cwd(),
+  "data",
+  "research",
+  "uk-financial-advice-2026",
+  "firm_summary.json"
+);
+
+type PanelRegistryRow = {
+  firm_id: string;
+  display_name: string;
+};
+
 export async function loadFa3ReportView(): Promise<Fa3ReportView> {
-  const raw = JSON.parse(await readFile(reportPath, "utf8")) as RawReport;
+  const [reportText, panelRegistryText] = await Promise.all([
+    readFile(reportPath, "utf8"),
+    readFile(panelRegistryPath, "utf8")
+  ]);
+  const raw = JSON.parse(reportText) as RawReport;
+  const panelRegistry = JSON.parse(panelRegistryText) as PanelRegistryRow[];
   if (
     raw.corpus_version !== "fa-queries-0.3" ||
     raw.denominators.answers !== 225 ||
-    raw.question_views.length !== 25
+    raw.question_views.length !== 25 ||
+    panelRegistry.length !== 150
   ) {
     throw new Error("The corrected firm-selection evidence package failed validation.");
   }
+
+  const localById = new Map(
+    raw.local_view.entities.map((entity) => [entity.entity_id, entity] as const)
+  );
+  const breadth = raw.cross_scenario_selection_breadth.entities.map((entity) => ({
+    ...entity,
+    local_score: localById.get(entity.entity_id)?.score ?? 0
+  }));
+  const searchEntityMap = new Map(breadth.map((entity) => [entity.entity_id, entity] as const));
+
+  for (const entity of raw.local_view.entities) {
+    const existing = searchEntityMap.get(entity.entity_id);
+    if (existing) continue;
+    searchEntityMap.set(entity.entity_id, {
+      ...entity,
+      score: 0,
+      family_scores: {},
+      national_families_reached: 0,
+      display_tier: "local_only_selection",
+      local_score: entity.score ?? 0
+    });
+  }
+
+  for (const firm of panelRegistry) {
+    const entityId = `panel:${firm.firm_id}`;
+    if (searchEntityMap.has(entityId)) continue;
+    searchEntityMap.set(entityId, {
+      entity_id: entityId,
+      canonical_name: firm.display_name,
+      entity_type: "firm",
+      panel_status: "panel",
+      score: 0,
+      family_scores: {},
+      national_families_reached: 0,
+      display_tier: "not_selected",
+      local_score: 0
+    });
+  }
+
+  const searchEntities = [...searchEntityMap.values()].sort((left, right) => {
+    const leftSelected = left.display_tier === "not_selected" ? 0 : 1;
+    const rightSelected = right.display_tier === "not_selected" ? 0 : 1;
+    return (
+      rightSelected - leftSelected ||
+      (right.score ?? 0) - (left.score ?? 0) ||
+      (right.local_score ?? 0) - (left.local_score ?? 0) ||
+      left.canonical_name.localeCompare(right.canonical_name, "en-GB")
+    );
+  });
 
   return {
     version: raw.version,
@@ -144,7 +214,8 @@ export async function loadFa3ReportView(): Promise<Fa3ReportView> {
     })),
     nationalFamilies: raw.national_family_views,
     local: raw.local_view,
-    breadth: raw.cross_scenario_selection_breadth.entities,
+    breadth,
+    searchEntities,
     opportunityAdjusted: raw.constructed_panel_opportunity_adjusted,
     conceptCounts: raw.concept_counts,
     limitations: raw.limitations
