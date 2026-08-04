@@ -3,7 +3,7 @@
 
 ## 4 August Research Listing Title - Live Push
 
-- Renamed the report on `/research` to `AI Visibility in UK Financial Advice 2026` so the sector and subject are immediately clear.
+- Renamed the report on `/research` to `UK Financial Advice Firms in AI Search 2026` so it clearly describes firms appearing in AI answers, rather than suggesting the study is about AI being used within financial advice.
 - Kept the report page headline, metadata and URL unchanged.
 - Typecheck, lint and the webpack production build pass; desktop browser checks confirmed the listing title fits cleanly and the report masthead is unchanged.
 
