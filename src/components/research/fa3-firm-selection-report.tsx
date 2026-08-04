@@ -476,19 +476,6 @@ function FirmEvidenceContent({
   }, [occurrences]);
 
   const ownSiteCitations = occurrences.filter((item) => item.own_domain_cited).length;
-  const familySummaries = familyOrder
-    .map((family) => {
-      const familyOccurrences = occurrences.filter((item) => item.family === family);
-      const questions = new Set(familyOccurrences.map((item) => item.query_id));
-
-      return {
-        family,
-        answers: familyOccurrences.length,
-        questions: questions.size,
-        websiteCitations: familyOccurrences.filter((item) => item.own_domain_cited).length
-      };
-    })
-    .filter((summary) => summary.answers > 0);
 
   if (!occurrences.length) {
     return (
@@ -511,50 +498,47 @@ function FirmEvidenceContent({
       </div>
 
       <div className="fa3-firm-evidence__heading">
-        <h3>Where this firm appeared</h3>
+        <h3>Questions where this firm appeared</h3>
+        <span>{groupedQuestions.length} {groupedQuestions.length === 1 ? "question" : "questions"}</span>
       </div>
 
-      <div className="fa3-firm-evidence__families">
-        {familySummaries.map((summary) => {
-          const possibleAnswers = summary.questions * ANSWERS_PER_QUESTION;
-          const questionWord = summary.questions === 1 ? "question" : "questions";
+      <div className="fa3-firm-evidence__questions">
+        {groupedQuestions.map((questionOccurrences) => {
+          const first = questionOccurrences[0];
+          const cited = questionOccurrences.filter((item) => item.own_domain_cited).length;
+          const topThree = questionOccurrences.filter((item) => item.shortlist_position <= 3).length;
 
           return (
-            <article key={summary.family}>
-              <h4>{familyLabels[summary.family]}</h4>
+            <article key={first.query_id}>
+              <header>
+                <span>{familyLabels[first.family]}</span>
+                <h4>{first.query_text}</h4>
+              </header>
               <p>
-                Recommended in {summary.answers} of {possibleAnswers} AI answers across {summary.questions} {questionWord}.
-                {summary.websiteCitations
-                  ? ` Its own website was cited in ${summary.websiteCitations} of those answers.`
-                  : " Its own website was not cited in those answers."}
+                <span>Recommended in {questionOccurrences.length} of {ANSWERS_PER_QUESTION} answers</span>
+                <span>
+                  {topThree === 0
+                    ? "Not in the top three"
+                    : topThree === 1
+                      ? "Top three once"
+                      : topThree === 2
+                        ? "Top three twice"
+                      : `Top three ${topThree} times`}
+                </span>
+                <span>
+                  {cited === 0
+                    ? "Own website not cited"
+                    : cited === 1
+                      ? "Own website cited once"
+                      : cited === 2
+                        ? "Own website cited twice"
+                      : `Own website cited ${cited} times`}
+                </span>
               </p>
             </article>
           );
         })}
       </div>
-
-      <details className="fa3-firm-evidence__details">
-        <summary>View the {groupedQuestions.length} exact {groupedQuestions.length === 1 ? "question" : "questions"}</summary>
-        <div className="fa3-firm-evidence__questions">
-          {groupedQuestions.map((questionOccurrences) => {
-            const first = questionOccurrences[0];
-            const cited = questionOccurrences.filter((item) => item.own_domain_cited).length;
-
-            return (
-              <article key={first.query_id}>
-                <header>
-                  <span>{familyLabels[first.family]}</span>
-                  <h4>{first.query_text}</h4>
-                </header>
-                <p>
-                  Recommended in {questionOccurrences.length} of {ANSWERS_PER_QUESTION} AI answers.
-                  {cited ? ` Its own website was cited in ${cited}.` : " Its own website was not cited."}
-                </p>
-              </article>
-            );
-          })}
-        </div>
-      </details>
 
       <p className="fa3-firm-evidence__note">
         Recommended means the AI included the firm as an option for the buyer. It is not an endorsement by Studio Baggio.
