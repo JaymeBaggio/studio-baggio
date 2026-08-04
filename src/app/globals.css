@@ -12555,6 +12555,16 @@ body:has(.home-4b.contact-page) footer {
   line-height: 1.55;
 }
 
+.fa3-method-content__questions-link {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 15px;
+}
+
+#fa3-questions-title {
+  scroll-margin-top: 96px;
+}
+
 .fa3-method-content dl {
   margin: 28px 0;
   border-top: 1px solid var(--fa3-rule);

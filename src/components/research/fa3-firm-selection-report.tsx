@@ -1,6 +1,7 @@
 "use client";
 
 import { Search } from "lucide-react";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import type {
   FamilyView,
@@ -629,19 +630,29 @@ export function Fa3MethodDrawer() {
       triggerClassName="fa3-method-trigger"
       trigger="How this study was run"
     >
-      <div className="fa3-method-content">
-        <p>
-          We asked 50 questions that people use when researching or choosing a financial adviser.
-          Each question was put to OpenAI, Gemini and Perplexity three times, producing 450 answers.
-          We recorded which firms were named, which websites were cited and which firms were
-          recommended. Every firm counted as a recommendation was checked by hand. We compared the
-          results with a list of 150 established UK financial advice firms.
-        </p>
-        <p>
-          The study measures visibility in these AI answers. It does not assess the quality or
-          suitability of any financial adviser.
-        </p>
-      </div>
+      {(closeDrawer) => (
+        <div className="fa3-method-content">
+          <p>
+            We asked 50 questions that people use when researching or choosing a financial adviser.
+            They covered three stages: understanding a financial need, finding possible advisers and
+            choosing a specific firm. Each question was put to OpenAI, Gemini and Perplexity three
+            times, producing 450 answers. We recorded which firms were named, which websites were
+            cited and which firms were recommended. Every firm counted as a recommendation was checked
+            by hand. We compared the results with a list of 150 established UK financial advice firms.
+          </p>
+          <p>
+            The study measures visibility in these AI answers. It does not assess the quality or
+            suitability of any financial adviser.
+          </p>
+          <Link
+            className="fa3-method-content__questions-link"
+            href="#fa3-questions-title"
+            onClick={closeDrawer}
+          >
+            View the questions →
+          </Link>
+        </div>
+      )}
     </ResearchDrawer>
   );
 }
