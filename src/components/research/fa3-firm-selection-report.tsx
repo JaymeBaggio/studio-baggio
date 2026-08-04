@@ -632,18 +632,36 @@ export function Fa3MethodDrawer() {
     >
       {(closeDrawer) => (
         <div className="fa3-method-content">
-          <p>
-            We asked 50 questions that people use when researching or choosing a financial adviser.
-            They covered three stages: understanding a financial need, finding possible advisers and
-            choosing a specific firm. Each question was put to OpenAI, Gemini and Perplexity three
-            times, producing 450 answers. We recorded which firms were named, which websites were
-            cited and which firms were recommended. Every firm counted as a recommendation was checked
-            by hand. We compared the results with a list of 150 established UK financial advice firms.
-          </p>
-          <p>
-            The study measures visibility in these AI answers. It does not assess the quality or
-            suitability of any financial adviser.
-          </p>
+          <dl className="fa3-method-content__summary">
+            <div>
+              <dt>What we asked</dt>
+              <dd>
+                50 questions covering three stages: understanding a financial need, finding possible
+                advisers and choosing a specific firm.
+              </dd>
+            </div>
+            <div>
+              <dt>How we tested it</dt>
+              <dd>
+                Each question was put to OpenAI, Gemini and Perplexity three times, producing 450
+                answers.
+              </dd>
+            </div>
+            <div>
+              <dt>What we checked</dt>
+              <dd>
+                We recorded which firms were named, cited or recommended. Every recommendation was
+                checked by hand, then compared with a list of 150 established UK financial advice
+                firms.
+              </dd>
+            </div>
+          </dl>
+          <div className="fa3-method-content__scope">
+            <strong>What the study measures</strong>
+            <span>
+              AI visibility. It does not assess the quality or suitability of any financial adviser.
+            </span>
+          </div>
           <Link
             className="fa3-method-content__questions-link"
             href="#fa3-questions-title"
