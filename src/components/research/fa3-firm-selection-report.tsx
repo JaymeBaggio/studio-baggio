@@ -38,7 +38,7 @@ const pct = new Intl.NumberFormat("en-GB", {
 
 const collator = new Intl.Collator("en-GB", { numeric: true, sensitivity: "base" });
 const ANSWERS_PER_NATIONAL_FAMILY = 45;
-const providerOrder = ["openai", "gemini", "perplexity"];
+const ANSWERS_PER_QUESTION = 9;
 
 type FirmOccurrence = QuestionCandidate & {
   query_id: string;
@@ -54,13 +54,6 @@ function percentage(value = 0) {
 
 function panelLabel(value: ReportEntity["panel_status"]) {
   return value === "panel" ? "150-firm panel" : "Outside panel";
-}
-
-function providerLabel(value: string) {
-  if (value === "openai") return "OpenAI";
-  if (value === "gemini") return "Google Gemini";
-  if (value === "perplexity") return "Perplexity";
-  return value;
 }
 
 function familyRecommendationCount(entity: ReportEntity) {
@@ -439,7 +432,7 @@ export function Fa3BreadthExplorer({
                       trigger={
                         <>
                           <span>{entity.canonical_name}</span>
-                          <small aria-hidden="true">View evidence →</small>
+                          <small aria-hidden="true">View results →</small>
                         </>
                       }
                     >
@@ -483,7 +476,19 @@ function FirmEvidenceContent({
   }, [occurrences]);
 
   const ownSiteCitations = occurrences.filter((item) => item.own_domain_cited).length;
-  const supportedSelections = occurrences.filter((item) => item.selection_claim_supported).length;
+  const familySummaries = familyOrder
+    .map((family) => {
+      const familyOccurrences = occurrences.filter((item) => item.family === family);
+      const questions = new Set(familyOccurrences.map((item) => item.query_id));
+
+      return {
+        family,
+        answers: familyOccurrences.length,
+        questions: questions.size,
+        websiteCitations: familyOccurrences.filter((item) => item.own_domain_cited).length
+      };
+    })
+    .filter((summary) => summary.answers > 0);
 
   if (!occurrences.length) {
     return (
@@ -500,59 +505,59 @@ function FirmEvidenceContent({
   return (
     <div className="fa3-firm-evidence">
       <div className="fa3-firm-evidence__summary" aria-label="Firm evidence summary">
-        <div><strong>{groupedQuestions.length}</strong><span>questions</span></div>
-        <div><strong>{occurrences.length}</strong><span>selections</span></div>
-        <div><strong>{ownSiteCitations}</strong><span>website citations</span></div>
-        <div><strong>{supportedSelections}</strong><span>supported selections</span></div>
+        <div><strong>{occurrences.length}</strong><span>AI answers recommended the firm</span></div>
+        <div><strong>{groupedQuestions.length}</strong><span>buyer questions where it appeared</span></div>
+        <div><strong>{ownSiteCitations}</strong><span>answers cited its own website</span></div>
       </div>
 
       <div className="fa3-firm-evidence__heading">
-        <h3>Question-by-question evidence</h3>
-        <span>{groupedQuestions.length} {groupedQuestions.length === 1 ? "question" : "questions"}</span>
+        <h3>Where this firm appeared</h3>
       </div>
 
-      <div className="fa3-firm-evidence__questions">
-        {groupedQuestions.map((questionOccurrences) => {
-          const first = questionOccurrences[0];
-          const providerGroups = providerOrder
-            .map((provider) => ({
-              provider,
-              occurrences: questionOccurrences.filter((item) => item.provider === provider)
-            }))
-            .filter((group) => group.occurrences.length);
+      <div className="fa3-firm-evidence__families">
+        {familySummaries.map((summary) => {
+          const possibleAnswers = summary.questions * ANSWERS_PER_QUESTION;
+          const questionWord = summary.questions === 1 ? "question" : "questions";
 
           return (
-            <article key={first.query_id}>
-              <header>
-                <span>{familyLabels[first.family]} · {first.query_id}</span>
-                <h4>{first.query_text}</h4>
-              </header>
-              <div className="fa3-firm-evidence__providers">
-                {providerGroups.map((group) => {
-                  const cited = group.occurrences.filter((item) => item.own_domain_cited).length;
-                  const supported = group.occurrences.filter((item) => item.selection_claim_supported).length;
-                  const positions = [...new Set(group.occurrences.map((item) => item.shortlist_position))]
-                    .sort((left, right) => left - right)
-                    .join(", ");
-
-                  return (
-                    <p key={group.provider}>
-                      <strong>{providerLabel(group.provider)}</strong>
-                      <span>
-                        {group.occurrences.length}/3 runs · position {positions} · own site {cited}/{group.occurrences.length} · supported {supported}/{group.occurrences.length}
-                      </span>
-                    </p>
-                  );
-                })}
-              </div>
+            <article key={summary.family}>
+              <h4>{familyLabels[summary.family]}</h4>
+              <p>
+                Recommended in {summary.answers} of {possibleAnswers} AI answers across {summary.questions} {questionWord}.
+                {summary.websiteCitations
+                  ? ` Its own website was cited in ${summary.websiteCitations} of those answers.`
+                  : " Its own website was not cited in those answers."}
+              </p>
             </article>
           );
         })}
       </div>
 
+      <details className="fa3-firm-evidence__details">
+        <summary>View the {groupedQuestions.length} exact {groupedQuestions.length === 1 ? "question" : "questions"}</summary>
+        <div className="fa3-firm-evidence__questions">
+          {groupedQuestions.map((questionOccurrences) => {
+            const first = questionOccurrences[0];
+            const cited = questionOccurrences.filter((item) => item.own_domain_cited).length;
+
+            return (
+              <article key={first.query_id}>
+                <header>
+                  <span>{familyLabels[first.family]}</span>
+                  <h4>{first.query_text}</h4>
+                </header>
+                <p>
+                  Recommended in {questionOccurrences.length} of {ANSWERS_PER_QUESTION} AI answers.
+                  {cited ? ` Its own website was cited in ${cited}.` : " Its own website was not cited."}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+      </details>
+
       <p className="fa3-firm-evidence__note">
-        Website citations use the firm&rsquo;s own domain; supported selections have a citation
-        backing the recommendation.
+        Recommended means the AI included the firm as an option for the buyer. It is not an endorsement by Studio Baggio.
       </p>
     </div>
   );
