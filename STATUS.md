@@ -1,5 +1,11 @@
 # Studio Baggio Website - STATUS
-*Last updated: 24 July 2026*
+*Last updated: 4 August 2026*
+
+## 4 August Research Listing Title - Live Push
+
+- Renamed the report on `/research` to `AI Visibility in UK Financial Advice 2026` so the sector and subject are immediately clear.
+- Kept the report page headline, metadata and URL unchanged.
+- Typecheck, lint and the webpack production build pass; desktop browser checks confirmed the listing title fits cleanly and the report masthead is unchanged.
 
 ## 24 July (night) Services Motion + Copy Tightening - Merged Live
 

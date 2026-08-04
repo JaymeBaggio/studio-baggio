@@ -60,7 +60,9 @@ export default function ResearchIndexPage() {
               <li key={edition.slug} className="research-edition-card">
                 <div>
                   <h3>
-                    <Link href={getResearchEditionPath(edition)}>{edition.title}</Link>
+                    <Link href={getResearchEditionPath(edition)}>
+                      {edition.listingTitle ?? edition.title}
+                    </Link>
                   </h3>
                   <p>{edition.summary}</p>
                 </div>

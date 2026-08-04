@@ -13,6 +13,7 @@ export type ResearchEditionDefinition = {
   slug: string;
   franchise: string;
   title: string;
+  listingTitle?: string;
   metaTitle: string;
   metaDescription: string;
   summary: string;
@@ -87,6 +88,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   slug: "uk-financial-advice-2026",
   franchise: researchFranchise.name,
   title: "UK Financial Advice 2026",
+  listingTitle: "AI Visibility in UK Financial Advice 2026",
   metaTitle: "93 of the UK's top 150 financial advice firms were invisible in AI search",
   metaDescription:
     "Across 450 answers, AI relied on a narrow source ecosystem while 93 of 150 established UK financial advice firms remained invisible.",
