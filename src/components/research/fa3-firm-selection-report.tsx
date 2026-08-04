@@ -73,53 +73,30 @@ function questionStageLabel(stage: StudyQuestion["stage"]) {
   return "Choosing a firm";
 }
 
-function providerEvidenceLabel(
-  provider: StudyQuestion["evidence"]["firms"][number]["providers"][number],
-  kind: StudyQuestion["evidence"]["kind"]
-) {
-  if (kind === "verified_selection") {
-    const runs = provider.repetitions.length
-      ? ` · run${provider.repetitions.length === 1 ? "" : "s"} ${provider.repetitions.join(", ")}`
-      : "";
-    return `${providerLabel(provider.provider)} ${provider.answer_count}/3${runs}`;
-  }
-
-  const signals = [
-    provider.named_answers ? `named ${provider.named_answers}/3` : null,
-    provider.cited_answers ? `site cited ${provider.cited_answers}/3` : null
-  ].filter(Boolean);
-  return `${providerLabel(provider.provider)} · ${signals.join(" · ")}`;
-}
-
-function sourceProviderLabel(
-  provider: StudyQuestion["evidence"]["sources"][number]["providers"][number]
-) {
-  const runs = provider.repetitions.length
-    ? ` · run${provider.repetitions.length === 1 ? "" : "s"} ${provider.repetitions.join(", ")}`
-    : "";
-  return `${providerLabel(provider.provider)} ${provider.answer_count}/3${runs}`;
-}
-
 function StudyQuestionDrawerContent({ question }: { question: StudyQuestion }) {
   const { evidence } = question;
   const isSelection = evidence.kind === "verified_selection";
-  const visibleFirms = evidence.firms.slice(0, 6);
-  const visibleSources = evidence.sources.slice(0, 8);
+  const visibleFirms = evidence.firms.slice(0, 5);
+  const visibleSources = evidence.sources.slice(0, 5);
+  const answerWord = evidence.valid_answer_count === 1 ? "answer" : "answers";
 
   return (
     <div className="fa3-drawer-stack">
+      <p className="fa3-question-evidence__plain-intro">
+        We asked this question {evidence.valid_answer_count} times: three times on OpenAI, three on
+        Gemini and three on Perplexity.
+      </p>
+
       <div className="fa3-drawer-summary">
         <div>
-          <span>Answers checked</span>
-          <strong>{evidence.valid_answer_count}</strong>
-        </div>
-        <div>
-          <span>{isSelection ? "Firms recommended" : "Panel firms found"}</span>
           <strong>{evidence.firms.length}</strong>
+          <span>
+            {isSelection ? "firms were recommended" : "established firms were named or cited"}
+          </span>
         </div>
         <div>
-          <span>Source domains cited</span>
           <strong>{evidence.sources.length}</strong>
+          <span>websites were cited</span>
         </div>
       </div>
 
@@ -127,74 +104,71 @@ function StudyQuestionDrawerContent({ question }: { question: StudyQuestion }) {
         <section aria-labelledby={`${question.query_id}-firms`}>
           <header>
             <h3 id={`${question.query_id}-firms`}>
-              {isSelection ? "Firms recommended" : "Firms named or cited"}
+              {isSelection ? "Firms AI recommended most often" : "Firms that appeared most often"}
             </h3>
-            <span>{visibleFirms.length} shown</span>
           </header>
           {visibleFirms.length ? (
             <ol className="fa3-question-evidence__compact-list">
               {visibleFirms.map((firm) => (
                 <li key={firm.name}>
-                  <div>
-                    <strong>{firm.name}</strong>
-                    <small>
-                      {firm.providers.map((provider) =>
-                        providerEvidenceLabel(provider, evidence.kind)
-                      ).join(" · ")}
-                    </small>
-                  </div>
-                  <span>
-                    {isSelection
-                      ? `${firm.recommended_answers}/9 recommended`
-                      : [
-                          firm.named_answers ? `${firm.named_answers}/9 named` : null,
-                          firm.cited_answers ? `${firm.cited_answers}/9 cited` : null
-                        ].filter(Boolean).join(" · ")}
-                  </span>
+                  <strong>{firm.name}</strong>
+                  <p>
+                    {isSelection ? (
+                      <>Recommended in {firm.recommended_answers} of {evidence.valid_answer_count} {answerWord}.</>
+                    ) : (
+                      <>
+                        {firm.named_answers
+                          ? `Named in ${firm.named_answers} of ${evidence.valid_answer_count} ${answerWord}.`
+                          : null}
+                        {firm.named_answers && firm.cited_answers ? " " : null}
+                        {firm.cited_answers
+                          ? `Its website was cited in ${firm.cited_answers} of ${evidence.valid_answer_count} ${answerWord}.`
+                          : null}
+                      </>
+                    )}
+                  </p>
                 </li>
               ))}
             </ol>
           ) : (
             <p className="fa3-empty-result">
-              {isSelection ? "No verified firm recommendation." : "No panel firm named or cited."}
+              {isSelection
+                ? `No firm was recommended in the ${evidence.valid_answer_count} ${answerWord}.`
+                : `No established firm was named or cited in the ${evidence.valid_answer_count} ${answerWord}.`}
             </p>
           )}
           {evidence.firms.length > visibleFirms.length ? (
             <p className="fa3-question-evidence__more">
-              +{evidence.firms.length - visibleFirms.length} lower-frequency firms
+              {evidence.firms.length - visibleFirms.length} other firms appeared less often.
             </p>
           ) : null}
         </section>
 
         <section aria-labelledby={`${question.query_id}-sources`}>
           <header>
-            <h3 id={`${question.query_id}-sources`}>Most-cited sources</h3>
-            <span>{visibleSources.length} shown</span>
+            <h3 id={`${question.query_id}-sources`}>Websites AI cited most often</h3>
           </header>
           {visibleSources.length ? (
             <ol className="fa3-question-evidence__compact-list">
               {visibleSources.map((source) => (
                 <li key={source.domain}>
-                  <div>
-                    <a
-                      href={source.urls[0] ?? `https://${source.domain}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {source.domain}
-                    </a>
-                    <small>{source.providers.map(sourceProviderLabel).join(" · ")}</small>
-                  </div>
-                  <span>{source.answer_count}/{evidence.valid_answer_count} answers</span>
+                  <a
+                    href={source.urls[0] ?? `https://${source.domain}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {source.domain}
+                  </a>
+                  <p>Cited in {source.answer_count} of {evidence.valid_answer_count} {answerWord}.</p>
                 </li>
               ))}
             </ol>
           ) : (
-            <p className="fa3-empty-result">No recoverable source domain.</p>
+            <p className="fa3-empty-result">No website citation was available.</p>
           )}
           {evidence.sources.length > visibleSources.length ? (
             <p className="fa3-question-evidence__more">
-              +{evidence.sources.length - visibleSources.length} lower-frequency sources
+              {evidence.sources.length - visibleSources.length} other websites were cited less often.
             </p>
           ) : null}
         </section>
@@ -202,8 +176,8 @@ function StudyQuestionDrawerContent({ question }: { question: StudyQuestion }) {
 
       <p className="fa3-question-evidence__caveat">
         {isSelection
-          ? "Only semantically verified recommendations are counted."
-          : "Named and cited are separate signals; a citation is not a recommendation."}
+          ? "Recommended means the AI presented the firm as an option for the buyer."
+          : "Named means the AI mentioned the firm. Cited means it linked to the firm’s website. Neither necessarily means the firm was recommended."}
       </p>
     </div>
   );
@@ -279,7 +253,7 @@ export function Fa3QuestionExplorer({
                             <>
                             <span>{String(index + 1).padStart(2, "0")}</span>
                             <strong>{studyQuestion.query_text}</strong>
-                              <small>View evidence →</small>
+                              <small>View results →</small>
                             </>
                           }
                         >
