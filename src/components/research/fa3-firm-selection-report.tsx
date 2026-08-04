@@ -540,9 +540,6 @@ function FirmEvidenceContent({
         })}
       </div>
 
-      <p className="fa3-firm-evidence__note">
-        Recommended means the AI included the firm as an option for the buyer. It is not an endorsement by Studio Baggio.
-      </p>
     </div>
   );
 }
