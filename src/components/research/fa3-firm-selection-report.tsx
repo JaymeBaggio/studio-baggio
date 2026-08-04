@@ -1,7 +1,6 @@
 "use client";
 
 import { Search } from "lucide-react";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import type {
   FamilyView,
@@ -621,45 +620,27 @@ export function Fa3LocalView({ questions }: { questions: QuestionView[] }) {
   );
 }
 
-export function Fa3MethodDrawer({
-  corpusVersion,
-  selectionQuestionCount
-}: {
-  corpusVersion: string;
-  selectionQuestionCount: number;
-}) {
+export function Fa3MethodDrawer() {
   return (
     <ResearchDrawer
       className="research-drawer-panel--question fa3-method-drawer"
-      eyebrow="Method and evidence"
+      eyebrow="About the study"
       title="How this study was run"
       triggerClassName="fa3-method-trigger"
       trigger="How this study was run"
     >
       <div className="fa3-method-content">
         <p>
-          Two linked studies ran on 30 and 31 July 2026. The first 25 questions tracked which
-          established firms were named and which domains were cited. The second 25 directly tested
-          firm selection, with every candidate semantically verified. Each question ran three times
-          across OpenAI, Gemini and Perplexity, producing 450 valid responses.
+          We asked 50 questions that people use when researching or choosing a financial adviser.
+          Each question was put to OpenAI, Gemini and Perplexity three times, producing 450 answers.
+          We recorded which firms were named, which websites were cited and which firms were
+          recommended. Every firm counted as a recommendation was checked by hand. We compared the
+          results with a list of 150 established UK financial advice firms.
         </p>
-        <dl>
-          <div><dt>Questions</dt><dd>50 questions, including five deliberately repeated wordings</dd></div>
-          <div><dt>Responses</dt><dd>450 valid responses</dd></div>
-          <div><dt>Providers</dt><dd>OpenAI, Gemini and Perplexity</dd></div>
-          <div><dt>Repetitions</dt><dd>Three fresh runs per question and provider</dd></div>
-          <div><dt>Established market panel</dt><dd>150 UK financial advice firms</dd></div>
-          <div><dt>Selection corpus</dt><dd>{corpusVersion} · {selectionQuestionCount} direct firm-selection questions</dd></div>
-          <div><dt>Semantic review</dt><dd>Every selection candidate manually checked; zero unresolved classifications</dd></div>
-          <div><dt>Primary weighting</dt><dd>Equal engine weight; repetitions averaged within question and engine</dd></div>
-        </dl>
-        <h3>Method and data</h3>
-        <ul>
-          <li><Link href="/research/uk-financial-advice-2026/method">Read the full method</Link></li>
-          <li><a href="/research-data/uk-financial-advice-2026/corrected/corpus.json" download>Frozen 25-question corpus</a></li>
-          <li><a href="/research-data/uk-financial-advice-2026/corrected/method.json" download>Method package</a></li>
-          <li><a href="/research-data/uk-financial-advice-2026/corrected/report-data.json" download>Derived report data</a></li>
-        </ul>
+        <p>
+          The study measures visibility in these AI answers. It does not assess the quality or
+          suitability of any financial adviser.
+        </p>
       </div>
     </ResearchDrawer>
   );

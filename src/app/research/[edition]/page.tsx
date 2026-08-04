@@ -104,10 +104,7 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               <span><strong>3</strong> AI platforms</span>
               <span><strong>150</strong> firms</span>
             </div>
-            <Fa3MethodDrawer
-              corpusVersion={report.corpus_version}
-              selectionQuestionCount={report.denominators.questions}
-            />
+            <Fa3MethodDrawer />
           </div>
         </div>
       </header>

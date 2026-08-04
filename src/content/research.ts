@@ -230,7 +230,3 @@ export function getResearchEditionDefinition(slug: string) {
 export function getResearchEditionPath(edition: ResearchEditionDefinition) {
   return `/research/${edition.slug}`;
 }
-
-export function getResearchMethodPath(edition: ResearchEditionDefinition) {
-  return `${getResearchEditionPath(edition)}/method`;
-}

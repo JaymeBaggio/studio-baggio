@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { insightArticles, getInsightPath } from "@/content/insights";
 import {
   getResearchEditionPath,
-  getResearchMethodPath,
   researchEditions
 } from "@/content/research";
 import { siteUrl } from "@/lib/utils";
@@ -65,22 +64,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
           }
         ]
       : []),
-    ...publishedResearchEditions.flatMap((edition) => [
-    {
+    ...publishedResearchEditions.map((edition) => ({
       url: `${siteUrl}${getResearchEditionPath(edition)}`,
       lastModified: new Date(
         edition.pageUpdatedAt ?? edition.correctedAt ?? edition.publishedAt ?? edition.preparedForReview
       ),
       changeFrequency: "monthly" as const,
       priority: 0.8
-    },
-    {
-      url: `${siteUrl}${getResearchMethodPath(edition)}`,
-      lastModified: new Date(edition.correctedAt ?? edition.publishedAt ?? edition.preparedForReview),
-      changeFrequency: "monthly" as const,
-      priority: 0.65
-    }
-    ])
+    }))
   ];
 
   return [...staticRoutes, ...insightRoutes, ...researchRoutes];
