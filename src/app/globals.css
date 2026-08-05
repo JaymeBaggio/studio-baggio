@@ -12214,6 +12214,13 @@ body:has(.home-4b.contact-page) footer {
   background: var(--fa3-blue);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .fa3-report .research-action-link:hover .research-action-link-surface {
+    background: transparent;
+    color: #fff;
+  }
+}
+
 .fa3-implication {
   padding: clamp(38px, 4vw, 56px) 0;
   background: #f7f9fd;

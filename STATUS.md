@@ -1,5 +1,10 @@
 # Studio Baggio Website - STATUS
-*Last updated: 4 August 2026*
+*Last updated: 5 August 2026*
+
+## 5 August Research CTA Hover Fix - Live Push
+
+- Fixed the final report CTA hover state so its white label remains visible against the black section instead of turning black and appearing blank.
+- Typecheck, lint and the webpack production build pass; the forced hover state was visually verified in the browser.
 
 ## 4 August Research Listing Title - Live Push
 
