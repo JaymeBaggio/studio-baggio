@@ -74,10 +74,8 @@ export const metadata = {
 
 export const hero = {
   meta: [
-    "PRACTICAL AI SYSTEMS",
-    "BUILT AROUND THE",
-    "BUSINESS PROBLEM AND",
-    "THE RESULT YOU NEED."
+    "FROM BUSINESS PROBLEM",
+    "TO WORKING AI SYSTEM."
   ],
   wordmark: ["STUDIO", "BAGGIO.AI"],
   promiseTitle: "AI STRATEGY, SYSTEMS AND IMPLEMENTATION",

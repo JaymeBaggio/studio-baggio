@@ -121,23 +121,16 @@ body:has(.home-4b.contact-page) footer {
   color: #1a1a1a;
 }
 
-.home-reference-meta .space-y-2 > p {
+.home-reference-meta-lines {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.home-reference-meta-lines > p {
   margin: 0;
 }
 
-.home-reference-meta .space-y-2 > p:nth-child(2) {
-  margin-top: 0.3rem;
-}
-
-.home-reference-meta .space-y-2 > p:nth-child(3) {
-  margin-top: 1.15rem;
-}
-
-.home-reference-meta .space-y-2 > p:nth-child(4) {
-  margin-top: 0.8rem;
-}
-
-.home-reference-meta .is-accent {
+.home-reference-meta-accent {
   color: var(--sb-accent-blue);
 }
 
