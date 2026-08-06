@@ -54,18 +54,19 @@ export default function PressPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pressSchema) }}
       />
       <PageReveals />
-      <div className="home-4b studio-page press-page">
-        <section className="border-b border-ink/10 pb-16 pt-32 md:pb-24 md:pt-40">
-          <div className="editorial-container">
-            <p className="eyebrow" data-reveal data-motion="label">
-              {pressPage.eyebrow}
-            </p>
+      <div className="home-4b studio-page products-page press-page">
+        <section className="products-hero border-b border-ink/10" data-header-theme="light">
+          <div className="editorial-container products-hero-shell">
+            <div className="products-hero-main">
+              <div aria-hidden="true" />
             <h1
-              className="mt-8 max-w-6xl text-[clamp(2.65rem,6.5vw,7rem)] font-normal leading-[0.96] tracking-[-0.045em]"
+              className="products-hero-title"
               data-reveal
             >
-              {pressPage.title}
+                {pressPage.title}
+                <span className="products-blue-dot" aria-hidden="true">.</span>
             </h1>
+            </div>
           </div>
         </section>
 

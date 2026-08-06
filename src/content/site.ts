@@ -833,8 +833,7 @@ export const about = {
 };
 
 export const pressPage = {
-  eyebrow: "PRESS",
-  title: "Coverage of Studio Baggio, Jayme Baggio and the systems we build.",
+  title: "Press",
   lead: {
     publication: "Money Marketing",
     series: "At the Helm",
