@@ -4,6 +4,7 @@ export const navItems = [
   { label: "Products", href: "/work" },
   { label: "Insights", href: "/insights" },
   { label: "Research", href: "/research" },
+  { label: "Press", href: "/press" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }
 ];
@@ -21,9 +22,9 @@ export const introDownload = {
 
 export const metadata = {
   home: {
-    title: "Studio Baggio | AI-Enabled Growth Systems",
+    title: "Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "Studio Baggio designs and builds AI-enabled growth systems for trust-based businesses: search visibility, market intelligence, lead capture, authority systems, workflow acceleration and client-facing AI tools."
+      "Studio Baggio identifies where AI can create measurable value, then designs, builds and implements the systems needed to deliver it."
   },
   work: {
     title: "Products: AI Systems & Intelligence | Studio Baggio",
@@ -46,9 +47,9 @@ export const metadata = {
       "Useful thinking on practical AI advantage, commercial intelligence, AI adoption, skills, authority systems and audience strategy."
   },
   about: {
-    title: "About Studio Baggio | Practical AI Systems",
+    title: "About Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "Studio Baggio is an applied AI systems studio founded by Jayme Baggio, building practical AI systems for visibility, market intelligence, demand capture and commercial ROI."
+      "Studio Baggio is an AI strategy, systems and implementation consultancy founded by Jayme Baggio."
   },
   contact: {
     title: "Contact Studio Baggio",
@@ -63,20 +64,25 @@ export const metadata = {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
       "What you can hire Studio Baggio for: AI Operating System Audit and Implementation, Commercial Growth Strategy, SEO and AI Search Opportunity Audit, and Bespoke Software & Systems Build."
+  },
+  press: {
+    title: "Press | Studio Baggio",
+    description:
+      "Press coverage of Studio Baggio, Jayme Baggio and the AI systems Studio Baggio designs and builds."
   }
 };
 
 export const hero = {
   meta: [
-    "PRACTICAL SYSTEMS BUILT AROUND",
-    "HOW YOUR BUSINESS WINS IN MARKET.",
-    "NOT AI THEORY.",
-    "NOT GENERIC AUTOMATION"
+    "PRACTICAL AI SYSTEMS",
+    "BUILT AROUND THE",
+    "BUSINESS PROBLEM AND",
+    "THE RESULT YOU NEED."
   ],
   wordmark: ["STUDIO", "BAGGIO.AI"],
-  promiseTitle: "AI ENABLED GROWTH SYSTEMS FOR TRUST BASED BUSINESSES",
+  promiseTitle: "AI STRATEGY, SYSTEMS AND IMPLEMENTATION",
   promise:
-    "CREATING REAL COMMERCIAL ADVANTAGE FOR EXPERT-LED FIRMS IN HIGH VALUE MARKETS",
+    "FIND WHERE AI CREATES VALUE, THEN BUILD THE SYSTEMS NEEDED TO DELIVER IT",
   scrollCue: "See where AI creates value"
 };
 
@@ -85,7 +91,7 @@ export const home = {
     headline:
       "Most businesses are using AI. Few are using it to create commercial advantage.",
     qualifier: "",
-    setup: "Studio Baggio designs the AI systems that make expert-led businesses:",
+    setup: "Studio Baggio designs and builds practical AI systems that make businesses:",
     outcomes: [
       "Easier to find.",
       "Faster to act.",
@@ -154,11 +160,11 @@ export const home = {
   },
   fit: {
     eyebrow: "WHO THIS IS FOR",
-    title: "For expert-led businesses that need AI connected to commercial outcomes.",
+    title: "For businesses that want AI connected to measurable commercial and operational value.",
     goodLabel: "Best for",
     badLabel: "Not for",
     good: [
-      "Trust-led firms competing on expertise and reputation",
+      "Businesses competing on expertise and reputation",
       "Specialist advisers with valuable knowledge and weak public proof",
       "Founder-led businesses wanting systems, not experiments",
       "Professional services firms with longer sales cycles",
@@ -194,9 +200,9 @@ export const home = {
           "It's closer to commercial architecture. We work across the full pipeline: visibility, lead capture, nurture, proposal, and client retention. Some of what we build looks like marketing. Some looks like sales operations. All of it is designed to make your business easier to find, easier to buy from, and harder to compete with."
       },
       {
-        question: "Is this only for wealth and financial advisory firms?",
+        question: "What kinds of businesses do you work with?",
         answer:
-          "No. We work with any expert-led business that wins on trust: consulting, legal, accountancy, technology advisory, executive search, and specialist B2B services. The common thread is that the sale involves expertise, credibility, and a longer cycle. If that describes your business, we're likely a fit."
+          "Studio Baggio works with businesses where AI can solve a valuable commercial or operational problem. The starting point is the problem, the available expertise and the result the business needs."
       },
       {
         question: "Do you build as well as advise?",
@@ -304,12 +310,12 @@ export const valueAreas = [
       "Newsletters",
       "Proof pages",
       "Founder content",
-      "Expert-led authority systems"
+      "Authority systems built around internal expertise"
     ],
     goal:
       "Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold.",
     detail:
-      "This includes LinkedIn, articles, case studies, playbooks, newsletters, proof pages, founder content and expert-led authority systems. Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold."
+      "This includes LinkedIn, articles, case studies, playbooks, newsletters, proof pages, founder content and authority systems built around internal expertise. Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold."
   },
   {
     title: "Workflow Acceleration",
@@ -583,13 +589,13 @@ export const businessTracker = {
     eyebrow: "Who it's for",
     bestForLabel: "Best for",
     bestFor:
-      "Expert-led businesses where high-value leads need careful nurturing. Specialist advisers, founder-led firms, professional services, and trust-based businesses with touchpoints (SEO, LinkedIn, lead magnets, email) that currently sit apart.",
+      "Businesses where high-value leads need careful nurturing. Specialist advisers, founder-led firms and professional services teams with touchpoints (SEO, LinkedIn, lead magnets and email) that currently sit apart.",
     bestForItems: [
-      "Expert-led businesses where high-value leads need careful nurturing",
+      "Businesses where high-value leads need careful nurturing",
       "Specialist advisers",
       "Founder-led firms",
       "Professional services",
-      "Trust-based businesses with touchpoints (SEO, LinkedIn, lead magnets, email) that currently sit apart"
+      "Teams with commercial touchpoints (SEO, LinkedIn, lead magnets and email) that currently sit apart"
     ],
     notForLabel: "Not for",
     notFor: "High-volume B2C funnels. Generic CRM replacement. Teams that just want a dashboard.",
@@ -730,7 +736,7 @@ export const calmAuthority = {
     role: "Founder, Studio Baggio",
     body: [
       "A content and systems strategist with twelve years across media, brand-building, and practical AI. Jayme has worked with brands including Channel 4, BBC Studios, Google, Coca-Cola, HSBC, M&S, National Lottery, and Nestlé, and with production companies including Fremantle, Banijay and All3Media.",
-      "Jayme's understanding of commercial storytelling, production pressure, brand, audience, sponsorship, senior stakeholders and AI implementation in a real operation is now focused on building growth systems for trust-based businesses.",
+      "Jayme's understanding of commercial storytelling, production pressure, brand, audience, sponsorship, senior stakeholders and AI implementation in a real operation is now focused on identifying where AI can create measurable value and building the systems needed to deliver it.",
       "She built the tone-of-voice mapping system at the core of Calm Authority and leads product strategy at Studio Baggio."
     ]
   },
@@ -775,7 +781,7 @@ export const about = {
       lead: "Jayme Baggio, founder.",
       body: [
         "Jayme Baggio is a British media executive, strategy consultant and applied AI specialist whose career has covered commercial content strategy, branded entertainment, and AI-driven workflow systems. She is best known for her extensive tenure at Channel 4 and her work bridging media creation with artificial intelligence frameworks. Jayme has over a decade's experience across media and practical AI, working with some of the UK's most established brands such as BBC Studios, ITV, Google, Coca-Cola, M&S and HSBC.",
-        "Built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers, alongside founding adviser Harry Sims, Chartered Financial Planner. The app has been featured in Financial Times, Money Marketing and Professional Adviser. Her work with firms in the financial services sector revealed a wider commercial gap: most firms know AI matters, but few are using it to drive real ROI by making their expertise visible, delivering more value to clients, and growing the business.",
+        "Built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers, alongside founding adviser Harry Sims, Chartered Financial Planner. The app has been featured in FT Adviser, Money Marketing and Professional Adviser. Her work with firms in the financial services sector revealed a wider commercial gap: most firms know AI matters, but few are using it to drive real ROI by making their expertise visible, delivering more value to clients, and growing the business.",
         "Built Last30Days.app, an AI market intelligence app that turns live web, social and community signals into cited reports in under 60 seconds. It has now been used by more than 250 individual and corporate users to research markets, competitors, customer questions and emerging opportunities. It gives Studio Baggio a practical engine for SEO and AI search strategy: finding what people are asking now, where demand is forming, and which expert answers deserve to become searchable proof."
       ],
       press: {
@@ -826,6 +832,53 @@ export const about = {
     "Studio Baggio develops systems to turn your business's internal expertise into visible public proof. Enables you to show up consistently and provide real value where your prospects already are. Then connect the dots between who is engaging, what they care about and how the business should follow up to earn the right to win in market."
 };
 
+export const pressPage = {
+  eyebrow: "PRESS",
+  title: "Coverage of Studio Baggio, Jayme Baggio and the systems we build.",
+  lead: {
+    publication: "Money Marketing",
+    series: "At the Helm",
+    date: "22 June 2026",
+    datePublished: "2026-06-22",
+    author: "Amanda Newman Smith",
+    title: "Making AI more than an efficiency play",
+    description:
+      "Money Marketing profiles Jayme's approach to using AI to generate revenue, strengthen business models and create commercial advantage.",
+    quote: "I'm trying to make their business model stronger.",
+    href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/"
+  },
+  earlierEyebrow: "EARLIER COVERAGE",
+  earlier: [
+    {
+      publication: "FT Adviser",
+      date: "5 May 2026",
+      datePublished: "2026-05-05",
+      author: "Hereward Mills",
+      title: "Client-adviser duo launch AI tool to help boost LinkedIn presence",
+      description:
+        "Coverage of Calm Authority and the opportunity for financial advisers to turn expertise into a consistent public presence.",
+      href: "https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d"
+    },
+    {
+      publication: "Professional Adviser",
+      date: "30 March 2026",
+      datePublished: "2026-03-30",
+      author: "Sophia Panayi",
+      title: "Could a LinkedIn AI platform be financial advisers' 'best kept secret'?",
+      description:
+        "A profile of Calm Authority and its approach to helping advisers communicate with consistency and credibility.",
+      href: "https://www.professionaladviser.com/news/4527581/linkedin-ai-platform-financial-advisers-best-kept-secret"
+    }
+  ],
+  media: {
+    eyebrow: "MEDIA ENQUIRIES",
+    title: "Jayme is available for comment and interviews.",
+    body:
+      "Topics include AI strategy and implementation, AI in the workplace, AI in media and content, AI search, and the commercial use of specialist expertise.",
+    email: "jayme@studiobaggio.ai"
+  }
+};
+
 export const phaseTwoTodos = [
   "Build Rough Cut / Newsletter archive after phase-1 conversion site is live.",
   "Build Playbooks pages after main site QA and domain replacement.",
@@ -835,11 +888,12 @@ export const phaseTwoTodos = [
 
 export const footer = {
   company: "Studio Baggio Ltd",
-  summary: "Practical AI systems for expert-led businesses.",
+  summary: "AI strategy, systems and implementation.",
   email: "jayme@studiobaggio.ai",
   privacyLabel: "Privacy",
   productLinks: [
     { label: "Research", href: "/research" },
+    { label: "Press", href: "/press" },
     { label: "Last30Days", href: "/last30days" }
   ]
 };
@@ -926,7 +980,7 @@ export const servicesPage = {
       summary:
         "Find valuable client demand and build the route from search visibility to qualified enquiries, instructions and revenue. Includes a bespoke Business Tracker that captures engagement, qualifies opportunities and recommends follow-up.",
       paras: [
-        "For trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base.",
+        "For businesses that want more new and repeat revenue from their expertise, relationships and existing client base.",
         "We identify the client questions and live concerns with the strongest commercial value, turn the expertise behind them into visible public proof, and build the route from visibility to engagement, qualified follow-up, instructions and fees."
       ],
       includesLabel: "This can include",
@@ -1075,7 +1129,7 @@ export const servicesPage = {
       {
         question: "What is a Commercial Growth Strategy?",
         answer:
-          "A Commercial Growth Strategy is for trust-based businesses that want more new and repeat revenue from their expertise, relationships and existing client base. We identify the client questions and live concerns with the strongest commercial value, turn the expertise behind them into visible public proof, and build the route from visibility to engagement, qualified follow-up, instructions and fees. Each engagement is supported by Studio Baggio's Business Tracker."
+          "A Commercial Growth Strategy is for businesses that want more new and repeat revenue from their expertise, relationships and existing client base. We identify the client questions and live concerns with the strongest commercial value, turn the expertise behind them into visible public proof, and build the route from visibility to engagement, qualified follow-up, instructions and fees. Each engagement is supported by Studio Baggio's Business Tracker."
       },
       {
         question: "What is the Business Tracker?",

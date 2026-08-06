@@ -79,7 +79,7 @@ export const researchFranchise = {
   name: "The Studio Baggio AI Discovery Study",
   title: "Research",
   description:
-    "Reproducible evidence on how expert-led firms appear in grounded AI search answers.",
+    "Reproducible evidence on how businesses appear in grounded AI search answers.",
   methodologyPrinciple:
     "The study reports semantically verified candidate shortlists by question and scenario. It does not score adviser quality, suitability or total UK market visibility."
 } as const;

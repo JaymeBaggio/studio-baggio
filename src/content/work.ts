@@ -189,16 +189,16 @@ export const workItems: WorkItem[] = [
       ],
       featuredIn: [
         {
-          label: "Financial Times",
+          label: "FT Adviser",
           href: "https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d"
         },
         {
           label: "Professional Adviser",
-          href: "https://www.professionaladviser.com/news/4407649/could-linkedin-ai-platform-financial-advisers-best-kept-secret"
+          href: "https://www.professionaladviser.com/news/4527581/linkedin-ai-platform-financial-advisers-best-kept-secret"
         },
         {
           label: "Money Marketing",
-          href: "https://www.professionaladviser.com/news/4528430/risk-warnings-review-create-meaningful-shift-advice-communication"
+          href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/"
         }
       ],
       ctas: [{ label: "Visit live site →", href: "https://www.calmauthority.ai", external: true }]
@@ -213,11 +213,11 @@ export const workItems: WorkItem[] = [
     proofCopy:
       "A market-specific prospecting system that captures interactions, qualifies named leads, adds AI rationale and produces a prioritised follow-up pipeline.",
     problem:
-      "Smaller expert-led teams often create visibility without knowing who is warming up, why they matter or what should happen next.",
+      "Smaller teams with valuable expertise often create visibility without knowing who is warming up, why they matter or what should happen next.",
     built:
       "The operating system captures every interaction across SEO, LinkedIn, lead magnets and email, makes it visible, and produces a named follow-up pipeline. Live AI search adds current public context to every lead so your team knows who is warming up, why they matter, and what to say next.",
     whyItMatters:
-      "Built for expert-led firms where high-value leads need careful nurturing. Specialist advisers, founder-led firms, professional services, and trust-based businesses with touchpoints that currently sit apart.",
+      "Built for businesses where high-value leads need careful nurturing: specialist advisers, founder-led firms and professional services teams with commercial touchpoints that currently sit apart.",
     proves:
       "Studio Baggio can connect visibility, market context and practical follow-up into one operating layer.",
     homepageLinks: [{ label: "Find out more →", href: "/work" }],
@@ -283,7 +283,7 @@ export const workItems: WorkItem[] = [
         {
           label: "Built for",
           paragraphs: [
-            "Expert-led firms where high-value leads need careful nurturing: specialist advisers, founder-led firms, professional services, and trust-based businesses with touchpoints that currently sit apart."
+            "Businesses where high-value leads need careful nurturing: specialist advisers, founder-led firms and professional services teams with commercial touchpoints that currently sit apart."
           ]
         }
       ],

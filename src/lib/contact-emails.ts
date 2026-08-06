@@ -18,7 +18,7 @@ export function buildEnquiryConfirmationEmail(name: ContactFormValues["name"]) {
     siteUrl,
     "",
     "STUDIO BAGGIO.AI",
-    "AI-enabled growth systems for trust-based businesses",
+    "AI strategy, systems and implementation",
     siteUrl,
     studioEmail
   ].join("\n");
@@ -63,7 +63,7 @@ export function buildEnquiryConfirmationEmail(name: ContactFormValues["name"]) {
 
                 <div style="width:54px; height:3px; line-height:3px; background:#2f66f6; margin:0 0 20px 0;">&nbsp;</div>
 
-                <div style="font-family:Aileron, Arial, Helvetica, sans-serif; font-size:13px; line-height:1.45; letter-spacing:3px; text-transform:uppercase; color:#8b8b8b; max-width:480px; margin:0 0 22px 0;">AI-enabled growth systems for trust-based businesses</div>
+                <div style="font-family:Aileron, Arial, Helvetica, sans-serif; font-size:13px; line-height:1.45; letter-spacing:3px; text-transform:uppercase; color:#8b8b8b; max-width:480px; margin:0 0 22px 0;">AI strategy, systems and implementation</div>
 
                 <p style="font-family:Aileron, Arial, Helvetica, sans-serif; font-size:14px; line-height:1.6; color:#5c5c5c; margin:0;">
                   <a href="${siteUrl}" style="color:#111111; text-decoration:none;">studiobaggio.ai</a><br />

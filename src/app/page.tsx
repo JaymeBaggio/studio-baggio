@@ -50,8 +50,8 @@ export default function HomePage() {
     index < openingHeadlineParts.length - 1 ? `${line}.` : line
   );
   const openingSetupLines =
-    home.opening.setup === "Studio Baggio designs the AI systems that make expert-led businesses:"
-      ? ["Studio Baggio designs the AI systems that make", "expert-led businesses:"]
+    home.opening.setup === "Studio Baggio designs and builds practical AI systems that make businesses:"
+      ? ["Studio Baggio designs and builds practical AI systems", "that make businesses:"]
       : [home.opening.setup];
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
