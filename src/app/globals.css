@@ -12308,6 +12308,68 @@ body:has(.home-4b.contact-page) footer {
   font-weight: 500;
 }
 
+.fa3-experiment {
+  border-bottom-color: #333;
+  background: #111;
+  color: #fff;
+  padding: clamp(44px, 5vw, 72px) 0;
+}
+
+.fa3-experiment .fa3-kicker {
+  color: #9f9f9f;
+}
+
+.fa3-experiment__body {
+  max-width: 64ch;
+}
+
+.fa3-experiment__body > p {
+  margin: 0;
+  color: #d6d6d6;
+  font-size: 16px;
+  line-height: 1.58;
+}
+
+.fa3-experiment__body > p + p {
+  margin-top: 14px;
+}
+
+.fa3-experiment__links {
+  margin: 26px 0 0;
+  padding: 0;
+  border-top: 1px solid #454545;
+  list-style: none;
+}
+
+.fa3-experiment__links li {
+  border-bottom: 1px solid #454545;
+}
+
+.fa3-experiment__links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.fa3-experiment__links a::after {
+  content: "\2197";
+  flex: 0 0 auto;
+  color: var(--fa3-blue);
+  font-size: 18px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fa3-experiment__links a:hover {
+    color: #82a7ff;
+  }
+}
+
 .fa3-method__link {
   display: inline-block;
   margin-top: 22px;

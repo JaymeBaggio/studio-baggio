@@ -259,6 +259,44 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         </div>
       </section>
 
+      <section className="fa3-section fa3-experiment" aria-labelledby="fa3-experiment-title">
+        <div className="editorial-container fa3-experiment__grid">
+          <div>
+            <p className="fa3-kicker">Live follow-up experiment</p>
+            <h2 id="fa3-experiment-title">Can transparent comparison pages enter the AI source set?</h2>
+          </div>
+          <div className="fa3-experiment__body">
+            <p>
+              On 7 August 2026, Studio Baggio began a live follow-up test using three Calm Authority
+              comparison guides. Each discloses its selection method, links the evidence behind every
+              firm and accepts no paid inclusion or placement. The test asks whether pages built that
+              way can enter the sources cited by ChatGPT, Gemini and Perplexity.
+            </p>
+            <p>
+              This is an intervention, not a result. The original 450-answer study above is unchanged;
+              subsequent checks will be dated and reported separately.
+            </p>
+            <ul className="fa3-experiment__links">
+              <li>
+                <a href="https://www.calmauthority.ai/best/financial-advisers-business-owners">
+                  Financial advisers for business owners and business exits
+                </a>
+              </li>
+              <li>
+                <a href="https://www.calmauthority.ai/best/financial-advisers-high-net-worth">
+                  Financial advisers for high-net-worth clients
+                </a>
+              </li>
+              <li>
+                <a href="https://www.calmauthority.ai/best/financial-advisers-uk">
+                  Financial advisers in the UK
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <Fa3FamilyViews families={report.nationalFamilies} />
 
       <section className="fa3-section fa3-context fa3-context--compact" aria-labelledby="fa3-context-title">

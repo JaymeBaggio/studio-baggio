@@ -95,7 +95,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   summary:
     "A 50-question investigation found that AI used a narrow source ecosystem while much of the established UK advice market remained invisible.",
   preparedForReview: "2026-07-31",
-  pageUpdatedAt: "2026-08-03",
+  pageUpdatedAt: "2026-08-07",
   publicationStatus: "published",
   statusLabel: "Published",
   geography: "United Kingdom",
