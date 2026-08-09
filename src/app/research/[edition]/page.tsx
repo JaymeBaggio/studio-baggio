@@ -15,7 +15,6 @@ import {
   researchEditions
 } from "@/content/research";
 import { loadFa3ReportView } from "@/lib/fa3-report-data";
-import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 
 type ResearchEditionPageProps = {
@@ -23,6 +22,14 @@ type ResearchEditionPageProps = {
 };
 
 export const dynamicParams = false;
+
+const reportOpenGraphImage = {
+  url: "/assets/og/uk-financial-advice-2026-og.png",
+  width: 1731,
+  height: 909,
+  type: "image/png",
+  alt: "93 of the UK's top 150 financial advice firms were invisible in AI search. Studio Baggio Research 2026."
+};
 
 export function generateStaticParams() {
   return researchEditions.map((edition) => ({ edition: edition.slug }));
@@ -48,13 +55,13 @@ export async function generateMetadata({ params }: ResearchEditionPageProps): Pr
       url: `${siteUrl}${route}`,
       title,
       description,
-      images: [defaultOpenGraphImage]
+      images: [reportOpenGraphImage]
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [defaultTwitterImage]
+      images: [reportOpenGraphImage.url]
     }
   };
 }
