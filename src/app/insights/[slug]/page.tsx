@@ -1175,7 +1175,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
         blocks.push(
           <ArticleSetupFigure
             alt="SEO ranks you in a list of links the user still has to choose from; AI SEO names you inside the answer itself, so the model chooses you before the user clicks anywhere"
-            caption="The difference in one glance"
+            caption="SEO vs AI SEO"
             key="ai-search-figure-difference"
             src="/insights/how-to-master-seo-ai-search-2026/difference-in-one-glance.png"
           />
