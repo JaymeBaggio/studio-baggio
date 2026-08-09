@@ -1181,7 +1181,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
           />
         );
       }
-      if (paragraph.startsWith("Then it answers.")) {
+      if (paragraph.startsWith("The person never sees a list of links.")) {
         blocks.push(
           <ArticleSetupFigure
             alt="How AI search answers: the question goes in, the AI runs searches, reads what already ranks in search, and names the firms the public web agrees on"
