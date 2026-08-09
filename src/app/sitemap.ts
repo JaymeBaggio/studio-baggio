@@ -20,7 +20,7 @@ const routes: Array<{
   { path: "/last30days", lastModified: "2026-07-26", changeFrequency: "monthly", priority: 0.85 },
   { path: "/press", lastModified: "2026-08-06", changeFrequency: "monthly", priority: 0.75 },
   { path: "/about", lastModified: "2026-08-06", changeFrequency: "monthly", priority: 0.75 },
-  { path: "/insights", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/insights", lastModified: "2026-08-09", changeFrequency: "weekly", priority: 0.75 },
   { path: "/contact", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
   { path: "/privacy", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 }
 ];
