@@ -285,24 +285,24 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               This is an intervention, not a result. The original 450-answer study above is unchanged;
               subsequent checks will be dated and reported separately.
             </p>
-            <ul className="fa3-experiment__links">
-              <li>
-                <a href="https://www.calmauthority.ai/best/financial-advisers-business-owners">
-                  Financial advisers for business owners and business exits
-                </a>
-              </li>
-              <li>
-                <a href="https://www.calmauthority.ai/best/financial-advisers-high-net-worth">
-                  Financial advisers for high-net-worth clients
-                </a>
-              </li>
-              <li>
-                <a href="https://www.calmauthority.ai/best/financial-advisers-uk">
-                  Financial advisers in the UK
-                </a>
-              </li>
-            </ul>
           </div>
+          <ul className="fa3-experiment__links">
+            <li>
+              <a href="https://www.calmauthority.ai/best/financial-advisers-business-owners">
+                Financial advisers for business owners and business exits
+              </a>
+            </li>
+            <li>
+              <a href="https://www.calmauthority.ai/best/financial-advisers-high-net-worth">
+                Financial advisers for high-net-worth clients
+              </a>
+            </li>
+            <li>
+              <a href="https://www.calmauthority.ai/best/financial-advisers-uk">
+                Financial advisers in the UK
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 
