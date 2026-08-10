@@ -34,6 +34,10 @@ function formatDate(date: string) {
 }
 
 export default function ResearchIndexPage() {
+  const latestPublishedEdition = researchEditions.find(
+    (edition) => edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
+  );
+
   return (
     <div className="home-4b research-page research-index" data-research-page>
       <header className="research-index-masthead">
@@ -49,7 +53,7 @@ export default function ResearchIndexPage() {
               <p className="research-index-masthead__body">{researchFranchise.methodologyPrinciple}</p>
               <Link
                 className="research-index-audit-link"
-                href="/contact?utm_source=research&utm_medium=study&utm_campaign=research-index&utm_content=audit-cta"
+                href={latestPublishedEdition ? getResearchEditionPath(latestPublishedEdition) : "/research"}
               >
                 Find out where your firm appears →
               </Link>
