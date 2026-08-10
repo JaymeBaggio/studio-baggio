@@ -10021,6 +10021,26 @@ body:has(.home-4b.contact-page) footer {
   white-space: nowrap;
 }
 
+.research-edition-card > .research-action-link .research-action-link-surface {
+  border-color: var(--sb-ink, #111111);
+  background: transparent;
+  color: var(--sb-ink, #111111);
+}
+
+.research-edition-card > .research-action-link:focus-visible .research-action-link-surface {
+  border-color: var(--sb-blue, #2563eb);
+  background: var(--sb-blue, #2563eb);
+  color: var(--sb-paper, #ffffff);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .research-edition-card > .research-action-link:hover .research-action-link-surface {
+    border-color: var(--sb-blue, #2563eb);
+    background: var(--sb-blue, #2563eb);
+    color: var(--sb-paper, #ffffff);
+  }
+}
+
 .research-finding {
   padding-block: clamp(76px, 10vw, 146px);
   border-bottom: 1px solid var(--sb-rule, #d8d8d8);
@@ -13514,13 +13534,13 @@ body:has(.home-4b.contact-page) footer {
 
 /* Research landing — one complete editorial frame */
 .research-index-masthead {
-  min-height: 100svh;
+  min-height: auto;
   padding-block: clamp(104px, 12vh, 132px) 34px;
 }
 
 .research-index-masthead__shell {
   display: flex;
-  min-height: calc(100svh - clamp(138px, 15vh, 166px));
+  min-height: auto;
   flex-direction: column;
 }
 
@@ -13538,34 +13558,44 @@ body:has(.home-4b.contact-page) footer {
   font-size: clamp(54px, 6.5vw, 94px);
 }
 
+.research-index-masthead__blue-dot {
+  color: var(--sb-accent-blue, #2563eb);
+}
+
 .research-index-masthead__copy {
   padding-top: 5px;
 }
 
-.research-index-masthead__copy p {
-  max-width: 40rem;
+.research-index-masthead__copy .research-index-masthead__lead {
+  max-width: 35rem;
   margin: 0;
-  color: var(--sb-body, #4f4f4f);
-  font-size: clamp(15px, 1.1vw, 18px);
-  line-height: 1.55;
+  color: var(--sb-ink, #111111);
+  font-size: clamp(26px, 2vw, 34px);
+  line-height: 1.24;
 }
 
-.research-index-masthead__copy p + p {
-  margin-top: 14px;
-  color: var(--sb-muted, #777);
-  font-size: 13px;
+.research-index-masthead__copy .research-index-masthead__body {
+  max-width: 37rem;
+  margin: 22px 0 0;
+  color: var(--sb-body, #4f4f4f);
+  font-size: clamp(17px, 1.2vw, 20px);
+  line-height: 1.5;
 }
 
 .research-index-audit-link {
   display: inline-flex;
-  margin-top: 22px;
+  min-height: 44px;
+  align-items: center;
+  margin-top: 28px;
+  border-bottom: 1px solid currentColor;
   color: var(--sb-blue, #2563eb);
-  font-size: 13px;
+  font-size: clamp(15px, 1vw, 17px);
+  line-height: 1.3;
 }
 
 .research-index-editions {
-  margin-top: auto;
-  padding-top: clamp(38px, 6vh, 64px);
+  margin-top: clamp(64px, 7vw, 96px);
+  padding-top: 0;
 }
 
 .research-index-editions > .eyebrow {

@@ -79,9 +79,9 @@ export const researchFranchise = {
   name: "The Studio Baggio AI Discovery Study",
   title: "Research",
   description:
-    "Reproducible evidence on how businesses appear in grounded AI search answers.",
+    "See which businesses AI puts in front of your customers.",
   methodologyPrinciple:
-    "The study reports semantically verified candidate shortlists by question and scenario. It does not score adviser quality, suitability or total UK market visibility."
+    "We asked the questions prospective clients are asking in AI search- then looked into what was cited, which firms were suggested and why"
 } as const;
 
 const ukFinancialAdvice2026: ResearchEditionDefinition = {
