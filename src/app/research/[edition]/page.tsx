@@ -97,14 +97,16 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
             <h1>93 of the UK&rsquo;s top 150 financial advice firms were invisible in AI search<span aria-hidden="true">.</span></h1>
           </div>
           <div className="fa3-masthead__intro">
-            <p className="fa3-masthead__standfirst">
-              Across 450 answers, AI repeatedly relied on a small group of directories, public
-              bodies and commercial pages to explain financial decisions and build adviser
-              shortlists.
-            </p>
-            <p>
-              Adviser websites often supplied the evidence without the firm ever being named.
-            </p>
+            <div className="fa3-masthead__copy">
+              <p className="fa3-masthead__standfirst">
+                Across 450 answers, AI repeatedly relied on a small group of directories, public
+                bodies and commercial pages to explain financial decisions and build adviser
+                shortlists.
+              </p>
+              <p>
+                Adviser websites often supplied the evidence without the firm ever being named.
+              </p>
+            </div>
             <div className="fa3-masthead__meta" aria-label="Study summary">
               <span><strong>50</strong> buyer questions</span>
               <span><strong>450</strong> answers</span>
