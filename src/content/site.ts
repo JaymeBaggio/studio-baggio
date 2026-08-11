@@ -832,38 +832,47 @@ export const about = {
 
 export const pressPage = {
   title: "Press",
-  lead: {
-    publication: "Professional Adviser",
-    series: "Research coverage",
-    date: "11 August 2026",
-    datePublished: "2026-08-11",
-    author: "Sophia Panayi",
-    title: "Some UK top advice firms invisible to AI platforms – research",
-    description:
-      "Professional Adviser reports on Studio Baggio's study of 450 AI-generated answers, which found that 93 of the UK's top 150 advice firms were neither named nor cited.",
-    quote: "They weren't ranked lower, they just weren't named or cited at all.",
-    href: "https://www.professionaladviser.com/news/4534156/uk-advice-firms-invisible-ai-platforms-research",
-    researchHref: "/research/uk-financial-advice-2026",
-    logo: {
-      src: "/assets/logos/professional-adviser-print.png",
-      width: 2167,
-      height: 180
-    }
-  },
-  earlierEyebrow: "EARLIER COVERAGE",
-  earlierTitle: "More press coverage.",
-  earlier: [
+  features: [
+    {
+      publication: "Professional Adviser",
+      series: "Research coverage",
+      date: "11 August 2026",
+      datePublished: "2026-08-11",
+      author: "Sophia Panayi",
+      title: "Some UK top advice firms invisible to AI platforms – research",
+      description:
+        "Professional Adviser reports on Studio Baggio's study of 450 AI-generated answers, which found that 93 of the UK's top 150 advice firms were neither named nor cited.",
+      quote: "They weren't ranked lower, they just weren't named or cited at all.",
+      href: "https://www.professionaladviser.com/news/4534156/uk-advice-firms-invisible-ai-platforms-research",
+      researchHref: "/research/uk-financial-advice-2026",
+      logo: {
+        src: "/assets/logos/professional-adviser-print.png",
+        width: 2167,
+        height: 180
+      }
+    },
     {
       publication: "Money Marketing",
+      series: "At the Helm",
       date: "22 June 2026",
       datePublished: "2026-06-22",
       author: "Amanda Newman Smith",
       title: "Making AI more than an efficiency play",
       description:
         "Money Marketing profiles Jayme's approach to using AI to generate revenue, strengthen business models and create commercial advantage.",
+      quote: "I'm trying to make their business model stronger.",
       href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/",
-      researchHref: null
-    },
+      researchHref: null,
+      logo: {
+        src: "/assets/logos/money-marketing.png",
+        width: 440,
+        height: 132
+      }
+    }
+  ],
+  earlierEyebrow: "CALM AUTHORITY COVERAGE",
+  earlierTitle: "Earlier coverage.",
+  earlier: [
     {
       publication: "FT Adviser",
       date: "5 May 2026",

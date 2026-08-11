@@ -10,7 +10,7 @@ import { siteUrl } from "@/lib/utils";
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.press, path: "/press" });
 
 const pageUrl = `${siteUrl}/press`;
-const coverage = [pressPage.lead, ...pressPage.earlier];
+const coverage = [...pressPage.features, ...pressPage.earlier];
 
 const pressSchema = {
   "@context": "https://schema.org",
@@ -67,108 +67,100 @@ export default function PressPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pressSchema) }}
       />
       <PageReveals />
-      <div className="home-4b studio-page products-page press-page">
-        <section className="products-hero" data-header-theme="light">
-          <div className="editorial-container products-hero-shell">
-            <div className="products-hero-main">
-              <div aria-hidden="true" />
-              <h1 className="products-hero-title" data-reveal>
-                {pressPage.title}
-                <span className="products-blue-dot" aria-hidden="true">.</span>
-              </h1>
-            </div>
+      <div className="home-4b studio-page press-page">
+        <section className="press-hero" data-header-theme="light">
+          <div className="editorial-container">
+            <h1 className="press-hero-title" data-reveal>
+              {pressPage.title}<span aria-hidden="true">.</span>
+            </h1>
           </div>
         </section>
 
-        <section className="pb-16 pt-6 md:pb-24 md:pt-10">
+        <section className="press-features-section">
           <div className="editorial-container">
-            <a
-              href={pressPage.lead.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="focus-ring group block border-b border-ink/15 pb-8 transition-colors duration-200 hover:border-ink md:pb-12"
-              aria-label={`${pressPage.lead.title} - read in ${pressPage.lead.publication}`}
-              data-reveal
-            >
-              <article className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
-                <div className="flex flex-col items-start justify-between gap-10">
-                  <Image
-                    src={pressPage.lead.logo.src}
-                    alt={pressPage.lead.publication}
-                    width={pressPage.lead.logo.width}
-                    height={pressPage.lead.logo.height}
-                    sizes="(max-width: 767px) 240px, 300px"
-                    className="h-auto w-[240px] md:w-[300px]"
-                    priority
-                  />
-                  <p className="text-xs uppercase leading-relaxed tracking-[0.12em] text-ink/50">
-                    {pressPage.lead.series} · {pressPage.lead.date}
-                    <br />
-                    {pressPage.lead.author}
-                  </p>
-                </div>
-
-                <div>
-                  <h2 className="max-w-4xl text-3xl leading-[1.05] tracking-[-0.03em] md:text-5xl lg:text-6xl">
-                    {pressPage.lead.title}
-                  </h2>
-                  <p className="mt-7 max-w-2xl text-base leading-relaxed text-ink/65 md:text-lg">
-                    {pressPage.lead.description}
-                  </p>
-                  <blockquote className="mt-10 border-l-2 border-[color:var(--sb-accent-blue)] pl-5 text-xl leading-snug md:text-2xl">
-                    “{pressPage.lead.quote}”
-                  </blockquote>
-                  <span className="mt-10 inline-flex min-h-11 items-center gap-2 text-sm uppercase tracking-[0.08em] text-[color:var(--sb-accent-blue)]">
-                    Read in {pressPage.lead.publication}
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-                  </span>
-                </div>
-              </article>
-            </a>
-            <div className="mt-5 flex justify-end" data-reveal>
-              <Link
-                href={pressPage.lead.researchHref}
-                className="focus-ring inline-flex min-h-11 items-center gap-2 text-sm uppercase tracking-[0.08em] text-[color:var(--sb-accent-blue)]"
-              >
-                Read the Studio Baggio research behind this coverage
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-ink/10 py-16 md:py-24">
-          <div className="editorial-container">
-            <p className="eyebrow" data-reveal data-motion="label">
-              {pressPage.earlierEyebrow}
+            <p className="eyebrow press-section-label" data-reveal data-motion="label">
+              Featured coverage
             </p>
-            <h2 className="mt-5 text-3xl tracking-[-0.03em] md:text-5xl" data-reveal>
-              {pressPage.earlierTitle}
-            </h2>
-            <div className="mt-12 grid gap-px bg-ink/15 md:grid-cols-2 lg:grid-cols-3" data-reveal>
+            <div className="press-feature-list">
+              {pressPage.features.map((item, index) => (
+                <article className="press-feature-row" data-reveal key={item.href}>
+                  <div className="press-feature-meta">
+                    <Image
+                      src={item.logo.src}
+                      alt={item.publication}
+                      width={item.logo.width}
+                      height={item.logo.height}
+                      sizes="(max-width: 767px) 240px, 300px"
+                      className={`press-feature-logo${item.publication === "Money Marketing" ? " is-money-marketing" : ""}`}
+                      priority={index === 0}
+                    />
+                    <p>
+                      {item.series} · {item.date}
+                      <br />
+                      {item.author}
+                    </p>
+                  </div>
+
+                  <div className="press-feature-copy">
+                    <h2>{item.title}</h2>
+                    <p className="press-feature-description">{item.description}</p>
+                    <blockquote>“{item.quote}”</blockquote>
+                    <div className="press-feature-actions">
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="focus-ring press-primary-link"
+                        aria-label={`${item.title} - read in ${item.publication}`}
+                      >
+                        Read in {item.publication}
+                        <ArrowUpRight aria-hidden="true" />
+                      </a>
+                      {item.researchHref ? (
+                        <Link
+                          href={item.researchHref}
+                          className="focus-ring press-secondary-link"
+                        >
+                          Read the research
+                          <ArrowUpRight aria-hidden="true" />
+                        </Link>
+                      ) : null}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="press-coverage-section">
+          <div className="editorial-container">
+            <div className="press-section-header">
+              <p className="eyebrow" data-reveal data-motion="label">
+                {pressPage.earlierEyebrow}
+              </p>
+              <h2 data-reveal>{pressPage.earlierTitle}</h2>
+            </div>
+            <div className="press-coverage-grid" data-reveal>
               {pressPage.earlier.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="focus-ring group flex min-h-[330px] flex-col bg-paper p-7 transition-colors duration-200 hover:bg-ink/[0.025] md:p-9"
+                  className="focus-ring press-coverage-card"
                   aria-label={`${item.title} - read in ${item.publication}`}
                 >
-                  <article className="flex h-full flex-col">
-                    <div className="flex flex-wrap items-start justify-between gap-4 text-xs uppercase tracking-[0.1em] text-ink/50">
+                  <article>
+                    <div className="press-coverage-meta">
                       <p>{item.publication}</p>
                       <p>{item.date}</p>
                     </div>
-                    <h3 className="mt-10 max-w-xl text-2xl leading-tight tracking-[-0.025em] md:text-3xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-5 max-w-xl text-sm leading-relaxed text-ink/60 md:text-base">
-                      {item.description}
-                    </p>
-                    <span className="mt-auto inline-flex min-h-11 items-end gap-2 pt-10 text-sm uppercase tracking-[0.08em] text-[color:var(--sb-accent-blue)]">
+                    <h3>{item.title}</h3>
+                    <p className="press-coverage-description">{item.description}</p>
+                    <span>
                       Read coverage
-                      <ArrowUpRight className="mb-0.5 h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                      <ArrowUpRight aria-hidden="true" />
                     </span>
                   </article>
                 </a>
@@ -177,22 +169,15 @@ export default function PressPage() {
           </div>
         </section>
 
-        <section className="border-t border-ink/10 py-16 md:py-24">
-          <div className="editorial-container grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:gap-16">
+        <section className="press-media-section" data-header-theme="dark">
+          <div className="editorial-container press-media-grid">
             <p className="eyebrow" data-reveal data-motion="label">
               {pressPage.media.eyebrow}
             </p>
             <div data-reveal>
-              <h2 className="max-w-3xl text-3xl tracking-[-0.03em] md:text-5xl">
-                {pressPage.media.title}
-              </h2>
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink/65 md:text-lg">
-                {pressPage.media.body}
-              </p>
-              <a
-                href={`mailto:${pressPage.media.email}`}
-                className="focus-ring mt-8 inline-flex min-h-11 items-center border border-ink px-5 text-sm uppercase tracking-[0.08em] transition-colors duration-200 hover:bg-ink hover:text-paper"
-              >
+              <h2>{pressPage.media.title}</h2>
+              <p>{pressPage.media.body}</p>
+              <a href={`mailto:${pressPage.media.email}`} className="focus-ring press-media-link">
                 {pressPage.media.email}
               </a>
             </div>
