@@ -14919,7 +14919,7 @@ body:has(.home-4b.contact-page) footer {
   line-height: 1.65;
 }
 
-.home-4b.press-page .press-feature-copy blockquote {
+.home-4b.press-page .press-feature-pullout {
   max-width: 760px;
   margin: 28px 0 0;
   padding-left: 18px;
@@ -15154,7 +15154,7 @@ body:has(.home-4b.contact-page) footer {
     font-size: 16px;
   }
 
-  .home-4b.press-page .press-feature-copy blockquote {
+  .home-4b.press-page .press-feature-pullout {
     font-size: 20px;
   }
 

@@ -55,11 +55,11 @@ const pressSchema = {
         ],
         url: item.href,
         mainEntityOfPage: item.href,
-        ...("quote" in item
+        ...("pulloutIsQuotation" in item && item.pulloutIsQuotation
           ? {
               hasPart: {
                 "@type": "Quotation",
-                text: item.quote,
+                text: item.pullout,
                 creator: {
                   "@type": "Person",
                   name: "Jayme Baggio",
@@ -129,7 +129,11 @@ export default function PressPage() {
                   <div className="press-feature-copy">
                     <h2>{item.title}</h2>
                     <p className="press-feature-description">{item.description}</p>
-                    <blockquote>“{item.quote}”</blockquote>
+                    {item.pulloutIsQuotation ? (
+                      <blockquote className="press-feature-pullout">“{item.pullout}”</blockquote>
+                    ) : (
+                      <p className="press-feature-pullout">{item.pullout}</p>
+                    )}
                     <div className="press-feature-actions">
                       <a
                         href={item.href}

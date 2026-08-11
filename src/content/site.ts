@@ -842,7 +842,8 @@ export const pressPage = {
       title: "Some UK top advice firms invisible to AI platforms – research",
       description:
         "Professional Adviser reports on Studio Baggio's study of 450 AI-generated answers, which found that 93 of the UK's top 150 advice firms were neither named nor cited.",
-      quote: "They weren't ranked lower, they just weren't named or cited at all.",
+      pullout: "They weren't ranked lower, they just weren't named or cited at all.",
+      pulloutIsQuotation: true,
       href: "https://www.professionaladviser.com/news/4534156/uk-advice-firms-invisible-ai-platforms-research",
       researchHref: "/research/uk-financial-advice-2026",
       logo: {
@@ -860,8 +861,9 @@ export const pressPage = {
       title: "Making AI more than an efficiency play",
       description:
         "Money Marketing profiles Jayme's approach to using AI to generate revenue, strengthen business models and create commercial advantage.",
-      quote:
-        "There's this huge opportunity for these businesses to make their expertise more visible — and for helping them to generate revenue from using AI.",
+      pullout:
+        "Making expertise visible and using AI to generate more revenue for the business.",
+      pulloutIsQuotation: false,
       href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/",
       researchHref: null,
       logo: {
