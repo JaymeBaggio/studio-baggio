@@ -324,17 +324,20 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <div className="fa3-context__stats">
             <article>
               <strong>75%</strong>
-              <p>More than 75% of Google searches are expected to include AI summaries by 2028.</p>
+              <p>of Google searches are expected to include AI summaries by 2028.</p>
               <cite>McKinsey, 2025</cite>
             </article>
             <article>
-              <strong>51%</strong>
-              <p>of consumers say generative AI has changed how they research.</p>
-              <cite>Gartner, 2026</cite>
+              <strong>58%</strong>
+              <p>
+                have replaced traditional search engines with generative AI tools for product and
+                service recommendations.
+              </p>
+              <cite>Capgemini, 2025</cite>
             </article>
             <article>
               <strong>42%</strong>
-              <p>AI searchers are 42% more likely to convert than non-AI traffic.</p>
+              <p>AI-referred traffic converts better than non-AI traffic.</p>
               <cite>Adobe Analytics, 2026</cite>
             </article>
           </div>
