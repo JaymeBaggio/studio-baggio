@@ -282,8 +282,9 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               way can enter the sources cited by ChatGPT, Gemini and Perplexity.
             </p>
             <p>
-              This is an intervention, not a result. The original 450-answer study above is unchanged;
-              subsequent checks will be dated and reported separately.
+              Early checks on 9 August show that Perplexity cited the guides in all six business-owner
+              searches and Gemini cited one. ChatGPT had not yet cited them in the same tests. We will
+              continue to track and report how their visibility changes.
             </p>
           </div>
           <ul className="fa3-experiment__links">
