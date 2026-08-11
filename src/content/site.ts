@@ -860,7 +860,8 @@ export const pressPage = {
       title: "Making AI more than an efficiency play",
       description:
         "Money Marketing profiles Jayme's approach to using AI to generate revenue, strengthen business models and create commercial advantage.",
-      quote: "I'm trying to make their business model stronger.",
+      quote:
+        "There's this huge opportunity for these businesses to make their expertise more visible — and for helping them to generate revenue from using AI.",
       href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/",
       researchHref: null,
       logo: {
@@ -870,7 +871,6 @@ export const pressPage = {
       }
     }
   ],
-  earlierEyebrow: "CALM AUTHORITY COVERAGE",
   earlierTitle: "Earlier coverage.",
   earlier: [
     {

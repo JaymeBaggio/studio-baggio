@@ -41,8 +41,33 @@ const pressSchema = {
           "@type": "Organization",
           name: item.publication
         },
+        about: [
+          {
+            "@type": "Organization",
+            name: "Studio Baggio Ltd",
+            url: siteUrl
+          },
+          {
+            "@type": "Person",
+            name: "Jayme Baggio",
+            url: `${siteUrl}/about`
+          }
+        ],
         url: item.href,
         mainEntityOfPage: item.href,
+        ...("quote" in item
+          ? {
+              hasPart: {
+                "@type": "Quotation",
+                text: item.quote,
+                creator: {
+                  "@type": "Person",
+                  name: "Jayme Baggio",
+                  url: `${siteUrl}/about`
+                }
+              }
+            }
+          : {}),
         ...(item.researchHref
           ? {
               isBasedOn: {
@@ -136,9 +161,6 @@ export default function PressPage() {
         <section className="press-coverage-section">
           <div className="editorial-container">
             <div className="press-section-header">
-              <p className="eyebrow" data-reveal data-motion="label">
-                {pressPage.earlierEyebrow}
-              </p>
               <h2 data-reveal>{pressPage.earlierTitle}</h2>
             </div>
             <div className="press-coverage-grid" data-reveal>
