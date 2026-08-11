@@ -66,9 +66,9 @@ export const metadata = {
       "What you can hire Studio Baggio for: AI Operating System Audit and Implementation, Commercial Growth Strategy, SEO and AI Search Opportunity Audit, and Bespoke Software & Systems Build."
   },
   press: {
-    title: "Press | Studio Baggio",
+    title: "Press & Media Coverage | Studio Baggio",
     description:
-      "Press coverage of Studio Baggio, Jayme Baggio and the AI systems Studio Baggio designs and builds."
+      "Press coverage of Studio Baggio research into how AI platforms choose UK financial advice firms, plus commentary from founder Jayme Baggio."
   }
 };
 
@@ -833,19 +833,37 @@ export const about = {
 export const pressPage = {
   title: "Press",
   lead: {
-    publication: "Money Marketing",
-    series: "At the Helm",
-    date: "22 June 2026",
-    datePublished: "2026-06-22",
-    author: "Amanda Newman Smith",
-    title: "Making AI more than an efficiency play",
+    publication: "Professional Adviser",
+    series: "Research coverage",
+    date: "11 August 2026",
+    datePublished: "2026-08-11",
+    author: "Sophia Panayi",
+    title: "Some UK top advice firms invisible to AI platforms – research",
     description:
-      "Money Marketing profiles Jayme's approach to using AI to generate revenue, strengthen business models and create commercial advantage.",
-    quote: "I'm trying to make their business model stronger.",
-    href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/"
+      "Professional Adviser reports on Studio Baggio's study of 450 AI-generated answers, which found that 93 of the UK's top 150 advice firms were neither named nor cited.",
+    quote: "They weren't ranked lower, they just weren't named or cited at all.",
+    href: "https://www.professionaladviser.com/news/4534156/uk-advice-firms-invisible-ai-platforms-research",
+    researchHref: "/research/uk-financial-advice-2026",
+    logo: {
+      src: "/assets/logos/professional-adviser-print.png",
+      width: 2167,
+      height: 180
+    }
   },
   earlierEyebrow: "EARLIER COVERAGE",
+  earlierTitle: "More press coverage.",
   earlier: [
+    {
+      publication: "Money Marketing",
+      date: "22 June 2026",
+      datePublished: "2026-06-22",
+      author: "Amanda Newman Smith",
+      title: "Making AI more than an efficiency play",
+      description:
+        "Money Marketing profiles Jayme's approach to using AI to generate revenue, strengthen business models and create commercial advantage.",
+      href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/",
+      researchHref: null
+    },
     {
       publication: "FT Adviser",
       date: "5 May 2026",
@@ -854,7 +872,8 @@ export const pressPage = {
       title: "Client-adviser duo launch AI tool to help boost LinkedIn presence",
       description:
         "Coverage of Calm Authority and the opportunity for financial advisers to turn expertise into a consistent public presence.",
-      href: "https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d"
+      href: "https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d",
+      researchHref: null
     },
     {
       publication: "Professional Adviser",
@@ -864,7 +883,8 @@ export const pressPage = {
       title: "Could a LinkedIn AI platform be financial advisers' 'best kept secret'?",
       description:
         "A profile of Calm Authority and its approach to helping advisers communicate with consistency and credibility.",
-      href: "https://www.professionaladviser.com/news/4527581/linkedin-ai-platform-financial-advisers-best-kept-secret"
+      href: "https://www.professionaladviser.com/news/4527581/linkedin-ai-platform-financial-advisers-best-kept-secret",
+      researchHref: null
     }
   ],
   media: {

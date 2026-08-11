@@ -14832,3 +14832,25 @@ body:has(.home-4b.contact-page) footer {
     transition-duration: 0.01ms;
   }
 }
+
+/* Press page: compact editorial header rather than the full-height Products hero. */
+.home-4b.press-page .products-hero,
+.home-4b.press-page .products-hero-shell {
+  min-height: 0;
+}
+
+.home-4b.press-page .products-hero {
+  padding-top: 0;
+}
+
+.home-4b.press-page .products-hero-main {
+  flex: none;
+  padding-block: clamp(72px, 8vw, 112px);
+}
+
+@media (max-width: 760px) {
+  .home-4b.press-page .products-hero-main {
+    gap: 0;
+    padding-block: 64px;
+  }
+}

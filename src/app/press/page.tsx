@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageReveals } from "@/components/page-reveals";
 import { metadata as siteMetadata, pressPage } from "@/content/site";
@@ -30,6 +31,7 @@ const pressSchema = {
       item: {
         "@type": "NewsArticle",
         headline: item.title,
+        description: item.description,
         datePublished: item.datePublished,
         author: {
           "@type": "Person",
@@ -39,7 +41,18 @@ const pressSchema = {
           "@type": "Organization",
           name: item.publication
         },
-        url: item.href
+        url: item.href,
+        mainEntityOfPage: item.href,
+        ...(item.researchHref
+          ? {
+              isBasedOn: {
+                "@type": "Report",
+                name: "UK Financial Advice Firms in AI Search 2026",
+                url: `${siteUrl}${item.researchHref}`
+              },
+              citation: `${siteUrl}${item.researchHref}`
+            }
+          : {})
       }
     }))
   }
@@ -55,40 +68,37 @@ export default function PressPage() {
       />
       <PageReveals />
       <div className="home-4b studio-page products-page press-page">
-        <section className="products-hero border-b border-ink/10" data-header-theme="light">
+        <section className="products-hero" data-header-theme="light">
           <div className="editorial-container products-hero-shell">
             <div className="products-hero-main">
               <div aria-hidden="true" />
-            <h1
-              className="products-hero-title"
-              data-reveal
-            >
+              <h1 className="products-hero-title" data-reveal>
                 {pressPage.title}
                 <span className="products-blue-dot" aria-hidden="true">.</span>
-            </h1>
+              </h1>
             </div>
           </div>
         </section>
 
-        <section className="py-16 md:py-24">
+        <section className="pb-16 pt-6 md:pb-24 md:pt-10">
           <div className="editorial-container">
             <a
               href={pressPage.lead.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="focus-ring group block border-y border-ink/15 py-8 transition-colors duration-200 hover:border-ink md:py-12"
+              className="focus-ring group block border-b border-ink/15 pb-8 transition-colors duration-200 hover:border-ink md:pb-12"
               aria-label={`${pressPage.lead.title} - read in ${pressPage.lead.publication}`}
               data-reveal
             >
               <article className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
                 <div className="flex flex-col items-start justify-between gap-10">
                   <Image
-                    src="/assets/logos/money-marketing.png"
-                    alt="Money Marketing"
-                    width={440}
-                    height={132}
-                    sizes="(max-width: 767px) 180px, 220px"
-                    className="h-auto w-[180px] md:w-[220px]"
+                    src={pressPage.lead.logo.src}
+                    alt={pressPage.lead.publication}
+                    width={pressPage.lead.logo.width}
+                    height={pressPage.lead.logo.height}
+                    sizes="(max-width: 767px) 240px, 300px"
+                    className="h-auto w-[240px] md:w-[300px]"
                     priority
                   />
                   <p className="text-xs uppercase leading-relaxed tracking-[0.12em] text-ink/50">
@@ -115,6 +125,15 @@ export default function PressPage() {
                 </div>
               </article>
             </a>
+            <div className="mt-5 flex justify-end" data-reveal>
+              <Link
+                href={pressPage.lead.researchHref}
+                className="focus-ring inline-flex min-h-11 items-center gap-2 text-sm uppercase tracking-[0.08em] text-[color:var(--sb-accent-blue)]"
+              >
+                Read the Studio Baggio research behind this coverage
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -124,9 +143,9 @@ export default function PressPage() {
               {pressPage.earlierEyebrow}
             </p>
             <h2 className="mt-5 text-3xl tracking-[-0.03em] md:text-5xl" data-reveal>
-              Calm Authority in the press.
+              {pressPage.earlierTitle}
             </h2>
-            <div className="mt-12 grid gap-px bg-ink/15 md:grid-cols-2" data-reveal>
+            <div className="mt-12 grid gap-px bg-ink/15 md:grid-cols-2 lg:grid-cols-3" data-reveal>
               {pressPage.earlier.map((item) => (
                 <a
                   key={item.href}
