@@ -282,10 +282,9 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               way can enter the sources cited by ChatGPT, Gemini and Perplexity.
             </p>
             <p>
-              In the latest six-search check, Calm Authority appeared in all six business-owner source
-              lists. It ranked above the commercial ranking pages discussed above every time both
-              appeared, and ranked first in three. We will continue to track and report how its
-              visibility changes.
+              Early results show that all three Calm Authority guides are now appearing in AI search.
+              Where Calm Authority appeared alongside the commercial ranking pages discussed above, it
+              ranked higher seven out of eight times. We will continue to track how that changes.
             </p>
           </div>
           <ul className="fa3-experiment__links">
