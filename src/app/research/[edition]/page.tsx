@@ -282,9 +282,9 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               way can enter the sources cited by ChatGPT, Gemini and Perplexity.
             </p>
             <p>
-              Early checks on 9 August show that Perplexity cited the guides in all six business-owner
-              searches and Gemini cited one. ChatGPT had not yet cited them in the same tests. We will
-              continue to track and report how their visibility changes.
+              In the latest six-search check, Calm Authority appeared in all six business-owner source
+              lists and ranked first in three. We will continue to track and report how its visibility
+              changes.
             </p>
           </div>
           <ul className="fa3-experiment__links">
