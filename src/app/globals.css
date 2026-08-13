@@ -7857,7 +7857,7 @@ body:has(.home-4b.contact-page) footer {
   .sv-card {
     position: sticky;
     top: 88px; /* JS lowers this per card so the full card always fits on screen */
-    padding: 34px 56px;
+    padding: 30px 52px;
     will-change: transform;
   }
 

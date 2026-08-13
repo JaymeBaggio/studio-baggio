@@ -92,13 +92,13 @@ const servicesSchema = {
 
 function ExampleParagraph({ text, highlight }: { text: string; highlight?: string }) {
   if (!highlight || !text.includes(highlight)) {
-    return <p className="text-base leading-relaxed text-ink/70 md:text-lg">{text}</p>;
+    return <p className="text-base leading-relaxed text-ink/70">{text}</p>;
   }
 
   const [before, after] = text.split(highlight);
 
   return (
-    <p className="text-base leading-relaxed text-ink/70 md:text-lg">
+    <p className="text-base leading-relaxed text-ink/70">
       {before}
       <strong className="font-semibold text-[color:var(--sb-accent-blue)]">{highlight}</strong>
       {after}
@@ -244,7 +244,7 @@ export default function ServicesPage() {
                   </div>
                   <h3 className="eyebrow pt-8">{offer.includesLabel}</h3>
                   <ul
-                    className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 || offer.includes.join(" ").length > 380 ? " lg:columns-3" : ""}`}
+                    className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 || offer.includes.join(" ").length > 320 ? " lg:columns-3" : ""}`}
                     data-sv-list
                   >
                     {offer.includes.map((item) => (
@@ -412,7 +412,7 @@ export default function ServicesPage() {
                     className="absolute bottom-0 left-0 top-0 w-0.5 bg-[color:var(--sb-accent-blue)]"
                     aria-hidden="true"
                   />
-                  <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)] md:text-lg">
+                  <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
                     &ldquo;{testimonial.quote}&rdquo;
                   </blockquote>
                   <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
