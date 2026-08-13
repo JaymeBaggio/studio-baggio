@@ -7848,9 +7848,15 @@ body:has(.home-4b.contact-page) footer {
 @media (min-width: 1024px) {
   .sv-card {
     position: sticky;
-    top: 88px; /* JS lowers this per card: tall cards stick bottom-aligned, so the full card is read on the way in */
-    padding: 30px 52px;
+    top: 88px; /* the stopper: every card pins here, title always visible */
+    padding: 26px 52px;
     will-change: transform;
+  }
+
+  .sv-card p,
+  .sv-card li,
+  .sv-card blockquote {
+    font-size: 16px;
   }
 
   .sv-stack {

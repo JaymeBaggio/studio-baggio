@@ -234,19 +234,12 @@ export function ServicesMotion() {
           if (desktop) {
             // Every card pins at 88px — top always visible, uniform stack.
             // (Jayme, 29 July 2026: no per-card special-casing.)
-            // Uniform rule for every card: pin at 88px when the card fits
-            // below the header, otherwise pin bottom-aligned so the full
-            // card is always on screen (site-standard type made some cards
-            // taller than a laptop viewport).
-            const setTops = () => {
-              cards.forEach((card) => {
-                const fit = window.innerHeight - card.offsetHeight - 4;
-                card.style.top = `${Math.min(88, fit)}px`;
-              });
-            };
-            setTops();
+            // Every card pins at 88px — top always visible, uniform stack.
+            // Card content is sized so a full card fits below the stopper.
+            cards.forEach((card) => {
+              card.style.top = "88px";
+            });
             const onResize = () => {
-              setTops();
               ScrollTrigger.refresh();
             };
             window.addEventListener("resize", onResize);
