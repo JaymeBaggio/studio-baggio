@@ -14,13 +14,14 @@ const aboutProductLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
   Last30Days: "https://last30days.app",
   "Last30Days.app": "https://last30days.app",
-  "AI Operating System Audit and Implementation": "/services",
+  "AI Operating System Audit": "/services",
+  "Growth Infrastructure & Visibility Audit": "/services",
   "Commercial Growth Strategy": "/services",
   "SEO and AI Search Opportunity Audit": "/services",
   "Bespoke Software & Systems Build": "/services"
 };
 const aboutProductLinkPattern =
-  /(Calm Authority|Last30Days\.app|Last30Days|AI Operating System Audit and Implementation|AI Operating System Audit|Commercial Growth Strategy|SEO and AI Search Opportunity Audit|Bespoke Software & Systems Build)/g;
+  /(Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility Audit|AI Operating System Audit|Commercial Growth Strategy|SEO and AI Search Opportunity Audit|Bespoke Software & Systems Build)/g;
 
 type AboutSection = (typeof about.sections)[number];
 

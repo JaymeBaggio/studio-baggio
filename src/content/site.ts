@@ -62,7 +62,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: AI Operating System Audit and Implementation, Commercial Growth Strategy, SEO and AI Search Opportunity Audit, and Bespoke Software & Systems Build."
+      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility Audit, AI Operating System Audit, and Bespoke Software & Systems Build."
   }
 };
 
@@ -765,7 +765,7 @@ export const about = {
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: AI Operating System Audit and Implementation, Commercial Growth Strategy, SEO and AI Search Opportunity Audit, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Three ways to start: Growth Infrastructure & Visibility Audit, AI Operating System Audit, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
         }
       ]
     },
@@ -935,7 +935,7 @@ export const servicesPage = {
     },
     {
       id: "ai-operating-system-audit",
-      name: "AI Operating System Audit and Implementation",
+      name: "AI Operating System Audit",
       summary:
         "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and processes.",
       paras: [
@@ -1045,9 +1045,9 @@ export const servicesPage = {
     eyebrow: "SERVICES: FREQUENTLY ASKED QUESTIONS",
     items: [
       {
-        question: "What is an AI Operating System Audit and Implementation?",
+        question: "What is an AI Operating System Audit?",
         answer:
-          "The AI Operating System Audit and Implementation is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
+          "The AI Operating System Audit is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
       },
       {
         question: "What is the Growth Infrastructure & Visibility Audit?",
