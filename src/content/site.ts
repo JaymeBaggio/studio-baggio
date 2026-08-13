@@ -968,7 +968,7 @@ export const servicesPage = {
       ],
       example: {
         paras: [
-          "Studio Baggio designed and implemented a company-wide AI system for a London creative agency. Built around the company's knowledge, clients, brand and ways of working, it understood each person's role and gave a non-technical team the context, guidance, tools and capabilities to use AI effectively from day one, without the need for separate training. The system retains useful learning, turns successful work into shared processes and identifies new ways to support the team, becoming more valuable as the business grows. It is estimated to save 10–15 hours+ each week."
+          "Studio Baggio designed and implemented a company-wide AI system for a London creative agency. Built around the company's knowledge, clients, brand and ways of working, it gave a non-technical team the context, tools and capabilities to use AI effectively from day one, without separate training. It is estimated to save 10–15 hours+ each week."
         ],
         highlight: "10–15 hours+ each week"
       },
