@@ -62,7 +62,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility, SEO and AI Search Opportunity Audit, AI Operating System Audit, and Bespoke Software & Systems Build."
+      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility, SEO and AI Search Audit, AI Operating Systems, and Bespoke Software & Systems Build."
   }
 };
 
@@ -765,7 +765,7 @@ export const about = {
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility, SEO and AI Search Opportunity Audit, AI Operating System Audit, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility, SEO and AI Search Audit, AI Operating Systems, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
         }
       ]
     },
@@ -926,7 +926,7 @@ export const servicesPage = {
     },
     {
       id: "seo-and-ai-search-opportunity-audit",
-      name: "SEO and AI Search Opportunity Audit",
+      name: "SEO and AI Search Audit",
       summary:
         "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
       paras: [
@@ -954,7 +954,7 @@ export const servicesPage = {
     },
     {
       id: "ai-operating-system-audit",
-      name: "AI Operating System Audit",
+      name: "AI Operating Systems",
       summary:
         "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and processes.",
       paras: [
@@ -1064,9 +1064,9 @@ export const servicesPage = {
     eyebrow: "SERVICES: FREQUENTLY ASKED QUESTIONS",
     items: [
       {
-        question: "What is an AI Operating System Audit?",
+        question: "What is an AI Operating System?",
         answer:
-          "The AI Operating System Audit is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
+          "An AI Operating System is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
       },
       {
         question: "What is Growth Infrastructure & Visibility?",
@@ -1079,7 +1079,7 @@ export const servicesPage = {
           "The Business Tracker brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds live public professional and company context to show who each person is and why they may matter. Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action. It prioritises prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
       },
       {
-        question: "What does the SEO and AI Search Opportunity Audit cover?",
+        question: "What does the SEO and AI Search Audit cover?",
         answer:
           "It covers current Google rankings, AI-answer visibility and citations, competitor performance, high-value search questions, technical and content gaps, priority pages and resources, site structure, implementation priorities, and measurement. The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
       },
