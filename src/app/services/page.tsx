@@ -159,6 +159,62 @@ export default function ServicesPage() {
           </div>
         </section>
 
+        <section className="border-t border-ink/10 pt-10 pb-14 md:pt-12 md:pb-20">
+          <div className="editorial-container">
+            <p className="eyebrow" data-sv-reveal>
+              {servicesPage.howWeWork.eyebrow}
+            </p>
+            <div className="mt-5 max-w-3xl space-y-4" data-sv-reveal>
+              {servicesPage.howWeWork.paras.map((para) => (
+                <p key={para} className="text-sm leading-relaxed text-ink/70 md:text-base">
+                  {para}
+                </p>
+              ))}
+            </div>
+
+            <div className="mt-12 flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-0" data-svf>
+              {servicesPage.ways.items.map((item, index) => (
+                <Fragment key={item.lead}>
+                  {index > 0 ? (
+                    <div
+                      className="relative hidden w-16 flex-none self-center lg:block"
+                      aria-hidden="true"
+                    >
+                      <span
+                        className="block h-px w-full origin-left scale-x-0 bg-[color:var(--sb-accent-blue)]"
+                        data-svf-line
+                      />
+                      <span
+                        className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[color:var(--sb-accent-blue)]"
+                        data-svf-dot
+                      />
+                    </div>
+                  ) : null}
+                  <div
+                    className="group relative flex-1 overflow-hidden border border-ink/15 bg-white px-6 pb-6 pt-5 shadow-[0_1px_2px_rgba(20,20,20,0.03),0_12px_32px_rgba(20,20,20,0.06)] transition-[border-color,transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-ink/40 hover:shadow-[0_2px_4px_rgba(20,20,20,0.04),0_18px_44px_rgba(20,20,20,0.09)]"
+                    data-svf-card
+                  >
+                    <p className="eyebrow">{String(index + 1).padStart(2, "0")}</p>
+                    <h3 className="mt-4 text-base font-bold leading-snug text-ink md:text-lg">
+                      {item.lead}
+                    </h3>
+                    <div
+                      className="mt-2.5 h-0.5 w-6 bg-[color:var(--sb-accent-blue)]"
+                      aria-hidden="true"
+                      data-svf-accent
+                    />
+                    <p className="mt-4 text-sm leading-relaxed text-ink/70">{item.detail}</p>
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-[color:var(--sb-accent-blue)] transition-transform duration-300 ease-out group-hover:scale-x-100"
+                    />
+                  </div>
+                </Fragment>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="border-t border-ink/10 pt-14 pb-6 md:pt-20 md:pb-8">
           <div className="editorial-container">
             <p className="eyebrow" data-sv-reveal>
@@ -282,62 +338,6 @@ export default function ServicesPage() {
                     </>
                   )}
                 </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-ink/10 pt-10 pb-14 md:pt-12 md:pb-20">
-          <div className="editorial-container">
-            <p className="eyebrow" data-sv-reveal>
-              {servicesPage.howWeWork.eyebrow}
-            </p>
-            <div className="mt-5 max-w-3xl space-y-4" data-sv-reveal>
-              {servicesPage.howWeWork.paras.map((para) => (
-                <p key={para} className="text-sm leading-relaxed text-ink/70 md:text-base">
-                  {para}
-                </p>
-              ))}
-            </div>
-
-            <div className="mt-12 flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-0" data-svf>
-              {servicesPage.ways.items.map((item, index) => (
-                <Fragment key={item.lead}>
-                  {index > 0 ? (
-                    <div
-                      className="relative hidden w-16 flex-none self-center lg:block"
-                      aria-hidden="true"
-                    >
-                      <span
-                        className="block h-px w-full origin-left scale-x-0 bg-[color:var(--sb-accent-blue)]"
-                        data-svf-line
-                      />
-                      <span
-                        className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[color:var(--sb-accent-blue)]"
-                        data-svf-dot
-                      />
-                    </div>
-                  ) : null}
-                  <div
-                    className="group relative flex-1 overflow-hidden border border-ink/15 bg-white px-6 pb-6 pt-5 shadow-[0_1px_2px_rgba(20,20,20,0.03),0_12px_32px_rgba(20,20,20,0.06)] transition-[border-color,transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-ink/40 hover:shadow-[0_2px_4px_rgba(20,20,20,0.04),0_18px_44px_rgba(20,20,20,0.09)]"
-                    data-svf-card
-                  >
-                    <p className="eyebrow">{String(index + 1).padStart(2, "0")}</p>
-                    <h3 className="mt-4 text-base font-bold leading-snug text-ink md:text-lg">
-                      {item.lead}
-                    </h3>
-                    <div
-                      className="mt-2.5 h-0.5 w-6 bg-[color:var(--sb-accent-blue)]"
-                      aria-hidden="true"
-                      data-svf-accent
-                    />
-                    <p className="mt-4 text-sm leading-relaxed text-ink/70">{item.detail}</p>
-                    <span
-                      aria-hidden="true"
-                      className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-[color:var(--sb-accent-blue)] transition-transform duration-300 ease-out group-hover:scale-x-100"
-                    />
-                  </div>
-                </Fragment>
               ))}
             </div>
           </div>
