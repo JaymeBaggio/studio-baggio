@@ -7855,10 +7855,7 @@ body:has(.home-4b.contact-page) footer {
 
 @media (min-width: 1024px) {
   .sv-card {
-    position: sticky;
-    top: 88px;
     padding: 34px 56px;
-    will-change: transform;
   }
 
   .sv-stack {
@@ -7866,13 +7863,27 @@ body:has(.home-4b.contact-page) footer {
   }
 }
 
+/* The pinned stack needs the whole card inside the viewport at site-standard
+   type. Pin only where it fits; laptop-height screens read in normal flow. */
+@media (min-width: 1024px) and (min-height: 1150px) {
+  .sv-card {
+    position: sticky;
+    top: 88px;
+    will-change: transform;
+  }
+
+  .sv-stack > * + * {
+    margin-top: 40vh;
+  }
+}
+
+.sv-example {
+  background: #f6f6f4;
+  padding: 18px 22px !important;
+}
+
 .sv-example .sv-borderline {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--sb-accent-blue);
+  display: none;
 }
 
 /* AI Discovery Benchmark — editorial research system */

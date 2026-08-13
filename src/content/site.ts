@@ -811,21 +811,9 @@ export const about = {
     },
     {
       quote:
-        "SEO & AI SEO were something we were never able to master. Jayme changed that completely: we went from page four on Google to first, above Microsoft, and we show up in AI search for the key questions our customers ask. The advantage this gives us is invaluable.",
-      name: "Emma Corbett",
-      role: "Product Specialist and Co-founder, Get-Planner"
-    },
-    {
-      quote:
         "Jayme was fantastic. The positioning strategy and business model she put together were first class. Her expertise really shone through, and it was clear why she is leading the way in this space. Strongly recommend.",
       name: "Luke",
       role: "Head of Growth, independent financial advisory firm"
-    },
-    {
-      quote:
-        "Jayme spent time with people across the team individually to understand how we work, then came back with a detailed breakdown of where AI would be useful and how it should be set up across the business. She then built and implemented the system for us, with each person's setup tailored to their role. People picked it up quickly because it was built around their actual work, and several of the team have since developed their own tools with it, which they would never have been able to do previously.",
-      name: "Joe Churchill",
-      role: "Founder & CEO"
     }
   ],
   closingQuote:
@@ -945,11 +933,10 @@ export const servicesPage = {
       outro: [
         "The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
       ],
-      example: {
-        paras: [
-          "A software product moved from page four to first on Google, above Microsoft, and began appearing directly in ChatGPT and Perplexity answers, generating more than 20 additional enquiries through AI search within two weeks."
-        ],
-        highlight: "more than 20 additional enquiries through AI search within two weeks"
+      quote: {
+        text: "SEO & AI SEO were something we were never able to master. Jayme changed that completely: we went from page four to first on Google - above Microsoft, and we show up in AI search for the key buyer questions our customers ask. The advantage this gives us is invaluable.",
+        result: "more than 20 additional enquiries through AI search within two weeks",
+        attr: "Emma Corbett · Product Specialist and Co-founder, Get-Planner"
       }
     },
     {
@@ -978,6 +965,10 @@ export const servicesPage = {
           "Studio Baggio designed and implemented a company-wide AI system for a London creative agency. Built around the company's knowledge, clients, brand and ways of working, it understood each person's role and gave a non-technical team the context, guidance, tools and capabilities to use AI effectively from day one, without the need for separate training. The system retains useful learning, turns successful work into shared processes and identifies new ways to support the team, becoming more valuable as the business grows. It is estimated to save 10–15 hours+ each week."
         ],
         highlight: "10–15 hours+ each week"
+      },
+      quote: {
+        text: "Jayme spent time with people across the team individually to understand how we work, then came back with a detailed breakdown of where AI would be useful and how it should be set up across the business. She then built and implemented the system for us: our company and client knowledge, business strategy, positioning and templates built in, with each person's setup tailored to their role. People picked it up quickly because it was built around their actual work, and several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool, which they would never have been able to do previously. I'd be very happy to recommend Jayme to another team considering similar work.",
+        attr: "Joe Churchill · Founder & CEO"
       }
     },
     {

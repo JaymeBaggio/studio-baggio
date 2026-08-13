@@ -22,7 +22,7 @@ export function ServicesMotion() {
       {
         motionOk: "(prefers-reduced-motion: no-preference)",
         reduceMotion: "(prefers-reduced-motion: reduce)",
-        desktop: "(min-width: 1024px)"
+        desktop: "(min-width: 1024px) and (min-height: 1150px)"
       },
       (context) => {
         const { motionOk, desktop } = context.conditions as {
