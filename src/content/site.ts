@@ -924,7 +924,7 @@ export const servicesPage = {
       summary:
         "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
       paras: [
-        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
+        "The focused starting point: for businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
         "Prospective clients use Google and AI platforms to research problems, compare providers and decide who to contact. We identify the highest-value demand the business is missing, then define the pages, authority, content and technical changes needed to be found, trusted and chosen."
       ],
       includesLabel: "What the audit covers",
