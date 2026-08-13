@@ -904,7 +904,7 @@ export const servicesPage = {
       summary:
         "Audit client demand, positioning and current visibility, then define how the website, content, evidence, client-facing resources and lead capture should work together to generate new business: qualified enquiries, instructions and revenue.",
       paras: [
-        "For businesses that want new clients, qualified leads and more repeat revenue from their expertise, relationships and existing client base.",
+        "For businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base.",
         "Prospective clients use Google and AI platforms, alongside referrals and professional relationships, to research problems, compare providers and decide who to contact. We audit how the business is currently positioned, discovered and chosen, then define how its website, content, evidence, client-facing resources and lead capture should work together to turn demand into qualified enquiries and revenue.",
         "The output is a commercial blueprint with a sequenced implementation and measurement plan, implemented internally, with existing partners or by Studio Baggio."
       ],
@@ -1071,7 +1071,7 @@ export const servicesPage = {
       {
         question: "What is Growth Infrastructure & Visibility?",
         answer:
-          "Growth Infrastructure & Visibility is for businesses that want new clients, qualified leads and more repeat revenue from their expertise, relationships and existing client base. It audits how the business is currently positioned, discovered and chosen across Google, AI search, referrals and professional relationships, then defines how the website, content, evidence, client-facing resources and lead capture should work together. The output is a commercial blueprint with a sequenced implementation and measurement plan."
+          "Growth Infrastructure & Visibility is for businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base. It audits how the business is currently positioned, discovered and chosen across Google, AI search, referrals and professional relationships, then defines how the website, content, evidence, client-facing resources and lead capture should work together. The output is a commercial blueprint with a sequenced implementation and measurement plan."
       },
       {
         question: "What is the Business Tracker?",
