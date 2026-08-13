@@ -18,10 +18,10 @@ const aboutProductLinks: Record<string, string> = {
   "Growth Infrastructure & Visibility": "/services",
   "Commercial Growth Strategy": "/services",
   "SEO & AI Search": "/services",
-  "Bespoke Software & Systems Build": "/services"
+  "Bespoke Software & Systems": "/services"
 };
 const aboutProductLinkPattern =
-  /(Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO & AI Search|Bespoke Software & Systems Build)/g;
+  /(Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO & AI Search|Bespoke Software & Systems)/g;
 
 type AboutSection = (typeof about.sections)[number];
 

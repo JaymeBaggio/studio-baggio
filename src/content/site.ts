@@ -62,7 +62,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility, SEO & AI Search, AI Operating Systems, and Bespoke Software & Systems Build."
+      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility, SEO & AI Search, AI Operating Systems, and Bespoke Software & Systems."
   }
 };
 
@@ -765,7 +765,7 @@ export const about = {
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility, SEO & AI Search, AI Operating Systems, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility, SEO & AI Search, AI Operating Systems, and Bespoke Software & Systems. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
         }
       ]
     },
@@ -949,7 +949,7 @@ export const servicesPage = {
       id: "ai-operating-system-audit",
       name: "AI Operating Systems",
       summary:
-        "One company-wide AI system built around how your people work and how value is delivered to clients: shared knowledge, each role set up to win, on the infrastructure you already run.",
+        "One company-wide AI system built around how your people work and how value is delivered to clients: shared knowledge, role-specific capabilities and workflows, built on the infrastructure you already use.",
       paras: [
         "For businesses that want a company-wide AI system built around how their people work and how value is delivered to clients.",
         "We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs, built on the company's existing infrastructure."
@@ -979,7 +979,7 @@ export const servicesPage = {
     },
     {
       id: "bespoke-ai-software-and-systems",
-      name: "Bespoke Software & Systems Build",
+      name: "Bespoke Software & Systems",
       summary:
         "Design and build websites, client-facing tools and resources, internal systems and specialist software for valuable problems that off-the-shelf tools cannot solve.",
       paras: [
