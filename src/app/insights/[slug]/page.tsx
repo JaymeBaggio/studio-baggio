@@ -764,6 +764,8 @@ const firecrawlWorkflow: Array<{ title: string; Icon: LucideIcon; items: string[
   }
 ];
 
+const setupStyleSlugs = new Set(["ai-set-up-guide", "how-to-master-seo-ai-search-2026"]);
+
 function ArticleSetupFigure({
   caption,
   src,
@@ -1035,7 +1037,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
     } else {
       blocks.push(
         <p key={`p-${index}-${blocks.length}`}>
-          {renderInlineMarkdown(chunk.text, articleSlug === "ai-set-up-guide")}
+          {renderInlineMarkdown(chunk.text, setupStyleSlugs.has(articleSlug))}
         </p>
       );
     }
@@ -1168,6 +1170,29 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
       blocks.splice(blocks.length - 1, 0, <PositioningAnglesTable key="positioning-angles-table" />);
     }
 
+    if (articleSlug === "how-to-master-seo-ai-search-2026") {
+      if (paragraph.startsWith("If your name comes up-")) {
+        blocks.push(
+          <ArticleSetupFigure
+            alt="SEO ranks you in a list of links the user still has to choose from; AI SEO names you inside the answer itself, so the model chooses you before the user clicks anywhere"
+            caption="SEO vs AI SEO"
+            key="ai-search-figure-difference"
+            src="/insights/how-to-master-seo-ai-search-2026/difference-in-one-glance.png"
+          />
+        );
+      }
+      if (paragraph.startsWith("**Corroboration.**")) {
+        blocks.push(
+          <ArticleSetupFigure
+            alt="How AI search answers: the question goes in, the AI runs searches, reads what already ranks in search, and names the firms the public web agrees on"
+            caption="How AI search answers"
+            key="ai-search-figure-mechanism"
+            src="/insights/how-to-master-seo-ai-search-2026/how-ai-search-answers.png"
+          />
+        );
+      }
+    }
+
     if (articleSlug === "ai-set-up-guide") {
       if (paragraph === "Don't spend an afternoon designing this. It grows as you use it.") {
         blocks.push(
@@ -1296,6 +1321,16 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
             <ArticleHeading heading={getSourceHeadingDisplay(articleSlug, heading)} key={`h2-${index}`} />
           );
           lastBlockWasQuote = false;
+          if (articleSlug === "how-to-master-seo-ai-search-2026" && heading === "How to get named") {
+            blocks.push(
+              <ArticleSetupFigure
+                alt="How to get named: answer questions plainly, name your sources, make it machine-readable, get mentioned elsewhere, keep details consistent, check monthly"
+                caption="How to get named, at a glance"
+                key="ai-search-figure-named"
+                src="/insights/how-to-master-seo-ai-search-2026/how-to-get-named.png"
+              />
+            );
+          }
         }
       }
       index += 1;
@@ -1332,7 +1367,7 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
         index += 1;
       }
 
-      blocks.push(<ArticleQuotedBlock accentArrows={articleSlug === "ai-set-up-guide"} key={`quote-block-${index}-${blocks.length}`} lines={quoteLines} />);
+      blocks.push(<ArticleQuotedBlock accentArrows={setupStyleSlugs.has(articleSlug)} key={`quote-block-${index}-${blocks.length}`} lines={quoteLines} />);
       lastBlockWasQuote = false;
       continue;
     }
@@ -1527,7 +1562,7 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
       <ArticleSchema article={article} />
       {article.faq?.length ? <FaqSchema items={article.faq} /> : null}
       <PageReveals />
-      <article className={`home-4b insight-article-page${article.slug === "ai-set-up-guide" ? " is-setup-guide" : ""}`}>
+      <article className={`home-4b insight-article-page${setupStyleSlugs.has(article.slug) ? " is-setup-guide" : ""}`}>
         <header className="insight-article-hero" data-home-section>
           <div className="editorial-container insight-article-hero-frame">
             <div className="insight-article-kicker-row" data-reveal>

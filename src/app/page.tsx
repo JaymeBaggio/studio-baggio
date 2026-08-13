@@ -12,7 +12,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
 
 function renderHeroMetaLine(line: string) {
-  const phrase = "WIN IN MARKET";
+  const phrase = "WORKING AI SYSTEM.";
 
   if (!line.includes(phrase)) {
     return line;
@@ -23,7 +23,7 @@ function renderHeroMetaLine(line: string) {
   return (
     <>
       {before}
-      <span className="home-reference-nowrap">{phrase}</span>
+      <span className="home-reference-nowrap home-reference-meta-accent">{phrase}</span>
       {after}
     </>
   );
@@ -50,8 +50,8 @@ export default function HomePage() {
     index < openingHeadlineParts.length - 1 ? `${line}.` : line
   );
   const openingSetupLines =
-    home.opening.setup === "Studio Baggio designs the AI systems that make expert-led businesses:"
-      ? ["Studio Baggio designs the AI systems that make", "expert-led businesses:"]
+    home.opening.setup === "Studio Baggio designs and builds practical AI systems that make businesses:"
+      ? ["Studio Baggio designs and builds practical AI systems", "that make businesses:"]
       : [home.opening.setup];
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
@@ -87,11 +87,10 @@ export default function HomePage() {
       <section className="home-reference-hero">
         <div className="editorial-container home-reference-frame">
           <div className="home-reference-meta">
-            <div className="space-y-2">
-              {hero.meta.map((line, index) => (
+            <div className="home-reference-meta-lines">
+              {hero.meta.map((line) => (
                 <p
                   key={line}
-                  className={index >= hero.meta.length - 2 ? "is-accent" : undefined}
                   data-hero-meta
                 >
                   {renderHeroMetaLine(line)}

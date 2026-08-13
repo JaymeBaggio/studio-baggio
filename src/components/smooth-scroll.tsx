@@ -11,11 +11,12 @@ gsap.registerPlugin(ScrollTrigger);
 export function SmoothScroll() {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
+  const useNativeScroll = pathname === "/research";
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    if (reduceMotion.matches) {
+    if (reduceMotion.matches || useNativeScroll) {
       return;
     }
 
@@ -52,7 +53,7 @@ export function SmoothScroll() {
       lenis.destroy();
       lenisRef.current = null;
     };
-  }, []);
+  }, [useNativeScroll]);
 
   useEffect(() => {
     if (window.location.hash) {

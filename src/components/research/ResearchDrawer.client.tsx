@@ -31,7 +31,7 @@ export function ResearchDrawer({
   trigger,
   triggerClassName
 }: {
-  children: ReactNode;
+  children: ReactNode | ((closeDrawer: () => void) => ReactNode);
   className?: string;
   eyebrow?: string;
   title: string;
@@ -46,6 +46,10 @@ export function ResearchDrawer({
   const panelRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const skipMovement = Boolean(shouldReduceMotion || keyboardInteraction);
+  const closeDrawer = () => {
+    setKeyboardInteraction(false);
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -163,7 +167,9 @@ export function ResearchDrawer({
                         <X aria-hidden="true" />
                       </button>
                     </header>
-                    <div className="research-drawer-content">{children}</div>
+                    <div className="research-drawer-content">
+                      {typeof children === "function" ? children(closeDrawer) : children}
+                    </div>
                   </motion.div>
                 </motion.div>
               ) : null}

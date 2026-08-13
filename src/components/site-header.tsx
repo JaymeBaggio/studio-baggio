@@ -177,7 +177,7 @@ export function SiteHeader() {
         </Link>
         <nav
           className={cn(
-            "hidden items-center gap-7 transition-colors duration-300 lg:flex",
+            "hidden items-center gap-5 transition-colors duration-300 lg:flex xl:gap-7",
             darkHeader ? "text-paper/[0.64]" : quietTop ? "text-ink/[0.58]" : "text-ink/60"
           )}
           aria-label="Primary navigation"

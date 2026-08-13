@@ -109,6 +109,18 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         </div>
         <Analytics />
         <Toaster />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-03SJE21NJ6"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-03SJE21NJ6');
+          `}
+        </Script>
       </body>
     </html>
   );

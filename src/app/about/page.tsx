@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment } from "react";
 import { PageReveals } from "@/components/page-reveals";
 import { ButtonLink } from "@/components/ui/button";
@@ -8,8 +9,6 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
 
-const moneyMarketingFeatureUrl =
-  "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/";
 const aboutProductLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
   Last30Days: "https://last30days.app",
@@ -180,11 +179,9 @@ export default function AboutPage() {
             })}
 
             <aside className="about-featured-press" aria-label="Featured press" data-reveal>
-              <a
-                href={moneyMarketingFeatureUrl}
+              <Link
+                href="/press"
                 className="about-featured-press-link"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <span className="about-featured-press-copy">
                   Featured in <strong>Money Marketing</strong>
@@ -198,7 +195,7 @@ export default function AboutPage() {
                     sizes="(max-width: 767px) 180px, 220px"
                   />
                 </span>
-              </a>
+              </Link>
             </aside>
           </div>
         </section>

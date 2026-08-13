@@ -15,7 +15,6 @@ import {
   researchEditions
 } from "@/content/research";
 import { loadFa3ReportView } from "@/lib/fa3-report-data";
-import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 
 type ResearchEditionPageProps = {
@@ -23,6 +22,14 @@ type ResearchEditionPageProps = {
 };
 
 export const dynamicParams = false;
+
+const reportOpenGraphImage = {
+  url: "/assets/og/uk-financial-advice-2026-og.png",
+  width: 1731,
+  height: 909,
+  type: "image/png",
+  alt: "93 of the UK's top 150 financial advice firms were invisible in AI search. Studio Baggio Research 2026."
+};
 
 export function generateStaticParams() {
   return researchEditions.map((edition) => ({ edition: edition.slug }));
@@ -48,13 +55,13 @@ export async function generateMetadata({ params }: ResearchEditionPageProps): Pr
       url: `${siteUrl}${route}`,
       title,
       description,
-      images: [defaultOpenGraphImage]
+      images: [reportOpenGraphImage]
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [defaultTwitterImage]
+      images: [reportOpenGraphImage.url]
     }
   };
 }
@@ -90,24 +97,23 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
             <h1>93 of the UK&rsquo;s top 150 financial advice firms were invisible in AI search<span aria-hidden="true">.</span></h1>
           </div>
           <div className="fa3-masthead__intro">
-            <p className="fa3-masthead__standfirst">
-              Across 450 answers, AI repeatedly relied on a small group of directories, public
-              bodies and commercial pages to explain financial decisions and build adviser
-              shortlists.
-            </p>
-            <p>
-              Adviser websites often supplied the evidence without the firm ever being named.
-            </p>
+            <div className="fa3-masthead__copy">
+              <p className="fa3-masthead__standfirst">
+                Across 450 answers, AI repeatedly relied on a small group of directories, public
+                bodies and commercial pages to explain financial decisions and build adviser
+                shortlists.
+              </p>
+              <p>
+                Adviser websites often supplied the evidence without the firm ever being named.
+              </p>
+            </div>
             <div className="fa3-masthead__meta" aria-label="Study summary">
               <span><strong>50</strong> buyer questions</span>
               <span><strong>450</strong> answers</span>
               <span><strong>3</strong> AI platforms</span>
               <span><strong>150</strong> firms</span>
             </div>
-            <Fa3MethodDrawer
-              corpusVersion={report.corpus_version}
-              selectionQuestionCount={report.denominators.questions}
-            />
+            <Fa3MethodDrawer />
           </div>
         </div>
       </header>
@@ -262,6 +268,45 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         </div>
       </section>
 
+      <section className="fa3-section fa3-experiment" aria-labelledby="fa3-experiment-title">
+        <div className="editorial-container fa3-experiment__grid">
+          <div>
+            <p className="fa3-kicker">Live follow-up experiment</p>
+            <h2 id="fa3-experiment-title">Can transparent comparison pages enter the AI source set?</h2>
+          </div>
+          <div className="fa3-experiment__body">
+            <p>
+              On 7 August 2026, Studio Baggio began a live follow-up test using three Calm Authority
+              comparison guides. Each discloses its selection method, links the evidence behind every
+              firm and accepts no paid inclusion or placement. The test asks whether pages built that
+              way can enter the sources cited by ChatGPT, Gemini and Perplexity.
+            </p>
+            <p>
+              Early results show that all three Calm Authority guides are now appearing in AI search.
+              Where Calm Authority appeared alongside the commercial ranking pages discussed above, it
+              ranked higher seven out of eight times. We will continue to track how that changes.
+            </p>
+          </div>
+          <ul className="fa3-experiment__links">
+            <li>
+              <a href="https://www.calmauthority.ai/best/financial-advisers-business-owners">
+                Financial advisers for business owners and business exits
+              </a>
+            </li>
+            <li>
+              <a href="https://www.calmauthority.ai/best/financial-advisers-high-net-worth">
+                Financial advisers for high-net-worth clients
+              </a>
+            </li>
+            <li>
+              <a href="https://www.calmauthority.ai/best/financial-advisers-uk">
+                Financial advisers in the UK
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <Fa3FamilyViews families={report.nationalFamilies} />
 
       <section className="fa3-section fa3-context fa3-context--compact" aria-labelledby="fa3-context-title">
@@ -279,17 +324,20 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <div className="fa3-context__stats">
             <article>
               <strong>75%</strong>
-              <p>More than 75% of Google searches are expected to include AI summaries by 2028.</p>
+              <p>of Google searches are expected to include AI summaries by 2028.</p>
               <cite>McKinsey, 2025</cite>
             </article>
             <article>
-              <strong>51%</strong>
-              <p>of consumers say generative AI has changed how they research.</p>
-              <cite>Gartner, 2026</cite>
+              <strong>58%</strong>
+              <p>
+                have replaced traditional search engines with generative AI tools for product and
+                service recommendations.
+              </p>
+              <cite>Capgemini, 2025</cite>
             </article>
             <article>
               <strong>42%</strong>
-              <p>AI searchers are 42% more likely to convert than non-AI traffic.</p>
+              <p>AI-referred traffic converts better than non-AI traffic.</p>
               <cite>Adobe Analytics, 2026</cite>
             </article>
           </div>

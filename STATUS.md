@@ -1,5 +1,23 @@
 # Studio Baggio Website - STATUS
-*Last updated: 24 July 2026*
+*Last updated: 7 August 2026*
+
+## 7 August — Calm Authority citation experiment linked from financial-advice research
+
+- Added a clearly labelled live follow-up experiment directly below the report’s source-influence finding at `/research/uk-financial-advice-2026`.
+- The section links directly to all three Calm Authority financial-adviser comparison guides and states that this is an intervention, not a result; the original 450-answer findings remain unchanged.
+- Updated the research edition `pageUpdatedAt` to 2026-08-07 so the page schema reflects the substantive update.
+- Commit `d40fc64` is on `main` and live. Typecheck and lint passed; the production Next build passed with the established Webpack fallback after Turbopack rejected the clean-worktree dependency symlink. Desktop and 390px visual QA passed. Live HTTP, section copy, all three links and `dateModified` were verified.
+
+## 5 August Research CTA Hover Fix - Live Push
+
+- Fixed the final report CTA hover state so its white label remains visible against the black section instead of turning black and appearing blank.
+- Typecheck, lint and the webpack production build pass; the forced hover state was visually verified in the browser.
+
+## 4 August Research Listing Title - Live Push
+
+- Renamed the report on `/research` to `UK Financial Advice Firms in AI Search 2026` so it clearly describes firms appearing in AI answers, rather than suggesting the study is about AI being used within financial advice.
+- Kept the report page headline, metadata and URL unchanged.
+- Typecheck, lint and the webpack production build pass; desktop browser checks confirmed the listing title fits cleanly and the report masthead is unchanged.
 
 ## 24 July (night) Services Motion + Copy Tightening - Merged Live
 

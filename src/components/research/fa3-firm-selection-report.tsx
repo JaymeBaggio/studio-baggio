@@ -38,7 +38,7 @@ const pct = new Intl.NumberFormat("en-GB", {
 
 const collator = new Intl.Collator("en-GB", { numeric: true, sensitivity: "base" });
 const ANSWERS_PER_NATIONAL_FAMILY = 45;
-const providerOrder = ["openai", "gemini", "perplexity"];
+const ANSWERS_PER_QUESTION = 9;
 
 type FirmOccurrence = QuestionCandidate & {
   query_id: string;
@@ -56,13 +56,6 @@ function panelLabel(value: ReportEntity["panel_status"]) {
   return value === "panel" ? "150-firm panel" : "Outside panel";
 }
 
-function providerLabel(value: string) {
-  if (value === "openai") return "OpenAI";
-  if (value === "gemini") return "Google Gemini";
-  if (value === "perplexity") return "Perplexity";
-  return value;
-}
-
 function familyRecommendationCount(entity: ReportEntity) {
   return Math.round((entity.candidate_presence_rate ?? 0) * ANSWERS_PER_NATIONAL_FAMILY);
 }
@@ -73,53 +66,30 @@ function questionStageLabel(stage: StudyQuestion["stage"]) {
   return "Choosing a firm";
 }
 
-function providerEvidenceLabel(
-  provider: StudyQuestion["evidence"]["firms"][number]["providers"][number],
-  kind: StudyQuestion["evidence"]["kind"]
-) {
-  if (kind === "verified_selection") {
-    const runs = provider.repetitions.length
-      ? ` · run${provider.repetitions.length === 1 ? "" : "s"} ${provider.repetitions.join(", ")}`
-      : "";
-    return `${providerLabel(provider.provider)} ${provider.answer_count}/3${runs}`;
-  }
-
-  const signals = [
-    provider.named_answers ? `named ${provider.named_answers}/3` : null,
-    provider.cited_answers ? `site cited ${provider.cited_answers}/3` : null
-  ].filter(Boolean);
-  return `${providerLabel(provider.provider)} · ${signals.join(" · ")}`;
-}
-
-function sourceProviderLabel(
-  provider: StudyQuestion["evidence"]["sources"][number]["providers"][number]
-) {
-  const runs = provider.repetitions.length
-    ? ` · run${provider.repetitions.length === 1 ? "" : "s"} ${provider.repetitions.join(", ")}`
-    : "";
-  return `${providerLabel(provider.provider)} ${provider.answer_count}/3${runs}`;
-}
-
 function StudyQuestionDrawerContent({ question }: { question: StudyQuestion }) {
   const { evidence } = question;
   const isSelection = evidence.kind === "verified_selection";
-  const visibleFirms = evidence.firms.slice(0, 6);
-  const visibleSources = evidence.sources.slice(0, 8);
+  const visibleFirms = evidence.firms.slice(0, 5);
+  const visibleSources = evidence.sources.slice(0, 5);
+  const answerWord = evidence.valid_answer_count === 1 ? "answer" : "answers";
 
   return (
     <div className="fa3-drawer-stack">
+      <p className="fa3-question-evidence__plain-intro">
+        We asked this question {evidence.valid_answer_count} times: three times on OpenAI, three on
+        Gemini and three on Perplexity.
+      </p>
+
       <div className="fa3-drawer-summary">
         <div>
-          <span>Answers checked</span>
-          <strong>{evidence.valid_answer_count}</strong>
-        </div>
-        <div>
-          <span>{isSelection ? "Firms recommended" : "Panel firms found"}</span>
           <strong>{evidence.firms.length}</strong>
+          <span>
+            {isSelection ? "firms were recommended" : "established firms were named or cited"}
+          </span>
         </div>
         <div>
-          <span>Source domains cited</span>
           <strong>{evidence.sources.length}</strong>
+          <span>websites were cited</span>
         </div>
       </div>
 
@@ -127,74 +97,71 @@ function StudyQuestionDrawerContent({ question }: { question: StudyQuestion }) {
         <section aria-labelledby={`${question.query_id}-firms`}>
           <header>
             <h3 id={`${question.query_id}-firms`}>
-              {isSelection ? "Firms recommended" : "Firms named or cited"}
+              {isSelection ? "Firms AI recommended most often" : "Firms that appeared most often"}
             </h3>
-            <span>{visibleFirms.length} shown</span>
           </header>
           {visibleFirms.length ? (
             <ol className="fa3-question-evidence__compact-list">
               {visibleFirms.map((firm) => (
                 <li key={firm.name}>
-                  <div>
-                    <strong>{firm.name}</strong>
-                    <small>
-                      {firm.providers.map((provider) =>
-                        providerEvidenceLabel(provider, evidence.kind)
-                      ).join(" · ")}
-                    </small>
-                  </div>
-                  <span>
-                    {isSelection
-                      ? `${firm.recommended_answers}/9 recommended`
-                      : [
-                          firm.named_answers ? `${firm.named_answers}/9 named` : null,
-                          firm.cited_answers ? `${firm.cited_answers}/9 cited` : null
-                        ].filter(Boolean).join(" · ")}
-                  </span>
+                  <strong>{firm.name}</strong>
+                  <p>
+                    {isSelection ? (
+                      <>Recommended in {firm.recommended_answers} of {evidence.valid_answer_count} {answerWord}.</>
+                    ) : (
+                      <>
+                        {firm.named_answers
+                          ? `Named in ${firm.named_answers} of ${evidence.valid_answer_count} ${answerWord}.`
+                          : null}
+                        {firm.named_answers && firm.cited_answers ? " " : null}
+                        {firm.cited_answers
+                          ? `Its website was cited in ${firm.cited_answers} of ${evidence.valid_answer_count} ${answerWord}.`
+                          : null}
+                      </>
+                    )}
+                  </p>
                 </li>
               ))}
             </ol>
           ) : (
             <p className="fa3-empty-result">
-              {isSelection ? "No verified firm recommendation." : "No panel firm named or cited."}
+              {isSelection
+                ? `No firm was recommended in the ${evidence.valid_answer_count} ${answerWord}.`
+                : `No established firm was named or cited in the ${evidence.valid_answer_count} ${answerWord}.`}
             </p>
           )}
           {evidence.firms.length > visibleFirms.length ? (
             <p className="fa3-question-evidence__more">
-              +{evidence.firms.length - visibleFirms.length} lower-frequency firms
+              {evidence.firms.length - visibleFirms.length} other firms appeared less often.
             </p>
           ) : null}
         </section>
 
         <section aria-labelledby={`${question.query_id}-sources`}>
           <header>
-            <h3 id={`${question.query_id}-sources`}>Most-cited sources</h3>
-            <span>{visibleSources.length} shown</span>
+            <h3 id={`${question.query_id}-sources`}>Websites AI cited most often</h3>
           </header>
           {visibleSources.length ? (
             <ol className="fa3-question-evidence__compact-list">
               {visibleSources.map((source) => (
                 <li key={source.domain}>
-                  <div>
-                    <a
-                      href={source.urls[0] ?? `https://${source.domain}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {source.domain}
-                    </a>
-                    <small>{source.providers.map(sourceProviderLabel).join(" · ")}</small>
-                  </div>
-                  <span>{source.answer_count}/{evidence.valid_answer_count} answers</span>
+                  <a
+                    href={source.urls[0] ?? `https://${source.domain}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {source.domain}
+                  </a>
+                  <p>Cited in {source.answer_count} of {evidence.valid_answer_count} {answerWord}.</p>
                 </li>
               ))}
             </ol>
           ) : (
-            <p className="fa3-empty-result">No recoverable source domain.</p>
+            <p className="fa3-empty-result">No website citation was available.</p>
           )}
           {evidence.sources.length > visibleSources.length ? (
             <p className="fa3-question-evidence__more">
-              +{evidence.sources.length - visibleSources.length} lower-frequency sources
+              {evidence.sources.length - visibleSources.length} other websites were cited less often.
             </p>
           ) : null}
         </section>
@@ -202,8 +169,8 @@ function StudyQuestionDrawerContent({ question }: { question: StudyQuestion }) {
 
       <p className="fa3-question-evidence__caveat">
         {isSelection
-          ? "Only semantically verified recommendations are counted."
-          : "Named and cited are separate signals; a citation is not a recommendation."}
+          ? "Recommended means the AI presented the firm as an option for the buyer."
+          : "Named means the AI mentioned the firm. Cited means it linked to the firm’s website. Neither necessarily means the firm was recommended."}
       </p>
     </div>
   );
@@ -279,7 +246,7 @@ export function Fa3QuestionExplorer({
                             <>
                             <span>{String(index + 1).padStart(2, "0")}</span>
                             <strong>{studyQuestion.query_text}</strong>
-                              <small>View evidence →</small>
+                              <small>View results →</small>
                             </>
                           }
                         >
@@ -465,7 +432,7 @@ export function Fa3BreadthExplorer({
                       trigger={
                         <>
                           <span>{entity.canonical_name}</span>
-                          <small aria-hidden="true">View evidence →</small>
+                          <small aria-hidden="true">View results →</small>
                         </>
                       }
                     >
@@ -509,7 +476,6 @@ function FirmEvidenceContent({
   }, [occurrences]);
 
   const ownSiteCitations = occurrences.filter((item) => item.own_domain_cited).length;
-  const supportedSelections = occurrences.filter((item) => item.selection_claim_supported).length;
 
   if (!occurrences.length) {
     return (
@@ -526,60 +492,54 @@ function FirmEvidenceContent({
   return (
     <div className="fa3-firm-evidence">
       <div className="fa3-firm-evidence__summary" aria-label="Firm evidence summary">
-        <div><strong>{groupedQuestions.length}</strong><span>questions</span></div>
-        <div><strong>{occurrences.length}</strong><span>selections</span></div>
-        <div><strong>{ownSiteCitations}</strong><span>website citations</span></div>
-        <div><strong>{supportedSelections}</strong><span>supported selections</span></div>
+        <div><strong>{occurrences.length}</strong><span>AI answers recommended the firm</span></div>
+        <div><strong>{groupedQuestions.length}</strong><span>buyer questions where it appeared</span></div>
+        <div><strong>{ownSiteCitations}</strong><span>answers cited its own website</span></div>
       </div>
 
       <div className="fa3-firm-evidence__heading">
-        <h3>Question-by-question evidence</h3>
+        <h3>Questions where this firm appeared</h3>
         <span>{groupedQuestions.length} {groupedQuestions.length === 1 ? "question" : "questions"}</span>
       </div>
 
       <div className="fa3-firm-evidence__questions">
         {groupedQuestions.map((questionOccurrences) => {
           const first = questionOccurrences[0];
-          const providerGroups = providerOrder
-            .map((provider) => ({
-              provider,
-              occurrences: questionOccurrences.filter((item) => item.provider === provider)
-            }))
-            .filter((group) => group.occurrences.length);
+          const cited = questionOccurrences.filter((item) => item.own_domain_cited).length;
+          const topThree = questionOccurrences.filter((item) => item.shortlist_position <= 3).length;
 
           return (
             <article key={first.query_id}>
               <header>
-                <span>{familyLabels[first.family]} · {first.query_id}</span>
+                <span>{familyLabels[first.family]}</span>
                 <h4>{first.query_text}</h4>
               </header>
-              <div className="fa3-firm-evidence__providers">
-                {providerGroups.map((group) => {
-                  const cited = group.occurrences.filter((item) => item.own_domain_cited).length;
-                  const supported = group.occurrences.filter((item) => item.selection_claim_supported).length;
-                  const positions = [...new Set(group.occurrences.map((item) => item.shortlist_position))]
-                    .sort((left, right) => left - right)
-                    .join(", ");
-
-                  return (
-                    <p key={group.provider}>
-                      <strong>{providerLabel(group.provider)}</strong>
-                      <span>
-                        {group.occurrences.length}/3 runs · position {positions} · own site {cited}/{group.occurrences.length} · supported {supported}/{group.occurrences.length}
-                      </span>
-                    </p>
-                  );
-                })}
-              </div>
+              <p>
+                <span>Recommended in {questionOccurrences.length} of {ANSWERS_PER_QUESTION} answers</span>
+                <span>
+                  {topThree === 0
+                    ? "Not in the top three"
+                    : topThree === 1
+                      ? "Top three once"
+                      : topThree === 2
+                        ? "Top three twice"
+                      : `Top three ${topThree} times`}
+                </span>
+                <span>
+                  {cited === 0
+                    ? "Own website not cited"
+                    : cited === 1
+                      ? "Own website cited once"
+                      : cited === 2
+                        ? "Own website cited twice"
+                      : `Own website cited ${cited} times`}
+                </span>
+              </p>
             </article>
           );
         })}
       </div>
 
-      <p className="fa3-firm-evidence__note">
-        Website citations use the firm&rsquo;s own domain; supported selections have a citation
-        backing the recommendation.
-      </p>
     </div>
   );
 }
@@ -621,46 +581,56 @@ export function Fa3LocalView({ questions }: { questions: QuestionView[] }) {
   );
 }
 
-export function Fa3MethodDrawer({
-  corpusVersion,
-  selectionQuestionCount
-}: {
-  corpusVersion: string;
-  selectionQuestionCount: number;
-}) {
+export function Fa3MethodDrawer() {
   return (
     <ResearchDrawer
       className="research-drawer-panel--question fa3-method-drawer"
-      eyebrow="Method and evidence"
+      eyebrow="About the study"
       title="How this study was run"
       triggerClassName="fa3-method-trigger"
       trigger="How this study was run"
     >
-      <div className="fa3-method-content">
-        <p>
-          Two linked studies ran on 30 and 31 July 2026. The first 25 questions tracked which
-          established firms were named and which domains were cited. The second 25 directly tested
-          firm selection, with every candidate semantically verified. Each question ran three times
-          across OpenAI, Gemini and Perplexity, producing 450 valid responses.
-        </p>
-        <dl>
-          <div><dt>Questions</dt><dd>50 questions, including five deliberately repeated wordings</dd></div>
-          <div><dt>Responses</dt><dd>450 valid responses</dd></div>
-          <div><dt>Providers</dt><dd>OpenAI, Gemini and Perplexity</dd></div>
-          <div><dt>Repetitions</dt><dd>Three fresh runs per question and provider</dd></div>
-          <div><dt>Established market panel</dt><dd>150 UK financial advice firms</dd></div>
-          <div><dt>Selection corpus</dt><dd>{corpusVersion} · {selectionQuestionCount} direct firm-selection questions</dd></div>
-          <div><dt>Semantic review</dt><dd>Every selection candidate manually checked; zero unresolved classifications</dd></div>
-          <div><dt>Primary weighting</dt><dd>Equal engine weight; repetitions averaged within question and engine</dd></div>
-        </dl>
-        <h3>Method and data</h3>
-        <ul>
-          <li><Link href="/research/uk-financial-advice-2026/method">Read the full method</Link></li>
-          <li><a href="/research-data/uk-financial-advice-2026/corrected/corpus.json" download>Frozen 25-question corpus</a></li>
-          <li><a href="/research-data/uk-financial-advice-2026/corrected/method.json" download>Method package</a></li>
-          <li><a href="/research-data/uk-financial-advice-2026/corrected/report-data.json" download>Derived report data</a></li>
-        </ul>
-      </div>
+      {(closeDrawer) => (
+        <div className="fa3-method-content">
+          <dl className="fa3-method-content__summary">
+            <div>
+              <dt>What we asked</dt>
+              <dd>
+                50 questions covering three stages: understanding a financial need, finding possible
+                advisers and choosing a specific firm.
+              </dd>
+            </div>
+            <div>
+              <dt>How we tested it</dt>
+              <dd>
+                Each question was put to OpenAI, Gemini and Perplexity three times, producing 450
+                answers.
+              </dd>
+            </div>
+            <div>
+              <dt>What we checked</dt>
+              <dd>
+                We recorded which firms were named, cited or recommended. Every recommendation was
+                checked by hand, then compared with a list of 150 established UK financial advice
+                firms.
+              </dd>
+            </div>
+          </dl>
+          <div className="fa3-method-content__scope">
+            <strong>What the study measures</strong>
+            <span>
+              AI visibility. It does not assess the quality or suitability of any financial adviser.
+            </span>
+          </div>
+          <Link
+            className="fa3-method-content__questions-link"
+            href="#fa3-questions-title"
+            onClick={closeDrawer}
+          >
+            View the questions →
+          </Link>
+        </div>
+      )}
     </ResearchDrawer>
   );
 }

@@ -34,21 +34,28 @@ function formatDate(date: string) {
 }
 
 export default function ResearchIndexPage() {
+  const latestPublishedEdition = researchEditions.find(
+    (edition) => edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
+  );
+
   return (
     <div className="home-4b research-page research-index" data-research-page>
       <header className="research-index-masthead">
         <div className="editorial-container research-index-masthead__shell">
           <p className="eyebrow">Studio Baggio research</p>
           <div className="research-index-masthead__frame">
-            <h1>{researchFranchise.name}</h1>
+            <h1>
+              {researchFranchise.name}
+              <span className="research-index-masthead__blue-dot" aria-hidden="true">.</span>
+            </h1>
             <div className="research-index-masthead__copy">
-              <p>{researchFranchise.description}</p>
-              <p>{researchFranchise.methodologyPrinciple}</p>
+              <p className="research-index-masthead__lead">{researchFranchise.description}</p>
+              <p className="research-index-masthead__body">{researchFranchise.methodologyPrinciple}</p>
               <Link
                 className="research-index-audit-link"
-                href="/contact?utm_source=research&utm_medium=study&utm_campaign=research-index&utm_content=audit-cta"
+                href={latestPublishedEdition ? getResearchEditionPath(latestPublishedEdition) : "/research"}
               >
-                Need your firm&apos;s view? Discuss an audit →
+                Find out where your firm appears →
               </Link>
             </div>
           </div>
@@ -60,7 +67,9 @@ export default function ResearchIndexPage() {
               <li key={edition.slug} className="research-edition-card">
                 <div>
                   <h3>
-                    <Link href={getResearchEditionPath(edition)}>{edition.title}</Link>
+                    <Link href={getResearchEditionPath(edition)}>
+                      {edition.listingTitle ?? edition.title}
+                    </Link>
                   </h3>
                   <p>{edition.summary}</p>
                 </div>
@@ -75,7 +84,7 @@ export default function ResearchIndexPage() {
                   </div>
                 </dl>
                 <ResearchActionLink href={getResearchEditionPath(edition)}>
-                  Open the study
+                  View results
                   <ArrowRight aria-hidden="true" />
                 </ResearchActionLink>
               </li>

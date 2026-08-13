@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Studio Baggio - practical AI systems for expert-led businesses.";
+export const alt = "Studio Baggio - AI strategy, systems and implementation.";
 export const size = {
   width: 1200,
   height: 630
