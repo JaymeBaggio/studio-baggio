@@ -62,7 +62,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility Audit, AI Operating System Audit, and Bespoke Software & Systems Build."
+      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility Audit, SEO and AI Search Opportunity Audit, AI Operating System Audit, and Bespoke Software & Systems Build."
   }
 };
 
@@ -765,7 +765,7 @@ export const about = {
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Three ways to start: Growth Infrastructure & Visibility Audit, AI Operating System Audit, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility Audit, SEO and AI Search Opportunity Audit, AI Operating System Audit, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
         }
       ]
     },
@@ -906,7 +906,7 @@ export const servicesPage = {
       paras: [
         "For businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base.",
         "Prospective clients use Google and AI platforms, alongside referrals and professional relationships, to research problems, compare providers and decide who to contact. We audit how the business is currently positioned, discovered and chosen, then define how its website, content, evidence, client-facing resources and lead capture should work together to turn demand into qualified enquiries and revenue.",
-        "The output is a commercial blueprint with immediate priorities, longer-term recommendations, and a sequenced implementation and measurement plan. The business can implement it internally, work with its existing partners or appoint Studio Baggio to deliver the implementation."
+        "The output is a commercial blueprint with a sequenced implementation and measurement plan, implemented internally, with existing partners or by Studio Baggio."
       ],
       includesLabel: "What the audit covers",
       includes: [
@@ -917,20 +917,39 @@ export const servicesPage = {
         "Recommendations for client-facing guides, diagnostics and tools, including how engagement is captured and used",
         "Lead capture, qualification and follow-up, including the route from discovery or introduction to a qualified enquiry"
       ],
-      subSection: {
-        label: "Business Tracker",
-        paras: [
-          "Growth implementations include Studio Baggio's bespoke Business Tracker.",
-          "It brings together engagement from guides, diagnostics, email, LinkedIn and other channels, then adds current professional and company information to show who each person is and why they may matter.",
-          "Each contact is qualified against the business's commercial priorities, with a clear rationale and recommended next action. Depending on the objective, the system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners."
-        ]
-      },
       example: {
         paras: [
-          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £93,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation.",
-          "A software product moved from page four to first on Google, above Microsoft, and began appearing directly in ChatGPT and Perplexity answers, generating more than 20 additional enquiries through AI search within two weeks."
+          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £93,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
         ],
         highlight: "£5.3 million in assets under management and £93,400 in first-year revenue"
+      }
+    },
+    {
+      id: "seo-and-ai-search-opportunity-audit",
+      name: "SEO and AI Search Opportunity Audit",
+      summary:
+        "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
+      paras: [
+        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
+        "Prospective clients use Google and AI platforms to research problems, compare providers and decide who to contact. We identify the highest-value demand the business is missing, then define the pages, authority, content and technical changes needed to be found, trusted and chosen."
+      ],
+      includesLabel: "What the audit covers",
+      includes: [
+        "High-value client searches and questions",
+        "Current Google and AI-search visibility",
+        "Competitor and citation performance",
+        "Technical, content and authority gaps",
+        "Priority pages and site structure",
+        "Implementation and measurement plan"
+      ],
+      outro: [
+        "The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
+      ],
+      example: {
+        paras: [
+          "A software product moved from page four to first on Google, above Microsoft, and began appearing directly in ChatGPT and Perplexity answers, generating more than 20 additional enquiries through AI search within two weeks."
+        ],
+        highlight: "more than 20 additional enquiries through AI search within two weeks"
       }
     },
     {
@@ -1060,9 +1079,9 @@ export const servicesPage = {
           "The Business Tracker brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds live public professional and company context to show who each person is and why they may matter. Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action. It prioritises prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
       },
       {
-        question: "Does the audit cover SEO and AI search?",
+        question: "What does the SEO and AI Search Opportunity Audit cover?",
         answer:
-          "Yes. SEO and AI-search visibility sits at the centre of the Growth Infrastructure & Visibility Audit: current Google rankings, AI-answer visibility and citations, competitor performance, high-value search questions, technical and content gaps, priority pages and site structure, with an implementation and measurement plan."
+          "It covers current Google rankings, AI-answer visibility and citations, competitor performance, high-value search questions, technical and content gaps, priority pages and resources, site structure, implementation priorities, and measurement. The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
       },
       {
         question: "What kind of software does Studio Baggio build?",

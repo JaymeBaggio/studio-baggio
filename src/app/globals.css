@@ -7857,7 +7857,7 @@ body:has(.home-4b.contact-page) footer {
   .sv-card {
     position: sticky;
     top: 88px;
-    padding: 40px 56px;
+    padding: 34px 56px;
     will-change: transform;
   }
 

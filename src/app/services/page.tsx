@@ -243,7 +243,7 @@ export default function ServicesPage() {
                   </div>
                   <h3 className="eyebrow pt-8">{offer.includesLabel}</h3>
                   <ul
-                    className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 ? " lg:columns-3" : ""}`}
+                    className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length >= 6 ? " lg:columns-3" : ""}`}
                     data-sv-list
                   >
                     {offer.includes.map((item) => (
