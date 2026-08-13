@@ -322,7 +322,7 @@ export default function ServicesPage() {
                         </div>
                       ) : null}
                       {offer.example && offer.quote ? (
-                        <div className="mt-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12">
+                        <div className="mt-8 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12">
                           <div className="sv-example relative pl-5" data-sv-example>
                             <span className="sv-borderline" aria-hidden="true" />
                             <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
