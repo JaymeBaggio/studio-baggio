@@ -894,7 +894,7 @@ export const servicesPage = {
   title: "AI strategy, systems and implementation",
   intro: [
     "Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it.",
-    "This can mean improving how a team works, generating new client demand, increasing visibility across Google and AI platforms, or building specialist software around an industry problem."
+    "This can mean improving how a team works, generating new client demand, increasing visibility across Google and AI platforms, or designing and building the websites, tools, client resources and specialist software the business needs."
   ],
   offersEyebrow: "WHAT YOU CAN HIRE US FOR",
   offers: [
@@ -965,10 +965,10 @@ export const servicesPage = {
       id: "bespoke-ai-software-and-systems",
       name: "Bespoke Software & Systems Build",
       summary:
-        "Design and build specialist software for valuable industry problems that off-the-shelf tools cannot solve.",
+        "Design and build websites, client-facing tools and resources, internal systems and specialist software for valuable problems that off-the-shelf tools cannot solve.",
       paras: [
         "For valuable business problems that cannot be solved with an off-the-shelf tool.",
-        "We work with industry experts to understand the commercial problem, real workflow, available data and decisions the system must support. We then design, build, test and implement specialist software around how the business actually operates."
+        "We work with the business to understand the commercial problem, the real workflow, the available data and the decisions the system must support. We then design, build, test and implement it around how the business actually operates: websites, client-facing tools and diagnostics, internal systems and specialist software."
       ],
       includesLabel: "This can include",
       includes: [
@@ -1067,7 +1067,7 @@ export const servicesPage = {
       {
         question: "What kind of software does Studio Baggio build?",
         answer:
-          "Specialist software for valuable business problems that cannot be solved with an off-the-shelf tool. Studio Baggio works closely with industry experts to understand the commercial problem, the real workflow, the available data and the decisions the system needs to support, then designs, builds, tests and implements the software around how the business actually operates."
+          "Websites, client-facing tools and resources, internal systems and specialist software for valuable business problems that cannot be solved with an off-the-shelf tool. Studio Baggio works closely with the business to understand the commercial problem, the real workflow, the available data and the decisions the system needs to support, then designs, builds, tests and implements it around how the business actually operates."
       },
       {
         question: "How does an engagement begin?",
