@@ -7847,10 +7847,7 @@ body:has(.home-4b.contact-page) footer {
 
 @media (min-width: 1024px) {
   .sv-card {
-    position: sticky;
-    top: 88px;
-    padding: 40px 56px;
-    will-change: transform;
+    padding: 30px 52px;
   }
 
   .sv-stack {
@@ -7858,13 +7855,21 @@ body:has(.home-4b.contact-page) footer {
   }
 }
 
+@media (min-width: 1024px) and (min-height: 1010px) {
+  .sv-card {
+    position: sticky;
+    top: 88px; /* JS lowers this per card so the full card always fits on screen */
+    will-change: transform;
+  }
+}
+
+.sv-example {
+  background: #f6f6f4;
+  padding: 14px 18px !important;
+}
+
 .sv-example .sv-borderline {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--sb-accent-blue);
+  display: none;
 }
 
 /* AI Discovery Benchmark — editorial research system */
