@@ -240,7 +240,7 @@ export function ServicesMotion() {
             // taller than a laptop viewport).
             const setTops = () => {
               cards.forEach((card) => {
-                const fit = window.innerHeight - card.offsetHeight - 10;
+                const fit = window.innerHeight - card.offsetHeight - 4;
                 card.style.top = `${Math.min(88, fit)}px`;
               });
             };
