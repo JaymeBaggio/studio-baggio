@@ -956,7 +956,7 @@ export const servicesPage = {
       id: "ai-operating-system-audit",
       name: "AI Operating Systems",
       summary:
-        "Identify where AI can create the greatest value, then define the company-wide system needed to embed it across people, knowledge and processes.",
+        "One company-wide AI system built around how your people work and how value is delivered to clients: shared knowledge, each role set up to win, on the infrastructure you already run.",
       paras: [
         "For businesses that want a company-wide AI system built around how their people work and how value is delivered to clients.",
         "We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs, built on the company's existing infrastructure."
