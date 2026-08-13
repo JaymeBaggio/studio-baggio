@@ -814,6 +814,12 @@ export const about = {
         "Jayme was fantastic. The positioning strategy and business model she put together were first class. Her expertise really shone through, and it was clear why she is leading the way in this space. Strongly recommend.",
       name: "Luke",
       role: "Head of Growth, independent financial advisory firm"
+    },
+    {
+      quote:
+        "Jayme spent time with people across the team individually to understand how we work, then came back with a detailed breakdown of where AI would be useful and how it should be set up across the business. She then built and implemented the system for us: our company and client knowledge, business strategy, positioning and templates built in, with each person's setup tailored to their role. People picked it up quickly because it was built around their actual work, and several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool, which they would never have been able to do previously. I'd be very happy to recommend Jayme to another team considering similar work.",
+      name: "Joe Churchill",
+      role: "Founder & CEO"
     }
   ],
   closingQuote:
@@ -967,7 +973,7 @@ export const servicesPage = {
         highlight: "10–15 hours+ each week"
       },
       quote: {
-        text: "Jayme spent time with people across the team individually to understand how we work, then came back with a detailed breakdown of where AI would be useful and how it should be set up across the business. She then built and implemented the system for us: our company and client knowledge, business strategy, positioning and templates built in, with each person's setup tailored to their role. People picked it up quickly because it was built around their actual work, and several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool, which they would never have been able to do previously. I'd be very happy to recommend Jayme to another team considering similar work.",
+        text: "Jayme spent time with people across the team individually to understand how we work, then came back with a detailed breakdown of where AI would be useful and how it should be set up across the business. She then built and implemented the system for us, with each person's setup tailored to their role. People picked it up quickly because it was built around their actual work, and several of the team have since developed their own tools with it, which they would never have been able to do previously. I'd be very happy to recommend Jayme to another team considering similar work.",
         attr: "Joe Churchill · Founder & CEO"
       }
     },
