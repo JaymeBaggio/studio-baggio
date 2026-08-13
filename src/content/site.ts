@@ -62,7 +62,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility, SEO and AI Search Audit, AI Operating Systems, and Bespoke Software & Systems Build."
+      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility, SEO & AI Search, AI Operating Systems, and Bespoke Software & Systems Build."
   }
 };
 
@@ -765,7 +765,7 @@ export const about = {
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility, SEO and AI Search Audit, AI Operating Systems, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility, SEO & AI Search, AI Operating Systems, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
         }
       ]
     },
@@ -920,12 +920,12 @@ export const servicesPage = {
     },
     {
       id: "seo-and-ai-search-opportunity-audit",
-      name: "SEO and AI Search Audit",
+      name: "SEO & AI Search",
       summary:
         "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
       paras: [
         "The focused starting point: for businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
-        "Prospective clients use Google and AI platforms to research problems, compare providers and decide who to contact. We identify the highest-value demand the business is missing, then define the pages, authority, content and technical changes needed to be found, trusted and chosen."
+        "Engagements begin with a focused SEO and AI Search Audit. We identify the highest-value demand the business is missing, then define the pages, authority, content and technical changes needed to be found first on Google, cited in AI search and chosen."
       ],
       includesLabel: "What the audit covers",
       includes: [
@@ -1014,8 +1014,8 @@ export const servicesPage = {
     eyebrow: "WAYS TO WORK TOGETHER",
     items: [
       {
-        lead: "Start with a focused audit",
-        detail: "A two- to three-week audit of the current position, producing a prioritised plan: what to implement first, what can wait and how success is measured. Audit fees are fully credited against implementation or ongoing consultation."
+        lead: "Start with focused discovery",
+        detail: "Most engagements begin with a two- to three-week audit of the current position, producing a prioritised plan: what to implement first, what can wait and how success is measured. Audit fees are fully credited against implementation or ongoing consultation."
       },
       {
         lead: "Build and implement",

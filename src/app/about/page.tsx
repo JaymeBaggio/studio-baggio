@@ -17,11 +17,11 @@ const aboutProductLinks: Record<string, string> = {
   "AI Operating Systems": "/services",
   "Growth Infrastructure & Visibility": "/services",
   "Commercial Growth Strategy": "/services",
-  "SEO and AI Search Audit": "/services",
+  "SEO & AI Search": "/services",
   "Bespoke Software & Systems Build": "/services"
 };
 const aboutProductLinkPattern =
-  /(Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO and AI Search Audit|Bespoke Software & Systems Build)/g;
+  /(Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO & AI Search|Bespoke Software & Systems Build)/g;
 
 type AboutSection = (typeof about.sections)[number];
 
