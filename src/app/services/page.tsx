@@ -221,7 +221,7 @@ export default function ServicesPage() {
             <p className="eyebrow" data-sv-reveal>
               {servicesPage.offersEyebrow}
             </p>
-            <div className="sv-stack mt-10 space-y-16 md:space-y-20">
+            <div className="sv-stack mt-10 space-y-16 md:space-y-20 lg:space-y-[40vh]">
               {offers.map((offer) => (
                 <article
                   key={offer.id}

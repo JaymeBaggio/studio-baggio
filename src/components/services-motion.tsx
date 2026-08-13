@@ -22,7 +22,7 @@ export function ServicesMotion() {
       {
         motionOk: "(prefers-reduced-motion: no-preference)",
         reduceMotion: "(prefers-reduced-motion: reduce)",
-        desktop: "(min-width: 1024px) and (min-height: 1150px)"
+        desktop: "(min-width: 1024px)"
       },
       (context) => {
         const { motionOk, desktop } = context.conditions as {
@@ -234,10 +234,19 @@ export function ServicesMotion() {
           if (desktop) {
             // Every card pins at 88px — top always visible, uniform stack.
             // (Jayme, 29 July 2026: no per-card special-casing.)
-            cards.forEach((card) => {
-              card.style.top = "88px";
-            });
+            // Uniform rule for every card: pin at 88px when the card fits
+            // below the header, otherwise pin bottom-aligned so the full
+            // card is always on screen (site-standard type made some cards
+            // taller than a laptop viewport).
+            const setTops = () => {
+              cards.forEach((card) => {
+                const fit = window.innerHeight - card.offsetHeight - 24;
+                card.style.top = `${Math.min(88, fit)}px`;
+              });
+            };
+            setTops();
             const onResize = () => {
+              setTops();
               ScrollTrigger.refresh();
             };
             window.addEventListener("resize", onResize);
