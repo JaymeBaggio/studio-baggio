@@ -62,7 +62,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility Audit, SEO and AI Search Opportunity Audit, AI Operating System Audit, and Bespoke Software & Systems Build."
+      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility, SEO and AI Search Opportunity Audit, AI Operating System Audit, and Bespoke Software & Systems Build."
   }
 };
 
@@ -765,7 +765,7 @@ export const about = {
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility Audit, SEO and AI Search Opportunity Audit, AI Operating System Audit, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility, SEO and AI Search Opportunity Audit, AI Operating System Audit, and Bespoke Software & Systems Build. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
         }
       ]
     },
@@ -900,11 +900,11 @@ export const servicesPage = {
   offers: [
     {
       id: "growth-infrastructure-and-visibility-audit",
-      name: "Growth Infrastructure & Visibility Audit",
+      name: "Growth Infrastructure & Visibility",
       summary:
-        "Audit client demand, positioning and current visibility, then define how the website, content, evidence, client-facing resources and lead capture should work together to create qualified enquiries and revenue.",
+        "Audit client demand, positioning and current visibility, then define how the website, content, evidence, client-facing resources and lead capture should work together to generate new business: qualified enquiries, instructions and revenue.",
       paras: [
-        "For businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base.",
+        "For businesses that want new clients, qualified leads and more repeat revenue from their expertise, relationships and existing client base.",
         "Prospective clients use Google and AI platforms, alongside referrals and professional relationships, to research problems, compare providers and decide who to contact. We audit how the business is currently positioned, discovered and chosen, then define how its website, content, evidence, client-facing resources and lead capture should work together to turn demand into qualified enquiries and revenue.",
         "The output is a commercial blueprint with a sequenced implementation and measurement plan, implemented internally, with existing partners or by Studio Baggio."
       ],
@@ -1069,9 +1069,9 @@ export const servicesPage = {
           "The AI Operating System Audit is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
       },
       {
-        question: "What is the Growth Infrastructure & Visibility Audit?",
+        question: "What is Growth Infrastructure & Visibility?",
         answer:
-          "The Growth Infrastructure & Visibility Audit is for businesses that want more new and repeat revenue from their expertise, relationships and existing client base. It audits how the business is currently positioned, discovered and chosen across Google, AI search, referrals and professional relationships, then defines how the website, content, evidence, client-facing resources and lead capture should work together. The output is a commercial blueprint with a sequenced implementation and measurement plan."
+          "Growth Infrastructure & Visibility is for businesses that want new clients, qualified leads and more repeat revenue from their expertise, relationships and existing client base. It audits how the business is currently positioned, discovered and chosen across Google, AI search, referrals and professional relationships, then defines how the website, content, evidence, client-facing resources and lead capture should work together. The output is a commercial blueprint with a sequenced implementation and measurement plan."
       },
       {
         question: "What is the Business Tracker?",
