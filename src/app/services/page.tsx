@@ -244,7 +244,7 @@ export default function ServicesPage() {
                   </div>
                   <h3 className="eyebrow pt-8">{offer.includesLabel}</h3>
                   <ul
-                    className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 || offer.includes.join(" ").length > 320 ? " lg:columns-3" : ""}`}
+                    className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 ? " lg:columns-3" : ""}`}
                     data-sv-list
                   >
                     {offer.includes.map((item) => (
@@ -322,8 +322,8 @@ export default function ServicesPage() {
                         </div>
                       ) : null}
                       {offer.example && offer.quote ? (
-                        <div className="mt-8 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12">
-                          <div className="sv-example relative pl-5" data-sv-example>
+                        <div className="mt-8 lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-x-12">
+                          <div className="sv-example relative h-full pl-5" data-sv-example>
                             <span className="sv-borderline" aria-hidden="true" />
                             <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
                             <div className="mt-3 space-y-3">
