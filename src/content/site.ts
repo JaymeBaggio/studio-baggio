@@ -1055,7 +1055,7 @@ export const servicesPage = {
         highlight: "10–15 hours+ each week"
       },
       quote: {
-        text: "Jayme spent time with people across the team individually to understand how we work, then came back with a detailed breakdown of where AI would be useful and how it should be set up across the business. She then built and implemented the system for us, with each person's setup tailored to their role. People picked it up quickly because it was built around their actual work, and several of the team have since developed their own tools with it, which they would never have been able to do previously. I'd be very happy to recommend Jayme to another team considering similar work.",
+        text: "Jayme spent time with people across the team individually to understand how we work, then built and implemented the system for us, with each person's setup tailored to their role. People picked it up quickly, and several of the team have since developed their own tools with it. I'd be very happy to recommend Jayme to another team considering similar work.",
         attr: "Joe Churchill · Founder & CEO"
       }
     },

@@ -321,58 +321,23 @@ export default function ServicesPage() {
                           ))}
                         </div>
                       ) : null}
-                      {offer.example && offer.quote ? (
-                        <div className="mt-8 lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-x-12">
-                          <div className="sv-example relative h-full pl-5" data-sv-example>
-                            <span className="sv-borderline" aria-hidden="true" />
-                            <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
-                            <div className="mt-3 space-y-3">
-                              {offer.example.paras.map((para) => (
-                                <ExampleParagraph
-                                  key={para}
-                                  text={para}
-                                  highlight={offer.example?.highlight}
-                                />
-                              ))}
-                            </div>
+                      {offer.example ? (
+                        <div className="sv-example relative mt-10 pl-5" data-sv-example>
+                          <span className="sv-borderline" aria-hidden="true" />
+                          <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
+                          <div className="mt-3 space-y-3">
+                            {offer.example.paras.map((para) => (
+                              <ExampleParagraph
+                                key={para}
+                                text={para}
+                                highlight={offer.example?.highlight}
+                              />
+                            ))}
                           </div>
-                          <figure className="mt-8 lg:mt-0" data-sv-reveal>
-                          <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
-                            &ldquo;{offer.quote.text}&rdquo;
-                          </blockquote>
-                          {offer.quote.result ? (
-                            <p className="mt-3 text-base leading-relaxed text-ink/70">
-                              Result:{" "}
-                              <strong className="font-semibold text-[color:var(--sb-accent-blue)]">
-                                {offer.quote.result}
-                              </strong>
-                              .
-                            </p>
-                          ) : null}
-                          <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
-                            {offer.quote.attr}
-                          </figcaption>
-                        </figure>
                         </div>
-                      ) : (
-                        <>
-                          {offer.example ? (
-                            <div className="sv-example relative mt-10 pl-5" data-sv-example>
-                              <span className="sv-borderline" aria-hidden="true" />
-                              <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
-                              <div className="mt-3 space-y-3">
-                                {offer.example.paras.map((para) => (
-                                  <ExampleParagraph
-                                    key={para}
-                                    text={para}
-                                    highlight={offer.example?.highlight}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                          ) : null}
-                          {offer.quote ? (
-                            <figure className="mt-10" data-sv-reveal>
+                      ) : null}
+                      {offer.quote ? (
+                        <figure className="mt-8" data-sv-reveal>
                           <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
                             &ldquo;{offer.quote.text}&rdquo;
                           </blockquote>
@@ -389,9 +354,7 @@ export default function ServicesPage() {
                             {offer.quote.attr}
                           </figcaption>
                         </figure>
-                          ) : null}
-                        </>
-                      )}
+                      ) : null}
                     </>
                   )}
                 </article>
