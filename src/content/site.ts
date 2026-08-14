@@ -987,7 +987,7 @@ export const privacyPage = {
 
 export const frontDoorOffer = {
   pill: "SEO & AI Search Audit",
-  pillHook: "Do you appear when clients ask AI?",
+  pillHook: "Find out more",
   title: "SEO & AI Search Audit",
   listTitle: "What the audit tells you",
   points: [
