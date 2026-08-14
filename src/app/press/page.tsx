@@ -116,7 +116,7 @@ export default function PressPage() {
                       width={item.logo.width}
                       height={item.logo.height}
                       sizes="(max-width: 767px) 240px, 300px"
-                      className={`press-feature-logo${item.publication === "Money Marketing" ? " is-money-marketing" : ""}`}
+                      className={`press-feature-logo${item.publication === "Money Marketing" ? " is-money-marketing" : ""}${item.publication === "FT Adviser" ? " is-ft-adviser" : ""}`}
                       priority={index === 0}
                     />
                     <p>

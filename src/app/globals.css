@@ -14899,6 +14899,10 @@ body:has(.home-4b.contact-page) footer {
   width: 220px;
 }
 
+.home-4b.press-page .press-feature-logo.is-ft-adviser {
+  width: 200px;
+}
+
 .home-4b.press-page .press-feature-meta p,
 .home-4b.press-page .press-coverage-meta {
   margin: 0;
@@ -15150,6 +15154,10 @@ body:has(.home-4b.contact-page) footer {
 
   .home-4b.press-page .press-feature-logo.is-money-marketing {
     width: 180px;
+  }
+
+  .home-4b.press-page .press-feature-logo.is-ft-adviser {
+    width: 160px;
   }
 
   .home-4b.press-page .press-feature-copy h2 {
