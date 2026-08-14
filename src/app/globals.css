@@ -7857,6 +7857,7 @@ body:has(.home-4b.contact-page) footer {
   .sv-card li,
   .sv-card blockquote {
     font-size: 16px;
+    line-height: 1.55;
   }
 
   .sv-stack {

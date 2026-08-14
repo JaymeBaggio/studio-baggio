@@ -242,7 +242,7 @@ export default function ServicesPage() {
                       </p>
                     ))}
                   </div>
-                  <h3 className="eyebrow pt-8">{offer.includesLabel}</h3>
+                  <h3 className="eyebrow pt-8 lg:pt-6">{offer.includesLabel}</h3>
                   <ul
                     className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 || offer.includes.join(" ").length > 320 ? " lg:columns-3" : ""}`}
                     data-sv-list
@@ -264,10 +264,10 @@ export default function ServicesPage() {
                     // Sub-section and example side by side at desktop: this
                     // card must fit the viewport so its pinned state cuts
                     // nothing off.
-                    <div className="mt-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12">
+                    <div className="mt-10 lg:mt-6 lg:grid lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-x-12">
                       <div data-sv-reveal>
                         <h3 className="eyebrow">{offer.subSection.label}</h3>
-                        <div className="mt-4 space-y-4">
+                        <div className="mt-4 space-y-3">
                           {offer.subSection.paras.map((para) => (
                             <p
                               key={para}

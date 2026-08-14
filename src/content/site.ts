@@ -1077,10 +1077,17 @@ export const servicesPage = {
         "Live testing and implementation",
         "Ongoing refinement"
       ],
+      subSection: {
+        label: "Business Tracker",
+        paras: [
+          "Systems built for clients can include Studio Baggio's bespoke Business Tracker.",
+          "It brings together engagement from guides, diagnostics, email, LinkedIn and other channels, then adds current professional and company information to show who each person is and why they may matter.",
+          "Each contact is qualified against the business's commercial priorities, with a clear rationale and recommended next action. Depending on the objective, the system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners."
+        ]
+      },
       example: {
         paras: [
-          "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. It has now been used by more than 250 individual and corporate users to research markets, competitors, customer questions and emerging opportunities.",
-          "Studio Baggio also designed and built the Business Tracker, bespoke lead-intelligence software that brings together engagement from guides, diagnostics, email, LinkedIn and other channels, shows who each person is and why they may matter, and recommends the next action against the business's commercial priorities."
+          "Studio Baggio designed and built Last30Days, an AI research product now used by more than 250 individual and corporate users to research markets, competitors, customer questions and emerging opportunities."
         ],
         highlight: "more than 250 individual and corporate users"
       }
