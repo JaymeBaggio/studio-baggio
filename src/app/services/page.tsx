@@ -233,7 +233,16 @@ export default function ServicesPage() {
                   className="sv-card mx-auto max-w-5xl scroll-mt-28"
                   data-sv-card
                 >
-                  <h2 className="text-2xl md:text-3xl">{offer.name}</h2>
+                  <div className="flex items-start justify-between gap-6">
+                    <h2 className="text-2xl md:text-3xl">{offer.name}</h2>
+                    <Link
+                      href="/contact"
+                      className="focus-ring mt-2 hidden flex-none items-center gap-2 text-sm uppercase tracking-[0.08em] text-ink transition-colors hover:text-[color:var(--sb-accent-blue)] sm:inline-flex"
+                    >
+                      Enquire now
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  </div>
                   <div
                     className="mt-3 h-0.5 w-9 bg-[color:var(--sb-accent-blue)]"
                     aria-hidden="true"
@@ -326,35 +335,33 @@ export default function ServicesPage() {
                           </figcaption>
                         </figure>
                       ) : null}
-                      <div
-                        className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-5"
-                        data-sv-reveal
-                      >
-                        {offer.featuredIn ? (
-                          <>
-                            <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
-                              {offer.featuredIn.label}
-                            </span>
-                            {offer.featuredIn.logos.map((logo) => (
-                              <Image
-                                key={logo.name}
-                                src={logo.src}
-                                alt={logo.name}
-                                width={logo.width}
-                                height={16}
-                                className="h-4 w-auto"
-                              />
-                            ))}
-                          </>
-                        ) : null}
-                        <Link
-                          href="/contact"
-                          className="focus-ring ml-auto inline-flex items-center gap-2 text-sm uppercase tracking-[0.08em] text-ink transition-colors hover:text-[color:var(--sb-accent-blue)]"
+                      {offer.featuredIn ? (
+                        <div
+                          className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-5"
+                          data-sv-reveal
                         >
-                          Enquire now
-                          <span aria-hidden="true">&rarr;</span>
-                        </Link>
-                      </div>
+                          <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
+                            {offer.featuredIn.label}
+                          </span>
+                          {offer.featuredIn.logos.map((logo) => (
+                            <Image
+                              key={logo.name}
+                              src={logo.src}
+                              alt={logo.name}
+                              width={logo.width}
+                              height={16}
+                              className="h-4 w-auto"
+                            />
+                          ))}
+                        </div>
+                      ) : null}
+                      <Link
+                        href="/contact"
+                        className="focus-ring mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.08em] text-ink transition-colors hover:text-[color:var(--sb-accent-blue)] sm:hidden"
+                      >
+                        Enquire now
+                        <span aria-hidden="true">&rarr;</span>
+                      </Link>
                   </>
                 </article>
               ))}

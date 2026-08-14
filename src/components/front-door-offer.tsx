@@ -209,9 +209,9 @@ export function FrontDoorOffer() {
                 type="button"
                 onClick={dismissPill}
                 aria-label="Hide"
-                className="focus-ring absolute right-1 top-1 flex h-5 w-5 items-center justify-center text-ink/30 transition-colors hover:text-ink group-hover:text-white/50 group-hover:hover:text-white"
+                className="focus-ring absolute -right-2.5 -top-2.5 flex h-6 w-6 items-center justify-center rounded-full border border-ink/25 bg-white text-ink/60 shadow-[0_2px_8px_rgba(20,20,20,0.14)] transition-colors hover:text-ink"
               >
-                <svg width="9" height="9" viewBox="0 0 12 12" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 12 12" aria-hidden="true">
                   <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.4" />
                 </svg>
               </button>
