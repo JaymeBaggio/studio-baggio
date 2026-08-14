@@ -1079,7 +1079,8 @@ export const servicesPage = {
       ],
       example: {
         paras: [
-          "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. It has now been used by more than 250 individual and corporate users to research markets, competitors, customer questions and emerging opportunities."
+          "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. It has now been used by more than 250 individual and corporate users to research markets, competitors, customer questions and emerging opportunities.",
+          "Studio Baggio also designed and built the Business Tracker, bespoke lead-intelligence software that brings together engagement from guides, diagnostics, email, LinkedIn and other channels, shows who each person is and why they may matter, and recommends the next action against the business's commercial priorities."
         ],
         highlight: "more than 250 individual and corporate users"
       }
