@@ -834,6 +834,26 @@ export const pressPage = {
   title: "Press",
   features: [
     {
+      publication: "FT Adviser",
+      series: "Research coverage",
+      date: "13 August 2026",
+      datePublished: "2026-08-13",
+      author: "Hereward Mills",
+      title: "Top advice firms struggle for visibility in AI searches",
+      description:
+        "FT Adviser reports on Studio Baggio's research, which found 93 of the UK's top 150 financial advice firms were not visible in AI searches, with a handful of sources supplying the information AI used to explain decisions and build firm shortlists.",
+      pullout:
+        "AI is shaping which advisers enter a prospective client's consideration set before that person ever reaches a firm's website.",
+      pulloutIsQuotation: true,
+      href: "https://www.ftadviser.com/content/cacb4ab5-d378-478b-a301-3c1c3b8e7525",
+      researchHref: "/research/uk-financial-advice-2026",
+      logo: {
+        src: "/assets/logos/ft-adviser.png",
+        width: 2222,
+        height: 580
+      }
+    },
+    {
       publication: "Professional Adviser",
       series: "Research coverage",
       date: "11 August 2026",
