@@ -985,6 +985,34 @@ export const privacyPage = {
   ]
 };
 
+export const frontDoorOffer = {
+  pill: "SEO & AI Search Audit",
+  pillHook: "Do you appear when clients ask AI?",
+  title: "SEO & AI Search Audit",
+  listTitle: "What the audit tells you",
+  points: [
+    "Your highest-value buyer questions",
+    "Where you appear today",
+    "Who appears instead",
+    "Which sources influence AI answers",
+    "What authority, pages and evidence are missing",
+    "What to implement first"
+  ],
+  cta: { label: "Enquire now", href: "/contact" },
+  more: { label: "Find out what's included", href: "/services#seo-and-ai-search-opportunity-audit" },
+  featured: {
+    label: "Our AI search research featured in",
+    logos: [
+      { name: "Financial Times", src: "/assets/logos/financial-times.png", width: 55 },
+      {
+        name: "Professional Adviser",
+        src: "/assets/logos/professional-adviser-print.png",
+        width: 193
+      }
+    ]
+  }
+};
+
 export const servicesPage = {
   eyebrow: "SERVICES",
   title: "AI strategy, systems and implementation",
@@ -1045,6 +1073,17 @@ export const servicesPage = {
         text: "SEO & AI SEO were something we were never able to master. Jayme changed that completely: we went from page four to first on Google - above Microsoft, and we show up in AI search for the key buyer questions our customers ask. The advantage this gives us is invaluable.",
         result: "more than 20 additional enquiries through AI search within two weeks",
         attr: "Emma Corbett · Product Specialist and Co-founder, Get-Planner"
+      },
+      featuredIn: {
+        label: "Our AI search research featured in",
+        logos: [
+          { name: "Financial Times", src: "/assets/logos/financial-times.png", width: 55 },
+          {
+            name: "Professional Adviser",
+            src: "/assets/logos/professional-adviser-print.png",
+            width: 193
+          }
+        ]
       }
     },
     {

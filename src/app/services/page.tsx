@@ -35,6 +35,10 @@ type ServiceOffer = {
   outro?: string[];
   example?: { paras: string[]; highlight?: string };
   quote?: { text: string; result?: string; attr: string };
+  featuredIn?: {
+    label: string;
+    logos: { name: string; src: string; width: number }[];
+  };
 };
 
 const offers = servicesPage.offers as ServiceOffer[];
@@ -321,6 +325,26 @@ export default function ServicesPage() {
                             {offer.quote.attr}
                           </figcaption>
                         </figure>
+                      ) : null}
+                      {offer.featuredIn ? (
+                        <div
+                          className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-5"
+                          data-sv-reveal
+                        >
+                          <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
+                            {offer.featuredIn.label}
+                          </span>
+                          {offer.featuredIn.logos.map((logo) => (
+                            <Image
+                              key={logo.name}
+                              src={logo.src}
+                              alt={logo.name}
+                              width={logo.width}
+                              height={16}
+                              className="h-4 w-auto"
+                            />
+                          ))}
+                        </div>
                       ) : null}
                   </>
                 </article>

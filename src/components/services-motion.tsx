@@ -278,6 +278,19 @@ export function ServicesMotion() {
           }
 
           ScrollTrigger.refresh();
+
+          // Hash landings (e.g. /services#seo-...): native anchor scroll can't
+          // place a card inside the pinned stack, so position it ourselves —
+          // the card's flow position minus the 88px stopper.
+          const hash = window.location.hash.slice(1);
+          const hashCard = hash ? cards.find((card) => card.id === hash) : undefined;
+          if (hashCard) {
+            window.requestAnimationFrame(() => {
+              window.scrollTo({ top: pageTop(hashCard) - 88, left: 0, behavior: "instant" });
+              ScrollTrigger.refresh();
+            });
+          }
+
           return cleanup;
         }
       }

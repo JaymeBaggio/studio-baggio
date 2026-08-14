@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
+import { FrontDoorOffer } from "@/components/front-door-offer";
 import { ScrollReset } from "@/components/scroll-reset";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
@@ -107,6 +108,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           <main id="main">{children}</main>
           <SiteFooter />
         </div>
+        <FrontDoorOffer />
         <Analytics />
         <Toaster />
         <Script
