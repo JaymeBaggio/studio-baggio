@@ -326,26 +326,35 @@ export default function ServicesPage() {
                           </figcaption>
                         </figure>
                       ) : null}
-                      {offer.featuredIn ? (
-                        <div
-                          className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-5"
-                          data-sv-reveal
+                      <div
+                        className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-5"
+                        data-sv-reveal
+                      >
+                        {offer.featuredIn ? (
+                          <>
+                            <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
+                              {offer.featuredIn.label}
+                            </span>
+                            {offer.featuredIn.logos.map((logo) => (
+                              <Image
+                                key={logo.name}
+                                src={logo.src}
+                                alt={logo.name}
+                                width={logo.width}
+                                height={16}
+                                className="h-4 w-auto"
+                              />
+                            ))}
+                          </>
+                        ) : null}
+                        <Link
+                          href="/contact"
+                          className="focus-ring ml-auto inline-flex items-center gap-2 text-sm uppercase tracking-[0.08em] text-ink transition-colors hover:text-[color:var(--sb-accent-blue)]"
                         >
-                          <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
-                            {offer.featuredIn.label}
-                          </span>
-                          {offer.featuredIn.logos.map((logo) => (
-                            <Image
-                              key={logo.name}
-                              src={logo.src}
-                              alt={logo.name}
-                              width={logo.width}
-                              height={16}
-                              className="h-4 w-auto"
-                            />
-                          ))}
-                        </div>
-                      ) : null}
+                          Enquire now
+                          <span aria-hidden="true">&rarr;</span>
+                        </Link>
+                      </div>
                   </>
                 </article>
               ))}

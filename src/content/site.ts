@@ -999,7 +999,7 @@ export const frontDoorOffer = {
     "What to implement first"
   ],
   cta: { label: "Enquire now", href: "/contact" },
-  more: { label: "Find out what's included", href: "/services#seo-and-ai-search-opportunity-audit" },
+  more: { label: "See what's included", href: "/services#seo-and-ai-search-opportunity-audit" },
   featured: {
     label: "Our AI search research featured in",
     logos: [
