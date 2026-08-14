@@ -260,40 +260,7 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  {offer.subSection && offer.example ? (
-                    // Sub-section and example side by side at desktop: this
-                    // card must fit the viewport so its pinned state cuts
-                    // nothing off.
-                    <div className="mt-10 lg:mt-6 lg:grid lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-x-12">
-                      <div data-sv-reveal>
-                        <h3 className="eyebrow">{offer.subSection.label}</h3>
-                        <div className="mt-4 space-y-3">
-                          {offer.subSection.paras.map((para) => (
-                            <p
-                              key={para}
-                              className="text-base leading-relaxed text-ink/70 md:text-lg"
-                            >
-                              {para}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="sv-example relative mt-10 pl-5 lg:mt-0" data-sv-example>
-                        <span className="sv-borderline" aria-hidden="true" />
-                        <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
-                        <div className="mt-3 space-y-3">
-                          {offer.example.paras.map((para) => (
-                            <ExampleParagraph
-                              key={para}
-                              text={para}
-                              highlight={offer.example?.highlight}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <>
+                  <>
                       {offer.subSection ? (
                         <div className="mt-10" data-sv-reveal>
                           <h3 className="eyebrow">{offer.subSection.label}</h3>
@@ -355,8 +322,7 @@ export default function ServicesPage() {
                           </figcaption>
                         </figure>
                       ) : null}
-                    </>
-                  )}
+                  </>
                 </article>
               ))}
             </div>

@@ -1080,7 +1080,7 @@ export const servicesPage = {
       subSection: {
         label: "Business Tracker",
         paras: [
-          "Systems built for clients can include Studio Baggio's bespoke Business Tracker.",
+          "The Business Tracker is Studio Baggio's own lead-intelligence software, and can be built in as part of any system we deliver.",
           "It brings together engagement from guides, diagnostics, email, LinkedIn and other channels, then adds current professional and company information to show who each person is and why they may matter.",
           "Each contact is qualified against the business's commercial priorities, with a clear rationale and recommended next action. Depending on the objective, the system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners."
         ]
