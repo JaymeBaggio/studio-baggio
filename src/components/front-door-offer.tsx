@@ -13,7 +13,7 @@ function OfferBody({
   onClose,
   large
 }: {
-  onClose: () => void;
+  onClose?: () => void;
   large?: boolean;
 }) {
   return (
@@ -24,16 +24,18 @@ function OfferBody({
           <h2 className={`leading-snug ${large ? "text-2xl" : "text-xl"}`}>
             {frontDoorOffer.title}
           </h2>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Minimise"
-            className="focus-ring -mr-1 mt-1 flex h-7 w-7 flex-none items-center justify-center text-ink/50 transition-colors hover:text-ink"
-          >
-            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-              <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.4" />
-            </svg>
-          </button>
+          {onClose ? (
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Minimise"
+              className="focus-ring -mr-1 mt-1 flex h-7 w-7 flex-none items-center justify-center text-ink/50 transition-colors hover:text-ink"
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.4" />
+              </svg>
+            </button>
+          ) : null}
         </div>
         <p className="mt-5 text-sm font-semibold text-ink">{frontDoorOffer.listTitle}</p>
         <ul className="mt-1">
@@ -82,16 +84,33 @@ function OfferBody({
   );
 }
 
+// Mobile: the offer is a static section on the homepage, right after the hero.
+// No floating pill, nothing following the scroll on small screens.
+export function FrontDoorOfferInline() {
+  return (
+    <section className="editorial-container pb-4 pt-10 lg:hidden">
+      <aside
+        className="relative border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_18px_44px_rgba(20,20,20,0.14)]"
+        aria-label={frontDoorOffer.title}
+      >
+        <OfferBody />
+      </aside>
+    </section>
+  );
+}
+
 export function FrontDoorOffer() {
   const pathname = usePathname();
   const prefersReducedMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [pillDismissed, setPillDismissed] = useState(false);
   const [scrolledPast, setScrolledPast] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
 
   useEffect(() => {
     setDismissed(window.sessionStorage.getItem(DISMISS_KEY) === "closed");
+    setPillDismissed(window.sessionStorage.getItem(`${DISMISS_KEY}-pill`) === "closed");
     setScrolledPast(window.scrollY > 560);
     setMounted(true);
   }, []);
@@ -116,7 +135,13 @@ export function FrontDoorOffer() {
   // The landing card: top-left in the hero white space, homepage only.
   // Positioned absolute so it leaves with the hero as you scroll.
   const heroCard = pathname === "/" && !dismissed;
-  const pillVisible = !cardOpen && (pathname !== "/" || dismissed || scrolledPast);
+  const dismissPill = () => {
+    setPillDismissed(true);
+    window.sessionStorage.setItem(`${DISMISS_KEY}-pill`, "closed");
+  };
+
+  const pillVisible =
+    !cardOpen && !pillDismissed && (pathname !== "/" || dismissed || scrolledPast);
 
   return (
     <>
@@ -138,7 +163,7 @@ export function FrontDoorOffer() {
         </motion.aside>
       ) : null}
 
-      <div className="pointer-events-none fixed inset-x-4 bottom-4 z-40 flex justify-end sm:inset-x-auto sm:bottom-6 sm:right-6">
+      <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden justify-end lg:flex">
         <AnimatePresence mode="wait" initial={false}>
           {cardOpen ? (
             <motion.aside
@@ -153,30 +178,44 @@ export function FrontDoorOffer() {
               <OfferBody onClose={() => setCardOpen(false)} />
             </motion.aside>
           ) : pillVisible ? (
-            <motion.button
+            <motion.div
               key="pill"
-              type="button"
-              onClick={() => setCardOpen(true)}
-              aria-expanded={false}
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: prefersReducedMotion ? 0 : 8 }}
               transition={transition}
-              className="focus-ring group pointer-events-auto inline-flex items-center gap-3.5 border border-ink bg-white px-5 py-3.5 text-left text-ink shadow-[0_10px_28px_rgba(20,20,20,0.12)] transition-colors hover:bg-ink hover:text-white"
+              className="group pointer-events-auto relative"
             >
-              <span
-                className="h-1.5 w-1.5 flex-none rounded-full bg-[color:var(--sb-accent-blue)]"
-                aria-hidden="true"
-              />
-              <span className="flex flex-col gap-1">
-                <span className="text-[13px] uppercase leading-none tracking-[0.1em]">
-                  {frontDoorOffer.pill}
+              <button
+                type="button"
+                onClick={() => setCardOpen(true)}
+                aria-expanded={false}
+                className="focus-ring inline-flex items-center gap-3.5 border border-ink bg-white py-3.5 pl-5 pr-9 text-left text-ink shadow-[0_10px_28px_rgba(20,20,20,0.12)] transition-colors group-hover:bg-ink group-hover:text-white"
+              >
+                <span
+                  className="h-1.5 w-1.5 flex-none rounded-full bg-[color:var(--sb-accent-blue)]"
+                  aria-hidden="true"
+                />
+                <span className="flex flex-col gap-1">
+                  <span className="text-[13px] uppercase leading-none tracking-[0.1em]">
+                    {frontDoorOffer.pill}
+                  </span>
+                  <span className="text-[13px] leading-none text-ink/60 transition-colors group-hover:text-white/70">
+                    {frontDoorOffer.pillHook}
+                  </span>
                 </span>
-                <span className="text-[13px] leading-none text-ink/60 transition-colors group-hover:text-white/70">
-                  {frontDoorOffer.pillHook}
-                </span>
-              </span>
-            </motion.button>
+              </button>
+              <button
+                type="button"
+                onClick={dismissPill}
+                aria-label="Hide"
+                className="focus-ring absolute right-1 top-1 flex h-5 w-5 items-center justify-center text-ink/30 transition-colors hover:text-ink group-hover:text-white/50 group-hover:hover:text-white"
+              >
+                <svg width="9" height="9" viewBox="0 0 12 12" aria-hidden="true">
+                  <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.4" />
+                </svg>
+              </button>
+            </motion.div>
           ) : null}
         </AnimatePresence>
       </div>

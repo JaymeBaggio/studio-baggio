@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { FrontDoorOfferInline } from "@/components/front-door-offer";
 import { FaqSchema } from "@/components/faq-schema";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
@@ -126,6 +127,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <FrontDoorOfferInline />
 
       <div className="home-4b">
         <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
