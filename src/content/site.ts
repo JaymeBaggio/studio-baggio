@@ -63,7 +63,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: Growth Infrastructure & Visibility, SEO & AI Search, AI Operating Systems, and Bespoke Software & Systems."
+      "What you can hire Studio Baggio for: SEO & AI Search, Growth Infrastructure & Visibility, AI Operating Systems, and Bespoke Software & Systems."
   },
   press: {
     title: "Press & Media Coverage | Studio Baggio",
@@ -1023,32 +1023,6 @@ export const servicesPage = {
   offersEyebrow: "WHAT YOU CAN HIRE US FOR",
   offers: [
     {
-      id: "growth-infrastructure-and-visibility-audit",
-      name: "Growth Infrastructure & Visibility",
-      summary:
-        "Audit client demand, positioning and current visibility, then define how the website, content, evidence, client-facing resources and lead capture should work together to generate new business: qualified enquiries, instructions and revenue.",
-      paras: [
-        "For businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base.",
-        "We audit how the business is currently positioned, discovered and chosen, across search, AI platforms, referrals and professional relationships, then define how positioning, client-facing resources, lead capture and follow-up work together as one repeatable system for creating qualified enquiries and revenue.",
-        "The output is a commercial blueprint with a sequenced implementation and measurement plan, implemented internally, with existing partners or by Studio Baggio."
-      ],
-      includesLabel: "What the audit covers",
-      includes: [
-        "Market, competitor and client-demand research, including the high-value searches and questions prospective clients ask",
-        "Commercial positioning and differentiators",
-        "Current discoverability across Google and AI search, including competitor visibility and the external sources shaping results",
-        "Website structure, messaging, technical performance, content and evidence gaps",
-        "Recommendations for client-facing guides, diagnostics and tools, including how engagement is captured and used",
-        "Lead capture, qualification and follow-up, including the route from discovery or introduction to a qualified enquiry"
-      ],
-      example: {
-        paras: [
-          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £93,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
-        ],
-        highlight: "£5.3 million in assets under management and £93,400 in first-year revenue"
-      }
-    },
-    {
       id: "seo-and-ai-search-opportunity-audit",
       name: "SEO & AI Search",
       summary:
@@ -1087,6 +1061,32 @@ export const servicesPage = {
       }
     },
     {
+      id: "growth-infrastructure-and-visibility-audit",
+      name: "Growth Infrastructure & Visibility",
+      summary:
+        "Audit client demand, positioning and current visibility, then define how the website, content, evidence, client-facing resources and lead capture should work together to generate new business: qualified enquiries, instructions and revenue.",
+      paras: [
+        "For businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base.",
+        "We audit how the business is currently positioned, discovered and chosen, across search, AI platforms, referrals and professional relationships, then define how positioning, client-facing resources, lead capture and follow-up work together as one repeatable system for creating qualified enquiries and revenue.",
+        "The output is a commercial blueprint with a sequenced implementation and measurement plan, implemented internally, with existing partners or by Studio Baggio."
+      ],
+      includesLabel: "What the audit covers",
+      includes: [
+        "Market, competitor and client-demand research, including the high-value searches and questions prospective clients ask",
+        "Commercial positioning and differentiators",
+        "Current discoverability across Google and AI search, including competitor visibility and the external sources shaping results",
+        "Website structure, messaging, technical performance, content and evidence gaps",
+        "Recommendations for client-facing guides, diagnostics and tools, including how engagement is captured and used",
+        "Lead capture, qualification and follow-up, including the route from discovery or introduction to a qualified enquiry"
+      ],
+      example: {
+        paras: [
+          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £93,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
+        ],
+        highlight: "£5.3 million in assets under management and £93,400 in first-year revenue"
+      }
+    },
+    {
       id: "ai-operating-system-audit",
       name: "AI Operating Systems",
       summary:
@@ -1114,7 +1114,7 @@ export const servicesPage = {
         highlight: "10–15 hours+ each week"
       },
       quote: {
-        text: "Jayme spent time with people across the team individually to understand how we work, then built and implemented the system for us, with each person's setup tailored to their role. I'd be very happy to recommend Jayme to another team considering similar work.",
+        text: "Jayme spent time with people across the team individually to understand how we work, then built and implemented the system for us: our company and client knowledge, business strategy, positioning and templates built in, with each person's setup tailored to their role. Several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool, which they would never have been able to do previously.",
         attr: "Joe Churchill · Founder & CEO"
       }
     },
