@@ -4475,23 +4475,36 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b .studio-contact-panel .contact-form-optional-icon {
   position: absolute;
-  top: 15px;
+  top: 50%;
   right: 0;
-  width: 18px;
-  color: var(--sb-blue);
-  font-size: 18px;
-  line-height: 1;
-  text-align: right;
-}
-
-.home-4b .studio-contact-panel .contact-form-optional[open] .contact-form-optional-icon {
+  width: 14px;
+  height: 14px;
+  transform: translateY(-50%);
   color: transparent;
+  font-size: 0;
+  line-height: 0;
 }
 
-.home-4b .studio-contact-panel .contact-form-optional[open] .contact-form-optional-icon::before {
-  content: "-";
-  color: var(--sb-blue);
-  font-size: 18px;
+.home-4b .studio-contact-panel .contact-form-optional-icon::before,
+.home-4b .studio-contact-panel .contact-form-optional-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 14px;
+  height: 1.5px;
+  background: var(--sb-blue);
+  transform: translateY(-50%);
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), opacity 180ms;
+}
+
+.home-4b .studio-contact-panel .contact-form-optional-icon::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.home-4b .studio-contact-panel .contact-form-optional[open] .contact-form-optional-icon::after {
+  transform: translateY(-50%) rotate(0deg);
+  opacity: 0;
 }
 
 .home-4b .studio-contact-panel label,
@@ -4514,21 +4527,27 @@ body:has(.home-4b.contact-page) footer {
   /* 16px floor: iOS Safari auto-zooms into any field below 16px */
   font-size: max(16px, var(--sb-body-size));
   line-height: var(--sb-body-line);
+  /* A visible field: light surface + hairline, so typed text sits IN
+     something rather than floating between the label and a distant rule. */
+  background: #f6f6f4;
+  border: 1px solid rgba(20, 20, 20, 0.08);
   border-bottom-color: var(--sb-rule);
+  border-radius: 0;
+  padding-inline: 12px;
   outline: none;
   box-shadow: none;
-  transition: border-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: border-color 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms;
 }
 
 .home-4b .studio-contact-panel input {
-  min-height: 40px;
-  padding-block: 7px 8px;
+  min-height: 44px;
+  padding-block: 9px 10px;
 }
 
 .home-4b .studio-contact-panel textarea {
   min-height: 82px;
   margin-top: 5px;
-  padding-block: 9px;
+  padding-block: 10px;
   resize: vertical;
 }
 
@@ -4571,7 +4590,14 @@ body:has(.home-4b.contact-page) footer {
 .home-4b .studio-contact-panel textarea:focus-visible {
   outline: none;
   box-shadow: none;
+  background: #ffffff;
+  border-color: rgba(20, 20, 20, 0.22);
   border-bottom-color: var(--sb-ink);
+}
+
+.home-4b .studio-contact-panel input::placeholder,
+.home-4b .studio-contact-panel textarea::placeholder {
+  color: rgba(20, 20, 20, 0.38);
 }
 
 .home-4b .studio-contact-email {
