@@ -1043,6 +1043,7 @@ export const servicesPage = {
       outro: [
         "Delivered within 14 days. Fee fully credited against implementation of the recommendations and wider consultancy."
       ],
+      outroStrong: true,
       quote: {
         text: "SEO & AI SEO were something we were never able to master. Jayme changed that completely: we went from page four to first on Google - above Microsoft, and we show up in AI search for the key buyer questions our customers ask. The advantage this gives us is invaluable.",
         result: "more than 20 additional enquiries through AI search within two weeks",

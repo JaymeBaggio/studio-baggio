@@ -33,6 +33,7 @@ type ServiceOffer = {
   includes: string[];
   subSection?: { label: string; paras: string[] };
   outro?: string[];
+  outroStrong?: boolean;
   example?: { paras: string[]; highlight?: string };
   quote?: { text: string; result?: string; attr: string };
   featuredIn?: {
@@ -294,7 +295,11 @@ export default function ServicesPage() {
                           {offer.outro.map((para) => (
                             <p
                               key={para}
-                              className="text-base leading-relaxed text-ink/70 md:text-lg"
+                              className={
+                                offer.outroStrong
+                                  ? "text-base font-semibold leading-relaxed text-ink md:text-lg"
+                                  : "text-base leading-relaxed text-ink/70 md:text-lg"
+                              }
                             >
                               {para}
                             </p>
