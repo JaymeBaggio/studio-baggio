@@ -803,9 +803,9 @@ export const about = {
   testimonials: [
     {
       quote:
-        "What I love about Studio Baggio is that it feels like a genuinely thoughtful solution to a challenge so many businesses face. It helps expert-led businesses turn their expertise into real commercial advantage in a way that still feels authentic and true to them.",
+        "There's a lot of noise around AI, and most of it has nothing to do with how a business like mine actually wins clients. Jayme cut straight through it: she understood how our clients find and choose us, and built around that. It's the first time AI has felt like an advantage rather than a distraction.",
       name: "Charlotte Evans MBE",
-      role: "Financial Planner, DipFA"
+      role: "Financial Planner"
     },
     {
       quote:
