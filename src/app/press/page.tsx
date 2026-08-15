@@ -95,8 +95,11 @@ export default function PressPage() {
       <div className="home-4b studio-page press-page">
         <section className="press-hero" data-header-theme="light">
           <div className="editorial-container">
+            <p className="eyebrow" data-reveal>
+              Press
+            </p>
             <h1 className="press-hero-title" data-reveal>
-              {pressPage.title}<span aria-hidden="true">.</span>
+              {pressPage.title}<span aria-hidden="true" />
             </h1>
           </div>
         </section>
