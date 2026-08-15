@@ -63,7 +63,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: SEO & AI Search, Growth Infrastructure & Visibility, AI Operating Systems, and Bespoke Software & Systems."
+      "What you can hire Studio Baggio for: SEO & AI Search, AI Operating Systems, Growth Infrastructure & Visibility, and Bespoke Software & Systems."
   },
   press: {
     title: "Press & Media Coverage | Studio Baggio",
@@ -1061,6 +1061,35 @@ export const servicesPage = {
       }
     },
     {
+      id: "ai-operating-system-audit",
+      name: "AI Operating Systems",
+      summary:
+        "One company-wide AI system built around how your people work and how value is delivered to clients: shared knowledge, role-specific capabilities and workflows, built on the infrastructure you already use.",
+      paras: [
+        "For businesses that want a company-wide AI system built around how their people work and how value is delivered to clients.",
+        "We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs, built on the company's existing infrastructure."
+      ],
+      includesLabel: "What the audit covers",
+      includes: [
+        "Where AI can create the greatest measurable value",
+        "The shared knowledge and role-specific capabilities the system needs",
+        "Role-specific recommendations and a sequenced 30 and 90-day plan",
+        "A structure for valuable workflows to be shared, retained and improved across the team",
+        "Client experience: how advice and client outputs are delivered, with recommendations to make them clearer, more personal and more valuable",
+        "What should be implemented first and where not to invest yet"
+      ],
+      example: {
+        paras: [
+          "Studio Baggio designed and implemented a company-wide AI system for a London creative agency. Built around the company's knowledge, clients, brand and ways of working, it gave a non-technical team the context, tools and capabilities to use AI effectively from day one, without separate training. It is estimated to save 10–15 hours+ each week."
+        ],
+        highlight: "10–15 hours+ each week"
+      },
+      quote: {
+        text: "Jayme spent time with people across the team individually to understand how we work, then built and implemented the system for us: our company and client knowledge, business strategy, positioning and templates built in, with each person's setup tailored to their role. Several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool, which they would never have been able to do previously.",
+        attr: "Joe Churchill · Founder & CEO"
+      }
+    },
+    {
       id: "growth-infrastructure-and-visibility-audit",
       name: "Growth Infrastructure & Visibility",
       summary:
@@ -1084,38 +1113,6 @@ export const servicesPage = {
           "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £93,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
         ],
         highlight: "£5.3 million in assets under management and £93,400 in first-year revenue"
-      }
-    },
-    {
-      id: "ai-operating-system-audit",
-      name: "AI Operating Systems",
-      summary:
-        "One company-wide AI system built around how your people work and how value is delivered to clients: shared knowledge, role-specific capabilities and workflows, built on the infrastructure you already use.",
-      paras: [
-        "For businesses that want a company-wide AI system built around how their people work and how value is delivered to clients.",
-        "We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs, built on the company's existing infrastructure."
-      ],
-      includesLabel: "What the audit covers",
-      includes: [
-        "Where AI can create the greatest measurable value",
-        "The shared knowledge and role-specific capabilities the system needs",
-        "Role-specific recommendations and a sequenced 30 and 90-day plan",
-        "A structure for valuable workflows to be shared, retained and improved across the team",
-        "Client experience: how advice and client outputs are delivered, with recommendations to make them clearer, more personal and more valuable",
-        "What should be implemented first and where not to invest yet"
-      ],
-      outro: [
-        "The result is a prioritised 30- and 90-day implementation plan, not a review of individual tools or a generic training programme. The business can implement it internally, work with its existing partners or appoint Studio Baggio to design, build and embed the full system."
-      ],
-      example: {
-        paras: [
-          "Studio Baggio designed and implemented a company-wide AI system for a London creative agency. Built around the company's knowledge, clients, brand and ways of working, it gave a non-technical team the context, tools and capabilities to use AI effectively from day one, without separate training. It is estimated to save 10–15 hours+ each week."
-        ],
-        highlight: "10–15 hours+ each week"
-      },
-      quote: {
-        text: "Jayme spent time with people across the team individually to understand how we work, then built and implemented the system for us: our company and client knowledge, business strategy, positioning and templates built in, with each person's setup tailored to their role. Several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool, which they would never have been able to do previously.",
-        attr: "Joe Churchill · Founder & CEO"
       }
     },
     {

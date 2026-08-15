@@ -301,21 +301,6 @@ export default function ServicesPage() {
                           ))}
                         </div>
                       ) : null}
-                      {offer.example ? (
-                        <div className="sv-example relative mt-10 pl-5" data-sv-example>
-                          <span className="sv-borderline" aria-hidden="true" />
-                          <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
-                          <div className="mt-3 space-y-3">
-                            {offer.example.paras.map((para) => (
-                              <ExampleParagraph
-                                key={para}
-                                text={para}
-                                highlight={offer.example?.highlight}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
                       {offer.quote ? (
                         <figure className="mt-8" data-sv-reveal>
                           <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
@@ -334,6 +319,21 @@ export default function ServicesPage() {
                             {offer.quote.attr}
                           </figcaption>
                         </figure>
+                      ) : null}
+                      {offer.example ? (
+                        <div className="sv-example relative mt-8 pl-5" data-sv-example>
+                          <span className="sv-borderline" aria-hidden="true" />
+                          <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
+                          <div className="mt-3 space-y-3">
+                            {offer.example.paras.map((para) => (
+                              <ExampleParagraph
+                                key={para}
+                                text={para}
+                                highlight={offer.example?.highlight}
+                              />
+                            ))}
+                          </div>
+                        </div>
                       ) : null}
                       {offer.featuredIn ? (
                         <div
