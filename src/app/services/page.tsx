@@ -34,6 +34,7 @@ type ServiceOffer = {
   subSection?: { label: string; paras: string[] };
   outro?: string[];
   outroStrong?: boolean;
+  exampleFirst?: boolean;
   example?: { paras: string[]; highlight?: string };
   quote?: { text: string; result?: string; attr: string };
   featuredIn?: {
@@ -306,6 +307,45 @@ export default function ServicesPage() {
                           ))}
                         </div>
                       ) : null}
+                      {offer.exampleFirst ? (
+                        <>
+                      {offer.example ? (
+                        <div className="sv-example relative mt-6 pl-5" data-sv-example>
+                          <span className="sv-borderline" aria-hidden="true" />
+                          <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
+                          <div className="mt-3 space-y-3">
+                            {offer.example.paras.map((para) => (
+                              <ExampleParagraph
+                                key={para}
+                                text={para}
+                                highlight={offer.example?.highlight}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+                      {offer.quote ? (
+                        <figure className="mt-6" data-sv-reveal>
+                          <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
+                            &ldquo;{offer.quote.text}&rdquo;
+                          </blockquote>
+                          {offer.quote.result ? (
+                            <p className="mt-3 text-base leading-relaxed text-ink/70">
+                              Result:{" "}
+                              <strong className="font-semibold text-[color:var(--sb-accent-blue)]">
+                                {offer.quote.result}
+                              </strong>
+                              .
+                            </p>
+                          ) : null}
+                          <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
+                            {offer.quote.attr}
+                          </figcaption>
+                        </figure>
+                      ) : null}
+                        </>
+                      ) : (
+                        <>
                       {offer.quote ? (
                         <figure className="mt-8" data-sv-reveal>
                           <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
@@ -340,6 +380,8 @@ export default function ServicesPage() {
                           </div>
                         </div>
                       ) : null}
+                        </>
+                      )}
                       {offer.featuredIn ? (
                         <div
                           className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-5"

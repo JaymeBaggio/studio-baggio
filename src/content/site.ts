@@ -1028,8 +1028,7 @@ export const servicesPage = {
       summary:
         "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
       paras: [
-        "The focused starting point: for businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
-        "Engagements begin with a focused SEO and AI Search Audit. We identify the highest-value demand the business is missing, then define the pages, authority, content and technical changes needed to be found first on Google, cited in AI search and chosen."
+        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The audit identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found first on Google, cited in AI search and chosen."
       ],
       includesLabel: "What the audit covers",
       includes: [
@@ -1049,6 +1048,13 @@ export const servicesPage = {
         result: "more than 20 additional enquiries through AI search within two weeks",
         attr: "Emma Corbett · Product Specialist and Co-founder, Get-Planner"
       },
+      example: {
+        paras: [
+          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £93,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
+        ],
+        highlight: "£5.3 million in assets under management and £93,400 in first-year revenue"
+      },
+      exampleFirst: true,
       featuredIn: {
         label: "Our AI search research featured in",
         logos: [
