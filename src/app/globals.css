@@ -13600,7 +13600,7 @@ body:has(.home-4b.contact-page) footer {
 /* Research landing — one complete editorial frame */
 .research-index-masthead {
   min-height: auto;
-  padding-block: clamp(84px, 9vh, 104px) 24px;
+  padding-block: clamp(72px, 8vh, 92px) 20px;
 }
 
 .research-index-masthead__shell {
@@ -13659,7 +13659,7 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .research-index-editions {
-  margin-top: clamp(36px, 4vw, 52px);
+  margin-top: clamp(26px, 3vw, 40px);
   padding-top: 0;
 }
 
@@ -13680,7 +13680,7 @@ body:has(.home-4b.contact-page) footer {
   grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.6fr) auto;
   gap: clamp(28px, 4vw, 62px);
   align-items: center;
-  padding: 22px 28px;
+  padding: 18px 28px;
   border: 0;
   background: #f3f5f8;
 }
