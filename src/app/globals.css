@@ -16045,6 +16045,14 @@ body:has(.home-4b.contact-page) footer {
 
 .law-ranked__detail--inline li { background: #fff; padding: 10px 12px; border-bottom: 1px solid var(--law-rule); }
 
+/* ranked table header + cell alignment */
+.law-ranked__table--wide thead th { vertical-align: bottom; }
+.law-ranked__table--wide thead th button { white-space: nowrap; display: inline-block; }
+.law-ranked__table--wide tbody td { vertical-align: top; }
+.law-ranked__table--wide tbody td strong { display: block; line-height: 1.1; }
+.law-ranked__table--wide tbody td span { display: block; margin-top: 4px; line-height: 1.2; }
+
+
 .law-report__visually-hidden {
   position: absolute;
   width: 1px;
