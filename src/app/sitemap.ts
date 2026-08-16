@@ -57,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
                     edition.publishedAt ??
                     edition.preparedForReview
                 )
-                .concat("2026-08-06")
+                .concat("2026-08-16")
                 .sort()
                 .at(-1) ?? "2026-07-30"
             ),
@@ -83,5 +83,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8
   };
 
-  return [...staticRoutes, ...insightRoutes, ...researchRoutes, lawBenchmarkRoute];
+  const sportsLawBenchmarkRoute = {
+    url: `${siteUrl}/research/uk-sports-law-2026`,
+    lastModified: new Date("2026-08-16"),
+    changeFrequency: "monthly" as const,
+    priority: 0.8
+  };
+
+  return [
+    ...staticRoutes,
+    ...insightRoutes,
+    ...researchRoutes,
+    sportsLawBenchmarkRoute,
+    lawBenchmarkRoute
+  ];
 }

@@ -115,10 +115,13 @@ export function FrontDoorOffer() {
   const [cardOpen, setCardOpen] = useState(false);
 
   useEffect(() => {
-    setDismissed(window.sessionStorage.getItem(DISMISS_KEY) === "closed");
-    setPillDismissed(window.sessionStorage.getItem(`${DISMISS_KEY}-pill`) === "closed");
-    setScrolledPast(window.scrollY > 560);
-    setMounted(true);
+    const frame = window.requestAnimationFrame(() => {
+      setDismissed(window.sessionStorage.getItem(DISMISS_KEY) === "closed");
+      setPillDismissed(window.sessionStorage.getItem(`${DISMISS_KEY}-pill`) === "closed");
+      setScrolledPast(window.scrollY > 560);
+      setMounted(true);
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
@@ -127,7 +130,7 @@ export function FrontDoorOffer() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!mounted || pathname === "/contact") return null;
+  if (!mounted || pathname === "/contact" || pathname === "/research/uk-sports-law-2026") return null;
 
   const dismiss = () => {
     setDismissed(true);

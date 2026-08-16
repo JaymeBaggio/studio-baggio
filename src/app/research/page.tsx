@@ -34,10 +34,6 @@ function formatDate(date: string) {
 }
 
 export default function ResearchIndexPage() {
-  const latestPublishedEdition = researchEditions.find(
-    (edition) => edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
-  );
-
   return (
     <div className="home-4b research-page research-index" data-research-page>
       <header className="research-index-masthead">
@@ -57,6 +53,31 @@ export default function ResearchIndexPage() {
           <div className="research-index-editions" aria-labelledby="research-editions-title">
             <p className="eyebrow" id="research-editions-title">Latest editions</p>
             <ol className="research-edition-list">
+              <li className="research-edition-card">
+                <div>
+                  <h3>
+                    <Link href="/research/uk-sports-law-2026">UK Sports Law in AI Search 2026</Link>
+                  </h3>
+                  <p>
+                    Across 810 answers, the study tracked how ChatGPT, Gemini and Perplexity
+                    recommended firms and individual lawyers across nine areas of sports law.
+                  </p>
+                </div>
+                <dl>
+                  <div>
+                    <dt>Research date</dt>
+                    <dd>{formatDate("2026-08-16")}</dd>
+                  </div>
+                  <div>
+                    <dt>Cohort</dt>
+                    <dd>89 established sports-law firms reviewed</dd>
+                  </div>
+                </dl>
+                <ResearchActionLink href="/research/uk-sports-law-2026">
+                  View results
+                  <ArrowRight aria-hidden="true" />
+                </ResearchActionLink>
+              </li>
               <li className="research-edition-card">
                 <div>
                   <h3>
