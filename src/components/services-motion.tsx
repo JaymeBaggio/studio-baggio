@@ -232,12 +232,12 @@ export function ServicesMotion() {
           let cleanup: (() => void) | undefined;
 
           if (desktop) {
-            // Every card pins at 88px — top always visible, uniform stack.
+            // Every card pins at 76px — top always visible, uniform stack.
             // (Jayme, 29 July 2026: no per-card special-casing.)
-            // Every card pins at 88px — top always visible, uniform stack.
+            // Every card pins at 76px — top always visible, uniform stack.
             // Card content is sized so a full card fits below the stopper.
             cards.forEach((card) => {
-              card.style.top = "88px";
+              card.style.top = "76px";
             });
             const onResize = () => {
               ScrollTrigger.refresh();
@@ -269,7 +269,7 @@ export function ServicesMotion() {
                 force3D: true,
                 scrollTrigger: {
                   start: () => pageTop(next) - window.innerHeight,
-                  end: () => pageTop(next) - 88,
+                  end: () => pageTop(next) - 76,
                   scrub: true,
                   invalidateOnRefresh: true
                 }
@@ -281,7 +281,7 @@ export function ServicesMotion() {
 
           // Hash landings (e.g. /services#seo-...): native anchor scroll can't
           // place a card inside the pinned stack, so position it ourselves —
-          // the card's flow position minus the 88px stopper.
+          // the card's flow position minus the 76px stopper.
           // A pinned (sticky) card reports its STUCK offsetTop, not its flow
           // position, so pageTop() lies for the card currently under the
           // stopper. Derive the flow top from the stack instead: stack top +
@@ -301,7 +301,7 @@ export function ServicesMotion() {
             const target = cards.find((card) => card.id === id);
             if (!target) return false;
             window.requestAnimationFrame(() => {
-              const top = flowTop(target) - 88;
+              const top = flowTop(target) - 76;
               const lenis = (window as Window & { __sbLenis?: { scrollTo: (v: number, o?: object) => void } }).__sbLenis;
               if (lenis) {
                 // Let Lenis drive the move: its scroll events keep the scrubbed

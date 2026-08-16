@@ -7874,7 +7874,7 @@ body:has(.home-4b.contact-page) footer {
 @media (min-width: 1024px) {
   .sv-card {
     position: sticky;
-    top: 88px; /* the stopper: every card pins here, title always visible */
+    top: 76px; /* the stopper: every card pins here, title always visible */
     padding: 26px 52px;
     will-change: transform;
   }
