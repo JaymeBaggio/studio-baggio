@@ -76,5 +76,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   ];
 
-  return [...staticRoutes, ...insightRoutes, ...researchRoutes];
+  const lawBenchmarkRoute = {
+    url: `${siteUrl}/research/uk-law-2026`,
+    lastModified: new Date("2026-08-16"),
+    changeFrequency: "monthly" as const,
+    priority: 0.8
+  };
+
+  return [...staticRoutes, ...insightRoutes, ...researchRoutes, lawBenchmarkRoute];
 }

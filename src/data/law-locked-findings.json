@@ -1,0 +1,1144 @@
+{
+ "source": {
+  "coded": "observations_extended.json",
+  "registry": "law-firm-registry-extended.json",
+  "aliasMap": true
+ },
+ "headline": {
+  "notTier1": 31,
+  "strict": 31,
+  "unrankedStrict": 15,
+  "unrankedBeatsAllTier1": 19,
+  "examples": [
+   {
+    "questionId": "LAW-PRP-03",
+    "question": "The freeholder is refusing consent for works. What can I do?",
+    "area": "Commercial property",
+    "winner": "Bishop & Sewell",
+    "winnerAnswers": 6,
+    "winnerTier": "unranked",
+    "tier1Firm": null,
+    "tier1Answers": 0,
+    "margin": 6
+   },
+   {
+    "questionId": "LAW-EMP-04",
+    "question": "My bonus has been cut and I think the reason is discriminatory. What can I do?",
+    "area": "Employment",
+    "winner": "Landau Law",
+    "winnerAnswers": 6,
+    "winnerTier": "unranked",
+    "tier1Firm": "BDBF",
+    "tier1Answers": 4,
+    "margin": 2
+   },
+   {
+    "questionId": "LAW-IMM-03",
+    "question": "We want to move a senior hire from the US to London. What do we need?",
+    "area": "Business immigration",
+    "winner": "London Immigration Lawyer",
+    "winnerAnswers": 6,
+    "winnerTier": "unranked",
+    "tier1Firm": "Kingsley Napley",
+    "tier1Answers": 4,
+    "margin": 2
+   },
+   {
+    "questionId": "LAW-DIS-01",
+    "question": "A supplier owes my company a large sum and will not pay. What are my options?",
+    "area": "Commercial disputes",
+    "winner": "Clarke Willmott / Wedlake Bell",
+    "winnerAnswers": 5,
+    "winnerTier": "unranked",
+    "tier1Firm": "Shoosmiths",
+    "tier1Answers": 3,
+    "margin": 2
+   },
+   {
+    "questionId": "LAW-PRC-02",
+    "question": "How do I challenge someone else's probate application?",
+    "area": "Private client and probate",
+    "winner": "Higgs LLP",
+    "winnerAnswers": 5,
+    "winnerTier": "unranked",
+    "tier1Firm": "Farrer & Co",
+    "tier1Answers": 3,
+    "margin": 2
+   },
+   {
+    "questionId": "LAW-SHD-01",
+    "question": "What options do I have as a minority shareholder if I am unhappy with how the company is run?",
+    "area": "Shareholder disputes",
+    "winner": "LegalVision UK",
+    "winnerAnswers": 4,
+    "winnerTier": "unranked",
+    "tier1Firm": "Kingsley Napley",
+    "tier1Answers": 2,
+    "margin": 2
+   },
+   {
+    "questionId": "LAW-CRM-01",
+    "question": "I have been asked to attend a voluntary police interview about my company. Should I go?",
+    "area": "White-collar crime",
+    "winner": "Olliers",
+    "winnerAnswers": 6,
+    "winnerTier": "unranked",
+    "tier1Firm": "BCL Solicitors",
+    "tier1Answers": 5,
+    "margin": 1
+   },
+   {
+    "questionId": "LAW-REG-01",
+    "question": "What is the FCA investigation process?",
+    "area": "Regulatory",
+    "winner": "Corker Binning",
+    "winnerAnswers": 6,
+    "winnerTier": "unranked",
+    "tier1Firm": "Herbert Smith Freehills Kramer",
+    "tier1Answers": 5,
+    "margin": 1
+   },
+   {
+    "questionId": "LAW-IMM-04",
+    "question": "What are the penalties for employing illegal workers?",
+    "area": "Business immigration",
+    "winner": "DavidsonMorris",
+    "winnerAnswers": 6,
+    "winnerTier": 4,
+    "tier1Firm": "Lewis Silkin",
+    "tier1Answers": 2,
+    "margin": 4
+   },
+   {
+    "questionId": "LAW-SHD-03",
+    "question": "How do you respond to an unfair prejudice petition?",
+    "area": "Shareholder disputes",
+    "winner": "Stewarts",
+    "winnerAnswers": 5,
+    "winnerTier": 3,
+    "tier1Firm": "Kingsley Napley",
+    "tier1Answers": 3,
+    "margin": 2
+   }
+  ],
+  "anyTie": 44
+ },
+ "tier1Never": {
+  "count": 33,
+  "total": 168,
+  "nonRegistryCount": 14,
+  "byPractice": [
+   {
+    "area": "Commercial disputes",
+    "firms": [
+     "Charles Russell Speechlys",
+     "Watson Farley & Williams",
+     "Withers"
+    ]
+   },
+   {
+    "area": "Commercial property",
+    "firms": [
+     "Clifford Chance",
+     "Mayer Brown",
+     "Norton Rose Fulbright",
+     "Slaughter and May"
+    ]
+   },
+   {
+    "area": "Corporate and M&A",
+    "firms": [
+     "Charles Russell Speechlys",
+     "DWF"
+    ]
+   },
+   {
+    "area": "Employment",
+    "firms": [
+     "Bloomsbury Square Employment Law",
+     "Simmons & Simmons"
+    ]
+   },
+   {
+    "area": "Intellectual property",
+    "firms": [
+     "Simmons & Simmons"
+    ]
+   },
+   {
+    "area": "Private client and probate",
+    "firms": [
+     "Baker McKenzie",
+     "Clifford Chance",
+     "Stephenson Harwood"
+    ]
+   },
+   {
+    "area": "Shareholder disputes",
+    "firms": [
+     "DAC Beachcroft",
+     "Humphries Kerstetter",
+     "Keystone Law",
+     "Watson Farley & Williams"
+    ]
+   }
+  ]
+ },
+ "unrankedShare": {
+  "pct": 26,
+  "numerator": 1299,
+  "denominator": 5047,
+  "wording": "About one in four"
+ },
+ "tierGradient": {
+  "tier1": 9.0,
+  "tier2": 4.4,
+  "tier3": 2.4,
+  "tier4": 1.4
+ },
+ "broadVsProblem": {
+  "matches": 13,
+  "total": 75,
+  "practicesZero": 8,
+  "practicesFourPlus": 13,
+  "rows": [
+   {
+    "area": "Business immigration",
+    "broadWinner": "A Y & J Solicitors",
+    "matches": 2,
+    "problemWinners": [
+     "A Y & J Solicitors / Garth Coates Solicitors / London Immigration Lawyer",
+     "A Y & J Solicitors",
+     "London Immigration Lawyer",
+     "DavidsonMorris",
+     "DavidsonMorris / Vanessa Ganguin Immigration Law"
+    ]
+   },
+   {
+    "area": "Commercial disputes",
+    "broadWinner": "Herbert Smith Freehills Kramer",
+    "matches": 3,
+    "problemWinners": [
+     "Clarke Willmott / Wedlake Bell",
+     "Pinsent Masons",
+     "Herbert Smith Freehills Kramer",
+     "Clifford Chance / Enyo Law / Freshfields / Herbert Smith Freehills Kramer / Signature Litigation",
+     "Clifford Chance / Herbert Smith Freehills Kramer / Mishcon de Reya / Stewarts"
+    ]
+   },
+   {
+    "area": "Commercial property",
+    "broadWinner": "CMS",
+    "matches": 0,
+    "problemWinners": [
+     "Mishcon de Reya",
+     "Osbornes Law / Russell-Cooke",
+     "Bishop & Sewell",
+     "BCLP",
+     "Mishcon de Reya"
+    ]
+   },
+   {
+    "area": "Corporate and M&A",
+    "broadWinner": "CMS",
+    "matches": 2,
+    "problemWinners": [
+     "Freshfields",
+     "CMS",
+     "Ashurst Perkins Coie / CMS / Clifford Chance / Freshfields",
+     "Brabners / Herbert Smith Freehills Kramer",
+     "Osborne Clarke"
+    ]
+   },
+   {
+    "area": "Data protection",
+    "broadWinner": "Latham & Watkins",
+    "matches": 0,
+    "problemWinners": [
+     "DLA Piper / Fieldfisher",
+     "DAC Beachcroft / DLA Piper / Fieldfisher / RPC",
+     "Bird & Bird",
+     "Bird & Bird",
+     "Linklaters"
+    ]
+   },
+   {
+    "area": "Employment",
+    "broadWinner": "Bloomsbury Square Employment Law",
+    "matches": 0,
+    "problemWinners": [
+     "Landau Law",
+     "Lewis Silkin",
+     "CM Murray",
+     "Landau Law",
+     "BDBF"
+    ]
+   },
+   {
+    "area": "Family and divorce",
+    "broadWinner": "Payne Hicks Beach",
+    "matches": 0,
+    "problemWinners": [
+     "Stewarts / Stowe Family Law / Vardags",
+     "Irwin Mitchell / Vardags",
+     "Farrer & Co",
+     "Vardags / Withers",
+     "Vardags"
+    ]
+   },
+   {
+    "area": "Intellectual property",
+    "broadWinner": "Bird & Bird",
+    "matches": 1,
+    "problemWinners": [
+     "Mishcon de Reya",
+     "Bristows",
+     "Bird & Bird / Bristows",
+     "Bristows / Sprintlaw UK",
+     "Mishcon de Reya"
+    ]
+   },
+   {
+    "area": "Media and reputation",
+    "broadWinner": "Brett Wilson",
+    "matches": 3,
+    "problemWinners": [
+     "Brett Wilson / Carter-Ruck",
+     "Carter-Ruck",
+     "Carter-Ruck",
+     "Brett Wilson",
+     "Brett Wilson / Carter-Ruck"
+    ]
+   },
+   {
+    "area": "Private client and probate",
+    "broadWinner": "Withers",
+    "matches": 0,
+    "problemWinners": [
+     "Charles Russell Speechlys",
+     "Higgs LLP",
+     "Higgs LLP / Irwin Mitchell",
+     "Macfarlanes",
+     "Charles Russell Speechlys / Premier Solicitors"
+    ]
+   },
+   {
+    "area": "Regulatory",
+    "broadWinner": "Latham & Watkins",
+    "matches": 0,
+    "problemWinners": [
+     "Corker Binning",
+     "Herbert Smith Freehills Kramer",
+     "Freshfields",
+     "Freshfields / Linklaters / Slaughter and May",
+     "Herbert Smith Freehills Kramer"
+    ]
+   },
+   {
+    "area": "Restructuring and insolvency",
+    "broadWinner": "A&O Shearman",
+    "matches": 0,
+    "problemWinners": [
+     "Clifford Chance",
+     "Clifford Chance",
+     "Clifford Chance",
+     "Addleshaw Goddard",
+     "Clifford Chance"
+    ]
+   },
+   {
+    "area": "Shareholder disputes",
+    "broadWinner": "Kingsley Napley",
+    "matches": 1,
+    "problemWinners": [
+     "LegalVision UK",
+     "Helix Law / Kingsley Napley",
+     "Stewarts",
+     "Harper James / Withers",
+     "Slaughter and May"
+    ]
+   },
+   {
+    "area": "Sport",
+    "broadWinner": "Bird & Bird",
+    "matches": 0,
+    "problemWinners": [
+     "Brabners",
+     "Brabners",
+     "Centrefield LLP / Charles Russell Speechlys / Northridge",
+     "Duncan Lewis",
+     "Irwin Mitchell"
+    ]
+   },
+   {
+    "area": "White-collar crime",
+    "broadWinner": "Kingsley Napley",
+    "matches": 1,
+    "problemWinners": [
+     "Olliers",
+     "Kingsley Napley",
+     "Ashurst Perkins Coie",
+     "Mishcon de Reya / Peters & Peters",
+     "BCL Solicitors / Freshfields"
+    ]
+   }
+  ]
+ },
+ "practiceLeaders": [
+  {
+   "area": "Media and reputation",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Carter-Ruck",
+     "answers": 39,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 4
+    },
+    {
+     "firm": "Brett Wilson",
+     "answers": 37,
+     "problems": 5,
+     "tier": 2
+    },
+    {
+     "firm": "Schillings",
+     "answers": 25,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Mishcon de Reya",
+     "answers": 25,
+     "problems": 5,
+     "tier": 2
+    },
+    {
+     "firm": "Harbottle & Lewis",
+     "answers": 24,
+     "problems": 5,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Regulatory",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Freshfields",
+     "answers": 32,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 2
+    },
+    {
+     "firm": "Herbert Smith Freehills Kramer",
+     "answers": 30,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Slaughter and May",
+     "answers": 30,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Linklaters",
+     "answers": 25,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Clifford Chance",
+     "answers": 21,
+     "problems": 5,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Intellectual property",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Bristows",
+     "answers": 30,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 3
+    },
+    {
+     "firm": "Bird & Bird",
+     "answers": 24,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Mishcon de Reya",
+     "answers": 22,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "CMS",
+     "answers": 18,
+     "problems": 4,
+     "tier": 1
+    },
+    {
+     "firm": "Taylor Wessing",
+     "answers": 16,
+     "problems": 5,
+     "tier": "unranked"
+    }
+   ]
+  },
+  {
+   "area": "Commercial disputes",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Herbert Smith Freehills Kramer",
+     "answers": 28,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 3
+    },
+    {
+     "firm": "Addleshaw Goddard",
+     "answers": 18,
+     "problems": 5,
+     "tier": 3
+    },
+    {
+     "firm": "Clifford Chance",
+     "answers": 18,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Freshfields",
+     "answers": 18,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Mishcon de Reya",
+     "answers": 18,
+     "problems": 5,
+     "tier": 4
+    }
+   ]
+  },
+  {
+   "area": "Restructuring and insolvency",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Clifford Chance",
+     "answers": 26,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 4
+    },
+    {
+     "firm": "A&O Shearman",
+     "answers": 22,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Freshfields",
+     "answers": 20,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Linklaters",
+     "answers": 19,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Kirkland & Ellis",
+     "answers": 18,
+     "problems": 4,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Data protection",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Bird & Bird",
+     "answers": 24,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 2
+    },
+    {
+     "firm": "Linklaters",
+     "answers": 23,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "DLA Piper",
+     "answers": 22,
+     "problems": 5,
+     "tier": 2
+    },
+    {
+     "firm": "Fieldfisher",
+     "answers": 22,
+     "problems": 5,
+     "tier": 3
+    },
+    {
+     "firm": "Bristows",
+     "answers": 21,
+     "problems": 5,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Family and divorce",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Vardags",
+     "answers": 24,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 4
+    },
+    {
+     "firm": "Withers",
+     "answers": 21,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Stewarts",
+     "answers": 20,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Osbornes Law",
+     "answers": 17,
+     "problems": 5,
+     "tier": 2
+    },
+    {
+     "firm": "Payne Hicks Beach",
+     "answers": 16,
+     "problems": 5,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "White-collar crime",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Kingsley Napley",
+     "answers": 23,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 1
+    },
+    {
+     "firm": "Peters & Peters",
+     "answers": 22,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Herbert Smith Freehills Kramer",
+     "answers": 22,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Freshfields",
+     "answers": 19,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "BCL Solicitors",
+     "answers": 17,
+     "problems": 4,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Corporate and M&A",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "CMS",
+     "answers": 21,
+     "problems": 5,
+     "tier": 3,
+     "problemsLed": 2
+    },
+    {
+     "firm": "Freshfields",
+     "answers": 19,
+     "problems": 4,
+     "tier": 1
+    },
+    {
+     "firm": "Slaughter and May",
+     "answers": 17,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Addleshaw Goddard",
+     "answers": 15,
+     "problems": 4,
+     "tier": 1
+    },
+    {
+     "firm": "Clifford Chance",
+     "answers": 15,
+     "problems": 4,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Business immigration",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Vanessa Ganguin Immigration Law",
+     "answers": 20,
+     "problems": 5,
+     "tier": 2,
+     "problemsLed": 1
+    },
+    {
+     "firm": "London Immigration Lawyer",
+     "answers": 18,
+     "problems": 5,
+     "tier": "unranked"
+    },
+    {
+     "firm": "DavidsonMorris",
+     "answers": 17,
+     "problems": 4,
+     "tier": 4
+    },
+    {
+     "firm": "Kingsley Napley",
+     "answers": 16,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "A Y & J Solicitors",
+     "answers": 13,
+     "problems": 3,
+     "tier": 6
+    }
+   ]
+  },
+  {
+   "area": "Commercial property",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Mishcon de Reya",
+     "answers": 17,
+     "problems": 4,
+     "tier": 2,
+     "problemsLed": 2
+    },
+    {
+     "firm": "BCLP",
+     "answers": 13,
+     "problems": 4,
+     "tier": 1
+    },
+    {
+     "firm": "Osbornes Law",
+     "answers": 11,
+     "problems": 4,
+     "tier": "unranked"
+    },
+    {
+     "firm": "Russell-Cooke",
+     "answers": 11,
+     "problems": 5,
+     "tier": 3
+    },
+    {
+     "firm": "CMS",
+     "answers": 10,
+     "problems": 4,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Sport",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Brabners",
+     "answers": 17,
+     "problems": 4,
+     "tier": 3,
+     "problemsLed": 2
+    },
+    {
+     "firm": "Stewarts",
+     "answers": 13,
+     "problems": 4,
+     "tier": "unranked"
+    },
+    {
+     "firm": "Centrefield LLP",
+     "answers": 11,
+     "problems": 3,
+     "tier": 2
+    },
+    {
+     "firm": "Irwin Mitchell",
+     "answers": 11,
+     "problems": 2,
+     "tier": "unranked"
+    },
+    {
+     "firm": "Onside Law",
+     "answers": 9,
+     "problems": 4,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Employment",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "BDBF",
+     "answers": 16,
+     "problems": 5,
+     "tier": 1,
+     "problemsLed": 1
+    },
+    {
+     "firm": "Landau Law",
+     "answers": 15,
+     "problems": 4,
+     "tier": "unranked"
+    },
+    {
+     "firm": "Rahman Lowe",
+     "answers": 12,
+     "problems": 4,
+     "tier": 3
+    },
+    {
+     "firm": "Mishcon de Reya",
+     "answers": 11,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Lewis Silkin",
+     "answers": 11,
+     "problems": 4,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Private client and probate",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Charles Russell Speechlys",
+     "answers": 16,
+     "problems": 4,
+     "tier": 1,
+     "problemsLed": 2
+    },
+    {
+     "firm": "Farrer & Co",
+     "answers": 16,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Higgs LLP",
+     "answers": 16,
+     "problems": 5,
+     "tier": "unranked"
+    },
+    {
+     "firm": "Irwin Mitchell",
+     "answers": 13,
+     "problems": 5,
+     "tier": 3
+    },
+    {
+     "firm": "Withers",
+     "answers": 12,
+     "problems": 5,
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "area": "Shareholder disputes",
+   "answers": 45,
+   "top": [
+    {
+     "firm": "Mishcon de Reya",
+     "answers": 16,
+     "problems": 5,
+     "tier": 4,
+     "problemsLed": 0
+    },
+    {
+     "firm": "Stewarts",
+     "answers": 15,
+     "problems": 5,
+     "tier": 3
+    },
+    {
+     "firm": "Harper James",
+     "answers": 13,
+     "problems": 5,
+     "tier": "unranked"
+    },
+    {
+     "firm": "Kingsley Napley",
+     "answers": 13,
+     "problems": 5,
+     "tier": 1
+    },
+    {
+     "firm": "Farrer & Co",
+     "answers": 12,
+     "problems": 5,
+     "tier": 1
+    }
+   ]
+  }
+ ],
+ "gate": {
+  "source": "formal-matched/analysis/locked_findings.json + claims gate 16 Aug 2026"
+ },
+ "overallLeaders": {
+  "answers": 810,
+  "rows": [
+   {
+    "firm": "Mishcon de Reya",
+    "answers": 240,
+    "problems": 66,
+    "broadAnswers": 45,
+    "top50": true
+   },
+   {
+    "firm": "Herbert Smith Freehills Kramer",
+    "answers": 155,
+    "problems": 39,
+    "broadAnswers": 28,
+    "top50": true
+   },
+   {
+    "firm": "CMS",
+    "answers": 150,
+    "problems": 46,
+    "broadAnswers": 33,
+    "top50": true
+   },
+   {
+    "firm": "Freshfields",
+    "answers": 142,
+    "problems": 28,
+    "broadAnswers": 25,
+    "top50": true
+   },
+   {
+    "firm": "A&O Shearman",
+    "answers": 138,
+    "problems": 33,
+    "broadAnswers": 34,
+    "top50": true
+   },
+   {
+    "firm": "Kingsley Napley",
+    "answers": 136,
+    "problems": 35,
+    "broadAnswers": 30,
+    "top50": false
+   },
+   {
+    "firm": "Linklaters",
+    "answers": 130,
+    "problems": 29,
+    "broadAnswers": 29,
+    "top50": true
+   },
+   {
+    "firm": "Clifford Chance",
+    "answers": 129,
+    "problems": 26,
+    "broadAnswers": 31,
+    "top50": true
+   },
+   {
+    "firm": "Slaughter and May",
+    "answers": 112,
+    "problems": 25,
+    "broadAnswers": 21,
+    "top50": true
+   },
+   {
+    "firm": "Farrer & Co",
+    "answers": 110,
+    "problems": 39,
+    "broadAnswers": 17,
+    "top50": false
+   },
+   {
+    "firm": "Hogan Lovells",
+    "answers": 103,
+    "problems": 33,
+    "broadAnswers": 30,
+    "top50": true
+   },
+   {
+    "firm": "Stewarts",
+    "answers": 102,
+    "problems": 35,
+    "broadAnswers": 14,
+    "top50": false
+   },
+   {
+    "firm": "Pinsent Masons",
+    "answers": 93,
+    "problems": 36,
+    "broadAnswers": 4,
+    "top50": true
+   },
+   {
+    "firm": "Bird & Bird",
+    "answers": 86,
+    "problems": 17,
+    "broadAnswers": 26,
+    "top50": true
+   },
+   {
+    "firm": "Addleshaw Goddard",
+    "answers": 83,
+    "problems": 31,
+    "broadAnswers": 4,
+    "top50": true
+   },
+   {
+    "firm": "Irwin Mitchell",
+    "answers": 83,
+    "problems": 30,
+    "broadAnswers": 3,
+    "top50": true
+   },
+   {
+    "firm": "Bristows",
+    "answers": 80,
+    "problems": 18,
+    "broadAnswers": 15,
+    "top50": false
+   },
+   {
+    "firm": "Withers",
+    "answers": 78,
+    "problems": 23,
+    "broadAnswers": 21,
+    "top50": true
+   },
+   {
+    "firm": "Latham & Watkins",
+    "answers": 74,
+    "problems": 18,
+    "broadAnswers": 38,
+    "top50": false
+   },
+   {
+    "firm": "Charles Russell Speechlys",
+    "answers": 74,
+    "problems": 30,
+    "broadAnswers": 13,
+    "top50": true
+   }
+  ]
+ },
+ "genericVsProblem": [
+  {
+   "problem": "My bonus has been cut and I think the reason is discriminatory. What can I do?",
+   "area": "Employment",
+   "generic": "Bloomsbury Square Employment Law",
+   "winner": "Landau Law"
+  },
+  {
+   "problem": "How do I challenge someone else's probate application?",
+   "area": "Private client and probate",
+   "generic": "Withers",
+   "winner": "Higgs LLP"
+  },
+  {
+   "problem": "What is the FCA investigation process?",
+   "area": "Regulatory",
+   "generic": "Latham & Watkins",
+   "winner": "Corker Binning"
+  }
+ ],
+ "practiceExample": {
+  "area": "Employment",
+  "generic": "Bloomsbury Square Employment Law",
+  "problems": [
+   {
+    "question": "My employer has offered me a settlement agreement. Should I sign it?",
+    "winner": "Landau Law"
+   },
+   {
+    "question": "Is a 12 month non-compete enforceable in the UK?",
+    "winner": "Lewis Silkin"
+   },
+   {
+    "question": "I am a partner in a firm and I am being asked to leave. What should I be negotiating?",
+    "winner": "CM Murray"
+   },
+   {
+    "question": "My bonus has been cut and I think the reason is discriminatory. What can I do?",
+    "winner": "Landau Law"
+   },
+   {
+    "question": "I raised a concern at work and now I am being pushed out. Is that whistleblowing?",
+    "winner": "BDBF"
+   }
+  ]
+ },
+ "tier1FirmsWithZeroArea": {
+  "count": 24,
+  "total": 85,
+  "definition": "firms holding at least one Legal 500 tier-1 ranking (85 in the mapped London tables) that received zero AI recommendations across the 45 answers on at least one practice area in which they are tier 1"
+ },
+ "firmsTracked": 521
+}

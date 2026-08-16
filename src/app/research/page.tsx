@@ -61,8 +61,34 @@ export default function ResearchIndexPage() {
           </div>
 
           <div className="research-index-editions" aria-labelledby="research-editions-title">
-            <p className="eyebrow" id="research-editions-title">Latest edition</p>
+            <p className="eyebrow" id="research-editions-title">Latest editions</p>
             <ol className="research-edition-list">
+              <li className="research-edition-card">
+                <div>
+                  <h3>
+                    <Link href="/research/uk-law-2026">UK Law Firms in AI Search 2026</Link>
+                  </h3>
+                  <p>
+                    The first edition of the Studio Baggio UK Law AI Search Benchmark: 90 high intent
+                    buyer questions and 1,485 AI answers mapping how ChatGPT, Gemini and Perplexity
+                    recommend firms across 15 areas of UK law, searchable by firm and practice area.
+                  </p>
+                </div>
+                <dl>
+                  <div>
+                    <dt>Research date</dt>
+                    <dd>{formatDate("2026-08-15")}</dd>
+                  </div>
+                  <div>
+                    <dt>Cohort</dt>
+                    <dd>521 firms tracked, benchmarked against Legal 500 London</dd>
+                  </div>
+                </dl>
+                <ResearchActionLink href="/research/uk-law-2026">
+                  View results
+                  <ArrowRight aria-hidden="true" />
+                </ResearchActionLink>
+              </li>
             {researchEditions.map((edition) => (
               <li key={edition.slug} className="research-edition-card">
                 <div>
