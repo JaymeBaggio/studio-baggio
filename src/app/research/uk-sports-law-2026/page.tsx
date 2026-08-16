@@ -218,7 +218,7 @@ export default function UkSportsLawReportPage() {
       <header className="fa3-masthead law-report__masthead sports-law-report__masthead">
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
-            <p className="fa3-kicker">UK Sports Law in AI Search · Benchmark, first edition</p>
+            <p className="fa3-kicker">UK Sports Law in AI Search</p>
             <h1>UK Sports Law in AI Search 2026<span aria-hidden="true">.</span></h1>
           </div>
           <div className="fa3-masthead__intro">
@@ -231,9 +231,12 @@ export default function UkSportsLawReportPage() {
                 The study shows which names appear most often, which established firms are absent,
                 and where the market looks different from the traditional sports-law hierarchy.
               </p>
-              <p className="sports-law-report__masthead-stats">
-                90 questions · 810 answers · 9 sports · 89 established firms reviewed
-              </p>
+            </div>
+            <div className="fa3-masthead__meta" aria-label="Study summary">
+              <span><strong>90</strong> questions</span>
+              <span><strong>810</strong> answers</span>
+              <span><strong>9</strong> sports</span>
+              <span><strong>89</strong> established firms</span>
             </div>
             <SportsLawMethodDrawer />
           </div>
@@ -308,8 +311,8 @@ export default function UkSportsLawReportPage() {
             </div>
           </header>
           <p className="sports-law-report__why-conclusion">
-            When a player, agent or club asks AI who can help with a legal problem, the firms named
-            in the answer can enter the shortlist before the client reaches a law firm&rsquo;s website.
+            When a player, agent or club asks AI who can help with a legal problem, the firms and lawyers
+            named in the answer can enter the shortlist before the client reaches a law firm&rsquo;s website.
           </p>
         </div>
       </section>
