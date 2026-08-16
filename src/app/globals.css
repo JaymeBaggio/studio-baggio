@@ -7883,7 +7883,7 @@ body:has(.home-4b.contact-page) footer {
   .sv-card li,
   .sv-card blockquote {
     font-size: 16px;
-    line-height: 1.55;
+    line-height: 1.5;
   }
 
   .sv-stack {
@@ -7893,7 +7893,7 @@ body:has(.home-4b.contact-page) footer {
 
 .sv-example {
   background: #f6f6f4;
-  padding: 14px 18px !important;
+  padding: 12px 18px !important;
 }
 
 .sv-example .sv-borderline {

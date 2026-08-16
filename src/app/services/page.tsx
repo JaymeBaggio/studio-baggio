@@ -250,14 +250,14 @@ export default function ServicesPage() {
                     aria-hidden="true"
                     data-sv-accent
                   />
-                  <div className="mt-6 space-y-4">
+                  <div className="mt-5 space-y-4">
                     {offer.paras.map((para) => (
                       <p key={para} className="text-base leading-relaxed text-ink/70 md:text-lg">
                         {para}
                       </p>
                     ))}
                   </div>
-                  <h3 className="eyebrow pt-8 lg:pt-6">{offer.includesLabel}</h3>
+                  <h3 className="eyebrow pt-8 lg:pt-5">{offer.includesLabel}</h3>
                   <ul
                     className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 || offer.includes.join(" ").length > 320 ? " lg:columns-3" : ""}`}
                     data-sv-list
@@ -292,7 +292,7 @@ export default function ServicesPage() {
                         </div>
                       ) : null}
                       {offer.outro ? (
-                        <div className="mt-6 space-y-4" data-sv-reveal>
+                        <div className="mt-5 space-y-4" data-sv-reveal>
                           {offer.outro.map((para) => (
                             <p
                               key={para}
@@ -310,7 +310,7 @@ export default function ServicesPage() {
                       {offer.exampleFirst ? (
                         <>
                       {offer.example ? (
-                        <div className="sv-example relative mt-6 pl-5" data-sv-example>
+                        <div className="sv-example relative mt-4 pl-5" data-sv-example>
                           <span className="sv-borderline" aria-hidden="true" />
                           <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
                           <div className="mt-3 space-y-3">
@@ -325,7 +325,7 @@ export default function ServicesPage() {
                         </div>
                       ) : null}
                       {offer.quote ? (
-                        <figure className="mt-6" data-sv-reveal>
+                        <figure className="mt-5" data-sv-reveal>
                           <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
                             &ldquo;{offer.quote.text}&rdquo;
                           </blockquote>
@@ -384,7 +384,7 @@ export default function ServicesPage() {
                       )}
                       {offer.featuredIn ? (
                         <div
-                          className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-5"
+                          className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-4"
                           data-sv-reveal
                         >
                           <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
