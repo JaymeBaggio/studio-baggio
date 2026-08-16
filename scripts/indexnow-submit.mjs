@@ -29,7 +29,10 @@ const urlList = [
   "https://www.studiobaggio.ai/insights/ai-creative-summit-2025",
   "https://www.studiobaggio.ai/insights/ai-disruption-in-media-and-advertising",
   "https://www.studiobaggio.ai/insights/ai-predictions-2026",
-  "https://www.studiobaggio.ai/insights/best-ai-tools-2025"
+  "https://www.studiobaggio.ai/insights/best-ai-tools-2025",
+  "https://www.studiobaggio.ai/research",
+  "https://www.studiobaggio.ai/research/uk-financial-advice-2026",
+  "https://www.studiobaggio.ai/research/uk-law-2026"
 ];
 
 async function main() {

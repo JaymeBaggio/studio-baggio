@@ -51,12 +51,6 @@ export default function ResearchIndexPage() {
             <div className="research-index-masthead__copy">
               <p className="research-index-masthead__lead">{researchFranchise.description}</p>
               <p className="research-index-masthead__body">{researchFranchise.methodologyPrinciple}</p>
-              <Link
-                className="research-index-audit-link"
-                href={latestPublishedEdition ? getResearchEditionPath(latestPublishedEdition) : "/research"}
-              >
-                Find out where your firm appears →
-              </Link>
             </div>
           </div>
 
