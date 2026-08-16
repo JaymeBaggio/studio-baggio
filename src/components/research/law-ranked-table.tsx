@@ -149,7 +149,7 @@ export function LawRankedTable({
                 <th scope="col"><button type="button" onClick={() => toggleSort("tier")}>Legal 500 tier{arrow("tier")}</button></th>
                 <th scope="col"><button type="button" onClick={() => toggleSort("recommended")}>Recommended{arrow("recommended")}</button></th>
                 <th scope="col"><button type="button" onClick={() => toggleSort("cited")}>Cited{arrow("cited")}</button></th>
-                <th scope="col"><button type="button" onClick={() => toggleSort("problems")}>Problems{arrow("problems")}</button></th>
+                <th scope="col"><button type="button" onClick={() => toggleSort("problems")}>Problems appeared on{arrow("problems")}</button></th>
                 {area === "all" ? <th scope="col"><button type="button" onClick={() => toggleSort("areas")}>Practice areas{arrow("areas")}</button></th> : null}
                 {area === "all" ? <th scope="col"><button type="button" onClick={() => toggleSort("topArea")}>Strongest area{arrow("topArea")}</button></th> : null}
                 <th scope="col">Most recommended for</th>
@@ -167,7 +167,7 @@ export function LawRankedTable({
                   <td>{row.tier ? `Tier ${row.tier}` : "Unranked"}</td>
                   <td><strong>{row.recommended}</strong></td>
                   <td><strong>{row.cited}</strong></td>
-                  <td><strong>{row.problems}</strong><span>of 75</span></td>
+                  <td><strong>{row.problems}</strong><span>of {area === "all" ? 75 : 5}</span></td>
                   {area === "all" ? <td><strong>{row.areas}</strong><span>of 15</span></td> : null}
                   {area === "all" ? <td className="law-ranked__text">{row.topArea}</td> : null}
                   <td className="law-ranked__text">
@@ -180,7 +180,7 @@ export function LawRankedTable({
                       <div className="law-ranked__detail law-ranked__detail--inline">
                         <header>
                           <p>
-                            <strong>{selected.entity.name}</strong>Recommended {selected.recommended} · Cited {selected.cited} · {selected.problems} of 75 problems · {selected.areas} of 15 practice areas
+                            <strong>{selected.entity.name}</strong>Recommended {selected.recommended} · Cited {selected.cited} · {selected.problems} of {area === "all" ? 75 : 5} problems · {selected.areas} of 15 practice areas
                             {selected.tier ? ` · Legal 500 tier ${selected.tier}` : " · not ranked in the mapped Legal 500 London tables"}
                           </p>
                           <button type="button" className="law-ranked__close" onClick={() => setSelectedName("")}>Close</button>
