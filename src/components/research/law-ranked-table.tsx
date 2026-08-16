@@ -134,7 +134,7 @@ export function LawRankedTable({
           />
         </div>
         <p className="law-ranked__count">
-          {rows.length}{" "}firms{area === "all" ? "" : ` in ${area}`}. Recommended = answers naming the firm when asked which firm to instruct. Cited = answers to the problem that linked to the firm&rsquo;s website. Click a column to sort; click a firm to see every question it appeared on.
+          {rows.length}{" "}firms{area === "all" ? "" : ` in ${area}`}. Counts are answers out of the {area === "all" ? "810" : "54"} captured for {area === "all" ? "all 90 questions" : "this practice area"}. Recommended = the answer named the firm; cited = the answer linked to the firm&rsquo;s website. Click a column to sort; click a firm to see every question it appeared on.
         </p>
         <div className="law-report__legal500-table-wrap">
           <table className="law-report__legal500-table law-ranked__table law-ranked__table--wide">
@@ -165,8 +165,8 @@ export function LawRankedTable({
                     {row.website ? <small>{row.website}</small> : null}
                   </th>
                   <td>{row.tier ? `Tier ${row.tier}` : "Unranked"}</td>
-                  <td><strong>{row.recommended}</strong></td>
-                  <td><strong>{row.cited}</strong></td>
+                  <td><strong>{row.recommended}</strong><span>of {area === "all" ? 810 : 54}</span></td>
+                  <td><strong>{row.cited}</strong><span>of {area === "all" ? 810 : 54}</span></td>
                   <td><strong>{row.problems}</strong><span>of {area === "all" ? 75 : 5}</span></td>
                   {area === "all" ? <td><strong>{row.areas}</strong><span>of 15</span></td> : null}
                   {area === "all" ? <td className="law-ranked__text">{row.topArea}</td> : null}
@@ -180,7 +180,7 @@ export function LawRankedTable({
                       <div className="law-ranked__detail law-ranked__detail--inline">
                         <header>
                           <p>
-                            <strong>{selected.entity.name}</strong>Recommended {selected.recommended} · Cited {selected.cited} · appeared on {selected.problems} of {area === "all" ? 75 : 5} client problems · {selected.areas} of 15 practice areas
+                            <strong>{selected.entity.name}</strong>Recommended in {selected.recommended} of {area === "all" ? 810 : 54} answers · cited in {selected.cited} · appeared on {selected.problems} of {area === "all" ? 75 : 5} client problems · {selected.areas} of 15 practice areas
                             {selected.tier ? ` · Legal 500 tier ${selected.tier}` : " · not ranked in the mapped Legal 500 London tables"}
                           </p>
                           <button type="button" className="law-ranked__close" onClick={() => setSelectedName("")}>Close</button>
