@@ -11,9 +11,14 @@ const DISMISS_KEY = "sb-front-door";
 
 function OfferBody({
   onClose,
+  onFollow,
   large
 }: {
   onClose?: () => void;
+  // Called when the reader follows the link: the floating card closes so
+  // it never sits on top of the section they asked to see. The homepage
+  // hero card passes nothing here — it leaves with the hero anyway.
+  onFollow?: () => void;
   large?: boolean;
 }) {
   return (
@@ -57,6 +62,7 @@ function OfferBody({
           </Link>
           <Link
             href={frontDoorOffer.more.href}
+            onClick={onFollow}
             className="focus-ring self-start text-sm text-ink/60 underline decoration-ink/30 underline-offset-4 transition-colors hover:text-ink"
           >
             {frontDoorOffer.more.label}
@@ -175,7 +181,7 @@ export function FrontDoorOffer() {
               className="pointer-events-auto relative w-full border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_22px_52px_rgba(20,20,20,0.16)] sm:w-[380px]"
               aria-label={frontDoorOffer.title}
             >
-              <OfferBody onClose={() => setCardOpen(false)} />
+              <OfferBody onClose={() => setCardOpen(false)} onFollow={() => setCardOpen(false)} />
             </motion.aside>
           ) : pillVisible ? (
             <motion.div

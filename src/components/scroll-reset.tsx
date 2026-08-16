@@ -11,6 +11,8 @@ export function ScrollReset() {
       window.history.scrollRestoration = "manual";
     }
 
+    // Hash present (deep link or in-page anchor): leave the position alone.
+    // Same-page hash clicks fire pathname effects in some routers; never reset.
     if (window.location.hash) {
       return;
     }

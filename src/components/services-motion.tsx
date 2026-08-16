@@ -282,14 +282,69 @@ export function ServicesMotion() {
           // Hash landings (e.g. /services#seo-...): native anchor scroll can't
           // place a card inside the pinned stack, so position it ourselves —
           // the card's flow position minus the 88px stopper.
-          const hash = window.location.hash.slice(1);
-          const hashCard = hash ? cards.find((card) => card.id === hash) : undefined;
-          if (hashCard) {
+          // A pinned (sticky) card reports its STUCK offsetTop, not its flow
+          // position, so pageTop() lies for the card currently under the
+          // stopper. Derive the flow top from the stack instead: stack top +
+          // every earlier card's height + the gap between them.
+          const flowTop = (target: HTMLElement) => {
+            const stack = target.parentElement as HTMLElement;
+            const gap = parseFloat(getComputedStyle(cards[1] ?? target).marginTop) || 0;
+            let y = pageTop(stack);
+            for (const card of cards) {
+              if (card === target) break;
+              y += card.offsetHeight + gap;
+            }
+            return y;
+          };
+
+          const scrollToCard = (id: string, behavior: ScrollBehavior) => {
+            const target = cards.find((card) => card.id === id);
+            if (!target) return false;
             window.requestAnimationFrame(() => {
-              window.scrollTo({ top: pageTop(hashCard) - 88, left: 0, behavior: "instant" });
+              const top = flowTop(target) - 88;
+              const lenis = (window as Window & { __sbLenis?: { scrollTo: (v: number, o?: object) => void } }).__sbLenis;
+              if (lenis) {
+                // Let Lenis drive the move: its scroll events keep the scrubbed
+                // card tweens in step, so the covered cards resolve correctly.
+                lenis.scrollTo(top, {
+                  immediate: behavior === "instant",
+                  duration: behavior === "instant" ? undefined : 0.9,
+                  force: true,
+                  lock: true,
+                  onComplete: () => ScrollTrigger.update()
+                });
+              } else {
+                window.scrollTo({ top, left: 0, behavior });
+                ScrollTrigger.update();
+              }
               ScrollTrigger.refresh();
             });
-          }
+            return true;
+          };
+
+          scrollToCard(window.location.hash.slice(1), "instant");
+
+          // Same-page hash clicks (e.g. "See what's included" from the pill
+          // while already on /services) never reload, so catch them too.
+          const onHashChange = () => scrollToCard(window.location.hash.slice(1), "smooth");
+          window.addEventListener("hashchange", onHashChange);
+          const onDocClick = (event: MouseEvent) => {
+            const anchor = (event.target as HTMLElement | null)?.closest<HTMLAnchorElement>("a[href*='#']");
+            if (!anchor) return;
+            const url = new URL(anchor.href, window.location.href);
+            if (url.pathname !== window.location.pathname || !url.hash) return;
+            if (scrollToCard(url.hash.slice(1), "smooth")) {
+              event.preventDefault();
+              window.history.replaceState(null, "", url.hash);
+            }
+          };
+          document.addEventListener("click", onDocClick);
+          const prevCleanup = cleanup;
+          cleanup = () => {
+            window.removeEventListener("hashchange", onHashChange);
+            document.removeEventListener("click", onDocClick);
+            prevCleanup?.();
+          };
 
           return cleanup;
         }

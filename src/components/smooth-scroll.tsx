@@ -33,6 +33,9 @@ export function SmoothScroll() {
     });
 
     lenisRef.current = lenis;
+    // Expose for programmatic jumps (services stack hash landings): scrolling
+    // through Lenis keeps its internal position and ScrollTrigger in sync.
+    (window as Window & { __sbLenis?: Lenis }).__sbLenis = lenis;
 
     const updateScrollTrigger = () => ScrollTrigger.update();
     lenis.on("scroll", updateScrollTrigger);
@@ -52,6 +55,7 @@ export function SmoothScroll() {
       lenis.off("scroll", updateScrollTrigger);
       lenis.destroy();
       lenisRef.current = null;
+      delete (window as Window & { __sbLenis?: Lenis }).__sbLenis;
     };
   }, [useNativeScroll]);
 
