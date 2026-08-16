@@ -17970,3 +17970,86 @@ body:has(.home-4b.contact-page) footer {
 }
 
 :root { --law-ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+
+/* question drawer cards */
+.law-question-drawer__intro {
+  margin: 0 0 20px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--law-muted);
+}
+
+.law-qcards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.law-qcard {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: 1px solid var(--law-rule);
+  background: #fff;
+}
+
+.law-qcard > header {
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--law-rule);
+  background: #f6f7f9;
+}
+
+.law-qcard > header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.law-qcard > header span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--law-muted);
+}
+
+.law-qcard ol {
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  max-height: 46vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.law-qcard li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #eef0f3;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.law-qcard li:last-child { border-bottom: 0; }
+
+.law-qcard__name { display: block; min-width: 0; font-weight: 500; color: var(--law-ink); }
+.law-qcard__name a { display: block; margin-top: 3px; font-weight: 400; font-size: 12.5px; color: var(--law-blue); text-decoration: none; }
+.law-qcard__name a:hover { text-decoration: underline; }
+.law-qcard__name small { display: block; margin-top: 3px; font-size: 11px; color: var(--law-muted); }
+
+.law-qcard__count { flex: 0 0 auto; font-size: 17px; font-weight: 500; color: var(--law-blue); }
+.law-qcard__count small { font-size: 11px; font-weight: 400; color: var(--law-muted); }
+
+.law-qcard .law-explorer__empty { padding: 14px 16px; font-size: 13px; }
+
+@media (max-width: 1000px) {
+  .law-qcards { grid-template-columns: 1fr; }
+  .law-qcard ol { max-height: none; }
+}
+

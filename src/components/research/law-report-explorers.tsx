@@ -165,89 +165,79 @@ export function LawMethodDrawer() {
 }
 
 function LawQuestionDrawerContent({ question }: { question: LawQuestion }) {
-  const suggestedFirms = question.firms.filter((firm) => firm.namedAnswers > 0);
-  const citedFirms = question.firms.filter((firm) => firm.citedAnswers > 0);
+  const suggestedFirms = question.firms.filter((firm) => firm.namedAnswers > 0).sort((left, right) => right.namedAnswers - left.namedAnswers || left.name.localeCompare(right.name, "en-GB")).slice(0, 12);
+  const citedFirms = question.firms.filter((firm) => firm.citedAnswers > 0).sort((left, right) => right.citedAnswers - left.citedAnswers || left.name.localeCompare(right.name, "en-GB")).slice(0, 12);
+  const sources = question.topSources.slice(0, 12);
   return (
     <div className="law-question-drawer__content">
-      <p className="fa3-question-evidence__plain-intro">
-        One of the nine captured answers is shown alongside the firms suggested and pages cited for
-        this question.
+      <p className="law-question-drawer__intro">
+        Across the nine captured answers: the firms AI suggested, the law-firm websites it cited and
+        every other website it relied on.
       </p>
-      <div className="fa3-question-evidence__columns law-question-drawer__columns">
-        <section>
+      <div className="law-qcards">
+        <section className="law-qcard">
           <header>
-            <h3>Sample answer</h3>
-            <span>One of nine answers</span>
+            <h3>Firms suggested most often</h3>
+            <span>{question.type === "problem" ? "Asked which firm to instruct" : "Best lawyers question"}</span>
           </header>
-          <p className="law-question-drawer__answer">{question.sample.answer}</p>
+          {suggestedFirms.length ? (
+            <ol>
+              {suggestedFirms.map((firm) => (
+                <li key={firm.name}>
+                  <span className="law-qcard__name">{firm.name}</span>
+                  <span className="law-qcard__count">{firm.namedAnswers}<small>/{question.answerCount}</small></span>
+                </li>
+              ))}
+            </ol>
+          ) : <p className="law-explorer__empty">No law firm was suggested.</p>}
         </section>
-        <section>
-          {(question.type === "choice" || suggestedFirms.length) ? (
-            <div className="law-question-drawer__block">
-              <header>
-                <h3>Firms suggested most often</h3>
-                {question.type === "problem" ? (
-                  <span>When the same problem was followed by &ldquo;Which UK law firms should I consider instructing?&rdquo;</span>
-                ) : null}
-              </header>
-              {suggestedFirms.length ? (
-                <ol className="fa3-question-evidence__compact-list">
-                  {suggestedFirms.slice(0, 12).map((firm) => (
-                    <li key={firm.name}>
-                      <strong>{firm.name}</strong>
-                      <p>Suggested in {firm.namedAnswers} of {question.answerCount} answers</p>
-                    </li>
-                  ))}
-                </ol>
-              ) : <p className="law-explorer__empty">No law firm was suggested.</p>}
-            </div>
-          ) : null}
-          <div className="law-question-drawer__block">
-            <header>
-              <h3>Law-firm websites cited</h3>
-            </header>
-            {citedFirms.length ? (
-              <ol className="fa3-question-evidence__compact-list law-question-drawer__firm-list">
-                {citedFirms.slice(0, 12).map((firm) => (
-                  <li key={firm.name}>
-                    <div>
-                      <strong>{firm.name}</strong>
-                      {firm.pages.slice(0, 2).map((page) => (
-                        <a key={page.url} href={page.url} target="_blank" rel="noreferrer">
-                          {page.title}
-                        </a>
-                      ))}
-                    </div>
-                    <p>Cited in {firm.citedAnswers} of {question.answerCount} answers</p>
-                  </li>
-                ))}
-              </ol>
-            ) : <p className="law-explorer__empty">No law-firm website was cited.</p>}
-          </div>
-          <div className="law-question-drawer__block">
-            <header>
-              <h3>All websites cited most often</h3>
-            </header>
-            {question.topSources.length ? (
-              <ol className="fa3-question-evidence__compact-list">
-                {question.topSources.map((source) => (
-                  <li key={`${question.id}-${source.url}`}>
-                    <div>
-                      <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
-                      <small>{source.host}</small>
-                    </div>
-                    <p>Cited in {source.count} of {question.answerCount} answers</p>
-                  </li>
-                ))}
-              </ol>
-            ) : <p className="law-explorer__empty">No source link appeared for this question.</p>}
-          </div>
+
+        <section className="law-qcard">
+          <header>
+            <h3>Law-firm websites cited</h3>
+            <span>Answers that linked to a firm&rsquo;s own page</span>
+          </header>
+          {citedFirms.length ? (
+            <ol>
+              {citedFirms.map((firm) => (
+                <li key={firm.name}>
+                  <span className="law-qcard__name">
+                    {firm.name}
+                    {firm.pages[0] ? (
+                      <a href={firm.pages[0].url} target="_blank" rel="noreferrer">{firm.pages[0].title}</a>
+                    ) : null}
+                  </span>
+                  <span className="law-qcard__count">{firm.citedAnswers}<small>/{question.answerCount}</small></span>
+                </li>
+              ))}
+            </ol>
+          ) : <p className="law-explorer__empty">No law-firm website was cited.</p>}
+        </section>
+
+        <section className="law-qcard">
+          <header>
+            <h3>All websites cited most often</h3>
+            <span>Every source, not only law firms</span>
+          </header>
+          {sources.length ? (
+            <ol>
+              {sources.map((source) => (
+                <li key={`${question.id}-${source.url}`}>
+                  <span className="law-qcard__name">
+                    <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a>
+                    <small>{source.host}</small>
+                  </span>
+                  <span className="law-qcard__count">{source.count}<small>/{question.answerCount}</small></span>
+                </li>
+              ))}
+            </ol>
+          ) : <p className="law-explorer__empty">No source link appeared for this question.</p>}
         </section>
       </div>
       <p className="fa3-question-evidence__caveat">
-        Suggested means AI presented the firm as an option when asked which firm to instruct (nine
-        answers). Cited means an answer to the problem linked to the firm&rsquo;s website (nine
-        answers).
+        Suggested means AI presented the firm as an option when asked which firm to instruct. Cited
+        means an answer linked to that website. Counts are out of the {question.answerCount} captured
+        answers.
       </p>
     </div>
   );
