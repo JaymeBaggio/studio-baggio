@@ -43,7 +43,7 @@ export function LawRankedTable({
         const active = scoped.filter((item) => item.namedAnswers || item.citedAnswers);
         const recommended = active.reduce((sum, item) => sum + item.namedAnswers, 0);
         const cited = active.reduce((sum, item) => sum + item.citedAnswers, 0);
-        const problems = active.length;
+        const problems = active.filter((item) => item.type === "problem").length;
         const areaCounts = new Map<string, number>();
         for (const item of active) areaCounts.set(item.area, (areaCounts.get(item.area) ?? 0) + item.namedAnswers + item.citedAnswers);
         const topArea = [...areaCounts.entries()].sort((left, right) => right[1] - left[1])[0]?.[0] ?? "";
@@ -128,7 +128,7 @@ export function LawRankedTable({
             onChange={(next) => toggleSort(next as SortKey)}
             options={[
               { value: "recommended", label: "Most recommended" }, { value: "cited", label: "Most cited" },
-              { value: "problems", label: "Most questions appeared on" }, { value: "areas", label: "Most practice areas" },
+              { value: "problems", label: "Most problems" }, { value: "areas", label: "Most practice areas" },
               { value: "tier", label: "Legal 500 tier" }, { value: "name", label: "Firm A to Z" }
             ]}
           />
@@ -146,13 +146,13 @@ export function LawRankedTable({
             <thead>
               <tr>
                 <th scope="col"><button type="button" onClick={() => toggleSort("name")}>Firm{arrow("name")}</button></th>
-                <th scope="col"><button type="button" onClick={() => toggleSort("tier")}>Legal 500 tier{arrow("tier")}</button></th>
-                <th scope="col"><button type="button" onClick={() => toggleSort("recommended")}>Recommended{arrow("recommended")}</button></th>
-                <th scope="col"><button type="button" onClick={() => toggleSort("cited")}>Cited{arrow("cited")}</button></th>
-                <th scope="col"><button type="button" onClick={() => toggleSort("problems")}>Questions appeared on{arrow("problems")}</button></th>
-                {area === "all" ? <th scope="col"><button type="button" onClick={() => toggleSort("areas")}>Practice areas{arrow("areas")}</button></th> : null}
-                {area === "all" ? <th scope="col"><button type="button" onClick={() => toggleSort("topArea")}>Strongest area{arrow("topArea")}</button></th> : null}
-                <th scope="col">Most recommended for</th>
+                <th scope="col"><button type="button" onClick={() => toggleSort("tier")}>Tier{arrow("tier")}</button></th>
+                <th scope="col" title="Answers naming the firm when AI was asked which firm to instruct"><button type="button" onClick={() => toggleSort("recommended")}>Recommended{arrow("recommended")}</button></th>
+                <th scope="col" title="Answers to the problem that linked to the firm&rsquo;s own website"><button type="button" onClick={() => toggleSort("cited")}>Cited{arrow("cited")}</button></th>
+                <th scope="col" title="How many of the 75 real client problems the firm appeared on, recommended or cited at least once"><button type="button" onClick={() => toggleSort("problems")}>Problems{arrow("problems")}</button></th>
+                {area === "all" ? <th scope="col" title="How many of the 15 practice areas the firm appeared in"><button type="button" onClick={() => toggleSort("areas")}>Areas{arrow("areas")}</button></th> : null}
+                {area === "all" ? <th scope="col" title="The practice area where the firm appeared most"><button type="button" onClick={() => toggleSort("topArea")}>Strongest{arrow("topArea")}</button></th> : null}
+                <th scope="col" title="The single question the firm was recommended for most">Top question</th>
               </tr>
             </thead>
             <tbody>
@@ -167,7 +167,7 @@ export function LawRankedTable({
                   <td>{row.tier ? `Tier ${row.tier}` : "Unranked"}</td>
                   <td><strong>{row.recommended}</strong></td>
                   <td><strong>{row.cited}</strong></td>
-                  <td><strong>{row.problems}</strong><span>of {area === "all" ? 90 : 6}</span></td>
+                  <td><strong>{row.problems}</strong><span>of {area === "all" ? 75 : 5}</span></td>
                   {area === "all" ? <td><strong>{row.areas}</strong><span>of 15</span></td> : null}
                   {area === "all" ? <td className="law-ranked__text">{row.topArea}</td> : null}
                   <td className="law-ranked__text">
@@ -180,7 +180,7 @@ export function LawRankedTable({
                       <div className="law-ranked__detail law-ranked__detail--inline">
                         <header>
                           <p>
-                            <strong>{selected.entity.name}</strong>Recommended {selected.recommended} · Cited {selected.cited} · appeared on {selected.problems} of {area === "all" ? 90 : 6} questions · {selected.areas} of 15 practice areas
+                            <strong>{selected.entity.name}</strong>Recommended {selected.recommended} · Cited {selected.cited} · appeared on {selected.problems} of {area === "all" ? 75 : 5} client problems · {selected.areas} of 15 practice areas
                             {selected.tier ? ` · Legal 500 tier ${selected.tier}` : " · not ranked in the mapped Legal 500 London tables"}
                           </p>
                           <button type="button" className="law-ranked__close" onClick={() => setSelectedName("")}>Close</button>

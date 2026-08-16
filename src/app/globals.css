@@ -15713,7 +15713,9 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .law-ranked__table--wide th[scope="col"] {
-  white-space: nowrap;
+  white-space: normal;
+  padding-right: 14px;
+  line-height: 1.25;
 }
 
 .law-ranked__table--wide th[scope="col"] button {
