@@ -15,20 +15,36 @@ import { ResearchDrawer } from "./ResearchDrawer.client";
 const familyOrder = ["core", "wealth", "pensions", "life_events", "local"] as const;
 
 const familyLabels: Record<string, string> = {
-  core: "Choosing an adviser",
+  core: "General financial advice",
   wealth: "Wealth and investing",
   pensions: "Pensions and retirement",
-  life_events: "Life events",
+  life_events: "Life events and specialist planning",
   local: "Matched local discovery"
 };
 
-const tierLabels: Record<string, string> = {
-  broad_repeat_confirmed_selection: "Selected repeatedly across topics",
-  multi_family_selection: "Selected across several topics",
-  specialist_repeat_confirmed_selection: "Selected for one specialism",
-  one_off_selection: "Selected once",
-  local_only_selection: "Local only",
-  not_selected: "Not selected"
+const adviceAreaOrder = familyOrder.slice(0, 4);
+
+const questionLabels: Record<string, string> = {
+  "FA3-CORE-01": "Any UK financial adviser",
+  "FA3-CORE-02": "Financial advice firms to consider",
+  "FA3-CORE-03": "Independent financial adviser firms",
+  "FA3-CORE-04": "Chartered Financial Planners",
+  "FA3-CORE-05": "One-off fixed-fee advice",
+  "FA3-WEALTH-01": "Investing a £100,000 lump sum",
+  "FA3-WEALTH-02": "Investing £500,000",
+  "FA3-WEALTH-03": "Investing more than £1 million",
+  "FA3-WEALTH-04": "Wealth management and financial planning",
+  "FA3-WEALTH-05": "Sustainable or ethical investing",
+  "FA3-PENSION-01": "Retirement planning",
+  "FA3-PENSION-02": "Retirement income and pension drawdown",
+  "FA3-PENSION-03": "Combining old workplace pensions",
+  "FA3-PENSION-04": "Annuity or pension drawdown",
+  "FA3-PENSION-05": "Defined-benefit pension transfer",
+  "FA3-LIFE-01": "Planning for a £250,000 inheritance",
+  "FA3-LIFE-02": "Inheritance tax and estate planning",
+  "FA3-LIFE-03": "Later-life and care-fees planning",
+  "FA3-LIFE-04": "Divorce and pension sharing",
+  "FA3-LIFE-05": "Planning before and after a business sale"
 };
 
 const pct = new Intl.NumberFormat("en-GB", {
@@ -50,10 +66,6 @@ type FirmOccurrence = QuestionCandidate & {
 
 function percentage(value = 0) {
   return pct.format(value);
-}
-
-function panelLabel(value: ReportEntity["panel_status"]) {
-  return value === "panel" ? "150-firm panel" : "Outside panel";
 }
 
 function familyRecommendationCount(entity: ReportEntity) {
@@ -317,22 +329,78 @@ export function Fa3BreadthExplorer({
   questions: QuestionView[];
 }) {
   const [search, setSearch] = useState("");
-  const [scope, setScope] = useState("all");
-  const [tier, setTier] = useState("all");
+  const [family, setFamily] = useState("all");
+  const [questionId, setQuestionId] = useState("all");
+
+  const areaQuestions = useMemo(
+    () => family === "all" ? [] : questions.filter((question) => question.family === family),
+    [family, questions]
+  );
+
+  const selectedQuestions = useMemo(
+    () => questionId === "all"
+      ? areaQuestions
+      : areaQuestions.filter((question) => question.query_id === questionId),
+    [areaQuestions, questionId]
+  );
+
+  const selectedQuestion = selectedQuestions.length === 1 && questionId !== "all"
+    ? selectedQuestions[0]
+    : null;
+
+  const selectionStats = useMemo(() => {
+    const stats = new Map<string, { answerCount: number; questionIds: Set<string> }>();
+
+    for (const question of selectedQuestions) {
+      for (const answer of question.answers) {
+        const seenInAnswer = new Set<string>();
+        for (const candidate of answer.candidates) {
+          if (seenInAnswer.has(candidate.entity_id)) continue;
+          seenInAnswer.add(candidate.entity_id);
+          const current = stats.get(candidate.entity_id) ?? {
+            answerCount: 0,
+            questionIds: new Set<string>()
+          };
+          current.answerCount += 1;
+          current.questionIds.add(question.query_id);
+          stats.set(candidate.entity_id, current);
+        }
+      }
+    }
+
+    return stats;
+  }, [selectedQuestions]);
+
+  const selectedAnswerCount = selectedQuestions.reduce(
+    (total, question) => total + question.valid_answer_count,
+    0
+  );
 
   const visible = useMemo(() => {
     const query = search.trim().toLocaleLowerCase("en-GB");
-    const isFiltering = Boolean(query || scope !== "all" || tier !== "all");
+    const isFiltering = Boolean(query || family !== "all");
     const source = isFiltering ? searchEntities : entities;
     const filtered = source.filter((entity) => {
       const matchesSearch = !query || entity.canonical_name.toLocaleLowerCase("en-GB").includes(query);
-      const matchesScope = scope === "all" || entity.panel_status === scope;
-      const matchesTier = tier === "all" || entity.display_tier === tier;
-      return matchesSearch && matchesScope && matchesTier;
+      const matchesFamily = family === "all" || selectionStats.has(entity.entity_id);
+      const isNationalResult = entity.display_tier !== "local_only_selection";
+      return matchesSearch && matchesFamily && isNationalResult;
     });
+    if (family !== "all") {
+      return filtered.sort((left, right) => {
+        const leftStats = selectionStats.get(left.entity_id);
+        const rightStats = selectionStats.get(right.entity_id);
+        return (
+          (rightStats?.answerCount ?? 0) - (leftStats?.answerCount ?? 0) ||
+          (rightStats?.questionIds.size ?? 0) - (leftStats?.questionIds.size ?? 0) ||
+          (right.score ?? 0) - (left.score ?? 0) ||
+          collator.compare(left.canonical_name, right.canonical_name)
+        );
+      });
+    }
     if (isFiltering) return filtered;
     return filtered.slice(0, 20);
-  }, [entities, scope, search, searchEntities, tier]);
+  }, [entities, family, search, searchEntities, selectionStats]);
 
   const occurrencesByEntity = useMemo(() => {
     const result = new Map<string, FirmOccurrence[]>();
@@ -368,10 +436,10 @@ export function Fa3BreadthExplorer({
           </div>
           <p>
             The first 20 firms and advisers found in national answers are shown by default. Search
-            covers every national or local candidate and every firm in the 150-firm panel,
-            including firms not selected.
-            Percentages show the firm&rsquo;s share of all recommendation slots in that buyer-need
-            category. Every question and platform counts equally.
+            covers every national candidate and every firm in the 150-firm panel,
+            including firms not selected. Choose an advice area to rank firms by appearances across
+            its five questions, or choose a specific buyer need to rank the nine answers to that
+            question. Every question and platform counts equally.
           </p>
         </header>
 
@@ -380,76 +448,128 @@ export function Fa3BreadthExplorer({
             <span>Find a firm or adviser</span>
             <span className="fa3-search-field">
               <Search aria-hidden="true" />
-              <input value={search} onChange={(event) => setSearch(event.target.value)} type="search" placeholder="Search every firm" />
+              <input value={search} onChange={(event) => setSearch(event.target.value)} type="search" />
             </span>
           </label>
           <label>
-            <span>Firm group</span>
-            <select value={scope} onChange={(event) => setScope(event.target.value)}>
-              <option value="all">All firms found</option>
-              <option value="panel">150-firm panel</option>
-              <option value="outside_panel">Outside panel</option>
+            <span>Advice area</span>
+            <select
+              value={family}
+              onChange={(event) => {
+                setFamily(event.target.value);
+                setQuestionId("all");
+              }}
+            >
+              <option value="all">All advice areas</option>
+              {adviceAreaOrder.map((value) => (
+                <option key={value} value={value}>{familyLabels[value]}</option>
+              ))}
             </select>
           </label>
           <label>
-            <span>Visibility pattern</span>
-            <select value={tier} onChange={(event) => setTier(event.target.value)}>
-              <option value="all">All visibility patterns</option>
-              {Object.entries(tierLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+            <span>Specific buyer need</span>
+            <select
+              value={questionId}
+              onChange={(event) => setQuestionId(event.target.value)}
+              disabled={family === "all"}
+            >
+              <option value="all">
+                {family === "all" ? "Choose an advice area first" : `All ${familyLabels[family].toLocaleLowerCase("en-GB")} questions`}
+              </option>
+              {areaQuestions.map((question) => (
+                <option key={question.query_id} value={question.query_id}>
+                  {questionLabels[question.query_id] ?? question.query_text}
+                </option>
+              ))}
             </select>
           </label>
         </div>
 
         <p className="fa3-result-count" aria-live="polite">
-          {!search && scope === "all" && tier === "all"
+          {!search && family === "all"
             ? `Showing ${visible.length} of ${entities.length} firms and advisers found in national answers.`
-            : `Showing ${visible.length} ${visible.length === 1 ? "firm" : "firms"}.`}
+            : family !== "all"
+              ? `Showing ${visible.length} ${visible.length === 1 ? "firm or adviser" : "firms and advisers"}, ranked by appearances across ${selectedAnswerCount} AI answers${selectedQuestion ? ` to “${questionLabels[selectedQuestion.query_id] ?? selectedQuestion.query_text}”` : ` to ${selectedQuestions.length} ${familyLabels[family].toLocaleLowerCase("en-GB")} questions`}.`
+              : `Showing ${visible.length} ${visible.length === 1 ? "firm or adviser" : "firms and advisers"}.`}
         </p>
 
-        <div className="fa3-breadth-table-wrap" role="region" aria-label="Firm visibility across buyer-need categories" tabIndex={0}>
+        <div className="fa3-breadth-table-wrap" role="region" aria-label="Firm visibility across advice areas" tabIndex={0}>
           <table className="fa3-breadth-table">
             <thead>
               <tr>
                 <th scope="col">Candidate</th>
-                <th scope="col">Visibility pattern</th>
-                <th scope="col">Buyer-need categories reached</th>
-                <th scope="col">Choosing</th>
-                <th scope="col">Wealth</th>
-                <th scope="col">Pensions</th>
-                <th scope="col">Life events</th>
-                <th scope="col">Local</th>
+                {family === "all" ? (
+                  <>
+                    <th scope="col">Advice areas reached</th>
+                    <th scope="col">General</th>
+                    <th scope="col">Wealth</th>
+                    <th scope="col">Pensions</th>
+                    <th scope="col">Life events</th>
+                  </>
+                ) : (
+                  <>
+                    <th className="fa3-metric-heading" scope="col" aria-sort="descending">
+                      <span>AI answers</span>
+                      <small>of {selectedAnswerCount}</small>
+                    </th>
+                    {selectedQuestions.length > 1 ? (
+                      <th className="fa3-metric-heading" scope="col">
+                        <span>Buyer questions</span>
+                        <small>of {selectedQuestions.length}</small>
+                      </th>
+                    ) : null}
+                  </>
+                )}
               </tr>
             </thead>
             <tbody>
-              {visible.map((entity) => (
-                <tr key={entity.entity_id}>
-                  <th scope="row">
-                    <ResearchDrawer
-                      className="fa3-firm-evidence-drawer"
-                      eyebrow={panelLabel(entity.panel_status)}
-                      title={entity.canonical_name}
-                      triggerClassName="fa3-firm-row-trigger"
-                      trigger={
-                        <>
-                          <span>{entity.canonical_name}</span>
-                          <small aria-hidden="true">View results →</small>
-                        </>
-                      }
-                    >
-                      <FirmEvidenceContent
-                        entity={entity}
-                        occurrences={occurrencesByEntity.get(entity.entity_id) ?? []}
-                      />
-                    </ResearchDrawer>
-                  </th>
-                  <td>{tierLabels[entity.display_tier ?? ""] ?? entity.display_tier}</td>
-                  <td>{entity.national_families_reached} of 4</td>
-                  {familyOrder.slice(0, 4).map((family) => (
-                    <td key={family}>{percentage(entity.family_scores?.[family])}</td>
-                  ))}
-                  <td>{entity.local_score ? percentage(entity.local_score) : "—"}</td>
-                </tr>
-              ))}
+              {visible.map((entity) => {
+                const stats = selectionStats.get(entity.entity_id);
+                const entityOccurrences = occurrencesByEntity.get(entity.entity_id) ?? [];
+                const scopedOccurrences = family === "all"
+                  ? entityOccurrences
+                  : entityOccurrences.filter((occurrence) => (
+                    occurrence.family === family &&
+                    (questionId === "all" || occurrence.query_id === questionId)
+                  ));
+                return (
+                  <tr key={entity.entity_id}>
+                    <th scope="row">
+                      <ResearchDrawer
+                        className="fa3-firm-evidence-drawer"
+                        title={entity.canonical_name}
+                        triggerClassName="fa3-firm-row-trigger"
+                        trigger={
+                          <>
+                            <span>{entity.canonical_name}</span>
+                            <small aria-hidden="true">View results →</small>
+                          </>
+                        }
+                      >
+                        <FirmEvidenceContent
+                          entity={entity}
+                          occurrences={scopedOccurrences}
+                        />
+                      </ResearchDrawer>
+                    </th>
+                    {family === "all" ? (
+                      <>
+                        <td>{entity.national_families_reached} of 4</td>
+                        {familyOrder.slice(0, 4).map((area) => (
+                          <td key={area}>{percentage(entity.family_scores?.[area])}</td>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        <td className="fa3-metric-value">{stats?.answerCount ?? 0}</td>
+                        {selectedQuestions.length > 1 ? (
+                          <td className="fa3-metric-value">{stats?.questionIds.size ?? 0}</td>
+                        ) : null}
+                      </>
+                    )}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

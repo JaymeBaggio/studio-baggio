@@ -14583,7 +14583,7 @@ body:has(.home-4b.contact-page) footer {
 
 .fa3-breadth-controls {
   display: grid;
-  grid-template-columns: minmax(320px, 1.6fr) repeat(2, minmax(200px, 0.7fr));
+  grid-template-columns: minmax(280px, 1.35fr) repeat(2, minmax(220px, 0.9fr));
   gap: 10px;
   padding: 18px 0;
   border-block: 1px solid #111;
@@ -14645,6 +14645,12 @@ body:has(.home-4b.contact-page) footer {
   outline-offset: 0;
 }
 
+.fa3-breadth-controls select:disabled {
+  background: #f3f3f3;
+  color: #777;
+  cursor: not-allowed;
+}
+
 .fa3-result-count {
   margin: 15px 0;
   color: #666;
@@ -14681,6 +14687,25 @@ body:has(.home-4b.contact-page) footer {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.fa3-breadth-table .fa3-metric-heading span,
+.fa3-breadth-table .fa3-metric-heading small {
+  display: block;
+}
+
+.fa3-breadth-table .fa3-metric-heading small {
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.fa3-breadth-table .fa3-metric-value {
+  color: var(--fa3-blue);
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
 }
 
 .fa3-breadth-table tbody th,
