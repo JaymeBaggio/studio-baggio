@@ -434,6 +434,7 @@ export function Fa3BreadthExplorer({
             <p className="fa3-kicker">Selection breadth</p>
             <h2 id="fa3-breadth-title">Only four firms appeared across all four buyer needs</h2>
           </div>
+          <p>Search for a firm, filter by advice area or a specific buyer need.</p>
         </header>
 
         <div className="fa3-breadth-controls">
