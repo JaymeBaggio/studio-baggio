@@ -1,5 +1,11 @@
 # Studio Baggio Website - STATUS
-*Last updated: 7 August 2026*
+*Last updated: 17 August 2026*
+
+## 17 August — Financial-advice search repair; research signup paused
+
+- Fixed the financial-advice explorer so a direct firm or adviser search covers the complete study dataset. A local-only or national classification no longer hides a matching name; advice-area and buyer-need filters still control the selected ranking view.
+- Verified locally that `Fairstone` returns one result again, alongside normal national candidates, panel firms with no national selections, empty searches and filter/reset behaviour.
+- Research-edition email capture is paused on `feat/research-edition-signup` and is not on `main`. The branded confirmation-email templates are committed there; page integration, environment/database setup, end-to-end delivery and mobile QA remain unfinished.
 
 ## 7 August — Calm Authority citation experiment linked from financial-advice research
 

@@ -391,8 +391,7 @@ export function Fa3BreadthExplorer({
     const filtered = source.filter((entity) => {
       const matchesSearch = !query || entity.canonical_name.toLocaleLowerCase("en-GB").includes(query);
       const matchesFamily = family === "all" || selectionStats.has(entity.entity_id);
-      const isNationalResult = entity.display_tier !== "local_only_selection";
-      return matchesSearch && matchesFamily && isNationalResult;
+      return matchesSearch && matchesFamily;
     });
     if (family !== "all") {
       return filtered.sort((left, right) => {
