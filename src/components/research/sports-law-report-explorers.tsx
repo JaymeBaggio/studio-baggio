@@ -198,9 +198,11 @@ export function SportsLawMethodDrawer() {
 
 function SportsEntityDrawerContent({
   entity,
+  practiceArea,
   onQuestionSelect
 }: {
   entity: SportsEntity;
+  practiceArea: string | null;
   onQuestionSelect: (questionId: string) => void;
 }) {
   return (
@@ -223,7 +225,7 @@ function SportsEntityDrawerContent({
         </div>
       </dl>
       <header className="sports-entity-evidence-drawer__heading">
-        <h3>Questions where this name appeared</h3>
+        <h3>{practiceArea ? `${practiceArea} questions where this name appeared` : "Questions where this name appeared"}</h3>
       </header>
       {entity.appearances.length ? (
         <ol className="sports-entity-evidence-drawer__questions">
@@ -247,35 +249,55 @@ function SportsEntityDrawerContent({
         </ol>
       ) : (
         <p className="sports-entity-evidence__empty">
-          This tracked name did not appear in any of the 810 captured answers.
+          {practiceArea
+            ? `This tracked name did not appear in any captured answers for ${practiceArea}.`
+            : "This tracked name did not appear in any of the 810 captured answers."}
         </p>
       )}
     </div>
   );
 }
 
+function scopeEntityToPracticeArea(entity: SportsEntity, practiceArea: string): SportsEntity {
+  if (practiceArea === "all") return entity;
+
+  const appearances = entity.appearances
+    .filter((appearance) => appearance.sportLabel === practiceArea)
+    .sort((left, right) =>
+      right.answerCount - left.answerCount || left.question.localeCompare(right.question)
+    );
+
+  return {
+    ...entity,
+    appearances,
+    answerCount: appearances.reduce((total, appearance) => total + appearance.answerCount, 0),
+    questionCount: new Set(appearances.map((appearance) => appearance.questionId)).size,
+    sportCount: appearances.length ? 1 : 0
+  };
+}
+
 export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] }) {
   const [query, setQuery] = useState("");
   const [entityType, setEntityType] = useState("all");
   const [sport, setSport] = useState("all");
-  const [visibility, setVisibility] = useState("all");
   const [limit, setLimit] = useState(20);
   const sports = useMemo(
     () => Array.from(new Set(entities.flatMap((entity) => entity.appearances.map((item) => item.sportLabel)))).sort(),
     [entities]
   );
+  const isPracticeAreaView = sport !== "all";
   const visible = useMemo(() => {
     const term = clean(query);
     return entities
+      .map((entity) => scopeEntityToPracticeArea(entity, sport))
       .filter((entity) => {
         const matchesQuery = !term || clean(`${entity.name} ${entity.affiliation ?? ""} ${entity.panelName ?? ""}`).includes(term);
         const matchesType = entityType === "all" || entity.entityType === entityType;
-        const matchesSport = sport === "all" || entity.appearances.some((item) => item.sportLabel === sport);
-        const matchesVisibility = visibility === "all" || (visibility === "surfaced" ? entity.answerCount > 0 : entity.answerCount === 0);
-        return matchesQuery && matchesType && matchesSport && matchesVisibility;
+        const matchesSport = sport === "all" || entity.answerCount > 0;
+        return matchesQuery && matchesType && matchesSport;
       })
       .sort((left, right) => right.answerCount - left.answerCount || right.questionCount - left.questionCount || left.name.localeCompare(right.name));
-  }, [entities, entityType, query, sport, visibility]);
+  }, [entities, entityType, query, sport]);
   const resetResults = () => setLimit(20);
   const revealQuestion = (questionId: string) => {
     const targetId = `question-${questionId}`;
@@ -299,9 +321,13 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
             <p className="fa3-kicker">Full results · August 2026</p>
             <h2 id="sports-entity-title">UK Sports Law AI Visibility Rankings</h2>
           </div>
-          <p>The firms, lawyers and chambers named most often across 810 answers to 90 high-intent sports-law questions.</p>
+          <p>
+            {isPracticeAreaView
+              ? `The firms, lawyers and chambers named most often across 90 answers to 10 high-intent ${sport.toLocaleLowerCase("en-GB")} questions.`
+              : "The firms, lawyers and chambers named most often across 810 answers to 90 high-intent sports-law questions."}
+          </p>
         </header>
-        <div className="law-ranked__controls law-ranked__controls--four sports-entity-explorer__controls">
+        <div className="law-ranked__controls sports-entity-explorer__controls">
           <LawSelect
             label="Entity type"
             value={entityType}
@@ -319,16 +345,6 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
             onChange={(value) => { setSport(value); resetResults(); }}
             options={[{ value: "all", label: "All nine practice areas" }, ...sports.map((item) => ({ value: item, label: item }))]}
           />
-          <LawSelect
-            label="Visibility"
-            value={visibility}
-            onChange={(value) => { setVisibility(value); resetResults(); }}
-            options={[
-              { value: "all", label: "All tracked names" },
-              { value: "surfaced", label: "Named in at least one answer" },
-              { value: "absent", label: "Tracked but not named" }
-            ]}
-          />
           <SearchField
             id="sports-entity-search"
             label="Firm or lawyer"
@@ -343,7 +359,10 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
         <div className="law-report__legal500-table-wrap" role="region" aria-label="UK Sports Law AI visibility rankings" tabIndex={0}>
           <table className="law-report__legal500-table law-ranked__table law-ranked__table--wide">
             <colgroup>
-              {["28%", "14%", "10%", "10%", "9%", "29%"].map((width, index) => (
+              {(isPracticeAreaView
+                ? ["42%", "24%", "17%", "17%"]
+                : ["28%", "14%", "10%", "10%", "9%", "29%"]
+              ).map((width, index) => (
                 <col key={index} style={{ width }} />
               ))}
             </colgroup>
@@ -351,10 +370,14 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Entity type</th>
-                <th className="law-ranked__metric-heading" scope="col"><span>AI answers</span><small>of 810</small></th>
-                <th className="law-ranked__metric-heading" scope="col"><span>Questions</span><small>of 90</small></th>
-                <th className="law-ranked__metric-heading" scope="col"><span>Practice areas</span><small>of 9</small></th>
-                <th scope="col">Strongest question</th>
+                <th className="law-ranked__metric-heading" scope="col"><span>AI answers</span><small>of {isPracticeAreaView ? 90 : 810}</small></th>
+                <th className="law-ranked__metric-heading" scope="col"><span>Questions</span><small>of {isPracticeAreaView ? 10 : 90}</small></th>
+                {!isPracticeAreaView ? (
+                  <>
+                    <th className="law-ranked__metric-heading" scope="col"><span>Practice areas</span><small>of 9</small></th>
+                    <th scope="col">Strongest question</th>
+                  </>
+                ) : null}
               </tr>
             </thead>
             <tbody>
@@ -377,6 +400,7 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
                         {(closeDrawer) => (
                           <SportsEntityDrawerContent
                             entity={entity}
+                            practiceArea={isPracticeAreaView ? sport : null}
                             onQuestionSelect={(questionId) => {
                               closeDrawer();
                               revealQuestion(questionId);
@@ -397,17 +421,21 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
                     </td>
                     <td><strong>{entity.answerCount}</strong></td>
                     <td><strong>{entity.questionCount}</strong></td>
-                    <td><strong>{entity.sportCount}</strong></td>
-                    <td className="law-ranked__text">
-                      {strongestQuestion ? (
-                        <>
-                          {strongestQuestion.question}
-                          <small>{strongestQuestion.sportLabel} · Named {strongestQuestion.answerCount}/9</small>
-                        </>
-                      ) : (
-                        <span>No verified appearance</span>
-                      )}
-                    </td>
+                    {!isPracticeAreaView ? (
+                      <>
+                        <td><strong>{entity.sportCount}</strong></td>
+                        <td className="law-ranked__text">
+                          {strongestQuestion ? (
+                            <>
+                              {strongestQuestion.question}
+                              <small>{strongestQuestion.sportLabel} · Named {strongestQuestion.answerCount}/9</small>
+                            </>
+                          ) : (
+                            <span>No verified appearance</span>
+                          )}
+                        </td>
+                      </>
+                    ) : null}
                   </tr>
                 );
               })}

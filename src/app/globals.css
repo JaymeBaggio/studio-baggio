@@ -21404,7 +21404,10 @@ body:has(.home-4b.contact-page) footer {
   background: var(--law-wash);
 }
 
-.sports-entity-explorer__controls,
+.sports-entity-explorer__controls {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .sports-question-explorer__controls {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
