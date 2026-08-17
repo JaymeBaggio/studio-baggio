@@ -76,7 +76,7 @@ export type ResearchEditionDefinition = {
 };
 
 export const researchFranchise = {
-  name: "The Studio Baggio AI Discovery Study",
+  name: "Studio Baggio AI Visibility Research",
   title: "Research",
   description:
     "See which businesses AI puts in front of your customers.",
