@@ -8,7 +8,7 @@
   --sports-body: #4f4f4f;
   --sports-muted: #666666;
   --sports-display: clamp(52px, 5vw, 84px);
-  --sports-section-title: clamp(40px, 4vw, 62px);
+  --sports-section-title: clamp(36px, 3.4vw, 54px);
   --sports-feature: var(--sports-section-title);
   --sports-title: var(--sports-section-title);
   --sports-subheading-size: 20px;
@@ -551,7 +551,7 @@
   max-width: 15ch !important;
   margin: 14px 0 0;
   color: var(--sports-ink);
-  font-size: clamp(40px, 3.4vw, 52px) !important;
+  font-size: var(--sports-title) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   line-height: 1.04 !important;
