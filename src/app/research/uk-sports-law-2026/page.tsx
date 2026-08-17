@@ -226,24 +226,21 @@ export default function UkSportsLawReportPage() {
           <div className="fa3-executive__evidence">
             <ul className="fa3-executive__summary-list">
               <li>
-                <strong>Almost 1 in 4</strong>
                 <span>
-                  <b>Established UK sports-law firms were never named.</b> 22 of the 89 firms in
-                  our comparison group did not appear once across 810 AI answers to 90
-                  high-intent buyer questions.
+                  <b>Almost 1 in 4 established UK sports-law firms were never named.</b> 22 of the
+                  89 firms in our comparison group did not appear once across 810 AI answers to
+                  90 high-intent buyer questions.
                 </span>
               </li>
               <li>
-                <strong>85 of 89</strong>
                 <span>
                   <b>Global Sports Advocates was named more often than 85 of the 89 established firms.</b>{" "}
                   The firm was not part of the original comparison group.
                 </span>
               </li>
               <li>
-                <strong>No. 1</strong>
                 <span>
-                  <b>Blackstone Chambers was the most frequently named legal organisation in the study.</b>{" "}
+                  <b>Blackstone Chambers was the No. 1 most frequently named legal organisation in the study.</b>{" "}
                   It appeared in 202 answers across 70 of the 90 questions.
                 </span>
               </li>
