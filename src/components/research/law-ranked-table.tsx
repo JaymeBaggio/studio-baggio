@@ -3,11 +3,64 @@
 import { Fragment, useMemo, useState } from "react";
 import type { LawEntity, LawLegal500Ranking } from "./law-report-explorers";
 import { LawSelect } from "./law-select";
+import { ResearchDrawer } from "./ResearchDrawer.client";
 
 type SortKey = "rank" | "name" | "tier" | "recommended" | "cited" | "problems" | "areas" | "topArea";
 type TierFilter = "all" | "1" | "2" | "3" | "4+" | "unranked";
 
 const compact = (value: string) => value.toLocaleLowerCase("en-GB").replace(/[^a-z0-9]+/g, "");
+
+
+type FirmRow = {
+  entity: LawEntity;
+  recommended: number;
+  cited: number;
+  problems: number;
+  areas: number;
+  tier: number | null;
+  website: string;
+};
+
+function LawFirmPanel({ row, area }: { row: FirmRow; area: string }) {
+  const appearances = (area === "all" ? row.entity.appearances : row.entity.appearances.filter((item) => item.area === area))
+    .filter((item) => item.namedAnswers || item.citedAnswers)
+    .sort((left, right) => right.namedAnswers + right.citedAnswers - (left.namedAnswers + left.citedAnswers));
+  return (
+    <div className="law-firm-panel">
+      <dl className="law-firm-panel__stats">
+        <div>
+          <dt>{row.recommended}</dt>
+          <dd>AI answers recommended the firm</dd>
+        </div>
+        <div>
+          <dt>{row.problems}</dt>
+          <dd>buyer questions where it appeared</dd>
+        </div>
+        <div>
+          <dt>{row.cited}</dt>
+          <dd>answers cited its own website</dd>
+        </div>
+      </dl>
+      <header className="law-firm-panel__head">
+        <h3>Questions where this firm appeared</h3>
+        <span>{appearances.length} {appearances.length === 1 ? "question" : "questions"}{row.tier ? ` · Legal 500 tier ${row.tier}` : " · unranked in the mapped Legal 500 London tables"}</span>
+      </header>
+      <div className="law-firm-panel__grid">
+        {appearances.map((item) => (
+          <article key={item.questionId}>
+            <p className="fa3-kicker">{item.area}</p>
+            <h4>{item.question}</h4>
+            <p>
+              {item.namedAnswers ? `Recommended in ${item.namedAnswers} of ${9} answers` : "Not recommended"}
+              {" · "}
+              {item.citedAnswers ? `own website cited ${item.citedAnswers} ${item.citedAnswers === 1 ? "time" : "times"}` : "own website not cited"}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function LawRankedTable({
   entities,
@@ -23,7 +76,6 @@ export function LawRankedTable({
   const [tierFilter, setTierFilter] = useState<TierFilter>("all");
   const [sort, setSort] = useState<SortKey>("recommended");
   const [dir, setDir] = useState<"desc" | "asc">("desc");
-  const [selectedName, setSelectedName] = useState("");
   const [limit, setLimit] = useState(50);
 
   const tierIndex = useMemo(() => {
@@ -91,12 +143,6 @@ export function LawRankedTable({
   };
   const arrow = (key: SortKey) => (sort === key ? (dir === "desc" ? " ↓" : " ↑") : "");
 
-  const selected = rows.find((row) => row.entity.name === selectedName);
-  const selectedAppearances = selected
-    ? (area === "all" ? selected.entity.appearances : selected.entity.appearances.filter((item) => item.area === area))
-        .filter((item) => item.namedAnswers || item.citedAnswers)
-        .sort((left, right) => right.namedAnswers + right.citedAnswers - (left.namedAnswers + left.citedAnswers))
-    : [];
 
   return (
     <section className="fa3-section law-ranked" aria-labelledby="law-ranked-title">
@@ -134,7 +180,7 @@ export function LawRankedTable({
           />
         </div>
         <p className="law-ranked__count">
-          {rows.length}{" "}firms{area === "all" ? "" : ` in ${area}`}. Counts are answers out of the {area === "all" ? "810" : "54"} captured for {area === "all" ? "all 90 questions" : "this practice area"}. Recommended = the answer named the firm; cited = the answer linked to the firm&rsquo;s website. Click a column to sort; click a firm to see every question it appeared on.
+          {rows.length}{" "}firms{area === "all" ? "" : ` in ${area}`}. Counts are answers out of the {area === "all" ? "810" : "54"} captured for {area === "all" ? "all 90 questions" : "this practice area"}. Recommended = the answer named the firm; cited = the answer linked to the firm&rsquo;s website. Click a column to sort; click a firm for its full record.
         </p>
         <div className="law-report__legal500-table-wrap">
           <table className="law-report__legal500-table law-ranked__table law-ranked__table--wide">
@@ -157,11 +203,17 @@ export function LawRankedTable({
             </thead>
             <tbody>
               {rows.slice(0, limit).map((row, index) => (<Fragment key={row.entity.name}>
-                <tr className={row.entity.name === selectedName ? "is-selected" : undefined}>
+                <tr>
                   <th scope="row">
-                    <button type="button" onClick={() => setSelectedName(row.entity.name === selectedName ? "" : row.entity.name)}>
-                      <span className="law-ranked__num">{index + 1}</span>{row.entity.name}
-                    </button>
+                    <ResearchDrawer
+                      className="research-drawer-panel--question law-firm-drawer"
+                      eyebrow={`${row.tier ? `Legal 500 tier ${row.tier}` : "Unranked in the mapped Legal 500 London tables"}${row.website ? ` · ${row.website}` : ""}`}
+                      title={row.entity.name}
+                      triggerClassName="law-ranked__firm-trigger"
+                      trigger={<><span className="law-ranked__num">{index + 1}</span>{row.entity.name}</>}
+                    >
+                      <LawFirmPanel row={row} area={area} />
+                    </ResearchDrawer>
                     {row.website ? <small>{row.website}</small> : null}
                   </th>
                   <td>{row.tier ? `Tier ${row.tier}` : "Unranked"}</td>
@@ -174,35 +226,6 @@ export function LawRankedTable({
                     {row.topQuestion ? <>{row.topQuestion.question}<small>{row.topQuestion.namedAnswers ? `Recommended ${row.topQuestion.namedAnswers}/9` : `Cited ${row.topQuestion.citedAnswers}/9`}</small></> : ""}
                   </td>
                 </tr>
-                {row.entity.name === selectedName && selected ? (
-                  <tr className="law-ranked__detail-row">
-                    <td colSpan={area === "all" ? 8 : 6}>
-                      <div className="law-ranked__detail law-ranked__detail--inline">
-                        <header>
-                          <p>
-                            <strong>{selected.entity.name}</strong>Recommended in {selected.recommended} of {area === "all" ? 810 : 54} answers · cited in {selected.cited} · appeared on {selected.problems} of {area === "all" ? 90 : 6} buyer questions · {selected.areas} of 15 practice areas
-                            {selected.tier ? ` · Legal 500 tier ${selected.tier}` : " · not ranked in the mapped Legal 500 London tables"}
-                          </p>
-                          <button type="button" className="law-ranked__close" onClick={() => setSelectedName("")}>Close</button>
-                        </header>
-                        <ol>
-                          {selectedAppearances.map((item) => (
-                            <li key={item.questionId}>
-                              <span className="law-ranked__detail-q">
-                                {item.question}
-                                <small>{item.area} · {item.type === "choice" ? "best lawyers question" : "then: which UK law firms should I consider instructing?"}</small>
-                              </span>
-                              <span className="law-ranked__detail-n">
-                                {item.namedAnswers ? <em>Recommended {item.namedAnswers}/9</em> : null}
-                                {item.citedAnswers ? <em>Cited {item.citedAnswers}/9</em> : null}
-                              </span>
-                            </li>
-                          ))}
-                        </ol>
-                      </div>
-                    </td>
-                  </tr>
-                ) : null}
               </Fragment>))}
             </tbody>
           </table>
