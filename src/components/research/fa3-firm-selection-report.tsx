@@ -10,6 +10,7 @@ import type {
   ReportEntity,
   StudyQuestion
 } from "@/lib/fa3-report-data";
+import { LawSelect } from "./law-select";
 import { ResearchDrawer } from "./ResearchDrawer.client";
 
 const familyOrder = ["core", "wealth", "pensions", "life_events", "local"] as const;
@@ -332,16 +333,23 @@ export function Fa3BreadthExplorer({
   const [family, setFamily] = useState("all");
   const [questionId, setQuestionId] = useState("all");
 
-  const areaQuestions = useMemo(
-    () => family === "all" ? [] : questions.filter((question) => question.family === family),
-    [family, questions]
+  const nationalQuestions = useMemo(
+    () => questions.filter((question) => question.family !== "local"),
+    [questions]
+  );
+
+  const buyerNeedQuestions = useMemo(
+    () => family === "all"
+      ? nationalQuestions
+      : nationalQuestions.filter((question) => question.family === family),
+    [family, nationalQuestions]
   );
 
   const selectedQuestions = useMemo(
     () => questionId === "all"
-      ? areaQuestions
-      : areaQuestions.filter((question) => question.query_id === questionId),
-    [areaQuestions, questionId]
+      ? (family === "all" ? [] : buyerNeedQuestions)
+      : nationalQuestions.filter((question) => question.query_id === questionId),
+    [buyerNeedQuestions, family, nationalQuestions, questionId]
   );
 
   const selectedQuestion = selectedQuestions.length === 1 && questionId !== "all"
@@ -449,38 +457,43 @@ export function Fa3BreadthExplorer({
               />
             </span>
           </div>
-          <label>
-            <span>Advice area</span>
-            <select
-              value={family}
-              onChange={(event) => {
-                setFamily(event.target.value);
-                setQuestionId("all");
-              }}
-            >
-              <option value="all">All advice areas</option>
-              {adviceAreaOrder.map((value) => (
-                <option key={value} value={value}>{familyLabels[value]}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span>Specific buyer need</span>
-            <select
-              value={questionId}
-              onChange={(event) => setQuestionId(event.target.value)}
-              disabled={family === "all"}
-            >
-              <option value="all">
-                {family === "all" ? "Choose an advice area first" : `All ${familyLabels[family].toLocaleLowerCase("en-GB")} questions`}
-              </option>
-              {areaQuestions.map((question) => (
-                <option key={question.query_id} value={question.query_id}>
-                  {questionLabels[question.query_id] ?? question.query_text}
-                </option>
-              ))}
-            </select>
-          </label>
+          <LawSelect
+            label="Advice area"
+            menuMaxHeight={300}
+            value={family}
+            options={[
+              { value: "all", label: "All advice areas" },
+              ...adviceAreaOrder.map((value) => ({ value, label: familyLabels[value] }))
+            ]}
+            onChange={(value) => {
+              setFamily(value);
+              setQuestionId("all");
+            }}
+          />
+          <LawSelect
+            label="Specific buyer need"
+            menuMaxHeight={300}
+            value={questionId}
+            options={[
+              {
+                value: "all",
+                label: family === "all"
+                  ? "All buyer needs"
+                  : `All ${familyLabels[family].toLocaleLowerCase("en-GB")} buyer needs`
+              },
+              ...buyerNeedQuestions.map((question) => ({
+                value: question.query_id,
+                label: questionLabels[question.query_id] ?? question.query_text
+              }))
+            ]}
+            onChange={(value) => {
+              setQuestionId(value);
+              if (value !== "all") {
+                const question = nationalQuestions.find((item) => item.query_id === value);
+                if (question) setFamily(question.family);
+              }
+            }}
+          />
         </div>
 
         <p className="fa3-result-count" aria-live="polite">

@@ -14608,6 +14608,19 @@ body:has(.home-4b.contact-page) footer {
   align-self: end;
 }
 
+.fa3-breadth-controls .law-select {
+  --law-blue: var(--fa3-blue);
+  --law-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --law-ink: #111;
+  --law-muted: #666;
+  --law-rule: var(--fa3-rule);
+  min-width: 0;
+}
+
+.fa3-breadth-controls .law-select__trigger {
+  width: 100%;
+}
+
 .fa3-search-field svg {
   position: absolute;
   top: 50%;

@@ -8,12 +8,14 @@ export function LawSelect({
   label,
   value,
   options,
-  onChange
+  onChange,
+  menuMaxHeight = 480
 }: {
   label: string;
   value: string;
   options: LawSelectOption[];
   onChange: (value: string) => void;
+  menuMaxHeight?: number;
 }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(Math.max(0, options.findIndex((option) => option.value === value)));
@@ -31,7 +33,7 @@ export function LawSelect({
       const rect = triggerRef.current?.getBoundingClientRect();
       if (!rect) return;
       const space = window.innerHeight - rect.bottom - 24;
-      setMaxHeight(Math.max(220, Math.min(space, 640)));
+      setMaxHeight(Math.max(180, Math.min(space, menuMaxHeight)));
     };
     measure();
     window.addEventListener("resize", measure);
@@ -48,7 +50,7 @@ export function LawSelect({
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", measure, true);
     };
-  }, [open]);
+  }, [menuMaxHeight, open]);
 
   useEffect(() => {
     if (!open || !keyboardNav) return;
@@ -67,7 +69,11 @@ export function LawSelect({
   const onTriggerKey = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === "ArrowDown" || event.key === "ArrowUp" || event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      if (!open) { setOpen(true); return; }
+      if (!open) {
+        setActive(Math.max(0, options.findIndex((option) => option.value === value)));
+        setOpen(true);
+        return;
+      }
     }
     if (!open) return;
     setKeyboardNav(true);
@@ -88,7 +94,11 @@ export function LawSelect({
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-labelledby={`${id}-label ${id}-value`}
-        onClick={() => { setKeyboardNav(false); setOpen((state) => !state); }}
+        onClick={() => {
+          setKeyboardNav(false);
+          if (!open) setActive(Math.max(0, options.findIndex((option) => option.value === value)));
+          setOpen((state) => !state);
+        }}
         onKeyDown={onTriggerKey}
       >
         <span id={`${id}-value`}>{current?.label}</span>
