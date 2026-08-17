@@ -144,17 +144,17 @@ export function SportsLawMethodDrawer() {
             <div>
               <dt>How we tested it</dt>
               <dd>
-                Every exact question was put to ChatGPT, Gemini and Perplexity three times with
-                grounded web search on. The capture ran on 15 August 2026 and produced 810 valid
-                answers: nine answers per question.
+                All 90 questions were put to ChatGPT, Gemini and Perplexity three times, with web
+                search enabled. The capture ran on 15 August 2026 and produced 810 valid answers:
+                nine per question.
               </dd>
             </div>
             <div>
               <dt>What we recorded</dt>
               <dd>
-                The firms, individual lawyers and chambers named in each answer, the questions where
-                each appeared and every source link supplied by the platforms. A name is counted once
-                per answer, even if it appears several times.
+                We recorded all firms, individual lawyers and chambers named in each answer, the
+                questions in which they appeared, and all source links supplied by the platforms.
+                Each name was counted once per answer, even if it appeared several times.
               </dd>
             </div>
             <div>
