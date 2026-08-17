@@ -1,0 +1,218 @@
+.researchIndex {
+  --index-ink: #111111;
+  --index-body: #4f4f4f;
+  --index-muted: #6f6f6f;
+  --index-rule: #d8d8d8;
+  --index-blue: #2563eb;
+  background: #ffffff;
+}
+
+.researchIndex :global(.research-index-masthead) {
+  padding: clamp(88px, 7vw, 112px) 0 clamp(44px, 4vw, 64px);
+  border-bottom: 0;
+}
+
+.researchIndex :global(.research-index-masthead__shell) {
+  display: block;
+  min-height: 0;
+}
+
+.researchIndex :global(.research-index-masthead__shell > .eyebrow) {
+  margin: 0;
+  color: var(--index-blue);
+}
+
+.researchIndex :global(.research-index-masthead__frame) {
+  display: block;
+  margin-top: clamp(24px, 2.5vw, 34px);
+}
+
+.researchIndex :global(.research-index-masthead__frame h1) {
+  max-width: 15ch;
+  margin: 0;
+  font-size: clamp(52px, 5.2vw, 72px);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1.01;
+  text-wrap: balance;
+}
+
+.researchIndex :global(.research-index-editions) {
+  margin-top: clamp(40px, 4vw, 56px);
+  padding: 0;
+}
+
+.researchIndex :global(.research-index-editions > .eyebrow) {
+  margin: 0 0 14px;
+  color: var(--index-muted);
+}
+
+.researchIndex :global(.research-index-editions .research-edition-list) {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--index-rule);
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card) {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(150px, .34fr) minmax(128px, .28fr);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: center;
+  margin: 0;
+  padding: clamp(18px, 2vw, 24px) 0;
+  border: 0;
+  border-bottom: 1px solid var(--index-rule);
+  background: transparent !important;
+}
+
+.researchIndex :global(.research-edition-card > div) {
+  min-width: 0;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card h3) {
+  max-width: 36ch;
+  margin: 0;
+  font-size: clamp(19px, 1.45vw, 22px);
+  font-weight: 500;
+  letter-spacing: -.012em;
+  line-height: 1.2;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card h3 a) {
+  color: var(--index-ink);
+  text-decoration: none;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card > div > p:last-child) {
+  max-width: 64ch;
+  margin: 6px 0 0;
+  color: var(--index-body);
+  font-size: clamp(14px, 1vw, 15px);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card dl) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card dl div) {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card dt) {
+  color: var(--index-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card dd) {
+  margin: 0;
+  color: var(--index-ink);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card > .research-action-link) {
+  margin: 0;
+  justify-self: end;
+  color: var(--index-blue);
+  text-decoration: none;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card > .research-action-link .research-action-link-surface) {
+  min-width: 0;
+  min-height: 44px;
+  justify-content: flex-end;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--index-blue);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card > .research-action-link:focus-visible) {
+  outline: none;
+}
+
+.researchIndex :global(.research-index-editions .research-edition-card > .research-action-link:focus-visible .research-action-link-surface) {
+  border: 0;
+  background: transparent;
+  color: var(--index-blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .researchIndex :global(.research-index-editions .research-edition-card h3 a:hover) {
+    color: var(--index-blue);
+  }
+
+  .researchIndex :global(.research-index-editions .research-edition-card > .research-action-link:hover .research-action-link-surface) {
+    border: 0;
+    background: transparent;
+    color: #1d4ed8;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+@media (max-width: 1040px) {
+  .researchIndex :global(.research-index-editions .research-edition-card) {
+    grid-template-columns: minmax(0, 1fr) 150px 128px;
+  }
+
+  .researchIndex :global(.research-index-editions .research-edition-card > .research-action-link) {
+    grid-column: auto;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 720px) {
+  .researchIndex :global(.research-index-masthead) {
+    padding: 88px 0 48px;
+  }
+
+  .researchIndex :global(.research-index-masthead__frame h1) {
+    font-size: clamp(46px, 13vw, 62px);
+  }
+
+  .researchIndex :global(.research-index-editions) {
+    margin-top: 40px;
+  }
+
+  .researchIndex :global(.research-index-editions .research-edition-card) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 22px 0;
+  }
+
+  .researchIndex :global(.research-index-editions .research-edition-card h3) {
+    font-size: 22px;
+  }
+
+  .researchIndex :global(.research-index-editions .research-edition-card dl) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .researchIndex :global(.research-index-editions .research-edition-card > .research-action-link) {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .researchIndex :global(.research-index-editions .research-edition-card > .research-action-link .research-action-link-surface) {
+    justify-content: flex-start;
+  }
+}

@@ -698,7 +698,7 @@
   .sports-law-report__overseas-copy p,
   .law-explorer__note
 ) {
-  font-size: var(--sports-body) !important;
+  font-size: var(--sports-body-size) !important;
   line-height: 1.52 !important;
 }
 
@@ -794,7 +794,7 @@
 .sports-law-report .sports-law-report__practice-leaders tbody th,
 .sports-law-report .sports-law-report__practice-leaders tbody td {
   color: var(--sports-ink);
-  font-size: var(--sports-body);
+  font-size: var(--sports-body-size);
   line-height: 1.4;
 }
 
@@ -1030,7 +1030,7 @@
 }
 
 main.sports-law-report.sports-law-report.sports-law-report .sports-law-report__masthead .fa3-masthead__title h1 {
-  max-width: 12.5ch !important;
+  max-width: 100% !important;
 }
 
 main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy > .fa3-masthead__standfirst {
@@ -1062,9 +1062,15 @@ main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy >
 .sports-law-report.sports-law-report .sports-law-report__absence-fact {
   margin: 0;
   color: #fff;
-  font-size: 22px !important;
+  font-size: var(--sports-body-size) !important;
   font-weight: 400;
-  line-height: 1.4 !important;
+  line-height: 1.55 !important;
+}
+
+.sports-law-report.sports-law-report .fa3-executive__statement .sports-law-report__absence-fact {
+  max-width: 38ch;
+  margin-top: 24px;
+  font-size: var(--sports-body-size) !important;
 }
 
 .sports-law-report .sports-law-report__absence-fact strong {
@@ -1269,6 +1275,246 @@ main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy >
   }
 }
 
+/* Sports-law explorers: one quiet separator system, with evidence in compact drawers. */
+.sports-law-report .sports-entity-explorer,
+.sports-law-report .sports-question-explorer {
+  border-block: 0;
+}
+
+.sports-law-report .sports-entity-explorer .law-explorer__controls,
+.sports-law-report .sports-question-explorer .law-explorer__controls {
+  padding-block: 0;
+  border-block: 0;
+}
+
+.sports-law-report .sports-entity-results,
+.sports-law-report .sports-question-groups {
+  border-top-color: var(--sports-rule);
+}
+
+.research-drawer-panel.sports-entity-evidence-drawer {
+  width: min(1120px, calc(100vw - 32px));
+  height: auto;
+  max-height: calc(100dvh - 24px);
+  align-self: center;
+  grid-template-rows: auto minmax(0, 1fr);
+  margin-right: 12px;
+  padding: 18px 22px 22px;
+}
+
+.sports-entity-evidence-drawer .research-drawer-header,
+.sports-question-drawer .research-drawer-header {
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 10px;
+  border-bottom: 0;
+}
+
+.sports-entity-evidence-drawer .research-drawer-header .eyebrow,
+.sports-question-drawer .research-drawer-header .eyebrow {
+  margin-bottom: 5px;
+  font-size: 9px;
+}
+
+.sports-entity-evidence-drawer .research-drawer-header h2,
+.sports-question-drawer .research-drawer-header h2 {
+  font-size: clamp(23px, 1.8vw, 31px);
+  line-height: 1.04;
+}
+
+.sports-entity-evidence-drawer .research-drawer-close,
+.sports-question-drawer .research-drawer-close {
+  width: 38px;
+  height: 38px;
+}
+
+.sports-entity-evidence-drawer .research-drawer-content,
+.sports-question-drawer .research-drawer-content {
+  overflow-y: auto;
+  padding: 6px 0 0;
+  scrollbar-gutter: stable;
+}
+
+.sports-entity-evidence-drawer__content,
+.sports-question-drawer__content {
+  display: grid;
+  gap: 14px;
+}
+
+.sports-entity-evidence-drawer__summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.sports-entity-evidence-drawer__summary > div {
+  display: grid;
+  min-height: 76px;
+  align-content: center;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  padding: 11px 14px;
+  background: #f4f4f4;
+}
+
+.sports-entity-evidence-drawer__summary dt {
+  grid-column: 1 / -1;
+  color: #666;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.sports-entity-evidence-drawer__summary dd {
+  margin: 0;
+  color: var(--law-blue);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+
+.sports-entity-evidence-drawer__summary span {
+  align-self: end;
+  color: #555;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.sports-entity-evidence-drawer__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 2px;
+}
+
+.sports-entity-evidence-drawer__heading h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.sports-entity-evidence-drawer__heading p {
+  margin: 3px 0 0;
+  color: #777;
+  font-size: 9px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.sports-entity-evidence-drawer__questions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sports-entity-evidence-drawer__questions li {
+  display: grid;
+  min-width: 0;
+  align-content: start;
+  gap: 6px;
+  padding: 10px 11px;
+  background: #f4f4f4;
+}
+
+.sports-entity-evidence-drawer__questions span {
+  color: #4f6fae;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.sports-entity-evidence-drawer__questions a {
+  color: #111;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.sports-entity-evidence-drawer__questions strong {
+  color: #555;
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.research-drawer-panel.sports-question-drawer {
+  width: min(960px, calc(100vw - 48px));
+  height: auto;
+  max-height: calc(100dvh - 32px);
+  align-self: center;
+  margin-right: 16px;
+  padding: 20px 24px 24px;
+}
+
+.sports-question-drawer__summary {
+  gap: 6px;
+}
+
+.sports-question-drawer__summary span {
+  padding: 5px 8px;
+}
+
+.sports-question-drawer__content section > header {
+  align-items: baseline;
+}
+
+.sports-question-drawer__content h3,
+.sports-question-drawer__content h4 {
+  font-size: 16px;
+}
+
+.sports-question-drawer__names ol,
+.sports-question-drawer__all-sources ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin: 8px 0 0;
+  border-top: 0;
+}
+
+.sports-question-drawer__names li,
+.sports-question-drawer__all-sources li {
+  min-width: 0;
+  margin: 0;
+  padding: 9px 10px;
+  border-bottom: 0;
+  background: #f4f4f4;
+}
+
+.sports-question-drawer__all-sources {
+  margin-top: 0;
+}
+
+.sports-question-group-drawer__list {
+  border-top-color: var(--law-rule, #d8dee8);
+}
+
+@media (max-width: 900px) {
+  .research-drawer-panel.sports-entity-evidence-drawer,
+  .research-drawer-panel.sports-question-drawer {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .sports-entity-evidence-drawer__summary,
+  .sports-entity-evidence-drawer__questions,
+  .sports-question-drawer__names ol,
+  .sports-question-drawer__all-sources ol {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Question explorer: functional heading, then controls. */
 .sports-law-report .sports-question-explorer__simple-heading,
 .sports-law-report .sports-entity-explorer__simple-heading {
@@ -1301,12 +1547,12 @@ main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy >
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   padding: 13px 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 15px;
-  line-height: 1.45;
+  font-size: var(--sports-body-size);
+  line-height: 1.5;
 }
 
 .sports-law-report .sports-law-report__hierarchy-proof strong {
-  color: #78a2ff;
+  color: var(--sports-blue);
   font-weight: 600;
 }
 
@@ -1314,7 +1560,7 @@ main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy >
   max-width: 43ch;
   margin: 22px 0 0;
   color: #5f646c;
-  font-size: 15px;
+  font-size: var(--sports-body-size);
   line-height: 1.55;
 }
 
@@ -1718,8 +1964,35 @@ main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy >
 }
 
 .sports-law-report .sports-entity-explorer .law-ranked__more button {
+  display: inline-flex;
   min-height: 44px;
+  align-items: center;
+  gap: 9px;
   padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: var(--sports-ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sports-law-report .sports-entity-explorer .law-ranked__more button span {
+  color: var(--sports-blue);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 140ms ease;
+}
+
+.sports-law-report .sports-entity-explorer .law-ranked__more button:hover {
+  background: transparent;
+  color: var(--sports-blue);
+}
+
+.sports-law-report .sports-entity-explorer .law-ranked__more button:hover span {
+  transform: translateX(3px);
 }
 
 @media (max-width: 900px) {
@@ -1918,10 +2191,10 @@ main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy >
 /* Sports-law report type scale: one role, one size. */
 .sports-law-report {
   --sports-type-h1: clamp(52px, 5vw, 64px);
-  --sports-type-h2: clamp(36px, 3.35vw, 48px);
+  --sports-type-h2: clamp(40px, 4vw, 62px);
   --sports-type-h3: 20px;
-  --sports-type-body: 16px;
-  --sports-type-support: 14px;
+  --sports-type-body: 17px;
+  --sports-type-support: 15px;
   --sports-type-label: 11px;
 }
 
@@ -1966,7 +2239,7 @@ main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy >
   line-height: 1.2 !important;
 }
 
-.sports-law-report.sports-law-report :is(
+.sports-law-report.sports-law-report :where(
   .fa3-masthead__copy p,
   .fa3-executive__statement p,
   .fa3-executive__summary-list span,
@@ -1984,7 +2257,7 @@ main.sports-law-report.sports-law-report.sports-law-report .fa3-masthead__copy >
   .sports-entity-evidence a,
   .sports-question-result p,
   .sports-question-result a,
-  .research-audit-cta p
+  .research-audit-cta p:not(.eyebrow)
 ) {
   font-size: var(--sports-type-body) !important;
   line-height: 1.5 !important;
@@ -21377,6 +21650,110 @@ body:has(.home-4b.contact-page) footer {
   padding-right: 8px;
 }
 
+/* Sport-level question drawers keep all ten questions visible in one desktop frame. */
+.research-drawer-panel.sports-question-group-drawer {
+  width: min(1080px, calc(100vw - 48px));
+  height: auto;
+  max-height: calc(100dvh - 32px);
+  align-self: center;
+  margin-right: 16px;
+  padding: 22px 28px;
+}
+
+.sports-question-group-drawer .research-drawer-header {
+  align-items: center;
+  padding-bottom: 12px;
+}
+
+.sports-question-group-drawer .research-drawer-header .eyebrow {
+  margin-bottom: 4px;
+  font-size: 9px;
+}
+
+.sports-question-group-drawer .research-drawer-header h2 {
+  font-size: 30px;
+}
+
+.sports-question-group-drawer .research-drawer-close {
+  width: 38px;
+  height: 38px;
+}
+
+.sports-question-group-drawer .research-drawer-content {
+  overflow: visible;
+  padding: 8px 0 0;
+  scrollbar-gutter: auto;
+}
+
+.sports-question-group-drawer__list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #111;
+  list-style: none;
+}
+
+.sports-question-group-drawer__list > li {
+  border-bottom: 1px solid var(--law-rule, #d8dee8);
+}
+
+.sports-question-group-drawer__list .sports-question-index__trigger {
+  display: grid;
+  width: 100%;
+  min-height: 48px;
+  grid-template-columns: 88px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 9px 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.sports-question-group-drawer__list .sports-question-index__trigger > span {
+  color: var(--law-blue, #2563eb);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sports-question-group-drawer__list .sports-question-index__trigger strong {
+  color: var(--law-ink, #111);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.sports-question-group-drawer__list .sports-question-index__trigger small {
+  max-width: 230px;
+  color: var(--law-blue, #2563eb);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .research-drawer-panel.sports-question-group-drawer {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 22px;
+  }
+
+  .sports-question-group-drawer .research-drawer-content {
+    overflow-y: auto;
+  }
+
+  .sports-question-group-drawer__list .sports-question-index__trigger {
+    grid-template-columns: 70px minmax(0, 1fr);
+  }
+
+  .sports-question-group-drawer__list .sports-question-index__trigger small {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
 .sports-question-drawer__content {
   display: grid;
   gap: 34px;
@@ -21799,10 +22176,10 @@ body:has(.home-4b.contact-page) footer {
 /* Final sports-law rhythm and type tokens. These override inherited report variants. */
 .sports-law-report {
   --sports-type-h1: clamp(52px, 5vw, 64px);
-  --sports-type-h2: clamp(36px, 3.35vw, 48px);
+  --sports-type-h2: clamp(40px, 4vw, 62px);
   --sports-type-h3: 20px;
-  --sports-type-body: 16px;
-  --sports-type-support: 14px;
+  --sports-type-body: 17px;
+  --sports-type-support: 15px;
   --sports-type-label: 11px;
 }
 
@@ -21842,7 +22219,7 @@ body:has(.home-4b.contact-page) footer {
   line-height: 1.2 !important;
 }
 
-.sports-law-report.sports-law-report :is(
+.sports-law-report.sports-law-report :where(
   .fa3-masthead__copy p,
   .fa3-executive__statement p,
   .fa3-executive__summary-list span,
@@ -21860,7 +22237,7 @@ body:has(.home-4b.contact-page) footer {
   .sports-entity-evidence a,
   .sports-question-result p,
   .sports-question-result a,
-  .research-audit-cta p
+  .research-audit-cta p:not(.eyebrow)
 ) {
   font-size: var(--sports-type-body) !important;
   line-height: 1.5 !important;
@@ -22016,9 +22393,12 @@ body:has(.home-4b.contact-page) footer {
   --sports-rule: #d8dee8;
   --sports-ink: #111;
   --sports-body: #4f4f4f;
-  --sports-feature: clamp(40px, 3.8vw, 54px);
-  --sports-title: clamp(36px, 3.35vw, 48px);
+  --sports-display: clamp(52px, 5vw, 84px);
+  --sports-section-title: clamp(40px, 4vw, 62px);
+  --sports-feature: var(--sports-section-title);
+  --sports-title: var(--sports-section-title);
   --sports-card-title: 20px;
+  --sports-lead-size: 24px;
   --sports-body-size: 17px;
   --sports-support-size: 15px;
   --sports-label-size: 11px;
@@ -22085,7 +22465,7 @@ body:has(.home-4b.contact-page) footer {
   font-size: var(--sports-feature) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
-  line-height: 1.02 !important;
+  line-height: 1.04 !important;
 }
 
 .sports-law-report.sports-law-report :is(
@@ -22111,7 +22491,7 @@ body:has(.home-4b.contact-page) footer {
   .sports-law-report__section-intro > p,
   .sports-law-report__overseas-copy p,
   .law-explorer__intro > p,
-  .research-audit-cta p
+  .research-audit-cta p:not(.eyebrow)
 ) {
   font-size: var(--sports-body-size) !important;
   font-weight: 400 !important;
@@ -22184,7 +22564,7 @@ body:has(.home-4b.contact-page) footer {
   .sports-law-report__overseas .fa3-kicker,
   .research-audit-cta__grid > .eyebrow
 ) {
-  color: rgba(255, 255, 255, 0.68) !important;
+  color: var(--sports-blue) !important;
 }
 
 .sports-law-report .sports-law-report__source-note a {
@@ -22209,8 +22589,8 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .sports-law-report.sports-law-report .sports-law-report__why-body .fa3-credit-gap__lead {
-  font-size: 20px !important;
-  line-height: 1.45 !important;
+  font-size: var(--sports-body-size) !important;
+  line-height: 1.55 !important;
 }
 
 .sports-law-report.sports-law-report .sports-law-report__why-body .sports-law-report__source-note {
@@ -22226,7 +22606,6 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .sports-law-report .sports-law-report__lead-finding .fa3-executive__statement > .fa3-executive__thesis,
-.sports-law-report .sports-law-report__overseas-copy p,
 .sports-law-report .research-audit-cta p {
   color: rgba(255, 255, 255, 0.86) !important;
 }
@@ -22839,9 +23218,432 @@ body:has(.home-4b.contact-page) footer {
     font-weight: 400;
   }
 
-  .sports-law-report .sports-law-report__website-cards article p:last-of-type::before {
+.sports-law-report .sports-law-report__website-cards article p:last-of-type::before {
     content: "Not named: ";
     color: var(--sports-muted);
     font-weight: 400;
+  }
+}
+
+/* Sports-law evidence drawers: shared finance-report proportions, cleaner evidence rows. */
+.research-drawer-panel.sports-entity-evidence-drawer,
+.research-drawer-panel.sports-question-drawer {
+  width: min(1120px, calc(100vw - 40px));
+  height: auto;
+  max-height: calc(100dvh - 24px);
+  align-self: center;
+  margin-right: 12px;
+  padding: 24px 28px 28px;
+}
+
+.research-drawer-panel.sports-question-drawer {
+  width: min(1180px, calc(100vw - 40px));
+}
+
+.sports-entity-evidence-drawer .research-drawer-header,
+.sports-question-drawer .research-drawer-header {
+  align-items: start;
+  padding-bottom: 16px;
+}
+
+.sports-entity-evidence-drawer .research-drawer-header .eyebrow,
+.sports-question-drawer .research-drawer-header .eyebrow {
+  margin-bottom: 5px;
+  font-size: 9px;
+}
+
+.sports-entity-evidence-drawer .research-drawer-header h2,
+.sports-question-drawer .research-drawer-header h2 {
+  max-width: 42ch;
+  font-size: clamp(24px, 2.2vw, 32px);
+  letter-spacing: -.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.sports-entity-evidence-drawer .research-drawer-content,
+.sports-question-drawer .research-drawer-content {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 4px 0 0;
+  scrollbar-gutter: stable;
+}
+
+.sports-entity-evidence-drawer__content {
+  display: grid;
+  gap: 30px;
+}
+
+.sports-entity-evidence-drawer__summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  border-block: 1px solid var(--law-rule, #d8dee8);
+}
+
+.sports-entity-evidence-drawer__summary > div {
+  min-width: 0;
+  padding: 17px 20px;
+  border-left: 1px solid var(--law-rule, #d8dee8);
+}
+
+.sports-entity-evidence-drawer__summary > div:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.sports-entity-evidence-drawer__summary dt {
+  color: #666;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.sports-entity-evidence-drawer__summary dd {
+  margin: 8px 0 0;
+  color: var(--law-blue, #2563eb);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.sports-entity-evidence-drawer__summary span {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.sports-entity-evidence-drawer__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.sports-entity-evidence-drawer__heading h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.sports-entity-evidence-drawer__heading p {
+  margin: 5px 0 0;
+  color: #666;
+  font-size: 12px;
+}
+
+.sports-entity-evidence-drawer__questions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 34px;
+  margin: -14px 0 0;
+  padding: 0;
+  border-top: 1px solid #111;
+  list-style: none;
+}
+
+.sports-entity-evidence-drawer__questions li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 18px;
+  align-content: center;
+  min-height: 82px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--law-rule, #d8dee8);
+}
+
+.sports-entity-evidence-drawer__question-context {
+  grid-column: 1 / -1;
+  color: #697386;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.sports-entity-evidence-drawer__questions a {
+  color: #111;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.sports-entity-evidence-drawer__questions strong {
+  align-self: start;
+  color: var(--law-blue, #2563eb);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.sports-question-drawer__content {
+  display: grid;
+  gap: 32px;
+}
+
+.sports-question-drawer__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--law-rule, #d8dee8);
+}
+
+.sports-question-drawer__summary span {
+  padding: 0 13px;
+  border-left: 1px solid var(--law-rule, #d8dee8);
+  background: transparent;
+  color: #626262;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.sports-question-drawer__summary span:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.sports-question-drawer__content section > header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.sports-question-drawer__content h3,
+.sports-question-drawer__content h4 {
+  margin: 0;
+  color: #111;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sports-question-drawer__content section > header span {
+  color: #6b6b6b;
+  font-size: 11px;
+}
+
+.sports-question-drawer__names ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 30px;
+  margin: 13px 0 0;
+  padding: 0;
+  border-top: 1px solid #111;
+  list-style: none;
+}
+
+.sports-question-drawer__names li,
+.sports-question-drawer__sample-sources li,
+.sports-question-drawer__all-sources li {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--law-rule, #d8dee8);
+  background: transparent;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.sports-question-drawer__names strong {
+  color: var(--law-blue, #2563eb);
+  white-space: nowrap;
+}
+
+.sports-question-drawer__samples > header > div:first-child {
+  display: grid;
+  gap: 5px;
+}
+
+.sports-question-drawer__samples [role="tablist"] {
+  display: flex;
+  border: 1px solid var(--law-rule, #d8dee8);
+}
+
+.sports-question-drawer__samples [role="tab"] {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-left: 1px solid var(--law-rule, #d8dee8);
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  transition: background-color 140ms ease, color 140ms ease, transform 120ms cubic-bezier(.23, 1, .32, 1);
+}
+
+.sports-question-drawer__samples [role="tab"]:first-child {
+  border-left: 0;
+}
+
+.sports-question-drawer__samples [role="tab"].is-selected {
+  background: var(--law-blue, #2563eb);
+  color: #fff;
+}
+
+.sports-question-drawer__samples [role="tab"]:active,
+.sports-entity-table__trigger:active,
+.sports-question-index__trigger:active {
+  transform: scale(.97);
+}
+
+.sports-question-drawer__answer {
+  max-height: min(430px, calc(100dvh - 250px));
+  overflow-y: auto;
+  margin: 18px 0 0;
+  padding: 18px 20px;
+  border: 0;
+  background: #f5f6f8;
+  color: #303030;
+  font-size: 13px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.sports-question-drawer__sample-sources,
+.sports-question-drawer__all-sources {
+  margin-top: 20px;
+}
+
+.sports-question-drawer__sample-sources ol,
+.sports-question-drawer__all-sources ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 30px;
+  margin: 12px 0 0;
+  padding: 0;
+  border-top: 1px solid #111;
+  list-style: none;
+}
+
+.sports-question-drawer__sample-sources a,
+.sports-question-drawer__all-sources a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #111;
+}
+
+.sports-question-drawer__sample-sources li span,
+.sports-question-drawer__all-sources li span {
+  flex: 0 0 auto;
+  color: #6b6b6b;
+  font-size: 10px;
+  text-align: right;
+}
+
+.sports-question-drawer__all-sources > p {
+  margin: 7px 0 0;
+  color: #666;
+  font-size: 12px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sports-entity-evidence-drawer__questions a:hover,
+  .sports-question-drawer__sample-sources a:hover,
+  .sports-question-drawer__all-sources a:hover {
+    color: var(--law-blue, #2563eb);
+  }
+}
+
+@media (max-width: 720px) {
+  .research-drawer-panel.sports-entity-evidence-drawer,
+  .research-drawer-panel.sports-question-drawer,
+  .research-drawer-panel.fa3-method-drawer {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .research-drawer-panel.research-drawer-panel--question.fa3-question-drawer.sports-question-drawer {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    align-self: stretch;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .sports-entity-evidence-drawer .research-drawer-header,
+  .sports-question-drawer .research-drawer-header {
+    padding-bottom: 14px;
+  }
+
+  .sports-entity-evidence-drawer .research-drawer-header h2,
+  .sports-question-drawer .research-drawer-header h2 {
+    max-width: calc(100vw - 96px);
+    font-size: 24px;
+  }
+
+  .sports-entity-evidence-drawer__summary,
+  .sports-question-drawer__names ol,
+  .sports-question-drawer__sample-sources ol,
+  .sports-question-drawer__all-sources ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sports-entity-evidence-drawer__summary > div,
+  .sports-entity-evidence-drawer__summary > div:first-child {
+    padding: 14px 0;
+    border: 0;
+    border-top: 1px solid var(--law-rule, #d8dee8);
+  }
+
+  .sports-entity-evidence-drawer__summary > div:first-child {
+    border-top: 0;
+  }
+
+  .sports-entity-evidence-drawer__questions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sports-question-drawer__content section > header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .sports-question-drawer__samples [role="tablist"] {
+    width: 100%;
+  }
+
+  .sports-question-drawer__samples [role="tab"] {
+    flex: 1;
+  }
+
+  .sports-question-drawer__answer {
+    max-height: none;
+  }
+
+  .sports-question-drawer__sample-sources li,
+  .sports-question-drawer__all-sources li {
+    align-items: start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sports-question-drawer__sample-sources li span,
+  .sports-question-drawer__all-sources li span {
+    text-align: left;
+  }
+
+  .fa3-method-content dl.fa3-method-content__summary div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding-block: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sports-question-drawer__samples [role="tab"] {
+    transition-duration: .01ms;
   }
 }

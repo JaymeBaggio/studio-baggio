@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ResearchActionLink } from "@/components/research/ResearchActionLink.client";
+import styles from "@/components/research/research-index.module.css";
 import {
   getResearchEditionPath,
   researchEditions,
@@ -35,7 +36,7 @@ function formatDate(date: string) {
 
 export default function ResearchIndexPage() {
   return (
-    <div className="home-4b research-page research-index" data-research-page>
+    <div className={`${styles.researchIndex} home-4b research-page research-index`} data-research-page>
       <header className="research-index-masthead">
         <div className="editorial-container research-index-masthead__shell">
           <p className="eyebrow">Studio Baggio research</p>
@@ -44,10 +45,6 @@ export default function ResearchIndexPage() {
               {researchFranchise.name}
               <span className="research-index-masthead__blue-dot" aria-hidden="true">.</span>
             </h1>
-            <div className="research-index-masthead__copy">
-              <p className="research-index-masthead__lead">{researchFranchise.description}</p>
-              <p className="research-index-masthead__body">{researchFranchise.methodologyPrinciple}</p>
-            </div>
           </div>
 
           <div className="research-index-editions" aria-labelledby="research-editions-title">
@@ -67,10 +64,6 @@ export default function ResearchIndexPage() {
                   <div>
                     <dt>Research date</dt>
                     <dd>{formatDate("2026-08-16")}</dd>
-                  </div>
-                  <div>
-                    <dt>Cohort</dt>
-                    <dd>89 established sports-law firms reviewed</dd>
                   </div>
                 </dl>
                 <ResearchActionLink href="/research/uk-sports-law-2026">
@@ -94,10 +87,6 @@ export default function ResearchIndexPage() {
                     <dt>Research date</dt>
                     <dd>{formatDate("2026-08-15")}</dd>
                   </div>
-                  <div>
-                    <dt>Cohort</dt>
-                    <dd>521 firms tracked, benchmarked against Legal 500 London</dd>
-                  </div>
                 </dl>
                 <ResearchActionLink href="/research/uk-law-2026">
                   View results
@@ -118,10 +107,6 @@ export default function ResearchIndexPage() {
                   <div>
                     <dt>Research date</dt>
                     <dd>{formatDate(edition.preparedForReview)}</dd>
-                  </div>
-                  <div>
-                    <dt>Cohort</dt>
-                    <dd>{edition.cohort.label}</dd>
                   </div>
                 </dl>
                 <ResearchActionLink href={getResearchEditionPath(edition)}>

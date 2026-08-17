@@ -1,0 +1,1345 @@
+.referenceReport {
+  --sports-navy: #00132f;
+  --sports-blue: #2563eb;
+  --sports-paper: #ffffff;
+  --sports-wash: #f3f6fa;
+  --sports-rule: #d8d8d8;
+  --sports-ink: #111111;
+  --sports-body: #4f4f4f;
+  --sports-muted: #666666;
+  --sports-display: clamp(52px, 5vw, 84px);
+  --sports-section-title: clamp(40px, 4vw, 62px);
+  --sports-feature: var(--sports-section-title);
+  --sports-title: var(--sports-section-title);
+  --sports-subheading-size: 20px;
+  --sports-lead-size: 24px;
+  --sports-body-size: 17px;
+  --sports-support-size: 15px;
+  --sports-label-size: 11px;
+  --sports-section-space: clamp(64px, 7vw, 104px);
+  color: var(--sports-ink);
+  background: var(--sports-paper);
+}
+
+.referenceReport :global(.editorial-container) {
+  width: min(calc(100% - 48px), 1680px);
+}
+
+.referenceReport :global(.fa3-kicker) {
+  margin: 0;
+  color: var(--sports-blue);
+  font-size: var(--sports-label-size);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.referenceReport.referenceReport :global(.fa3-masthead) {
+  box-sizing: border-box;
+  display: flex;
+  min-height: 100svh !important;
+  align-items: center;
+  padding: clamp(112px, 11vw, 176px) 0 clamp(72px, 7vw, 112px) !important;
+  border-bottom: 0;
+  background: var(--sports-paper);
+}
+
+.referenceReport :global(.fa3-masthead__grid) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, .9fr) !important;
+  align-items: start;
+  gap: clamp(56px, 7vw, 120px) !important;
+}
+
+.referenceReport.referenceReport.referenceReport :global(.sports-law-report__masthead .fa3-masthead__title h1) {
+  width: 100%;
+  max-width: none !important;
+  margin: clamp(52px, 6vw, 88px) 0 0 !important;
+  font-size: var(--sports-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.02 !important;
+}
+
+.referenceReport :global(.fa3-masthead__title h1 span) {
+  color: var(--sports-blue);
+}
+
+.referenceReport :global(.fa3-masthead__copy) {
+  max-width: none;
+  margin-top: 0;
+  border-left: 2px solid var(--sports-blue) !important;
+  padding-left: clamp(28px, 3.2vw, 52px) !important;
+}
+
+.referenceReport.referenceReport :global(.fa3-masthead__copy > .fa3-masthead__standfirst) {
+  margin: 0;
+  color: var(--sports-ink);
+  font-size: var(--sports-lead-size) !important;
+  font-weight: 400;
+  line-height: 1.45 !important;
+}
+
+.referenceReport :global(.sports-law-report__standfirst-accent) {
+  color: var(--sports-blue);
+}
+
+.referenceReport.referenceReport :global(.fa3-masthead__copy > p:not(.fa3-masthead__standfirst)) {
+  margin: 20px 0 0;
+  color: var(--sports-body);
+  font-size: var(--sports-body-size) !important;
+  line-height: 1.55 !important;
+}
+
+.referenceReport :global(.fa3-masthead__meta) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(36px, 4vw, 52px);
+  gap: clamp(18px, 2.4vw, 36px);
+  border: 0 !important;
+  background: transparent;
+  box-shadow: none !important;
+}
+
+.referenceReport :global(.fa3-masthead__meta span) {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  justify-items: start;
+  padding: 0;
+  border: 0 !important;
+  color: #555;
+  font-size: var(--sports-label-size);
+  line-height: 1.35;
+  text-align: left;
+}
+
+.referenceReport :global(.fa3-masthead__meta span:first-child) {
+  border-left: 0;
+}
+
+.referenceReport :global(.fa3-masthead__meta strong) {
+  color: var(--sports-blue);
+  font-size: clamp(32px, 2.8vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.referenceReport :global(.fa3-method-trigger) {
+  width: auto;
+  min-height: 0;
+  justify-content: flex-start;
+  margin-left: calc(clamp(28px, 3.2vw, 52px) + 2px);
+  margin-top: 24px;
+  color: var(--sports-blue);
+  font-size: var(--sports-support-size);
+  font-weight: 600;
+}
+
+.referenceReport :global(.fa3-method-trigger::after) {
+  content: none;
+}
+
+.referenceReport :global(.fa3-masthead__intro) {
+  align-self: start;
+  padding-top: clamp(64px, 5vw, 84px) !important;
+}
+
+.referenceReport.referenceReport :global(.fa3-section) {
+  min-height: 0 !important;
+  padding: var(--sports-section-space) 0 !important;
+  border-bottom: 1px solid var(--sports-rule);
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__lead-finding) {
+  min-height: 0 !important;
+  padding: clamp(40px, 4vw, 60px) 0 !important;
+  border-top: 0 !important;
+  background: var(--sports-navy) !important;
+  color: #fff;
+}
+
+.referenceReport :global(.sports-law-report__lead-finding .fa3-kicker) {
+  color: #9f9f9f;
+}
+
+.referenceReport :global(.sports-law-report__lead-finding .fa3-executive__grid) {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr);
+  align-items: start;
+  gap: clamp(48px, 7vw, 112px);
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__lead-finding h2) {
+  max-width: 15ch;
+  margin: 12px 0 0;
+  color: #fff;
+  font-size: var(--sports-title) !important;
+  font-weight: 400 !important;
+  letter-spacing: -.035em !important;
+  line-height: .98 !important;
+}
+
+.referenceReport :global(.sports-law-report__absence-fact) {
+  max-width: 50ch;
+  margin: 18px 0 0;
+  color: #d6d6d6;
+  font-size: var(--sports-body-size) !important;
+  line-height: 1.55 !important;
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__individuals) {
+  padding: clamp(64px, 6vw, 88px) 0 !important;
+  background: var(--sports-wash) !important;
+}
+
+.referenceReport :global(.sports-law-report__individuals .editorial-container),
+.referenceReport :global(.sports-law-report__leaders-section .editorial-container),
+.referenceReport :global(.sports-law-report__overseas-section .editorial-container) {
+  width: min(calc(100% - 48px), 1440px);
+}
+
+.referenceReport :global(.sports-law-individuals__header > div) {
+  min-width: 0;
+}
+
+.referenceReport :global(.sports-law-individuals__header) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(56px, 7vw, 104px);
+  align-items: end;
+  margin-bottom: clamp(40px, 4vw, 56px);
+}
+
+.referenceReport.referenceReport :global(.sports-law-individuals__header h2) {
+  max-width: 15ch;
+  margin: 14px 0 0;
+  font-size: var(--sports-title) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.04 !important;
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__leaders-section) {
+  padding: clamp(48px, 4.5vw, 64px) 0 !important;
+  background: var(--sports-paper) !important;
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__overseas-section) {
+  padding: clamp(48px, 4.5vw, 64px) 0 !important;
+  background: var(--sports-wash) !important;
+}
+
+.referenceReport :global(.sports-law-report__leaders-layout) {
+  display: block;
+}
+
+.referenceReport :global(.sports-law-report__leaders-section .sports-winners__heading) {
+  display: block;
+  margin: 0;
+}
+
+.referenceReport :global(.sports-law-report__leaders-section .sports-winners__heading .fa3-kicker) {
+  margin: 0;
+  color: var(--sports-blue) !important;
+}
+
+.referenceReport :global(.sports-law-report__leaders-section .sports-winners__heading > p) {
+  max-width: 58ch;
+  margin: 18px 0 0;
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__leaders-section .sports-winners__heading h2) {
+  max-width: none;
+  font-size: var(--sports-title) !important;
+  line-height: 1.04 !important;
+}
+
+.referenceReport :global(.sports-winner-matrix) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(48px, 6vw, 88px);
+  margin: clamp(32px, 3vw, 40px) 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  list-style: none;
+}
+
+.referenceReport :global(.sports-winner-matrix li) {
+  display: grid;
+  grid-template-columns: minmax(130px, .34fr) minmax(0, .66fr);
+  gap: 24px;
+  align-items: center;
+  min-height: 62px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--sports-rule);
+}
+
+.referenceReport :global(.sports-winner-matrix span),
+.referenceReport :global(.sports-winner-matrix strong) {
+  font-size: var(--sports-support-size);
+  line-height: 1.35;
+}
+
+.referenceReport :global(.sports-winner-matrix span) {
+  color: var(--sports-blue);
+  font-weight: 600;
+}
+
+.referenceReport :global(.sports-winner-matrix strong) {
+  color: var(--sports-ink);
+  font-weight: 600;
+}
+
+.referenceReport :global(.sports-law-report__individual-summary) {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--sports-body);
+  font-size: var(--sports-body-size);
+  line-height: 1.55;
+}
+
+.referenceReport :global(.sports-law-individuals__tables) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(56px, 7vw, 104px);
+}
+
+.referenceReport :global(.sports-law-individuals__tables h3) {
+  margin: 0 0 20px;
+  color: var(--sports-ink);
+  font-size: var(--sports-subheading-size);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.referenceReport :global(.sports-law-individuals__table-wrap) {
+  overflow: visible;
+}
+
+.referenceReport :global(.sports-law-individuals__tables table) {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.referenceReport :global(.sports-law-individuals__tables th),
+.referenceReport :global(.sports-law-individuals__tables td) {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--sports-rule);
+  color: var(--sports-body);
+  font-size: var(--sports-support-size);
+  line-height: 1.4;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.referenceReport :global(.sports-law-individuals__tables thead th) {
+  border-top: 1px solid var(--sports-ink);
+  color: var(--sports-muted);
+  font-size: var(--sports-label-size);
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.referenceReport :global(.sports-law-individuals__tables tbody th) {
+  width: 34%;
+  color: var(--sports-ink);
+  font-size: var(--sports-support-size);
+  font-weight: 600;
+}
+
+.referenceReport :global(.sports-law-individuals__tables tbody td:first-child) {
+  width: 74px;
+  padding-right: 24px;
+  color: var(--sports-blue);
+  font-weight: 700;
+}
+
+.referenceReport :global(.sports-law-individuals__tables tbody td:last-child) {
+  color: var(--sports-muted);
+  font-size: var(--sports-support-size);
+}
+
+.referenceReport.referenceReport :global(.sports-client-impact) {
+  padding: var(--sports-section-space) 0 !important;
+  background: var(--sports-paper) !important;
+}
+
+.referenceReport.referenceReport :global(.sports-client-impact__intro) {
+  display: block !important;
+  grid-template-columns: none !important;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+.referenceReport.referenceReport :global(.sports-client-impact__intro h2) {
+  max-width: 12ch;
+  margin: 14px 0 0;
+  font-size: var(--sports-title) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.04 !important;
+}
+
+.referenceReport :global(.sports-client-impact__intro > p) {
+  max-width: 40ch;
+  margin: 22px 0 0;
+  color: var(--sports-body);
+  font-size: var(--sports-body-size);
+  line-height: 1.55;
+}
+
+.referenceReport :global(.sports-client-impact__intro > .fa3-kicker) {
+  margin: 0;
+  color: var(--sports-blue);
+  font-size: var(--sports-label-size);
+  line-height: 1.3;
+}
+
+.referenceReport.referenceReport :global(.sports-client-impact__grid) {
+  display: grid !important;
+  grid-template-columns: minmax(300px, .85fr) minmax(0, 1.65fr);
+  gap: clamp(40px, 5vw, 76px);
+  align-items: center;
+}
+
+.referenceReport.referenceReport :global(.sports-client-impact__stats) {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 0;
+}
+
+.referenceReport.referenceReport :global(.sports-client-impact__stats article) {
+  display: block !important;
+  align-content: start;
+  min-width: 0;
+  padding: 10px clamp(22px, 2.4vw, 36px);
+  border-left: 1px solid var(--sports-rule);
+}
+
+.referenceReport :global(.sports-client-impact__stats article:first-child) {
+  border-left: 0;
+}
+
+.referenceReport :global(.sports-client-impact__stats strong) {
+  display: block;
+  color: var(--sports-blue);
+  font-size: clamp(42px, 4vw, 58px);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1;
+}
+
+.referenceReport :global(.sports-client-impact__stats p) {
+  max-width: 24ch;
+  margin: 18px 0 0;
+  color: var(--sports-body);
+  font-size: var(--sports-support-size);
+  line-height: 1.5;
+}
+
+.referenceReport :global(.sports-client-impact__stats cite) {
+  display: block;
+  margin-top: 18px;
+  color: var(--sports-muted);
+  font-size: var(--sports-label-size);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__open),
+.referenceReport.referenceReport :global(.law-explorer) {
+  padding: var(--sports-section-space) 0 !important;
+}
+
+.referenceReport :global(.sports-winners__heading),
+.referenceReport :global(.sports-law-report__section-intro),
+.referenceReport :global(.sports-rankings__heading),
+.referenceReport :global(.law-explorer__intro) {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+  align-items: end;
+  gap: clamp(40px, 6vw, 96px);
+  margin-bottom: clamp(38px, 4vw, 58px);
+}
+
+.referenceReport.referenceReport :global(.sports-winners__heading h2),
+.referenceReport.referenceReport :global(.sports-law-report__section-intro h2),
+.referenceReport.referenceReport :global(.sports-rankings__heading h2),
+.referenceReport.referenceReport :global(.law-explorer__intro h2) {
+  max-width: 15ch;
+  margin: 14px 0 0;
+  font-size: var(--sports-title) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.04 !important;
+}
+
+.referenceReport :global(.sports-winners__heading > p),
+.referenceReport :global(.sports-law-report__section-intro > p),
+.referenceReport :global(.sports-rankings__heading p),
+.referenceReport :global(.law-explorer__intro > p) {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--sports-body);
+  font-size: var(--sports-body-size);
+  line-height: 1.55;
+}
+
+.referenceReport :global(.sports-winner-list) {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--sports-ink);
+  list-style: none;
+}
+
+.referenceReport :global(.sports-winner-list li) {
+  display: grid;
+  grid-template-columns: minmax(170px, .34fr) minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+  min-height: 42px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--sports-rule);
+}
+
+.referenceReport :global(.sports-winner-list__sport) {
+  color: var(--sports-body);
+  font-size: var(--sports-body-size);
+}
+
+.referenceReport :global(.sports-winner-list__result) {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.referenceReport :global(.sports-winner-list__result strong) {
+  color: var(--sports-ink);
+  font-size: var(--sports-body-size);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.referenceReport :global(.sports-winner-list__score) {
+  display: none;
+}
+
+.referenceReport :global(.sports-winner-list__score b) {
+  color: var(--sports-blue);
+  font-size: var(--sports-subheading-size);
+  font-weight: 500;
+}
+
+.referenceReport :global(.sports-law-report__overseas-heading) {
+  display: grid;
+  grid-template-columns: minmax(320px, .9fr) minmax(340px, 1.1fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: end;
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__overseas-heading h2) {
+  max-width: 15ch !important;
+  margin: 14px 0 0;
+  color: var(--sports-ink);
+  font-size: clamp(40px, 3.4vw, 52px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.04 !important;
+}
+
+.referenceReport :global(.sports-law-report__overseas-copy) {
+  max-width: 52ch;
+  margin: 0;
+  justify-self: end;
+  border-left: 2px solid var(--sports-blue);
+  padding-left: clamp(24px, 3vw, 40px);
+}
+
+.referenceReport :global(.sports-law-report__overseas-copy p) {
+  margin: 0;
+  color: var(--sports-body) !important;
+  font-size: var(--sports-body-size);
+  line-height: 1.55;
+}
+
+.referenceReport :global(.sports-law-report__overseas-copy p + p) {
+  margin-top: 1em;
+}
+
+.referenceReport :global(.sports-entity-explorer .law-ranked__metric-heading span),
+.referenceReport :global(.sports-entity-explorer .law-ranked__metric-heading small) {
+  display: block;
+  white-space: nowrap;
+}
+
+.referenceReport :global(.sports-entity-explorer .law-ranked__metric-heading small) {
+  margin-top: 4px;
+  color: var(--sports-muted);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.referenceReport :global(.sports-law-report__overseas-cards) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-block: 1px solid var(--sports-rule);
+  background: var(--sports-paper);
+  list-style: none;
+}
+
+.referenceReport :global(.sports-law-report__overseas-cards li) {
+  display: grid;
+  min-width: 0;
+  min-height: 132px;
+  grid-template-rows: auto auto 1fr;
+  gap: 5px;
+  border-right: 1px solid var(--sports-rule);
+  padding: clamp(18px, 2vw, 24px);
+}
+
+.referenceReport :global(.sports-law-report__overseas-cards li:last-child) {
+  border-right: 0;
+}
+
+.referenceReport :global(.sports-law-report__overseas-cards li > span) {
+  color: var(--sports-muted);
+  font-size: var(--sports-label-size);
+  font-weight: 500;
+  letter-spacing: .07em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.referenceReport :global(.sports-law-report__overseas-cards strong) {
+  max-width: 22ch;
+  overflow-wrap: anywhere;
+  color: var(--sports-ink);
+  font-size: var(--sports-subheading-size);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.referenceReport :global(.sports-law-report__overseas-cards p) {
+  align-self: end;
+  margin: 14px 0 0;
+  color: var(--sports-body);
+  font-size: var(--sports-support-size);
+  line-height: 1.4;
+}
+
+.referenceReport :global(.sports-law-report__overseas-cards b) {
+  color: var(--sports-blue);
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.referenceReport :global(.sports-law-report__examples-label) {
+  margin: 0 0 18px;
+  color: var(--sports-ink);
+  font-size: var(--sports-subheading-size);
+  font-weight: 600;
+}
+
+.referenceReport :global(.sports-law-report__open-grid) {
+  display: grid;
+  grid-template-columns: minmax(300px, .38fr) minmax(0, .62fr);
+  gap: clamp(48px, 7vw, 112px);
+  align-items: start;
+}
+
+.referenceReport :global(.sports-law-report__open-intro h2) {
+  max-width: 12ch;
+  margin: 14px 0 0;
+  font-size: var(--sports-title) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.04 !important;
+}
+
+.referenceReport :global(.sports-law-report__open-intro > p) {
+  max-width: 42ch;
+  margin: 28px 0 0;
+  color: var(--sports-body);
+  font-size: var(--sports-body-size);
+  line-height: 1.55;
+}
+
+.referenceReport :global(.sports-law-report__open-examples) {
+  min-width: 0;
+}
+
+.referenceReport :global(.sports-law-report__open-list) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, minmax(52px, auto));
+  gap: 0 22px;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--sports-ink);
+  list-style: none;
+}
+
+.referenceReport :global(.sports-law-report__open-list li) {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  min-height: 52px;
+  border-bottom: 1px solid var(--sports-rule);
+}
+
+.referenceReport :global(.sports-law-report__open-number),
+.referenceReport :global(.sports-law-report__open-sport) {
+  font-size: var(--sports-label-size);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.referenceReport :global(.sports-law-report__open-link) {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--sports-blue);
+  font-size: var(--sports-label-size);
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.referenceReport :global(.sports-law-report__open-number) {
+  color: var(--sports-blue);
+}
+
+.referenceReport :global(.sports-law-report__open-sport) {
+  color: var(--sports-muted);
+}
+
+.referenceReport :global(.sports-law-report__open-list a) {
+  color: var(--sports-ink);
+  font-size: var(--sports-support-size);
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.referenceReport.referenceReport :global(.sports-law-report__open) {
+  padding: clamp(52px, 5vw, 72px) 0 !important;
+}
+
+.referenceReport :global(.sports-law-report__open-more) {
+  margin-top: 22px;
+}
+
+.referenceReport :global(.sports-law-report__open-more summary) {
+  color: var(--sports-blue);
+  font-size: var(--sports-support-size);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.referenceReport.referenceReport :global(.sports-rankings__heading) {
+  display: block;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+  margin-bottom: clamp(30px, 3vw, 44px);
+}
+
+.referenceReport :global(.sports-rankings__heading > .fa3-kicker) {
+  margin-bottom: 14px;
+}
+
+.referenceReport :global(.sports-rankings__heading > div) {
+  display: block;
+}
+
+.referenceReport :global(.sports-rankings__heading p) {
+  margin-top: 12px;
+}
+
+.referenceReport.referenceReport :global(.sports-entity-explorer) {
+  border-block: 0;
+  background: #ffffff !important;
+}
+
+.referenceReport :global(.sports-entity-explorer .law-report__legal500-table-wrap) {
+  margin-top: 18px;
+}
+
+.referenceReport.referenceReport :global(.sports-entity-explorer .law-explorer__controls),
+.referenceReport.referenceReport :global(.sports-question-explorer .law-explorer__controls) {
+  margin-top: 0;
+  padding-block: 0;
+  border-block: 0;
+}
+
+.referenceReport.referenceReport :global(.sports-entity-explorer .law-explorer__result-count),
+.referenceReport.referenceReport :global(.sports-question-explorer .law-explorer__result-count) {
+  margin: 26px 0 12px;
+  padding: 0;
+  border: 0;
+}
+
+.referenceReport.referenceReport :global(.sports-entity-results) {
+  margin-top: 0;
+  border-top: 1px solid var(--sports-rule);
+}
+
+.referenceReport :global(.law-explorer__result-count),
+.referenceReport :global(.law-explorer__note) {
+  font-size: var(--sports-support-size) !important;
+  line-height: 1.5 !important;
+}
+
+.referenceReport :global(.law-ranked__count),
+.referenceReport :global(.law-ranked__text) {
+  font-size: var(--sports-support-size) !important;
+  line-height: 1.5 !important;
+}
+
+.referenceReport :global(.sports-entity-result__identity strong) {
+  font-size: var(--sports-body-size) !important;
+  line-height: 1.3;
+}
+
+.referenceReport :global(.sports-entity-result__identity small),
+.referenceReport :global(.sports-entity-result__metrics small),
+.referenceReport :global(.sports-entity-result__action),
+.referenceReport :global(.sports-entity-result__rank) {
+  font-size: var(--sports-label-size) !important;
+}
+
+.referenceReport :global(.sports-entity-result__metrics strong) {
+  font-size: var(--sports-support-size) !important;
+}
+
+.referenceReport :global(.fa3-question-group summary p),
+.referenceReport :global(.fa3-question-index__row strong),
+.referenceReport :global(.fa3-question-index__trigger strong) {
+  font-size: var(--sports-support-size) !important;
+  line-height: 1.5 !important;
+}
+
+.referenceReport :global(.sports-question-groups) {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 clamp(36px, 5vw, 72px) !important;
+  border-top: 1px solid var(--sports-rule);
+}
+
+.referenceReport :global(.sports-question-groups > .sports-question-group__trigger) {
+  display: grid;
+  width: 100%;
+  min-height: 92px;
+  grid-template-columns: 62px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  margin: 0 !important;
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 1px solid var(--sports-rule) !important;
+  background: transparent;
+  color: var(--sports-ink);
+  text-align: left;
+}
+
+.referenceReport :global(.sports-question-group__identity small) {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--sports-body);
+  font-size: var(--sports-label-size);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.referenceReport :global(.sports-question-group__identity strong) {
+  display: block;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.referenceReport :global(.sports-question-group__action) {
+  color: var(--sports-blue);
+  font-size: var(--sports-label-size);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .referenceReport :global(.fa3-masthead__grid),
+  .referenceReport :global(.sports-law-report__lead-finding .fa3-executive__grid),
+  .referenceReport :global(.sports-law-individuals__header),
+  .referenceReport :global(.sports-client-impact__intro),
+  .referenceReport :global(.sports-winners__heading),
+  .referenceReport :global(.sports-law-report__section-intro),
+  .referenceReport :global(.sports-rankings__heading),
+  .referenceReport :global(.law-explorer__intro),
+  .referenceReport :global(.sports-law-report__overseas-heading) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .referenceReport :global(.sports-law-report__overseas-copy) {
+    max-width: 50ch;
+    margin-top: 28px;
+    justify-self: start;
+  }
+
+  .referenceReport :global(.sports-law-report__overseas-cards) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .referenceReport :global(.sports-law-report__overseas-cards li:nth-child(2)) {
+    border-right: 0;
+  }
+
+  .referenceReport :global(.sports-law-report__overseas-cards li:nth-child(-n + 2)) {
+    border-bottom: 1px solid var(--sports-rule);
+  }
+
+  .referenceReport :global(.sports-law-report__leaders-layout) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .referenceReport :global(.sports-law-report__leaders-section .sports-winners__heading) {
+    margin-bottom: 36px;
+  }
+
+  .referenceReport :global(.sports-law-report__leaders-section .sports-winner-list) {
+    display: block;
+  }
+
+  .referenceReport :global(.sports-winner-matrix) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .referenceReport :global(.sports-law-report__open-grid),
+  .referenceReport :global(.sports-question-groups) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .referenceReport :global(.sports-law-individuals__tables) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .referenceReport :global(.sports-law-report__individual-summary),
+  .referenceReport :global(.sports-client-impact__intro > p),
+  .referenceReport :global(.sports-winners__heading > p),
+  .referenceReport :global(.sports-law-report__section-intro > p),
+  .referenceReport :global(.sports-rankings__heading > div),
+  .referenceReport :global(.law-explorer__intro > p) {
+    margin-top: 28px;
+  }
+
+  .referenceReport.referenceReport :global(.sports-client-impact__stats) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .referenceReport.referenceReport :global(.sports-client-impact__grid) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .referenceReport.referenceReport :global(.sports-client-impact__stats article) {
+    border-left: 0;
+    border-top: 1px solid var(--sports-rule);
+  }
+
+  .referenceReport :global(.sports-client-impact__stats article:first-child) {
+    border-top: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .referenceReport {
+    --sports-lead-size: 20px;
+  }
+  .referenceReport :global(.editorial-container) {
+    width: min(calc(100% - 32px), 1680px);
+  }
+
+  .referenceReport.referenceReport :global(.fa3-masthead) {
+    min-height: auto !important;
+    padding: 112px 0 64px !important;
+  }
+
+  .referenceReport.referenceReport :global(.fa3-masthead__title h1) {
+    font-size: 46px !important;
+  }
+
+  .referenceReport :global(.fa3-masthead__meta) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .referenceReport :global(.fa3-masthead__meta span:nth-child(3)) {
+    border-left: 0;
+  }
+
+  .referenceReport :global(.sports-law-report__hierarchy-proof li),
+  .referenceReport :global(.sports-law-report__open-list),
+  .referenceReport :global(.sports-law-report__open-list li) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .referenceReport :global(.sports-law-report__leaders-section .sports-winner-list) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .referenceReport :global(.sports-winner-matrix) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .referenceReport :global(.sports-law-report__overseas-cards) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .referenceReport :global(.sports-law-report__overseas-cards li) {
+    min-height: 132px;
+    border-right: 0;
+    border-bottom: 1px solid var(--sports-rule);
+  }
+
+  .referenceReport :global(.sports-law-report__overseas-cards li:last-child) {
+    border-bottom: 0;
+  }
+
+  .referenceReport :global(.sports-law-report__open-list) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    gap: 0;
+  }
+
+  .referenceReport :global(.sports-law-report__open-list li) {
+    gap: 5px;
+    padding: 16px 0;
+  }
+
+  .referenceReport :global(.sports-law-report__open-number) {
+    display: none;
+  }
+}
+
+/* Rankings and question explorers use the same editorial system as the finance report. */
+.referenceReport.referenceReport :global(.sports-rankings__heading),
+.referenceReport.referenceReport :global(.sports-question-explorer__heading) {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, .7fr);
+  gap: clamp(48px, 7vw, 112px);
+  align-items: end;
+  margin: 0 0 clamp(36px, 4vw, 58px);
+}
+
+.referenceReport :global(.sports-rankings__heading > div),
+.referenceReport :global(.sports-question-explorer__heading > div) {
+  min-width: 0;
+}
+
+.referenceReport.referenceReport :global(.sports-rankings__heading h2),
+.referenceReport.referenceReport :global(.sports-question-explorer__heading h2) {
+  max-width: 18ch;
+  margin: 14px 0 0;
+  font-size: var(--sports-title) !important;
+  font-weight: 400 !important;
+  letter-spacing: -.025em !important;
+  line-height: 1.04 !important;
+}
+
+.referenceReport :global(.sports-rankings__heading > p),
+.referenceReport :global(.sports-question-explorer__heading > p) {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--sports-body);
+  font-size: var(--sports-body-size);
+  line-height: 1.55;
+}
+
+.referenceReport :global(.sports-entity-table-wrap) {
+  width: 100%;
+  overflow-x: auto;
+  border-top: 1px solid var(--sports-ink);
+  outline: none;
+  scrollbar-width: thin;
+}
+
+.referenceReport :global(.sports-entity-table-wrap:focus-visible) {
+  outline: 2px solid var(--sports-blue);
+  outline-offset: 4px;
+}
+
+.referenceReport :global(.sports-entity-table) {
+  width: 100%;
+  min-width: 1080px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.referenceReport :global(.sports-entity-table th),
+.referenceReport :global(.sports-entity-table td) {
+  padding: 19px 18px;
+  border-bottom: 1px solid var(--sports-rule);
+  color: var(--sports-ink);
+  font-size: var(--sports-support-size);
+  line-height: 1.4;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.referenceReport :global(.sports-entity-table th:first-child),
+.referenceReport :global(.sports-entity-table td:first-child) {
+  padding-left: 0;
+}
+
+.referenceReport :global(.sports-entity-table th:last-child),
+.referenceReport :global(.sports-entity-table td:last-child) {
+  padding-right: 0;
+}
+
+.referenceReport :global(.sports-entity-table thead th) {
+  padding-block: 13px;
+  background: var(--sports-wash);
+  color: var(--sports-body);
+  font-size: var(--sports-label-size);
+  font-weight: 600;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.referenceReport :global(.sports-entity-table thead th:nth-child(1)) { width: 27%; }
+.referenceReport :global(.sports-entity-table thead th:nth-child(2)) { width: 17%; }
+.referenceReport :global(.sports-entity-table thead th:nth-child(3)),
+.referenceReport :global(.sports-entity-table thead th:nth-child(4)),
+.referenceReport :global(.sports-entity-table thead th:nth-child(5)) { width: 10%; }
+.referenceReport :global(.sports-entity-table thead th:nth-child(6)) { width: 26%; }
+
+.referenceReport :global(.sports-entity-table tbody th) {
+  position: relative;
+  padding-left: 46px;
+  font-weight: 400;
+}
+
+.referenceReport :global(.sports-entity-table__rank) {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  color: var(--sports-blue);
+  font-size: var(--sports-label-size);
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+
+.referenceReport :global(.sports-entity-table__trigger) {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  border: 0;
+  background: transparent;
+  color: var(--sports-ink);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.referenceReport :global(.sports-entity-table__trigger > span) {
+  font-size: var(--sports-body-size);
+  font-weight: 600;
+  letter-spacing: -.015em;
+  line-height: 1.25;
+}
+
+.referenceReport :global(.sports-entity-table__trigger > small) {
+  color: var(--sports-blue);
+  font-size: var(--sports-label-size);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.referenceReport :global(.sports-entity-table__trigger:focus-visible) {
+  outline: 2px solid var(--sports-blue);
+  outline-offset: 4px;
+}
+
+.referenceReport :global(.sports-entity-table td > small),
+.referenceReport :global(.sports-entity-table__number small),
+.referenceReport :global(.sports-entity-table__question small) {
+  display: block;
+  margin-top: 4px;
+  color: var(--sports-muted);
+  font-size: var(--sports-label-size);
+  line-height: 1.4;
+}
+
+.referenceReport :global(.sports-entity-table__type) {
+  display: block;
+  font-weight: 500;
+}
+
+.referenceReport :global(.sports-entity-table__number strong) {
+  display: block;
+  color: var(--sports-blue);
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1;
+}
+
+.referenceReport :global(.sports-entity-table__question > span) {
+  display: block;
+  color: var(--sports-ink);
+  font-size: var(--sports-support-size);
+  font-weight: 600;
+}
+
+.referenceReport :global(.sports-entity-table__question em) {
+  display: block;
+  margin-top: 5px;
+  color: var(--sports-blue);
+  font-size: var(--sports-label-size);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.referenceReport :global(.sports-question-groups) {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  column-gap: clamp(40px, 5vw, 72px) !important;
+  row-gap: 0 !important;
+  border-top: 1px solid var(--sports-ink);
+}
+
+.referenceReport :global(.sports-question-group) {
+  margin: 0;
+  border-bottom: 1px solid var(--sports-rule);
+}
+
+.referenceReport :global(.sports-question-group > summary) {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  gap: 16px;
+  min-height: 74px;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.referenceReport :global(.sports-question-group .fa3-question-group__number) {
+  font-size: var(--sports-support-size);
+}
+
+.referenceReport :global(.sports-question-group > summary div > span) {
+  margin-bottom: 4px;
+  font-size: var(--sports-label-size);
+}
+
+.referenceReport :global(.sports-question-group > summary strong) {
+  font-size: var(--sports-subheading-size) !important;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.referenceReport :global(.sports-question-group > summary > small) {
+  font-size: var(--sports-label-size);
+}
+
+.referenceReport :global(.sports-question-index li:target) {
+  background: #edf3ff;
+  box-shadow: inset 3px 0 0 var(--sports-blue);
+}
+
+.referenceReport :global(.sports-question-index li:target .sports-question-index__trigger) {
+  padding-inline: 18px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .referenceReport :global(.sports-entity-table tbody tr:hover) {
+    background: #fafbfc;
+  }
+
+  .referenceReport :global(.sports-entity-table__trigger:hover > span) {
+    color: var(--sports-blue);
+  }
+}
+
+@media (max-width: 900px) {
+  .referenceReport.referenceReport :global(.sports-rankings__heading),
+  .referenceReport.referenceReport :global(.sports-question-explorer__heading) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .referenceReport :global(.sports-law-report__leaders-section .sports-winners__heading) {
+    margin-bottom: 36px;
+  }
+
+  .referenceReport :global(.sports-question-groups) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* One restrained focus treatment; the global report outline is deliberately suppressed here. */
+.referenceReport :global(.law-explorer__search-field:focus-within) {
+  border-color: var(--sports-ink);
+  box-shadow: inset 0 -2px 0 var(--sports-blue);
+  outline: 0;
+}
+
+.referenceReport :global(.law-explorer__search-field input:focus),
+.referenceReport :global(.law-explorer__search-field input:focus-visible) {
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+.referenceReport.referenceReport :global(.research-audit-cta h2) {
+  font-size: var(--sports-title) !important;
+  line-height: 1.04 !important;
+}
+
+.referenceReport.referenceReport :global(.research-audit-cta__grid > .eyebrow) {
+  font-size: var(--sports-label-size) !important;
+  font-weight: 600 !important;
+  letter-spacing: .16em !important;
+  line-height: 1.35 !important;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .referenceReport :global(.sports-entity-table) {
+    min-width: 900px;
+  }
+
+  .referenceReport :global(.sports-entity-table th),
+  .referenceReport :global(.sports-entity-table td) {
+    padding-block: 16px;
+  }
+
+  .referenceReport :global(.sports-entity-table__number strong) {
+    font-size: 22px;
+  }
+
+  .referenceReport :global(.sports-question-group > summary) {
+    min-height: 78px;
+  }
+}
