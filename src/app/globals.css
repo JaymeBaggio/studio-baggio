@@ -14604,6 +14604,10 @@ body:has(.home-4b.contact-page) footer {
   display: block;
 }
 
+.fa3-search-control {
+  align-self: end;
+}
+
 .fa3-search-field svg {
   position: absolute;
   top: 50%;

@@ -434,23 +434,20 @@ export function Fa3BreadthExplorer({
             <p className="fa3-kicker">Selection breadth</p>
             <h2 id="fa3-breadth-title">Only four firms appeared across all four buyer needs</h2>
           </div>
-          <p>
-            The first 20 firms and advisers found in national answers are shown by default. Search
-            covers every national candidate and every firm in the 150-firm panel,
-            including firms not selected. Choose an advice area to rank firms by appearances across
-            its five questions, or choose a specific buyer need to rank the nine answers to that
-            question. Every question and platform counts equally.
-          </p>
         </header>
 
         <div className="fa3-breadth-controls">
-          <label>
-            <span>Find a firm or adviser</span>
+          <div className="fa3-search-control">
             <span className="fa3-search-field">
               <Search aria-hidden="true" />
-              <input value={search} onChange={(event) => setSearch(event.target.value)} type="search" />
+              <input
+                aria-label="Search for a firm or adviser"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                type="search"
+              />
             </span>
-          </label>
+          </div>
           <label>
             <span>Advice area</span>
             <select
