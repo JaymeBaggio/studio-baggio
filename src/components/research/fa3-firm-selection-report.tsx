@@ -533,7 +533,7 @@ export function Fa3BreadthExplorer({
               </tr>
             </thead>
             <tbody>
-              {visible.map((entity) => {
+              {visible.map((entity, index) => {
                 const stats = selectionStats.get(entity.entity_id);
                 const entityOccurrences = occurrencesByEntity.get(entity.entity_id) ?? [];
                 const scopedOccurrences = family === "all"
@@ -551,6 +551,7 @@ export function Fa3BreadthExplorer({
                         triggerClassName="fa3-firm-row-trigger"
                         trigger={
                           <>
+                            <span className="fa3-row-rank" aria-hidden="true">{index + 1}</span>
                             <span>{entity.canonical_name}</span>
                             <small aria-hidden="true">View results →</small>
                           </>

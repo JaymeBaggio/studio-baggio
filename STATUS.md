@@ -1,5 +1,10 @@
 # Studio Baggio Website - STATUS
-*Last updated: 17 August 2026*
+*Last updated: 18 August 2026*
+
+## 18 August — Financial-advice ranking numbers
+
+- Added ordinal numbers to the left of every financial-advice explorer row, matching the UK law and sports-law ranking tables.
+- The displayed numbers follow the current table order and recalculate after search, advice-area and buyer-need filtering.
 
 ## 17 August — Financial-advice search repair; research signup paused
 
