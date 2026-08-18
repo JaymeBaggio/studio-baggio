@@ -1,6 +1,11 @@
 # Studio Baggio Website - STATUS
 *Last updated: 18 August 2026*
 
+## 18 August — Last30Days 300-user milestone
+
+- Updated every public Studio Baggio reference to Last30Days usage from more than 250 to more than 300 individual and corporate users.
+- Regenerated the downloadable six-page services PDF with the same milestone copy and visually checked the exported document.
+
 ## 18 August — Financial-advice ranking numbers
 
 - Added ordinal numbers to the left of every financial-advice explorer row, matching the UK law and sports-law ranking tables.
