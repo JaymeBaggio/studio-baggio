@@ -203,7 +203,7 @@ export default function UkSportsLawReportPage() {
                 firms and individual lawyers ChatGPT, Gemini and Perplexity recommended.
               </p>
               <p>
-                The study shows which names appear most often, which established firms are absent,
+                The study shows which names appear most often, which top-ranked UK sports-law firms are absent,
                 and where AI produces a different picture of the sports-law market.
               </p>
             </div>
@@ -216,9 +216,9 @@ export default function UkSportsLawReportPage() {
         <div className="editorial-container fa3-executive__grid">
           <div className="fa3-executive__statement">
             <p className="fa3-kicker">3 key findings</p>
-            <h2 id="sports-findings-title">AI recommendations did not follow the established sports-law market.</h2>
+            <h2 id="sports-findings-title">AI recommendations did not reflect the top-ranked UK sports-law firms.</h2>
             <p className="fa3-executive__thesis sports-law-report__absence-fact">
-              Some established firms were completely absent, while specialist firms,
+              Some top-ranked UK sports-law firms were completely absent, while specialist firms,
               barristers&rsquo; chambers and individual lawyers appeared above much of the
               traditional market.
             </p>
@@ -227,14 +227,14 @@ export default function UkSportsLawReportPage() {
             <ul className="fa3-executive__summary-list">
               <li>
                 <span>
-                  <b>Almost 1 in 4 established UK sports-law firms were never named.</b> 22 of the
+                  <b>Almost 1 in 4 top-ranked UK sports-law firms were never named.</b> 22 of the
                   89 firms in our comparison group did not appear once across 810 AI answers to
                   90 high-intent buyer questions.
                 </span>
               </li>
               <li>
                 <span>
-                  <b>Global Sports Advocates was named more often than 85 of the 89 established firms.</b>{" "}
+                  <b>Global Sports Advocates was named more often than 85 of the 89 top-ranked UK sports-law firms.</b>{" "}
                   The firm was not part of the original comparison group.
                 </span>
               </li>
@@ -254,11 +254,11 @@ export default function UkSportsLawReportPage() {
           <header className="sports-law-individuals__header">
             <div>
               <p className="fa3-kicker">Individual lawyers</p>
-              <h2 id="sports-individuals-title">Individual lawyers ranked above almost every established firm.</h2>
+              <h2 id="sports-individuals-title">Individual lawyers ranked above almost every top-ranked UK sports-law firm.</h2>
             </div>
             <p className="sports-law-report__individual-summary">
               Nick De Marco KC and Mike Morgan were each named more often than 85 of the 89
-              established firms in the benchmark. Strong individual profiles can materially
+              top-ranked UK sports-law firms in the benchmark. Strong individual profiles can materially
               increase the chance of entering a prospective client&rsquo;s shortlist.
             </p>
           </header>

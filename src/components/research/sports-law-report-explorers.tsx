@@ -414,7 +414,7 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
                       <small>
                         {entity.affiliation ?? (
                           entity.entityType === "firm" && entity.panelStatus === "panel"
-                            ? "Established firm list"
+                            ? "Top-ranked UK sports-law firms"
                             : entity.overseas ? "Overseas" : "Outside comparison list"
                         )}
                       </small>

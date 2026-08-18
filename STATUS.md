@@ -6,6 +6,10 @@
 - Added ordinal numbers to the left of every financial-advice explorer row, matching the UK law and sports-law ranking tables.
 - The displayed numbers follow the current table order and recalculate after search, advice-area and buyer-need filtering.
 
+## 18 August — Sports-law comparison language
+
+- Replaced every public reference to “established firms” in the UK Sports Law report with “top-ranked UK sports-law firms”, including the masthead, key findings, individual-lawyer section and ranking-table labels.
+
 ## 17 August — Financial-advice search repair; research signup paused
 
 - Fixed the financial-advice explorer so a direct firm or adviser search covers the complete study dataset. A local-only or national classification no longer hides a matching name; advice-area and buyer-need filters still control the selected ranking view.
