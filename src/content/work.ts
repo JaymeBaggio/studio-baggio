@@ -311,13 +311,13 @@ export const workItems: WorkItem[] = [
       { label: "View product page →", href: "/last30days" },
       { label: "Visit live site →", href: "https://last30days.app" }
     ],
-    homepageImage: "/assets/products/last30days-og.png",
-    image: "/assets/products/last30days.png",
+    homepageImage: "/assets/products/last30days-og-2026.png",
+    image: "/assets/products/last30days-og-2026.png",
     productPage: {
       tabLabel: "Last30Days",
       category: "Live Signal Intelligence",
       image: {
-        src: "/assets/products/last30days-products-og.png",
+        src: "/assets/products/last30days-og-2026.png",
         alt: "Last30Days AI market intelligence product graphic",
         width: 1731,
         height: 909

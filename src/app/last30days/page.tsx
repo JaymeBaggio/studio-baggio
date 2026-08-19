@@ -32,7 +32,7 @@ const last30DaysSchema = {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
       url: appUrl,
-      image: `${siteUrl}/assets/products/last30days-products-og.png`,
+      image: `${siteUrl}/assets/products/last30days-og-2026.png`,
       description,
       isAccessibleForFree: true,
       creator: {

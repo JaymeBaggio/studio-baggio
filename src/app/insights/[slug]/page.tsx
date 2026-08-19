@@ -962,7 +962,7 @@ function Last30DaysContextCard() {
     <figure className="insight-article-visual insight-last30days-reference">
       <div className="insight-last30days-card-media">
         <Image
-          src="/assets/products/last30days-og.png"
+          src="/assets/products/last30days-og-2026.png"
           alt="Last30Days product graphic"
           width={1731}
           height={909}
