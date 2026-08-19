@@ -1,5 +1,11 @@
 # Studio Baggio Website - STATUS
-*Last updated: 18 August 2026*
+*Last updated: 19 August 2026*
+
+## 19 August — Financial-advice comparative ranks
+
+- Kept the financial-advice explorer ordered by the selected advice area or buyer need while retaining each firm’s fixed overall study rank.
+- Filtered tables now show two compact columns: the selected area/buyer-need rank as the primary blue figure and the overall rank as the secondary grey figure.
+- The default table remains a single overall ranking. Typecheck, lint, production build and responsive browser checks pass.
 
 ## 18 August — Last30Days 300-user milestone
 

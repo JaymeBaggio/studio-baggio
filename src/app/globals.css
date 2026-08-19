@@ -14725,6 +14725,25 @@ body:has(.home-4b.contact-page) footer {
   font-variant-numeric: tabular-nums;
 }
 
+.fa3-breadth-table .fa3-rank-heading {
+  width: 82px;
+  min-width: 82px;
+}
+
+.fa3-breadth-table .fa3-rank-value {
+  width: 82px;
+  min-width: 82px;
+  color: var(--fa3-blue);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.fa3-breadth-table .fa3-rank-value--overall {
+  color: #555;
+  font-weight: 400;
+}
+
 .fa3-breadth-table tbody th,
 .fa3-drawer-table tbody th {
   min-width: 230px;
@@ -14738,15 +14757,6 @@ body:has(.home-4b.contact-page) footer {
   gap: 12px;
   color: #111;
   cursor: pointer;
-}
-
-.fa3-firm-row-trigger .fa3-row-rank {
-  width: 22px;
-  flex: 0 0 22px;
-  color: #555;
-  font-size: 12px;
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
 }
 
 .fa3-firm-row-trigger > span {

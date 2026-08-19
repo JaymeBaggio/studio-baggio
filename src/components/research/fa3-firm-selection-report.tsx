@@ -356,6 +356,11 @@ export function Fa3BreadthExplorer({
     ? selectedQuestions[0]
     : null;
 
+  const overallRankByEntity = useMemo(
+    () => new Map(entities.map((entity, index) => [entity.entity_id, index + 1])),
+    [entities]
+  );
+
   const selectionStats = useMemo(() => {
     const stats = new Map<string, { answerCount: number; questionIds: Set<string> }>();
 
@@ -507,6 +512,16 @@ export function Fa3BreadthExplorer({
           <table className="fa3-breadth-table">
             <thead>
               <tr>
+                <th className="fa3-rank-heading" scope="col">
+                  {family === "all"
+                    ? "Overall rank"
+                    : questionId === "all"
+                      ? "Area rank"
+                      : "Buyer-need rank"}
+                </th>
+                {family !== "all" ? (
+                  <th className="fa3-rank-heading" scope="col">Overall rank</th>
+                ) : null}
                 <th scope="col">Candidate</th>
                 {family === "all" ? (
                   <>
@@ -535,6 +550,7 @@ export function Fa3BreadthExplorer({
             <tbody>
               {visible.map((entity, index) => {
                 const stats = selectionStats.get(entity.entity_id);
+                const overallRank = overallRankByEntity.get(entity.entity_id);
                 const entityOccurrences = occurrencesByEntity.get(entity.entity_id) ?? [];
                 const scopedOccurrences = family === "all"
                   ? entityOccurrences
@@ -544,6 +560,14 @@ export function Fa3BreadthExplorer({
                   ));
                 return (
                   <tr key={entity.entity_id}>
+                    <td className="fa3-rank-value">
+                      {family === "all" ? (overallRank ?? "—") : index + 1}
+                    </td>
+                    {family !== "all" ? (
+                      <td className="fa3-rank-value fa3-rank-value--overall">
+                        {overallRank ?? "—"}
+                      </td>
+                    ) : null}
                     <th scope="row">
                       <ResearchDrawer
                         className="fa3-firm-evidence-drawer"
@@ -551,7 +575,6 @@ export function Fa3BreadthExplorer({
                         triggerClassName="fa3-firm-row-trigger"
                         trigger={
                           <>
-                            <span className="fa3-row-rank" aria-hidden="true">{index + 1}</span>
                             <span>{entity.canonical_name}</span>
                             <small aria-hidden="true">View results →</small>
                           </>
