@@ -13,6 +13,7 @@ const compact = (value: string) => value.toLocaleLowerCase("en-GB").replace(/[^a
 
 type FirmRow = {
   entity: LawEntity;
+  appearances: LawEntity["appearances"];
   recommended: number;
   cited: number;
   problems: number;
@@ -22,7 +23,7 @@ type FirmRow = {
 };
 
 function LawFirmPanel({ row, area }: { row: FirmRow; area: string }) {
-  const appearances = (area === "all" ? row.entity.appearances : row.entity.appearances.filter((item) => item.area === area))
+  const appearances = (area === "all" ? row.appearances : row.appearances.filter((item) => item.area === area))
     .filter((item) => item.namedAnswers || item.citedAnswers)
     .sort((left, right) => right.namedAnswers + right.citedAnswers - (left.namedAnswers + left.citedAnswers));
   return (
@@ -65,11 +66,13 @@ function LawFirmPanel({ row, area }: { row: FirmRow; area: string }) {
 export function LawRankedTable({
   entities,
   legal500Rankings,
-  areas
+  areas,
+  namedAnswerOverrides = {}
 }: {
   entities: LawEntity[];
   legal500Rankings: LawLegal500Ranking[];
   areas: string[];
+  namedAnswerOverrides?: Record<string, Record<string, number>>;
 }) {
   const [query, setQuery] = useState("");
   const [area, setArea] = useState("all");
@@ -91,7 +94,14 @@ export function LawRankedTable({
   const baseRows = useMemo(() => {
     return entities
       .map((entity) => {
-        const scoped = area === "all" ? entity.appearances : entity.appearances.filter((item) => item.area === area);
+        const answerOverrides = namedAnswerOverrides[entity.name];
+        const appearances = answerOverrides
+          ? entity.appearances.map((item) => {
+              const namedAnswers = answerOverrides[item.questionId];
+              return namedAnswers === undefined ? item : { ...item, namedAnswers };
+            })
+          : entity.appearances;
+        const scoped = area === "all" ? appearances : appearances.filter((item) => item.area === area);
         const active = scoped.filter((item) => item.namedAnswers || item.citedAnswers);
         const recommended = active.reduce((sum, item) => sum + item.namedAnswers, 0);
         const cited = active.reduce((sum, item) => sum + item.citedAnswers, 0);
@@ -102,10 +112,10 @@ export function LawRankedTable({
         const topQuestion = [...active].sort((left, right) => right.namedAnswers - left.namedAnswers || right.citedAnswers - left.citedAnswers)[0];
         const tiers = tierIndex.get(entity.name);
         const tier = area === "all" ? (tiers ? Math.min(...tiers.values()) : null) : (tiers?.get(area) ?? null);
-        return { entity, recommended, cited, problems, areas: areaCounts.size, topArea, topQuestion, tier, website: entity.domains[0] ?? "" };
+        return { entity, appearances: scoped, recommended, cited, problems, areas: areaCounts.size, topArea, topQuestion, tier, website: entity.domains[0] ?? "" };
       })
       .filter((row) => row.recommended || row.cited);
-  }, [entities, area, tierIndex]);
+  }, [entities, area, namedAnswerOverrides, tierIndex]);
 
   const rows = useMemo(() => {
     const term = compact(query);

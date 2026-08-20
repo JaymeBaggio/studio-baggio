@@ -14,6 +14,14 @@ import findings from "@/data/law-locked-findings.json";
 const h = findings.headline;
 const t1f = findings.tier1FirmsWithZeroArea;
 const overall = findings.overallLeaders;
+// The 16 Aug claims gate reviewed the visible broad-question extract, which excludes
+// three Mishcon mentions beyond that extract from the public recommendation count.
+const namedAnswerOverrides = {
+  "Mishcon de Reya": {
+    "LAW-BEST-02": 4,
+    "LAW-BEST-10": 4
+  }
+};
 
 export const metadata: Metadata = {
   title: "UK Law Firms in AI Search 2026 · Studio Baggio UK Law AI Search Benchmark",
@@ -105,7 +113,12 @@ export default function UkLawReportPage() {
           Every UK law firm the study recorded, with its Legal 500 tier.
         </p>
       </div>
-      <LawRankedTable entities={entities} legal500Rankings={legal500Rankings} areas={areas} />
+      <LawRankedTable
+        entities={entities}
+        legal500Rankings={legal500Rankings}
+        areas={areas}
+        namedAnswerOverrides={namedAnswerOverrides}
+      />
 
       <LawQuestionExplorer questions={lawReportData.questions as LawQuestion[]} />
     </main>

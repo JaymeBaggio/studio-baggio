@@ -795,7 +795,7 @@ export const about = {
       number: "03",
       label: "How to engage",
       body: [
-        "Enquire below. If you're a good fit, we'll be in touch to arrange a bespoke AI Opportunity Audit."
+        "Enquire below. If you're a good fit, we'll be in touch to arrange an SEO & AI Search Audit."
       ],
       ctaLabel: "Discuss your AI opportunity →"
     }
