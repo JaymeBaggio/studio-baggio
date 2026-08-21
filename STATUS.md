@@ -9,6 +9,7 @@
 - Added Dataset, Article and BreadcrumbList JSON-LD matching the published study and updated the sitemap date.
 - Typecheck, lint and the production build passed. Production HTML, schema, share image and sitemap were verified live after commit `606626c` deployed.
 - IndexNow accepted a refreshed 22-URL site submission with HTTP 200 after the repair went live.
+- Google Search Console confirmed the report was already indexed, detected one valid Dataset item and accepted a fresh `Request indexing` submission into its priority crawl queue.
 
 ## 19 August — Financial-advice comparative ranks
 
