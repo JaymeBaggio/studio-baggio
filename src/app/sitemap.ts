@@ -78,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const lawBenchmarkRoute = {
     url: `${siteUrl}/research/uk-law-2026`,
-    lastModified: new Date("2026-08-16"),
+    lastModified: new Date("2026-08-21"),
     changeFrequency: "monthly" as const,
     priority: 0.8
   };

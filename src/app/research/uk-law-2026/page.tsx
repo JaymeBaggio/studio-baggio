@@ -10,6 +10,8 @@ import { LawRankedTable } from "@/components/research/law-ranked-table";
 import lawLegal500Benchmark from "@/data/law-legal500-benchmark.json";
 import lawReportData from "@/data/law-report-data.json";
 import findings from "@/data/law-locked-findings.json";
+import { pageMetadata } from "@/lib/metadata";
+import { siteUrl } from "@/lib/utils";
 
 const h = findings.headline;
 const t1f = findings.tier1FirmsWithZeroArea;
@@ -23,10 +25,112 @@ const namedAnswerOverrides = {
   }
 };
 
+const route = "/research/uk-law-2026";
+const title = "UK Law Firms in AI Search 2026 | Studio Baggio Research";
+const description =
+  "Across 1,485 AI answers, 24 of 85 Tier 1 firms received no recommendation in at least one top-ranked practice area, while firms outside Tier 1 led 31 of 75 legal problems.";
+const openGraphImage = `${siteUrl}${route}/opengraph-image`;
+
 export const metadata: Metadata = {
-  title: "UK Law Firms in AI Search 2026 · Studio Baggio UK Law AI Search Benchmark",
-  description: "We asked 90 high intent buyer questions and reviewed 1,485 AI answers to build a map of how ChatGPT, Gemini and Perplexity recommend firms across 15 areas of UK law.",
-  robots: { index: false, follow: false }
+  ...pageMetadata({ title, description, path: route }),
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "article",
+    siteName: "Studio Baggio",
+    url: `${siteUrl}${route}`,
+    title,
+    description,
+    images: [
+      {
+        url: openGraphImage,
+        width: 1200,
+        height: 630,
+        alt: "UK Law Firms in AI Search 2026 — Studio Baggio Research"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [openGraphImage]
+  }
+};
+
+function safeJson(value: unknown) {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
+const lawReportSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Dataset",
+      "@id": `${siteUrl}${route}#dataset`,
+      name: "Studio Baggio UK Law Firms in AI Search 2026",
+      description:
+        "A dated benchmark of which UK law firms OpenAI, Gemini and Perplexity recommended across 90 buyer questions, 1,485 answers and 15 practice areas.",
+      url: `${siteUrl}${route}`,
+      creator: { "@type": "Organization", name: "Studio Baggio Ltd", url: siteUrl },
+      publisher: { "@type": "Organization", name: "Studio Baggio Ltd", url: siteUrl },
+      dateCreated: "2026-08-15",
+      dateModified: "2026-08-21",
+      temporalCoverage: "2026-08-15",
+      spatialCoverage: "United Kingdom",
+      keywords: [
+        "UK law firms",
+        "legal services",
+        "AI search",
+        "OpenAI",
+        "Gemini",
+        "Perplexity",
+        "Legal 500",
+        "law firm marketing",
+        "AI visibility"
+      ],
+      measurementTechnique:
+        "Studio Baggio tested 90 high-intent buyer questions across 15 UK legal practice areas using OpenAI, Gemini and Perplexity. The study reviewed 1,485 grounded answers and compared recommendations on 75 specific legal problems with Legal 500 rankings.",
+      variableMeasured: [
+        "law firm named per answer",
+        "source link supplied per answer",
+        "question breadth",
+        "provider breadth",
+        "Legal 500 ranking comparison"
+      ],
+      isAccessibleForFree: true
+    },
+    {
+      "@type": "Article",
+      "@id": `${siteUrl}${route}#article`,
+      headline: "UK Law Firms in AI Search 2026",
+      description,
+      image: openGraphImage,
+      author: { "@type": "Person", name: "Jayme Baggio", url: `${siteUrl}/about` },
+      publisher: { "@type": "Organization", name: "Studio Baggio Ltd", url: siteUrl },
+      datePublished: "2026-08-16",
+      dateModified: "2026-08-21",
+      mainEntityOfPage: `${siteUrl}${route}`,
+      about: { "@id": `${siteUrl}${route}#dataset` }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${siteUrl}${route}#breadcrumbs`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Research",
+          item: `${siteUrl}/research`
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "UK Law Firms in AI Search 2026",
+          item: `${siteUrl}${route}`
+        }
+      ]
+    }
+  ]
 };
 
 export default function UkLawReportPage() {
@@ -44,6 +148,7 @@ export default function UkLawReportPage() {
 
   return (
     <main className="home-4b research-page fa3-report law-report" data-research-page>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(lawReportSchema) }} />
       <header className="fa3-masthead law-report__masthead">
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
