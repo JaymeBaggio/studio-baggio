@@ -25,6 +25,41 @@ const namedAnswerOverrides = {
   }
 };
 
+// The capture recorded this firm as "Lawrence Stephens", while the Legal 500
+// comparison row uses "Lawrence Stephens Solicitors". These reviewed counts
+// restore the five exact-name recommendations that the original merge omitted.
+const lawrenceStephensRecommendationCounts: Record<string, number> = {
+  "LAW-SPT-01": 2,
+  "LAW-SPT-02": 2,
+  "LAW-SPT-03": 1
+};
+
+function withLawrenceStephensRecommendations(source: LawQuestion[]): LawQuestion[] {
+  return source.map((question) => {
+    const count = lawrenceStephensRecommendationCounts[question.id];
+    if (!count) return question;
+
+    const named = question.named.some((firm) => firm.name === "Lawrence Stephens")
+      ? question.named
+      : [...question.named, { name: "Lawrence Stephens", count }]
+          .sort((left, right) => right.count - left.count || left.name.localeCompare(right.name, "en-GB"));
+    const firms = question.firms.some((firm) => firm.name === "Lawrence Stephens")
+      ? question.firms
+      : [
+          ...question.firms,
+          {
+            name: "Lawrence Stephens",
+            namedAnswers: count,
+            citedAnswers: 0,
+            citationInstances: 0,
+            pages: []
+          }
+        ];
+
+    return { ...question, named, firms };
+  });
+}
+
 const route = "/research/uk-law-2026";
 const title = "UK Law Firms in AI Search 2026 | Studio Baggio Research";
 const description =
@@ -134,16 +169,47 @@ const lawReportSchema = {
 };
 
 export default function UkLawReportPage() {
+  const questions = withLawrenceStephensRecommendations(lawReportData.questions as LawQuestion[]);
   const legal500Rankings = lawLegal500Benchmark.practices.flatMap((practice) =>
     practice.rankedFirms.map((firm) => ({
-      canonicalName: firm.canonicalName ?? firm.legal500Name,
+      canonicalName:
+        firm.legal500Name === "Lawrence Stephens Solicitors"
+          ? "Lawrence Stephens"
+          : firm.canonicalName ?? firm.legal500Name,
       legal500Name: firm.legal500Name,
       area: practice.area,
       tier: firm.bestTier,
       categories: firm.categories.map((category) => category.category)
     }))
   ) as LawLegal500Ranking[];
-  const entities = lawReportData.entities as LawEntity[];
+  const lawrenceStephensEntity: LawEntity = {
+    name: "Lawrence Stephens",
+    aliases: ["Lawrence Stephens Solicitors"],
+    domains: ["lawrencestephens.com"],
+    kind: "firm",
+    namedAnswers: 5,
+    citedAnswers: 0,
+    citationInstances: 0,
+    questionCount: 3,
+    appearances: questions
+      .filter((question) => lawrenceStephensRecommendationCounts[question.id])
+      .map((question) => ({
+        questionId: question.id,
+        question: question.question,
+        area: question.area,
+        type: question.type,
+        namedAnswers: lawrenceStephensRecommendationCounts[question.id],
+        citedAnswers: 0,
+        citationInstances: 0,
+        providers: ["Gemini"],
+        pages: []
+      }))
+  };
+  const entities = [
+    ...(lawReportData.entities as LawEntity[]).filter((entity) => entity.name !== "Lawrence Stephens"),
+    lawrenceStephensEntity
+  ];
+  const firmsTracked = entities.filter((entity) => entity.namedAnswers || entity.citedAnswers).length;
   const areas = lawLegal500Benchmark.practices.map((practice) => practice.area).sort();
 
   return (
@@ -171,7 +237,7 @@ export default function UkLawReportPage() {
               <span><strong>90</strong> buyer questions</span>
               <span><strong>1,485</strong> AI answers</span>
               <span><strong>15</strong> practice areas</span>
-              <span><strong>{findings.firmsTracked}</strong> firms tracked</span>
+              <span><strong>{firmsTracked}</strong> firms tracked</span>
             </div>
             <LawMethodDrawer />
           </div>
@@ -225,7 +291,7 @@ export default function UkLawReportPage() {
         namedAnswerOverrides={namedAnswerOverrides}
       />
 
-      <LawQuestionExplorer questions={lawReportData.questions as LawQuestion[]} />
+      <LawQuestionExplorer questions={questions} />
     </main>
   );
 }
