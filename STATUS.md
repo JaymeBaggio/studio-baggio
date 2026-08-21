@@ -1,5 +1,13 @@
 # Studio Baggio Website - STATUS
-*Last updated: 19 August 2026*
+*Last updated: 21 August 2026*
+
+## 21 August — UK law report indexing and share metadata repaired live
+
+- Replaced the published law report's accidental `noindex, nofollow` directive with `index, follow`.
+- Corrected the canonical URL from the Studio Baggio homepage to `/research/uk-law-2026`.
+- Added report-specific Open Graph and Twitter metadata plus a visually checked 1200×630 share card.
+- Added Dataset, Article and BreadcrumbList JSON-LD matching the published study and updated the sitemap date.
+- Typecheck, lint and the production build passed. Production HTML, schema, share image and sitemap were verified live after commit `606626c` deployed.
 
 ## 19 August — Financial-advice comparative ranks
 
