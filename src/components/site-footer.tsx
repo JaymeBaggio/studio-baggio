@@ -44,6 +44,12 @@ export function SiteFooter() {
           <Link className="focus-ring mt-2 inline-flex underline-offset-4 hover:underline" href="/privacy">
             {footer.privacyLabel}
           </Link>
+          <Link
+            className="focus-ring mt-2 block underline-offset-4 hover:underline"
+            href="/research/data-usage"
+          >
+            Research data usage
+          </Link>
         </div>
         <div className="text-sm leading-relaxed text-ink/60 md:text-right">
           <Link className="focus-ring underline-offset-4 hover:underline" href={primaryCta.href}>

@@ -170,7 +170,7 @@ export function LawRankedTable({
     const ranked = sortRows(allRows.filter((row) => row.belongsToArea && (row.recommended || row.cited)));
     const rankByName = new Map(ranked.map((row, index) => [row.entity.name, index + 1]));
     const visible = term
-      ? allRows.filter((row) => row.belongsToArea && compact([row.entity.name, ...row.entity.aliases, ...row.entity.domains].join(" ")).includes(term))
+      ? allRows.filter((row) => compact([row.entity.name, ...row.entity.aliases, ...row.entity.domains].join(" ")).includes(term))
       : ranked;
 
     return sortRows(visible.filter(inSelectedTier)).map((row) => ({ ...row, rank: rankByName.get(row.entity.name) ?? null }));

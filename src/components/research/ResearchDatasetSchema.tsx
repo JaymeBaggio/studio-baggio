@@ -1,5 +1,6 @@
 import type { ResearchEditionDefinition } from "@/content/research";
 import type { PublicResearchDataset, ResearchEditionViewModel } from "@/lib/research-data";
+import { researchDataLicense } from "@/lib/research-schema";
 import { siteUrl } from "@/lib/utils";
 
 type ResearchDatasetSchemaProps = {
@@ -57,7 +58,8 @@ export function ResearchDatasetSchema({ edition, dataset, view }: ResearchDatase
       contentUrl: `${siteUrl}${download.href}`
     })),
     version: dataset.manifest.method_version,
-    isAccessibleForFree: true
+    isAccessibleForFree: true,
+    license: researchDataLicense()
   };
 
   return (

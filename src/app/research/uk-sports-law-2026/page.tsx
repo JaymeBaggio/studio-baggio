@@ -9,6 +9,7 @@ import {
 } from "@/components/research/sports-law-report-explorers";
 import sportsReportData from "@/data/sports-law-report-data.json";
 import { pageMetadata } from "@/lib/metadata";
+import { researchDataLicense } from "@/lib/research-schema";
 import { siteUrl } from "@/lib/utils";
 import styles from "@/components/research/sports-law-report.module.css";
 
@@ -148,7 +149,7 @@ const sportsLawSchema = {
         "source link supplied per answer"
       ],
       isAccessibleForFree: true,
-      license: `${siteUrl}/research/uk-sports-law-2026`
+      license: researchDataLicense()
     },
     {
       "@type": "Article",

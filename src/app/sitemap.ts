@@ -22,7 +22,8 @@ const routes: Array<{
   { path: "/about", lastModified: "2026-08-14", changeFrequency: "monthly", priority: 0.75 },
   { path: "/insights", lastModified: "2026-08-09", changeFrequency: "weekly", priority: 0.75 },
   { path: "/contact", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
-  { path: "/privacy", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 }
+  { path: "/privacy", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/research/data-usage", lastModified: "2026-08-22", changeFrequency: "monthly", priority: 0.4 }
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -11,6 +11,7 @@ import lawLegal500Benchmark from "@/data/law-legal500-benchmark.json";
 import lawReportData from "@/data/law-report-data.json";
 import findings from "@/data/law-locked-findings.json";
 import { pageMetadata } from "@/lib/metadata";
+import { researchDataLicense } from "@/lib/research-schema";
 import { siteUrl } from "@/lib/utils";
 
 const h = findings.headline;
@@ -132,7 +133,8 @@ const lawReportSchema = {
         "provider breadth",
         "Legal 500 ranking comparison"
       ],
-      isAccessibleForFree: true
+      isAccessibleForFree: true,
+      license: researchDataLicense()
     },
     {
       "@type": "Article",
