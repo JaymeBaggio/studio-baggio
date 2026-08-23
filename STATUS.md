@@ -1,5 +1,12 @@
 # Studio Baggio Website - STATUS
-*Last updated: 21 August 2026*
+*Last updated: 23 August 2026*
+
+## 23 August — Homepage share preview aligned to the front-door audit
+
+- Replaced the generic homepage Open Graph artwork with a new 1200×675 share card led by the SEO & AI Search Audit, its core buyer questions and Studio Baggio's Financial Times and Professional Adviser research proof.
+- Updated the homepage title and Open Graph/Twitter description to explain where a firm appears across Google and AI search, who appears instead, which sources shape the answers and what to implement first.
+- Published the artwork at a new versioned `studio-baggio-og-v4.png` URL so platforms do not reuse the old image URL from their cache.
+- Typecheck, lint, `git diff --check` and the production build passed. Commit `9d8f4e5` deployed successfully; the custom-domain metadata, image dimensions and live image bytes were independently verified.
 
 ## 21 August — UK law report indexing and share metadata repaired live
 
