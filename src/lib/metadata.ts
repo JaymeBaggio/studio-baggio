@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { siteUrl } from "@/lib/utils";
 
 export const defaultOpenGraphImage = {
-  url: "/assets/og/studio-baggio-og-v3.png",
+  url: "/assets/og/studio-baggio-og-v4.png",
   width: 1200,
   height: 675,
   type: "image/png",
-  alt: "Studio Baggio AI - practical systems built around how your business wins in market."
+  alt: "Studio Baggio SEO & AI Search Audit - know where you appear, who appears instead and what to implement first."
 };
 
 export const defaultTwitterImage = defaultOpenGraphImage.url;

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Studio Baggio SEO and AI Search Audit</title>
+  <desc id="description">Know where your firm appears, who appears instead and what to implement first.</desc>
+  <defs>
+    <filter id="card-shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#111111" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="68" y="66" fill="#141414" font-size="20" letter-spacing="2.5">STUDIO BAGGIO</text>
+    <circle cx="253" cy="60" r="5.5" fill="#2f68ff"/>
+    <text x="266" y="66" fill="#141414" font-size="20" letter-spacing="2.5">AI</text>
+    <text x="1132" y="66" fill="#777777" font-size="15" letter-spacing="1.7" text-anchor="end">AI SEARCH INTELLIGENCE FOR HIGH-VALUE SERVICES</text>
+
+    <rect x="68" y="131" width="8" height="221" fill="#2f68ff"/>
+    <text x="102" y="214" fill="#141414" font-size="76" font-weight="700" letter-spacing="-2.8">SEO &amp; AI</text>
+    <text x="102" y="305" fill="#141414" font-size="76" font-weight="700" letter-spacing="-2.8">SEARCH AUDIT</text>
+
+    <text x="102" y="394" fill="#555555" font-size="25" font-weight="700" letter-spacing="0.2">KNOW WHERE YOU APPEAR.</text>
+    <text x="102" y="433" fill="#555555" font-size="25" font-weight="700" letter-spacing="0.2">KNOW WHO APPEARS INSTEAD.</text>
+    <text x="102" y="472" fill="#2f68ff" font-size="25" font-weight="700" letter-spacing="0.2">KNOW WHAT TO IMPLEMENT FIRST.</text>
+
+    <g filter="url(#card-shadow)">
+      <rect x="786" y="122" width="346" height="405" fill="#ffffff" stroke="#dedede" stroke-width="1"/>
+      <rect x="786" y="122" width="346" height="6" fill="#2f68ff"/>
+    </g>
+
+    <text x="818" y="174" fill="#141414" font-size="20" font-weight="700">What the audit tells you</text>
+
+    <g fill="#555555" font-size="18">
+      <text x="818" y="224">Your highest-value buyer questions</text>
+      <line x1="818" y1="241" x2="1100" y2="241" stroke="#dddddd"/>
+      <text x="818" y="274">Where you appear today</text>
+      <line x1="818" y1="291" x2="1100" y2="291" stroke="#dddddd"/>
+      <text x="818" y="324">Who appears instead</text>
+      <line x1="818" y1="341" x2="1100" y2="341" stroke="#dddddd"/>
+      <text x="818" y="374">Which sources shape AI answers</text>
+      <line x1="818" y1="391" x2="1100" y2="391" stroke="#dddddd"/>
+      <text x="818" y="424">What authority and evidence are missing</text>
+      <line x1="818" y1="441" x2="1100" y2="441" stroke="#dddddd"/>
+      <text x="818" y="474">What to implement first</text>
+    </g>
+
+    <line x1="68" y1="565" x2="1132" y2="565" stroke="#d8d8d8"/>
+    <text x="68" y="607" fill="#777777" font-size="15" letter-spacing="1.7">OUR AI SEARCH RESEARCH FEATURED IN</text>
+    <rect x="416" y="585" width="30" height="30" fill="#fcd0b1"/>
+    <text x="431" y="607" fill="#333333" font-family="Times New Roman, Times, serif" font-size="18" font-weight="700" text-anchor="middle">FT</text>
+    <text x="455" y="607" fill="#222222" font-family="Times New Roman, Times, serif" font-size="18" font-weight="700">FINANCIAL TIMES</text>
+    <text x="650" y="607" fill="#111111" font-family="Times New Roman, Times, serif" font-size="21" font-weight="700">Professional<tspan fill="#4bbfc8" font-weight="400">Adviser</tspan></text>
+    <text x="1132" y="607" fill="#141414" font-size="18" font-weight="700" letter-spacing="0.8" text-anchor="end">STUDIOBAGGIO.AI</text>
+  </g>
+</svg>

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Studio Baggio - AI strategy, systems and implementation.";
+export const alt = "Studio Baggio SEO & AI Search Audit.";
 export const size = {
   width: 1200,
   height: 630
@@ -27,13 +27,12 @@ export default function Image() {
         <div style={{ fontSize: 18, letterSpacing: 3, textTransform: "uppercase" }}>
           Studio Baggio.ai
         </div>
-        <div style={{ fontSize: 56, lineHeight: 1.04, maxWidth: 1000 }}>
-          We design and build practical AI systems that help your business become easier to find,
-          faster to act, better informed and harder to compete with.
+        <div style={{ fontSize: 72, lineHeight: 1.02, maxWidth: 900 }}>
+          SEO &amp; AI Search Audit
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
-          <span>Practical AI systems</span>
-          <span>Visibility. Intelligence. Leads.</span>
+          <span>Know where you appear and who appears instead.</span>
+          <span>Know what to implement first.</span>
         </div>
       </div>
     ),
