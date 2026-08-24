@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Studio Baggio</title>
+  <desc id="description">Find where AI creates measurable value, then build the systems needed to deliver it.</desc>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="68" y="73" fill="#7d7d7d" font-size="17" letter-spacing="2.2">AI STRATEGY, SYSTEMS AND IMPLEMENTATION</text>
+    <text x="1132" y="73" fill="#141414" font-size="17" font-weight="700" letter-spacing="1" text-anchor="end">STUDIOBAGGIO.AI</text>
+
+    <text x="68" y="297" fill="#111111" font-size="150" font-weight="400" letter-spacing="-6">STUDIO</text>
+    <text x="68" y="444" fill="#111111" font-size="150" font-weight="400" letter-spacing="-6">BAGGIO</text>
+    <circle cx="650" cy="418" r="13" fill="#2f68ff"/>
+    <text x="675" y="444" fill="#111111" font-size="150" font-weight="400" letter-spacing="-6">AI</text>
+
+    <line x1="68" y1="515" x2="1132" y2="515" stroke="#dedede"/>
+    <text x="68" y="568" fill="#141414" font-size="25" font-weight="700" letter-spacing="0.6">FIND WHERE AI CREATES MEASURABLE VALUE.</text>
+    <text x="68" y="610" fill="#2f68ff" font-size="25" font-weight="700" letter-spacing="0.6">BUILD THE SYSTEMS NEEDED TO DELIVER IT.</text>
+  </g>
+</svg>

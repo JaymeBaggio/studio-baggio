@@ -22,9 +22,9 @@ export const introDownload = {
 
 export const metadata = {
   home: {
-    title: "SEO & AI Search Audit | Studio Baggio",
+    title: "Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "See where your firm appears when prospective clients search on Google and ask AI, who appears instead, which sources shape the answers, and what to implement first."
+      "Find where AI creates measurable value, then build the systems needed to deliver it."
   },
   work: {
     title: "Products: AI Systems & Intelligence | Studio Baggio",

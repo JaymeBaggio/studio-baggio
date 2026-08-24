@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Studio Baggio SEO & AI Search Audit.";
+export const alt = "Studio Baggio - find where AI creates measurable value, then build the systems needed to deliver it.";
 export const size = {
   width: 1200,
   height: 630
@@ -28,11 +28,11 @@ export default function Image() {
           Studio Baggio.ai
         </div>
         <div style={{ fontSize: 72, lineHeight: 1.02, maxWidth: 900 }}>
-          SEO &amp; AI Search Audit
+          Studio Baggio
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
-          <span>Know where you appear and who appears instead.</span>
-          <span>Know what to implement first.</span>
+          <span>Find where AI creates measurable value.</span>
+          <span>AI strategy, systems and implementation.</span>
         </div>
       </div>
     ),
