@@ -55,6 +55,9 @@ export function SiteFooter() {
           <Link className="focus-ring underline-offset-4 hover:underline" href={primaryCta.href}>
             {primaryCta.label}
           </Link>
+          <div className="mt-3 flex md:justify-end">
+            <div google-add-preferred-source-btn="" />
+          </div>
           <p className="mt-2">© {new Date().getFullYear()} Studio Baggio Ltd</p>
         </div>
       </div>

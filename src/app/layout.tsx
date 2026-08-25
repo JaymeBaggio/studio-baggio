@@ -112,6 +112,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <Analytics />
         <Toaster />
         <Script
+          src="https://news.google.com/swg/js/v1/publisher.js"
+          strategy="afterInteractive"
+        />
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-03SJE21NJ6"
           strategy="afterInteractive"
         />
