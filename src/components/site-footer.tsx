@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PreferredSourceLink } from "@/components/preferred-source-link";
 import { footer, introDownload, primaryCta } from "@/content/site";
 
 export function SiteFooter() {
@@ -50,14 +51,12 @@ export function SiteFooter() {
           >
             Research data usage
           </Link>
+          <PreferredSourceLink className="focus-ring mt-2 block text-left underline-offset-4 hover:underline" />
         </div>
         <div className="text-sm leading-relaxed text-ink/60 md:text-right">
           <Link className="focus-ring underline-offset-4 hover:underline" href={primaryCta.href}>
             {primaryCta.label}
           </Link>
-          <div className="mt-3 flex md:justify-end">
-            <div google-add-preferred-source-btn="" />
-          </div>
           <p className="mt-2">© {new Date().getFullYear()} Studio Baggio Ltd</p>
         </div>
       </div>
