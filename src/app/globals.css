@@ -23989,9 +23989,10 @@ body:has(.home-4b.contact-page) footer {
 @media (max-width: 1023px) {
   .home-4b.ab-page .ab-frame { padding-top: clamp(96px, 13vh, 128px); }
   .home-4b.ab-page .ab-grid { grid-template-columns: 1fr; gap: 56px; }
-  .home-4b.ab-page .ab-col-right { padding-left: 0; padding-top: 0; }
+  .home-4b.ab-page .ab-col-right { order: -1; padding-left: 0; padding-top: 0; }
   .home-4b.ab-page .ab-col-right::before { display: none; }
   .home-4b.ab-page .ab-col-left h1 { font-size: clamp(40px, 9.6vw, 56px); }
   .home-4b.ab-page .ab-press-row { padding-bottom: 0; }
-  .home-4b.ab-page .ab-col-right .ab-cta { margin-bottom: 56px; }
+  .home-4b.ab-page .ab-col-right .ab-cta { margin-bottom: 0; }
+  .home-4b.ab-page .ab-press-row { padding-bottom: 56px; }
 }
