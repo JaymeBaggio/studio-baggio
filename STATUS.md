@@ -1,5 +1,14 @@
 # Studio Baggio Website - STATUS
-*Last updated: 29 August 2026*
+*Last updated: 29 August 2026 (evening)*
+
+## 29 Aug (eve) — About rebuilt as the single-frame layout (3ea480e)
+
+- **/about is now one composed frame.** Left column: blue ABOUT eyebrow, "Studio Baggio." wordmark, the new Founder & CEO bio (three paragraphs, Jayme's copy verbatim), the Press & Founder Availability panel (white card, 2px blue borderline, layered soft shadow), the founder sign-off, and the Featured-in logo row directly beneath it (FT Adviser / Money Marketing / Professional Adviser in colour at 16px, white Ideas Fest mark in its dark chip). Right column behind a gradient-faded vertical hairline: WHAT WE DO, lede, four service rows (proper service names linking to their /services cards), the engagement paragraphs, enquire line, full-width CTA.
+- **Removed (Jayme's calls, 29 Aug):** the "Founded and led by Jayme Baggio." hero line, the Client words testimonial band (lives on /services; `about.testimonials` stays in site.ts for it), the closing "visible public proof" statement, and the old three-paragraph bio.
+- **Motion:** pure-CSS twelve-step entrance cascade (16px rise + blur(3px)→sharp, 0.8s cubic-bezier(0.23,1,0.32,1), delays 0–0.72s) served inline pre-hydration like the services entrance. Hover: service rows lift to white with a 4px title nudge and blue underline draw; links warm to blue; CTA inverts, presses at scale(0.96). Hover states gated behind (hover:hover); reduced-motion gets a plain fade.
+- **SEO:** meta description rewritten to match the page (Founder & CEO / Last30Days / Calm Authority / Ideas Fest 2026). AboutPage schema kept; founder jobTitle now "Founder & CEO"; knowsAbout extended with AI search and SEO strategy; Ideas Fest event markup intact; dateModified 2026-08-29. GSC reindex requested post-deploy.
+- **CSS:** new `.home-4b.ab-page` block at the end of globals.css; the old about-* styles remain in the sheet but are unused by /about — clean up in a later pass. Mobile (<1024px) stacks to one column, divider hidden. Verified at 1512×857 (Jayme's real window) and 390×844; typecheck/lint/build pass.
+- Design reference: ~20 mockup iterations in session scratchpad; the approved reference matched Jayme's supplied visual. Built from a clean clone of origin/main (locals remain stale feature branches).
 
 ## 29 August — Ideas Fest speaker proof and Services alignment live on About
 
