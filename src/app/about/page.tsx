@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Fragment } from "react";
-import { PageReveals } from "@/components/page-reveals";
-import { ButtonLink } from "@/components/ui/button";
 import { about, metadata as siteMetadata, pressPage, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -13,14 +10,6 @@ const ideasFestSessionTitle = "Building an AI-literate business in 90 days";
 
 const aboutFeaturedPress = [
   {
-    key: "money-marketing",
-    name: "Money Marketing",
-    href: pressPage.features.find((feature) => feature.publication === "Money Marketing")!.href,
-    src: "/assets/logos/money-marketing.png",
-    width: 440,
-    height: 132
-  },
-  {
     key: "ft-adviser",
     name: "FT Adviser",
     href: pressPage.features.find((feature) => feature.publication === "FT Adviser")!.href,
@@ -29,41 +18,34 @@ const aboutFeaturedPress = [
     height: 580
   },
   {
+    key: "money-marketing",
+    name: "Money Marketing",
+    href: pressPage.features.find((feature) => feature.publication === "Money Marketing")!.href,
+    src: "/assets/logos/money-marketing.png",
+    width: 440,
+    height: 132
+  },
+  {
     key: "professional-adviser",
     name: "Professional Adviser",
     href: pressPage.features.find((feature) => feature.publication === "Professional Adviser")!.href,
     src: "/assets/logos/professional-adviser-print.png",
     width: 2167,
     height: 180
-  },
-  {
-    key: "ideas-fest",
-    name: "Ideas Fest",
-    href: ideasFestSpeakerUrl,
-    src: "/assets/logos/ideas-fest-logo-white.png",
-    width: 720,
-    height: 408
   }
 ] as const;
 
 const aboutLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
   Last30Days: "https://last30days.app",
-  "Last30Days.app": "https://last30days.app",
   "AI Operating Systems": "/services#ai-operating-system-audit",
   "Growth Infrastructure & Visibility": "/services#growth-infrastructure-and-visibility-audit",
-  "Commercial Growth Strategy": "/services",
   "SEO & AI Search": "/services#seo-and-ai-search-opportunity-audit",
   "Bespoke Software & Systems": "/services#bespoke-ai-software-and-systems",
-  "AI operating system audits and implementation": "/services#ai-operating-system-audit",
-  "Commercial growth and client-demand strategy":
-    "/services#growth-infrastructure-and-visibility-audit",
-  "SEO and AI search opportunity audits": "/services#seo-and-ai-search-opportunity-audit",
-  "Bespoke software and systems builds": "/services#bespoke-ai-software-and-systems",
   "Ideas Fest 2026": ideasFestSpeakerUrl
 };
 const aboutRichTextPattern =
-  /(AI operating system audits and implementation|Commercial growth and client-demand strategy|SEO and AI search opportunity audits|Bespoke software and systems builds|Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO & AI Search|Bespoke Software & Systems|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
+  /(Calm Authority|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|SEO & AI Search|Bespoke Software & Systems|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
 
 const aboutPageSchema = {
   "@context": "https://schema.org",
@@ -82,7 +64,7 @@ const aboutPageSchema = {
       "@type": "Person",
       "@id": "https://www.studiobaggio.ai/about#jayme-baggio",
       name: "Jayme Baggio",
-      jobTitle: "Founder and applied AI strategy specialist",
+      jobTitle: "Founder & CEO",
       url: "https://www.studiobaggio.ai/about",
       worksFor: {
         "@id": "https://www.studiobaggio.ai/#organization"
@@ -90,7 +72,8 @@ const aboutPageSchema = {
       knowsAbout: [
         "Applied AI strategy",
         "AI operating systems",
-        "Commercial AI implementation"
+        "Commercial AI implementation",
+        "AI search and SEO strategy"
       ],
       performerIn: {
         "@type": "Event",
@@ -122,9 +105,6 @@ const aboutPageSchema = {
   }
 };
 
-type AboutSection = (typeof about.sections)[number];
-type AboutListSection = Extract<AboutSection, { list: readonly string[] }>;
-
 function renderLinkedText(text: string) {
   return text.split(aboutRichTextPattern).map((part, index) => {
     if (part === ideasFestSessionTitle) {
@@ -153,155 +133,138 @@ function renderLinkedText(text: string) {
   });
 }
 
-function getPress(section: AboutSection) {
-  return "press" in section ? section.press : null;
-}
-
-function hasList(section: AboutSection): section is AboutListSection {
-  return "list" in section;
-}
-
-function getCtaLabel(section: AboutSection) {
-  return "ctaLabel" in section ? section.ctaLabel : null;
-}
-
 export default function AboutPage() {
-  const testimonialBand = (
-    <aside className="about-testimonials" aria-label="Client testimonials" data-reveal>
-      <p className="about-testimonials-label">Client words</p>
-      <div className="about-testimonials-grid">
-        {about.testimonials.map((testimonial) => (
-          <figure key={testimonial.name} className="about-testimonial">
-            <blockquote>{testimonial.quote}</blockquote>
-            <figcaption>
-              <span className="about-testimonial-name">{testimonial.name}</span>
-              <span className="about-testimonial-role">{testimonial.role}</span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    </aside>
-  );
-
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
-      <PageReveals />
-      <div className="home-4b studio-page about-page">
-        <section className="about-hero" data-home-section>
-          <div className="editorial-container about-hero-frame">
-            <div className="about-hero-copy">
-              <p className="eyebrow" data-reveal data-motion="label">
-                {about.eyebrow}
-              </p>
-              <h1 className="about-hero-title" data-reveal>
-                {about.title}
-                <span aria-hidden="true" />
-              </h1>
-              <p className="about-hero-statement" data-reveal>
-                {about.intro}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="about-content">
-          <div className="editorial-container about-content-frame">
-            {about.sections.map((section) => {
-              const press = getPress(section);
-              const ctaLabel = getCtaLabel(section);
-              const listSection = hasList(section) ? section : null;
-
-              return (
-                <Fragment key={section.label}>
-                  {section.number === "03" ? (
-                    <aside className="about-signoff" aria-label="Studio Baggio sign-off" data-reveal>
-                      <blockquote>{about.closingQuote}</blockquote>
-                    </aside>
-                  ) : null}
-
-                  <article className="about-section" data-reveal>
-                    <div className="about-section-label">
-                      <span>{section.number} —</span>
-                      <h2>{section.label}</h2>
-                    </div>
-
-                    <div className="about-copy">
-                      {section.body.length > 0 ? (
-                        <div className="about-body">
-                          {section.body.map((paragraph, index) => (
-                            <p key={`${section.label}-${index}`}>{renderLinkedText(paragraph)}</p>
-                          ))}
-                        </div>
-                      ) : null}
-
-                      {listSection ? (
-                        <>
-                          <p className="about-subsection-label">{listSection.listLabel}</p>
-                          <ul className="about-service-list">
-                            {listSection.list.map((item) => (
-                              <li key={item}>{renderLinkedText(item)}</li>
-                            ))}
-                          </ul>
-                          <div className="about-body">
-                            {listSection.bodyAfter.map((paragraph) => (
-                              <p key={paragraph}>{renderLinkedText(paragraph)}</p>
-                            ))}
-                          </div>
-                        </>
-                      ) : null}
-
-                      {press ? (
-                        <div className="about-press">
-                          <p className="about-subsection-label">{press.title}</p>
-                          <div className="about-press-body">
-                            {press.body.map((paragraph) => (
-                              <p key={paragraph}>{renderLinkedText(paragraph)}</p>
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
-
-                      {ctaLabel ? (
-                        <div className="about-action">
-                          <ButtonLink href={primaryCta.href}>{ctaLabel}</ButtonLink>
-                        </div>
-                      ) : null}
-                    </div>
-                  </article>
-
-                  {section.number === "01" ? testimonialBand : null}
-                </Fragment>
-              );
-            })}
-
-            <aside className="about-featured-press" aria-label="Featured press" data-reveal>
-              <p className="about-featured-press-copy">Featured in</p>
-              <div className="about-featured-press-logos">
-                {aboutFeaturedPress.map((feature) => (
+      {/* Entrance runs as pure CSS on the compositor thread: it starts at
+          first paint (before hydration) and main-thread work cannot make it
+          stutter — same pattern as the services page. */}
+      <style
+        id="about-entrance"
+        dangerouslySetInnerHTML={{
+          __html: [
+            "@keyframes abIn{from{opacity:0;transform:translate3d(0,16px,0);filter:blur(3px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}",
+            "[data-ab-enter]{animation:abIn 0.8s cubic-bezier(0.23,1,0.32,1) both}",
+            '[data-ab-enter="e1"]{animation-delay:0s}',
+            '[data-ab-enter="e2"]{animation-delay:0.08s}',
+            '[data-ab-enter="e3"]{animation-delay:0.18s}',
+            '[data-ab-enter="e4"]{animation-delay:0.26s}',
+            '[data-ab-enter="e5"]{animation-delay:0.34s}',
+            '[data-ab-enter="e6"]{animation-delay:0.42s}',
+            '[data-ab-enter="e7"]{animation-delay:0.3s}',
+            '[data-ab-enter="e8"]{animation-delay:0.38s}',
+            '[data-ab-enter="e9"]{animation-delay:0.46s}',
+            '[data-ab-enter="e10"]{animation-delay:0.54s}',
+            '[data-ab-enter="e11"]{animation-delay:0.62s}',
+            '[data-ab-enter="e12"]{animation-delay:0.72s}',
+            "@media (prefers-reduced-motion: reduce){[data-ab-enter]{animation:abIn 0.3s ease both;animation-delay:0s!important}}"
+          ].join("")
+        }}
+      />
+      <div className="home-4b ab-page">
+        <section className="ab-frame">
+          <div className="editorial-container ab-container">
+            <div className="ab-grid">
+              <div className="ab-col-left">
+                <p className="eyebrow ab-about-label" data-ab-enter="e1">
+                  {about.eyebrow}
+                </p>
+                <h1 data-ab-enter="e2">
+                  {about.title}
+                  <span className="ab-dot" aria-hidden="true" />
+                </h1>
+                <p className="ab-bio-lead" data-ab-enter="e3">
+                  {about.bio.lead}
+                </p>
+                <div className="ab-bio-rest" data-ab-enter="e4">
+                  {about.bio.body.map((paragraph) => (
+                    <p key={paragraph}>{renderLinkedText(paragraph)}</p>
+                  ))}
+                </div>
+                <div className="ab-press-panel" data-ab-enter="e5">
+                  <span className="ab-borderline" aria-hidden="true" />
+                  <p className="eyebrow ab-panel-label">{about.press.title}</p>
+                  {about.press.body.map((paragraph) => (
+                    <p key={paragraph}>{renderLinkedText(paragraph)}</p>
+                  ))}
+                </div>
+                <div className="ab-press-line" data-ab-enter="e6">
+                  <span className="ab-press-line-name">{about.signoffName}</span>
+                  <br />
+                  {about.signoffRole}
+                </div>
+                <div className="ab-press-row" data-ab-enter="e12" aria-label="Featured press">
+                  <span className="eyebrow">{about.featuredInLabel}</span>
+                  {aboutFeaturedPress.map((feature) => (
+                    <a
+                      key={feature.key}
+                      href={feature.href}
+                      className="ab-press-logo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View Studio Baggio at ${feature.name}`}
+                    >
+                      <Image
+                        src={feature.src}
+                        alt={feature.name}
+                        width={feature.width}
+                        height={feature.height}
+                        sizes="180px"
+                      />
+                    </a>
+                  ))}
                   <a
-                    key={feature.key}
-                    href={feature.href}
-                    className="about-featured-press-logo"
-                    data-logo={feature.key}
+                    href={ideasFestSpeakerUrl}
+                    className="ab-idf-chip"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`View Studio Baggio at ${feature.name}`}
+                    aria-label="View Studio Baggio at Ideas Fest"
                   >
                     <Image
-                      src={feature.src}
-                      alt={feature.name}
-                      width={feature.width}
-                      height={feature.height}
-                      sizes="(max-width: 767px) 45vw, 220px"
+                      src="/assets/logos/ideas-fest-logo-white.png"
+                      alt="Ideas Fest"
+                      width={720}
+                      height={408}
+                      sizes="80px"
                     />
                   </a>
-                ))}
+                </div>
               </div>
-            </aside>
+
+              <div className="ab-col-right">
+                <p className="eyebrow ab-wwd-label" data-ab-enter="e7">
+                  {about.whatWeDo.label}
+                </p>
+                <p className="ab-wwd-lede" data-ab-enter="e8">
+                  {about.whatWeDo.lede}
+                </p>
+                <p className="ab-wwd-body" data-ab-enter="e8">
+                  {about.whatWeDo.body}
+                </p>
+                <div className="ab-svc-rows" data-ab-enter="e9">
+                  {about.whatWeDo.services.map((service) => (
+                    <a key={service} className="ab-svc-row" href={aboutLinks[service]}>
+                      <span className="ab-svc-title">{service}</span>
+                    </a>
+                  ))}
+                </div>
+                <div className="ab-wwd-body" data-ab-enter="e10">
+                  {about.whatWeDo.bodyAfter.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+                <p className="ab-engage-line" data-ab-enter="e11">
+                  {renderLinkedText(about.whatWeDo.engageLine)}
+                </p>
+                <a className="ab-cta" href={primaryCta.href} data-ab-enter="e11">
+                  {about.whatWeDo.ctaLabel}
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </div>

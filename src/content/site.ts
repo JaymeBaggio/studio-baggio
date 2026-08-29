@@ -49,7 +49,7 @@ export const metadata = {
   about: {
     title: "About Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "Studio Baggio is an AI strategy, systems and implementation consultancy founded by Jayme Baggio, an Ideas Fest 2026 panellist."
+      "Jayme Baggio is Founder & CEO of Studio Baggio, an AI strategy, systems and implementation company. Creator of Last30Days and Calm Authority; Ideas Fest 2026 panellist."
   },
   contact: {
     title: "Contact Studio Baggio",
@@ -750,53 +750,39 @@ export const calmAuthority = {
 export const about = {
   eyebrow: "ABOUT",
   title: "Studio Baggio",
-  intro: "Founded and led by Jayme Baggio.",
-  sections: [
-    {
-      number: "01",
-      label: "What we do",
-      body: [
-        "We help businesses identify where AI can create measurable value, then design, build and implement the systems needed to deliver it.",
-        "That can mean improving how a team works, turning expertise and online engagement into qualified client opportunities, increasing visibility across Google and AI platforms, or building specialist software."
-      ],
-      listLabel: "Our work covers:",
-      list: [
-        "AI operating system audits and implementation",
-        "Commercial growth and client-demand strategy",
-        "SEO and AI search opportunity audits",
-        "Bespoke software and systems builds"
-      ],
-      bodyAfter: [
-        "Every engagement starts with the business problem and the result needed, not a predetermined tool or generic AI programme. Studio Baggio handles the research, strategy, system design, build and implementation.",
-        "Businesses can start with a focused audit, appoint us to deliver the full system, or work with us as an ongoing AI partner."
-      ]
-    },
-    {
-      number: "02",
-      label: "Founded by Jayme Baggio",
-      body: [
-        "Jayme Baggio is a strategy consultant and applied AI specialist whose career has covered commercial content strategy, branded entertainment, and AI-driven workflow systems. She is best known for her extensive tenure at Channel 4 and her work bridging media creation with artificial intelligence frameworks. Jayme has over a decade's experience across media and practical AI, working with some of the UK's most established brands such as BBC Studios, ITV, Google, Coca-Cola, M&S and HSBC.",
-        "Built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers, alongside founding adviser Harry Sims, Chartered Financial Planner. The app has been featured in FT Adviser, Money Marketing and Professional Adviser. Her work with firms in the financial services sector revealed a wider commercial gap: most firms know AI matters, but few are using it to drive real ROI by making their expertise visible, delivering more value to clients, and growing the business.",
-        "Built Last30Days.app, an AI market intelligence app that turns live web, social and community signals into cited reports in under 60 seconds. It has now been used by more than 300 individual and corporate users to research markets, competitors, customer questions and emerging opportunities. It gives Studio Baggio a practical engine for SEO and AI search strategy: finding what people are asking now, where demand is forming, and which expert answers deserve to become searchable proof."
-      ],
-      press: {
-        title: "Press & Founder Availability",
-        body: [
-          "Jayme speaks on applied AI strategy, operating systems and commercial implementation. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
-          "Jayme Baggio · Founder\nApplied AI Strategy Specialist",
-          "Available for comment on AI systems strategy, AI in the workplace, AI in media & content, the broader AI & expertise economy, and the LinkedIn behaviour of UK financial advisers."
-        ]
-      }
-    },
-    {
-      number: "03",
-      label: "How to engage",
-      body: [
-        "Enquire below. If you're a good fit, we'll be in touch to arrange an SEO & AI Search Audit."
-      ],
-      ctaLabel: "Discuss your AI opportunity →"
-    }
-  ],
+  bio: {
+    lead: "Jayme Baggio is Founder & CEO of Studio Baggio, an AI strategy, systems and implementation company helping businesses identify where AI can create measurable value, then building the systems and software needed to deliver it.",
+    body: [
+      "She is the creator of Last30Days, an AI research platform now used by more than 300 individual and corporate users. Jayme also built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers, alongside founding adviser Harry Sims, Chartered Financial Planner. Her AI search research has been featured in FT Adviser and Professional Adviser, covering both the UK financial advice and law sectors.",
+      "Before founding Studio Baggio, Jayme spent more than 12 years across media and production, most recently as Production Lead at Channel 4, working with some of the UK's most established brands such as BBC Studios, ITV, Google and HSBC."
+    ]
+  },
+  press: {
+    title: "Press & Founder Availability",
+    body: [
+      "Jayme speaks on applied AI strategy, operating systems and commercial implementation. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
+      "Available for comment on AI systems strategy, AI in the workplace, AI in media & content, the broader AI & expertise economy, and the LinkedIn behaviour of UK financial advisers."
+    ]
+  },
+  signoffName: "Jayme Baggio · Founder",
+  signoffRole: "Applied AI Strategy Specialist",
+  whatWeDo: {
+    label: "What we do",
+    lede: "We help businesses identify where AI can create measurable value, then design, build and implement the systems needed to deliver it.",
+    body: "That can mean improving how a team works, turning expertise and online engagement into qualified client opportunities, increasing visibility across Google and AI platforms, or building specialist software.",
+    services: [
+      "AI Operating Systems",
+      "Growth Infrastructure & Visibility",
+      "SEO & AI Search",
+      "Bespoke Software & Systems"
+    ],
+    bodyAfter: [
+      "Every engagement starts with the business problem and the result needed, not a predetermined tool or generic AI programme. Studio Baggio handles the research, strategy, system design, build and implementation.",
+      "Businesses can start with a focused audit, appoint us to deliver the full system, or work with us as an ongoing AI partner."
+    ],
+    engageLine: "Enquire below. If you're a good fit, we'll be in touch to arrange an SEO & AI Search Audit.",
+    ctaLabel: "Discuss your AI opportunity →"
+  },
   testimonials: [
     {
       quote:
@@ -823,8 +809,7 @@ export const about = {
       role: "Founder & CEO"
     }
   ],
-  closingQuote:
-    "Studio Baggio develops systems to turn your business's internal expertise into visible public proof. Enables you to show up consistently and provide real value where your prospects already are. Then connect the dots between who is engaging, what they care about and how the business should follow up to earn the right to win in market."
+  featuredInLabel: "Featured in"
 };
 
 export const pressPage = {
