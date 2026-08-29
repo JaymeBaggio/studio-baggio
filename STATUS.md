@@ -1,14 +1,14 @@
 # Studio Baggio Website - STATUS
 *Last updated: 29 August 2026*
 
-## 29 August — Ideas Fest speaker proof on About (local verification complete)
+## 29 August — Ideas Fest speaker proof live on About
 
 - Added Jayme's approved visible speaker copy to the existing `Press & Founder Availability` block on `/about`.
 - `Ideas Fest 2026` links to Jayme's official Ideas Fest speaker page; `Building an AI-literate business in 90 days` renders as semantic emphasis.
 - Updated the About meta description, added accurate About-page entity markup connecting Jayme to the scheduled session, and refreshed `/about` in the sitemap to `2026-08-29`.
 - Kept `/press` unchanged because the appearance is speaking proof rather than earned media coverage.
-- Verified locally at desktop and mobile widths: exact copy, external link and emphasis are present; typecheck, lint and the production build pass.
-- Pending: push to `main`, verify the production URL and request Google Search Console re-indexing.
+- Typecheck, lint and the production build pass. Verified on the custom production domain at desktop and mobile widths: exact copy, external link and emphasis are present, the canonical remains `/about`, the page is indexable and the browser console is clean.
+- Production code commit: `b968fd8`. Google Search Console re-indexing is the remaining step.
 
 ## 29 August — Sports-law comparative ranks
 
