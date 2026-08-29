@@ -49,7 +49,7 @@ export const metadata = {
   about: {
     title: "About Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "Studio Baggio is an AI strategy, systems and implementation consultancy founded by Jayme Baggio."
+      "Studio Baggio is an AI strategy, systems and implementation consultancy founded by Jayme Baggio, an Ideas Fest 2026 panellist."
   },
   contact: {
     title: "Contact Studio Baggio",
@@ -785,7 +785,7 @@ export const about = {
       press: {
         title: "Press & Founder Availability",
         body: [
-          "Jayme regularly presents frameworks to high-level advisory boards, including a notable AI Operating System workflow built for the Unstereotype Alliance UK in partnership with UN Women, emphasising how enterprises can scale operations ethically while preserving human taste and judgment.",
+          "Jayme speaks on applied AI strategy, operating systems and commercial implementation. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
           "Jayme Baggio · Founder\nApplied AI Strategy Specialist",
           "Available for comment on AI systems strategy, AI in the workplace, AI in media & content, the broader AI & expertise economy, and the LinkedIn behaviour of UK financial advisers."
         ]

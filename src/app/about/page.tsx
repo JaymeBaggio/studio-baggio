@@ -9,7 +9,10 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
 
-const aboutProductLinks: Record<string, string> = {
+const ideasFestSpeakerUrl = "https://ideasfest.uk/speaking/jayme-45db6d";
+const ideasFestSessionTitle = "Building an AI-literate business in 90 days";
+
+const aboutLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
   Last30Days: "https://last30days.app",
   "Last30Days.app": "https://last30days.app",
@@ -17,16 +20,71 @@ const aboutProductLinks: Record<string, string> = {
   "Growth Infrastructure & Visibility": "/services",
   "Commercial Growth Strategy": "/services",
   "SEO & AI Search": "/services",
-  "Bespoke Software & Systems": "/services"
+  "Bespoke Software & Systems": "/services",
+  "Ideas Fest 2026": ideasFestSpeakerUrl
 };
-const aboutProductLinkPattern =
-  /(Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO & AI Search|Bespoke Software & Systems)/g;
+const aboutRichTextPattern =
+  /(Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO & AI Search|Bespoke Software & Systems|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
+
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": "https://www.studiobaggio.ai/about#about-page",
+  url: "https://www.studiobaggio.ai/about",
+  name: siteMetadata.about.title,
+  description: siteMetadata.about.description,
+  dateModified: "2026-08-29",
+  mainEntity: {
+    "@type": "Organization",
+    "@id": "https://www.studiobaggio.ai/#organization",
+    name: "Studio Baggio Ltd",
+    url: "https://www.studiobaggio.ai",
+    founder: {
+      "@type": "Person",
+      "@id": "https://www.studiobaggio.ai/about#jayme-baggio",
+      name: "Jayme Baggio",
+      jobTitle: "Founder and applied AI strategy specialist",
+      url: "https://www.studiobaggio.ai/about",
+      worksFor: {
+        "@id": "https://www.studiobaggio.ai/#organization"
+      },
+      knowsAbout: [
+        "Applied AI strategy",
+        "AI operating systems",
+        "Commercial AI implementation"
+      ],
+      performerIn: {
+        "@type": "Event",
+        "@id": `${ideasFestSpeakerUrl}#building-an-ai-literate-business-in-90-days`,
+        name: ideasFestSessionTitle,
+        startDate: "2026-09-09T11:00:00+01:00",
+        endDate: "2026-09-09T11:45:00+01:00",
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        url: ideasFestSpeakerUrl,
+        location: {
+          "@type": "Place",
+          name: "Champneys Tring"
+        },
+        organizer: {
+          "@type": "Organization",
+          name: "Ideas Fest",
+          url: "https://ideasfest.uk/"
+        }
+      }
+    }
+  }
+};
 
 type AboutSection = (typeof about.sections)[number];
 
 function renderLinkedText(text: string) {
-  return text.split(aboutProductLinkPattern).map((part, index) => {
-    const href = aboutProductLinks[part];
+  return text.split(aboutRichTextPattern).map((part, index) => {
+    if (part === ideasFestSessionTitle) {
+      return <em key={`${part}-${index}`}>{part}</em>;
+    }
+
+    const href = aboutLinks[part];
 
     if (!href) {
       return part;
@@ -88,6 +146,10 @@ export default function AboutPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
       <PageReveals />
       <div className="home-4b studio-page about-page">
         <section className="about-hero" data-home-section>
@@ -159,7 +221,7 @@ export default function AboutPage() {
                           <p className="about-subsection-label">{press.title}</p>
                           <div className="about-press-body">
                             {press.body.map((paragraph) => (
-                              <p key={paragraph}>{paragraph}</p>
+                              <p key={paragraph}>{renderLinkedText(paragraph)}</p>
                             ))}
                           </div>
                         </div>
