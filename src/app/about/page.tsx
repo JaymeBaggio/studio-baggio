@@ -62,6 +62,13 @@ const aboutPageSchema = {
         eventStatus: "https://schema.org/EventScheduled",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         url: ideasFestSpeakerUrl,
+        description:
+          "Jayme speaks on applied AI strategy, operating systems and commercial implementation. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
+        performer: {
+          "@type": "Person",
+          "@id": "https://www.studiobaggio.ai/about#jayme-baggio",
+          name: "Jayme Baggio"
+        },
         location: {
           "@type": "Place",
           name: "Champneys Tring"
