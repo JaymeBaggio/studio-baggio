@@ -760,7 +760,7 @@ export const about = {
   press: {
     title: "Press & Founder Availability",
     body: [
-      "Jayme speaks on applied AI strategy, operating systems and commercial implementation. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
+      "Jayme speaks on Commercial AI strategy, SEO & AI search optimisation, and Building AI operating systems within businesses. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
       "Available for comment on AI systems strategy, AI in the workplace, AI in media & content, the broader AI & expertise economy, and the LinkedIn behaviour of UK financial advisers."
     ]
   },
