@@ -1,5 +1,13 @@
 # Studio Baggio Website - STATUS
-*Last updated: 24 August 2026*
+*Last updated: 29 August 2026*
+
+## 29 August — Sports-law comparative ranks
+
+- Replaced the Sports Law explorer's filtered row number with a fixed overall study rank, so searching for one firm no longer relabels it as rank 1.
+- The default table now has a dedicated blue overall-rank column. Practice-area views show the selected area's rank first in blue and the fixed overall rank second in grey, matching the Financial Advice report's hierarchy.
+- Both ranks remain stable when firm-name and entity-type filters narrow the visible rows.
+- Typecheck, lint and the production build pass. Desktop and 390px Chrome checks passed for the default table, direct firm search, practice-area ranking, combined practice-area plus firm search, horizontal table handling and firm evidence drawers.
+- Implementation commit prepared on `codex/sports-law-rank-clarity` for the production release.
 
 ## 24 August — Main-site share preview aligned to the company brand
 

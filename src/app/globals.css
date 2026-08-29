@@ -18807,6 +18807,23 @@ body:has(.home-4b.contact-page) footer {
 
 .law-ranked__num { display: inline-block; min-width: 2.4em; color: var(--law-muted); font-size: 12px; font-weight: 400; }
 
+.law-ranked__rank-heading span {
+  display: block;
+}
+
+.law-ranked__rank-value {
+  color: var(--law-blue);
+  font-size: 18px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.law-ranked__rank-value--overall {
+  color: var(--law-muted);
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .law-ranked__table th:first-child, .law-ranked__table td.law-ranked__num { width: 44px; padding-right: 0; }
 
 .law-ranked__table th[scope="row"] { font-size: 16px; }

@@ -89,6 +89,10 @@ const providerLabels = {
 
 const clean = (value: string) => value.toLocaleLowerCase("en-GB").replace(/[^a-z0-9]+/g, " ").trim();
 const humanise = (value: string) => value.replace(/_/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+const compareEntityVisibility = (left: SportsEntity, right: SportsEntity) =>
+  right.answerCount - left.answerCount ||
+  right.questionCount - left.questionCount ||
+  left.name.localeCompare(right.name, "en-GB");
 
 function SearchField({
   id,
@@ -286,6 +290,25 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
     [entities]
   );
   const isPracticeAreaView = sport !== "all";
+  const overallRankByEntity = useMemo(
+    () => new Map(
+      [...entities]
+        .sort(compareEntityVisibility)
+        .map((entity, index) => [entity.id, index + 1])
+    ),
+    [entities]
+  );
+  const practiceAreaRankByEntity = useMemo(() => {
+    if (!isPracticeAreaView) return new Map<string, number>();
+
+    return new Map(
+      entities
+        .map((entity) => scopeEntityToPracticeArea(entity, sport))
+        .filter((entity) => entity.answerCount > 0)
+        .sort(compareEntityVisibility)
+        .map((entity, index) => [entity.id, index + 1])
+    );
+  }, [entities, isPracticeAreaView, sport]);
   const visible = useMemo(() => {
     const term = clean(query);
     return entities
@@ -296,7 +319,7 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
         const matchesSport = sport === "all" || entity.answerCount > 0;
         return matchesQuery && matchesType && matchesSport;
       })
-      .sort((left, right) => right.answerCount - left.answerCount || right.questionCount - left.questionCount || left.name.localeCompare(right.name));
+      .sort(compareEntityVisibility);
   }, [entities, entityType, query, sport]);
   const resetResults = () => setLimit(20);
   const revealQuestion = (questionId: string) => {
@@ -360,14 +383,28 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
           <table className="law-report__legal500-table law-ranked__table law-ranked__table--wide">
             <colgroup>
               {(isPracticeAreaView
-                ? ["42%", "24%", "17%", "17%"]
-                : ["28%", "14%", "10%", "10%", "9%", "29%"]
+                ? ["8%", "10%", "30%", "24%", "14%", "14%"]
+                : ["10%", "24%", "13%", "10%", "10%", "9%", "24%"]
               ).map((width, index) => (
                 <col key={index} style={{ width }} />
               ))}
             </colgroup>
             <thead>
               <tr>
+                {isPracticeAreaView ? (
+                  <th className="law-ranked__rank-heading" scope="col" aria-sort="ascending">
+                    <span>Area</span>
+                    <span>rank</span>
+                  </th>
+                ) : null}
+                <th
+                  className="law-ranked__rank-heading"
+                  scope="col"
+                  aria-sort={isPracticeAreaView ? undefined : "ascending"}
+                >
+                  <span>Overall</span>
+                  <span>rank</span>
+                </th>
                 <th scope="col">Name</th>
                 <th scope="col">Entity type</th>
                 <th className="law-ranked__metric-heading" scope="col"><span>AI answers</span><small>of {isPracticeAreaView ? 90 : 810}</small></th>
@@ -381,21 +418,26 @@ export function SportsEntityExplorer({ entities }: { entities: SportsEntity[] })
               </tr>
             </thead>
             <tbody>
-              {visible.slice(0, limit).map((entity, index) => {
+              {visible.slice(0, limit).map((entity) => {
                 const strongestQuestion = entity.appearances[0];
                 return (
                   <tr key={entity.id}>
+                    {isPracticeAreaView ? (
+                      <td className="law-ranked__rank-value">
+                        {practiceAreaRankByEntity.get(entity.id) ?? "—"}
+                      </td>
+                    ) : null}
+                    <td
+                      className={`law-ranked__rank-value ${isPracticeAreaView ? "law-ranked__rank-value--overall" : ""}`}
+                    >
+                      {overallRankByEntity.get(entity.id) ?? "—"}
+                    </td>
                     <th scope="row">
                       <ResearchDrawer
                         className="sports-entity-evidence-drawer"
                         eyebrow={entity.affiliation ?? entity.panelName ?? humanise(entity.entityType)}
                         title={entity.name}
-                        trigger={
-                          <>
-                            <span className="law-ranked__num" aria-hidden="true">{index + 1}</span>
-                            {entity.name}
-                          </>
-                        }
+                        trigger={entity.name}
                       >
                         {(closeDrawer) => (
                           <SportsEntityDrawerContent
