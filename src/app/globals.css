@@ -23774,7 +23774,7 @@ body:has(.home-4b.contact-page) footer {
    Bio + press left, What we do + CTA right, featured logos in-column.
    ================================================================ */
 .home-4b.ab-page { --ab-ease: cubic-bezier(0.23, 1, 0.32, 1); }
-.home-4b.ab-page .ab-frame { padding-top: clamp(64px, 8vh, 84px); padding-bottom: 20px; }
+.home-4b.ab-page .ab-frame { padding-top: clamp(64px, 8vh, 84px); padding-bottom: 4px; }
 
 /* /about is a single-frame surface like /contact: no footer */
 body:has(.home-4b.ab-page) footer { display: none; }
