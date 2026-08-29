@@ -1,16 +1,50 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Fragment } from "react";
 import { PageReveals } from "@/components/page-reveals";
 import { ButtonLink } from "@/components/ui/button";
-import { about, metadata as siteMetadata, primaryCta } from "@/content/site";
+import { about, metadata as siteMetadata, pressPage, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
 
 const ideasFestSpeakerUrl = "https://ideasfest.uk/speaking/jayme-45db6d";
 const ideasFestSessionTitle = "Building an AI-literate business in 90 days";
+
+const aboutFeaturedPress = [
+  {
+    key: "money-marketing",
+    name: "Money Marketing",
+    href: pressPage.features.find((feature) => feature.publication === "Money Marketing")!.href,
+    src: "/assets/logos/money-marketing.png",
+    width: 440,
+    height: 132
+  },
+  {
+    key: "ft-adviser",
+    name: "FT Adviser",
+    href: pressPage.features.find((feature) => feature.publication === "FT Adviser")!.href,
+    src: "/assets/logos/ft-adviser.png",
+    width: 2222,
+    height: 580
+  },
+  {
+    key: "professional-adviser",
+    name: "Professional Adviser",
+    href: pressPage.features.find((feature) => feature.publication === "Professional Adviser")!.href,
+    src: "/assets/logos/professional-adviser-print.png",
+    width: 2167,
+    height: 180
+  },
+  {
+    key: "ideas-fest",
+    name: "Ideas Fest",
+    href: ideasFestSpeakerUrl,
+    src: "/assets/logos/ideas-fest-logo-white.png",
+    width: 720,
+    height: 408
+  }
+] as const;
 
 const aboutLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
@@ -245,23 +279,28 @@ export default function AboutPage() {
             })}
 
             <aside className="about-featured-press" aria-label="Featured press" data-reveal>
-              <Link
-                href="/press"
-                className="about-featured-press-link"
-              >
-                <span className="about-featured-press-copy">
-                  Featured in <strong>Money Marketing</strong>
-                </span>
-                <span className="about-featured-press-logo">
-                  <Image
-                    src="/assets/logos/money-marketing.png"
-                    alt="Money Marketing"
-                    width={440}
-                    height={132}
-                    sizes="(max-width: 767px) 180px, 220px"
-                  />
-                </span>
-              </Link>
+              <p className="about-featured-press-copy">Featured in</p>
+              <div className="about-featured-press-logos">
+                {aboutFeaturedPress.map((feature) => (
+                  <a
+                    key={feature.key}
+                    href={feature.href}
+                    className="about-featured-press-logo"
+                    data-logo={feature.key}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View Studio Baggio at ${feature.name}`}
+                  >
+                    <Image
+                      src={feature.src}
+                      alt={feature.name}
+                      width={feature.width}
+                      height={feature.height}
+                      sizes="(max-width: 767px) 45vw, 220px"
+                    />
+                  </a>
+                ))}
+              </div>
             </aside>
           </div>
         </section>

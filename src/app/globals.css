@@ -7237,20 +7237,21 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .home-4b.about-page .about-featured-press {
-  width: min(100%, var(--about-reading));
-  max-width: var(--about-reading);
+  width: 100%;
+  max-width: none;
+  display: grid;
+  gap: clamp(18px, 2.6vw, 28px);
   margin-top: clamp(30px, 4vw, 52px);
   border-top: 1px solid var(--sb-rule);
   padding-top: clamp(20px, 2.8vw, 30px);
 }
 
-.home-4b.about-page .about-featured-press-link {
-  display: inline-flex;
+.home-4b.about-page .about-featured-press-logos {
+  display: flex;
   align-items: center;
-  gap: clamp(18px, 3vw, 34px);
+  flex-wrap: wrap;
+  gap: clamp(22px, 3vw, 40px);
   max-width: 100%;
-  color: var(--sb-ink);
-  text-decoration: none;
 }
 
 .home-4b.about-page .about-featured-press-copy {
@@ -7262,17 +7263,31 @@ body:has(.home-4b.contact-page) footer {
   text-transform: uppercase;
 }
 
-.home-4b.about-page .about-featured-press-copy strong {
-  color: var(--sb-ink);
-  font-weight: inherit;
-}
-
 .home-4b.about-page .about-featured-press-logo {
-  display: block;
-  width: clamp(156px, 17vw, 220px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
   opacity: 0.94;
   transition: opacity 180ms ease;
+}
+
+.home-4b.about-page .about-featured-press-logo[data-logo="money-marketing"] {
+  width: clamp(126px, 11vw, 154px);
+}
+
+.home-4b.about-page .about-featured-press-logo[data-logo="ft-adviser"] {
+  width: clamp(150px, 14vw, 188px);
+}
+
+.home-4b.about-page .about-featured-press-logo[data-logo="professional-adviser"] {
+  width: clamp(172px, 17vw, 224px);
+}
+
+.home-4b.about-page .about-featured-press-logo[data-logo="ideas-fest"] {
+  width: clamp(82px, 7vw, 98px);
+  padding: 9px 11px;
+  background: #050044;
 }
 
 .home-4b.about-page .about-featured-press-logo img {
@@ -7281,7 +7296,7 @@ body:has(.home-4b.contact-page) footer {
   height: auto;
 }
 
-.home-4b.about-page .about-featured-press-link:hover .about-featured-press-logo {
+.home-4b.about-page .about-featured-press-logo:hover {
   opacity: 1;
 }
 
@@ -7328,13 +7343,24 @@ body:has(.home-4b.contact-page) footer {
     line-height: 1.58;
   }
 
-  .home-4b.about-page .about-featured-press-link {
-    display: grid;
-    gap: 16px;
+  .home-4b.about-page .about-featured-press-logos {
+    gap: 22px 26px;
   }
 
-  .home-4b.about-page .about-featured-press-logo {
-    width: min(180px, 62vw);
+  .home-4b.about-page .about-featured-press-logo[data-logo="money-marketing"] {
+    width: 126px;
+  }
+
+  .home-4b.about-page .about-featured-press-logo[data-logo="ft-adviser"] {
+    width: 148px;
+  }
+
+  .home-4b.about-page .about-featured-press-logo[data-logo="professional-adviser"] {
+    width: 172px;
+  }
+
+  .home-4b.about-page .about-featured-press-logo[data-logo="ideas-fest"] {
+    width: 84px;
   }
 }
 
