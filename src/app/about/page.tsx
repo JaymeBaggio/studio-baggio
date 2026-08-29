@@ -119,10 +119,6 @@ function renderLinkedText(text: string) {
   });
 }
 
-function getLead(section: AboutSection) {
-  return "lead" in section ? section.lead : null;
-}
-
 function getPress(section: AboutSection) {
   return "press" in section ? section.press : null;
 }
@@ -181,7 +177,6 @@ export default function AboutPage() {
         <section className="about-content">
           <div className="editorial-container about-content-frame">
             {about.sections.map((section) => {
-              const lead = getLead(section);
               const press = getPress(section);
               const ctaLabel = getCtaLabel(section);
               const listSection = hasList(section) ? section : null;
@@ -201,8 +196,6 @@ export default function AboutPage() {
                     </div>
 
                     <div className="about-copy">
-                      {lead ? <p className="about-lead">{lead}</p> : null}
-
                       {section.body.length > 0 ? (
                         <div className="about-body">
                           {section.body.map((paragraph, index) => (

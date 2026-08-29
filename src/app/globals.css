@@ -7171,6 +7171,7 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b.about-page .about-testimonial {
   display: grid;
+  align-content: start;
   gap: 16px;
   min-width: 0;
   margin: 0;

@@ -7,7 +7,8 @@
 - `Ideas Fest 2026` links to Jayme's official Ideas Fest speaker page; `Building an AI-literate business in 90 days` renders as semantic emphasis.
 - Updated the About meta description, added accurate About-page entity markup connecting Jayme to the scheduled session, and refreshed `/about` in the sitemap to `2026-08-29`.
 - Kept `/press` unchanged because the appearance is speaking proof rather than earned media coverage.
-- Replaced the stale mission and two-route framework in `What we do` with the Services-page proposition and four current offers. The offers appear in the same order as `/services`, with each link pointing to its exact service section.
+- Replaced the stale mission and two-route framework in `What we do` with the Services-page proposition and four current offers. Each offer links to its exact service section.
+- Aligned `What we do` with the current LinkedIn service positioning, renamed section 02 to `Founded by Jayme Baggio`, removed the duplicated founder line and corrected unequal testimonial-grid spacing so short quotes retain their attribution directly beneath them.
 - Typecheck, lint and the production build pass. Verified on the custom production domain at desktop and mobile widths: exact copy, external link and emphasis are present, the canonical remains `/about`, the page is indexable and the browser console is clean.
 - Production code commits: `b968fd8` and `69203f9`. Google Search Console's live test confirmed that the updated URL is available to Google and can be indexed, with one valid Event entity detected. A fresh indexing request was accepted into Google's priority crawl queue on 29 August 2026.
 
