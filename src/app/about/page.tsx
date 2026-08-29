@@ -16,11 +16,11 @@ const aboutLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
   Last30Days: "https://last30days.app",
   "Last30Days.app": "https://last30days.app",
-  "AI Operating Systems": "/services",
-  "Growth Infrastructure & Visibility": "/services",
+  "AI Operating Systems": "/services#ai-operating-system-audit",
+  "Growth Infrastructure & Visibility": "/services#growth-infrastructure-and-visibility-audit",
   "Commercial Growth Strategy": "/services",
-  "SEO & AI Search": "/services",
-  "Bespoke Software & Systems": "/services",
+  "SEO & AI Search": "/services#seo-and-ai-search-opportunity-audit",
+  "Bespoke Software & Systems": "/services#bespoke-ai-software-and-systems",
   "Ideas Fest 2026": ideasFestSpeakerUrl
 };
 const aboutRichTextPattern =

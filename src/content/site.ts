@@ -769,7 +769,7 @@ export const about = {
         {
           title: "Advisory and build.",
           body:
-            "A small number of paid engagements for firms ready to apply AI to specific commercial questions: where it creates value, unlocks additional revenue, makes expertise more visible, accelerates growth, and how to make it part of how the business wins in market. Four ways to start: Growth Infrastructure & Visibility, SEO & AI Search, AI Operating Systems, and Bespoke Software & Systems. Not tool recommendations. Not AI training. Not generic automation. The commercial architecture that turns expertise into outcomes."
+            "Every engagement starts with the business problem and the result the client needs. Studio Baggio handles the research, strategy, system design, build and implementation. Four ways to start: SEO & AI Search, AI Operating Systems, Growth Infrastructure & Visibility, and Bespoke Software & Systems."
         }
       ]
     },
