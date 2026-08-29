@@ -11,7 +11,7 @@
 - Aligned `What we do` with the current LinkedIn service positioning, renamed section 02 to `Founded by Jayme Baggio`, removed the duplicated founder line and corrected unequal testimonial-grid spacing so short quotes retain their attribution directly beneath them.
 - Expanded the About-page `Featured in` strip to Money Marketing, FT Adviser, Professional Adviser and Ideas Fest. The publication marks reuse the approved Press-page assets; Ideas Fest uses the official event wordmark from `ideasfest.uk`.
 - Typecheck, lint and the production build pass. Verified on the custom production domain at desktop and mobile widths: exact copy, external link and emphasis are present, the canonical remains `/about`, the page is indexable and the browser console is clean.
-- Final production content and UI commit: `80cded4`. Google Search Console's fresh live test at 16:22 on 29 August 2026 confirmed that the updated URL is available to Google and can be indexed, with one valid Event entity detected. The final URL was accepted into Google's priority crawl queue.
+- Final production content and UI commit: `aec05f3`. Google Search Console's fresh live test at 16:33 on 29 August 2026 confirmed that the updated URL is available to Google and can be indexed, with one valid Event entity detected. The final URL was accepted into Google's priority crawl queue.
 
 ## 29 August — Sports-law comparative ranks
 
