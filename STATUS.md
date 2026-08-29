@@ -7,7 +7,7 @@
 - The default table now has a dedicated blue overall-rank column. Practice-area views show the selected area's rank first in blue and the fixed overall rank second in grey, matching the Financial Advice report's hierarchy.
 - Both ranks remain stable when firm-name and entity-type filters narrow the visible rows.
 - Typecheck, lint and the production build pass. Desktop and 390px Chrome checks passed for the default table, direct firm search, practice-area ranking, combined practice-area plus firm search, horizontal table handling and firm evidence drawers.
-- Implementation commit prepared on `codex/sports-law-rank-clarity` for the production release.
+- Production code commit `4cfa5b9` is on `main` and live at the custom domain. The live Codex-browser check confirmed the default Overall rank column, Lawrence Stephens at overall rank 37 after direct search, and Boxing area rank 6 alongside overall rank 37.
 
 ## 24 August — Main-site share preview aligned to the company brand
 
