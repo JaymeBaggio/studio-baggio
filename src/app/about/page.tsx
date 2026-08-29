@@ -169,7 +169,7 @@ export default function AboutPage() {
         <section className="ab-frame">
           <div className="editorial-container ab-container">
             <div className="ab-grid">
-              <div className="ab-col-left">
+              <div className="ab-head">
                 <p className="eyebrow ab-about-label" data-ab-enter="e1">
                   {about.eyebrow}
                 </p>
@@ -177,6 +177,8 @@ export default function AboutPage() {
                   {about.title}
                   <span className="ab-dot" aria-hidden="true" />
                 </h1>
+              </div>
+              <div className="ab-col-left">
                 <p className="ab-bio-lead" data-ab-enter="e3">
                   {about.bio.lead}
                 </p>
