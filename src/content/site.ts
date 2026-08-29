@@ -756,21 +756,9 @@ export const about = {
       number: "01",
       label: "What we do",
       body: [
-        "Our mission is to build practical AI systems that help businesses make their expertise visible, their output more valuable, understand their market, capture demand, and generate real ROI.",
-        "Studio Baggio partners exclusively with companies and individuals who are the best at what they do, using AI to supercharge and expand what they're already great at. That principle shapes both who we work with and what we build."
-      ],
-      kicker: "Two routes in:",
-      routes: [
-        {
-          title: "Products in market.",
-          body:
-            "Live AI systems built alongside deep specialists in their field to capitalise on their own authority and expertise: Calm Authority, Business Tracker, Last30Days, Fire Source. Each is available standalone to the wider market and can be embedded into broader commercial implementation plans."
-        },
-        {
-          title: "Advisory and build.",
-          body:
-            "Every engagement starts with the business problem and the result the client needs. Studio Baggio handles the research, strategy, system design, build and implementation. Four ways to start: SEO & AI Search, AI Operating Systems, Growth Infrastructure & Visibility, and Bespoke Software & Systems."
-        }
+        "Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it.",
+        "This can mean improving how a team works, generating new client demand, increasing visibility across Google and AI platforms, or designing and building the websites, tools, client resources and specialist software the business needs.",
+        "What you can hire Studio Baggio for: SEO & AI Search, AI Operating Systems, Growth Infrastructure & Visibility, and Bespoke Software & Systems."
       ]
     },
     {

@@ -117,14 +117,6 @@ function getLead(section: AboutSection) {
   return "lead" in section ? section.lead : null;
 }
 
-function getKicker(section: AboutSection) {
-  return "kicker" in section && typeof section.kicker === "string" ? section.kicker : null;
-}
-
-function getRoutes(section: AboutSection) {
-  return "routes" in section ? section.routes : null;
-}
-
 function getPress(section: AboutSection) {
   return "press" in section ? section.press : null;
 }
@@ -180,8 +172,6 @@ export default function AboutPage() {
           <div className="editorial-container about-content-frame">
             {about.sections.map((section) => {
               const lead = getLead(section);
-              const kicker = getKicker(section);
-              const routes = getRoutes(section);
               const press = getPress(section);
               const ctaLabel = getCtaLabel(section);
 
@@ -206,19 +196,6 @@ export default function AboutPage() {
                         <div className="about-body">
                           {section.body.map((paragraph, index) => (
                             <p key={`${section.label}-${index}`}>{renderLinkedText(paragraph)}</p>
-                          ))}
-                        </div>
-                      ) : null}
-
-                      {kicker ? <p className="about-subsection-label">{kicker}</p> : null}
-
-                      {routes ? (
-                        <div className="about-routes">
-                          {routes.map((route) => (
-                            <div key={route.title} className="about-route">
-                              <h3>{route.title}</h3>
-                              <p>{renderLinkedText(route.body)}</p>
-                            </div>
                           ))}
                         </div>
                       ) : null}
