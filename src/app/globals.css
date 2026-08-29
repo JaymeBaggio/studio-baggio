@@ -18171,8 +18171,8 @@ body:has(.home-4b.contact-page) footer {
   min-height: 44px;
   align-items: flex-end;
   gap: 8px;
-  margin-top: auto;
-  padding-top: 20px;
+  margin-top: 28px;
+  padding-top: 0;
   color: var(--sb-blue);
   font-size: 13px;
   letter-spacing: 0.07em;
@@ -23874,8 +23874,8 @@ body:has(.home-4b.ab-page) footer { display: none; }
   align-items: center;
   column-gap: 32px;
   row-gap: 16px;
-  margin-top: auto;
-  padding-top: 20px;
+  margin-top: 28px;
+  padding-top: 0;
 }
 .home-4b.ab-page .ab-press-logo img {
   height: 16px;
