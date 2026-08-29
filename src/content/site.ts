@@ -756,9 +756,19 @@ export const about = {
       number: "01",
       label: "What we do",
       body: [
-        "Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it.",
-        "This can mean improving how a team works, generating new client demand, increasing visibility across Google and AI platforms, or designing and building the websites, tools, client resources and specialist software the business needs.",
-        "What you can hire Studio Baggio for: SEO & AI Search, AI Operating Systems, Growth Infrastructure & Visibility, and Bespoke Software & Systems."
+        "We help businesses identify where AI can create measurable value, then design, build and implement the systems needed to deliver it.",
+        "That can mean improving how a team works, turning expertise and online engagement into qualified client opportunities, increasing visibility across Google and AI platforms, or building specialist software."
+      ],
+      listLabel: "Our work covers:",
+      list: [
+        "AI operating system audits and implementation",
+        "Commercial growth and client-demand strategy",
+        "SEO and AI search opportunity audits",
+        "Bespoke software and systems builds"
+      ],
+      bodyAfter: [
+        "Every engagement starts with the business problem and the result needed, not a predetermined tool or generic AI programme. Studio Baggio handles the research, strategy, system design, build and implementation.",
+        "Businesses can start with a focused audit, appoint us to deliver the full system, or work with us as an ongoing AI partner."
       ]
     },
     {

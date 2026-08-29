@@ -7079,6 +7079,19 @@ body:has(.home-4b.contact-page) footer {
   text-transform: uppercase;
 }
 
+.home-4b.about-page .about-service-list {
+  display: grid;
+  gap: 8px;
+  list-style: disc;
+  margin: 0;
+  max-width: var(--about-reading);
+  padding-left: 1.2em;
+  color: var(--sb-body);
+  font-size: clamp(16px, 1vw, 18px);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
 .home-4b.about-page .about-lead {
   color: var(--sb-body);
   font-weight: 400;

@@ -21,10 +21,15 @@ const aboutLinks: Record<string, string> = {
   "Commercial Growth Strategy": "/services",
   "SEO & AI Search": "/services#seo-and-ai-search-opportunity-audit",
   "Bespoke Software & Systems": "/services#bespoke-ai-software-and-systems",
+  "AI operating system audits and implementation": "/services#ai-operating-system-audit",
+  "Commercial growth and client-demand strategy":
+    "/services#growth-infrastructure-and-visibility-audit",
+  "SEO and AI search opportunity audits": "/services#seo-and-ai-search-opportunity-audit",
+  "Bespoke software and systems builds": "/services#bespoke-ai-software-and-systems",
   "Ideas Fest 2026": ideasFestSpeakerUrl
 };
 const aboutRichTextPattern =
-  /(Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO & AI Search|Bespoke Software & Systems|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
+  /(AI operating system audits and implementation|Commercial growth and client-demand strategy|SEO and AI search opportunity audits|Bespoke software and systems builds|Calm Authority|Last30Days\.app|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|Commercial Growth Strategy|SEO & AI Search|Bespoke Software & Systems|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
 
 const aboutPageSchema = {
   "@context": "https://schema.org",
@@ -84,6 +89,7 @@ const aboutPageSchema = {
 };
 
 type AboutSection = (typeof about.sections)[number];
+type AboutListSection = Extract<AboutSection, { list: readonly string[] }>;
 
 function renderLinkedText(text: string) {
   return text.split(aboutRichTextPattern).map((part, index) => {
@@ -119,6 +125,10 @@ function getLead(section: AboutSection) {
 
 function getPress(section: AboutSection) {
   return "press" in section ? section.press : null;
+}
+
+function hasList(section: AboutSection): section is AboutListSection {
+  return "list" in section;
 }
 
 function getCtaLabel(section: AboutSection) {
@@ -174,6 +184,7 @@ export default function AboutPage() {
               const lead = getLead(section);
               const press = getPress(section);
               const ctaLabel = getCtaLabel(section);
+              const listSection = hasList(section) ? section : null;
 
               return (
                 <Fragment key={section.label}>
@@ -198,6 +209,22 @@ export default function AboutPage() {
                             <p key={`${section.label}-${index}`}>{renderLinkedText(paragraph)}</p>
                           ))}
                         </div>
+                      ) : null}
+
+                      {listSection ? (
+                        <>
+                          <p className="about-subsection-label">{listSection.listLabel}</p>
+                          <ul className="about-service-list">
+                            {listSection.list.map((item) => (
+                              <li key={item}>{renderLinkedText(item)}</li>
+                            ))}
+                          </ul>
+                          <div className="about-body">
+                            {listSection.bodyAfter.map((paragraph) => (
+                              <p key={paragraph}>{renderLinkedText(paragraph)}</p>
+                            ))}
+                          </div>
+                        </>
                       ) : null}
 
                       {press ? (
