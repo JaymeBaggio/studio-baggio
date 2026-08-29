@@ -1,7 +1,9 @@
 # Studio Baggio Website - STATUS
 *Last updated: 29 August 2026 (evening)*
 
-## 29 Aug (eve) — About rebuilt as the single-frame layout (3ea480e)
+## 29 Aug (eve) — About rebuilt as the single-frame layout (3ea480e → 482e11f)
+
+- **Final state (482e11f): the page measures exactly 857px at Jayme's 1512×857 window — true single frame, zero scroll.** The footer is hidden on /about via the same `body:has()` rule the contact page uses; the section carries almost no trailing padding by design. Standard 1280 editorial container; the grid stretches so the Featured-in row (pinned with margin-top:auto) and the CTA end on the same bottom line. Mobile order: title → What we do → bio (ab-head is its own grid row).
 
 - **/about is now one composed frame.** Left column: blue ABOUT eyebrow, "Studio Baggio." wordmark, the new Founder & CEO bio (three paragraphs, Jayme's copy verbatim), the Press & Founder Availability panel (white card, 2px blue borderline, layered soft shadow), the founder sign-off, and the Featured-in logo row directly beneath it (FT Adviser / Money Marketing / Professional Adviser in colour at 16px, white Ideas Fest mark in its dark chip). Right column behind a gradient-faded vertical hairline: WHAT WE DO, lede, four service rows (proper service names linking to their /services cards), the engagement paragraphs, enquire line, full-width CTA.
 - **Removed (Jayme's calls, 29 Aug):** the "Founded and led by Jayme Baggio." hero line, the Client words testimonial band (lives on /services; `about.testimonials` stays in site.ts for it), the closing "visible public proof" statement, and the old three-paragraph bio.
