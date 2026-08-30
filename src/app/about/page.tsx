@@ -196,8 +196,12 @@ export default function AboutPage() {
                 </div>
                 <div className="ab-press-line" data-ab-enter="e6">
                   <span className="ab-press-line-name">{about.signoffName}</span>
-                  <br />
-                  {about.signoffRole}
+                  {about.signoffRole ? (
+                    <>
+                      <br />
+                      {about.signoffRole}
+                    </>
+                  ) : null}
                 </div>
                 <div className="ab-press-row" data-ab-enter="e12" aria-label="Featured press">
                   <span className="eyebrow">{about.featuredInLabel}</span>
