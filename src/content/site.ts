@@ -779,6 +779,7 @@ export const about = {
     bodyAfter: [
       "Businesses can start with a focused audit, appoint us to deliver the full system, or work with us as an ongoing AI partner."
     ],
+    engageLine: "Enquire below. If you're a good fit, we'll be in touch to arrange an introductory meeting.",
     ctaLabel: "Enquire now →"
   },
   testimonials: [

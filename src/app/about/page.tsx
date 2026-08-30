@@ -263,6 +263,9 @@ export default function AboutPage() {
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
+                <p className="ab-engage-line" data-ab-enter="e11">
+                  {about.whatWeDo.engageLine}
+                </p>
                 <a className="ab-cta" href={primaryCta.href} data-ab-enter="e11">
                   {about.whatWeDo.ctaLabel}
                 </a>
