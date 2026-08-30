@@ -1,5 +1,12 @@
 # Studio Baggio Website - STATUS
-*Last updated: 29 August 2026 (evening)*
+*Last updated: 30 August 2026*
+
+## 30 Aug — About copy finalised; Enquire now CTA site-wide; Last30Days count 350 (7d44cbe)
+
+- **/about bio rewritten to Jayme's final four paragraphs** (Founder & CEO lead · Last30Days 350 users + Calm Authority · AI Search research with FT Adviser/Professional Adviser plus Money Marketing credited for commercial AI strategy · 12 years media/production, Production Lead at Channel 4). Press panel finalised as one paragraph ("Jayme speaks and is available for comment on Commercial AI strategy, SEO & AI search, AI in the workplace, building AI operating systems within businesses, AI in media & content, and the broader AI economy" + the Ideas Fest panel line); schema event description matches word for word. Sign-off is now just "AI Strategy & Implementation Specialist". The "Every engagement starts with the business problem…" paragraph is CUT (services-page copy); the routes line stays. Enquire line reads "…we'll be in touch to arrange an introductory meeting." (NOT the SEO audit — Jayme flagged it made the audit look like the only outcome).
+- **Site-wide CTA label is now "Enquire now"** via `primaryCta.label` (header button, all ButtonLink CTAs, footer link) — "Discuss your AI opportunity" survives only inside a locked insights article body. About copy is one uniform 16px size; the frame still measures exactly 857px at Jayme's 1512×857 window.
+- **Last30Days user count updated 300 → 350** in site.ts (About bio + services Bespoke example) and work.ts (product page + /last30days) — no "more than 300" remains.
+- **Indexing**: Google recrawl requested 29 Aug (priority queue fetches live state — no resubmission needed); Bing URL inspection + Request Indexing submitted 30 Aug (previous Bing crawl of /about was 6 Aug). AI Mode check 29 Aug: direct query "is Jayme Baggio speaking at Ideas Fest 2026" answered yes, citing studiobaggio.ai; the panel is not yet in the default bio answer — LinkedIn panel post scheduled Tue 1 Sept is the corroboration play.
 
 ## 29 Aug (eve) — About rebuilt as the single-frame layout (3ea480e → 482e11f)
 
