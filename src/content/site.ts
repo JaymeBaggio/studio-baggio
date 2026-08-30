@@ -760,8 +760,7 @@ export const about = {
   press: {
     title: "Press & Founder Availability",
     body: [
-      "Jayme is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
-      "She speaks and is available for comment on commercial AI strategy, SEO & AI search, building AI operating systems within businesses, and AI in media & content."
+      "Jayme speaks and is available for comment on Commercial AI strategy, SEO & AI search, AI in the workplace, building AI operating systems within businesses, AI in media & content, and the broader AI economy. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring."
     ]
   },
   signoffName: "Jayme Baggio · Founder",
