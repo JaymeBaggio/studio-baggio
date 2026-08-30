@@ -751,10 +751,11 @@ export const about = {
   eyebrow: "ABOUT",
   title: "Studio Baggio",
   bio: {
-    lead: "Jayme Baggio is Founder & CEO of Studio Baggio, an AI strategy, systems and implementation company helping businesses identify where AI can create measurable value, then building the systems and software needed to deliver it.",
+    lead: "Jayme Baggio is Founder & CEO of Studio Baggio, an AI strategy, systems and implementation company that helps businesses identify where AI can create measurable value, then builds the systems and software needed to deliver it.",
     body: [
-      "She is the creator of Last30Days, an AI research platform now used by more than 300 individual and corporate users. Jayme also built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers, alongside founding adviser Harry Sims, Chartered Financial Planner. Her AI search research has been featured in FT Adviser and Professional Adviser, covering both the UK financial advice and law sectors.",
-      "Before founding Studio Baggio, Jayme spent more than 12 years across media and production, most recently as Production Lead at Channel 4, working with some of the UK's most established brands such as BBC Studios, ITV, Google and HSBC."
+      "She is the creator of Last30Days, an AI research platform now used by more than 350 individual and corporate users. Alongside Chartered Financial Planner Harry Sims, Jayme also built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers.",
+      "Her AI Search research spans the UK financial advice and legal sectors. Findings have been featured in FT Adviser and Professional Adviser, while her work on commercial AI strategy has also appeared in Money Marketing.",
+      "Before founding Studio Baggio, Jayme spent more than 12 years in media and production, most recently as Production Lead at Channel 4, working with some of the UK's most established brands, including BBC Studios, ITV, Google and HSBC."
     ]
   },
   press: {
@@ -1130,9 +1131,9 @@ export const servicesPage = {
       },
       example: {
         paras: [
-          "Studio Baggio designed and built Last30Days, an AI research product now used by more than 300 individual and corporate users to research markets, competitors, customer questions and emerging opportunities."
+          "Studio Baggio designed and built Last30Days, an AI research product now used by more than 350 individual and corporate users to research markets, competitors, customer questions and emerging opportunities."
         ],
-        highlight: "more than 300 individual and corporate users"
+        highlight: "more than 350 individual and corporate users"
       }
     }
   ],
