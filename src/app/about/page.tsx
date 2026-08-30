@@ -85,7 +85,7 @@ const aboutPageSchema = {
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         url: ideasFestSpeakerUrl,
         description:
-          "Jayme speaks on Commercial AI strategy, SEO & AI search optimisation, and Building AI operating systems within businesses. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
+          "Jayme is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring. She speaks and is available for comment on commercial AI strategy, SEO & AI search, building AI operating systems within businesses, and AI in media & content.",
         performer: {
           "@type": "Person",
           "@id": "https://www.studiobaggio.ai/about#jayme-baggio",
