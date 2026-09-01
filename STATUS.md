@@ -1,5 +1,12 @@
 # Studio Baggio Website - STATUS
-*Last updated: 30 August 2026*
+*Last updated: 1 September 2026*
+
+## 1 September — Financial-advice “Why this matters now” evidence refreshed
+
+- Updated the section headline and commercial framing to explain how prospective clients are using AI to research, compare and choose advisory firms.
+- Replaced the three-point evidence strip with the approved four-point set: Semrush shortlist and vendor-decision influence, Capgemini consumer adoption, McKinsey AI-summary adoption and Adobe AI-referral conversion.
+- Redesigned only the evidence band as a restrained 2×2 editorial grid on desktop and a single-column stack on mobile. The longer headline has a wider measure, while secondary figures remain attached to their explanatory sentences.
+- Typecheck, lint, the Webpack production build and browser QA at 1652px, 1024px and 390px pass. The local preview was approved before release; production custom-domain verification follows the push to `main`.
 
 ## 30 Aug — About copy finalised; Enquire now CTA site-wide; Last30Days count 350 (7d44cbe)
 
