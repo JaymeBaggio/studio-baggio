@@ -1031,9 +1031,9 @@ export const servicesPage = {
       },
       example: {
         paras: [
-          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £93,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
+          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £103,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
         ],
-        highlight: "£5.3 million in assets under management and £93,400 in first-year revenue"
+        highlight: "£5.3 million in assets under management and £103,400 in first-year revenue"
       },
       exampleFirst: true,
       featuredIn: {
@@ -1098,9 +1098,9 @@ export const servicesPage = {
       ],
       example: {
         paras: [
-          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £93,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
+          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £103,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
         ],
-        highlight: "£5.3 million in assets under management and £93,400 in first-year revenue"
+        highlight: "£5.3 million in assets under management and £103,400 in first-year revenue"
       }
     },
     {
