@@ -138,28 +138,31 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
             <ul className="fa3-executive__summary-list">
               <li>
                 <span>
-                  <b>93 of 150 firms were invisible in AI search.</b> They were neither named nor
-                  cited.
+                  <b>93 of 150 top UK advice firms were invisible.</b>{" "}
+                  They were never suggested, named or cited in any of the 450 AI answers to our 50
+                  high-intent buyer questions.
                 </span>
               </li>
               <li>
                 <span>
-                  <b>74 of 76 citations gave the firm no visible credit.</b> The firm supplied
-                  expertise but was not named.
+                  <b>AI almost never credited the financial advice firms whose expertise it used.</b>{" "}
+                  Across 117 guidance answers, AI cited a studied firm&rsquo;s website 76 times but
+                  named the firm in only two of those citations.
                 </span>
               </li>
               <li>
                 <span>
-                  <b>Most firm selections depended on other sources.</b> Only {ownDomainShare}%
-                  cited the selected firm&rsquo;s own website.
+                  <b>Advice firms could not rely on their own websites to carry them into the shortlist.</b>{" "}
+                  Only {ownDomainShare}% of selections cited the chosen firm&rsquo;s website;
+                  directories, rankings and reviews usually supplied the evidence instead.
                 </span>
               </li>
               <li>
                 <span>
-                  <b>
-                    When AI was asked to choose a firm, the platforms produced no shared
-                    recommendation 60% of the time.
-                  </b>
+                  <b>There was no dependable shortlist across the three AI platforms.</b>{" "}
+                  For the
+                  same firm-selection question, ChatGPT, Gemini and Perplexity had no recommended
+                  firm in common 60% of the time.
                 </span>
               </li>
             </ul>
