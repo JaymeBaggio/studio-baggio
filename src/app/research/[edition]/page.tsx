@@ -90,7 +90,7 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
     <>
       <ResearchEditionSchema edition={edition} />
       <main className="home-4b research-page fa3-report" data-research-page>
-      <header className="fa3-masthead">
+      <header className="fa3-masthead financial-advice-report__masthead">
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
             <p className="fa3-kicker">How AI chooses UK financial advisers</p>
@@ -99,12 +99,13 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <div className="fa3-masthead__intro">
             <div className="fa3-masthead__copy">
               <p className="fa3-masthead__standfirst">
-                Across 450 answers, AI repeatedly relied on a small group of directories, public
-                bodies and commercial pages to explain financial decisions and build adviser
-                shortlists.
+                AI is already shaping which advisers enter a prospective client&rsquo;s shortlist.
+                Studio Baggio tested how ChatGPT, Gemini and Perplexity choose UK financial
+                advisers across 50 high-intent prospective-client questions.
               </p>
               <p>
-                Adviser websites often supplied the evidence without the firm ever being named.
+                These covered investing £500,000+, inheritance tax, retirement income and planning
+                before and after a business sale.
               </p>
             </div>
             <div className="fa3-masthead__meta" aria-label="Study summary">
