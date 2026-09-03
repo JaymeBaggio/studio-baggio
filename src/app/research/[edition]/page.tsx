@@ -119,7 +119,10 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         </div>
       </header>
 
-      <section className="fa3-section fa3-executive" aria-labelledby="fa3-executive-title">
+      <section
+        className="fa3-section fa3-executive financial-advice-report__lead-finding"
+        aria-labelledby="fa3-executive-title"
+      >
         <div className="editorial-container fa3-executive__grid">
           <div className="fa3-executive__statement">
             <p className="fa3-kicker">Four headline findings</p>
@@ -134,20 +137,30 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           <div className="fa3-executive__evidence">
             <ul className="fa3-executive__summary-list">
               <li>
-                <strong>62%</strong>
-                <span><b>93 of 150 firms were invisible.</b> They were neither named nor cited.</span>
+                <span>
+                  <b>93 of 150 firms were invisible in AI search.</b> They were neither named nor
+                  cited.
+                </span>
               </li>
               <li>
-                <strong>97%</strong>
-                <span><b>74 of 76 citations gave no visible credit.</b> The firm supplied expertise but was not named.</span>
+                <span>
+                  <b>74 of 76 citations gave the firm no visible credit.</b> The firm supplied
+                  expertise but was not named.
+                </span>
               </li>
               <li>
-                <strong>70%</strong>
-                <span><b>Most selections depended on other sources.</b> Only {ownDomainShare}% cited the selected firm&rsquo;s own website.</span>
+                <span>
+                  <b>Most firm selections depended on other sources.</b> Only {ownDomainShare}%
+                  cited the selected firm&rsquo;s own website.
+                </span>
               </li>
               <li>
-                <strong>60%</strong>
-                <span><b>When AI was asked to choose a firm, the platforms produced no shared recommendation 60% of the time.</b></span>
+                <span>
+                  <b>
+                    When AI was asked to choose a firm, the platforms produced no shared
+                    recommendation 60% of the time.
+                  </b>
+                </span>
               </li>
             </ul>
           </div>
