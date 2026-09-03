@@ -102,3 +102,13 @@ updates `.next/types` during build.
 - No purple gradients, blobs, generic SaaS bento layout, fake proof or stock imagery.
 - GSAP owns scroll storytelling. Framer Motion owns component-level interactions.
 - Respect reduced motion and keep mobile readable.
+
+## Research Report Rules
+
+- Design every headline finding for a cold reader. Each finding must work as a self-contained statement without requiring the surrounding report for context.
+- Keep the figure inside the finding it supports. Do not detach percentages or counts into a narrow or floating number column.
+- Use the established law-study pattern for headline findings: full-width ruled rows, consistent alignment and no decorative stat labels.
+- Lead each row with a plain-English conclusion, then add the minimum evidence needed to interpret it. Include the relevant population, denominator or research surface where it materially changes the meaning.
+- State the practical implication: make the “so what” explicit. If a figure does not support a meaningful conclusion, remove it rather than presenting it as an isolated fact.
+- Reuse the established report masthead grid and hierarchy unless Jayme explicitly approves a different pattern.
+- Verify the complete rendered report on desktop and mobile, including intended line breaks, readable stacking and horizontal overflow, before calling it complete.
