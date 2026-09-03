@@ -18455,6 +18455,8 @@ body:has(.home-4b.contact-page) footer {
 
 .financial-advice-report__masthead .fa3-masthead__copy > p + p {
   margin-top: 20px;
+  color: var(--sb-accent-blue);
+  font-weight: 600;
 }
 
 .financial-advice-report__masthead .fa3-method-trigger {
