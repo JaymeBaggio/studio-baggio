@@ -37,7 +37,9 @@ export function TrackerBeacon() {
     });
     const url = `${TRACKER_URL.replace(/\/$/, "")}/api/marketing/analytics/track`;
     try {
-      const blob = new Blob([body], { type: "application/json" });
+      // text/plain keeps sendBeacon a "simple" request: a JSON content type would need a
+      // CORS preflight, which sendBeacon cannot perform, so the browser drops it silently.
+      const blob = new Blob([body], { type: "text/plain" });
       if (!navigator.sendBeacon || !navigator.sendBeacon(url, blob)) {
         void fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body, keepalive: true }).catch(() => {});
       }
