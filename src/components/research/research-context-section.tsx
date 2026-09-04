@@ -5,7 +5,10 @@ type ResearchContextSectionProps = {
 
 export function ResearchContextSection({ heading, titleId }: ResearchContextSectionProps) {
   return (
-    <section className="fa3-section fa3-context fa3-context--compact" aria-labelledby={titleId}>
+    <section
+      className="fa3-section fa3-context fa3-context--compact research-context-section"
+      aria-labelledby={titleId}
+    >
       <div className="editorial-container">
         <header className="fa3-section-heading">
           <div>

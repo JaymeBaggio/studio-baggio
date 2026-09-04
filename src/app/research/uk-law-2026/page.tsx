@@ -282,7 +282,7 @@ export default function UkLawReportPage() {
 
       <ResearchContextSection
         titleId="law-context-title"
-        heading="AI is becoming part of how prospective clients choose law firms"
+        heading="AI is becoming part of how prospective clients choose which firm to instruct"
       />
 
       <div className="editorial-container law-report__bench-head">

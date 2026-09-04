@@ -22757,6 +22757,20 @@ body:has(.home-4b.contact-page) footer {
   line-height: 1.04 !important;
 }
 
+@media (min-width: 901px) {
+  .law-report.law-report .research-context-section .fa3-section-heading {
+    grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr) !important;
+    align-items: end !important;
+  }
+
+  .law-report.law-report .research-context-section .fa3-section-heading h2 {
+    max-width: 22ch !important;
+    font-size: clamp(40px, 3.15vw, 50px) !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1.02 !important;
+  }
+}
+
 .sports-law-report.sports-law-report :is(
   .fa3-masthead__copy > p:not(.fa3-masthead__standfirst),
   .fa3-executive__statement > .fa3-executive__thesis,

@@ -298,7 +298,7 @@ export default function UkSportsLawReportPage() {
 
       <ResearchContextSection
         titleId="sports-why-title"
-        heading="AI is becoming part of how prospective clients choose who to instruct"
+        heading="AI is becoming part of how prospective clients choose which firm to instruct"
       />
 
       <section className="fa3-section sports-law-report__leaders-section" aria-labelledby="sports-leaders-title">
