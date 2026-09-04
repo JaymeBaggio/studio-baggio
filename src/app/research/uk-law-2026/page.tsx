@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ResearchContextSection } from "@/components/research/research-context-section";
 import {
   LawMethodDrawer,
   LawQuestionExplorer,
@@ -278,6 +279,11 @@ export default function UkLawReportPage() {
           </div>
         </div>
       </section>
+
+      <ResearchContextSection
+        titleId="law-context-title"
+        heading="AI is becoming part of how prospective clients choose law firms"
+      />
 
       <div className="editorial-container law-report__bench-head">
         <p className="fa3-kicker">Search the benchmark</p>

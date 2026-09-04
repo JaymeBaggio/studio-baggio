@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ResearchAuditCta } from "@/components/research";
+import { ResearchContextSection } from "@/components/research/research-context-section";
 import {
   SportsEntityExplorer,
   SportsLawMethodDrawer,
@@ -295,32 +296,10 @@ export default function UkSportsLawReportPage() {
         </div>
       </section>
 
-      <section className="fa3-section sports-client-impact" aria-labelledby="sports-why-title">
-        <div className="editorial-container sports-client-impact__grid">
-          <header className="sports-client-impact__intro">
-            <p className="fa3-kicker">Client impact</p>
-            <h2 id="sports-why-title">AI is becoming part of how clients choose.</h2>
-            <p>Buyers increasingly use AI to research options, compare firms and decide who to contact. The route to the shortlist is becoming commercially important.</p>
-          </header>
-          <div className="sports-client-impact__stats">
-            <article>
-              <strong>75%</strong>
-              <p>of Google searches are expected to include AI summaries by 2028.</p>
-              <cite>McKinsey, 2025</cite>
-            </article>
-            <article>
-              <strong>58%</strong>
-              <p>have replaced traditional search engines with generative AI tools for product and service recommendations.</p>
-              <cite>Capgemini, 2025</cite>
-            </article>
-            <article>
-              <strong>42%</strong>
-              <p>AI-referred traffic converts better than non-AI traffic.</p>
-              <cite>Adobe Analytics, 2026</cite>
-            </article>
-          </div>
-        </div>
-      </section>
+      <ResearchContextSection
+        titleId="sports-why-title"
+        heading="AI is becoming part of how prospective clients choose sports-law firms"
+      />
 
       <section className="fa3-section sports-law-report__leaders-section" aria-labelledby="sports-leaders-title">
         <div className="editorial-container sports-law-report__leaders-layout">
