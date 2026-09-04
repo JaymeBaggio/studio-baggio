@@ -97,6 +97,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Studio Baggio Business Tracker: the enquiry becomes a lead signal.
+    // Fire-and-forget; a tracker failure never affects the enquiry itself.
+    const trackerUrl = process.env.NEXT_PUBLIC_TRACKER_URL;
+    const trackerKey = process.env.TRACKER_INGEST_KEY;
+    if (trackerUrl && trackerKey) {
+      void fetch(`${trackerUrl.replace(/\/$/, "")}/api/leads/ingest`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          source_key: trackerKey,
+          email,
+          name,
+          firm_name: business,
+          website: website || undefined,
+          biggest_challenge: biggestChallenge || undefined,
+          already_tried: alreadyTried || undefined,
+          why_now: whyNow || undefined,
+          successful_outcome: successfulOutcome || undefined
+        })
+      }).catch((err) => console.error("Business Tracker ingest failed", err));
+    }
+
     const confirmationEmail = buildEnquiryConfirmationEmail(name);
     const confirmation = await resend.emails.send({
       from,

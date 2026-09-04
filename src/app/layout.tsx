@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { TrackerBeacon } from "@/components/tracker-beacon";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
@@ -110,6 +111,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         </div>
         <FrontDoorOffer />
         <Analytics />
+        <TrackerBeacon />
         <Toaster />
         <Script
           src="https://news.google.com/swg/js/v1/publisher.js"
