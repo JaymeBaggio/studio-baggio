@@ -1,6 +1,14 @@
 # Studio Baggio Website - STATUS
 *Last updated: 20 September 2026*
 
+## 20 Sept — Insights list UX (branch fix/insights-list-ux, 8d85040, NOT yet on main)
+
+- Jayme rejected the list rows on the live /insights page: arrow icon button ("just remove it"), no hover depth ("flat as a pancake"), expanded preview 28px right of the title column.
+- Fix in `insights-article-accordion.tsx` + `globals.css`: title/summary is the article link and the whole row head is clickable (except the chevron, which alone toggles the preview); arrow button gone; hover lifts the row 4px with a layered shadow, title goes blue, number/category darken, chevron border darkens (`@media (hover: hover)` only); preview panel shares the row grid (48/180/1fr/260, 20px gap) so copy sits on the title column and meta aligns to the chevron edge; Read article goes blue + underline on hover.
+- She rejected a title slide-in on hover mid-session ("i dont like how the title moves in") — removed; lift and colour stay. Rule for this site: hover depth comes from the row, never from text moving.
+- Verified locally at 1512×801 and 375×812: title x equals preview x (384px), meta right equals chevron right (1396px), number click and title click both open the article.
+- Worktree: `Studio Baggio/Website-insight-90-days` (branch switched from feat/insight-90-days, which is fully on main). Awaiting Jayme's OK to push to main.
+
 ## 20 Sept — Insight LIVE: How to build an AI-literate business in 90 days
 
 - New insight `/insights/how-to-build-an-ai-literate-business-in-90-days`, featured on `/insights` (newest entry in `src/content/insights.ts`). Body is a dedicated client component, `src/components/ai-literate-business-article.tsx`, reading `src/content/ai-literate-business-90-days.json`, exported verbatim from the approved Ideas Fest document (`Press/Ideas Fest 2026/linkedin-doc/build.py`). Nineteen answers in three phases with the phase callouts, four diagrams built as page components (adoption versus application, beyond the early adopters, the AI operating system map with the real Claude/OpenAI/Firecrawl/Perplexity/Higgsfield/apps marks, Word document versus shared capability), the 90-day map and the closing thought. PDF at `/downloads/how-to-build-an-ai-literate-business-in-90-days.pdf`.
