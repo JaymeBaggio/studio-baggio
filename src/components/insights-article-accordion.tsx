@@ -83,11 +83,25 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
     window.requestAnimationFrame(() => ScrollTrigger.refresh());
   };
 
-  const openArticleFromRow = (event: MouseEvent<HTMLDivElement>, href: string) => {
+  const handleRowClick = (event: MouseEvent<HTMLDivElement>, slug: string, href: string) => {
     const target = event.target as HTMLElement;
-    if (target.closest("a, button")) return;
+    if (target.closest(".insights-row-actions")) return;
     if (window.getSelection()?.toString()) return;
+
+    if (target.closest("a")) return;
+
+    if (activeSlug !== slug) {
+      setActiveSlug(slug);
+      return;
+    }
+
     router.push(href);
+  };
+
+  const handleTitleClick = (event: MouseEvent<HTMLAnchorElement>, slug: string) => {
+    if (activeSlug === slug) return;
+    event.preventDefault();
+    setActiveSlug(slug);
   };
 
   return (
@@ -144,11 +158,15 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
               >
                 <div
                   className="insights-accordion-row-head"
-                  onClick={(event) => openArticleFromRow(event, articlePath)}
+                  onClick={(event) => handleRowClick(event, article.slug, articlePath)}
                 >
                   <span className="insights-row-number">{String(index + 1).padStart(2, "0")}</span>
                   <span className="insights-row-category">{article.category}</span>
-                  <Link href={articlePath} className="insights-row-link">
+                  <Link
+                    href={articlePath}
+                    className="insights-row-link"
+                    onClick={(event) => handleTitleClick(event, article.slug)}
+                  >
                     <span className="insights-row-title">{article.title}</span>
                     <span className="insights-row-summary">{renderInlineMarkdown(article.summary)}</span>
                   </Link>

@@ -1,12 +1,13 @@
 # Studio Baggio Website - STATUS
 *Last updated: 20 September 2026*
 
-## 20 Sept — Insights list UX (branch fix/insights-list-ux, 8d85040, NOT yet on main)
+## 20 Sept — Insights list UX (branch fix/insights-list-ux, NOT yet on main)
 
-- Jayme rejected the list rows on the live /insights page: arrow icon button ("just remove it"), no hover depth ("flat as a pancake"), expanded preview 28px right of the title column.
-- Fix in `insights-article-accordion.tsx` + `globals.css`: title/summary is the article link and the whole row head is clickable (except the chevron, which alone toggles the preview); arrow button gone; hover lifts the row 4px with a layered shadow, title goes blue, number/category darken, chevron border darkens (`@media (hover: hover)` only); preview panel shares the row grid (48/180/1fr/260, 20px gap) so copy sits on the title column and meta aligns to the chevron edge; Read article goes blue + underline on hover.
-- She rejected a title slide-in on hover mid-session ("i dont like how the title moves in") — removed; lift and colour stay. Rule for this site: hover depth comes from the row, never from text moving.
-- Verified locally at 1512×801 and 375×812: title x equals preview x (384px), meta right equals chevron right (1396px), number click and title click both open the article.
+- Jayme rejected the list rows on the live /insights page: arrow icon button ("just remove it"), no hover depth ("flat as a pancake"), expanded preview 28px right of the title column, boxed chevron she had to travel right to reach, and an empty strip above the footer.
+- **Interaction model (hers):** first click anywhere on the row expands the preview; second click on the same row opens the article. The chevron is a bare arrow (no box, 44×32, ink → blue on hover, rotates when open) and is the only way to collapse. The title stays a real `<a>` for crawlers; its own onClick prevents navigation while the row is closed.
+- **Fix** in `insights-article-accordion.tsx` + `globals.css`: arrow button gone; hover lifts the row 4px with a layered shadow, title goes blue, number/category darken (`@media (hover: hover)` only); preview panel shares the row grid (48/180/1fr/260, 20px gap) so copy sits on the title column and meta aligns to the chevron edge; Read article goes blue + underline on hover; list bottom margin (up to 144px) removed so the last row meets the footer.
+- She rejected a title slide-in on hover mid-session ("i dont like how the title moves in") — removed. Rule for this site: hover depth comes from the row, never from text moving.
+- Verified locally at 1512×801 and 375×812: title x equals preview x (384px), meta right equals chevron right (1396px), first click opens, second click navigates, chevron border 0, gap to footer 0.
 - Worktree: `Studio Baggio/Website-insight-90-days` (branch switched from feat/insight-90-days, which is fully on main). Awaiting Jayme's OK to push to main.
 
 ## 20 Sept — Insight LIVE: How to build an AI-literate business in 90 days
