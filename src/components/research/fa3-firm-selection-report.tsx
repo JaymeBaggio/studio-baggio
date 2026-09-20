@@ -12,6 +12,7 @@ import type {
 } from "@/lib/fa3-report-data";
 import { LawSelect } from "./law-select";
 import { ResearchDrawer } from "./ResearchDrawer.client";
+import { PrivateDatasetBox } from "./private-dataset-cta";
 
 const familyOrder = ["core", "wealth", "pensions", "life_events", "local"] as const;
 
@@ -446,7 +447,7 @@ export function Fa3BreadthExplorer({
             <p className="fa3-kicker">Selection breadth</p>
             <h2 id="fa3-breadth-title">Only four firms appeared across all four buyer needs</h2>
           </div>
-          <p>Search for a firm, filter by advice area or a specific buyer need.</p>
+          <PrivateDatasetBox />
         </header>
 
         <div className="fa3-breadth-controls">
@@ -500,6 +501,7 @@ export function Fa3BreadthExplorer({
           />
         </div>
 
+        <div className="fa3-result-row">
         <p className="fa3-result-count" aria-live="polite">
           {!search && family === "all"
             ? `Showing ${visible.length} of ${entities.length} firms and advisers found in national answers.`
@@ -507,6 +509,8 @@ export function Fa3BreadthExplorer({
               ? `Showing ${visible.length} ${visible.length === 1 ? "firm or adviser" : "firms and advisers"}, ranked by appearances across ${selectedAnswerCount} AI answers${selectedQuestion ? ` to “${questionLabels[selectedQuestion.query_id] ?? selectedQuestion.query_text}”` : ` to ${selectedQuestions.length} ${familyLabels[family].toLocaleLowerCase("en-GB")} questions`}.`
               : `Showing ${visible.length} ${visible.length === 1 ? "firm or adviser" : "firms and advisers"}.`}
         </p>
+        <p className="fa3-result-hint">Search for a firm, filter by advice area or a specific buyer need.</p>
+        </div>
 
         <div className="fa3-breadth-table-wrap" role="region" aria-label="Firm visibility across advice areas" tabIndex={0}>
           <table className="fa3-breadth-table">

@@ -8,6 +8,7 @@ import {
   Fa3QuestionExplorer
 } from "@/components/research/fa3-firm-selection-report";
 import { ResearchAuditCta } from "@/components/research";
+import { PrivateDatasetCard } from "@/components/research/private-dataset-cta";
 import { ResearchEditionSchema } from "@/components/research/ResearchEditionSchema";
 import {
   getResearchEditionDefinition,
@@ -118,6 +119,8 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
           </div>
         </div>
       </header>
+
+      <PrivateDatasetCard />
 
       <section
         className="fa3-section fa3-executive financial-advice-report__lead-finding"
