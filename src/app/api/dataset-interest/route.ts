@@ -107,7 +107,10 @@ export async function POST(request: NextRequest) {
     }
 
     // The enquirer gets the same confirmation the contact form sends.
-    const confirmationEmail = buildEnquiryConfirmationEmail("");
+    const confirmationEmail = buildEnquiryConfirmationEmail("", {
+      first: "We have received your interest in the HNW and UHNW dataset.",
+      second: "We will be in touch to arrange next steps."
+    });
     const confirmation = await resend.emails.send({
       from,
       to: email,

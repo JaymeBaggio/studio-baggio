@@ -3,7 +3,13 @@ import type { ContactFormValues } from "@/lib/contact-schema";
 const siteUrl = "https://www.studiobaggio.ai/";
 const studioEmail = "jayme@studiobaggio.ai";
 
-export function buildEnquiryConfirmationEmail(name: ContactFormValues["name"]) {
+export function buildEnquiryConfirmationEmail(
+  name: ContactFormValues["name"],
+  lines: { first: string; second: string } = {
+    first: "We have received your details and will review the opportunity you shared.",
+    second: "We will be in touch to arrange next steps."
+  }
+) {
   const firstName = name.trim().split(/\s+/)[0] || "there";
 
   const text = [
@@ -11,8 +17,8 @@ export function buildEnquiryConfirmationEmail(name: ContactFormValues["name"]) {
     "",
     "Thank you for your enquiry.",
     "",
-    "We have received your details and will review the opportunity you shared.",
-    "We will be in touch to arrange next steps.",
+    lines.first,
+    lines.second,
     "",
     "While we review it, you can find out more about Studio Baggio and the systems we build:",
     siteUrl,
@@ -43,9 +49,9 @@ export function buildEnquiryConfirmationEmail(name: ContactFormValues["name"]) {
 
                 <h1 style="font-family:Aileron, Arial, Helvetica, sans-serif; font-size:34px; line-height:1.18; font-weight:400; margin:0 0 24px 0; letter-spacing:0; color:#111111;">Thank you for your enquiry.</h1>
 
-                <p style="font-family:Aileron, Arial, Helvetica, sans-serif; font-size:17px; line-height:1.55; font-weight:400; color:#4a4a4a; margin:0 0 20px 0; max-width:500px;">We have received your details and will review the opportunity you shared.</p>
+                <p style="font-family:Aileron, Arial, Helvetica, sans-serif; font-size:17px; line-height:1.55; font-weight:400; color:#4a4a4a; margin:0 0 20px 0; max-width:500px;">${lines.first}</p>
 
-                <p style="font-family:Aileron, Arial, Helvetica, sans-serif; font-size:17px; line-height:1.55; font-weight:400; color:#4a4a4a; margin:0 0 34px 0; max-width:500px;">We will be in touch to arrange next steps.</p>
+                <p style="font-family:Aileron, Arial, Helvetica, sans-serif; font-size:17px; line-height:1.55; font-weight:400; color:#4a4a4a; margin:0 0 34px 0; max-width:500px;">${lines.second}</p>
 
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f7f9ff; border-left:3px solid #2f66f6; margin:0 0 36px 0;">
                   <tr>
