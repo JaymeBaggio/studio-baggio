@@ -24463,3 +24463,21 @@ body:has(.home-4b.ab-page) footer { display: none; }
   .home-4b.insight-article-page .insight-article-body .ail .ail-map-col { border-right: 0; border-bottom: 1px solid var(--ail-rule); }
   .home-4b.insight-article-page .insight-article-body .ail .ail-map-col:last-child { border-bottom: 0; }
 }
+
+.home-4b.insight-article-page.is-ninety-days .insight-article-meta-bar .insight-article-pdf-link {
+  margin-left: auto;
+  color: var(--sb-ink);
+  font-size: var(--insight-article-label-size);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+.home-4b.insight-article-page.is-ninety-days .insight-article-meta-bar .insight-article-pdf-link span { color: var(--sb-accent-blue); }
+.home-4b.insight-article-page.is-ninety-days .insight-article-meta-bar .insight-article-pdf-link:hover { color: var(--sb-accent-blue); }
+.home-4b.insight-article-page.is-ninety-days .insight-article-meta-bar button.insight-article-share { margin-left: 28px; }
+@media (max-width: 760px) {
+  .home-4b.insight-article-page.is-ninety-days .insight-article-meta-bar .insight-article-pdf-link { margin-left: 0; flex-basis: 100%; }
+  .home-4b.insight-article-page.is-ninety-days .insight-article-meta-bar button.insight-article-share { margin-left: auto; }
+}
