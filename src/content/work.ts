@@ -376,10 +376,7 @@ export const workItems: WorkItem[] = [
       "Studio Baggio can build commercial intelligence products that preserve source discipline while accelerating decisions.",
     href: "/work",
     external: "https://fire-source.vercel.app",
-    homepageLinks: [
-      { label: "Find out more →", href: "/work" },
-      { label: "Visit live site →", href: "https://fire-source.vercel.app" },
-    ],
+    homepageLinks: [{ label: "Find out more →", href: "/work" }],
     homepageImage: "/assets/products/fire-source-og-use-this.png",
     image: "/assets/products/fire-source.png",
     productPage: {
@@ -417,7 +414,7 @@ export const workItems: WorkItem[] = [
           ]
         }
       ],
-      ctas: [{ label: "Visit live site →", href: "https://fire-source.vercel.app", external: true }]
+      ctas: []
     }
   }
 ];
