@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import type { MouseEvent, ReactNode } from "react";
-import { useMemo, useState } from "react";
+import type { KeyboardEvent, MouseEvent, ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Search } from "lucide-react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,8 +12,9 @@ import { getInsightPath } from "@/content/insights";
 
 type InsightPreview = Pick<
   InsightArticle,
-  "slug" | "title" | "category" | "categorySlug" | "summary" | "preview" | "readTime" | "tags"
+  "slug" | "title" | "category" | "categorySlug" | "summary" | "preview" | "readTime" | "date" | "tags"
 > & {
+  dateLabel: string;
   searchText: string;
 };
 
@@ -65,8 +66,63 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
   const [activeCategory, setActiveCategory] = useState("all");
   const [query, setQuery] = useState("");
   const [activeSlug, setActiveSlug] = useState("");
+  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
+  const categoryMenuRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const router = useRouter();
+
+  const activeCategoryLabel =
+    activeCategory === "all"
+      ? "All articles"
+      : categories.find((category) => category.slug === activeCategory)?.label ?? "All articles";
+
+  useEffect(() => {
+    if (!isCategoryMenuOpen) return;
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!categoryMenuRef.current?.contains(event.target as Node)) setIsCategoryMenuOpen(false);
+    };
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
+  }, [isCategoryMenuOpen]);
+
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    articles.forEach((article) => {
+      counts.set(article.categorySlug, (counts.get(article.categorySlug) ?? 0) + 1);
+    });
+    return counts;
+  }, [articles]);
+
+  const visibleCategories = useMemo(
+    () => categories.filter((category) => (categoryCounts.get(category.slug) ?? 0) > 0),
+    [categories, categoryCounts]
+  );
+
+  const chooseCategory = (slug: string) => {
+    setActiveCategory(slug);
+    setIsCategoryMenuOpen(false);
+  };
+
+  const handleCategoryMenuKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      setIsCategoryMenuOpen(false);
+      return;
+    }
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+
+    event.preventDefault();
+    const options = Array.from(
+      categoryMenuRef.current?.querySelectorAll<HTMLButtonElement>("[role='option']") ?? []
+    );
+    if (!options.length) return;
+    const currentIndex = options.findIndex((option) => option === document.activeElement);
+    const nextIndex =
+      event.key === "ArrowDown"
+        ? (currentIndex + 1) % options.length
+        : (currentIndex - 1 + options.length) % options.length;
+    options[nextIndex]?.focus();
+  };
 
   const filteredArticles = useMemo(() => {
     const normalisedQuery = query.trim().toLowerCase();
@@ -115,7 +171,7 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
           >
             All
           </button>
-          {categories.map((category) => (
+          {visibleCategories.map((category) => (
             <button
               key={category.slug}
               type="button"
@@ -125,6 +181,61 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
               {category.label}
             </button>
           ))}
+        </div>
+        <div
+          className={`insights-category-select ${isCategoryMenuOpen ? "is-open" : ""}`}
+          ref={categoryMenuRef}
+          onKeyDown={handleCategoryMenuKeyDown}
+        >
+          <button
+            type="button"
+            className="insights-category-trigger"
+            aria-haspopup="listbox"
+            aria-expanded={isCategoryMenuOpen}
+            aria-controls="insights-category-menu"
+            onClick={() => setIsCategoryMenuOpen((open) => !open)}
+          >
+            <span>{activeCategoryLabel}</span>
+            <ChevronDown aria-hidden="true" />
+          </button>
+          <AnimatePresence>
+            {isCategoryMenuOpen ? (
+              <motion.div
+                id="insights-category-menu"
+                role="listbox"
+                aria-label="Filter insights by category"
+                className="insights-category-menu"
+                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -4, scale: 0.985 }}
+                transition={{ duration: shouldReduceMotion ? 0 : 0.16, ease: accordionEase }}
+              >
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={activeCategory === "all"}
+                  className={activeCategory === "all" ? "is-active" : undefined}
+                  onClick={() => chooseCategory("all")}
+                >
+                  <span>All articles</span>
+                  <span className="insights-category-count">{articles.length}</span>
+                </button>
+                {visibleCategories.map((category) => (
+                  <button
+                    key={category.slug}
+                    type="button"
+                    role="option"
+                    aria-selected={activeCategory === category.slug}
+                    className={activeCategory === category.slug ? "is-active" : undefined}
+                    onClick={() => chooseCategory(category.slug)}
+                  >
+                    <span>{category.label}</span>
+                    <span className="insights-category-count">{categoryCounts.get(category.slug) ?? 0}</span>
+                  </button>
+                ))}
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
         </div>
         <label className="insights-search">
           <Search aria-hidden="true" />
@@ -140,12 +251,11 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
 
       <div className="insights-list-heading" data-reveal>
         <h2 id="latest-insights-title">Articles</h2>
-        <p>Newest first.</p>
       </div>
 
       <div className="insights-accordion-list">
         {filteredArticles.length ? (
-          filteredArticles.map((article, index) => {
+          filteredArticles.map((article) => {
             const isOpen = activeSlug === article.slug;
             const panelId = `insight-preview-${article.slug}`;
             const articlePath = getInsightPath(article);
@@ -160,8 +270,10 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
                   className="insights-accordion-row-head"
                   onClick={(event) => handleRowClick(event, article.slug, articlePath)}
                 >
-                  <span className="insights-row-number">{String(index + 1).padStart(2, "0")}</span>
-                  <span className="insights-row-category">{article.category}</span>
+                  <span className="insights-row-meta">
+                    <span className="insights-row-date">{article.dateLabel}</span>
+                    <span className="insights-row-category">{article.category}</span>
+                  </span>
                   <Link
                     href={articlePath}
                     className="insights-row-link"

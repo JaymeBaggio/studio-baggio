@@ -11,32 +11,18 @@ const HOST = "www.studiobaggio.ai";
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 
-const urlList = [
-  "https://www.studiobaggio.ai/",
-  "https://www.studiobaggio.ai/work",
-  "https://www.studiobaggio.ai/insights",
-  "https://www.studiobaggio.ai/about",
-  "https://www.studiobaggio.ai/contact",
-  "https://www.studiobaggio.ai/privacy",
-  "https://www.studiobaggio.ai/insights/firecrawl-for-business",
-  "https://www.studiobaggio.ai/insights/ai-adoption-value-gap",
-  "https://www.studiobaggio.ai/insights/what-is-an-ai-skill",
-  "https://www.studiobaggio.ai/insights/owned-vs-rented-audience",
-  "https://www.studiobaggio.ai/insights/chatgpt-for-business-owners",
-  "https://www.studiobaggio.ai/insights/ai-future-of-work",
-  "https://www.studiobaggio.ai/insights/geo-generative-engine-optimisation",
-  "https://www.studiobaggio.ai/insights/building-ai-operating-systems",
-  "https://www.studiobaggio.ai/insights/ai-creative-summit-2025",
-  "https://www.studiobaggio.ai/insights/ai-disruption-in-media-and-advertising",
-  "https://www.studiobaggio.ai/insights/ai-predictions-2026",
-  "https://www.studiobaggio.ai/insights/best-ai-tools-2025",
-  "https://www.studiobaggio.ai/research",
-  "https://www.studiobaggio.ai/research/uk-financial-advice-2026",
-  "https://www.studiobaggio.ai/research/uk-law-2026",
-  "https://www.studiobaggio.ai/research/uk-sports-law-2026"
-];
+const SITEMAP = `https://${HOST}/sitemap.xml`;
+
+// Every URL in the live sitemap, so new insights and reports are never left out.
+async function loadUrlList() {
+  const response = await fetch(SITEMAP);
+  if (!response.ok) throw new Error(`Sitemap fetch failed: ${response.status}`);
+  const xml = await response.text();
+  return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim());
+}
 
 async function main() {
+  const urlList = await loadUrlList();
   const body = {
     host: HOST,
     key: KEY,

@@ -1,7 +1,13 @@
 # Studio Baggio Website - STATUS
 *Last updated: 20 September 2026*
 
-## 20 Sept — Insights list UX (branch fix/insights-list-ux, NOT yet on main)
+## 20 Sept — Insights list rebuilt (branch fix/insights-list-ux, NOT yet on main)
+
+- **Round two, after "it's fine but it still doesn't look great":** Featured section removed entirely (her call: "looks a bit shit right now"). Row numbers gone (said nothing). Each row now carries the month and year (Sept 2026 style) in ink above the category label; titles up to 26px with balanced wrapping; summaries clamped to two lines so the rhythm is even; row grid 200 / 1fr / 44 with 32px gaps and 30px vertical padding. "Newest first." dropped, dates make it obvious. Below 1024px the category buttons become a closed dropdown: in-page, not native (she rejected the OS grey popup: "NOT this fuck off horrible grey thing", then "make an effort like a proper dropdown styled nicely"). Trigger in the filter-button style; panel is paper with hairline, deep soft shadow, sentence-case options at 15px with article counts right-aligned, blue dot on the active option, hairlines between rows, Escape / arrows / click-outside handled, 160ms ease-out entrance from the trigger. Empty categories (AI Products, 0 articles) hidden from buttons and dropdown.
+- **Date caveat:** 12 of 18 articles carry `date: 2026-05-29/30`, the site-migration date, not the original publication date (e.g. "Tools of the Year 2025" shows May 2026). Real dates need to come from the Rough Cut / Substack originals before the list can be trusted as a timeline.
+- **Indexing:** the 90-day article was already live (200) and in the live sitemap. `scripts/indexnow-submit.mjs` now reads the live sitemap instead of a hardcoded list (it was missing six insights); ran it, IndexNow accepted 32 URLs (HTTP 200). Google: Search Console URL Inspection → Request indexing for the article is Jayme's to click (her Google account).
+- Impeccable: detector clean on both files. PRODUCT.md is the benchmark report's, predates the current schema (`init` offered, not run).
+
 
 - Jayme rejected the list rows on the live /insights page: arrow icon button ("just remove it"), no hover depth ("flat as a pancake"), expanded preview 28px right of the title column, boxed chevron she had to travel right to reach, and an empty strip above the footer.
 - **Interaction model (hers):** first click anywhere on the row expands the preview; second click on the same row opens the article. The chevron is a bare arrow (no box, 44×32, ink → blue on hover, rotates when open) and is the only way to collapse. The title stays a real `<a>` for crawlers; its own onClick prevents navigation while the row is closed.
