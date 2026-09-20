@@ -1,5 +1,14 @@
 # Studio Baggio Website - STATUS
-*Last updated: 1 September 2026*
+*Last updated: 20 September 2026*
+
+## 20 Sept — Private dataset card and results box on the financial-advice report (live, 868e463)
+
+- **Follower card** on `/research/uk-financial-advice-2026` (desktop, `lg+`), bottom right, replaces the audit pill on this page (`front-door-offer.tsx` returns null there). Kicker, "How HNW & UHNW clients choose advisers in AI search", two sourced stats (HSBC Global Affluent Report 2026: 82% of HNW investors use AI for finance and investment; Ficomm Partners 2026: 1 in 2 investors with $5m+ found their adviser without a referral), three accordion rows that open one at a time, the private line, and Enquire now, which turns into a work-email field with an arrow. ✕ collapses to a pill; pill ✕ hides for the tab session. While the results box is on screen the card shows as the pill. Phones and narrow windows get the same card static under the masthead.
+- **Results box**: same body, in the Selection breadth header's right column (column widened to ~1.05fr, top-aligned). "Search for a firm…" moved to the results-count row.
+- **Route** `POST /api/dataset-interest`: rate limit, zod, honeypot, free-mail domains refused, emails Jayme via Resend (subject "Private dataset interest - {firm or domain}"), sends the enquirer the confirmation template with dataset wording, fire-and-forget ingest to the Business Tracker (`biggest_challenge` names the placement). Reuses the contact form's Resend and tracker environment variables.
+- Copy lives in `src/content/private-dataset.ts`; spec in `docs/PRIVATE_DATASET_CTA_SPEC_20SEP2026.md`. Stats verified on hsbc.com and Ficomm's PR Newswire release; trade write-ups had swapped Ficomm's 25%/15% figures, so the 25% (under-45s) is not used.
+- Verified live through Playwriter in Jayme's Chrome at 1512×801 (card, pill states, audit pill absent) and 390×844 (static card and box). A real submission from the live card with jayme@studiobaggio.ai returned "Enquiry sent."; the two emails are to be confirmed in her inbox.
+- Built from a clean worktree of origin/main; the local `Website/` checkout remains a stale feature branch. Pull before local work.
 
 ## 1 September — Financial-advice “Why this matters now” evidence refreshed
 
