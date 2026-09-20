@@ -8966,6 +8966,11 @@ body:has(.home-4b.contact-page) footer {
 .home-4b.insights-page .insights-list-heading h2,
 .home-4b.insights-page .insights-list-heading p,
 .home-4b.insights-page .insights-row-category,
+.home-4b.insights-page .insights-row-number {
+  transition: color 200ms ease;
+}
+
+.home-4b.insights-page .insights-row-category,
 .home-4b.insights-page .insights-row-number,
 .home-4b.insights-page .insights-preview-label {
   margin: 0;
@@ -8989,9 +8994,10 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .home-4b.insights-page .insights-accordion-row {
+  position: relative;
   border-bottom: 1px solid var(--sb-rule);
   background: var(--sb-paper);
-  transition: background 180ms ease;
+  transition: background 200ms ease, transform 260ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 260ms ease;
 }
 
 .home-4b.insights-page .insights-accordion-row.is-open {
@@ -9000,18 +9006,23 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b.insights-page .insights-accordion-row-head {
   display: grid;
-  grid-template-columns: 48px 180px minmax(0, 1fr) 96px;
+  grid-template-columns: 48px 180px minmax(0, 1fr) 44px;
   gap: 20px;
   align-items: start;
   padding-block: 24px;
+  cursor: pointer;
 }
 
-.home-4b.insights-page .insights-row-button {
+.home-4b.insights-page .insights-row-link {
+  display: block;
   min-width: 0;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  text-align: left;
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-4b.insights-page .insights-row-link:focus-visible {
+  outline: 2px solid var(--sb-blue);
+  outline-offset: 6px;
 }
 
 .home-4b.insights-page .insights-row-title {
@@ -9021,6 +9032,29 @@ body:has(.home-4b.contact-page) footer {
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: 0;
+  transition: color 200ms ease;
+}
+
+@media (hover: hover) {
+  .home-4b.insights-page .insights-accordion-row:hover {
+    z-index: 1;
+    background: var(--sb-paper);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -18px rgba(17, 17, 17, 0.22), 0 4px 12px rgba(17, 17, 17, 0.05);
+  }
+
+  .home-4b.insights-page .insights-accordion-row:hover .insights-row-title {
+    color: var(--sb-blue);
+  }
+
+  .home-4b.insights-page .insights-accordion-row:hover .insights-row-number,
+  .home-4b.insights-page .insights-accordion-row:hover .insights-row-category {
+    color: var(--sb-ink);
+  }
+
+  .home-4b.insights-page .insights-accordion-row:hover .insights-icon-button {
+    border-color: var(--sb-ink);
+  }
 }
 
 .home-4b.insights-page .insights-row-summary {
@@ -9048,9 +9082,17 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b.insights-page .insights-preview-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(14rem, 260px);
-  gap: clamp(28px, 6vw, 84px);
-  padding: 0 74px 34px 296px;
+  grid-template-columns: 48px 180px minmax(0, 1fr) minmax(14rem, 260px);
+  gap: 20px;
+  padding: 0 0 34px;
+}
+
+.home-4b.insights-page .insights-preview-copy {
+  grid-column: 3;
+}
+
+.home-4b.insights-page .insights-preview-meta {
+  grid-column: 4;
 }
 
 .home-4b.insights-page .insights-preview-copy p:not(.insights-preview-label) {
@@ -9077,6 +9119,14 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b.insights-page .insights-preview-meta a {
   color: var(--sb-ink);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.home-4b.insights-page .insights-preview-meta a:hover {
+  color: var(--sb-blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .home-4b.insights-page .insights-empty-state {
@@ -10285,7 +10335,7 @@ body:has(.home-4b.contact-page) footer {
   }
 
   .home-4b.insights-page .insights-accordion-row-head {
-    grid-template-columns: 36px minmax(0, 1fr) 92px;
+    grid-template-columns: 36px minmax(0, 1fr) 44px;
     gap: 14px;
   }
 
@@ -10294,7 +10344,7 @@ body:has(.home-4b.contact-page) footer {
     grid-row: 1;
   }
 
-  .home-4b.insights-page .insights-row-button {
+  .home-4b.insights-page .insights-row-link {
     grid-column: 2 / 4;
     grid-row: 2;
   }
@@ -10307,6 +10357,11 @@ body:has(.home-4b.contact-page) footer {
   .home-4b.insights-page .insights-preview-inner {
     padding: 0 0 28px 50px;
     gap: 22px;
+  }
+
+  .home-4b.insights-page .insights-preview-copy,
+  .home-4b.insights-page .insights-preview-meta {
+    grid-column: auto;
   }
 
   .home-4b.insight-article-page .insight-article-sidebar {
@@ -10437,7 +10492,7 @@ body:has(.home-4b.contact-page) footer {
     margin-top: 4px;
   }
 
-  .home-4b.insights-page .insights-row-button {
+  .home-4b.insights-page .insights-row-link {
     grid-column: 2;
   }
 

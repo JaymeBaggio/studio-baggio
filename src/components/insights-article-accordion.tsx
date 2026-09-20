@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useRouter } from "next/navigation";
+import type { MouseEvent, ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { InsightArticle, InsightCategory } from "@/content/insights";
 import { getInsightPath } from "@/content/insights";
@@ -65,6 +66,7 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
   const [query, setQuery] = useState("");
   const [activeSlug, setActiveSlug] = useState("");
   const shouldReduceMotion = useReducedMotion();
+  const router = useRouter();
 
   const filteredArticles = useMemo(() => {
     const normalisedQuery = query.trim().toLowerCase();
@@ -79,6 +81,13 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
 
   const refreshScrollMeasurements = () => {
     window.requestAnimationFrame(() => ScrollTrigger.refresh());
+  };
+
+  const openArticleFromRow = (event: MouseEvent<HTMLDivElement>, href: string) => {
+    const target = event.target as HTMLElement;
+    if (target.closest("a, button")) return;
+    if (window.getSelection()?.toString()) return;
+    router.push(href);
   };
 
   return (
@@ -125,6 +134,7 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
           filteredArticles.map((article, index) => {
             const isOpen = activeSlug === article.slug;
             const panelId = `insight-preview-${article.slug}`;
+            const articlePath = getInsightPath(article);
 
             return (
               <article
@@ -132,19 +142,16 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
                 className={`insights-accordion-row ${isOpen ? "is-open" : ""}`}
                 data-reveal
               >
-                <div className="insights-accordion-row-head">
+                <div
+                  className="insights-accordion-row-head"
+                  onClick={(event) => openArticleFromRow(event, articlePath)}
+                >
                   <span className="insights-row-number">{String(index + 1).padStart(2, "0")}</span>
                   <span className="insights-row-category">{article.category}</span>
-                  <button
-                    type="button"
-                    className="insights-row-button"
-                    aria-expanded={isOpen}
-                    aria-controls={panelId}
-                    onClick={() => setActiveSlug(isOpen ? "" : article.slug)}
-                  >
+                  <Link href={articlePath} className="insights-row-link">
                     <span className="insights-row-title">{article.title}</span>
                     <span className="insights-row-summary">{renderInlineMarkdown(article.summary)}</span>
-                  </button>
+                  </Link>
                   <div className="insights-row-actions">
                     <button
                       type="button"
@@ -156,13 +163,6 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
                     >
                       <ChevronDown aria-hidden="true" />
                     </button>
-                    <Link
-                      href={getInsightPath(article)}
-                      className="insights-icon-button"
-                      aria-label={`Read ${article.title}`}
-                    >
-                      <ArrowUpRight aria-hidden="true" />
-                    </Link>
                   </div>
                 </div>
                 <AnimatePresence initial={false}>
@@ -186,7 +186,7 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
                         </div>
                         <div className="insights-preview-meta">
                           <span>{article.readTime}</span>
-                          <Link href={getInsightPath(article)}>Read article</Link>
+                          <Link href={articlePath}>Read article</Link>
                         </div>
                       </div>
                     </motion.div>
