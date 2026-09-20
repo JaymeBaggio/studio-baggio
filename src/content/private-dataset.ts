@@ -52,6 +52,18 @@ export const privateDataset: PrivateDatasetContent = {
 export const privateDatasetLaw: PrivateDatasetContent = {
   ...privateDataset,
   title: "How HNW & UHNW clients choose law firms & lawyers in AI search",
+  stats: [
+    {
+      value: "82%",
+      copy: "of HNW individuals already use AI when making decisions about their money.",
+      source: "HSBC Global Affluent Report, 2026"
+    },
+    {
+      value: "1 in 2",
+      copy: "people with $5m+ found their current adviser without a referral.",
+      source: "Ficomm Partners, 2026"
+    }
+  ],
   pillLine: "How HNW & UHNW clients choose law firms",
   points: [
     {
