@@ -1,0 +1,220 @@
+{
+ "phases": [
+  {
+   "title": "Days 1 to 30: understand and prioritise",
+   "argument": "Start with the business strategy. Identify the biggest constraint or opportunity, then work backwards into where AI can help.",
+   "questions": [
+    {
+     "id": 2,
+     "question": "How do you decide where AI will create commercial value?",
+     "paras": [
+      "There are hundreds of things you could improve, but that's the case with or without AI. It's about which one gives you the highest leverage. If I need to bring in more clients, then my best application of AI is bringing in more clients. How can we use it to achieve that?",
+      "The question you're asking is the same whether or not AI is included in the conversation. You're far more likely to be successful applying AI to a particular problem than trying to create hundreds of workflows that don't fit together and don't achieve what the business actually needs."
+     ]
+    },
+    {
+     "id": 3,
+     "question": "We've bought licences and done training. What should change in 90 days?",
+     "paras": [
+      "You're doing well, but you're focused on adoption rather than application, which is where most businesses struggle. I'd start with the business constraints and opportunities. If you need to generate more leads, focus on finding ways you can be using AI to do that. If you need to hire more of the right people, use AI to help find and qualify candidates.",
+      "Then set the system up so your teams can win from the outset. Give it the shared company context, then bring in the department and role context. Get people turning their specialist knowledge and templates into skills they can use in their work. Focus on the things the business needs to achieve. Adoption will be a byproduct of that."
+     ]
+    },
+    {
+     "id": 11,
+     "question": "What is the biggest mistake businesses make?",
+     "paras": [
+      "Overcomplicating this and losing focus on the business. Business strategy and growing a successful company are still exactly the same as they were before. We now have better tools to help us to achieve our business goals.",
+      "What are the business constraints? Where can you apply AI to generate more revenue, accelerate growth, add more value, deliver faster? Spending your time making sure everybody can prompt perfectly isn't the priority. Having a shared direction, then understanding where AI can give you an advantage in getting there, is."
+     ]
+    },
+    {
+     "id": 12,
+     "question": "What should a CEO personally do on Monday?",
+     "paras": [
+      "You're the CEO. You cannot lead on AI from the sidelines. Spend one working day using it alongside your own work. Write an email with it. You probably won't like the first version, so show it examples of how you write. Ask it for a report and show it what your reports normally look like. See how far you can push it.",
+      "It might feel painful at first. You need to understand what this feels like for your employees. Record how you felt, what worked and what didn't.",
+      "Then, on day two, look at your strategic priorities and ask AI to help you work out where it could help you achieve them. If you don't know where to start, ask it."
+     ]
+    },
+    {
+     "id": 15,
+     "question": "If the workflow is bad, don't you just make a bad process faster?",
+     "paras": [
+      "It's just as important to understand what you shouldn't automate. Putting AI into a business forces you to think about which processes you actually need. If everything's in somebody's head, it's going to be messy, and some of those processes can be cut out entirely."
+     ]
+    },
+    {
+     "id": 22,
+     "question": "What about data, risk and governance?",
+     "paras": [
+      "I'd push back on that question slightly. I think there's been a lot of fearmongering around data and risk. For example, the enterprise versions of Claude and ChatGPT don't use your business data to train their models by default. You still need to understand the rules around what data you can put into them.",
+      "But I think some people are using the risk angle as a shield for what they're actually feeling: overwhelm. \"It would take far too long to map our workflows. I don't know where to start.\" I'd bring it back to the business constraints and opportunities and work from there."
+     ]
+    },
+    {
+     "id": 13,
+     "question": "What should businesses buy, build or ignore?",
+     "paras": [
+      "Don't start by buying a stack of specialist tools. Start with the business problem and use a capable general-purpose model as the base. Give your team the ability to build the tools they need specifically for your business.",
+      "Yes, that costs money in AI tokens. But you're building something around your people and your work, instead of buying a tool because it's the latest hype. I'd speak to an expert about the setup, but there are very few tools on the market that I think are necessary right now."
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Days 31 to 60: experiment and build capability",
+   "argument": "Your employees are already the domain experts. Give the AI the business and role context, then let your people teach it what good looks like.",
+   "questions": [
+    {
+     "id": 1,
+     "question": "What does an AI operating system actually look like?",
+     "paras": [
+      "If you're an employee at a company and they've put a solid system in place, the AI you work with knows who you are, what you do, what your goals are and where you fit into the wider vision of the company.",
+      "That means giving it the company context first, then the department and role context. When you start using it, it already has an understanding of the bigger picture. You can then bring in your specialist knowledge and show it how you do your work. The setup should make it possible for the things you create and the corrections you make to help the wider team too."
+     ]
+    },
+    {
+     "id": 5,
+     "question": "Can you give one concrete example of something you've built?",
+     "paras": [
+      "I built a system for a non-technical team and deliberately made it so it would grow with them and compound over time. It knows it's working with people who aren't technical, so it nudges them: \"Should I make this a repeatable skill? Should I add this to the shared work?\"",
+      "If there's already a similar template, it can flag that: \"We've got a duplicate here. Which one should take precedence?\" And if somebody corrects it, it's set up to update the skill. The team don't have to understand how all of that works underneath. They can do their work, and the system is designed to pick up the things that will make it better for them next time."
+     ]
+    },
+    {
+     "id": 6,
+     "question": "How do you get beyond the enthusiastic early adopters?",
+     "paras": [
+      "You set the system up for your teams to win from the outset. It should already understand the company, their department and what they do.",
+      "I'd encourage employees to find the opportunities themselves. How can they use it to strengthen what they're already great at and do things they couldn't do before?",
+      "You'll see certain members of the team really shine. Those are the people I'd champion and encourage to share what they're learning with the wider group. Adoption comes from people seeing what they can actually do with it."
+     ]
+    },
+    {
+     "id": 7,
+     "question": "Do employees actually need AI training?",
+     "paras": [
+      "People really overcomplicate this. If you've put a proper setup in place, employees won't need a separate AI-training programme or to understand how it all works underneath.",
+      "There are fundamentals they need to know, including that the output can be wrong and what they can or can't put into the system. Your team are domain experts in their own fields. They should be teaching the AI what they do, how to do it well and what good looks like, then using it to expand what they're capable of doing within their role.",
+      "A lot of the understanding comes through use. If you don't know how to do something, ask the AI. It can walk you through what to do next. People often just need reminding of that."
+     ]
+    },
+    {
+     "id": 17,
+     "question": "If everybody experiments, won't you get 200 disconnected workflows?",
+     "paras": [
+      "That's why I keep coming back to the foundations. My own setup is deliberately built to detect duplication. If I want to add a skill and there's already one doing something similar, it can look at whether the one new element would strengthen the original skill, and add that there.",
+      "I've built that into the setup because I want it to grow without becoming cluttered. The shared company context also needs a solid understanding of the wider business strategy. People can experiment in their own departments, but everything should be pulling in the same direction."
+     ]
+    },
+    {
+     "id": 18,
+     "question": "What do you mean by building around your best people?",
+     "paras": [
+      "Your people are the domain experts. I'd give each person the task of turning their specialist knowledge and templates into skills the team can use.",
+      "That can be as simple as showing ChatGPT three versions of a pitch deck and asking it to help turn that process into a set of skills, from the insights to the copy to the finished deck. Then, as people use it and correct it, those skills can improve. You're giving more of the team access to the things your best people already know how to do well."
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Days 61 to 90: embed, measure and scale",
+   "argument": "Measure the work, not the adoption. Is it generating revenue? Saving money? Improving output? Delivering something sooner? Removing a real constraint?",
+   "questions": [
+    {
+     "id": 4,
+     "question": "How do you know whether it is working?",
+     "paras": [
+      "I'd measure the bottom line in exactly the same way you do now. Is this use of AI making us more money, or is it saving us money? If you can't answer either of those, have a think about where your focus is.",
+      "It should also be generating additional value for your clients: finding new ways to do something better, or new ways to partner with others in your industry. Those are the areas where AI can unlock another level for a business. If you're streamlining responses to emails, is that the thing that's going to unlock additional revenue right now? That's the question I'd be asking."
+     ]
+    },
+    {
+     "id": 8,
+     "question": "What does an AI-literate business look like?",
+     "paras": [
+      "It's very obvious when you see it. The whole business will just be working in a different way. People will feel like they've unlocked another level of what they're capable of, and they'll be excited to explore things they couldn't touch before. Your employees don't need to know all the terminology or the underlying setup. They need to understand what's possible, what's worth doing and what isn't."
+     ]
+    },
+    {
+     "id": 9,
+     "question": "What should humans still be doing?",
+     "paras": [
+      "In the first 90 days, very little should be entirely handed over to AI. Those first 90 days are about putting in place a system that compounds with you.",
+      "If somebody changes a shared template while they're doing a task, the AI should nudge them about whether that change should be part of the shared template going forward. That's where I want your best people's judgement involved. I'd certainly still have people judging what gets sent to a client.",
+      "By the end of the three months, some processes should already be automated as part of a larger workflow. Others shouldn't be there at all. Before automating a whole process, I'd ask whether it's worth having in the first place."
+     ]
+    },
+    {
+     "id": 10,
+     "question": "What should good actually look like by day 90?",
+     "paras": [
+      "You can achieve a lot in 90 days. Give people the freedom to experiment, with the foundations in place so those experiments don't turn into a complicated system.",
+      "I'd expect an energised workforce who produce higher-quality work and push themselves in the direction they want to go.",
+      "You won't have a workforce of developers. That's not what anybody needs. You'll have people who feel they've unlocked a way to get more from the work they're doing, with a system that grows as they do."
+     ]
+    },
+    {
+     "id": 20,
+     "question": "Isn't this just sophisticated knowledge management?",
+     "paras": [
+      "Five years ago, documenting your best people's processes would have meant making a Word document that somebody had to follow manually. That one document could be interpreted 500 different ways, depending on how many people were in your company.",
+      "It doesn't understand the wider business, what each department contributes or how somebody's role affects the work. It doesn't grow as the team grows or as the business changes.",
+      "With AI, you can build a shared capability that your best people contribute to, that understands that context and keeps developing as people use it. It can adapt to what different departments need. That's a very different thing from having a fixed process in a Word document."
+     ]
+    },
+    {
+     "id": 21,
+     "question": "Doesn't teaching AI create extra work for senior people?",
+     "paras": [
+      "It shouldn't feel like a separate workload. They shouldn't be starting from scratch.",
+      "Taking two minutes to correct something or give another example is worth doing because that correction can improve the way the system works next time. Think of it like training a new employee. If you had an executive assistant, you'd take the time to say, \"I prefer my Outlook emails to sign off like this.\"",
+      "The system should be set up to retain that correction. You're taking a couple of minutes while doing the work to make the thing you'll be working with every day more useful to you."
+     ]
+    }
+   ]
+  }
+ ],
+ "closing": "By day 90, you shouldn’t be impressed that the company “uses AI”. You should be able to point to important work that is now being done differently and producing a better business outcome.",
+ "map": [
+  [
+   "Days 1 to 30",
+   "Understand and prioritise",
+   [
+    "Strategy, constraint, baseline",
+    "Workflow and people",
+    "Ownership and guardrails",
+    "Don't automate rubbish"
+   ]
+  ],
+  [
+   "Days 31 to 60",
+   "Experiment and build capability",
+   [
+    "Shared company context",
+    "Role-specific capability",
+    "Real work, not abstract training",
+    "Best people into reusable skills"
+   ]
+  ],
+  [
+   "Days 61 to 90",
+   "Embed, measure and scale",
+   [
+    "Embed what worked",
+    "Kill what didn't",
+    "Revenue, cost, quality, speed",
+    "Retain learning so the system compounds"
+   ]
+  ]
+ ],
+ "logos": {
+  "Claude": "<g transform=\"translate(463.0,23.0) scale(1.4166666666666667)\"><path d=\"m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z\" fill=\"#D97757\"/></g>",
+  "Codex": "<g transform=\"translate(623.0,23.0) scale(1.4166666666666667)\"><path d=\"M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z\" fill=\"#141414\"/></g>",
+  "Firecrawl": "<g transform=\"translate(854,254) scale(0.85)\"><path d=\"M0,-13 C4,-8 8,-5 8,2 C8,8.5 4.5,12.5 0,12.5 C-4.5,12.5 -8,8.5 -8,2 C-8,-2 -6,-5 -4,-7 C-4,-3.5 -2.5,-2 -1,-2 C-2,-6 -1.5,-9.5 0,-13 Z\" fill=\"#FF4A00\"/><path d=\"M0,12.5 C-2.6,12.5 -4.5,10 -4.5,7 C-4.5,4.8 -3.2,3.2 -1.6,1.8 C-1.6,3.8 -0.6,4.8 0.6,4.8 C0.2,2.6 0.6,0.8 1.8,-0.8 C3.4,1.6 4.5,4 4.5,7 C4.5,10 2.6,12.5 0,12.5 Z\" fill=\"#FFB199\"/></g>",
+  "Perplexity": "<g transform=\"translate(842.5,304.5) scale(0.9583333333333334)\"><path d=\"M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z\" fill=\"#20808D\"/></g>",
+  "Higgsfield": "<g transform=\"translate(854,378) scale(0.8)\"><rect x=\"-13\" y=\"-13\" width=\"26\" height=\"26\" rx=\"6\" fill=\"#141414\"/><path d=\"M-6,-7 L-6,7 M6,-7 L6,7 M-6,0 L6,0\" stroke=\"#fff\" stroke-width=\"2.6\" stroke-linecap=\"round\"/></g>",
+  "Your everyday apps": "<g transform=\"translate(869.0,433.0) scale(0.5833333333333334)\"><path d=\"M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z\" fill=\"#4285F4\"/></g>"
+ }
+}

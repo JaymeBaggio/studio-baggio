@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import Image from "next/image";
+import { AiLiterateBusinessArticle } from "@/components/ai-literate-business-article";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Code2, Flame, ListChecks, PoundSterling, Search } from "lucide-react";
@@ -765,6 +766,7 @@ const firecrawlWorkflow: Array<{ title: string; Icon: LucideIcon; items: string[
 ];
 
 const setupStyleSlugs = new Set(["ai-set-up-guide", "how-to-master-seo-ai-search-2026"]);
+const ninetyDaysSlug = "how-to-build-an-ai-literate-business-in-90-days";
 
 function ArticleSetupFigure({
   caption,
@@ -1562,7 +1564,7 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
       <ArticleSchema article={article} />
       {article.faq?.length ? <FaqSchema items={article.faq} /> : null}
       <PageReveals />
-      <article className={`home-4b insight-article-page${setupStyleSlugs.has(article.slug) ? " is-setup-guide" : ""}`}>
+      <article className={`home-4b insight-article-page${setupStyleSlugs.has(article.slug) ? " is-setup-guide" : ""}${article.slug === ninetyDaysSlug ? " is-ninety-days" : ""}`}>
         <header className="insight-article-hero" data-home-section>
           <div className="editorial-container insight-article-hero-frame">
             <div className="insight-article-kicker-row" data-reveal>
@@ -1597,7 +1599,7 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
 
         <div className="editorial-container insight-article-layout is-source-exact">
           <div className="insight-article-body">
-            {renderSourceMarkdown(article.sourceMarkdown, article.slug)}
+            {article.slug === ninetyDaysSlug ? <AiLiterateBusinessArticle /> : renderSourceMarkdown(article.sourceMarkdown, article.slug)}
           </div>
           <ArticleMoreArticles articles={moreArticles} />
         </div>
