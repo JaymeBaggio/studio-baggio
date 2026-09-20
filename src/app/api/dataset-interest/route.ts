@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { datasetInterestSchema } from "@/lib/dataset-interest-schema";
+import { buildEnquiryConfirmationEmail } from "@/lib/contact-emails";
 
 const hits = new Map<string, { count: number; resetAt: number }>();
 const WINDOW_MS = 10 * 60 * 1000;
@@ -105,7 +106,21 @@ export async function POST(request: NextRequest) {
       }).catch((err) => console.error("Business Tracker ingest failed", err));
     }
 
-    return NextResponse.json({ ok: true, id: result.data?.id });
+    // The enquirer gets the same confirmation the contact form sends.
+    const confirmationEmail = buildEnquiryConfirmationEmail("");
+    const confirmation = await resend.emails.send({
+      from,
+      to: email,
+      replyTo: to,
+      subject: "Studio Baggio enquiry received",
+      html: confirmationEmail.html,
+      text: confirmationEmail.text
+    });
+    if (confirmation.error) {
+      console.error("Private dataset confirmation email failed", confirmation.error);
+    }
+
+    return NextResponse.json({ ok: true, id: result.data?.id, confirmationId: confirmation.data?.id || null });
   } catch (error) {
     console.error("Private dataset interest failed", error);
     return NextResponse.json(

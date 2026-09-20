@@ -31,6 +31,6 @@ export const privateDataset = {
     "Private data set exclusively available for Studio Baggio client engagements, where it is used to identify how firms can reach these clients earlier and build the route from first search to qualified enquiry.",
   button: "Enquire now",
   inlineButton: "Enquire now",
-  success: "Thanks, I have it. I'll come back to you personally.",
+  success: "Enquiry sent.",
   failure: "That didn't send. Email jayme@studiobaggio.ai directly."
 } as const;
