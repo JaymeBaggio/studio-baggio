@@ -55,7 +55,7 @@ export const privateDatasetLaw: PrivateDatasetContent = {
   stats: [
     {
       value: "82%",
-      copy: "of HNW individuals already use AI when making decisions about their money.",
+      copy: "of HNW individuals already use AI to research their options before taking advice.",
       source: "HSBC Global Affluent Report, 2026"
     },
     {
