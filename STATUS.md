@@ -1,6 +1,12 @@
 # Studio Baggio Website - STATUS
 *Last updated: 20 September 2026*
 
+## 20 Sept (later) — Private dataset card and boxes on the law report (live, 996e328)
+
+- Same card and box components, now taking a content set. `privateDatasetLaw` in `src/content/private-dataset.ts`: title "How HNW & UHNW clients choose law firms & lawyers in AI search", law wording for the three rows, same two stats, same private line. The private line on both pages is now "Private data set exclusively available for Studio Baggio clients. Used to identify how firms can reach HNW & UHNW clients earlier in their journey and build the route from first search to qualified enquiry."
+- Law page: follower card after the masthead (static under it on phones), audit pill suppressed; box beside "Search your firm." (the bench head is now a two-column grid, `law-report__bench-head--with-dataset`) and a second box in the question explorer header's right column. `LawFirmExplorer` in `law-report-explorers.tsx` is not rendered by the page; nothing was mounted there.
+- Verified in Jayme's Chrome from DOM measurements at 1512×801 (card, pill while a box is on screen, both boxes 623px wide beside their headings, box h2 at 17px) and 390 (stacked). Live HTML confirmed: two boxes, law title, new private line on both pages. Screenshots of the law page are unreliable during its reveal animation; measure the DOM instead.
+
 ## 20 Sept — Private dataset card and results box on the financial-advice report (live, 868e463)
 
 - **Follower card** on `/research/uk-financial-advice-2026` (desktop, `lg+`), bottom right, replaces the audit pill on this page (`front-door-offer.tsx` returns null there). Kicker, "How HNW & UHNW clients choose advisers in AI search", two sourced stats (HSBC Global Affluent Report 2026: 82% of HNW investors use AI for finance and investment; Ficomm Partners 2026: 1 in 2 investors with $5m+ found their adviser without a referral), three accordion rows that open one at a time, the private line, and Enquire now, which turns into a work-email field with an arrow. ✕ collapses to a pill; pill ✕ hides for the tab session. While the results box is on screen the card shows as the pill. Phones and narrow windows get the same card static under the masthead.
