@@ -135,7 +135,8 @@ export function FrontDoorOffer() {
     !mounted ||
     pathname === "/contact" ||
     pathname === "/research/uk-sports-law-2026" ||
-    pathname === "/research/uk-financial-advice-2026"
+    pathname === "/research/uk-financial-advice-2026" ||
+    pathname === "/research/uk-law-2026"
   )
     return null;
 

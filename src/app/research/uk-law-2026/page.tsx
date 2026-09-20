@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { PrivateDatasetCard } from "@/components/research/private-dataset-cta";
+import { privateDatasetLaw } from "@/content/private-dataset";
 import { ResearchContextSection } from "@/components/research/research-context-section";
 import {
   LawMethodDrawer,
@@ -246,6 +248,8 @@ export default function UkLawReportPage() {
           </div>
         </div>
       </header>
+
+      <PrivateDatasetCard content={privateDatasetLaw} />
 
       <section className="fa3-section fa3-executive" aria-labelledby="law-findings-title">
         <div className="editorial-container">

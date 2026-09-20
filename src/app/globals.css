@@ -24224,6 +24224,25 @@ body:has(.home-4b.ab-page) footer { display: none; }
   gap: clamp(32px, 4vw, 64px);
 }
 
+.law-question-explorer .fa3-section-heading {
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 1.05fr);
+  align-items: start;
+  gap: clamp(32px, 4vw, 64px);
+}
+
+.law-explorer-aside {
+  display: grid;
+  gap: 22px;
+}
+
+.law-explorer-aside > p {
+  max-width: 58ch;
+  margin: 0;
+  color: #4f4f4f;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
 .fa3-dataset-box ul {
   margin-top: 10px;
 }

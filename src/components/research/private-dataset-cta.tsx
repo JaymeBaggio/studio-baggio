@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { privateDataset } from "@/content/private-dataset";
+import { privateDataset, type PrivateDatasetContent } from "@/content/private-dataset";
 import { isWorkEmail } from "@/lib/dataset-interest-schema";
 
 type Status = { tone: "idle" } | { tone: "sending" } | { tone: "success" } | { tone: "error"; message: string };
@@ -77,7 +77,7 @@ function StatusLine({ status, className = "" }: { status: Status; className?: st
    under the masthead, so it never covers the study. */
 const DISMISS_KEY = "sb-private-dataset";
 
-function CardBody({ onClose, id, layout = "stack" }: { onClose?: () => void; id: string; layout?: "stack" | "split" | "tight" }) {
+function CardBody({ onClose, id, layout = "stack", content = privateDataset }: { onClose?: () => void; id: string; layout?: "stack" | "split" | "tight"; content?: PrivateDatasetContent }) {
   const { status, onSubmit } = useInterestForm("section");
   const [openRow, setOpenRow] = useState<number | null>(null);
   const [askOpen, setAskOpen] = useState(false);
@@ -90,9 +90,9 @@ function CardBody({ onClose, id, layout = "stack" }: { onClose?: () => void; id:
        <div>
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-[12px] uppercase tracking-[0.16em] text-ink/50">{privateDataset.kicker}</p>
+            <p className="text-[12px] uppercase tracking-[0.16em] text-ink/50">{content.kicker}</p>
             <h2 id={`${id}-title`} className="mt-1.5 text-[24px] leading-[1.15] text-ink">
-              {privateDataset.title}
+              {content.title}
             </h2>
           </div>
           {onClose ? (
@@ -110,7 +110,7 @@ function CardBody({ onClose, id, layout = "stack" }: { onClose?: () => void; id:
         </div>
 
         <ul className="mt-4">
-          {privateDataset.stats.map((stat) => (
+          {content.stats.map((stat) => (
             <li key={stat.value} className="border-t border-ink/10 py-3 text-[17px] leading-snug text-ink">
               <strong className="mr-2 text-[28px] font-medium leading-none text-[color:var(--sb-accent-blue)]">{stat.value}</strong>
               {stat.copy}
@@ -122,7 +122,7 @@ function CardBody({ onClose, id, layout = "stack" }: { onClose?: () => void; id:
 
        <div className={layout === "split" ? "lg:border-l lg:border-ink/10 lg:pl-10" : ""}>
         <div className={layout === "split" ? "border-t border-ink/10 lg:border-t-0" : "mt-1 border-t border-ink/10"}>
-          {privateDataset.points.map((point, index) => {
+          {content.points.map((point, index) => {
             const isOpen = openRow === index;
             return (
               <div key={point.label} className="border-b border-ink/10 py-2.5">
@@ -152,7 +152,7 @@ function CardBody({ onClose, id, layout = "stack" }: { onClose?: () => void; id:
           })}
         </div>
 
-        <p className="mt-3 text-[14px] leading-snug text-ink/55">{privateDataset.body}</p>
+        <p className="mt-3 text-[14px] leading-snug text-ink/55">{content.body}</p>
 
         <form
           className="mt-4"
@@ -208,7 +208,7 @@ function CardBody({ onClose, id, layout = "stack" }: { onClose?: () => void; id:
               }}
               className="focus-ring inline-flex min-h-12 w-full items-center justify-center bg-ink px-4 py-3 text-[15px] uppercase tracking-[0.06em] text-white transition-colors hover:bg-[color:var(--sb-accent-blue)]"
             >
-              {privateDataset.button}
+              {content.button}
             </button>
           )}
           <StatusLine status={status} className="mt-3" />
@@ -219,7 +219,7 @@ function CardBody({ onClose, id, layout = "stack" }: { onClose?: () => void; id:
   );
 }
 
-export function PrivateDatasetCard() {
+export function PrivateDatasetCard({ content = privateDataset }: { content?: PrivateDatasetContent } = {}) {
   const id = useId();
   const prefersReducedMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
@@ -281,7 +281,7 @@ export function PrivateDatasetCard() {
               className="fa3-dataset-card pointer-events-auto relative w-[420px] border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_26px_60px_rgba(20,20,20,0.18)]"
               aria-labelledby={`${id}-title`}
             >
-              <CardBody onClose={() => setOpen(false)} id={id} />
+              <CardBody onClose={() => setOpen(false)} id={id} content={content} />
             </motion.aside>
           ) : mounted && !dismissed ? (
             <motion.div
@@ -303,9 +303,9 @@ export function PrivateDatasetCard() {
                   aria-hidden="true"
                 />
                 <span className="flex flex-col gap-1">
-                  <span className="text-[13px] uppercase leading-none tracking-[0.1em]">{privateDataset.kicker}</span>
+                  <span className="text-[13px] uppercase leading-none tracking-[0.1em]">{content.kicker}</span>
                   <span className="text-[13px] leading-none text-ink/60 transition-colors group-hover:text-white/70">
-                    How HNW &amp; UHNW clients choose advisers
+                    {content.pillLine}
                   </span>
                 </span>
               </button>
@@ -327,7 +327,7 @@ export function PrivateDatasetCard() {
       {/* Phones and narrow windows: the card sits under the masthead. */}
       <section className="editorial-container pb-4 pt-10 lg:hidden" aria-labelledby={`${id}-static-title`}>
         <div className="relative border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_18px_44px_rgba(20,20,20,0.14)]">
-          <CardBody id={`${id}-static`} />
+          <CardBody id={`${id}-static`} content={content} />
         </div>
       </section>
     </>
@@ -335,14 +335,14 @@ export function PrivateDatasetCard() {
 }
 
 /* The box beside the firm results: the same card, in flow, no close. */
-export function PrivateDatasetBox() {
+export function PrivateDatasetBox({ content = privateDataset }: { content?: PrivateDatasetContent } = {}) {
   const id = useId();
   return (
     <aside
       className="fa3-dataset-box border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_14px_36px_rgba(20,20,20,0.10)]"
       aria-labelledby={`${id}-title`}
     >
-      <CardBody id={id} layout="tight" />
+      <CardBody id={id} layout="tight" content={content} />
     </aside>
   );
 }

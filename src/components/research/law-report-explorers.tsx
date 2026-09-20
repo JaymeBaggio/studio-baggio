@@ -4,6 +4,8 @@ import { Search } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ResearchDrawer } from "./ResearchDrawer.client";
+import { PrivateDatasetBox } from "./private-dataset-cta";
+import { privateDatasetLaw } from "@/content/private-dataset";
 import { LawSelect } from "./law-select";
 
 export type LawQuestion = {
@@ -279,12 +281,15 @@ export function LawQuestionExplorer({ questions }: { questions: LawQuestion[] })
             <p className="fa3-kicker">Explore by practice area</p>
             <h2 id="law-question-explorer-title">All 15 practice areas, every question.</h2>
           </div>
-          <p>
-            Every legal problem was asked with &ldquo;Which UK law firms should I consider
-            instructing?&rdquo; on the end, so each row shows the question exactly as a client would
-            put it. Choose a practice area or search a concern, then open a question to see the firms
-            AI suggested, the law-firm websites it cited and the other sources it used.
-          </p>
+          <div className="law-explorer-aside">
+            <p>
+              Every legal problem was asked with &ldquo;Which UK law firms should I consider
+              instructing?&rdquo; on the end, so each row shows the question exactly as a client would
+              put it. Choose a practice area or search a concern, then open a question to see the firms
+              AI suggested, the law-firm websites it cited and the other sources it used.
+            </p>
+            <PrivateDatasetBox content={privateDatasetLaw} />
+          </div>
         </header>
 
         <div className="law-explorer__controls law-question-explorer__controls">
