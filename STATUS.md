@@ -1,7 +1,7 @@
 # Studio Baggio Website - STATUS
 *Last updated: 20 September 2026*
 
-## 20 Sept — Insights list rebuilt (branch fix/insights-list-ux, NOT yet on main)
+## 20 Sept — Insights list rebuilt, LIVE on main (f8f7431)
 
 - **Round two, after "it's fine but it still doesn't look great":** Featured section removed entirely (her call: "looks a bit shit right now"). Row numbers gone (said nothing). Each row now carries the month and year (Sept 2026 style) in ink above the category label; titles up to 26px with balanced wrapping; summaries clamped to two lines so the rhythm is even; row grid 200 / 1fr / 44 with 32px gaps and 30px vertical padding. "Newest first." dropped, dates make it obvious. Below 1024px the category buttons become a closed dropdown: in-page, not native (she rejected the OS grey popup: "NOT this fuck off horrible grey thing", then "make an effort like a proper dropdown styled nicely"). Trigger in the filter-button style; panel is paper with hairline, deep soft shadow, sentence-case options at 15px with article counts right-aligned, blue dot on the active option, hairlines between rows, Escape / arrows / click-outside handled, 160ms ease-out entrance from the trigger. Empty categories (AI Products, 0 articles) hidden from buttons and dropdown.
 - **Date caveat:** 12 of 18 articles carry `date: 2026-05-29/30`, the site-migration date, not the original publication date (e.g. "Tools of the Year 2025" shows May 2026). Real dates need to come from the Rough Cut / Substack originals before the list can be trusted as a timeline.
@@ -15,7 +15,7 @@
 - **Featured block:** diagonal arrow box removed ("remove the fucking diagonal arrow and have a read article instead"). Title is now a link and a plain "Read article" link sits under the summary; both go blue on hover, frame is two columns. Featured itself stays (her alternative was removing it; kept as the page's one headline moment).
 - She rejected a title slide-in on hover mid-session ("i dont like how the title moves in") — removed. Rule for this site: hover depth comes from the row, never from text moving.
 - Verified locally at 1512×801 and 375×812: title x equals preview x (384px), meta right equals chevron right (1396px), first click opens, second click navigates, chevron border 0, gap to footer 0.
-- Worktree: `Studio Baggio/Website-insight-90-days` (branch switched from feat/insight-90-days, which is fully on main). Awaiting Jayme's OK to push to main.
+- **Live 20 Sept (bd97321 + f8f7431).** Last fix before push: the hover/open surface is a `::before` 24px wider than the text on each side (14px on mobile), so copy never touches the card edge ("feels cut off"); hairlines stay on the page grid. Verified live via playwriter at 1512×801: surface -24px, title blue, lift -4px, no Featured, dates showing. Worktree: `Studio Baggio/Website-insight-90-days` on branch fix/insights-list-ux.
 
 ## 20 Sept — Insight LIVE: How to build an AI-literate business in 90 days
 
