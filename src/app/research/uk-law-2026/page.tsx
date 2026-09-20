@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PrivateDatasetCard } from "@/components/research/private-dataset-cta";
+import { PrivateDatasetBox, PrivateDatasetCard } from "@/components/research/private-dataset-cta";
 import { privateDatasetLaw } from "@/content/private-dataset";
 import { ResearchContextSection } from "@/components/research/research-context-section";
 import {
@@ -289,12 +289,15 @@ export default function UkLawReportPage() {
         heading="AI is becoming part of how prospective clients choose which firm to instruct"
       />
 
-      <div className="editorial-container law-report__bench-head">
-        <p className="fa3-kicker">Search the benchmark</p>
-        <h2>Search your firm.</h2>
-        <p>
-          Every UK law firm the study recorded, with its Legal 500 tier.
-        </p>
+      <div className="editorial-container law-report__bench-head law-report__bench-head--with-dataset">
+        <div className="law-report__bench-copy">
+          <p className="fa3-kicker">Search the benchmark</p>
+          <h2>Search your firm.</h2>
+          <p>
+            Every UK law firm the study recorded, with its Legal 500 tier.
+          </p>
+        </div>
+        <PrivateDatasetBox content={privateDatasetLaw} />
       </div>
       <LawRankedTable
         entities={entities}
