@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { InsightsArticleAccordion } from "@/components/insights-article-accordion";
 import { PageReveals } from "@/components/page-reveals";
 import {
@@ -56,17 +55,16 @@ export default function InsightsPage() {
               </p>
             </div>
             <div className="insights-featured-copy" data-reveal>
-              <h2>{featuredInsight.title}</h2>
+              <h2>
+                <Link href={getInsightPath(featuredInsight)} className="insights-featured-title">
+                  {featuredInsight.title}
+                </Link>
+              </h2>
               <p>{getInsightPreviewText(featuredInsight, 1)}</p>
+              <Link href={getInsightPath(featuredInsight)} className="insights-featured-read">
+                Read article
+              </Link>
             </div>
-            <Link
-              href={getInsightPath(featuredInsight)}
-              className="insights-featured-link"
-              aria-label={`Read ${featuredInsight.title}`}
-              data-reveal
-            >
-              <ArrowUpRight aria-hidden="true" />
-            </Link>
           </div>
         </section>
 
