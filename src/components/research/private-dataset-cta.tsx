@@ -77,7 +77,7 @@ function StatusLine({ status, className = "" }: { status: Status; className?: st
    under the masthead, so it never covers the study. */
 const DISMISS_KEY = "sb-private-dataset";
 
-function CardBody({ onClose, id }: { onClose?: () => void; id: string }) {
+function CardBody({ onClose, id, layout = "stack" }: { onClose?: () => void; id: string; layout?: "stack" | "split" | "tight" }) {
   const { status, onSubmit } = useInterestForm("section");
   const [openRow, setOpenRow] = useState<number | null>(null);
   const [askOpen, setAskOpen] = useState(false);
@@ -86,7 +86,8 @@ function CardBody({ onClose, id }: { onClose?: () => void; id: string }) {
   return (
     <>
       <div className="h-[3px] w-full bg-[color:var(--sb-accent-blue)]" aria-hidden="true" />
-      <div className="relative p-6">
+      <div className={layout === "split" ? "relative grid gap-6 p-6 lg:grid-cols-2 lg:gap-10 lg:px-8 lg:py-6" : layout === "tight" ? "relative p-5" : "relative p-6"}>
+       <div>
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-[12px] uppercase tracking-[0.16em] text-ink/50">{privateDataset.kicker}</p>
@@ -117,8 +118,10 @@ function CardBody({ onClose, id }: { onClose?: () => void; id: string }) {
             </li>
           ))}
         </ul>
+       </div>
 
-        <div className="mt-1 border-t border-ink/10">
+       <div className={layout === "split" ? "lg:border-l lg:border-ink/10 lg:pl-10" : ""}>
+        <div className={layout === "split" ? "border-t border-ink/10 lg:border-t-0" : "mt-1 border-t border-ink/10"}>
           {privateDataset.points.map((point, index) => {
             const isOpen = openRow === index;
             return (
@@ -210,6 +213,7 @@ function CardBody({ onClose, id }: { onClose?: () => void; id: string }) {
           )}
           <StatusLine status={status} className="mt-3" />
         </form>
+       </div>
       </div>
     </>
   );
@@ -338,7 +342,7 @@ export function PrivateDatasetBox() {
       className="fa3-dataset-box border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_14px_36px_rgba(20,20,20,0.10)]"
       aria-labelledby={`${id}-title`}
     >
-      <CardBody id={id} />
+      <CardBody id={id} layout="tight" />
     </aside>
   );
 }

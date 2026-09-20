@@ -24219,7 +24219,27 @@ body:has(.home-4b.ab-page) footer { display: none; }
 }
 
 .fa3-breadth-section .fa3-section-heading--compact {
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 1.05fr);
   align-items: start;
+  gap: clamp(32px, 4vw, 64px);
+}
+
+.fa3-dataset-box ul {
+  margin-top: 10px;
+}
+
+.fa3-dataset-box ul li {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.fa3-dataset-box [aria-expanded] {
+  font-size: 15px;
+}
+
+.fa3-dataset-box .border-b.py-2\.5 {
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .fa3-dataset-details summary::-webkit-details-marker {
