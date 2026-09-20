@@ -16,7 +16,7 @@ export const privateDataset = {
   points: [
     {
       label: "What's in the dataset",
-      copy: "The questions HNW and UHNW clients are asking in AI Search, which firms are entering the consideration set, and the sources that shape those answers. Updated each quarter."
+      copy: "The questions HNW and UHNW clients are asking in AI search, which firms enter the consideration set, and the sources shaping those answers. Updated each quarter."
     },
     {
       label: "What HNW & UHNW clients are asking",
