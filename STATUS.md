@@ -1,6 +1,12 @@
 # Studio Baggio Website - STATUS
 *Last updated: 20 September 2026*
 
+## 20 Sept — Insight LIVE: How to build an AI-literate business in 90 days
+
+- New insight `/insights/how-to-build-an-ai-literate-business-in-90-days`, featured on `/insights` (newest entry in `src/content/insights.ts`). Body is a dedicated client component, `src/components/ai-literate-business-article.tsx`, reading `src/content/ai-literate-business-90-days.json`, exported verbatim from the approved Ideas Fest document (`Press/Ideas Fest 2026/linkedin-doc/build.py`). Nineteen answers in three phases with the phase callouts, four diagrams built as page components (adoption versus application, beyond the early adopters, the AI operating system map with the real Claude/OpenAI/Firecrawl/Perplexity/Higgsfield/apps marks, Word document versus shared capability), the 90-day map and the closing thought. PDF at `/downloads/how-to-build-an-ai-literate-business-in-90-days.pdf`.
+- Motion: Framer Motion once-only entrances (opacity + 14px rise, expo ease, 80ms stagger, `whileInView` once), blue rule draws under each phase heading, reduced-motion respected. No scroll scrubbing.
+- Styles under `.ail-*` in `globals.css`, scoped with the article-body prefix so they win over the generic insight rules. Page class `is-ninety-days` gives the hero title the blue full stop. FAQ schema carries four answers verbatim. Verified locally at 1512 and 375 wide; typecheck, lint and `next build` clean.
+
 ## 20 Sept (later) — Private dataset card and boxes on the law report (live, 996e328)
 
 - Same card and box components, now taking a content set. `privateDatasetLaw` in `src/content/private-dataset.ts`: title "How HNW & UHNW clients choose law firms & lawyers in AI search", law wording for the three rows, same two stats, same private line. The private line on both pages is now "Private data set exclusively available for Studio Baggio clients. Used to identify how firms can reach HNW & UHNW clients earlier in their journey and build the route from first search to qualified enquiry."
