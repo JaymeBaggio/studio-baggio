@@ -67,11 +67,15 @@ export function LawRankedTable({
   entities,
   legal500Rankings,
   areas,
+  trackedFirmCount,
+  studyAnswerCount,
   namedAnswerOverrides = {}
 }: {
   entities: LawEntity[];
   legal500Rankings: LawLegal500Ranking[];
   areas: string[];
+  trackedFirmCount: number;
+  studyAnswerCount: number;
   namedAnswerOverrides?: Record<string, Record<string, number>>;
 }) {
   const [query, setQuery] = useState("");
@@ -219,8 +223,52 @@ export function LawRankedTable({
           />
         </div>
         <p className="law-ranked__count">
-          {rows.length}{" "}{rows.length === 1 ? "firm" : "firms"}{area === "all" ? "" : ` in ${area}`}. Counts are answers out of the {area === "all" ? "810" : "54"} captured for {area === "all" ? "all 90 questions" : "this practice area"}. Recommended = the answer named the firm; cited = the answer linked to the firm&rsquo;s website. Click a column to sort; click a firm for its full record.
+          {trackedFirmCount} firms were named or cited across the <strong>{studyAnswerCount.toLocaleString("en-GB")} AI answers analysed</strong>. Recommended = the answer named the firm; cited = the answer linked to the firm&rsquo;s website. Click a column to sort; click a firm for its full record.{" "}
+          <ResearchDrawer
+            className="research-drawer-panel--question fa3-method-drawer"
+            eyebrow="Answer counts"
+            title="How the study total relates to the table"
+            triggerClassName="law-ranked__count-help"
+            trigger={`Why counts are out of ${area === "all" ? "810" : "54"}`}
+          >
+            <div className="fa3-method-content">
+              <dl className="fa3-method-content__summary">
+                <div>
+                  <dt>{studyAnswerCount.toLocaleString("en-GB")} answers in the full study</dt>
+                  <dd>
+                    135 answers to broad &ldquo;best lawyers&rdquo; questions, 675 answers to specific
+                    legal problems, and 675 answers to those same problems with an explicit request
+                    to name firms the client could instruct.
+                  </dd>
+                </div>
+                <div>
+                  <dt>Recommended: out of 810 answers</dt>
+                  <dd>
+                    The 135 broad answers plus the 675 answers explicitly asking which firms to
+                    instruct. A firm counts once in each answer that named it.
+                  </dd>
+                </div>
+                <div>
+                  <dt>Cited: out of 810 answers</dt>
+                  <dd>
+                    The 135 broad answers plus the 675 original answers to legal problems. A firm
+                    counts once in each answer that linked to its website.
+                  </dd>
+                </div>
+              </dl>
+              <p>
+                The 135 broad answers are shared by both measures, so the two sets total 1,485
+                distinct answers. When you select one practice area, each measure uses 54 answers:
+                nine broad answers and 45 relevant problem answers.
+              </p>
+            </div>
+          </ResearchDrawer>
         </p>
+        {compact(query) || area !== "all" || tierFilter !== "all" ? (
+          <p className="law-ranked__count" aria-live="polite">
+            Showing {rows.length} matching {rows.length === 1 ? "firm" : "firms"}{area === "all" ? "" : ` in ${area}`}.
+          </p>
+        ) : null}
         <div className="law-report__legal500-table-wrap">
           <table className="law-report__legal500-table law-ranked__table law-ranked__table--wide">
             <colgroup>

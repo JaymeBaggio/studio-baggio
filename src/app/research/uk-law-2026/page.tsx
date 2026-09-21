@@ -300,6 +300,8 @@ export default function UkLawReportPage() {
         <PrivateDatasetBox content={privateDatasetLaw} />
       </div>
       <LawRankedTable
+        trackedFirmCount={firmsTracked}
+        studyAnswerCount={lawReportData.counts.answers}
         entities={entities}
         legal500Rankings={legal500Rankings}
         areas={areas}
