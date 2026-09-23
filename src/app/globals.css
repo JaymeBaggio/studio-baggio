@@ -8793,16 +8793,6 @@ body:has(.home-4b.contact-page) footer {
   color: var(--sb-ink);
 }
 
-.home-4b.insights-page .insights-hero-title span {
-  display: inline-block;
-  width: 0.14em;
-  height: 0.14em;
-  margin-left: 0.16em;
-  background: var(--sb-blue);
-  border-radius: 999px;
-  vertical-align: baseline;
-}
-
 .home-4b.insights-page .insights-hero-dek {
   margin: 40px 0 0;
   max-width: 22rem;
@@ -17612,8 +17602,13 @@ body:has(.home-4b.contact-page) footer {
 
 /* AI Set Up Guide — PDF treatment */
 .home-4b.insight-article-page.is-setup-guide .insight-article-hero-title::after {
-  content: ".";
-  color: var(--sb-accent-blue);
+  content: "";
+  display: inline-block;
+  width: 0.23em;
+  height: 0.23em;
+  margin-left: 0.13em;
+  background: var(--sb-accent-blue);
+  vertical-align: baseline;
 }
 
 .home-4b.insight-article-page.is-setup-guide .insight-article-body {
@@ -18171,16 +18166,6 @@ body:has(.home-4b.contact-page) footer {
   line-height: 0.98;
   letter-spacing: 0;
   color: var(--sb-ink);
-}
-
-.home-4b.press-page .press-hero-title span {
-  display: inline-block;
-  width: 0.14em;
-  height: 0.14em;
-  margin-left: 0.16em;
-  background: var(--sb-blue);
-  border-radius: 999px;
-  vertical-align: baseline;
 }
 
 .home-4b.press-page .press-features-section {
@@ -24468,8 +24453,13 @@ body:has(.home-4b.ab-page) footer { display: none; }
 
 /* ===== Insight: How to build an AI-literate business in 90 days ===== */
 .home-4b.insight-article-page.is-ninety-days .insight-article-hero-title::after {
-  content: ".";
-  color: var(--sb-accent-blue);
+  content: "";
+  display: inline-block;
+  width: 0.23em;
+  height: 0.23em;
+  margin-left: 0.13em;
+  background: var(--sb-accent-blue);
+  vertical-align: baseline;
 }
 .home-4b.insight-article-page.is-ninety-days .insight-article-body { max-width: 900px; }
 .home-4b.insight-article-page .insight-article-body .ail { --ail-rule: #e4e4e4; --ail-tint: #f2f6fe; --ail-body: #4f4f4f; color: var(--sb-ink); }

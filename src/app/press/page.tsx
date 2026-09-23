@@ -99,7 +99,7 @@ export default function PressPage() {
               Press
             </p>
             <h1 className="press-hero-title" data-reveal>
-              {pressPage.title}<span aria-hidden="true" />
+              {pressPage.title}<span className="sb-mark" aria-hidden="true" />
             </h1>
           </div>
         </section>

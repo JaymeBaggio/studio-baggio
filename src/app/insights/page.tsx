@@ -42,7 +42,7 @@ export default function InsightsPage() {
                 Insights
               </p>
               <h1 className="insights-hero-title" data-reveal>
-                Insights<span aria-hidden="true" />
+                Insights<span className="sb-mark" aria-hidden="true" />
               </h1>
             </div>
           </div>
