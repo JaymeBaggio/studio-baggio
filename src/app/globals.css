@@ -3107,8 +3107,20 @@ body:has(.home-4b.contact-page) footer {
   margin-bottom: clamp(2rem, 11vw, 4rem);
 }
 
-.home-reference-wordmark-dot {
-  color: var(--sb-accent-blue);
+/* Studio Baggio end mark: a square one third of the cap height, on the baseline, 1.5 stems after the last letter. */
+.sb-mark {
+  display: inline-block;
+  width: 0.23em;
+  height: 0.23em;
+  margin-left: 0.13em;
+  background: var(--sb-accent-blue);
+  vertical-align: baseline;
+}
+
+.site-brand .sb-mark {
+  width: 0.36em;
+  height: 0.36em;
+  margin-left: 0.22em;
 }
 
 .home-reference-promise {

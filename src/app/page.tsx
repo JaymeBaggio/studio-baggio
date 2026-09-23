@@ -99,13 +99,14 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <h1 className="home-reference-wordmark uppercase" aria-label="Studio Baggio dot AI">
+          <h1 className="home-reference-wordmark uppercase" aria-label="Studio Baggio">
             {hero.wordmark.map((line) => (
               <span key={line} className="mask-line block">
                 <span data-hero-line className="block">
-                  {line === "BAGGIO.AI" ? (
+                  {line === "BAGGIO" ? (
                     <>
-                      BAGGIO<span className="home-reference-wordmark-dot">.</span>AI
+                      BAGGIO
+                      <span className="sb-mark" aria-hidden="true" />
                     </>
                   ) : (
                     line

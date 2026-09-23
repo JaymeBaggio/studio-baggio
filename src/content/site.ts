@@ -77,7 +77,7 @@ export const hero = {
     "FROM BUSINESS PROBLEM",
     "TO WORKING AI SYSTEM."
   ],
-  wordmark: ["STUDIO", "BAGGIO.AI"],
+  wordmark: ["STUDIO", "BAGGIO"],
   promiseTitle: "AI STRATEGY, SYSTEMS AND IMPLEMENTATION",
   promise:
     "FIND WHERE AI CREATES VALUE, THEN BUILD THE SYSTEMS NEEDED TO DELIVER IT",

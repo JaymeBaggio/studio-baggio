@@ -168,12 +168,15 @@ export function SiteHeader() {
         <Link
           href="/"
           className={cn(
-            "focus-ring inline-flex min-h-11 items-center text-sm uppercase tracking-[0.08em] transition-colors duration-300",
+            "site-brand focus-ring inline-flex min-h-11 items-center text-sm uppercase tracking-[0.08em] transition-colors duration-300",
             darkHeader ? "text-paper/[0.88] hover:text-paper" : quietTop ? "text-ink/70 hover:text-ink" : "text-ink"
           )}
           onClick={handleHomeClick}
         >
-          Studio Baggio
+          <span>
+            Studio Baggio
+            <span className="sb-mark" aria-hidden="true" />
+          </span>
         </Link>
         <nav
           className={cn(

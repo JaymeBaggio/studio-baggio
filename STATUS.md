@@ -1,5 +1,11 @@
 # Studio Baggio Website - STATUS
-*Last updated: 20 September 2026*
+*Last updated: 23 September 2026*
+
+## 23 Sept — Identity finalised: wordmark end mark, B monogram, favicon, OG image (main)
+
+- Jayme approved the identity on 23 Sept: STUDIO BAGGIO in Aileron Regular closed by a blue square end mark (one third of cap height, on the baseline, 1.5 stems after the O). `.AI` dropped from the wordmark; the domain is unchanged. Monogram is the B followed by the mark; the SB monogram is retired. Master files: `Studio Baggio Logos/Identity 2026/FINAL/` (SVG masters, 3000px PNGs, favicons 16–512, 800px avatars, OG image); generators alongside.
+- Site: hero wordmark now STUDIO / BAGGIO with the `.sb-mark` square (CSS, em-based so it scales with the type); header "Studio Baggio" carries the mark at a larger proportion for its size; favicons are static `src/app/icon.png` and `apple-icon.png` (B with the mark, replacing the generated SB tiles); OG image `studio-baggio-og-v6.png` (wordmark as outlines, tagline, no system fonts). Blue `#2563eb` and Aileron unchanged.
+- Rejected on the way: a redrawn heavier wordmark with a deeper blue (v2, deleted), the B-in-the-square symbol (kept in the folder as an alternative only), a plumb-line mark and a hallmark cartouche.
 
 ## 20 Sept — Insights list rebuilt, LIVE on main (f8f7431)
 
