@@ -175,7 +175,7 @@ export default function AboutPage() {
                 </p>
                 <h1 data-ab-enter="e2">
                   {about.title}
-                  <span className="ab-dot" aria-hidden="true" />
+                  <span className="sb-mark" aria-hidden="true" />
                 </h1>
               </div>
               <div className="ab-col-left">

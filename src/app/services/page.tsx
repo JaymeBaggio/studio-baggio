@@ -151,7 +151,7 @@ export default function ServicesPage() {
                 <span>systems and</span>
                 <span>
                   implementation
-                  <span className="sv-hero-dot" aria-hidden="true" />
+                  <span className="sb-mark" aria-hidden="true" />
                 </span>
               </h1>
               <div className="sv-hero-copy" data-sv-hero>

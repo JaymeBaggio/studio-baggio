@@ -43,7 +43,7 @@ export default function ResearchIndexPage() {
           <div className="research-index-masthead__frame">
             <h1>
               {researchFranchise.name}
-              <span className="research-index-masthead__blue-dot" aria-hidden="true">.</span>
+              <span className="sb-mark" aria-hidden="true" />
             </h1>
           </div>
 

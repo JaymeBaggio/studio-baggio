@@ -95,7 +95,7 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
             <p className="fa3-kicker">How AI chooses UK financial advisers</p>
-            <h1>93 of the UK&rsquo;s top 150 financial advice firms were invisible in AI search<span aria-hidden="true">.</span></h1>
+            <h1>93 of the UK&rsquo;s top 150 financial advice firms were invisible in AI search<span className="sb-mark" aria-hidden="true" /></h1>
           </div>
           <div className="fa3-masthead__intro">
             <div className="fa3-masthead__copy">

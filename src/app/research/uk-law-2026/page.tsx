@@ -224,7 +224,7 @@ export default function UkLawReportPage() {
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
             <p className="fa3-kicker">How AI chooses UK law firms · Benchmark, first edition</p>
-            <h1>UK Law Firms in AI Search 2026<span aria-hidden="true">.</span></h1>
+            <h1>UK Law Firms in AI Search 2026<span className="sb-mark" aria-hidden="true" /></h1>
           </div>
           <div className="fa3-masthead__intro">
             <div className="fa3-masthead__copy">

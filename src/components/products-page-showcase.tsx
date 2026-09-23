@@ -132,7 +132,7 @@ export function ProductsPageShowcase() {
             >
               <span>Products</span>
               <span>
-                in market<span className="products-blue-dot">.</span>
+                in market<span className="sb-mark" aria-hidden="true" />
               </span>
             </h1>
           </div>

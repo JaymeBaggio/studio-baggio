@@ -17,7 +17,7 @@ export default function ContactPage() {
               <p className="eyebrow" data-reveal data-motion="label">{contactPage.eyebrow}</p>
               <h1 className="studio-page-title studio-contact-title" data-reveal>
                 <span>{contactPage.title.replace(/\.$/, "")}</span>
-                <span className="studio-contact-title-dot" aria-hidden="true">.</span>
+                <span className="sb-mark" aria-hidden="true" />
               </h1>
               <p className="studio-page-body" data-reveal>
                 {contactPage.body}

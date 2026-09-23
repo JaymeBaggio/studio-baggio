@@ -37,7 +37,10 @@ export default function Image() {
             }}
           >
             <span>UK Law Firms in</span>
-            <span>AI Search 2026<span style={{ color: "#2563eb" }}>.</span></span>
+            <span style={{ display: "flex", alignItems: "flex-end" }}>
+              AI Search 2026
+              <span style={{ display: "flex", width: 19, height: 19, marginLeft: 11, marginBottom: 13, background: "#2563eb" }} />
+            </span>
           </div>
           <div style={{ display: "flex", marginTop: 44, fontSize: 28, color: "#4b4f55" }}>
             90 questions · 1,485 answers · 15 practice areas

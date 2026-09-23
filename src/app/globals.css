@@ -6592,10 +6592,6 @@ body:has(.home-4b.contact-page) footer {
   letter-spacing: 0;
 }
 
-.home-4b.about-page .studio-about-dot {
-  color: var(--sb-blue);
-}
-
 .home-4b.about-page .studio-about-sub {
   margin: 0;
   max-width: var(--sb-reading);
@@ -7418,10 +7414,6 @@ body:has(.home-4b.contact-page) footer {
   white-space: nowrap;
 }
 
-.home-4b.contact-page .studio-contact-title-dot {
-  color: var(--sb-blue);
-}
-
 .home-4b.contact-page .studio-page-body {
   width: 100%;
   max-width: 390px;
@@ -7726,11 +7718,6 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b.products-page .products-hero-title span {
   display: block;
-}
-
-.home-4b.products-page .products-hero-title .products-blue-dot {
-  display: inline;
-  color: var(--sb-blue);
 }
 
 .home-4b.products-page .products-tabs-shell {
@@ -10994,16 +10981,6 @@ body:has(.home-4b.contact-page) footer {
   margin-top: 22px;
 }
 
-.home-4b.services-page .sv-hero-dot {
-  display: inline-block;
-  width: 0.14em;
-  height: 0.14em;
-  margin-left: 0.12em;
-  background: var(--sb-blue);
-  border-radius: 999px;
-  vertical-align: baseline;
-}
-
 .home-4b.services-page .sv-hero-index {
   margin-top: auto;
   padding-top: clamp(56px, 8vh, 96px);
@@ -11138,10 +11115,6 @@ body:has(.home-4b.contact-page) footer {
   font-weight: 400;
   line-height: 0.98;
   letter-spacing: 0;
-}
-
-.research-masthead__blue-dot {
-  color: var(--sb-blue, #2563eb);
 }
 
 .research-masthead__copy {
@@ -16891,10 +16864,6 @@ body:has(.home-4b.contact-page) footer {
   max-width: 54rem;
   margin: 0;
   font-size: clamp(54px, 6.5vw, 94px);
-}
-
-.research-index-masthead__blue-dot {
-  color: var(--sb-accent-blue, #2563eb);
 }
 
 .research-index-masthead__copy {
@@ -24144,15 +24113,6 @@ body:has(.home-4b.ab-page) footer { display: none; }
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0;
-}
-.home-4b.ab-page .ab-dot {
-  display: inline-block;
-  width: 0.14em;
-  height: 0.14em;
-  margin-left: 0.12em;
-  background: var(--sb-accent-blue);
-  border-radius: 999px;
-  vertical-align: baseline;
 }
 .home-4b.ab-page .ab-bio-lead {
   margin: 0;

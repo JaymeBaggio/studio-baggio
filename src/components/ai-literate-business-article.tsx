@@ -323,7 +323,7 @@ export function AiLiterateBusinessArticle() {
       <Reveal className="ail-close">
         <Item as="p" className="ail-panel-label">Closing thought</Item>
         <Item as="p" className="ail-close-line">
-          {content.closing.replace(/\.$/, "")}<span aria-hidden="true">.</span>
+          {content.closing.replace(/\.$/, "")}<span className="sb-mark" aria-hidden="true" />
         </Item>
         <Item as="p" className="ail-download">
           <a href="/downloads/how-to-build-an-ai-literate-business-in-90-days.pdf" target="_blank" rel="noopener">

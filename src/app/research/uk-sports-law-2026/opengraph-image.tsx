@@ -27,8 +27,12 @@ export default function Image() {
           <span style={{ fontSize: 21, color: "#5f6368" }}>Benchmark · First edition</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", maxWidth: 980 }}>
-          <div style={{ display: "flex", fontSize: 90, lineHeight: 0.98, letterSpacing: "-0.055em" }}>
-            UK Sports Law in<br />AI Search 2026<span style={{ color: "#2563eb" }}>.</span>
+          <div style={{ display: "flex", flexDirection: "column", fontSize: 90, lineHeight: 0.98, letterSpacing: "-0.055em" }}>
+            <span>UK Sports Law in</span>
+            <span style={{ display: "flex", alignItems: "flex-end" }}>
+              AI Search 2026
+              <span style={{ display: "flex", width: 21, height: 21, marginLeft: 12, marginBottom: 14, background: "#2563eb" }} />
+            </span>
           </div>
           <div style={{ display: "flex", marginTop: 44, fontSize: 28, color: "#4b4f55" }}>
             90 questions · 810 answers · 9 sports-law specialisms

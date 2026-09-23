@@ -17,7 +17,7 @@ export function ResearchMasthead({ edition }: { edition: ResearchEditionMasthead
             ) : null}
             <h1 data-research-masthead-item>
               {(edition.finding ?? edition.title).replace(/\.$/, "")}
-              <span className="research-masthead__blue-dot" aria-hidden="true">.</span>
+              <span className="sb-mark" aria-hidden="true" />
             </h1>
           </div>
 
