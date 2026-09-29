@@ -753,7 +753,7 @@ export const about = {
   bio: {
     lead: "Jayme Baggio is Founder & CEO of Studio Baggio, an AI strategy, systems and implementation company that helps businesses identify where AI can create measurable value, then builds the systems and software needed to deliver it.",
     body: [
-      "She is the creator of Last30Days, an AI research platform now used by more than 350 individual and corporate users. Alongside Chartered Financial Planner Harry Sims, Jayme also built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers.",
+      "She is the creator of Last30Days, an AI research platform now used by over 400 individual and corporate users. Alongside Chartered Financial Planner Harry Sims, Jayme also built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers.",
       "Her AI Search research spans the UK financial advice and legal sectors. Findings have been featured in FT Adviser and Professional Adviser, while her work on commercial AI strategy has also appeared in Money Marketing.",
       "Before founding Studio Baggio, Jayme spent more than 12 years in media and production, most recently as Production Lead at Channel 4, working with some of the UK's most established brands, including BBC Studios, ITV, Google and HSBC."
     ]
@@ -815,6 +815,27 @@ export const pressPage = {
   title: "Press",
   features: [
     {
+      publication: "The Lawyer",
+      series: "Research coverage",
+      date: "29 September 2026",
+      datePublished: "2026-09-29",
+      author: "Ben Lucas",
+      title: "AI doesn’t give a damn about your SEO",
+      description:
+        "The Lawyer covers Studio Baggio's research into how AI recommends UK law firms, comparing AI visibility with its Top 100 ranking.",
+      pullout:
+        "A strong reputation within the profession does not guarantee that a firm will be considered for the work it specialises in.",
+      pulloutIsQuotation: false,
+      href: "https://www.thelawyer.com/ai-doesnt-give-a-damn-about-your-seo/",
+      researchHref: "/research/uk-law-2026",
+      researchTitle: "UK Law Firms in AI Search 2026",
+      logo: {
+        src: "/assets/logos/the-lawyer.svg",
+        width: 581,
+        height: 64
+      }
+    },
+    {
       publication: "FT Adviser",
       series: "Research coverage",
       date: "13 August 2026",
@@ -828,6 +849,7 @@ export const pressPage = {
       pulloutIsQuotation: true,
       href: "https://www.ftadviser.com/content/cacb4ab5-d378-478b-a301-3c1c3b8e7525",
       researchHref: "/research/uk-financial-advice-2026",
+      researchTitle: "UK Financial Advice Firms in AI Search 2026",
       logo: {
         src: "/assets/logos/ft-adviser.png",
         width: 2222,
@@ -847,6 +869,7 @@ export const pressPage = {
       pulloutIsQuotation: true,
       href: "https://www.professionaladviser.com/news/4534156/uk-advice-firms-invisible-ai-platforms-research",
       researchHref: "/research/uk-financial-advice-2026",
+      researchTitle: "UK Financial Advice Firms in AI Search 2026",
       logo: {
         src: "/assets/logos/professional-adviser-print.png",
         width: 2167,
@@ -1131,9 +1154,9 @@ export const servicesPage = {
       },
       example: {
         paras: [
-          "Studio Baggio designed and built Last30Days, an AI research product now used by more than 350 individual and corporate users to research markets, competitors, customer questions and emerging opportunities."
+          "Studio Baggio designed and built Last30Days, an AI research product now used by over 400 individual and corporate users to research markets, competitors, customer questions and emerging opportunities."
         ],
-        highlight: "more than 350 individual and corporate users"
+        highlight: "over 400 individual and corporate users"
       }
     }
   ],

@@ -15,11 +15,11 @@ const routes: Array<{
   priority: number;
 }> = [
   { path: "", lastModified: "2026-08-06", changeFrequency: "weekly", priority: 1 },
-  { path: "/services", lastModified: "2026-08-06", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/work", lastModified: "2026-08-06", changeFrequency: "monthly", priority: 0.75 },
-  { path: "/last30days", lastModified: "2026-07-26", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/press", lastModified: "2026-08-14", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/about", lastModified: "2026-08-29", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/services", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/work", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/last30days", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.85 },
+  { path: "/press", lastModified: "2026-09-29", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/about", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.75 },
   { path: "/insights", lastModified: "2026-08-09", changeFrequency: "weekly", priority: 0.75 },
   { path: "/contact", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
   { path: "/privacy", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },

@@ -68,11 +68,11 @@ const pressSchema = {
               }
             }
           : {}),
-        ...(item.researchHref
+        ...(item.researchHref && "researchTitle" in item
           ? {
               isBasedOn: {
                 "@type": "Report",
-                name: "UK Financial Advice Firms in AI Search 2026",
+                name: item.researchTitle,
                 url: `${siteUrl}${item.researchHref}`
               },
               citation: `${siteUrl}${item.researchHref}`
