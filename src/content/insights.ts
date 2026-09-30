@@ -554,7 +554,7 @@ Descript for editing by transcript and Opus Clip for clip selection, reframing a
     sourceEnd: "→ **Discuss your AI opportunity**",
     readTime: "6 min read",
     date: "2026-06-04",
-    updated: "2026-08-09",
+    updated: "2026-09-30",
     summary: "GEO, AEO and AI search visibility for expert-led firms. How AI decides who to cite, why your authority is invisible to it, and how to fix it.",
     preview: "Generative engine optimisation (GEO) is structuring what you publish so AI systems - ChatGPT, Perplexity, Google's AI Overviews, Gemini, Claude - cite you when they answer a question. SEO earns a position in a list of links. GEO earns a citation inside the answer itself.",
     thesis: "SEO competes for position. GEO competes for trust.",
@@ -653,7 +653,7 @@ Every "no" is a gap between your real authority and the version AI can read. The
 
 ## Find out where AI search is leaving your firm invisible
 
-The AI Opportunity Audit maps what is hidden and what to fix first.
+The AI Search Strategy & Implementation Plan maps what is hidden and what to fix first.
 
 → **Discuss your AI opportunity**
 `

@@ -1,3 +1,4 @@
+import { seoSearchPlanName } from "@/content/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -173,11 +174,11 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
         </div>
       </section>
 
-      <aside className="fa3-inline-cta" aria-label="SEO and AI Search Audit">
+      <aside className="fa3-inline-cta" aria-label={seoSearchPlanName}>
         <div className="editorial-container">
           <p>Want to know where your firm appears in AI search?</p>
           <Link href="/contact?intent=ai-search-audit&utm_content=research-inline-cta">
-            See what an SEO and AI Search Audit covers →
+            See what the {seoSearchPlanName} covers →
           </Link>
         </div>
       </aside>
@@ -426,7 +427,7 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
       <ResearchAuditCta
         href="/contact?intent=ai-search-audit"
         title="Find out why your firm appears, disappears or gets cited without credit."
-        body="Studio Baggio audits the buyer questions that matter, identifies the sources shaping the answers and sets out the evidence your firm needs to enter those consideration sets."
+        body="Studio Baggio researches the buyer questions that matter, identifies the sources shaping the answers and sets out the evidence your firm needs to enter those consideration sets."
         linkLabel="Discuss your firm's visibility"
       />
       </main>

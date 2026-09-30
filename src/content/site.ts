@@ -1,3 +1,5 @@
+export const seoSearchPlanName = "AI Search Strategy & Implementation Plan";
+
 export const navItems = [
   { label: "Studio Baggio", href: "/" },
   { label: "Services", href: "/services" },
@@ -63,7 +65,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      "What you can hire Studio Baggio for: SEO & AI Search, AI Operating Systems, Growth Infrastructure & Visibility, and Bespoke Software & Systems."
+      `What you can hire Studio Baggio for: ${seoSearchPlanName}, AI Operating Systems, Growth Infrastructure & Visibility, and Bespoke Software & Systems.`
   },
   press: {
     title: "Press & Media Coverage | Studio Baggio",
@@ -205,12 +207,12 @@ export const home = {
       {
         question: "Do you build as well as advise?",
         answer:
-          "Yes. We build. The AI Opportunity Audit produces a clear plan. After that, most clients move into a build phase where we create the actual systems. We don't hand over a deck and wish you luck. We work in focused sprints with clear deliverables, and we hand over working systems your team can operate from day one."
+          "Yes. We build. The strategy and implementation plan sets out what to build. After that, most clients move into a build phase where we create the actual systems. We don't hand over a deck and wish you luck. We work in focused sprints with clear deliverables, and we hand over working systems your team can operate from day one."
       },
       {
-        question: "How long does the AI Opportunity Audit take?",
+        question: `How long does the ${seoSearchPlanName} take?`,
         answer:
-          "14 days. The audit identifies where AI can create commercial value, the use cases worth prioritising, and a 30 to 90 day build plan. You walk away with a clear plan; implementation starts from there."
+          "14 days. The plan identifies where AI can create commercial value, the use cases worth prioritising, and a 30 to 90 day build plan. You walk away with a clear plan; implementation starts from there."
       },
       {
         question: "Do you work with our existing marketing team or agency?",
@@ -773,11 +775,11 @@ export const about = {
     services: [
       "AI Operating Systems",
       "Growth Infrastructure & Visibility",
-      "SEO & AI Search",
+      seoSearchPlanName,
       "Bespoke Software & Systems"
     ],
     bodyAfter: [
-      "Businesses can start with a focused audit, appoint us to deliver the full system, or work with us as an ongoing AI partner."
+      "Businesses can start with a focused strategy and implementation plan, appoint us to deliver the full system, or work with us as an ongoing AI partner."
     ],
     engageLine: "Enquire below. If you're a good fit, we'll be in touch to arrange an introductory meeting.",
     ctaLabel: "Enquire now →"
@@ -990,10 +992,10 @@ export const privacyPage = {
 };
 
 export const frontDoorOffer = {
-  pill: "SEO & AI Search Audit",
+  pill: seoSearchPlanName,
   pillHook: "Find out more",
-  title: "SEO & AI Search Audit",
-  listTitle: "What the audit tells you",
+  title: seoSearchPlanName,
+  listTitle: "What the plan tells you",
   points: [
     "Your highest-value buyer questions",
     "Where you appear today",
@@ -1028,13 +1030,13 @@ export const servicesPage = {
   offers: [
     {
       id: "seo-and-ai-search-opportunity-audit",
-      name: "SEO & AI Search",
+      name: seoSearchPlanName,
       summary:
         "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
       paras: [
-        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The audit identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found first on Google, cited in AI search and chosen."
+        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The plan identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found first on Google, cited in AI search and chosen."
       ],
-      includesLabel: "What the audit covers",
+      includesLabel: "What the plan covers",
       includes: [
         "High-value client searches and questions",
         "Current Google and AI-search visibility",
@@ -1172,7 +1174,7 @@ export const servicesPage = {
     items: [
       {
         lead: "Start with focused discovery",
-        detail: "Most engagements begin with a two- to three-week audit of the current position, producing a prioritised plan: what to implement first, what can wait and how success is measured. Audit fees are fully credited against implementation or ongoing consultation."
+        detail: "Most engagements begin with two to three weeks of focused discovery, producing a prioritised plan: what to implement first, what can wait and how success is measured. Discovery and planning fees are fully credited against implementation or ongoing consultation."
       },
       {
         lead: "Build and implement",
@@ -1233,7 +1235,7 @@ export const servicesPage = {
           "The Business Tracker brings together engagement from client resources, diagnostics, email, LinkedIn and other channels, then adds live public professional and company context to show who each person is and why they may matter. Every contact is qualified against the business's agreed commercial priorities, with a clear rationale and recommended next action. It prioritises prospective clients, existing relationships, introducers, journalists or strategic partners depending on the objective of the work."
       },
       {
-        question: "What does the SEO and AI Search Audit cover?",
+        question: `What does the ${seoSearchPlanName} cover?`,
         answer:
           "It covers current Google rankings, AI-answer visibility and citations, competitor performance, high-value search questions, technical and content gaps, priority pages and resources, site structure, implementation priorities, and measurement. The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
       },
@@ -1245,10 +1247,10 @@ export const servicesPage = {
       {
         question: "How does an engagement begin?",
         answer:
-          "Every engagement begins with a focused audit that identifies the commercial or operational opportunity with the greatest value, and the audit fee is fully credited against implementation or ongoing consultation. Studio Baggio handles the research, strategy, system design, build and implementation; the client provides the subject-matter expertise, strategic steer and approvals."
+          "Every engagement begins with focused discovery and planning that identifies the commercial or operational opportunity with the greatest value, and the fee is fully credited against implementation or ongoing consultation. Studio Baggio handles the research, strategy, system design, build and implementation; the client provides the subject-matter expertise, strategic steer and approvals."
       },
       {
-        question: "What support is available after an audit or implementation?",
+        question: "What support is available after a plan or implementation?",
         answer:
           "Studio Baggio can remain embedded as an external AI partner, providing priority advice, monthly working sessions and ongoing support as the business and its operating system develop."
       }

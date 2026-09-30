@@ -26,7 +26,7 @@ function OfferBody({
       <div className="h-[3px] w-full bg-[color:var(--sb-accent-blue)]" aria-hidden="true" />
       <div className={large ? "p-7" : "p-6"}>
         <div className="flex items-start justify-between gap-4">
-          <h2 className={`leading-snug ${large ? "text-2xl" : "text-xl"}`}>
+          <h2 className={`text-balance leading-snug ${large ? "text-2xl" : "text-xl"}`}>
             {frontDoorOffer.title}
           </h2>
           {onClose ? (
@@ -189,7 +189,7 @@ export function FrontDoorOffer() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: prefersReducedMotion ? 0 : 12, scale: 0.98 }}
               transition={transition}
-              className="pointer-events-auto relative w-full border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_22px_52px_rgba(20,20,20,0.16)] sm:w-[380px]"
+              className="pointer-events-auto relative max-h-[calc(100dvh-3rem)] w-full overflow-y-auto border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_22px_52px_rgba(20,20,20,0.16)] sm:w-[380px]"
               aria-label={frontDoorOffer.title}
             >
               <OfferBody onClose={() => setCardOpen(false)} onFollow={() => setCardOpen(false)} />
@@ -213,8 +213,8 @@ export function FrontDoorOffer() {
                   className="h-1.5 w-1.5 flex-none rounded-full bg-[color:var(--sb-accent-blue)]"
                   aria-hidden="true"
                 />
-                <span className="flex flex-col gap-1">
-                  <span className="text-[13px] uppercase leading-none tracking-[0.1em]">
+                <span className="flex max-w-[285px] flex-col gap-1">
+                  <span className="text-balance text-[13px] uppercase leading-snug tracking-[0.1em]">
                     {frontDoorOffer.pill}
                   </span>
                   <span className="text-[13px] leading-none text-ink/60 transition-colors group-hover:text-white/70">

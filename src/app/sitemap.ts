@@ -14,12 +14,12 @@ const routes: Array<{
   changeFrequency: "weekly" | "monthly";
   priority: number;
 }> = [
-  { path: "", lastModified: "2026-08-06", changeFrequency: "weekly", priority: 1 },
-  { path: "/services", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.85 },
+  { path: "", lastModified: "2026-09-30", changeFrequency: "weekly", priority: 1 },
+  { path: "/services", lastModified: "2026-09-30", changeFrequency: "monthly", priority: 0.85 },
   { path: "/work", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.75 },
   { path: "/last30days", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.85 },
   { path: "/press", lastModified: "2026-09-29", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/about", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.75 },
+  { path: "/about", lastModified: "2026-09-30", changeFrequency: "monthly", priority: 0.75 },
   { path: "/insights", lastModified: "2026-08-09", changeFrequency: "weekly", priority: 0.75 },
   { path: "/contact", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
   { path: "/privacy", lastModified: "2026-05-25", changeFrequency: "monthly", priority: 0.75 },
@@ -86,7 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const sportsLawBenchmarkRoute = {
     url: `${siteUrl}/research/uk-sports-law-2026`,
-    lastModified: new Date("2026-08-16"),
+    lastModified: new Date("2026-09-30"),
     changeFrequency: "monthly" as const,
     priority: 0.8
   };

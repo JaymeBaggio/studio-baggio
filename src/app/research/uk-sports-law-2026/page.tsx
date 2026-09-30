@@ -1,3 +1,4 @@
+import { seoSearchPlanName } from "@/content/site";
 import type { Metadata } from "next";
 import { ResearchAuditCta } from "@/components/research";
 import { ResearchContextSection } from "@/components/research/research-context-section";
@@ -384,11 +385,11 @@ export default function UkSportsLawReportPage() {
 
       <ResearchAuditCta
         href="/contact?intent=ai-search-audit&utm_content=sports-law-report"
-        eyebrow="SEO & AI SEARCH AUDIT"
+        eyebrow={seoSearchPlanName}
         title="Where does your firm appear?"
-        body="The audit identifies the searches and buyer questions that matter most commercially, shows where your firm is absent or being outranked, and sets out strongest opportunities to improve your position."
+        body="The plan identifies the searches and buyer questions that matter most commercially, shows where your firm is absent or being outranked, and sets out strongest opportunities to improve your position."
         secondBody="It covers Google, ChatGPT, Gemini and Perplexity, with a prioritised implementation plan covering the pages, content, authority and technical changes needed."
-        linkLabel="SEO & AI SEARCH AUDIT"
+        linkLabel={seoSearchPlanName}
       />
     </main>
   );

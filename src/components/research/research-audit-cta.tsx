@@ -1,13 +1,14 @@
+import { seoSearchPlanName } from "@/content/site";
 import { ArrowUpRight } from "lucide-react";
 import { ResearchActionLink } from "./ResearchActionLink.client";
 
 export function ResearchAuditCta({
   href,
-  eyebrow = "SEO and AI Search Opportunity Audit",
+  eyebrow = seoSearchPlanName,
   title = "Get a clear view of your firm's AI search visibility and opportunities.",
-  body = "The SEO and AI Search Opportunity Audit explains why the result appears and what to do next.",
+  body = `The ${seoSearchPlanName} explains why the result appears and what to do next.`,
   secondBody,
-  linkLabel = "Discuss an audit",
+  linkLabel = "Discuss your plan",
   supportingLine
 }: {
   href: string;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { about, metadata as siteMetadata, pressPage, primaryCta } from "@/content/site";
+import { about, metadata as siteMetadata, pressPage, primaryCta, seoSearchPlanName } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
@@ -41,11 +41,12 @@ const aboutLinks: Record<string, string> = {
   "AI Operating Systems": "/services#ai-operating-system-audit",
   "Growth Infrastructure & Visibility": "/services#growth-infrastructure-and-visibility-audit",
   "SEO & AI Search": "/services#seo-and-ai-search-opportunity-audit",
+  [seoSearchPlanName]: "/services#seo-and-ai-search-opportunity-audit",
   "Bespoke Software & Systems": "/services#bespoke-ai-software-and-systems",
   "Ideas Fest 2026": ideasFestSpeakerUrl
 };
 const aboutRichTextPattern =
-  /(Calm Authority|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|SEO & AI Search|Bespoke Software & Systems|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
+  /(Calm Authority|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|AI Search Strategy & Implementation Plan|SEO & AI Search|Bespoke Software & Systems|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
 
 const aboutPageSchema = {
   "@context": "https://schema.org",
@@ -54,7 +55,7 @@ const aboutPageSchema = {
   url: "https://www.studiobaggio.ai/about",
   name: siteMetadata.about.title,
   description: siteMetadata.about.description,
-  dateModified: "2026-08-29",
+  dateModified: "2026-09-30",
   mainEntity: {
     "@type": "Organization",
     "@id": "https://www.studiobaggio.ai/#organization",

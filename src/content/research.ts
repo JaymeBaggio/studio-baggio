@@ -1,3 +1,4 @@
+import { seoSearchPlanName } from "@/content/site";
 export const RESEARCH_ENGINE_IDS = ["openai", "gemini", "perplexity"] as const;
 
 export type ResearchEngineId = (typeof RESEARCH_ENGINE_IDS)[number];
@@ -95,7 +96,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   summary:
     "A 50-question investigation found that AI used a narrow source ecosystem while much of the established UK advice market remained invisible.",
   preparedForReview: "2026-07-31",
-  pageUpdatedAt: "2026-08-22",
+  pageUpdatedAt: "2026-09-30",
   publicationStatus: "published",
   statusLabel: "Published",
   geography: "United Kingdom",
@@ -196,7 +197,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
       "The public evidence shows where firms appeared. Causal diagnosis and remediation are outside the study."
     ],
     disclosure:
-      "Studio Baggio provides paid SEO and AI Search Opportunity Audits. Buying an audit cannot change a firm's inclusion, evidence or treatment in this study.",
+      `Studio Baggio provides the paid ${seoSearchPlanName}. Buying a plan cannot change a firm's inclusion, evidence or treatment in this study.`,
     changeLog: [
       {
         version: "fa-market-panel-method-1.0",
@@ -218,7 +219,7 @@ const ukFinancialAdvice2026: ResearchEditionDefinition = {
   auditCta: {
     title: "Get a clear view of your firm's AI search visibility and opportunities.",
     body:
-      "The SEO and AI Search Opportunity Audit investigates the likely causes, identifies what to test and sets out what to do next.",
+      `The ${seoSearchPlanName} investigates the likely causes, identifies what to test and sets out what to do next.`,
     href: "/contact?utm_source=research&utm_medium=study&utm_campaign=uk-financial-advice-2026&utm_content=audit-cta"
   }
 };
