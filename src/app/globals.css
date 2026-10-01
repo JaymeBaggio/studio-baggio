@@ -24291,7 +24291,7 @@ body:has(.home-4b.ab-page) footer { display: none; }
 
 /* Reserve breathing room below the complete desktop composition. */
 @media (min-width: 1024px) {
-  .home-4b.ab-page .ab-frame { padding-bottom: 32px; }
+  .home-4b.ab-page .ab-frame { min-height: 100svh; padding-bottom: 32px; }
   .home-4b.ab-page .ab-grid { row-gap: 16px; }
   .home-4b.ab-page .ab-head h1 { margin-top: 10px; font-size: clamp(46px, 4vw, 54px); }
   .home-4b.ab-page .ab-bio-lead,
