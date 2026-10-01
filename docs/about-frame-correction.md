@@ -12,3 +12,7 @@ Verify the entire first viewport at 1510 × 860 and 1512 × 884 (the supplied sc
 - Mobile at 390 × 844 retains its original typography and stacked layout; all logos remain visible without horizontal overflow.
 - Body copy, body font sizes, metadata and links are unchanged.
 - Lint, TypeScript and the production build pass.
+
+## Follow-up: remove the redundant About label
+
+Removed the blue About eyebrow and the heading margins that separated it from the title. The 1510 × 860 viewport now has 118px below the complete logo strip, with no overflow. Checked the heading's clearance from the navigation on desktop and at 390 × 844; lint and the production build pass.

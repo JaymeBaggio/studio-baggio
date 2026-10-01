@@ -179,9 +179,6 @@ export default function AboutPage() {
           <div className="editorial-container ab-container">
             <div className="ab-grid">
               <div className="ab-head">
-                <p className="eyebrow ab-about-label" data-ab-enter="e1">
-                  {about.eyebrow}
-                </p>
                 <h1 data-ab-enter="e2">
                   {about.title}
                   <span className="sb-mark" aria-hidden="true" />

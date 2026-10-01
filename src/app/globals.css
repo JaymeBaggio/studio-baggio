@@ -24090,9 +24090,8 @@ body:has(.home-4b.ab-page) footer { display: none; }
 }
 .home-4b.ab-page .ab-head { grid-column: 1 / -1; }
 .home-4b.ab-page .ab-col-left { display: flex; flex-direction: column; }
-.home-4b.ab-page .ab-about-label { color: var(--sb-accent-blue); }
 .home-4b.ab-page .ab-head h1 {
-  margin: 14px 0 0;
+  margin: 0;
   color: var(--sb-ink);
   font-size: clamp(46px, 4vw, 58px);
   font-weight: 400;
@@ -24293,7 +24292,7 @@ body:has(.home-4b.ab-page) footer { display: none; }
 @media (min-width: 1024px) {
   .home-4b.ab-page .ab-frame { min-height: 100svh; padding-bottom: 32px; }
   .home-4b.ab-page .ab-grid { row-gap: 16px; }
-  .home-4b.ab-page .ab-head h1 { margin-top: 10px; font-size: clamp(46px, 4vw, 54px); }
+  .home-4b.ab-page .ab-head h1 { font-size: clamp(46px, 4vw, 54px); }
   .home-4b.ab-page .ab-bio-lead,
   .home-4b.ab-page .ab-bio-rest p,
   .home-4b.ab-page .ab-press-panel p:not(.ab-panel-label),
@@ -24324,7 +24323,7 @@ body:has(.home-4b.ab-page) footer { display: none; }
 
 @media (min-width: 1024px) and (max-height: 800px) {
   .home-4b.ab-page .ab-grid { row-gap: 12px; }
-  .home-4b.ab-page .ab-head h1 { margin-top: 8px; font-size: 48px; }
+  .home-4b.ab-page .ab-head h1 { font-size: 48px; }
   .home-4b.ab-page .ab-bio-rest { margin-top: 8px; }
   .home-4b.ab-page .ab-bio-rest p + p { margin-top: 6px; }
   .home-4b.ab-page .ab-press-panel { margin-top: 10px; padding-block: 12px; }
