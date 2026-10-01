@@ -24165,10 +24165,14 @@ body:has(.home-4b.ab-page) footer { display: none; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 32px;
+  column-gap: 24px;
   row-gap: 16px;
   margin-top: 20px;
   padding-top: 0;
+}
+.home-4b.ab-page .ab-press-row > .eyebrow {
+  flex-basis: 100%;
+  margin: 0;
 }
 .home-4b.ab-page .ab-press-logo img {
   height: 16px;

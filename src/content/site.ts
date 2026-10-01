@@ -51,7 +51,7 @@ export const metadata = {
   about: {
     title: "About Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "Jayme Baggio is Founder & CEO of Studio Baggio, an AI strategy, systems and implementation company. Creator of Last30Days and Calm Authority; Ideas Fest 2026 panellist."
+      "Meet Jayme Baggio, founder of Studio Baggio. AI strategy, systems and implementation; speaker at Ideas Fest and AI Creative Summit 2026."
   },
   contact: {
     title: "Contact Studio Baggio",
@@ -756,14 +756,14 @@ export const about = {
     lead: "Jayme Baggio is Founder & CEO of Studio Baggio, an AI strategy, systems and implementation company that helps businesses identify where AI can create measurable value, then builds the systems and software needed to deliver it.",
     body: [
       "She is the creator of Last30Days, an AI research platform now used by over 400 individual and corporate users. Alongside Chartered Financial Planner Harry Sims, Jayme also built Calm Authority, a LinkedIn thought leadership writing system for UK financial advisers.",
-      "Her AI Search research spans the UK financial advice and legal sectors. Findings have been featured in FT Adviser and Professional Adviser, while her work on commercial AI strategy has also appeared in Money Marketing.",
+      "Her AI Search research spans the UK financial advice and legal sectors. Findings have been featured in FT Adviser, Professional Adviser and The Lawyer, while her work on commercial AI strategy has also appeared in Money Marketing.",
       "Before founding Studio Baggio, Jayme spent more than 12 years in media and production, most recently as Production Lead at Channel 4, working with some of the UK's most established brands, including BBC Studios, ITV, Google and HSBC."
     ]
   },
   press: {
     title: "Press & Founder Availability",
     body: [
-      "Jayme speaks and is available for comment on Commercial AI strategy, SEO & AI search, AI in the workplace, building AI operating systems within businesses, AI in media & content, and the broader AI economy. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring."
+      "Jayme speaks and is available for comment on Commercial AI strategy, SEO & AI search, AI in the workplace, building AI operating systems within businesses, AI in media & content, and the broader AI economy. She spoke as a panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, and will be speaking at the AI Creative Summit 2026- demonstrating how companies can use AI to build bespoke tools that save time, improve how the business runs or help win more work."
     ]
   },
   signoffName: "AI Strategy & Implementation Specialist",
@@ -991,6 +991,19 @@ export const privacyPage = {
   ]
 };
 
+export const aiSearchFeaturedPress = {
+  label: "Our AI search research featured in",
+  logos: [
+    { name: "Financial Times", src: "/assets/logos/financial-times.png", width: 55 },
+    {
+      name: "Professional Adviser",
+      src: "/assets/logos/professional-adviser-print.png",
+      width: 193
+    },
+    { name: "The Lawyer", src: "/assets/logos/the-lawyer.svg", width: 145 }
+  ]
+};
+
 export const frontDoorOffer = {
   pill: seoSearchPlanName,
   pillHook: "Find out more",
@@ -1006,17 +1019,7 @@ export const frontDoorOffer = {
   ],
   cta: { label: "Enquire now", href: "/contact" },
   more: { label: "See what's included", href: "/services#seo-and-ai-search-opportunity-audit" },
-  featured: {
-    label: "Our AI search research featured in",
-    logos: [
-      { name: "Financial Times", src: "/assets/logos/financial-times.png", width: 55 },
-      {
-        name: "Professional Adviser",
-        src: "/assets/logos/professional-adviser-print.png",
-        width: 193
-      }
-    ]
-  }
+  featured: aiSearchFeaturedPress
 };
 
 export const servicesPage = {
@@ -1061,17 +1064,7 @@ export const servicesPage = {
         highlight: "£5.3 million in assets under management and £103,400 in first-year revenue"
       },
       exampleFirst: true,
-      featuredIn: {
-        label: "Our AI search research featured in",
-        logos: [
-          { name: "Financial Times", src: "/assets/logos/financial-times.png", width: 55 },
-          {
-            name: "Professional Adviser",
-            src: "/assets/logos/professional-adviser-print.png",
-            width: 193
-          }
-        ]
-      }
+      featuredIn: aiSearchFeaturedPress
     },
     {
       id: "ai-operating-system-audit",

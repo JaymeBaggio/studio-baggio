@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ResearchActionLink } from "@/components/research/ResearchActionLink.client";
@@ -9,6 +10,7 @@ import {
   researchFranchise
 } from "@/content/research";
 import { pageMetadata } from "@/lib/metadata";
+import { aiSearchFeaturedPress } from "@/content/site";
 
 const hasPublishedEdition = researchEditions.some(
   (edition) => edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
@@ -45,6 +47,21 @@ export default function ResearchIndexPage() {
               {researchFranchise.name}
               <span className="sb-mark" aria-hidden="true" />
             </h1>
+          </div>
+
+          <div className={styles.featuredPress} aria-label="Research featured in">
+            <p>{aiSearchFeaturedPress.label}</p>
+            <div className={styles.featuredLogos}>
+              {aiSearchFeaturedPress.logos.map((logo) => (
+                <Image
+                  key={logo.name}
+                  src={logo.src}
+                  alt={logo.name}
+                  width={logo.width}
+                  height={16}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="research-index-editions" aria-labelledby="research-editions-title">

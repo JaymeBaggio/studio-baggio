@@ -72,7 +72,7 @@ function OfferBody({
           <p className="text-[11px] uppercase tracking-[0.08em] text-ink/50">
             {frontDoorOffer.featured.label}
           </p>
-          <div className="mt-2.5 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 min-[360px]:flex-nowrap">
             {frontDoorOffer.featured.logos.map((logo) => (
               <Image
                 key={logo.name}
@@ -80,7 +80,7 @@ function OfferBody({
                 alt={logo.name}
                 width={logo.width}
                 height={16}
-                className="h-3.5 w-auto"
+                className="h-3.5 min-w-0 w-auto object-contain"
               />
             ))}
           </div>

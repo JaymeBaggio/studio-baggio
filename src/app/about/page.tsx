@@ -32,6 +32,14 @@ const aboutFeaturedPress = [
     src: "/assets/logos/professional-adviser-print.png",
     width: 2167,
     height: 180
+  },
+  {
+    key: "the-lawyer",
+    name: "The Lawyer",
+    href: pressPage.features.find((feature) => feature.publication === "The Lawyer")!.href,
+    src: "/assets/logos/the-lawyer.svg",
+    width: 581,
+    height: 64
   }
 ] as const;
 
@@ -55,7 +63,7 @@ const aboutPageSchema = {
   url: "https://www.studiobaggio.ai/about",
   name: siteMetadata.about.title,
   description: siteMetadata.about.description,
-  dateModified: "2026-09-30",
+  dateModified: "2026-10-01",
   mainEntity: {
     "@type": "Organization",
     "@id": "https://www.studiobaggio.ai/#organization",
@@ -86,7 +94,7 @@ const aboutPageSchema = {
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         url: ideasFestSpeakerUrl,
         description:
-          "Jayme speaks and is available for comment on Commercial AI strategy, SEO & AI search, AI in the workplace, building AI operating systems within businesses, AI in media & content, and the broader AI economy. She is a confirmed panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, taking place on 9 September at Champneys Tring.",
+          "Jayme spoke as a panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, at Champneys Tring on 9 September 2026.",
         performer: {
           "@type": "Person",
           "@id": "https://www.studiobaggio.ai/about#jayme-baggio",

@@ -390,16 +390,18 @@ export default function ServicesPage() {
                           <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
                             {offer.featuredIn.label}
                           </span>
-                          {offer.featuredIn.logos.map((logo) => (
-                            <Image
-                              key={logo.name}
-                              src={logo.src}
-                              alt={logo.name}
-                              width={logo.width}
-                              height={16}
-                              className="h-4 w-auto"
-                            />
-                          ))}
+                          <div className="flex min-w-0 max-w-full items-center gap-4 sm:gap-6">
+                            {offer.featuredIn.logos.map((logo) => (
+                              <Image
+                                key={logo.name}
+                                src={logo.src}
+                                alt={logo.name}
+                                width={logo.width}
+                                height={16}
+                                className="h-4 min-w-0 w-auto object-contain"
+                              />
+                            ))}
+                          </div>
                         </div>
                       ) : null}
                       <Link
