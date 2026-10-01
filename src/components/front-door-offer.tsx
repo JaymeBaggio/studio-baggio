@@ -130,9 +130,11 @@ export function FrontDoorOffer() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // The financial-advice report carries its own follower (the private dataset card).
+  // About and Contact already contain the offer/enquiry route in their frame;
+  // a floating card would cover it. Research reports use their own CTA.
   if (
     !mounted ||
+    pathname === "/about" ||
     pathname === "/contact" ||
     pathname === "/research/uk-sports-law-2026" ||
     pathname === "/research/uk-financial-advice-2026" ||
