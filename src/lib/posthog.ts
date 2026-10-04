@@ -32,6 +32,8 @@ export function identifyVisitor(email: string, properties: Record<string, string
   try {
     const clean = Object.fromEntries(Object.entries(properties).filter(([, value]) => value));
     posthog.identify(email.trim().toLowerCase(), { email: email.trim().toLowerCase(), ...clean });
+    const snitcher = (window as unknown as { Snitcher?: { identify?: (email: string, traits?: object) => void } }).Snitcher;
+    snitcher?.identify?.(email.trim().toLowerCase(), clean);
   } catch {
     /* never affect the form */
   }
