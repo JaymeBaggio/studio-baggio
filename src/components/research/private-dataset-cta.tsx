@@ -4,6 +4,7 @@ import { useEffect, useId, useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { privateDataset, type PrivateDatasetContent } from "@/content/private-dataset";
 import { isWorkEmail } from "@/lib/dataset-interest-schema";
+import { identifyVisitor, postHogDistinctId } from "@/lib/posthog";
 
 type Status = { tone: "idle" } | { tone: "sending" } | { tone: "success" } | { tone: "error"; message: string };
 
@@ -41,7 +42,8 @@ function useInterestForm(variant: Variant) {
 
     setStatus({ tone: "sending" });
     try {
-      await submit({ ...values, email, variant });
+      await submit({ ...values, email, variant, posthogDistinctId: postHogDistinctId() ?? "" });
+      identifyVisitor(email, { source: "Dataset interest" });
       setStatus({ tone: "success" });
       form.reset();
     } catch (error) {

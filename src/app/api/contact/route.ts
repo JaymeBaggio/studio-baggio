@@ -37,7 +37,11 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const parsed = contactSchema.safeParse(await request.json().catch(() => null));
+  const rawBody = (await request.json().catch(() => null)) as Record<string, unknown> | null;
+  const parsed = contactSchema.safeParse(rawBody);
+  // PostHog browser ID, so the tracker lead links to that visitor's earlier browsing.
+  const posthogDistinctId =
+    typeof rawBody?.posthogDistinctId === "string" ? rawBody.posthogDistinctId.slice(0, 200) : undefined;
 
   if (!parsed.success) {
     return NextResponse.json({ message: "Please check the form fields." }, { status: 400 });
@@ -108,6 +112,7 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify({
           source_key: trackerKey,
           email,
+          posthog_distinct_id: posthogDistinctId || undefined,
           name,
           firm_name: business,
           website: website || undefined,

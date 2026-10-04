@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { identifyVisitor, postHogDistinctId } from "@/lib/posthog";
 import { Loader2, Send } from "lucide-react";
 import { useState } from "react";
 import { useForm, type FieldErrors } from "react-hook-form";
@@ -41,7 +42,7 @@ export function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values)
+        body: JSON.stringify({ ...values, posthogDistinctId: postHogDistinctId() })
       });
 
       const data = (await response.json().catch(() => ({}))) as { message?: string };
@@ -55,6 +56,7 @@ export function ContactForm() {
         return;
       }
 
+      identifyVisitor(values.email, { name: values.name, firm_name: values.business, source: "Website enquiry" });
       toast.success("Message sent to Studio Baggio.");
       setFormStatus({
         tone: "success",

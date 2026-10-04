@@ -961,7 +961,7 @@ export const contactPage = {
 
 export const privacyPage = {
   eyebrow: "Privacy",
-  title: "Simple privacy notes for Studio Baggio contact enquiries.",
+  title: "Privacy notes for the Studio Baggio website.",
   items: [
     {
       title: "What the form collects",
@@ -984,9 +984,19 @@ export const privacyPage = {
         "You can contact jayme@studiobaggio.ai to ask about your submission or request deletion of the information you sent."
     },
     {
-      title: "Analytics",
+      title: "Website analytics",
       body:
-        "This phase-1 build does not install analytics or tracking scripts. If analytics are added later, this page should be updated before launch."
+        "Studio Baggio uses Google Analytics, Vercel Analytics, PostHog and its own Business Tracker to understand how the site is used: pages viewed, clicks, scroll depth, time on page and session recordings. Anything typed into a form is hidden in recordings. PostHog data is stored in the EU."
+    },
+    {
+      title: "Company identification",
+      body:
+        "Studio Baggio may look up the organisation linked to a visitor's network address to see which companies visit the site. This identifies companies, not individuals, and is not used to contact anyone who has not been in touch."
+    },
+    {
+      title: "When you submit a form",
+      body:
+        "Your earlier visits to the site are linked to your enquiry, so Studio Baggio can see which pages interested you and reply with relevant context."
     }
   ]
 };

@@ -37,7 +37,11 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const parsed = datasetInterestSchema.safeParse(await request.json().catch(() => null));
+  const rawBody = (await request.json().catch(() => null)) as Record<string, unknown> | null;
+  const parsed = datasetInterestSchema.safeParse(rawBody);
+  // PostHog browser ID, so the tracker lead links to that visitor's earlier browsing.
+  const posthogDistinctId =
+    typeof rawBody?.posthogDistinctId === "string" ? rawBody.posthogDistinctId.slice(0, 200) : undefined;
 
   if (!parsed.success) {
     const first = parsed.error.issues[0]?.message || "Please check the form fields.";
@@ -97,6 +101,7 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify({
           source_key: trackerKey,
           email,
+          posthog_distinct_id: posthogDistinctId || undefined,
           name: role || undefined,
           firm_name: firmLabel,
           website: `https://${domain}`,
