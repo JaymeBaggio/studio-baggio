@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { visitCompany } from "@/lib/spotter";
+import { capturePersonalRef } from "@/lib/personal-ref";
 
 /**
  * Sends one pageview per route change to the Studio Baggio Business Tracker
@@ -30,7 +31,9 @@ export function TrackerBeacon() {
   useEffect(() => {
     if (!TRACKER_URL || !pathname) return;
     if (/bot|crawl|spider|headless/i.test(navigator.userAgent)) return;
+    const ref = capturePersonalRef();
     const base = {
+      ref,
       path: pathname,
       referrer: document.referrer || null,
       deviceId: stableId(window.localStorage, "sb_device"),

@@ -994,9 +994,9 @@ export const privacyPage = {
         "Studio Baggio may look up the organisation linked to a visitor's network address to see which companies visit the site. This identifies companies, not individuals, and is not used to contact anyone who has not been in touch."
     },
     {
-      title: "When you submit a form",
+      title: "When you get in touch",
       body:
-        "Your earlier visits to the site are linked to your enquiry, so Studio Baggio can see which pages interested you and reply with relevant context."
+        "If you submit a form, or open a link Studio Baggio has sent you, your visits to the site are linked to you, so Studio Baggio can see which pages interested you and reply with relevant context."
     }
   ]
 };
