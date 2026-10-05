@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/contact-form";
 import { PageReveals } from "@/components/page-reveals";
 import { contactPage, metadata as siteMetadata } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
+import { LastWordMark } from "@/components/last-word-mark";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.contact, path: "/contact" });
 
@@ -16,8 +17,7 @@ export default function ContactPage() {
             <div className="studio-contact-intro">
               <p className="eyebrow" data-reveal data-motion="label">{contactPage.eyebrow}</p>
               <h1 className="studio-page-title studio-contact-title" data-reveal>
-                <span>{contactPage.title.replace(/\.$/, "")}</span>
-                <span className="sb-mark" aria-hidden="true" />
+                <LastWordMark text={contactPage.title} />
               </h1>
               <p className="studio-page-body" data-reveal>
                 {contactPage.body}

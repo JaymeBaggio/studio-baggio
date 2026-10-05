@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { about, metadata as siteMetadata, pressPage, primaryCta, seoSearchPlanName } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
+import { LastWordMark } from "@/components/last-word-mark";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
 
@@ -180,8 +181,7 @@ export default function AboutPage() {
             <div className="ab-grid">
               <div className="ab-head">
                 <h1 data-ab-enter="e2">
-                  {about.title}
-                  <span className="sb-mark" aria-hidden="true" />
+                  <LastWordMark text={about.title} />
                 </h1>
               </div>
               <div className="ab-col-left">

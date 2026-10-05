@@ -16,6 +16,7 @@ import {
 } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
+import { LastWordMark } from "@/components/last-word-mark";
 
 export const metadata: Metadata = pageMetadata({
   ...siteMetadata.services,
@@ -150,8 +151,7 @@ export default function ServicesPage() {
                 <span>AI strategy,</span>
                 <span>systems and</span>
                 <span>
-                  implementation
-                  <span className="sb-mark" aria-hidden="true" />
+                  <LastWordMark text="implementation" />
                 </span>
               </h1>
               <div className="sv-hero-copy" data-sv-hero>

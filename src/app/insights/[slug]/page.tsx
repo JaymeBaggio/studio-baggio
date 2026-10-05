@@ -19,6 +19,7 @@ import {
 } from "@/content/insights";
 import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
+import { LastWordMark } from "@/components/last-word-mark";
 
 type ArticlePageProps = {
   params: Promise<{
@@ -1573,7 +1574,11 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
               </Link>
             </div>
             <h1 className="insight-article-hero-title" data-reveal>
-              {article.title}
+              {setupStyleSlugs.has(article.slug) || article.slug === ninetyDaysSlug ? (
+                <LastWordMark text={article.title} />
+              ) : (
+                article.title
+              )}
             </h1>
             <div className="insight-article-meta-bar" data-reveal>
               <span className="insight-article-meta-item">

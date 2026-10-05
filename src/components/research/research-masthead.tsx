@@ -1,4 +1,5 @@
 import type { ResearchEditionMasthead } from "./types";
+import { LastWordMark } from "@/components/last-word-mark";
 
 export function ResearchMasthead({ edition }: { edition: ResearchEditionMasthead }) {
   return (
@@ -16,8 +17,7 @@ export function ResearchMasthead({ edition }: { edition: ResearchEditionMasthead
               </p>
             ) : null}
             <h1 data-research-masthead-item>
-              {(edition.finding ?? edition.title).replace(/\.$/, "")}
-              <span className="sb-mark" aria-hidden="true" />
+              <LastWordMark text={edition.finding ?? edition.title} />
             </h1>
           </div>
 

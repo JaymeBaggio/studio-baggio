@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import content from "@/content/ai-literate-business-90-days.json";
+import { LastWordMark } from "@/components/last-word-mark";
 
 /*
  * "How to build an AI-literate business in 90 days" — article body.
@@ -323,7 +324,7 @@ export function AiLiterateBusinessArticle() {
       <Reveal className="ail-close">
         <Item as="p" className="ail-panel-label">Closing thought</Item>
         <Item as="p" className="ail-close-line">
-          {content.closing.replace(/\.$/, "")}<span className="sb-mark" aria-hidden="true" />
+          <LastWordMark text={content.closing} />
         </Item>
         <Item as="p" className="ail-download">
           <a href="/downloads/how-to-build-an-ai-literate-business-in-90-days.pdf" target="_blank" rel="noopener">

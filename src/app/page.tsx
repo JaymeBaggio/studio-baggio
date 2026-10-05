@@ -9,6 +9,7 @@ import { ProofTiles } from "@/components/proof-tiles";
 import { ValueMap } from "@/components/value-map";
 import { hero, home, introDownload, metadata as siteMetadata, primaryCta, servicesPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
+import { LastWordMark } from "@/components/last-word-mark";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
 
@@ -105,8 +106,7 @@ export default function HomePage() {
                 <span data-hero-line className="block">
                   {line === "BAGGIO" ? (
                     <>
-                      BAGGIO
-                      <span className="sb-mark" aria-hidden="true" />
+                      <LastWordMark text="BAGGIO" />
                     </>
                   ) : (
                     line

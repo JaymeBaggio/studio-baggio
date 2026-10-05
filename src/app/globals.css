@@ -3107,20 +3107,45 @@ body:has(.home-4b.contact-page) footer {
   margin-bottom: clamp(2rem, 11vw, 4rem);
 }
 
-/* Studio Baggio end mark: a square one third of the cap height, on the baseline, 1.5 stems after the last letter. */
+/* Studio Baggio end mark: a square one third of the cap height, on the baseline, 1.5 stems after the last letter.
+   Page-level rules such as `h1 span { display: block }` must never restyle it, so its box is locked with !important.
+   Sizes snap to whole pixels so the edges stay crisp at every type size. */
+.sb-nowrap {
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+  white-space: nowrap !important;
+}
+
 .sb-mark {
-  display: inline-block;
-  width: 0.23em;
-  height: 0.23em;
-  margin-left: 0.13em;
-  background: var(--sb-accent-blue);
-  vertical-align: baseline;
+  display: inline-block !important;
+  position: static !important;
+  float: none !important;
+  width: 0.23em !important;
+  width: round(0.23em, 1px) !important;
+  height: 0.23em !important;
+  height: round(0.23em, 1px) !important;
+  margin: 0 0 0 0.13em !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+  background: var(--sb-accent-blue) !important;
+  vertical-align: baseline !important;
+  transform: none !important;
+  opacity: 1 !important;
 }
 
 .site-brand .sb-mark {
-  width: 0.36em;
-  height: 0.36em;
-  margin-left: 0.22em;
+  width: 0.36em !important;
+  width: round(0.36em, 1px) !important;
+  height: 0.36em !important;
+  height: round(0.36em, 1px) !important;
+  margin-left: 0.22em !important;
 }
 
 .home-reference-promise {
@@ -17601,16 +17626,6 @@ body:has(.home-4b.contact-page) footer {
 }
 
 /* AI Set Up Guide — PDF treatment */
-.home-4b.insight-article-page.is-setup-guide .insight-article-hero-title::after {
-  content: "";
-  display: inline-block;
-  width: 0.23em;
-  height: 0.23em;
-  margin-left: 0.13em;
-  background: var(--sb-accent-blue);
-  vertical-align: baseline;
-}
-
 .home-4b.insight-article-page.is-setup-guide .insight-article-body {
   counter-reset: setupsec;
 }
@@ -24505,15 +24520,6 @@ body:has(.home-4b.ab-page) footer { display: none; }
 }
 
 /* ===== Insight: How to build an AI-literate business in 90 days ===== */
-.home-4b.insight-article-page.is-ninety-days .insight-article-hero-title::after {
-  content: "";
-  display: inline-block;
-  width: 0.23em;
-  height: 0.23em;
-  margin-left: 0.13em;
-  background: var(--sb-accent-blue);
-  vertical-align: baseline;
-}
 .home-4b.insight-article-page.is-ninety-days .insight-article-body { max-width: 900px; }
 .home-4b.insight-article-page .insight-article-body .ail { --ail-rule: #e4e4e4; --ail-tint: #f2f6fe; --ail-body: #4f4f4f; color: var(--sb-ink); }
 .home-4b.insight-article-page .insight-article-body .ail p { max-width: none; }

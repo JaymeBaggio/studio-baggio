@@ -1,5 +1,12 @@
 # Studio Baggio Website - STATUS
-*Last updated: 23 September 2026*
+*Last updated: 5 October 2026*
+
+## 5 Oct — End mark locked: Products square was on its own line (main)
+
+- **Cause:** `.products-hero-title span { display: block }` applied to the mark, a span, and pushed it under the title. Similar blanket `h1 span` rules on other pages could restyle it too. Jayme: Insights is the reference for how the mark should look.
+- **Fix:** new `src/components/last-word-mark.tsx` (`LastWordMark`) used by every title. It puts the last word and the square in one `.sb-nowrap` span so the square can never sit alone on a line. `.sb-mark` and `.sb-nowrap` box properties are locked with `!important` so page-level span rules cannot touch them. Sizes use `round(0.23em, 1px)` so every square is a whole number of pixels. The two article-title `::after` squares were replaced with the component.
+- **Verified before push:** every mark on 14 title pages measured at 390, 768, 1024, 1280, 1512 and 1920 wide: inline-block, whole pixels, 0.23 of the type size (0.36 in the header), on the baseline, same line as its last word, gap 0.13em. Products checked by eye on desktop and phone.
+- **Rule for future titles:** never hand-write a `<span className="sb-mark">`; use `<LastWordMark text="..." />`.
 
 ## 23 Sept — Identity finalised: wordmark end mark, B monogram, favicon, OG image (main)
 

@@ -4,6 +4,7 @@ import { PageReveals } from "@/components/page-reveals";
 import { getInsightPreviewText, insightArticles, insightCategories } from "@/content/insights";
 import { metadata as siteMetadata } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
+import { LastWordMark } from "@/components/last-word-mark";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.insights, path: "/insights" });
 
@@ -42,7 +43,7 @@ export default function InsightsPage() {
                 Insights
               </p>
               <h1 className="insights-hero-title" data-reveal>
-                Insights<span className="sb-mark" aria-hidden="true" />
+                <LastWordMark text="Insights" />
               </h1>
             </div>
           </div>

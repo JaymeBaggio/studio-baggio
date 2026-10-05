@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { workItems, type WorkItem } from "@/content/work";
+import { LastWordMark } from "@/components/last-word-mark";
 
 type ProductPageData = NonNullable<WorkItem["productPage"]>;
 export type ProductWorkItem = WorkItem & { productPage: ProductPageData };
@@ -132,7 +133,7 @@ export function ProductsPageShowcase() {
             >
               <span>Products</span>
               <span>
-                in market<span className="sb-mark" aria-hidden="true" />
+                <LastWordMark text="in market" />
               </span>
             </h1>
           </div>

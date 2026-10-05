@@ -173,7 +173,7 @@ export function SiteHeader() {
           )}
           onClick={handleHomeClick}
         >
-          <span>
+          <span className="sb-nowrap">
             Studio Baggio
             <span className="sb-mark" aria-hidden="true" />
           </span>

@@ -6,6 +6,7 @@ import { PageReveals } from "@/components/page-reveals";
 import { metadata as siteMetadata, pressPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
+import { LastWordMark } from "@/components/last-word-mark";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.press, path: "/press" });
 
@@ -99,7 +100,7 @@ export default function PressPage() {
               Press
             </p>
             <h1 className="press-hero-title" data-reveal>
-              {pressPage.title}<span className="sb-mark" aria-hidden="true" />
+              <LastWordMark text={pressPage.title} />
             </h1>
           </div>
         </section>

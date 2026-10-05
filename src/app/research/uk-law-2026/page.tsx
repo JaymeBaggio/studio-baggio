@@ -16,6 +16,7 @@ import findings from "@/data/law-locked-findings.json";
 import { pageMetadata } from "@/lib/metadata";
 import { researchDataLicense } from "@/lib/research-schema";
 import { siteUrl } from "@/lib/utils";
+import { LastWordMark } from "@/components/last-word-mark";
 
 const h = findings.headline;
 const t1f = findings.tier1FirmsWithZeroArea;
@@ -224,7 +225,7 @@ export default function UkLawReportPage() {
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
             <p className="fa3-kicker">How AI chooses UK law firms · Benchmark, first edition</p>
-            <h1>UK Law Firms in AI Search 2026<span className="sb-mark" aria-hidden="true" /></h1>
+            <h1><LastWordMark text="UK Law Firms in AI Search 2026" /></h1>
           </div>
           <div className="fa3-masthead__intro">
             <div className="fa3-masthead__copy">

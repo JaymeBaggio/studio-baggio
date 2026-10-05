@@ -11,6 +11,7 @@ import {
 } from "@/content/research";
 import { pageMetadata } from "@/lib/metadata";
 import { aiSearchFeaturedPress } from "@/content/site";
+import { LastWordMark } from "@/components/last-word-mark";
 
 const hasPublishedEdition = researchEditions.some(
   (edition) => edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
@@ -44,8 +45,7 @@ export default function ResearchIndexPage() {
           <p className="eyebrow">Studio Baggio research</p>
           <div className="research-index-masthead__frame">
             <h1>
-              {researchFranchise.name}
-              <span className="sb-mark" aria-hidden="true" />
+              <LastWordMark text={researchFranchise.name} />
             </h1>
           </div>
 

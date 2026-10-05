@@ -14,6 +14,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { researchDataLicense } from "@/lib/research-schema";
 import { siteUrl } from "@/lib/utils";
 import styles from "@/components/research/sports-law-report.module.css";
+import { LastWordMark } from "@/components/last-word-mark";
 
 type SportSummary = {
   sport_block: string;
@@ -196,7 +197,7 @@ export default function UkSportsLawReportPage() {
         <div className="editorial-container fa3-masthead__grid">
           <div className="fa3-masthead__title">
             <p className="fa3-kicker">UK Sports Law in AI Search</p>
-            <h1>UK Sports Law in AI Search 2026<span className="sb-mark" aria-hidden="true" /></h1>
+            <h1><LastWordMark text="UK Sports Law in AI Search 2026" /></h1>
           </div>
           <div className="fa3-masthead__intro">
             <div className="fa3-masthead__copy">
