@@ -396,6 +396,7 @@ export function PageReveals() {
               const setup = section.querySelector<HTMLElement>(".opening-outcome-setup");
               const support = Array.from(section.querySelectorAll<HTMLElement>("[data-outcome-support]"));
               const emphasis = section.querySelector<HTMLElement>("[data-outcome-emphasis]");
+              const openingCta = section.querySelector<HTMLElement>(".opening-cta-wrap");
               const headlineTargets = targetsFor(headline);
               const setupTargets = targetsFor(setup);
 
@@ -404,6 +405,7 @@ export function PageReveals() {
               if (setupTargets.length) prepareScan(setupTargets, { x: 0, blur: 8 });
               if (support.length) prepareScan(support, { x: 0, blur: 8, scale: 0.992 });
               if (emphasis) prepareScan(emphasis, { x: 0, blur: 9, scale: 0.985 });
+              if (openingCta) prepareScan(openingCta, { x: 0, blur: 6 });
 
               const opening = gsap.timeline({
                 defaults: { ease: editorialOut },
@@ -434,13 +436,18 @@ export function PageReveals() {
                 });
               }
               if (setup) opening.to(setup, { autoAlpha: 0.28, duration: 2.15 }, 11.35);
+              // Cadence scales with the number of lines so the emphasis line
+              // always lands after the last supporting line.
+              const supportCadence = support.length > 3 ? 2.2 : 3.18;
               support.forEach((item, index) => {
-                revealScan(opening, item, 10.25 + index * 3.18, { duration: 2.65 });
+                revealScan(opening, item, 10.25 + index * supportCadence, { duration: 2.65 });
               });
+              const emphasisAt = Math.max(20.6, 10.25 + support.length * supportCadence + 1.2);
               if (emphasis) {
-                revealScan(opening, emphasis, 20.6, { duration: 3.05, scale: isDesktop ? 1.045 : 1.025 });
-                opening.to(emphasis, { scale: 1, duration: 1.42, ease: editorialOut }, 23.34);
+                revealScan(opening, emphasis, emphasisAt, { duration: 3.05, scale: isDesktop ? 1.045 : 1.025 });
+                opening.to(emphasis, { scale: 1, duration: 1.42, ease: editorialOut }, emphasisAt + 2.74);
               }
+              if (openingCta) revealScan(opening, openingCta, emphasisAt + 2.2, { duration: 2.2 });
               opening.to({}, { duration: 4.2 });
               return;
             }

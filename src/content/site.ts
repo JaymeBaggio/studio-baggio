@@ -26,7 +26,7 @@ export const metadata = {
   home: {
     title: "Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "Find where AI creates measurable value, then build the systems needed to deliver it."
+      "AI strategy, systems and implementation, from SEO and AI search visibility to internal AI systems and bespoke software. Find where AI creates value, then build what delivers it."
   },
   work: {
     title: "Products: AI Systems & Intelligence | Studio Baggio",
@@ -76,38 +76,39 @@ export const metadata = {
 
 export const hero = {
   meta: [
-    "FROM BUSINESS PROBLEM",
-    "TO WORKING AI SYSTEM."
+    "AI TO WIN MORE BUSINESS.",
+    "AND DELIVER MORE VALUE."
   ],
   wordmark: ["STUDIO", "BAGGIO"],
   promiseTitle: "AI STRATEGY, SYSTEMS AND IMPLEMENTATION",
   promise:
-    "FIND WHERE AI CREATES VALUE, THEN BUILD THE SYSTEMS NEEDED TO DELIVER IT",
+    "START WITH YOUR BUSINESS STRATEGY. BUILD THE AI SYSTEMS TO ACCELERATE IT.",
   scrollCue: "See where AI creates value"
 };
 
 export const home = {
   opening: {
-    headline:
-      "Most businesses are using AI. Few are using it to create commercial advantage.",
+    headline: "From business priority to working system.",
     qualifier: "",
-    setup: "Studio Baggio designs and builds practical AI systems that make businesses:",
+    setup: ["What we help you do:"],
     outcomes: [
-      "Easier to find.",
-      "Faster to act.",
-      "Better informed.",
-      "Harder to compete with."
-    ]
+      "Identify where AI creates value",
+      "Win more of the right work",
+      "Put company knowledge to use",
+      "Improve how your team delivers",
+      "Build useful tools and software",
+      "Turn a plan into implementation"
+    ],
+    moreLink: { label: "Explore our services", href: "/services" }
   },
   problem: {
     eyebrow: "THE GAP",
-    title: "Adoption has run ahead of meaningful ROI.",
+    title: "Most businesses now use AI, but few are growing revenue with it.",
     body:
       "The UK government's 2026 AI Adoption Research found 16% of UK businesses use AI. Among those that do, 77% report no revenue change. Only 12% report a revenue increase.",
     emphasis: "Among those that do, 77% report no revenue change.",
     source: "UK Government AI Adoption Research, 2026.",
-    close:
-      "Knowing where to effectively apply AI creates real competitive advantage.\nStudio Baggio identifies where AI creates real value, then builds the commercial architecture that delivers it.",
+    close: "The opportunity is to connect AI to a clear business objective.",
     pullQuotes: []
   },
   expertiseBridge: {
@@ -141,43 +142,42 @@ export const home = {
   },
   workingPromise: {
     eyebrow: "WORKING PROMISE",
-    title: "This is not- AI Training, Tool Recommendations\nor Prompt packs.",
+    title: "Identify the opportunity. Build the solution. Embed it in the business.",
     negativeLines: [
-      "This is not AI training.",
-      "Not tool recommendations.",
-      "Not prompt packs."
+      "Identify the opportunity.",
+      "Build the solution.",
+      "Embed it in the business."
     ],
     body: [
-      "Every recommendation is practical, buildable and tied to a tangible business outcome. If we recommend it, it is because it can be built, shipped or handed over as a working system.",
-      "Your time stays protected. Outside the intro call and proposal meeting, the work is designed to run with minimal input from you and your team. Most clients choose a 30-minute monthly update.",
-      "The point is to turn your expertise into commercial leverage.",
-      "Not to make you spend more time thinking about AI."
+      "We start with the business objective and choose the tools to fit it. Every recommendation comes with a practical next step: what to change, what to build and how to measure the result.",
+      "We lead delivery and keep demands on your team focused. Scope, access, review points and responsibilities are agreed upfront, with guidance, handover and support to suit the engagement.",
+      "AI that works inside your business, with little for you to manage."
     ]
   },
   proof: {
     eyebrow: "PRODUCTS",
-    title: "Live Work"
+    title: "Products we have built and run."
   },
   fit: {
     eyebrow: "WHO THIS IS FOR",
-    title: "For businesses that want AI connected to measurable commercial and operational value.",
+    title: "For businesses that want AI tied to measurable commercial and operational value.",
     goodLabel: "Best for",
     badLabel: "Not for",
     good: [
-      "Businesses competing on expertise and reputation",
-      "Specialist advisers with valuable knowledge and weak public proof",
-      "Founder-led businesses wanting systems, not experiments",
-      "Professional services firms with longer sales cycles",
-      "Teams with valuable expertise and weak public proof",
-      "Businesses with strong delivery but inconsistent pipeline"
+      "Law firms, wealth managers and other businesses that compete on expertise and reputation",
+      "Leadership teams deciding where AI deserves investment",
+      "Marketing teams building a stronger route to clients",
+      "Operations teams improving how work gets delivered",
+      "Businesses that need specialist tools or software",
+      "Teams ready to turn a defined priority into implementation"
     ],
     bad: [
-      "Generic AI training or tool workshops",
-      "One-off tools and prompt pack requests",
-      "Cheap-lead volume plays and commodity pricing models",
-      "Businesses without a clear view of their ideal client",
-      "Companies seeking only a tool implementation partner",
-      "Organisations not ready to integrate AI into commercial operations"
+      "Generic AI courses or standalone tool workshops",
+      "Prompt packs without a business use case",
+      "Guaranteed rankings or guaranteed revenue",
+      "High-volume, untargeted lead generation",
+      "Automation without appropriate human oversight",
+      "Technology projects without a clear purpose"
     ]
   },
   faq: {
@@ -187,47 +187,47 @@ export const home = {
       {
         question: "Is this AI training?",
         answer:
-          "No. We don't run training programmes, workshops, or courses. We build practical systems that create commercial outcomes: systems your team operates, not courses they sit through. If you're looking for an AI literacy programme, we're not the right fit."
+          "Your team won't need a separate AI-training programme. We set the system up so they can win from the outset: it already understands the company, their department and their role, and each person turns their specialist knowledge and templates into skills they use in their work. We cover the fundamentals, including that output can be wrong and what can and can't go into the system."
       },
       {
         question: "Is this automation?",
         answer:
-          "Automation is part of what we build, but it's not the point. The point is commercial advantage: visibility, pipeline, conversion. We use automation where it creates leverage. We don't automate for the sake of it. Every system we build is designed to deliver a measurable business outcome, not just to reduce manual effort."
+          "Sometimes. Automation can be part of the solution, but we also work on research, shared knowledge, decision support and client-facing products. We start with what needs to improve, then decide where AI, automation and human judgement belong."
       },
       {
         question: "Is this marketing?",
         answer:
-          "It's closer to commercial architecture. We work across the full pipeline: visibility, lead capture, nurture, proposal, and client retention. Some of what we build looks like marketing. Some looks like sales operations. All of it is designed to make your business easier to find, easier to buy from, and harder to compete with."
+          "Winning the right clients is a core part of the work: how you appear in search and AI answers, how your expertise is presented, and the route from first interest to enquiry. We also build internal AI systems, workflows and bespoke software."
       },
       {
         question: "What kinds of businesses do you work with?",
         answer:
-          "Studio Baggio works with businesses where AI can solve a valuable commercial or operational problem. The starting point is the problem, the available expertise and the result the business needs."
+          "Businesses where expertise, judgement and client relationships are central to the work, including law firms and financial advice firms. We can support a leadership team, a single department or a defined project. What matters is a clear commercial or operational objective. Readiness across the whole organisation can come later."
       },
       {
         question: "Do you build as well as advise?",
         answer:
-          "Yes. We build. The strategy and implementation plan sets out what to build. After that, most clients move into a build phase where we create the actual systems. We don't hand over a deck and wish you luck. We work in focused sprints with clear deliverables, and we hand over working systems your team can operate from day one."
+          "Yes. You can commission a focused plan, appoint us to design and implement the solution, or work with us as an ongoing AI partner. If you already know what you need built, we can scope that work without a broad strategy project first."
       },
       {
         question: `How long does the ${seoSearchPlanName} take?`,
         answer:
-          "14 days. The plan identifies where AI can create commercial value, the use cases worth prioritising, and a 30 to 90 day build plan. You walk away with a clear plan; implementation starts from there."
+          "The plan is delivered within 14 days. It covers the client questions that matter, your current visibility, the firms and sources that appear instead, and the changes to prioritise. Implementation is scoped separately, and the plan fee is credited in full against it."
       },
       {
         question: "Do you work with our existing marketing team or agency?",
         answer:
-          "Yes. We design the commercial architecture. Your team or agency executes against it, or we take that work on ourselves. Either way, the work fits with what's already in place."
+          "Yes. Plans can be implemented by your team, your existing partners or Studio Baggio. Where the work involves operations or technology, we agree responsibilities and review points with the relevant people."
       },
       {
         question: "What's the first step?",
         answer:
-          "Click 'Enquire now' below and share the core business details. If you're a good fit, we'll set up a short introductory call to discuss your priorities and where AI can create commercial value."
+          "Select 'Enquire now' and tell us what you want to improve or build. An introductory conversation establishes the problem and whether the right start is a focused plan, a defined build or ongoing support."
       },
       {
-        question: "Can the Business Tracker be used for anything other than lead intelligence?",
+        question: "Who leads the work?",
         answer:
-          "Yes. The same engine that scores leads against your Ideal Customer Profile scores candidates against your Ideal Employee Profile. CVs and applications go in, get enriched from public signals, scored against your bespoke criteria, and ranked with reasoning. Same logic, different intent. Recruitment is the most common second use case. The engine extends to anywhere humans need to be enriched, scored and ranked against your own criteria."
+          "Jayme Baggio, founder of Studio Baggio, leads every engagement. Studio Baggio's research into how AI recommends UK law firms and financial advisers has been covered by The Lawyer, FT Adviser, Professional Adviser and Money Marketing."
       }
     ]
   },
@@ -243,117 +243,104 @@ export const valueAreas = [
   {
     title: "SEO and AI Search Visibility",
     summary:
-      "Make your business easier to find when buyers are already looking for answers.",
+      "Help the right buyers find and choose your business.",
     intro: "",
     includes: [
-      "Google visibility",
-      "AI search visibility",
+      "Google and AI search visibility",
+      "High-value buyer questions",
+      "Competitor and citation analysis",
       "Specialist landing pages",
-      "Topic maps",
-      "Competitor gaps",
-      "Proof assets",
-      "Content shaped around real buyer questions"
+      "Content and authority gaps",
+      "Evidence and proof assets"
     ],
-    goal: "Show up where your best prospects are searching, comparing and deciding.",
+    goal: "Be found, cited and considered more often when prospective clients look for the expertise you sell.",
     detail:
-      "This includes Google visibility, AI search visibility, specialist landing pages, topic maps, competitor gaps, proof assets and content shaped around real buyer questions. The goal: show up where your best prospects are searching, comparing and deciding."
+      "This includes Google and AI search visibility, high-value buyer questions, competitor and citation analysis, specialist landing pages, content and authority gaps and evidence and proof assets. Be found, cited and considered more often when prospective clients look for the expertise you sell."
   },
   {
     title: "Market and Competitor Intelligence",
     summary:
-      "Use AI to understand what is happening in your market faster than your competitors.",
-    intro:
-      "Use AI to understand what is happening in your market faster than your competitors.",
+      "Turn market information into better commercial decisions.",
+    intro: "",
     includes: [
-      "Competitor tracking",
-      "Public signal research",
-      "Customer language",
-      "Content gaps",
-      "Positioning analysis",
-      "Market movement",
-      "Opportunity mapping"
+      "Market and competitor research",
+      "Customer questions and demand signals",
+      "Emerging opportunities",
+      "Prospect and partner research",
+      "Pitch and meeting preparation",
+      "Sourced research briefs"
     ],
-    goal: "Move before the market does.",
+    goal: "Give your team the evidence to decide where to focus, what to offer and how to compete.",
     detail:
-      "This includes competitor tracking, public signal research, customer language, content gaps, positioning analysis, market movement and opportunity mapping. Move before the market does."
+      "This includes market and competitor research, customer questions and demand signals, emerging opportunities, prospect and partner research, pitch and meeting preparation and sourced research briefs. Give your team the evidence to decide where to focus, what to offer and how to compete."
   },
   {
     title: "Lead Capture and Prospect Intelligence",
-    summary: "Turn visibility into named prospects and better conversations.",
-    intro: "Turn visibility into named prospects and better conversations.",
+    summary:
+      "Connect interest to the right next conversation.",
+    intro: "",
     includes: [
-      "Lead magnets",
-      "Diagnostics",
-      "Email capture",
-      "Website journeys",
-      "Business Tracker",
-      "Lead scoring",
-      "Qualification logic",
-      "Next-action recommendations"
+      "Lead-capture journeys",
+      "Guides and diagnostics",
+      "Contact and company research",
+      "Qualification against agreed criteria",
+      "Relationship prioritisation",
+      "Follow-up recommendations"
     ],
-    goal:
-      "Your team know who is showing interest, why they matter and what to say next.",
+    goal: "Know which opportunities deserve attention and what to do next.",
     detail:
-      "This includes lead magnets, diagnostics, email capture, website journeys, Business Tracker, lead scoring, qualification logic and next-action recommendations. Your team know who is showing interest, why they matter and what to say next."
+      "This includes lead-capture journeys, guides and diagnostics, contact and company research, qualification against agreed criteria, relationship prioritisation and follow-up recommendations. Know which opportunities deserve attention and what to do next."
   },
   {
     title: "Authority and Content Systems",
     summary:
-      "Turn the expertise inside your business into public proof people can find, trust and act on.",
-    intro:
-      "Turn the expertise inside your business into public proof people can find, trust and act on.",
+      "Make the expertise inside your business easier to see and trust.",
+    intro: "",
     includes: [
-      "LinkedIn",
-      "Articles",
-      "Case studies",
-      "Playbooks",
-      "Newsletters",
-      "Proof pages",
-      "Founder content",
-      "Authority systems built around internal expertise"
+      "Expertise-led content",
+      "Thought-leadership workflows",
+      "Tone-of-voice systems",
+      "Research-led content planning",
+      "Case studies and proof assets",
+      "Editorial review and approval"
     ],
-    goal:
-      "Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold.",
+    goal: "Turn what your people know into consistent, credible content that still carries their judgement.",
     detail:
-      "This includes LinkedIn, articles, case studies, playbooks, newsletters, proof pages, founder content and authority systems built around internal expertise. Provide consistent value, bank trust and provide proof that the expertise on your website actually exists. Prospects come in warm not cold."
+      "This includes expertise-led content, thought-leadership workflows, tone-of-voice systems, research-led content planning, case studies and proof assets and editorial review and approval. Turn what your people know into consistent, credible content that still carries their judgement."
   },
   {
-    title: "Workflow Acceleration",
+    title: "AI Workflows and Knowledge Systems",
     summary:
-      "Use AI to speed up the work that actually matters.",
-    intro: "Use AI to speed up the work that actually matters.",
+      "Build AI around how your people actually work.",
+    intro: "",
     includes: [
-      "Research",
-      "Reporting",
-      "Content production",
-      "Sales preparation",
-      "Client onboarding",
-      "Proposal support",
-      "Internal knowledge systems",
-      "Decision support"
+      "Shared company knowledge",
+      "Role-specific AI capabilities",
+      "Research and reporting workflows",
+      "Proposal and meeting preparation",
+      "Client onboarding processes",
+      "Repeatable team workflows"
     ],
-    goal:
-      "The goal is not to automate everything. The goal is to remove low-value drag so your best people can move faster.",
+    goal: "Cut repetitive work and put your team's knowledge to use in day-to-day delivery.",
     detail:
-      "This includes research, reporting, content production, sales preparation, client onboarding, proposal support, internal knowledge systems and decision support. The goal is not to automate everything. The goal is to remove low-value drag so your best people can move faster."
+      "This includes shared company knowledge, role-specific AI capabilities, research and reporting workflows, proposal and meeting preparation, client onboarding processes and repeatable team workflows. Cut repetitive work and put your team's knowledge to use in day-to-day delivery."
   },
   {
-    title: "Client-Facing AI Products and Tools",
+    title: "Bespoke Software and Client Tools",
     summary:
-      "Create useful AI-supported tools that help prospects or clients understand their situation, make better decisions or move closer to buying.",
-    intro:
-      "Create useful AI-supported tools that help prospects or clients understand their situation, make better decisions or move closer to buying.",
+      "Build the tools your business or clients need.",
+    intro: "",
     includes: [
-      "Diagnostics",
-      "Calculators",
-      "Simulators",
-      "Personalised reports",
-      "Onboarding tools",
-      "Interactive lead magnets"
+      "Internal business systems",
+      "Client-facing tools and resources",
+      "Diagnostics and calculators",
+      "Research products",
+      "Reporting platforms",
+      "Specialist software and prototypes"
     ],
-    goal: "Package your expertise into something people can experience.",
+    goal: "Turn a defined business problem into a working product where off-the-shelf tools do not fit.",
     detail:
-      "This includes diagnostics, calculators, simulators, personalised reports, onboarding tools and interactive lead magnets. Package your expertise into something people can experience."
+      "This includes internal business systems, client-facing tools and resources, diagnostics and calculators, research products, reporting platforms and specialist software and prototypes. Turn a defined business problem into a working product where off-the-shelf tools do not fit."
   }
 ];
 
@@ -781,7 +768,7 @@ export const about = {
     bodyAfter: [
       "Businesses can start with a focused strategy and implementation plan, appoint us to deliver the full system, or work with us as an ongoing AI partner."
     ],
-    engageLine: "Enquire below. If you're a good fit, we'll be in touch to arrange an introductory meeting.",
+    engageLine: "Enquire below and we will arrange an introductory conversation.",
     ctaLabel: "Enquire now →"
   },
   testimonials: [
@@ -943,6 +930,7 @@ export const phaseTwoTodos = [
 export const footer = {
   company: "Studio Baggio Ltd",
   summary: "AI strategy, systems and implementation.",
+  registration: "Registered in England and Wales, company number 16805728. Registered office: 86-90 Paul Street, London EC2A 4NE.",
   email: "jayme@studiobaggio.ai",
   privacyLabel: "Privacy",
   productLinks: [
@@ -1045,9 +1033,10 @@ export const servicesPage = {
       id: "seo-and-ai-search-opportunity-audit",
       name: seoSearchPlanName,
       summary:
-        "Identify the client questions with the greatest commercial value, then position the business to be found first on Google, cited in AI search and recommended as the solution when prospective clients ask them.",
+        "Find the client questions with the most commercial value, where your business appears across Google and AI search, and who appears instead. You receive a prioritised plan for the pages, content, authority and evidence needed to win more of that work.",
+      showExampleOnHome: true,
       paras: [
-        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The plan identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found first on Google, cited in AI search and chosen."
+        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The plan identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found, cited and chosen more often on Google and in AI search."
       ],
       includesLabel: "What the plan covers",
       includes: [
@@ -1080,25 +1069,26 @@ export const servicesPage = {
       id: "ai-operating-system-audit",
       name: "AI Operating Systems",
       summary:
-        "One company-wide AI system built around how your people work and how value is delivered to clients: shared knowledge, role-specific capabilities and workflows, built on the infrastructure you already use.",
+        "Start with the business constraints and opportunities, then set up a system your team can win with from the outset: shared company context, department and role context, and each person's specialist knowledge turned into skills they use in their work. We design, build and embed it on your existing infrastructure where practical.",
+      showExampleOnHome: true,
       paras: [
-        "For businesses that want a company-wide AI system built around how their people work and how value is delivered to clients.",
-        "We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs, built on the company's existing infrastructure."
+        "For businesses that want AI built around their strategy and set up so the whole team can win from the outset.",
+        "We start with the business constraints and opportunities, then look at the company's teams, roles, knowledge and ways of working. The system gets the shared company context, department and role context, and safeguards it needs, built on your existing infrastructure."
       ],
-      includesLabel: "What the audit covers",
+      includesLabel: "What the plan covers",
       includes: [
-        "Where AI can create the greatest measurable value",
-        "The shared knowledge and role-specific capabilities the system needs",
-        "Role-specific recommendations and a sequenced 30 and 90-day plan",
-        "A structure for valuable workflows to be shared, retained and improved across the team",
-        "Client experience: how advice and client outputs are delivered, with recommendations to make them clearer, more personal and more valuable",
-        "What should be implemented first and where not to invest yet"
+        "The constraints and opportunities where AI can make the biggest measurable difference",
+        "The shared company, department and role context the system needs",
+        "How each person turns their specialist knowledge and templates into skills they use in their work",
+        "How the system retains corrections and improvements, so it gets better as the team uses it",
+        "Client experience: how advice and client outputs are delivered, and how to make them clearer, more personal and more valuable",
+        "What to implement first, a sequenced 30 and 90-day plan, and where not to invest yet"
       ],
       example: {
         paras: [
-          "Studio Baggio designed and implemented a company-wide AI system for a London creative agency. Built around the company's knowledge, clients, brand and ways of working, it gave a non-technical team the context, tools and capabilities to use AI effectively from day one, without separate training. It is estimated to save 10–15 hours+ each week."
+          "Studio Baggio designed and implemented a company-wide AI system for a London creative agency. Built around the company's knowledge, clients, brand and ways of working, it gave a non-technical team the context, tools and capabilities to use AI effectively from day one, without separate training. It is estimated to save 10 to 15 hours each week."
         ],
-        highlight: "10–15 hours+ each week"
+        highlight: "10 to 15 hours each week"
       },
       quote: {
         text: "Jayme spent time with people across the team individually to understand how we work, then built and implemented the system for us: our company and client knowledge, business strategy, positioning and templates built in, with each person's setup tailored to their role. Several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool, which they would never have been able to do previously.",
@@ -1109,7 +1099,7 @@ export const servicesPage = {
       id: "growth-infrastructure-and-visibility-audit",
       name: "Growth Infrastructure & Visibility",
       summary:
-        "Audit client demand, positioning and current visibility, then define how the website, content, evidence, client-facing resources and lead capture should work together to generate new business: qualified enquiries, instructions and revenue.",
+        "Connect positioning, demand, website content, client-facing resources and lead capture into a clearer route to new business. Start with a commercial blueprint, then implement it internally, with existing partners or with Studio Baggio.",
       paras: [
         "For businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base.",
         "We audit how the business is currently positioned, discovered and chosen, across search, AI platforms, referrals and professional relationships, then define how positioning, client-facing resources, lead capture and follow-up work together as one repeatable system for creating qualified enquiries and revenue.",
@@ -1135,7 +1125,7 @@ export const servicesPage = {
       id: "bespoke-ai-software-and-systems",
       name: "Bespoke Software & Systems",
       summary:
-        "Design and build websites, client-facing tools and resources, internal systems and specialist software for valuable problems that off-the-shelf tools cannot solve.",
+        "Design and build websites, internal systems, client-facing tools and specialist software around a defined business problem. Bring a brief or an idea that needs shaping; we establish the scope, test the approach and build it.",
       paras: [
         "For valuable business problems that cannot be solved with an off-the-shelf tool.",
         "We work with the business to understand the commercial problem, the real workflow, the available data and the decisions the system must support. We then design, build, test and implement it around how the business actually operates: websites, client-facing tools and diagnostics, internal systems and specialist software."

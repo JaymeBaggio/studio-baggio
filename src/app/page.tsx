@@ -14,7 +14,7 @@ import { LastWordMark } from "@/components/last-word-mark";
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
 
 function renderHeroMetaLine(line: string) {
-  const phrase = "WORKING AI SYSTEM.";
+  const phrase = "DELIVER MORE VALUE.";
 
   if (!line.includes(phrase)) {
     return line;
@@ -32,7 +32,7 @@ function renderHeroMetaLine(line: string) {
 }
 
 function renderProblemTitle(title: string) {
-  const lockedSecondLine = "meaningful ROI.";
+  const lockedSecondLine = "but few are growing revenue with it.";
 
   if (!title.endsWith(lockedSecondLine)) {
     return title;
@@ -51,30 +51,27 @@ export default function HomePage() {
   const openingHeadlineLines = openingHeadlineParts.map((line, index) =>
     index < openingHeadlineParts.length - 1 ? `${line}.` : line
   );
-  const openingSetupLines =
-    home.opening.setup === "Studio Baggio designs and builds practical AI systems that make businesses:"
-      ? ["Studio Baggio designs and builds practical AI systems", "that make businesses:"]
-      : [home.opening.setup];
+  const openingSetupLines = home.opening.setup;
   const openingOutcomeLead = home.opening.outcomes.slice(0, -1);
   const openingOutcomeFinal = home.opening.outcomes[home.opening.outcomes.length - 1];
   const problemStats = [
     {
       value: "66%",
-      label:
-        "of organisations have adopted AI in at least one business function - yet most report only marginal efficiency gains, not commercial outcomes.",
-      source: "Source: Deloitte State of AI report, 2026"
+      label: "of organisations report productivity and efficiency gains from AI. Revenue growth is much rarer.",
+      source: "Source: Deloitte, State of AI in the Enterprise 2026",
+      href: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html"
     },
     {
       value: "20%",
-      label:
-        "Only 20% of organisations using AI report some level of increased revenue. The gap between internal productivity and external revenue is where most AI investment breaks down.",
-      source: "Source: Deloitte State of AI report, 2026"
+      label: "of organisations are already growing revenue through AI. 74% hope to.",
+      source: "Source: Deloitte, State of AI in the Enterprise 2026",
+      href: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html"
     },
     {
       value: "12%",
-      label:
-        "Only 12% of businesses report meaningful revenue impact from their AI investments despite widespread adoption across industries.",
-      source: "Source: UK Government AI Adoption Research, 2026"
+      label: "of UK businesses using AI report an increase in revenue since adopting it.",
+      source: "Source: UK Government (DSIT), AI Adoption Research, fieldwork 2025",
+      href: "https://www.gov.uk/government/publications/ai-adoption-research/ai-adoption-research"
     }
   ];
   const heroPromiseLines = [
@@ -132,6 +129,47 @@ export default function HomePage() {
       <FrontDoorOfferInline />
 
       <div className="home-4b">
+        <section
+          id="ai-gap"
+          className="home-section problem-clarifier-section"
+          data-home-section
+          data-motion-section="gap"
+        >
+          <div className="editorial-container problem-clarifier-frame">
+            <div className="problem-clarifier-copy">
+              <div className="problem-clarifier-opening">
+                <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
+                <h2 className="problem-clarifier-title problem-clarifier-title-manual" aria-label={home.problem.title}>
+                  {renderProblemTitle(home.problem.title)}
+                </h2>
+              </div>
+              <div className="problem-clarifier-evidence">
+                <div className="problem-stat-grid" data-reveal data-motion="evidence">
+                  {problemStats.map((stat) => (
+                    <div className="problem-stat-card" key={stat.value} data-gap-stat-card>
+                      <p className="problem-stat-value" data-gap-stat-value data-count-target={stat.value.replace("%", "")}>
+                        {stat.value}
+                      </p>
+                      <p className="problem-stat-label">{stat.label}</p>
+                      <p className="problem-stat-source">
+                        <a className="underline-offset-4 hover:underline" href={stat.href} target="_blank" rel="noreferrer">
+                          {stat.source}
+                        </a>
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="problem-clarifier-takeaway">
+                <div className="section-rule" data-rule aria-hidden="true" />
+                <p className="problem-strong" data-reveal data-motion="close">
+                  {home.problem.close}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
           <div className="editorial-container opening-argument-grid">
             <div className="opening-argument-top">
@@ -162,42 +200,16 @@ export default function HomePage() {
                 label={home.opening.outcomes.join(" ")}
                 controlled
               />
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="ai-gap"
-          className="home-section problem-clarifier-section"
-          data-home-section
-          data-motion-section="gap"
-        >
-          <div className="editorial-container problem-clarifier-frame">
-            <div className="problem-clarifier-copy">
-              <div className="problem-clarifier-opening">
-                <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
-                <h2 className="problem-clarifier-title problem-clarifier-title-manual" aria-label={home.problem.title}>
-                  {renderProblemTitle(home.problem.title)}
-                </h2>
-              </div>
-              <div className="problem-clarifier-evidence">
-                <div className="problem-stat-grid" data-reveal data-motion="evidence">
-                  {problemStats.map((stat) => (
-                    <div className="problem-stat-card" key={stat.value} data-gap-stat-card>
-                      <p className="problem-stat-value" data-gap-stat-value data-count-target={stat.value.replace("%", "")}>
-                        {stat.value}
-                      </p>
-                      <p className="problem-stat-label">{stat.label}</p>
-                      <p className="problem-stat-source">{stat.source}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="problem-clarifier-takeaway">
-                <div className="section-rule" data-rule aria-hidden="true" />
-                <p className="problem-strong" data-reveal data-motion="close">
-                  {home.problem.close}
-                </p>
+              <div className="commercial-sprint-cta-wrap opening-cta-wrap">
+                <ButtonLink href={primaryCta.href} className="commercial-sprint-cta">
+                  {primaryCta.label}
+                </ButtonLink>
+                <a
+                  className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
+                  href={home.opening.moreLink.href}
+                >
+                  {home.opening.moreLink.label}
+                </a>
               </div>
             </div>
           </div>
@@ -228,6 +240,9 @@ export default function HomePage() {
                   <p className="commercial-deliverable-copy">
                     <strong>{offer.name}:</strong>
                     <span>{offer.summary}</span>
+                    {"showExampleOnHome" in offer && offer.showExampleOnHome && offer.example ? (
+                      <span className="commercial-deliverable-example">{offer.example.paras[0]}</span>
+                    ) : null}
                   </p>
                 </div>
               ))}

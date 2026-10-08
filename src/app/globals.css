@@ -5189,6 +5189,12 @@ body:has(.home-4b.contact-page) footer {
   white-space: nowrap;
 }
 
+@media (max-width: 767px) {
+  .home-4b .problem-title-line:nth-child(2) {
+    white-space: normal;
+  }
+}
+
 .home-4b .problem-clarifier-evidence {
   width: 100%;
   margin-top: clamp(36px, 4vw, 52px);
@@ -5600,6 +5606,16 @@ body:has(.home-4b.contact-page) footer {
   color: var(--sb-body);
 }
 
+.home-4b .commercial-deliverable-row p span.commercial-deliverable-example {
+  margin-top: 8px;
+  font-size: 0.9em;
+  color: var(--sb-ink);
+}
+
+.home-4b .opening-cta-wrap {
+  margin-top: clamp(28px, 3vw, 40px);
+}
+
 .home-4b .commercial-sprint-cta-wrap {
   display: inline-flex;
   align-items: center;
@@ -5642,14 +5658,11 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b .working-promise-negative {
   margin: 0;
-  color: #cccccc;
+  color: var(--sb-ink);
   font-size: var(--sb-promise-negative-size);
   line-height: 1.25;
   font-weight: var(--sb-title-weight);
   letter-spacing: 0;
-  text-decoration: line-through;
-  text-decoration-thickness: 0.08em;
-  text-decoration-color: currentColor;
 }
 
 .home-4b .working-promise-copy {

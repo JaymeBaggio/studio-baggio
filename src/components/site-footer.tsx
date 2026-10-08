@@ -58,6 +58,7 @@ export function SiteFooter() {
             {primaryCta.label}
           </Link>
           <p className="mt-2">© {new Date().getFullYear()} Studio Baggio Ltd</p>
+          <p className="mt-2 max-w-xs text-xs leading-relaxed text-ink/45 md:ml-auto">{footer.registration}</p>
         </div>
       </div>
     </footer>

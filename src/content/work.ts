@@ -73,7 +73,7 @@ export const workItems: WorkItem[] = [
     slug: "calm-authority",
     title: "Calm Authority",
     eyebrow: "Product / financial advice / authority systems",
-    promise: "Your Own Expertise. At Scale.",
+    promise: "Adviser expertise in the adviser's own voice.",
     status: "Live product",
     proofCopy:
       "Your Own Expertise. At Scale. Flagship product from Studio Baggio, turning adviser expertise into publish-ready authority content.",
@@ -208,7 +208,7 @@ export const workItems: WorkItem[] = [
     slug: "business-tracker",
     title: "Business Tracker",
     eyebrow: "Lead intelligence / attribution / follow-up",
-    promise: "Commercial intelligence",
+    promise: "Know who matters and what to do next.",
     status: "Live system",
     proofCopy:
       "A market-specific prospecting system that captures interactions, qualifies named leads, adds AI rationale and produces a prioritised follow-up pipeline.",
@@ -294,10 +294,10 @@ export const workItems: WorkItem[] = [
     slug: "last30days",
     title: "Last30Days",
     eyebrow: "Live signal intelligence / multi-source research",
-    promise: "Live Signal Intelligence",
+    promise: "Market intelligence from recent public conversations.",
     status: "Live product",
     proofCopy:
-      "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. It has now been used by over 400 individual and corporate users to research markets, competitors, customer questions and emerging opportunities.\n\nLast30Days scrapes Reddit. X. TikTok. Instagram. YouTube, Polymarket and the open web, pulling every conversation from the last thirty days. Ask any question: search a competitor, a trend, a product category, a new release. Get a structured, sourced report in under 60 seconds. Every claim cited.\n\nEvery business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing. Last30Days gives you the market intelligence your competitors are paying £40,000 a year to access, in under 60 seconds.",
+      "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. It has now been used by over 400 individual and corporate users to research markets, competitors, customer questions and emerging opportunities.\n\nLast30Days analyses public conversations across Reddit, X, TikTok, Instagram, YouTube, Polymarket and the open web from the last thirty days. Ask any question: search a competitor, a trend, a product category, a new release. Get a structured, sourced report in under 60 seconds. Every claim cited.\n\nEvery business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing.",
     problem:
       "Teams need to know what people are saying now, not what a stale report said months ago.",
     built:
@@ -327,8 +327,8 @@ export const workItems: WorkItem[] = [
           label: "What it is",
           paragraphs: [
             "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. It has now been used by over 400 individual and corporate users to research markets, competitors, customer questions and emerging opportunities.",
-            "Last30Days scrapes Reddit. X. TikTok. Instagram. YouTube, Polymarket and the open web, pulling every conversation from the last thirty days. Ask any question: search a competitor, a trend, a product category, a new release. Get a structured, sourced report in under 60 seconds. Every claim cited.",
-            "Every business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing. Last30Days gives you the market intelligence your competitors are paying £40,000 a year to access, in under 60 seconds."
+            "Last30Days analyses public conversations across Reddit, X, TikTok, Instagram, YouTube, Polymarket and the open web from the last thirty days. Ask any question: search a competitor, a trend, a product category, a new release. Get a structured, sourced report in under 60 seconds. Every claim cited.",
+            "Every business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing."
           ]
         },
         {
