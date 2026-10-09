@@ -128,40 +128,6 @@ export default function HomePage() {
       <FrontDoorOfferInline />
 
       <div className="home-4b">
-        <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
-          <div className="editorial-container opening-argument-grid">
-            <div className="opening-argument-top">
-              {home.opening.qualifier ? (
-                <p className="opening-argument-qualifier" data-reveal>
-                  {home.opening.qualifier}
-                </p>
-              ) : null}
-              <h2 className="opening-argument-headline" data-split>
-                {openingHeadlineLines.map((line) => (
-                  <span data-split-hard-line key={line}>
-                    {line}
-                  </span>
-                ))}
-              </h2>
-            </div>
-            <div className="opening-outcome-block">
-              <p className="opening-outcome-setup" data-reveal data-split>
-                {openingSetupLines.map((line) => (
-                  <span data-split-hard-line key={line}>
-                    {line}
-                  </span>
-                ))}
-              </p>
-              <OpeningOutcomeStack
-                lead={openingOutcomeLead}
-                final={openingOutcomeFinal}
-                label={home.opening.outcomes.join(" ")}
-                controlled
-              />
-            </div>
-          </div>
-        </section>
-
         <section
           id="ai-gap"
           className="home-section problem-clarifier-section"
@@ -199,6 +165,40 @@ export default function HomePage() {
                   {home.problem.close}
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
+          <div className="editorial-container opening-argument-grid">
+            <div className="opening-argument-top">
+              {home.opening.qualifier ? (
+                <p className="opening-argument-qualifier" data-reveal>
+                  {home.opening.qualifier}
+                </p>
+              ) : null}
+              <h2 className="opening-argument-headline" data-split>
+                {openingHeadlineLines.map((line) => (
+                  <span data-split-hard-line key={line}>
+                    {line}
+                  </span>
+                ))}
+              </h2>
+            </div>
+            <div className="opening-outcome-block">
+              <p className="opening-outcome-setup" data-reveal data-split>
+                {openingSetupLines.map((line) => (
+                  <span data-split-hard-line key={line}>
+                    {line}
+                  </span>
+                ))}
+              </p>
+              <OpeningOutcomeStack
+                lead={openingOutcomeLead}
+                final={openingOutcomeFinal}
+                label={home.opening.outcomes.join(" ")}
+                controlled
+              />
             </div>
           </div>
         </section>
