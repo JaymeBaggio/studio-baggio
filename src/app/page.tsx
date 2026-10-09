@@ -31,7 +31,7 @@ function renderHeroMetaLine(line: string) {
 }
 
 function renderProblemTitle(title: string) {
-  const lockedSecondLine = "but few are growing revenue with it.";
+  const lockedSecondLine = "Few are using it to create commercial advantage.";
 
   if (!title.endsWith(lockedSecondLine)) {
     return title;

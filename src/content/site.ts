@@ -105,7 +105,7 @@ export const home = {
   },
   problem: {
     eyebrow: "THE GAP",
-    title: "Most businesses now use AI, but few are growing revenue with it.",
+    title: "Most businesses are using AI. Few are using it to create commercial advantage.",
     body:
       "The UK government's 2026 AI Adoption Research found 16% of UK businesses use AI. Among those that do, 77% report no revenue change. Only 12% report a revenue increase.",
     emphasis: "Among those that do, 77% report no revenue change.",
