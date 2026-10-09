@@ -60,7 +60,7 @@ export function ProofTiles() {
         const summary = item.promise ?? item.proofCopy ?? item.eyebrow;
         const homepageImage = item.homepageImage;
         const imageIsReady = readyImages[item.slug] ?? false;
-        const bodyParagraphs = [item.proofCopy, item.built, item.whyItMatters]
+        const bodyParagraphs = item.homeBody ?? [item.proofCopy, item.built, item.whyItMatters]
           .filter((paragraph): paragraph is string => Boolean(paragraph))
           .flatMap((paragraph) =>
             paragraph

@@ -3,6 +3,7 @@ export type WorkItem = {
   title: string;
   eyebrow: string;
   promise?: string;
+  homeBody?: string[];
   status?: string;
   proofCopy?: string;
   problem: string;
@@ -74,6 +75,10 @@ export const workItems: WorkItem[] = [
     title: "Calm Authority",
     eyebrow: "Product / financial advice / authority systems",
     promise: "Adviser expertise in the adviser's own voice.",
+    homeBody: [
+      "Calm Authority is a LinkedIn writing system for UK financial advisers. It maps an adviser's tone of voice, researches relevant angles and turns ideas into drafts.",
+      "The adviser stays in control. Every post is reviewed, edited and published by the person whose name is on it."
+    ],
     status: "Live product",
     proofCopy:
       "Your Own Expertise. At Scale. Flagship product from Studio Baggio, turning adviser expertise into publish-ready authority content.",
@@ -209,6 +214,10 @@ export const workItems: WorkItem[] = [
     title: "Business Tracker",
     eyebrow: "Lead intelligence / attribution / follow-up",
     promise: "Know who matters and what to do next.",
+    homeBody: [
+      "Business Tracker brings together engagement from guides, email and LinkedIn, then adds professional and company context so your team understands each contact.",
+      "It qualifies opportunities against agreed commercial priorities, with a rationale and a recommended next action, so follow-up is better informed and better prioritised."
+    ],
     status: "Live system",
     proofCopy:
       "A market-specific prospecting system that captures interactions, qualifies named leads, adds AI rationale and produces a prioritised follow-up pipeline.",
@@ -295,6 +304,10 @@ export const workItems: WorkItem[] = [
     title: "Last30Days",
     eyebrow: "Live signal intelligence / multi-source research",
     promise: "Market intelligence from recent public conversations.",
+    homeBody: [
+      "Last30Days analyses recent public conversations across social and community platforms and turns them into structured, sourced research.",
+      "Built by Studio Baggio and used by more than 400 individual and corporate users, it supports research into markets, competitors, customer questions and emerging opportunities."
+    ],
     status: "Live product",
     proofCopy:
       "Studio Baggio designed and built Last30Days, an AI research product that analyses recent conversations across social and community platforms and turns them into structured market intelligence. It has now been used by over 400 individual and corporate users to research markets, competitors, customer questions and emerging opportunities.\n\nLast30Days analyses public conversations across Reddit, X, TikTok, Instagram, YouTube, Polymarket and the open web from the last thirty days. Ask any question: search a competitor, a trend, a product category, a new release. Get a structured, sourced report in under 60 seconds. Every claim cited.\n\nEvery business decision made without knowing what the market is saying right now is a guess dressed up as strategy. The best business intelligence is the kind your customers don't know they're producing.",
@@ -363,6 +376,10 @@ export const workItems: WorkItem[] = [
     title: "Fire Source",
     eyebrow: "Commercial intelligence / cited web research",
     promise: "Market intelligence before the meeting.",
+    homeBody: [
+      "Fire Source researches prospects, partners, competitors and market developments, so your team can investigate a commercial question before a meeting, pitch or decision.",
+      "Use it to explore a market, understand a potential client or find organisations that fit your target profile."
+    ],
     status: "Placeholder case study",
     proofCopy:
       "Fire Source scans ~96% of the open web and answers your commercial questions in minutes. Stack follow-up questions to sharpen the picture and find the angle nobody else has.",

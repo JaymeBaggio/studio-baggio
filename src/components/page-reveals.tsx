@@ -397,6 +397,7 @@ export function PageReveals() {
               const support = Array.from(section.querySelectorAll<HTMLElement>("[data-outcome-support]"));
               const emphasis = section.querySelector<HTMLElement>("[data-outcome-emphasis]");
               const openingCta = section.querySelector<HTMLElement>(".opening-cta-wrap");
+              const openingBody = section.querySelector<HTMLElement>(".opening-argument-body");
               const headlineTargets = targetsFor(headline);
               const setupTargets = targetsFor(setup);
 
@@ -406,6 +407,7 @@ export function PageReveals() {
               if (support.length) prepareScan(support, { x: 0, blur: 8, scale: 0.992 });
               if (emphasis) prepareScan(emphasis, { x: 0, blur: 9, scale: 0.985 });
               if (openingCta) prepareScan(openingCta, { x: 0, blur: 6 });
+              if (openingBody) prepareScan(openingBody, { x: 0, blur: 6 });
 
               const opening = gsap.timeline({
                 defaults: { ease: editorialOut },
@@ -426,6 +428,7 @@ export function PageReveals() {
                 revealScan(opening, line, index * openingLineCadence, { duration: openingLineDuration });
               });
               if (qualifier) revealScan(opening, qualifier, 5.05, { duration: 2.05 });
+              if (openingBody) revealScan(opening, openingBody, 3.4, { duration: 2.2 });
               opening.to({}, { duration: 1.44 }, 5.85);
               if (top) opening.to(top, { autoAlpha: 0.28, duration: 2.15 }, 6.35);
               if (setupTargets.length) {

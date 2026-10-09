@@ -32,7 +32,7 @@ function renderHeroMetaLine(line: string) {
 }
 
 function renderProblemTitle(title: string) {
-  const lockedSecondLine = "meaningful ROI.";
+  const lockedSecondLine = "but few are growing revenue with it.";
 
   if (!title.endsWith(lockedSecondLine)) {
     return title;
@@ -57,19 +57,19 @@ export default function HomePage() {
   const problemStats = [
     {
       value: "66%",
-      label: "of organisations report productivity and efficiency gains from AI - but far fewer report commercial outcomes.",
+      label: "of organisations report productivity and efficiency gains from AI. Revenue growth is much rarer.",
       source: "Source: Deloitte, State of AI in the Enterprise 2026",
       href: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html"
     },
     {
       value: "20%",
-      label: "Only 20% of organisations using AI report some level of increased revenue. The gap between internal productivity and external revenue is where most AI investment breaks down.",
+      label: "of organisations are already growing revenue through AI. 74% hope to.",
       source: "Source: Deloitte, State of AI in the Enterprise 2026",
       href: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html"
     },
     {
       value: "12%",
-      label: "Only 12% of UK businesses using AI report an increase in revenue from it.",
+      label: "of UK businesses using AI report an increase in revenue since adopting it.",
       source: "Source: UK Government (DSIT), AI Adoption Research, fieldwork 2025",
       href: "https://www.gov.uk/government/publications/ai-adoption-research/ai-adoption-research"
     }
@@ -185,6 +185,9 @@ export default function HomePage() {
                   </span>
                 ))}
               </h2>
+              {home.opening.body ? (
+                <p className="opening-argument-body">{home.opening.body}</p>
+              ) : null}
             </div>
             <div className="opening-outcome-block">
               <p className="opening-outcome-setup" data-reveal data-split>
@@ -215,8 +218,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        <ValueMap />
-
         <section className="home-section commercial-sprint-section" data-home-section data-motion-section="offer">
           <div className="editorial-container commercial-sprint-frame">
             <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
@@ -241,7 +242,9 @@ export default function HomePage() {
                     <strong>{offer.name}:</strong>
                     <span>{offer.summary}</span>
                     {"showExampleOnHome" in offer && offer.showExampleOnHome && offer.example ? (
-                      <span className="commercial-deliverable-example">{offer.example.paras[0]}</span>
+                      <span className="commercial-deliverable-example">
+                        {"homeExample" in offer && offer.homeExample ? offer.homeExample : offer.example.paras[0]}
+                      </span>
                     ) : null}
                   </p>
                 </div>
@@ -267,6 +270,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <ValueMap />
 
         <section className="home-section working-promise-section" data-home-section data-motion-section="promise">
           <div className="editorial-container working-promise-frame working-promise-grid">

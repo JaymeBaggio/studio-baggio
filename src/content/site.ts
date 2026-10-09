@@ -90,7 +90,8 @@ export const home = {
   opening: {
     headline: "From business priority to working system.",
     qualifier: "",
-    setup: ["What we help you do:"],
+    body: "Studio Baggio finds where AI creates commercial and operational value, then designs and builds the systems to deliver it.",
+    setup: ["What we help you do"],
     outcomes: [
       "Identify where AI creates value",
       "Win more of the right work",
@@ -103,13 +104,12 @@ export const home = {
   },
   problem: {
     eyebrow: "THE GAP",
-    title: "Adoption has run ahead of meaningful ROI.",
+    title: "Most businesses now use AI, but few are growing revenue with it.",
     body:
       "The UK government's 2026 AI Adoption Research found 16% of UK businesses use AI. Among those that do, 77% report no revenue change. Only 12% report a revenue increase.",
     emphasis: "Among those that do, 77% report no revenue change.",
     source: "UK Government AI Adoption Research, 2026.",
-    close:
-      "Knowing where to effectively apply AI creates real competitive advantage.\nStudio Baggio identifies where AI creates real value, then builds the commercial architecture that delivers it.",
+    close: "The opportunity is to connect AI to a clear business objective.",
     pullQuotes: []
   },
   expertiseBridge: {
@@ -228,7 +228,7 @@ export const home = {
       {
         question: "Who leads the work?",
         answer:
-          "Jayme Baggio, founder of Studio Baggio, leads every engagement. Studio Baggio's research into how AI recommends UK law firms and financial advisers has been covered by The Lawyer, FT Adviser, Professional Adviser and Money Marketing."
+          "Jayme Baggio, founder of Studio Baggio, leads every engagement. Studio Baggio's research into how AI recommends UK law firms and financial advisers has been covered by The Lawyer, FT Adviser, Professional Adviser and Money Marketing. More on the About page."
       }
     ]
   },
@@ -1072,6 +1072,8 @@ export const servicesPage = {
       summary:
         "Start with the business constraints and opportunities, then set up a system your team can win with from the outset: shared company context, department and role context, and each person's specialist knowledge turned into skills they use in their work. We design, build and embed it on your existing infrastructure where practical.",
       showExampleOnHome: true,
+      homeExample:
+        "For a London creative agency, a company-wide system gave a non-technical team the tools to use AI effectively from day one, saving an estimated 10 to 15 hours a week.",
       paras: [
         "For businesses that want AI built around their strategy and set up so the whole team can win from the outset.",
         "We start with the business constraints and opportunities, then look at the company's teams, roles, knowledge and ways of working. The system gets the shared company context, department and role context, and safeguards it needs, built on your existing infrastructure."
