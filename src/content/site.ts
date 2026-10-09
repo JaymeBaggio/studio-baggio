@@ -136,8 +136,8 @@ export const home = {
   commercialSprint: {
     // Rows are rendered from servicesPage.offers so the homepage and /services
     // can never drift apart. Edit the offers there, not here.
-    eyebrow: "WHAT YOU CAN HIRE US FOR",
-    title: "AI strategy, systems and implementation.",
+    eyebrow: "",
+    title: "What you can hire us for.",
     subline: "",
     body: "",
     moreLink: { label: "See our services", href: "/services" }

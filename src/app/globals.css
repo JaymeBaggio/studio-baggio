@@ -5109,8 +5109,8 @@ body:has(.home-4b.contact-page) footer {
 .home-4b .opening-outcome-setup {
   max-width: 1040px;
   margin-inline: 0 auto;
-  font-size: var(--sb-opening-setup-size);
-  line-height: 1.08;
+  font-size: var(--sb-opening-outcome-size);
+  line-height: 1.3;
 }
 
 .home-4b .opening-outcome-stack {
@@ -24768,4 +24768,17 @@ body:has(.home-4b.ab-page) footer { display: none; }
 @media (max-width: 760px) {
   .home-4b.insight-article-page.is-ninety-days .insight-article-meta-bar .insight-article-pdf-link { margin-left: 0; flex-basis: 100%; }
   .home-4b.insight-article-page.is-ninety-days .insight-article-meta-bar button.insight-article-share { margin-left: auto; }
+}
+
+/* Section titles carry the short blue rule used on /services offer titles. */
+.home-4b .problem-clarifier-title::after,
+.home-4b .commercial-sprint-title::after,
+.home-4b .proof-section-title::after,
+.home-4b .fit-section-title::after {
+  content: "";
+  display: block;
+  width: clamp(36px, 3.2vw, 48px);
+  height: 3px;
+  margin-top: clamp(14px, 1.4vw, 20px);
+  background: var(--sb-accent-blue);
 }

@@ -6,6 +6,7 @@ import { FaqSchema } from "@/components/faq-schema";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
+import { ValueMap } from "@/components/value-map";
 import { hero, home, introDownload, metadata as siteMetadata, primaryCta, servicesPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
@@ -203,9 +204,13 @@ export default function HomePage() {
           </div>
         </section>
 
+        <ValueMap />
+
         <section className="home-section commercial-sprint-section" data-home-section data-motion-section="offer">
           <div className="editorial-container commercial-sprint-frame">
-            <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
+            {home.commercialSprint.eyebrow ? (
+              <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
+            ) : null}
             <h2 className="commercial-sprint-title" data-split>
               {home.commercialSprint.title}
             </h2>
