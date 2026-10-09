@@ -5612,17 +5612,93 @@ body:has(.home-4b.contact-page) footer {
   color: var(--sb-ink);
 }
 
-.home-4b .opening-argument-body {
-  order: 2;
-  max-width: 760px;
-  margin-top: clamp(18px, 2vw, 26px);
-  font-size: clamp(18px, 1.35vw, 22px);
-  line-height: 1.55;
-  color: var(--sb-body);
+.home-4b .hire-card-grid {
+  width: min(100%, var(--sb-wide));
+  margin-top: clamp(36px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2vw, 28px);
 }
 
-.home-4b .opening-cta-wrap {
-  margin-top: clamp(28px, 3vw, 40px);
+.home-4b .hire-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(20, 20, 20, 0.15);
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(20, 20, 20, 0.06), 0 18px 44px rgba(20, 20, 20, 0.1);
+  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.home-4b .hire-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 6px rgba(20, 20, 20, 0.06), 0 26px 60px rgba(20, 20, 20, 0.16);
+}
+
+.home-4b .hire-card-bar {
+  height: 3px;
+  width: 100%;
+  background: var(--sb-accent-blue);
+}
+
+.home-4b .hire-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(24px, 2.2vw, 32px);
+}
+
+.home-4b .hire-card-title {
+  font-size: clamp(22px, 1.6vw, 26px);
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--sb-ink);
+  text-wrap: balance;
+}
+
+.home-4b .hire-card-summary {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(20, 20, 20, 0.7);
+}
+
+.home-4b .hire-card-example {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(20, 20, 20, 0.1);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--sb-ink);
+}
+
+.home-4b .hire-card-link {
+  margin-top: auto;
+  padding-top: 22px;
+  align-self: flex-start;
+  font-size: 14px;
+  color: rgba(20, 20, 20, 0.6);
+  text-decoration: underline;
+  text-decoration-color: rgba(20, 20, 20, 0.3);
+  text-underline-offset: 4px;
+  transition: color 160ms ease;
+}
+
+.home-4b .hire-card-link:hover {
+  color: var(--sb-ink);
+}
+
+@media (max-width: 899px) {
+  .home-4b .hire-card-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-4b .hire-card,
+  .home-4b .hire-card:hover {
+    transition: none;
+    transform: none;
+  }
 }
 
 .home-4b .commercial-sprint-cta-wrap {

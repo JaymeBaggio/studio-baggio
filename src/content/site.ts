@@ -90,8 +90,10 @@ export const home = {
   opening: {
     headline: "From business priority to working system.",
     qualifier: "",
-    body: "Studio Baggio finds where AI creates commercial and operational value, then designs and builds the systems to deliver it.",
-    setup: ["What we help you do"],
+    setup: [
+      "Studio Baggio finds where AI creates commercial and operational value, then designs and builds the systems to deliver it.",
+      "What we help you do:"
+    ],
     outcomes: [
       "Identify where AI creates value",
       "Win more of the right work",
@@ -99,8 +101,7 @@ export const home = {
       "Improve how your team delivers",
       "Build useful tools and software",
       "Turn a plan into implementation"
-    ],
-    moreLink: { label: "Explore our services", href: "/services" }
+    ]
   },
   problem: {
     eyebrow: "THE GAP",

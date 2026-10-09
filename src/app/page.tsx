@@ -6,7 +6,6 @@ import { FaqSchema } from "@/components/faq-schema";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
-import { ValueMap } from "@/components/value-map";
 import { hero, home, introDownload, metadata as siteMetadata, primaryCta, servicesPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
@@ -129,6 +128,40 @@ export default function HomePage() {
       <FrontDoorOfferInline />
 
       <div className="home-4b">
+        <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
+          <div className="editorial-container opening-argument-grid">
+            <div className="opening-argument-top">
+              {home.opening.qualifier ? (
+                <p className="opening-argument-qualifier" data-reveal>
+                  {home.opening.qualifier}
+                </p>
+              ) : null}
+              <h2 className="opening-argument-headline" data-split>
+                {openingHeadlineLines.map((line) => (
+                  <span data-split-hard-line key={line}>
+                    {line}
+                  </span>
+                ))}
+              </h2>
+            </div>
+            <div className="opening-outcome-block">
+              <p className="opening-outcome-setup" data-reveal data-split>
+                {openingSetupLines.map((line) => (
+                  <span data-split-hard-line key={line}>
+                    {line}
+                  </span>
+                ))}
+              </p>
+              <OpeningOutcomeStack
+                lead={openingOutcomeLead}
+                final={openingOutcomeFinal}
+                label={home.opening.outcomes.join(" ")}
+                controlled
+              />
+            </div>
+          </div>
+        </section>
+
         <section
           id="ai-gap"
           className="home-section problem-clarifier-section"
@@ -170,54 +203,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
-          <div className="editorial-container opening-argument-grid">
-            <div className="opening-argument-top">
-              {home.opening.qualifier ? (
-                <p className="opening-argument-qualifier" data-reveal>
-                  {home.opening.qualifier}
-                </p>
-              ) : null}
-              <h2 className="opening-argument-headline" data-split>
-                {openingHeadlineLines.map((line) => (
-                  <span data-split-hard-line key={line}>
-                    {line}
-                  </span>
-                ))}
-              </h2>
-              {home.opening.body ? (
-                <p className="opening-argument-body">{home.opening.body}</p>
-              ) : null}
-            </div>
-            <div className="opening-outcome-block">
-              <p className="opening-outcome-setup" data-reveal data-split>
-                {openingSetupLines.map((line) => (
-                  <span data-split-hard-line key={line}>
-                    {line}
-                  </span>
-                ))}
-              </p>
-              <OpeningOutcomeStack
-                lead={openingOutcomeLead}
-                final={openingOutcomeFinal}
-                label={home.opening.outcomes.join(" ")}
-                controlled
-              />
-              <div className="commercial-sprint-cta-wrap opening-cta-wrap">
-                <ButtonLink href={primaryCta.href} className="commercial-sprint-cta">
-                  {primaryCta.label}
-                </ButtonLink>
-                <a
-                  className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
-                  href={home.opening.moreLink.href}
-                >
-                  {home.opening.moreLink.label}
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section className="home-section commercial-sprint-section" data-home-section data-motion-section="offer">
           <div className="editorial-container commercial-sprint-frame">
             <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
@@ -234,20 +219,23 @@ export default function HomePage() {
                 {home.commercialSprint.body}
               </p>
             ) : null}
-            <div className="commercial-deliverables">
-              {servicesPage.offers.map((offer, index) => (
-                <div key={offer.id} className="commercial-deliverable-row" data-reveal>
-                  <span className="commercial-deliverable-index">{String(index + 1).padStart(2, "0")}</span>
-                  <p className="commercial-deliverable-copy">
-                    <strong>{offer.name}:</strong>
-                    <span>{offer.summary}</span>
+            <div className="hire-card-grid">
+              {servicesPage.offers.map((offer) => (
+                <article key={offer.id} className="hire-card" data-reveal>
+                  <div className="hire-card-bar" aria-hidden="true" />
+                  <div className="hire-card-body">
+                    <h3 className="hire-card-title">{offer.name}</h3>
+                    <p className="hire-card-summary">{offer.summary}</p>
                     {"showExampleOnHome" in offer && offer.showExampleOnHome && offer.example ? (
-                      <span className="commercial-deliverable-example">
+                      <p className="hire-card-example">
                         {"homeExample" in offer && offer.homeExample ? offer.homeExample : offer.example.paras[0]}
-                      </span>
+                      </p>
                     ) : null}
-                  </p>
-                </div>
+                    <a className="hire-card-link focus-ring" href={`/services#${offer.id}`}>
+                      See what&apos;s included
+                    </a>
+                  </div>
+                </article>
               ))}
             </div>
             <div className="commercial-sprint-cta-wrap" data-reveal>
@@ -270,8 +258,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
-        <ValueMap />
 
         <section className="home-section working-promise-section" data-home-section data-motion-section="promise">
           <div className="editorial-container working-promise-frame working-promise-grid">
