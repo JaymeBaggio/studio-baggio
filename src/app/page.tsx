@@ -32,7 +32,7 @@ function renderHeroMetaLine(line: string) {
 }
 
 function renderProblemTitle(title: string) {
-  const lockedSecondLine = "but few are growing revenue with it.";
+  const lockedSecondLine = "meaningful ROI.";
 
   if (!title.endsWith(lockedSecondLine)) {
     return title;
@@ -57,19 +57,19 @@ export default function HomePage() {
   const problemStats = [
     {
       value: "66%",
-      label: "of organisations report productivity and efficiency gains from AI. Revenue growth is much rarer.",
+      label: "of organisations report productivity and efficiency gains from AI - but far fewer report commercial outcomes.",
       source: "Source: Deloitte, State of AI in the Enterprise 2026",
       href: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html"
     },
     {
       value: "20%",
-      label: "of organisations are already growing revenue through AI. 74% hope to.",
+      label: "Only 20% of organisations using AI report some level of increased revenue. The gap between internal productivity and external revenue is where most AI investment breaks down.",
       source: "Source: Deloitte, State of AI in the Enterprise 2026",
       href: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html"
     },
     {
       value: "12%",
-      label: "of UK businesses using AI report an increase in revenue since adopting it.",
+      label: "Only 12% of UK businesses using AI report an increase in revenue from it.",
       source: "Source: UK Government (DSIT), AI Adoption Research, fieldwork 2025",
       href: "https://www.gov.uk/government/publications/ai-adoption-research/ai-adoption-research"
     }

@@ -103,12 +103,13 @@ export const home = {
   },
   problem: {
     eyebrow: "THE GAP",
-    title: "Most businesses now use AI, but few are growing revenue with it.",
+    title: "Adoption has run ahead of meaningful ROI.",
     body:
       "The UK government's 2026 AI Adoption Research found 16% of UK businesses use AI. Among those that do, 77% report no revenue change. Only 12% report a revenue increase.",
     emphasis: "Among those that do, 77% report no revenue change.",
     source: "UK Government AI Adoption Research, 2026.",
-    close: "The opportunity is to connect AI to a clear business objective.",
+    close:
+      "Knowing where to effectively apply AI creates real competitive advantage.\nStudio Baggio identifies where AI creates real value, then builds the commercial architecture that delivers it.",
     pullQuotes: []
   },
   expertiseBridge: {
