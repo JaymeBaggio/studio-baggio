@@ -68,10 +68,10 @@ export default function HomePage() {
       href: "https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html"
     },
     {
-      value: "12%",
-      label: "of UK businesses using AI report an increase in revenue since adopting it.",
-      source: "Source: UK Government (DSIT), AI Adoption Research, fieldwork 2025",
-      href: "https://www.gov.uk/government/publications/ai-adoption-research/ai-adoption-research"
+      value: "79%",
+      label: "of ultra-wealthy investors ($10m+) say firms that use AI are more attractive to them as clients.",
+      source: "Source: BNY Wealth, The Intelligent Investor, 2026",
+      href: "https://www.bny.com/assets/wealth/pdf-library/reports/the-intelligent-investor-insights-on-ai-forward-investing.pdf"
     }
   ];
   const heroPromiseLines = [
