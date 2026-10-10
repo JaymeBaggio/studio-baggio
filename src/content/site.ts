@@ -88,24 +88,30 @@ export const hero = {
 
 export const home = {
   opening: {
-    headline: "From business priority to working system.",
+    headline:
+      "Most businesses are using AI. Few are using it to create commercial advantage.",
     qualifier: "",
-    setup: [
-      "Studio Baggio finds where AI creates commercial and operational value, then designs and builds the systems to deliver it.",
-      "What we help you do:"
-    ],
+    setup: ["Studio Baggio designs and builds practical AI systems", "that make businesses:"],
     outcomes: [
-      "Identify where AI creates value",
+      "Easier to find.",
+      "Faster to act.",
+      "Better informed.",
+      "Harder to compete with."
+    ]
+  },
+  helpList: {
+    title: "What we help you do.",
+    items: [
+      "Identify where AI creates real commercial value",
       "Win more of the right work",
-      "Put company knowledge to use",
+      "Get more from what your people already know",
       "Improve how your team delivers",
-      "Build useful tools and software",
-      "Turn a plan into implementation"
+      "Build useful tools and software"
     ]
   },
   problem: {
     eyebrow: "THE GAP",
-    title: "Most businesses are using AI. Few are using it to create commercial advantage.",
+    title: "Adoption has run ahead of meaningful ROI.",
     body:
       "The UK government's 2026 AI Adoption Research found 16% of UK businesses use AI. Among those that do, 77% report no revenue change. Only 12% report a revenue increase.",
     emphasis: "Among those that do, 77% report no revenue change.",
@@ -130,8 +136,8 @@ export const home = {
     ]
   },
   value: {
-    eyebrow: "WHAT WE BUILD",
-    title: ""
+    eyebrow: "",
+    title: "What we build."
   },
   commercialSprint: {
     // Rows are rendered from servicesPage.offers so the homepage and /services

@@ -5109,8 +5109,8 @@ body:has(.home-4b.contact-page) footer {
 .home-4b .opening-outcome-setup {
   max-width: 1040px;
   margin-inline: 0 auto;
-  font-size: var(--sb-opening-outcome-size);
-  line-height: 1.3;
+  font-size: var(--sb-opening-setup-size);
+  line-height: 1.08;
 }
 
 .home-4b .opening-outcome-stack {
@@ -24782,3 +24782,135 @@ body:has(.home-4b.ab-page) footer { display: none; }
   margin-top: clamp(14px, 1.4vw, 20px);
   background: var(--sb-accent-blue);
 }
+
+/* What we build: every capability visible, ruled editorial grid. */
+.home-4b .value-grid-title {
+  font-size: clamp(34px, 3.15vw, 50px);
+  line-height: 1.08;
+  font-weight: var(--sb-title-weight);
+  color: var(--sb-ink);
+}
+
+.home-4b .value-grid-title::after {
+  content: "";
+  display: block;
+  width: clamp(36px, 3.2vw, 48px);
+  height: 3px;
+  margin-top: clamp(14px, 1.4vw, 20px);
+  background: var(--sb-accent-blue);
+}
+
+.home-4b .value-grid {
+  width: min(100%, var(--sb-wide));
+  margin-top: clamp(32px, 3.4vw, 48px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(28px, 3vw, 48px);
+  row-gap: clamp(28px, 3vw, 40px);
+}
+
+.home-4b .value-grid-item {
+  padding-top: 20px;
+  border-top: 1px solid rgba(20, 20, 20, 0.15);
+}
+
+.home-4b .value-grid-heading {
+  font-size: clamp(19px, 1.35vw, 22px);
+  line-height: 1.3;
+  font-weight: 400;
+  color: var(--sb-ink);
+}
+
+.home-4b .value-grid-summary {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(20, 20, 20, 0.7);
+}
+
+.home-4b .value-grid-label {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(20, 20, 20, 0.5);
+}
+
+.home-4b .value-grid-includes {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(20, 20, 20, 0.6);
+}
+
+.home-4b .value-grid-goal {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--sb-ink);
+}
+
+@media (max-width: 1023px) {
+  .home-4b .value-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .home-4b .value-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* What we help you do: one band of short lines, straight after the intro fade. */
+.home-4b .help-list-title {
+  font-size: clamp(34px, 3.15vw, 50px);
+  line-height: 1.08;
+  font-weight: var(--sb-title-weight);
+  color: var(--sb-ink);
+}
+
+.home-4b .help-list-title::after {
+  content: "";
+  display: block;
+  width: clamp(36px, 3.2vw, 48px);
+  height: 3px;
+  margin-top: clamp(14px, 1.4vw, 20px);
+  background: var(--sb-accent-blue);
+}
+
+.home-4b .help-list {
+  width: min(100%, var(--sb-wide));
+  margin-top: clamp(28px, 3vw, 44px);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: clamp(20px, 2.2vw, 36px);
+  row-gap: 0;
+}
+
+.home-4b .help-list li {
+  padding-top: 14px;
+  border-top: 1px solid rgba(20, 20, 20, 0.15);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--sb-ink);
+}
+
+.home-4b .help-list-section {
+  padding-bottom: clamp(28px, 3vw, 44px);
+}
+
+.home-4b .help-list-section + .value-map-section {
+  padding-top: clamp(28px, 3vw, 44px);
+}
+
+@media (max-width: 1023px) {
+  .home-4b .help-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-4b .help-list li {
+    padding-block: 14px;
+  }
+}
+

@@ -32,7 +32,7 @@ function renderHeroMetaLine(line: string) {
 }
 
 function renderProblemTitle(title: string) {
-  const lockedSecondLine = "Few are using it to create commercial advantage.";
+  const lockedSecondLine = "meaningful ROI.";
 
   if (!title.endsWith(lockedSecondLine)) {
     return title;
@@ -129,6 +129,40 @@ export default function HomePage() {
       <FrontDoorOfferInline />
 
       <div className="home-4b">
+        <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
+          <div className="editorial-container opening-argument-grid">
+            <div className="opening-argument-top">
+              {home.opening.qualifier ? (
+                <p className="opening-argument-qualifier" data-reveal>
+                  {home.opening.qualifier}
+                </p>
+              ) : null}
+              <h2 className="opening-argument-headline" data-split>
+                {openingHeadlineLines.map((line) => (
+                  <span data-split-hard-line key={line}>
+                    {line}
+                  </span>
+                ))}
+              </h2>
+            </div>
+            <div className="opening-outcome-block">
+              <p className="opening-outcome-setup" data-reveal data-split>
+                {openingSetupLines.map((line) => (
+                  <span data-split-hard-line key={line}>
+                    {line}
+                  </span>
+                ))}
+              </p>
+              <OpeningOutcomeStack
+                lead={openingOutcomeLead}
+                final={openingOutcomeFinal}
+                label={home.opening.outcomes.join(" ")}
+                controlled
+              />
+            </div>
+          </div>
+        </section>
+
         <section
           id="ai-gap"
           className="home-section problem-clarifier-section"
@@ -170,37 +204,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
-          <div className="editorial-container opening-argument-grid">
-            <div className="opening-argument-top">
-              {home.opening.qualifier ? (
-                <p className="opening-argument-qualifier" data-reveal>
-                  {home.opening.qualifier}
-                </p>
-              ) : null}
-              <h2 className="opening-argument-headline" data-split>
-                {openingHeadlineLines.map((line) => (
-                  <span data-split-hard-line key={line}>
-                    {line}
-                  </span>
-                ))}
-              </h2>
-            </div>
-            <div className="opening-outcome-block">
-              <p className="opening-outcome-setup" data-reveal data-split>
-                {openingSetupLines.map((line) => (
-                  <span data-split-hard-line key={line}>
-                    {line}
-                  </span>
-                ))}
-              </p>
-              <OpeningOutcomeStack
-                lead={openingOutcomeLead}
-                final={openingOutcomeFinal}
-                label={home.opening.outcomes.join(" ")}
-                controlled
-              />
-            </div>
+        <section className="home-section help-list-section" data-home-section data-motion-section="help">
+          <div className="editorial-container">
+            <h2 className="help-list-title">{home.helpList.title}</h2>
+            <ul className="help-list">
+              {home.helpList.items.map((item) => (
+                <li key={item} data-reveal>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
