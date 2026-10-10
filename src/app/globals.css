@@ -24914,3 +24914,36 @@ body:has(.home-4b.ab-page) footer { display: none; }
   }
 }
 
+/* Five short bullets between the hire-us heading and its cards. */
+.home-4b .hire-help-list {
+  width: min(100%, var(--sb-wide));
+  margin-top: clamp(24px, 2.4vw, 32px);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(24px, 2.6vw, 40px);
+  row-gap: 10px;
+}
+
+.home-4b .hire-help-list li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(20, 20, 20, 0.8);
+}
+
+.home-4b .hire-help-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sb-accent-blue);
+}
+
+.services-page .value-map-section {
+  border-top: 1px solid rgba(20, 20, 20, 0.1);
+}
+

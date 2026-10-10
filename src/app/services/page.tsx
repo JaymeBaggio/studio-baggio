@@ -17,6 +17,7 @@ import {
 import { pageMetadata } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 import { LastWordMark } from "@/components/last-word-mark";
+import { ValueMap } from "@/components/value-map";
 
 export const metadata: Metadata = pageMetadata({
   ...siteMetadata.services,
@@ -417,6 +418,8 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+
+        <ValueMap />
 
         <section className="border-t border-ink/10 py-14 md:py-20">
           <div className="editorial-container">

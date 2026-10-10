@@ -6,7 +6,6 @@ import { FaqSchema } from "@/components/faq-schema";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
-import { ValueMap } from "@/components/value-map";
 import { hero, home, introDownload, metadata as siteMetadata, primaryCta, servicesPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
@@ -204,21 +203,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="home-section help-list-section" data-home-section data-motion-section="help">
-          <div className="editorial-container">
-            <h2 className="help-list-title">{home.helpList.title}</h2>
-            <ul className="help-list">
-              {home.helpList.items.map((item) => (
-                <li key={item} data-reveal>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <ValueMap />
-
         <section className="home-section commercial-sprint-section" data-home-section data-motion-section="offer">
           <div className="editorial-container commercial-sprint-frame">
             {home.commercialSprint.eyebrow ? (
@@ -227,6 +211,11 @@ export default function HomePage() {
             <h2 className="commercial-sprint-title" data-split>
               {home.commercialSprint.title}
             </h2>
+            <ul className="hire-help-list" data-reveal>
+              {home.helpList.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
             {home.commercialSprint.subline ? (
               <p className="commercial-sprint-subline" data-reveal>
                 {home.commercialSprint.subline}
