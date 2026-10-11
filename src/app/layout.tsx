@@ -7,6 +7,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
 import { FrontDoorOffer } from "@/components/front-door-offer";
+import { RuleDraw } from "@/components/rule-draw";
 import { ScrollReset } from "@/components/scroll-reset";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
@@ -112,6 +113,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           <SiteFooter />
         </div>
         <FrontDoorOffer />
+        <RuleDraw />
         <Analytics />
         <TrackerBeacon />
         <PostHogInit />

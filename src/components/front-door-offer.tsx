@@ -111,36 +111,49 @@ export function FrontDoorOffer() {
   const [mounted, setMounted] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [pillDismissed, setPillDismissed] = useState(false);
-  const [scrolledPast, setScrolledPast] = useState(false);
   const [cardOpen, setCardOpen] = useState(false);
+  const [pastOffers, setPastOffers] = useState(false);
+  const [atClose, setAtClose] = useState(false);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
       setDismissed(window.sessionStorage.getItem(DISMISS_KEY) === "closed");
       setPillDismissed(window.sessionStorage.getItem(`${DISMISS_KEY}-pill`) === "closed");
-      setScrolledPast(window.scrollY > 560);
       setMounted(true);
     });
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
+  // The pill waits until the four ways to hire have scrolled past (homepage)
+  // and steps aside over the closing band and the footer.
   useEffect(() => {
-    const onScroll = () => setScrolledPast(window.scrollY > 560);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const check = () => {
+      const offers = document.querySelector(".commercial-sprint-section");
+      setPastOffers(offers ? offers.getBoundingClientRect().bottom < window.innerHeight * 0.35 : true);
+      const closers = Array.from(document.querySelectorAll(".home-cta-section, footer"));
+      setAtClose(
+        closers.some((el) => {
+          const r = el.getBoundingClientRect();
+          return r.top < window.innerHeight - 24 && r.bottom > 0;
+        })
+      );
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, [pathname]);
 
-  // About and Contact already contain the offer/enquiry route in their frame;
-  // a floating card would cover it. Research reports use their own CTA.
-  if (
-    !mounted ||
-    pathname === "/about" ||
-    pathname === "/contact" ||
-    pathname === "/research/uk-sports-law-2026" ||
-    pathname === "/research/uk-financial-advice-2026" ||
-    pathname === "/research/uk-law-2026"
-  )
-    return null;
+  // Where the offer appears (Jayme, 11 Oct 2026): the homepage hero card,
+  // which scrolls away with the hero, then the pill once the four ways to
+  // hire are behind the visitor; and the floating offer on /research. The studies carry the HNW dataset card instead; every other page
+  // has nothing floating, so nothing sits over cards, buttons or sidebars.
+  const isHome = pathname === "/";
+  const isResearchIndex = pathname === "/research";
+  if (!mounted || (!isHome && !isResearchIndex)) return null;
 
   const dismiss = () => {
     setDismissed(true);
@@ -159,8 +172,7 @@ export function FrontDoorOffer() {
     window.sessionStorage.setItem(`${DISMISS_KEY}-pill`, "closed");
   };
 
-  const pillVisible =
-    !cardOpen && !pillDismissed && (pathname !== "/" || dismissed || scrolledPast);
+  const pillVisible = (isResearchIndex || (isHome && pastOffers)) && !atClose && !cardOpen && !pillDismissed;
 
   return (
     <>

@@ -232,18 +232,20 @@ export function ServicesMotion() {
           let cleanup: (() => void) | undefined;
 
           if (desktop) {
-            // Cards pin at the 76px stopper, title always visible. A card
-            // taller than the room below the stopper would have its bottom
-            // covered by the next card, so it scrolls through in full first
-            // and pins with breathing space beneath it instead.
+            // Cards pin at the 76px stopper, title always visible, and are
+            // laid out to fit one screen. On a window too short for a card,
+            // that card is not pinned (data-unpinned): it scrolls normally,
+            // so neither its title nor its bottom is ever hidden.
             const breathingSpace = 40;
             const setStoppers = () => {
               cards.forEach((card) => {
                 const room = window.innerHeight - 76 - breathingSpace;
-                card.style.top =
-                  card.offsetHeight > room
-                    ? `${window.innerHeight - card.offsetHeight - breathingSpace}px`
-                    : "76px";
+                if (card.offsetHeight > room) {
+                  card.setAttribute("data-unpinned", "");
+                } else {
+                  card.removeAttribute("data-unpinned");
+                  card.style.top = "76px";
+                }
               });
             };
             setStoppers();

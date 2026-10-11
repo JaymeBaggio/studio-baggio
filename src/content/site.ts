@@ -272,7 +272,7 @@ export const home = {
   },
   cta: {
     eyebrow: "",
-    title: "",
+    title: "Book a 30-minute conversation to identify where Studio Baggio AI could create the most value in your business and the right place to start.",
     body: "",
     brand: ""
   }
@@ -1166,6 +1166,7 @@ export const servicesPage = {
     "Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it."
   ],
   offersEyebrow: "WHAT YOU CAN HIRE US FOR",
+  evidenceLabel: "How clients choose now",
   offers: [
     {
       id: "seo-and-ai-search-opportunity-audit",

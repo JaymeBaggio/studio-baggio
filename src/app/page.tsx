@@ -368,27 +368,44 @@ export default function HomePage() {
 
         <section className="home-section home-cta-section" data-home-section data-motion-section="cta" data-header-theme="dark">
           <div className="editorial-container home-cta-frame">
-            {home.cta.eyebrow ? (
-              <p className="eyebrow home-cta-eyebrow" data-reveal data-motion="label">{home.cta.eyebrow}</p>
-            ) : null}
-            {home.cta.title ? (
-              <h2 className="home-cta-title" data-split>
-                {home.cta.title}
-              </h2>
-            ) : null}
-            {home.cta.body ? (
-              <p className="home-cta-body" data-reveal>
-                {home.cta.body}
-              </p>
-            ) : null}
-            <div data-cta-button>
-              <ButtonLink href={primaryCta.href} className="border-paper text-paper hover:bg-paper hover:text-ink">
-                {primaryCta.label}
-              </ButtonLink>
+            <div className="home-cta-layout">
+              <div className="home-cta-main">
+                {home.cta.eyebrow ? (
+                  <p className="eyebrow home-cta-eyebrow" data-reveal data-motion="label">{home.cta.eyebrow}</p>
+                ) : null}
+                {home.cta.title ? (
+                  <h2 className="home-cta-title" data-split>
+                    {home.cta.title}
+                  </h2>
+                ) : null}
+                {home.cta.body ? (
+                  <p className="home-cta-body" data-reveal>
+                    {home.cta.body}
+                  </p>
+                ) : null}
+                <div data-cta-button>
+                  <ButtonLink href={primaryCta.href} className="border-paper text-paper hover:bg-paper hover:text-ink">
+                    {primaryCta.label}
+                  </ButtonLink>
+                </div>
+                {home.cta.brand ? (
+                  <p className="home-cta-brand" data-reveal>{home.cta.brand}</p>
+                ) : null}
+              </div>
+              {/* Founder presence beside the final Enquire now. Shown on preview
+                  builds only until Jayme chooses a photo; never on production. */}
+              {process.env.VERCEL_ENV !== "production" ? (
+                <aside className="home-cta-founder" aria-label="Founder" data-reveal>
+                  <span className="home-cta-founder-photo" aria-hidden="true">
+                    Photo
+                  </span>
+                  <span className="home-cta-founder-text">
+                    <strong>Jayme Baggio</strong>
+                    <span>Founder &amp; CEO, Studio Baggio</span>
+                  </span>
+                </aside>
+              ) : null}
             </div>
-            {home.cta.brand ? (
-              <p className="home-cta-brand" data-reveal>{home.cta.brand}</p>
-            ) : null}
           </div>
         </section>
       </div>

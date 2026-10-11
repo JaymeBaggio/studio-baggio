@@ -51,6 +51,17 @@ type ServiceOffer = {
 
 const offers = servicesPage.offers as ServiceOffer[];
 
+// Each card's Enquire now opens the form with that way to hire selected.
+const offerEnquiryType: Record<string, string> = {
+  "seo-and-ai-search-opportunity-audit": "seo-ai-search",
+  "ai-operating-system-audit": "ai-operating-systems",
+  "tools-and-client-resources": "tools-client-resources",
+  "commissioned-research": "commissioned-research"
+};
+
+// The client-behaviour stats sit in one box under the cards, not inside them.
+const evidenceStatIds = offers.flatMap((offer) => offer.stats?.ids ?? []);
+
 const servicesSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -168,6 +179,165 @@ export default function ServicesPage() {
           </div>
         </section>
 
+        <section className="border-t border-ink/10 pt-14 pb-6 md:pt-20 md:pb-8">
+          <div className="editorial-container">
+            <p className="eyebrow" data-sv-reveal>
+              {servicesPage.offersEyebrow}
+            </p>
+            <div className="sv-stack mt-10 space-y-16 md:space-y-20 lg:space-y-[40vh]">
+              {offers.map((offer) => {
+                const enquireHref = `/contact?type=${offerEnquiryType[offer.id] ?? "not-sure"}`;
+                const example = offer.example ? (
+                  <div className="sv-example relative pl-5" data-sv-example>
+                    <span className="sv-borderline" aria-hidden="true" />
+                    <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
+                    <div className="mt-3 space-y-3">
+                      {offer.example.paras.map((para) => (
+                        <ExampleParagraph key={para} text={para} highlight={offer.example?.highlight} />
+                      ))}
+                    </div>
+                  </div>
+                ) : null;
+                const quote = offer.quote ? (
+                  <figure className="sv-card-quote">
+                    <blockquote className="text-[color:var(--sb-accent-blue)]">&ldquo;{offer.quote.text}&rdquo;</blockquote>
+                    {offer.quote.result ? (
+                      <p className="mt-3 text-ink/70">
+                        Result:{" "}
+                        <strong className="font-semibold text-[color:var(--sb-accent-blue)]">{offer.quote.result}</strong>.
+                      </p>
+                    ) : null}
+                    <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
+                      {offer.quote.attr}
+                    </figcaption>
+                  </figure>
+                ) : null;
+
+                return (
+                  <article
+                    key={offer.id}
+                    id={offer.id}
+                    className="sv-card mx-auto max-w-5xl scroll-mt-28"
+                    data-sv-card
+                  >
+                    {offer.legacyIds?.map((legacyId) => (
+                      <span key={legacyId} id={legacyId} className="sv-legacy-anchor" aria-hidden="true" />
+                    ))}
+                    <div className="flex items-start justify-between gap-6">
+                      <h2 className="text-2xl md:text-3xl">{offer.name}</h2>
+                      <Link
+                        href={enquireHref}
+                        className="focus-ring mt-2 hidden flex-none items-center gap-2 text-sm uppercase tracking-[0.08em] text-ink transition-colors hover:text-[color:var(--sb-accent-blue)] sm:inline-flex"
+                      >
+                        Enquire now
+                        <span aria-hidden="true">&rarr;</span>
+                      </Link>
+                    </div>
+                    <div className="mt-3 h-0.5 w-9 bg-[color:var(--sb-accent-blue)]" aria-hidden="true" data-sv-accent />
+                    {/* Two columns on desktop so the whole card fits one screen
+                        while it is pinned in the stack: what it is on the left,
+                        the client's words and the example on the right. */}
+                    <div className="sv-card-grid">
+                      <div className="sv-card-main">
+                        <div className="space-y-3">
+                          {offer.paras.map((para) => (
+                            <p key={para} className="text-ink/70">
+                              {para}
+                            </p>
+                          ))}
+                        </div>
+                        <h3 className="eyebrow pt-6">{offer.includesLabel}</h3>
+                        <ul className="mt-3 -mb-2 gap-x-6 sm:columns-2" data-sv-list>
+                          {offer.includes.map((item) => (
+                            <li key={item} className="mb-2 flex break-inside-avoid items-baseline gap-3 text-ink/70">
+                              <span
+                                className="h-1 w-1 flex-none translate-y-[-2px] rounded-full bg-[color:var(--sb-accent-blue)]"
+                                aria-hidden="true"
+                              />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                        {offer.outro ? (
+                          <div className="mt-5 space-y-3">
+                            {offer.outro.map((para) => (
+                              <p key={para} className={offer.outroStrong ? "font-semibold text-ink" : "text-ink/70"}>
+                                {para}
+                              </p>
+                            ))}
+                          </div>
+                        ) : null}
+                        {offer.featuredIn ? (
+                          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-4">
+                            <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
+                              {offer.featuredIn.label}
+                            </span>
+                            <div className="flex min-w-0 max-w-full items-center gap-4 sm:gap-6">
+                              {offer.featuredIn.logos.map((logo) => (
+                                <Image
+                                  key={logo.name}
+                                  src={logo.src}
+                                  alt={logo.name}
+                                  width={logo.width}
+                                  height={16}
+                                  className="h-4 min-w-0 w-auto object-contain"
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        ) : null}
+                      </div>
+                      {quote || example || offer.subSection ? (
+                        <div className="sv-card-side">
+                          {offer.exampleFirst ? (
+                            <>
+                              {example}
+                              {quote}
+                            </>
+                          ) : (
+                            <>
+                              {quote}
+                              {example}
+                            </>
+                          )}
+                          {offer.subSection ? (
+                            <div className="sv-card-sub">
+                              <h3 className="eyebrow">{offer.subSection.label}</h3>
+                              <div className="mt-3 space-y-3">
+                                {offer.subSection.paras.map((para) => (
+                                  <p key={para} className="text-ink/70">
+                                    {para}
+                                  </p>
+                                ))}
+                              </div>
+                            </div>
+                          ) : null}
+                        </div>
+                      ) : null}
+                    </div>
+                    <Link
+                      href={enquireHref}
+                      className="focus-ring mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.08em] text-ink transition-colors hover:text-[color:var(--sb-accent-blue)] sm:hidden"
+                    >
+                      Enquire now
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="sv-evidence-section">
+          <div className="editorial-container">
+            <div className="sv-evidence" data-sv-reveal>
+              <h2 className="sv-evidence-label">{servicesPage.evidenceLabel}</h2>
+              <ClientStatList ids={evidenceStatIds} columns={3} />
+            </div>
+          </div>
+        </section>
+
         <section className="border-t border-ink/10 pt-10 pb-14 md:pt-12 md:pb-20">
           <div className="editorial-container">
             <h2 className="eyebrow" data-sv-reveal>
@@ -224,211 +394,6 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="border-t border-ink/10 pt-14 pb-6 md:pt-20 md:pb-8">
-          <div className="editorial-container">
-            <p className="eyebrow" data-sv-reveal>
-              {servicesPage.offersEyebrow}
-            </p>
-            <div className="sv-stack mt-10 space-y-16 md:space-y-20 lg:space-y-[40vh]">
-              {offers.map((offer) => (
-                <article
-                  key={offer.id}
-                  id={offer.id}
-                  className="sv-card mx-auto max-w-5xl scroll-mt-28"
-                  data-sv-card
-                >
-                  {offer.legacyIds?.map((legacyId) => (
-                    <span key={legacyId} id={legacyId} className="sv-legacy-anchor" aria-hidden="true" />
-                  ))}
-                  <div className="flex items-start justify-between gap-6">
-                    <h2 className="text-2xl md:text-3xl">{offer.name}</h2>
-                    <Link
-                      href="/contact"
-                      className="focus-ring mt-2 hidden flex-none items-center gap-2 text-sm uppercase tracking-[0.08em] text-ink transition-colors hover:text-[color:var(--sb-accent-blue)] sm:inline-flex"
-                    >
-                      Enquire now
-                      <span aria-hidden="true">&rarr;</span>
-                    </Link>
-                  </div>
-                  <div
-                    className="mt-3 h-0.5 w-9 bg-[color:var(--sb-accent-blue)]"
-                    aria-hidden="true"
-                    data-sv-accent
-                  />
-                  <div className="mt-5 space-y-4">
-                    {offer.paras.map((para) => (
-                      <p key={para} className="text-base leading-relaxed text-ink/70 md:text-lg">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-                  {offer.stats ? (
-                    <div className="pt-8 lg:pt-5" data-sv-reveal>
-                      <h3 className="eyebrow">{offer.stats.label}</h3>
-                      <ClientStatList ids={offer.stats.ids} />
-                    </div>
-                  ) : null}
-                  <h3 className="eyebrow pt-8 lg:pt-5">{offer.includesLabel}</h3>
-                  <ul
-                    className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 || offer.includes.join(" ").length > 320 ? " lg:columns-3" : ""}`}
-                    data-sv-list
-                  >
-                    {offer.includes.map((item) => (
-                      <li
-                        key={item}
-                        className="mb-2 flex break-inside-avoid items-baseline gap-3 text-base leading-relaxed text-ink/70 md:text-lg"
-                      >
-                        <span
-                          className="h-1 w-1 flex-none translate-y-[-2px] rounded-full bg-[color:var(--sb-accent-blue)]"
-                          aria-hidden="true"
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <>
-                      {offer.subSection ? (
-                        <div className="mt-10" data-sv-reveal>
-                          <h3 className="eyebrow">{offer.subSection.label}</h3>
-                          <div className="mt-4 space-y-4">
-                            {offer.subSection.paras.map((para) => (
-                              <p
-                                key={para}
-                                className="text-base leading-relaxed text-ink/70 md:text-lg"
-                              >
-                                {para}
-                              </p>
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
-                      {offer.outro ? (
-                        <div className="mt-5 space-y-4" data-sv-reveal>
-                          {offer.outro.map((para) => (
-                            <p
-                              key={para}
-                              className={
-                                offer.outroStrong
-                                  ? "text-base font-semibold leading-relaxed text-ink md:text-lg"
-                                  : "text-base leading-relaxed text-ink/70 md:text-lg"
-                              }
-                            >
-                              {para}
-                            </p>
-                          ))}
-                        </div>
-                      ) : null}
-                      {offer.exampleFirst ? (
-                        <>
-                      {offer.example ? (
-                        <div className="sv-example relative mt-4 pl-5" data-sv-example>
-                          <span className="sv-borderline" aria-hidden="true" />
-                          <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
-                          <div className="mt-3 space-y-3">
-                            {offer.example.paras.map((para) => (
-                              <ExampleParagraph
-                                key={para}
-                                text={para}
-                                highlight={offer.example?.highlight}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
-                      {offer.quote ? (
-                        <figure className="mt-5" data-sv-reveal>
-                          <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
-                            &ldquo;{offer.quote.text}&rdquo;
-                          </blockquote>
-                          {offer.quote.result ? (
-                            <p className="mt-3 text-base leading-relaxed text-ink/70">
-                              Result:{" "}
-                              <strong className="font-semibold text-[color:var(--sb-accent-blue)]">
-                                {offer.quote.result}
-                              </strong>
-                              .
-                            </p>
-                          ) : null}
-                          <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
-                            {offer.quote.attr}
-                          </figcaption>
-                        </figure>
-                      ) : null}
-                        </>
-                      ) : (
-                        <>
-                      {offer.quote ? (
-                        <figure className="mt-8" data-sv-reveal>
-                          <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
-                            &ldquo;{offer.quote.text}&rdquo;
-                          </blockquote>
-                          {offer.quote.result ? (
-                            <p className="mt-3 text-base leading-relaxed text-ink/70">
-                              Result:{" "}
-                              <strong className="font-semibold text-[color:var(--sb-accent-blue)]">
-                                {offer.quote.result}
-                              </strong>
-                              .
-                            </p>
-                          ) : null}
-                          <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
-                            {offer.quote.attr}
-                          </figcaption>
-                        </figure>
-                      ) : null}
-                      {offer.example ? (
-                        <div className="sv-example relative mt-8 pl-5" data-sv-example>
-                          <span className="sv-borderline" aria-hidden="true" />
-                          <p className="eyebrow text-[color:var(--sb-accent-blue)]">Example</p>
-                          <div className="mt-3 space-y-3">
-                            {offer.example.paras.map((para) => (
-                              <ExampleParagraph
-                                key={para}
-                                text={para}
-                                highlight={offer.example?.highlight}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
-                        </>
-                      )}
-                      {offer.featuredIn ? (
-                        <div
-                          className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-4"
-                          data-sv-reveal
-                        >
-                          <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
-                            {offer.featuredIn.label}
-                          </span>
-                          <div className="flex min-w-0 max-w-full items-center gap-4 sm:gap-6">
-                            {offer.featuredIn.logos.map((logo) => (
-                              <Image
-                                key={logo.name}
-                                src={logo.src}
-                                alt={logo.name}
-                                width={logo.width}
-                                height={16}
-                                className="h-4 min-w-0 w-auto object-contain"
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
-                      <Link
-                        href="/contact"
-                        className="focus-ring mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.08em] text-ink transition-colors hover:text-[color:var(--sb-accent-blue)] sm:hidden"
-                      >
-                        Enquire now
-                        <span aria-hidden="true">&rarr;</span>
-                      </Link>
-                  </>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <ValueMap />
 
         <section className="border-t border-ink/10 py-14 md:py-20">
@@ -437,7 +402,9 @@ export default function ServicesPage() {
               What clients say
             </p>
             <div className="mt-8 grid gap-x-12 gap-y-10 lg:grid-cols-2" data-sv-list>
-              {about.testimonials.map((testimonial) => (
+              {about.testimonials
+                .filter((testimonial) => !offers.some((offer) => offer.quote?.attr.startsWith(testimonial.name)))
+                .map((testimonial) => (
                 <figure key={testimonial.name} className="relative pl-5">
                   <span
                     className="absolute bottom-0 left-0 top-0 w-0.5 bg-[color:var(--sb-accent-blue)]"
