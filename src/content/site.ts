@@ -1054,6 +1054,76 @@ export const frontDoorOffer = {
   featured: aiSearchFeaturedPress
 };
 
+export const clientStats = {
+  hsbc82: {
+    figure: "82%",
+    text: "of HNW investors use AI for finance and investment tasks.",
+    source: "HSBC, 2026",
+    href: "https://www.hsbc.com/-/files/hsbc/media/media-release/2026/260624-the-ai-trust-threshold.pdf"
+  },
+  bny83: {
+    figure: "83%",
+    text: "of ultra-wealthy investors ($10m+) use AI-driven tools to inform their financial choices.",
+    source: "BNY Wealth, 2026",
+    href: "https://www.bny.com/assets/wealth/pdf-library/reports/the-intelligent-investor-insights-on-ai-forward-investing.pdf"
+  },
+  bny79: {
+    figure: "79%",
+    text: "of ultra-wealthy investors ($10m+) say firms that use AI are more attractive to them as clients.",
+    source: "BNY Wealth, The Intelligent Investor, 2026",
+    href: "https://www.bny.com/assets/wealth/pdf-library/reports/the-intelligent-investor-insights-on-ai-forward-investing.pdf"
+  },
+  ficommReferral: {
+    figure: "1 in 2",
+    text: "investors with $5m+ found their current financial adviser without a referral.",
+    source: "Ficomm / Absolute Engagement, 2026",
+    href: "https://info.ficommpartners.com/hubfs/2026/Ficomm_The-New-Growth-Equation_2026.pdf"
+  },
+  wealthtender96: {
+    figure: "96%",
+    text: "of high-earning US households planning to hire an adviser intend to research them online, even after a referral.",
+    source: "Wealthtender, 2025",
+    href: "https://wealthtender.com/insights/how-americans-find-and-hire-financial-advisors/"
+  },
+  ficommAi25: {
+    figure: "1 in 4",
+    text: "investors under 45 used an AI tool to help find their current financial adviser.",
+    source: "Ficomm, 2026",
+    href: "https://info.ficommpartners.com/hubfs/2026/Ficomm_The-New-Growth-Equation_2026.pdf"
+  },
+  magenta66: {
+    figure: "66%",
+    text: "of UK senior decision-makers use AI tools to find and assess suppliers.",
+    source: "Magenta Associates, 2025",
+    href: "https://www.magentaassociates.co/wp-content/uploads/2025/11/How-AI-is-shaping-the-B2B-buyer-journey_Magenta-Associates.pdf"
+  }
+};
+
+export type ClientStatId = keyof typeof clientStats;
+
+export const researchWhyItMatters = {
+  eyebrow: "Why it matters",
+  groups: [
+    {
+      title: "Wealthy clients already use AI to decide",
+      stats: ["hsbc82", "bny83", "bny79"] as ClientStatId[]
+    },
+    {
+      title: "Referrals are no longer the whole story",
+      stats: ["ficommReferral", "wealthtender96"] as ClientStatId[]
+    },
+    {
+      title: "Buyers use AI to find firms",
+      stats: ["ficommAi25", "magenta66"] as ClientStatId[]
+    }
+  ],
+  commission: {
+    title: "Commission a study",
+    body: "Bring us the question you need answered and we will research it for you.",
+    cta: { label: "Enquire now", href: "/contact" }
+  }
+};
+
 export const servicesPage = {
   eyebrow: "SERVICES",
   title: "AI strategy, systems and implementation",
@@ -1069,6 +1139,7 @@ export const servicesPage = {
       summary:
         "Find the client questions with the most commercial value, where your business appears across Google and AI search, and who appears instead. You receive a prioritised plan for the pages, content, authority and evidence needed to win more of that work.",
       showExampleOnHome: true,
+      stats: { label: "How clients choose now", ids: ["ficommReferral", "wealthtender96", "ficommAi25", "magenta66"] as ClientStatId[] },
       paras: [
         "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The plan identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found, cited and chosen more often on Google and in AI search."
       ],
@@ -1107,6 +1178,7 @@ export const servicesPage = {
       showExampleOnHome: true,
       homeExample:
         "For a London creative agency, a company-wide system gave a non-technical team the tools to use AI effectively from day one, saving an estimated 10 to 15 hours a week.",
+      stats: { label: "How clients use AI now", ids: ["hsbc82", "bny83"] as ClientStatId[] },
       paras: [
         "For businesses that want AI built around their strategy and set up so the whole team can win from the outset.",
         "We start with the business constraints and opportunities, then look at the company's teams, roles, knowledge and ways of working. The system gets the shared company context, department and role context, and safeguards it needs, built on your existing infrastructure."

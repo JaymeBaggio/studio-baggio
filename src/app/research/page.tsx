@@ -10,7 +10,9 @@ import {
   researchFranchise
 } from "@/content/research";
 import { pageMetadata } from "@/lib/metadata";
-import { aiSearchFeaturedPress } from "@/content/site";
+import { aiSearchFeaturedPress, researchWhyItMatters } from "@/content/site";
+import { ClientStatList } from "@/components/client-stat-list";
+import { ButtonLink } from "@/components/ui/button";
 import { LastWordMark } from "@/components/last-word-mark";
 
 const hasPublishedEdition = researchEditions.some(
@@ -63,6 +65,31 @@ export default function ResearchIndexPage() {
               ))}
             </div>
           </div>
+
+          <section className="mt-14 border-t border-ink/10 pt-10" aria-labelledby="research-why-title">
+            <p className="eyebrow" id="research-why-title">
+              {researchWhyItMatters.eyebrow}
+            </p>
+            <div className="mt-6 grid gap-10 lg:grid-cols-3">
+              {researchWhyItMatters.groups.map((group) => (
+                <div key={group.title}>
+                  <h2 className="text-xl leading-snug md:text-2xl">{group.title}</h2>
+                  <ClientStatList ids={group.stats} columns={1} />
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 flex flex-col gap-4 border-t border-ink/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 className="text-xl md:text-2xl">{researchWhyItMatters.commission.title}</h2>
+                <p className="mt-1 text-base leading-relaxed text-ink/70">
+                  {researchWhyItMatters.commission.body}
+                </p>
+              </div>
+              <ButtonLink href={researchWhyItMatters.commission.cta.href}>
+                {researchWhyItMatters.commission.cta.label}
+              </ButtonLink>
+            </div>
+          </section>
 
           <div className="research-index-editions" aria-labelledby="research-editions-title">
             <p className="eyebrow" id="research-editions-title">Latest editions</p>

@@ -12,12 +12,14 @@ import {
   introDownload,
   metadata as siteMetadata,
   primaryCta,
-  servicesPage
+  servicesPage,
+  type ClientStatId
 } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 import { LastWordMark } from "@/components/last-word-mark";
 import { ValueMap } from "@/components/value-map";
+import { ClientStatList } from "@/components/client-stat-list";
 
 export const metadata: Metadata = pageMetadata({
   ...siteMetadata.services,
@@ -33,6 +35,7 @@ type ServiceOffer = {
   paras: string[];
   includesLabel: string;
   includes: string[];
+  stats?: { label: string; ids: ClientStatId[] };
   subSection?: { label: string; paras: string[] };
   outro?: string[];
   outroStrong?: boolean;
@@ -258,6 +261,12 @@ export default function ServicesPage() {
                       </p>
                     ))}
                   </div>
+                  {offer.stats ? (
+                    <div className="pt-8 lg:pt-5" data-sv-reveal>
+                      <h3 className="eyebrow">{offer.stats.label}</h3>
+                      <ClientStatList ids={offer.stats.ids} />
+                    </div>
+                  ) : null}
                   <h3 className="eyebrow pt-8 lg:pt-5">{offer.includesLabel}</h3>
                   <ul
                     className={`mt-4 -mb-2 gap-x-8 sm:columns-2${offer.includes.length > 6 || offer.includes.join(" ").length > 320 ? " lg:columns-3" : ""}`}
