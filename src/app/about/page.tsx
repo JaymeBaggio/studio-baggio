@@ -216,6 +216,7 @@ export default function AboutPage() {
                       key={feature.key}
                       href={feature.href}
                       className="ab-press-logo"
+                      data-logo={feature.key}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View Studio Baggio at ${feature.name}`}

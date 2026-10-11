@@ -243,14 +243,23 @@ export function PrivateDatasetCard({ content = privateDataset }: { content?: Pri
     return () => window.cancelAnimationFrame(frame);
   }, [content.title]);
 
+  // A study can carry more than one inline copy of the card (the law study has
+  // two), so the follower steps aside while any of them is on screen.
   useEffect(() => {
-    const box = document.querySelector(".fa3-dataset-box");
-    if (!box || typeof IntersectionObserver === "undefined") return;
+    const boxes = Array.from(document.querySelectorAll(".fa3-dataset-box"));
+    if (!boxes.length || typeof IntersectionObserver === "undefined") return;
+    const visible = new Set<Element>();
     const observer = new IntersectionObserver(
-      (entries) => setBoxInView(entries.some((entry) => entry.isIntersecting)),
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        });
+        setBoxInView(visible.size > 0);
+      },
       { threshold: 0.15 }
     );
-    observer.observe(box);
+    boxes.forEach((box) => observer.observe(box));
     return () => observer.disconnect();
   }, []);
 
