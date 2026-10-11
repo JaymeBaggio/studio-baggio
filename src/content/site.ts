@@ -26,7 +26,7 @@ export const metadata = {
   home: {
     title: "Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "AI strategy, systems and implementation, from SEO and AI search visibility to internal AI systems and bespoke software. Find where AI creates value, then build what delivers it."
+      "SEO & AI search, AI operating systems, tools and client resources, and commissioned research. AI strategy, systems and implementation for trust-based businesses."
   },
   work: {
     title: "Products: AI Systems & Intelligence | Studio Baggio",
@@ -56,7 +56,7 @@ export const metadata = {
   contact: {
     title: "Contact Studio Baggio",
     description:
-      "Discuss where AI could create commercial value across visibility, intelligence, pipeline, workflow or client experience."
+      "Enquire about SEO & AI search, AI operating systems, tools and client resources, or commissioned research."
   },
   privacy: {
     title: "Privacy | Studio Baggio",
@@ -65,7 +65,7 @@ export const metadata = {
   services: {
     title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
     description:
-      `What you can hire Studio Baggio for: ${seoSearchPlanName}, AI Operating Systems, Growth Infrastructure & Visibility, and Bespoke Software & Systems.`
+      "What you can hire Studio Baggio for: SEO & AI Search, AI Operating Systems, Tools & Client Resources, and Commissioned Research."
   },
   press: {
     title: "Press & Media Coverage | Studio Baggio",
@@ -164,14 +164,14 @@ export const home = {
         type: "tools-client-resources",
         summary: "Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool. Typically two to three weeks once the brief is agreed, built into your own systems or hosted for you. Fixed fee, no subscription.",
         proof: "Studio Baggio built Last30Days, an AI research tool now used by more than 400 individual and corporate users.",
-        href: "/services#bespoke-ai-software-and-systems"
+        href: "/services#tools-and-client-resources"
       },
       {
         title: "Commissioned Research",
         type: "commissioned-research",
         summary: "Bring us the question you need answered: what prospective clients ask before they choose an adviser, how competitors are positioned, or where demand is going unmet. We agree the scope and method, then deliver the findings with the evidence behind them and what they mean for your business.",
         proof: "Studio Baggio's studies of how AI recommends UK law firms and financial advisers have been covered by The Lawyer, FT Adviser and Professional Adviser.",
-        href: "/research"
+        href: "/services#commissioned-research"
       }
     ],
     subline: "",
@@ -195,7 +195,7 @@ export const home = {
   proof: {
     eyebrow: "",
     title: "Products.",
-    subline: "Available to Studio Baggio clients."
+    subline: ""
   },
   fit: {
     eyebrow: "",
@@ -236,7 +236,7 @@ export const home = {
       {
         question: "Is this marketing?",
         answer:
-          "Winning the right clients is a core part of the work: how you appear in search and AI answers, how your expertise is presented, and the route from first interest to enquiry. We also build internal AI systems, workflows and bespoke software."
+          "Winning the right clients is a core part of the work: how you appear in search and AI answers, how your expertise is presented, and the route from first interest to enquiry. We also build internal AI systems, workflows, and focused tools and client resources."
       },
       {
         question: "What kinds of businesses do you work with?",
@@ -365,7 +365,7 @@ export const valueAreas = [
       "This includes shared company knowledge, role-specific AI capabilities, research and reporting workflows, proposal and meeting preparation, client onboarding processes and repeatable team workflows. Cut repetitive work and put your team's knowledge to use in day-to-day delivery."
   },
   {
-    title: "Bespoke Software and Client Tools",
+    title: "Tools and Client Resources",
     summary:
       "Build the tools your business or clients need.",
     intro: "",
@@ -797,12 +797,12 @@ export const about = {
   whatWeDo: {
     label: "What we do",
     lede: "We help businesses identify where AI can create measurable value, then design, build and implement the systems needed to deliver it.",
-    body: "That can mean improving how a team works, turning expertise and online engagement into qualified client opportunities, increasing visibility across Google and AI platforms, or building specialist software.",
+    body: "That can mean improving how a team works, turning expertise and online engagement into qualified client opportunities, increasing visibility across Google and AI platforms, building focused tools and client resources, or researching the questions you need answered.",
     services: [
+      "SEO & AI Search",
       "AI Operating Systems",
-      "Growth Infrastructure & Visibility",
-      seoSearchPlanName,
-      "Bespoke Software & Systems"
+      "Tools & Client Resources",
+      "Commissioned Research"
     ],
     bodyAfter: [
       "Businesses can start with a focused strategy and implementation plan, appoint us to deliver the full system, or work with us as an ongoing AI partner."
@@ -1014,7 +1014,7 @@ export const serviceNextSteps: Record<Exclude<EnquiryType, "not-sure">, { name: 
   "tools-client-resources": {
     name: "Tools & Client Resources",
     line: "Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool.",
-    href: "/services#bespoke-ai-software-and-systems"
+    href: "/services#tools-and-client-resources"
   },
   "commissioned-research": {
     name: "Commissioned Research",
@@ -1079,7 +1079,7 @@ export const featuredPressStrip = {
 export const aiSearchFeaturedPress = {
   label: "Our AI search research featured in",
   logos: [
-    { name: "Financial Times", src: "/assets/logos/financial-times.png", width: 55 },
+    { name: "FT Adviser", src: "/assets/logos/ft-adviser.png", width: 61 },
     {
       name: "Professional Adviser",
       src: "/assets/logos/professional-adviser-print.png",
@@ -1164,19 +1164,20 @@ export const servicesPage = {
   title: "AI strategy, systems and implementation",
   intro: [
     "Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it.",
-    "This can mean improving how a team works, generating new client demand, increasing visibility across Google and AI platforms, or designing and building the websites, tools, client resources and specialist software the business needs."
+    "That can mean being found and chosen by more of the right clients, setting AI up around how your business works, building focused tools and client resources, or researching a question you need answered."
   ],
   offersEyebrow: "WHAT YOU CAN HIRE US FOR",
   offers: [
     {
       id: "seo-and-ai-search-opportunity-audit",
-      name: seoSearchPlanName,
+      name: "SEO & AI Search",
       summary:
         "Find the client questions with the most commercial value, where your business appears across Google and AI search, and who appears instead. You receive a prioritised plan for the pages, content, authority and evidence needed to win more of that work.",
       showExampleOnHome: true,
       stats: { label: "How clients choose now", ids: ["ficommReferral", "wealthtender96", "ficommAi25", "magenta66"] as ClientStatId[] },
       paras: [
-        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The plan identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found, cited and chosen more often on Google and in AI search."
+        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The plan identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found, cited and chosen more often on Google and in AI search.",
+        "Then implement it: the pages, evidence, client-facing resources, technical changes and enquiry routes the plan recommends, delivered by your team, your existing partners or Studio Baggio."
       ],
       includesLabel: "What the plan covers",
       includes: [
@@ -1239,48 +1240,22 @@ export const servicesPage = {
       }
     },
     {
-      id: "growth-infrastructure-and-visibility-audit",
-      name: "Growth Infrastructure & Visibility",
+      id: "tools-and-client-resources",
+      name: "Tools & Client Resources",
       summary:
-        "Connect positioning, demand, website content, client-facing resources and lead capture into a clearer route to new business. Start with a commercial blueprint, then implement it internally, with existing partners or with Studio Baggio.",
+        "Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool. Typically two to three weeks once the brief is agreed, built into your own systems or hosted for you. Fixed fee, no subscription.",
       paras: [
-        "For businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base.",
-        "We audit how the business is currently positioned, discovered and chosen, across search, AI platforms, referrals and professional relationships, then define how positioning, client-facing resources, lead capture and follow-up work together as one repeatable system for creating qualified enquiries and revenue.",
-        "The output is a commercial blueprint with a sequenced implementation and measurement plan, implemented internally, with existing partners or by Studio Baggio."
+        "For a specific problem a focused tool can solve, for your team or for your clients.",
+        "We agree the brief, then design, build and test it. It can sit inside your own systems or be hosted for you. You pay a fixed fee and no subscription. Studio Baggio keeps the IP; your rights to use it and any hosting or running costs are agreed before work starts. Larger systems are scoped separately."
       ],
-      includesLabel: "What the audit covers",
+      includesLabel: "Examples",
       includes: [
-        "Market, competitor and client-demand research, including the high-value searches and questions prospective clients ask",
-        "Commercial positioning and differentiators",
-        "Current discoverability across Google and AI search, including competitor visibility and the external sources shaping results",
-        "Website structure, messaging, technical performance, content and evidence gaps",
-        "Recommendations for client-facing guides, diagnostics and tools, including how engagement is captured and used",
-        "Lead capture, qualification and follow-up, including the route from discovery or introduction to a qualified enquiry"
-      ],
-      example: {
-        paras: [
-          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £103,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
-        ],
-        highlight: "£5.3 million in assets under management and £103,400 in first-year revenue"
-      }
-    },
-    {
-      id: "bespoke-ai-software-and-systems",
-      name: "Bespoke Software & Systems",
-      summary:
-        "Design and build websites, internal systems, client-facing tools and specialist software around a defined business problem. Bring a brief or an idea that needs shaping; we establish the scope, test the approach and build it.",
-      paras: [
-        "For valuable business problems that cannot be solved with an off-the-shelf tool.",
-        "We work with the business to understand the commercial problem, the real workflow, the available data and the decisions the system must support. We then design, build, test and implement it around how the business actually operates: websites, client-facing tools and diagnostics, internal systems and specialist software."
-      ],
-      includesLabel: "This can include",
-      includes: [
-        "Problem and opportunity definition",
-        "Industry and user research",
-        "Workflow and data design",
-        "Product strategy and prototyping",
-        "Live testing and implementation",
-        "Ongoing refinement"
+        "Client diagnostics and checks",
+        "Client guides and planning tools",
+        "Internal reporting and tracking tools",
+        "Research and market intelligence tools",
+        "Websites and resource hubs",
+        "Lead intelligence, through the Business Tracker"
       ],
       subSection: {
         label: "Business Tracker",
@@ -1296,6 +1271,30 @@ export const servicesPage = {
         ],
         highlight: "over 400 individual and corporate users"
       }
+    },
+    {
+      id: "commissioned-research",
+      name: "Commissioned Research",
+      summary:
+        "Bring us the question you need answered: what prospective clients ask before they choose an adviser, how competitors are positioned, or where demand is going unmet. We agree the scope and method, then deliver the findings with the evidence behind them and what they mean for your business.",
+      paras: [
+        "For a business that needs evidence before it decides, about its clients, its market or its competitors.",
+        "We agree the question, scope and method, run the research, and report the findings with the evidence, the limitations and what to do next."
+      ],
+      includesLabel: "Example questions",
+      includes: [
+        "What do prospective clients ask before choosing an adviser?",
+        "Which firms appear in AI answers, and what supports their visibility?",
+        "How are competitors positioning a particular service?",
+        "Where is there evidence of unmet client need?"
+      ],
+      example: {
+        paras: [
+          "Studio Baggio's published studies of how AI recommends UK law firms and financial advisers have been covered by The Lawyer, FT Adviser and Professional Adviser."
+        ],
+        highlight: "The Lawyer, FT Adviser and Professional Adviser"
+      },
+      featuredIn: aiSearchFeaturedPress
     }
   ],
   howWeWork: {
@@ -1309,8 +1308,8 @@ export const servicesPage = {
     eyebrow: "WAYS TO WORK TOGETHER",
     items: [
       {
-        lead: "Start with focused discovery",
-        detail: "Most engagements begin with two to three weeks of focused discovery, producing a prioritised plan: what to implement first, what can wait and how success is measured. Discovery and planning fees are fully credited against implementation or ongoing consultation."
+        lead: "Start with a brief or with discovery",
+        detail: "A clear brief for a tool or a study goes straight to scoping. Where the opportunity is less defined, we start with two to three weeks of focused discovery, producing a prioritised plan: what to implement first, what can wait and how success is measured. Discovery and planning fees are fully credited against implementation or ongoing consultation."
       },
       {
         lead: "Build and implement",
@@ -1358,12 +1357,7 @@ export const servicesPage = {
       {
         question: "What is an AI Operating System?",
         answer:
-          "An AI Operating System is for businesses that want a company-wide AI system built around how their people work. We examine the company's teams, roles, knowledge and ways of working to identify the highest-value opportunities, then define the shared context, role-specific capabilities, processes and safeguards the system needs. The result is a prioritised 30- and 90-day implementation plan the business can implement internally, or appoint Studio Baggio to design, build and embed the full system."
-      },
-      {
-        question: "What is Growth Infrastructure & Visibility?",
-        answer:
-          "Growth Infrastructure & Visibility is for businesses that want to generate more new and repeat revenue from their expertise, relationships and existing client base. It audits how the business is currently positioned, discovered and chosen across Google, AI search, referrals and professional relationships, then defines how the website, content, evidence, client-facing resources and lead capture should work together. The output is a commercial blueprint with a sequenced implementation and measurement plan."
+          "AI set up around your business: shared company knowledge and priorities, setups for each role or team, skills for specific jobs such as proposals, research and client reporting, connections to the tools you already use, and a way to keep it current as the business changes. We build it on your existing infrastructure and onboard your team using their own work."
       },
       {
         question: "What is the Business Tracker?",
@@ -1376,14 +1370,24 @@ export const servicesPage = {
           "It covers current Google rankings, AI-answer visibility and citations, competitor performance, high-value search questions, technical and content gaps, priority pages and resources, site structure, implementation priorities, and measurement. The output is a clear action plan the business can implement internally or appoint Studio Baggio to deliver."
       },
       {
-        question: "What kind of software does Studio Baggio build?",
+        question: "What tools and client resources do you build?",
         answer:
-          "Websites, client-facing tools and resources, internal systems and specialist software for valuable business problems that cannot be solved with an off-the-shelf tool. Studio Baggio works closely with the business to understand the commercial problem, the real workflow, the available data and the decisions the system needs to support, then designs, builds, tests and implements it around how the business actually operates."
+          "Focused tools for a specific job, for your team or your clients: diagnostics, client guides, reporting tools, research tools and resource hubs. Most take two to three weeks once the brief is agreed, for a fixed fee with no subscription. Larger systems are scoped separately."
+      },
+      {
+        question: "Who owns what you build?",
+        answer:
+          "Studio Baggio keeps the IP. You pay a fixed fee with no subscription, and your rights to use the tool, plus any hosting or running costs, are agreed in writing before work starts."
+      },
+      {
+        question: "Can we commission research on our own question?",
+        answer:
+          "Yes. Bring us the question, and we agree the scope and method, run the research and report the findings with the evidence, the limitations and what to do next."
       },
       {
         question: "How does an engagement begin?",
         answer:
-          "Every engagement begins with focused discovery and planning that identifies the commercial or operational opportunity with the greatest value, and the fee is fully credited against implementation or ongoing consultation. Studio Baggio handles the research, strategy, system design, build and implementation; the client provides the subject-matter expertise, strategic steer and approvals."
+          "A clear brief for a tool or a study goes straight to scoping. Otherwise we start with focused discovery that identifies the opportunity with the greatest value, and the fee is fully credited against implementation or ongoing consultation. Studio Baggio handles the research, strategy, system design, build and implementation; the client provides the subject-matter expertise, strategic steer and approvals."
       },
       {
         question: "What support is available after a plan or implementation?",

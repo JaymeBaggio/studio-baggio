@@ -4,6 +4,7 @@ export type WorkItem = {
   eyebrow: string;
   promise?: string;
   homeBody?: string[];
+  homeAvailability?: string;
   status?: string;
   proofCopy?: string;
   problem: string;
@@ -75,6 +76,7 @@ export const workItems: WorkItem[] = [
     title: "Calm Authority",
     eyebrow: "Product / financial advice / authority systems",
     promise: "Adviser expertise in the adviser's own voice.",
+    homeAvailability: "Available to Studio Baggio clients",
     homeBody: [
       "Calm Authority is a LinkedIn writing system for UK financial advisers. It maps an adviser's tone of voice, researches relevant angles and turns ideas into drafts.",
       "The adviser stays in control. Every post is reviewed, edited and published by the person whose name is on it."
@@ -214,6 +216,7 @@ export const workItems: WorkItem[] = [
     title: "Business Tracker",
     eyebrow: "Lead intelligence / attribution / follow-up",
     promise: "Know who matters and what to do next.",
+    homeAvailability: "Available to Studio Baggio clients",
     homeBody: [
       "Business Tracker brings together engagement from guides, email and LinkedIn, then adds professional and company context so your team understands each contact.",
       "It qualifies opportunities against agreed commercial priorities, with a rationale and a recommended next action, so follow-up is better informed and better prioritised."
@@ -304,6 +307,7 @@ export const workItems: WorkItem[] = [
     title: "Last30Days",
     eyebrow: "Live signal intelligence / multi-source research",
     promise: "Market intelligence from recent public conversations.",
+    homeAvailability: "Free and available now",
     homeBody: [
       "Last30Days analyses recent public conversations across social and community platforms and turns them into structured, sourced research.",
       "Built by Studio Baggio and used by more than 400 individual and corporate users, it supports research into markets, competitors, customer questions and emerging opportunities."
@@ -376,6 +380,7 @@ export const workItems: WorkItem[] = [
     title: "Fire Source",
     eyebrow: "Commercial intelligence / cited web research",
     promise: "Market intelligence before the meeting.",
+    homeAvailability: "Available to Studio Baggio clients",
     homeBody: [
       "Fire Source researches prospects, partners, competitors and market developments, so your team can investigate a commercial question before a meeting, pitch or decision.",
       "Use it to explore a market, understand a potential client or find organisations that fit your target profile."

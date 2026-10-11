@@ -158,6 +158,7 @@ export function ProductShowcase() {
                 >
                   <h3 className="product-copy-title">{item.title}</h3>
                   {item.promise ? <p className="product-copy-promise">{item.promise}</p> : null}
+                  {item.homeAvailability ? <p className="product-copy-availability">{item.homeAvailability}</p> : null}
                   <div className="product-copy-body">
                     {body.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>

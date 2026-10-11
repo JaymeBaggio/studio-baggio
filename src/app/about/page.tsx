@@ -48,14 +48,14 @@ const aboutLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
   Last30Days: "https://last30days.app",
   "AI Operating Systems": "/services#ai-operating-system-audit",
-  "Growth Infrastructure & Visibility": "/services#growth-infrastructure-and-visibility-audit",
+  "Tools & Client Resources": "/services#tools-and-client-resources",
+  "Commissioned Research": "/services#commissioned-research",
   "SEO & AI Search": "/services#seo-and-ai-search-opportunity-audit",
   [seoSearchPlanName]: "/services#seo-and-ai-search-opportunity-audit",
-  "Bespoke Software & Systems": "/services#bespoke-ai-software-and-systems",
   "Ideas Fest 2026": ideasFestSpeakerUrl
 };
 const aboutRichTextPattern =
-  /(Calm Authority|Last30Days|Growth Infrastructure & Visibility|AI Operating Systems|AI Search Strategy & Implementation Plan|SEO & AI Search|Bespoke Software & Systems|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
+  /(Calm Authority|Last30Days|Tools & Client Resources|Commissioned Research|AI Operating Systems|AI Search Strategy & Implementation Plan|SEO & AI Search|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
 
 const aboutPageSchema = {
   "@context": "https://schema.org",

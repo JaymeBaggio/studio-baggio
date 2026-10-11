@@ -26077,3 +26077,22 @@ body:has(.home-4b.ab-page) footer { display: none; }
     flex-basis: 100%;
   }
 }
+
+.home-4b .product-copy-availability {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(20, 20, 20, 0.6);
+}
+
+.home-4b .product-copy-availability::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--sb-accent-blue);
+}
