@@ -208,7 +208,7 @@ export default function ServicesPage() {
                         <li key={item.href}>
                           <a href={item.href} target="_blank" rel="noopener noreferrer" className="focus-ring sv-resource-link">
                             {item.name}
-                            <span aria-hidden="true"> ↗</span>
+                            <span aria-hidden="true"> →</span>
                           </a>
                           <p>{item.text}</p>
                         </li>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowUpRight, Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import type { ResearchQuestionEvidence } from "@/lib/research-data";
 import { ResearchDrawer } from "./ResearchDrawer.client";
 import { researchEngineLabel } from "./types";
@@ -150,7 +150,7 @@ export function QuestionEvidenceExplorer({ questions }: { questions: Question[] 
                           source domains
                         </small>
                       </span>
-                      <ArrowUpRight aria-hidden="true" />
+                      <ArrowRight aria-hidden="true" />
                     </>
                   }
                 >

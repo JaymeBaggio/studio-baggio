@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
@@ -355,7 +355,7 @@ export function ProductDetailPanel({
         <div className="editorial-container products-mobile-back">
           <Link href="#products-tabs" className="focus-ring products-panel-link">
             Back to products
-            <ArrowUpRight aria-hidden="true" />
+            <ArrowRight aria-hidden="true" />
           </Link>
         </div>
       ) : null}
@@ -413,7 +413,7 @@ function ProductEnquiryBlock() {
       </p>
       <Link href="/contact" className="focus-ring products-enquiry-link">
         <span>Enquire Now</span>
-        <ArrowUpRight aria-hidden="true" />
+        <ArrowRight aria-hidden="true" />
       </Link>
     </section>
   );
@@ -456,7 +456,7 @@ function ProductLink({
     return (
       <a href={href} target="_blank" rel="noreferrer" className={className}>
         {children}
-        <ArrowUpRight aria-hidden="true" />
+        <ArrowRight aria-hidden="true" />
       </a>
     );
   }
@@ -464,7 +464,7 @@ function ProductLink({
   return (
     <Link href={href} className={className}>
       {children}
-      <ArrowUpRight aria-hidden="true" />
+      <ArrowRight aria-hidden="true" />
     </Link>
   );
 }

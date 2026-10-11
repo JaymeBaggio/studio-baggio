@@ -3,7 +3,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type ButtonLinkProps = {
@@ -25,7 +25,7 @@ export function ButtonLink({ href, children, className, external }: ButtonLinkPr
       )}
     >
       {children}
-      <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+      <ArrowRight aria-hidden="true" className="h-4 w-4" />
     </motion.span>
   );
 

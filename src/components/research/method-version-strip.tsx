@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { MethodStripItem } from "./types";
 
 export function MethodVersionStrip({ items }: { items: MethodStripItem[] }) {
@@ -18,7 +18,7 @@ export function MethodVersionStrip({ items }: { items: MethodStripItem[] }) {
                     <strong>{item.label}</strong>
                     <small>{item.detail}</small>
                   </span>
-                  <ArrowUpRight aria-hidden="true" />
+                  <ArrowRight aria-hidden="true" />
                 </a>
               </li>
             ))}

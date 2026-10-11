@@ -15767,7 +15767,7 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .fa3-experiment__links a::after {
-  content: "\2197";
+  content: "\2192";
   flex: 0 0 auto;
   color: var(--fa3-blue);
   font-size: 18px;
@@ -21047,7 +21047,7 @@ body:has(.home-4b.contact-page) footer {
 
 .law-question-evidence__sources a::after,
 .law-firm-evidence a::after {
-  content: " ↗";
+  content: " →";
 }
 
 .law-question-evidence__sources li > div > span {

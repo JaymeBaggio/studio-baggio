@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PageReveals } from "@/components/page-reveals";
 import { metadata as siteMetadata, pressPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -147,7 +147,7 @@ export default function PressPage() {
                         aria-label={`${item.title} - read in ${item.publication}`}
                       >
                         Read in {item.publication}
-                        <ArrowUpRight aria-hidden="true" />
+                        <ArrowRight aria-hidden="true" />
                       </a>
                       {item.researchHref ? (
                         <Link
@@ -155,7 +155,7 @@ export default function PressPage() {
                           className="focus-ring press-secondary-link"
                         >
                           Read the research
-                          <ArrowUpRight aria-hidden="true" />
+                          <ArrowRight aria-hidden="true" />
                         </Link>
                       ) : null}
                     </div>
@@ -190,7 +190,7 @@ export default function PressPage() {
                     <p className="press-coverage-description">{item.description}</p>
                     <span>
                       Read coverage
-                      <ArrowUpRight aria-hidden="true" />
+                      <ArrowRight aria-hidden="true" />
                     </span>
                   </article>
                 </a>

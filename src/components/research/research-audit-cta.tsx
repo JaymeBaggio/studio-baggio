@@ -1,5 +1,5 @@
 import { seoSearchPlanName } from "@/content/site";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ResearchActionLink } from "./ResearchActionLink.client";
 
 export function ResearchAuditCta({
@@ -33,7 +33,7 @@ export function ResearchAuditCta({
             analyticsProperties={{ destination: href }}
           >
             {linkLabel}
-            <ArrowUpRight aria-hidden="true" />
+            <ArrowRight aria-hidden="true" />
           </ResearchActionLink>
           {supportingLine ? <small className="research-audit-cta__supporting-line">{supportingLine}</small> : null}
           <p className="research-audit-cta__commission">
