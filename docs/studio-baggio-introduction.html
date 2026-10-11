@@ -15,7 +15,7 @@
   }
 
   :root{
-    --ink:#141414; --body:#4f4f4f; --muted:#8a8a8a; --faint:#c8c8c4;
+    --ink:#141414; --body:#4f4f4f; --muted:#707070; --faint:#c8c8c8;
     --hairline:#d9d9d9; --blue:#2563eb; --paper:#ffffff;
     --sec-gap:7mm;
     --part-gap:6mm;
@@ -54,6 +54,14 @@
   p{ font-size:15px; line-height:1.6; color:var(--body); max-width:172mm; }
   p + p{ margin-top:var(--para-gap); }
   .hl{ color:var(--blue); font-weight:700; }
+  ul.resources{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; column-gap:34px; row-gap:0; max-width:172mm; }
+  ul.resources li{ padding:7px 0 8px; border-top:1px solid var(--hairline); margin:0; }
+  ul.resources a{ display:block; color:var(--ink); font-weight:700; text-decoration:none; }
+  ul.resources a .arrow{ color:var(--blue); font-weight:400; }
+  ul.resources span.what{ display:block; color:var(--body); }
+  ul.resources li::before{ content:none; display:none; }
+  ul.resources li{ padding-left:0; }
+  .roomy-3 ul.resources li{ font-size:14px; line-height:1.5; margin-bottom:0; }
 
   ul{ list-style:none; }
   li{ position:relative; padding-left:16px; font-size:15px; line-height:1.55; color:var(--body); margin-bottom:7px; break-inside:avoid; }
@@ -74,7 +82,7 @@
   .step-title .step-num{ color:var(--blue); margin-right:8px; }
   .cards{ margin-top:7px; }
 
-  .example{ background:#f6f6f4; padding:13px 16px 13px; }
+  .example{ background:#f5f5f5; padding:13px 16px 13px; }
   .example p{ font-size:13.5px; }
 
   .quote{ max-width:168mm; break-inside:avoid; }
@@ -359,27 +367,26 @@
       </section>
 
       <section>
-        <h2>This can include</h2>
-        <ul class="cols">
-          <li>Client diagnostics and checks.</li>
-          <li>Client guides and planning tools.</li>
-          <li>Internal reporting and tracking tools.</li>
-          <li>Research and market intelligence tools.</li>
-          <li>Websites and resource hubs.</li>
-          <li>Lead intelligence, through the Business Tracker.</li>
+        <h2>Examples</h2>
+        <ul class="resources">
+          <li><a href="https://www.calmauthority.ai/diagnostic">Expertise Visibility Diagnostic <span class="arrow">&rarr;</span></a><span class="what">Twelve questions that show an advisory firm whether its expertise is building its reputation.</span></li>
+          <li><a href="https://www.calmauthority.ai/playbook">LinkedIn Playbook for Financial Advisers <span class="arrow">&rarr;</span></a><span class="what">What UK advisers should post, how often, and how to stay compliant.</span></li>
+          <li><a href="https://pension-inheritance-check.vercel.app/">Pension &amp; Inheritance Check <span class="arrow">&rarr;</span></a><span class="what">What the April 2027 pension changes could mean for what a family inherits.</span></li>
+          <li><a href="https://your-freedom-number.vercel.app/">Your Freedom Number <span class="arrow">&rarr;</span></a><span class="what">What life after the business could cost, and what still depends on it.</span></li>
+          <li><a href="https://before-you-sell-playbook.vercel.app/">Before You Sell <span class="arrow">&rarr;</span></a><span class="what">A pre-sale playbook for business owners planning to sell within five years.</span></li>
+          <li><a href="https://example-ai-likeness-risk-check.vercel.app/">AI Likeness Risk Check <span class="arrow">&rarr;</span></a><span class="what">Where a creator&rsquo;s or athlete&rsquo;s face, voice and likeness may be exposed to AI.</span></li>
         </ul>
       </section>
 
       <section>
         <h2>Business Tracker</h2>
-        <p>The Business Tracker is Studio Baggio&rsquo;s own lead-intelligence software, and can be built in as part of any system we deliver.</p>
-        <p>It brings together engagement from guides, diagnostics, email, LinkedIn and other channels, then adds current professional and company information to show who each person is and why they may matter.</p>
-        <p>Each contact is qualified against the business&rsquo;s commercial priorities, with a clear rationale and recommended next action. Depending on the objective, the system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners.</p>
+        <p>Studio Baggio&rsquo;s own lead-intelligence software, built into any system we deliver. It brings engagement from guides, email and LinkedIn together, qualifies each contact against your priorities and recommends the next action.</p>
       </section>
 
       <section class="example">
         <h2>Example</h2>
         <p>Studio Baggio built Last30Days, an AI research tool now used by <span class="hl">more than 400 individual and corporate users</span>.</p>
+        <p>Calm Authority, a LinkedIn writing system built for UK financial advisers: one adviser reported <span class="hl">52 inbound leads in six months</span>.</p>
       </section>
     </div>
 
