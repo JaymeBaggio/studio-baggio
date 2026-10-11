@@ -187,6 +187,33 @@
   .accent{ width:48px; height:3px; margin:12px 0 7mm; }
   .page1 .accent{ margin:10px 0 5mm; }
   .sub-label{ font-size:9.5px; letter-spacing:0.24em; text-transform:uppercase; color:var(--muted); line-height:1.4; margin-bottom:8px; }
+  /* 5-page version: research, client quotes and next step share the closing page */
+  .closing{ --sec-gap:6mm; }
+  .closing .quote p{ font-size:13.5px; line-height:1.5; }
+  .closing .quote + .quote{ margin-top:9px; padding-top:9px; }
+  .closing .says h2{ margin-bottom:10px; }
+  /* quotes side by side; sign-off on the logo row */
+  .closing .says .quote-grid{ display:grid; grid-template-columns:repeat(3, 1fr); column-gap:20px; max-width:172mm; }
+  .closing .says .quote{ max-width:none; border-top:1px solid var(--hairline); padding-top:10px; }
+  .closing .says .quote + .quote{ margin-top:0; padding-top:10px; border-top:1px solid var(--hairline); }
+  .closing .says .quote p{ font-size:12.5px; line-height:1.5; }
+  .closing .says .quote .attr{ font-size:10.5px; line-height:1.4; }
+  .closing .page-foot{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
+  .closing .page-foot footer{ margin-top:0; border:0; }
+  .closing .page-foot .sig{ text-align:right; }
+  .closing{ --sec-gap:5mm; }
+  .pageflex.closing > .page-title{ margin-top:8mm; }
+  .closing .next-line p{ color:var(--ink); }
+  .closing .next-line a{ color:var(--blue); font-weight:700; text-decoration:none; white-space:nowrap; }
+  .closing > *{ flex-shrink:0; }
+  .closing{ --sec-gap:4.5mm; }
+  .pageflex.closing > .page-title{ margin-top:14mm; }
+  .closing .page-foot{ display:block; position:relative; }
+  .closing .page-foot footer{ position:absolute; right:0; top:calc(5mm - 2px); margin:0; line-height:1.4; }
+  .closing .page-foot .sig{ display:block; text-align:right; }
+  .closing .page-foot .sig-name, .closing .page-foot .sig-role{ display:inline; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); }
+  .closing .page-foot .sig-name{ color:var(--ink); }
+  .closing .page-foot .sig-name::after{ content:" \00b7 "; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -415,8 +442,8 @@
     </div>
 
 
-    <!-- PAGE 5: Commissioned Research -->
-    <div class="page page-break pageflex roomy-3">
+    <!-- PAGE 5: Commissioned Research, what clients say, next step -->
+    <div class="page page-break pageflex roomy closing">
       <div class="top">
         <div class="eyebrow">Services</div>
         <div class="wordmark">STUDIO BAGGIO<span class="sb-mark"></span></div>
@@ -438,39 +465,14 @@
         </ul>
       </section>
 
-      <section>
-        <h2>Published studies</h2>
-        <ul>
-          <li><a class="plain-link" href="https://www.studiobaggio.ai/research/uk-financial-advice-2026">UK Financial Advice Firms in AI Search 2026</a></li>
-          <li><a class="plain-link" href="https://www.studiobaggio.ai/research/uk-law-2026">UK Law Firms in AI Search 2026</a></li>
-          <li><a class="plain-link" href="https://www.studiobaggio.ai/research/uk-sports-law-2026">UK Sports Law in AI Search 2026</a></li>
-        </ul>
-      </section>
-
       <section class="example">
-        <h2>Example</h2>
-        <p>Studio Baggio&rsquo;s studies of how AI recommends UK law firms and financial advisers have been covered by <span class="hl">The Lawyer, FT Adviser and Professional Adviser</span>.</p>
+        <h2>Published studies</h2>
+        <p><a class="plain-link" href="https://www.studiobaggio.ai/research/uk-financial-advice-2026">UK Financial Advice Firms in AI Search 2026</a>, <a class="plain-link" href="https://www.studiobaggio.ai/research/uk-law-2026">UK Law Firms in AI Search 2026</a> and <a class="plain-link" href="https://www.studiobaggio.ai/research/uk-sports-law-2026">UK Sports Law in AI Search 2026</a>, covered by <span class="hl">The Lawyer, FT Adviser and Professional Adviser</span>.</p>
       </section>
 
-        <div class="page-foot"><div class="press">
-          <span class="press-label">Our AI search research featured in</span>
-          <img src="../public/assets/logos/financial-times.png" alt="FT Adviser" />
-          <img src="../public/assets/logos/professional-adviser-print.png" alt="Professional Adviser" />
-          <img src="../public/assets/logos/the-lawyer.svg" alt="The Lawyer" />
-        </div></div>
-
-    </div>
-
-    <!-- PAGE 6: what clients say + next step -->
-    <div class="page page-break pageflex roomy-3">
-      <div class="top">
-        <div class="eyebrow">Services</div>
-        <div class="wordmark">STUDIO BAGGIO<span class="sb-mark"></span></div>
-      </div>
-      <div class="page-title">What clients say</div>
-      <div class="accent"></div>
-
-      <section>
+      <section class="says">
+        <h2>What clients say</h2>
+        <div class="quote-grid">
         <div class="quote">
           <p>&ldquo;There&rsquo;s a lot of noise around AI, and most of it has nothing to do with how a business like mine actually wins clients. Jayme cut straight through it: she understood how our clients find and choose us, and built around that. It&rsquo;s the first time AI has felt like an advantage rather than a distraction.&rdquo;</p>
           <p class="attr">Charlotte Evans MBE &middot; Financial Planner</p>
@@ -483,12 +485,11 @@
           <p>&ldquo;Jayme was fantastic. The positioning strategy and business model she put together were first class. It was clear why she is leading the way in this space. Strongly recommend.&rdquo;</p>
           <p class="attr">Luke &middot; Head of Growth, independent financial advisory firm</p>
         </div>
+        </div>
       </section>
 
-      <section>
-        <h2>Next step</h2>
-        <p>Book a 30-minute conversation to identify where Studio Baggio AI could create the most value in your business and the right place to start.</p>
-        <p class="next-cta"><a href="mailto:jayme@studiobaggio.ai?subject=Booking%20a%20conversation%20with%20Studio%20Baggio">Book a conversation &rarr;</a></p>
+      <section class="next-line">
+        <p>Book a 30-minute conversation to identify where Studio Baggio AI could create the most value in your business and the right place to start. <a href="mailto:jayme@studiobaggio.ai?subject=Booking%20a%20conversation%20with%20Studio%20Baggio">Book a conversation &rarr;</a></p>
       </section>
 
       <div class="page-foot">
