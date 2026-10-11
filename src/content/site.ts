@@ -1235,7 +1235,7 @@ export const servicesPage = {
         "For businesses that want AI built around their strategy and set up so the whole team can win from the outset.",
         "Built on your existing infrastructure, around your teams, roles, knowledge and ways of working."
       ],
-      includesLabel: "What the plan covers",
+      includesLabel: "What's included",
       includes: [
         "Where AI can make the biggest measurable difference",
         "Shared company, department and role context",
@@ -1282,9 +1282,36 @@ export const servicesPage = {
       },
       example: {
         paras: [
-          "Studio Baggio designed and built Last30Days, an AI research product now used by over 400 individual and corporate users."
+          "Studio Baggio designed and built Last30Days, an AI research product now used by over 400 individual and corporate users.",
+          "Calm Authority, a LinkedIn writing system built for UK financial advisers: one adviser reported 52 inbound leads in six months."
         ],
-        highlight: "over 400 individual and corporate users"
+        highlight: ["over 400 individual and corporate users", "52 inbound leads in six months"]
+      },
+      resources: {
+        label: "Example client resources",
+        intro: "Built for firms to give their own clients.",
+        items: [
+          {
+            name: "Pension & Inheritance Check",
+            href: "https://pension-inheritance-check.vercel.app/",
+            text: "What the April 2027 pension changes could mean for what a family inherits."
+          },
+          {
+            name: "Your Freedom Number",
+            href: "https://your-freedom-number.vercel.app/",
+            text: "What life after the business could cost, and what still depends on it."
+          },
+          {
+            name: "Before You Sell",
+            href: "https://before-you-sell-playbook.vercel.app/",
+            text: "A pre-sale playbook for business owners planning to sell within five years."
+          },
+          {
+            name: "AI Likeness Risk Check",
+            href: "https://example-ai-likeness-risk-check.vercel.app/",
+            text: "Where a creator's or athlete's face, voice and likeness may be exposed to AI."
+          }
+        ]
       }
     },
     {

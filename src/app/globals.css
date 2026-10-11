@@ -26268,6 +26268,35 @@ body:has(.home-4b.ab-page) footer { display: none; }
   padding-top: 4px;
 }
 
+/* Example client resources on the Tools card: hairline rows, name links out. */
+.sv-resources ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(20, 20, 20, 0.1);
+}
+
+.sv-resources li {
+  padding-block: 8px;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+}
+
+.sv-resources .sv-resource-link {
+  color: var(--sb-ink, #111111);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.sv-resources .sv-resource-link:hover {
+  color: var(--sb-accent-blue);
+}
+
+.sv-resources li p {
+  margin: 2px 0 0;
+  color: rgba(20, 20, 20, 0.7);
+}
+
 @media (min-width: 1024px) {
   .sv-card-grid {
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -26326,7 +26355,9 @@ body:has(.home-4b.ab-page) footer { display: none; }
   }
 
   .sv-card-sub p,
-  .sv-card-side .sv-example p {
+  .sv-card-side .sv-example p,
+  .sv-card-side .sv-resources p,
+  .sv-card-side .sv-resources a {
     font-size: 14px;
     line-height: 1.5;
   }
