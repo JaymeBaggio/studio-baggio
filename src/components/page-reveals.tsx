@@ -386,8 +386,29 @@ export function PageReveals() {
 
           const sections = Array.from(homeRoot.querySelectorAll<HTMLElement>("[data-home-section]"));
 
+          // Phones: the pinned scroll stories (the fading introduction and
+          // The Gap) left whole screens of empty white before their words
+          // arrived. On a phone they are ordinary sections that rise in once.
+          const isPhone = window.matchMedia("(max-width: 767px)").matches;
+
           sections.forEach((section) => {
             const type = section.dataset.motionSection;
+
+            if (isPhone && (type === "opening" || type === "gap")) {
+              const items = Array.from(
+                section.querySelectorAll<HTMLElement>(
+                  ".opening-argument-headline, .opening-argument-qualifier, .opening-argument-body, .opening-outcome-setup, [data-outcome-support], [data-outcome-emphasis], .opening-cta-wrap, .problem-clarifier-title, [data-motion='evidence'], [data-gap-stat-card], [data-motion='close']"
+                )
+              );
+              const phoneReveal = gsap.timeline({ defaults: { ease: editorialOut } });
+              if (items.length) {
+                prepareRise(items, 14);
+                revealRiseFromHidden(phoneReveal, items, 0, { duration: 0.9, stagger: 0.08 });
+              }
+              if (type === "gap") phoneReveal.call(countGapNumbers, [], 0.3);
+              playOnApproach(phoneReveal, section, `studio-${type}-phone-reveal`);
+              return;
+            }
 
             if (type === "opening") {
               const top = section.querySelector<HTMLElement>(".opening-argument-top");

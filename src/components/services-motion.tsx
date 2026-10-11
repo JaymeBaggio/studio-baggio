@@ -232,14 +232,23 @@ export function ServicesMotion() {
           let cleanup: (() => void) | undefined;
 
           if (desktop) {
-            // Every card pins at 76px — top always visible, uniform stack.
-            // (Jayme, 29 July 2026: no per-card special-casing.)
-            // Every card pins at 76px — top always visible, uniform stack.
-            // Card content is sized so a full card fits below the stopper.
-            cards.forEach((card) => {
-              card.style.top = "76px";
-            });
+            // Cards pin at the 76px stopper, title always visible. A card
+            // taller than the room below the stopper would have its bottom
+            // covered by the next card, so it scrolls through in full first
+            // and pins with breathing space beneath it instead.
+            const breathingSpace = 40;
+            const setStoppers = () => {
+              cards.forEach((card) => {
+                const room = window.innerHeight - 76 - breathingSpace;
+                card.style.top =
+                  card.offsetHeight > room
+                    ? `${window.innerHeight - card.offsetHeight - breathingSpace}px`
+                    : "76px";
+              });
+            };
+            setStoppers();
             const onResize = () => {
+              setStoppers();
               ScrollTrigger.refresh();
             };
             window.addEventListener("resize", onResize);

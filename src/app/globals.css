@@ -26158,3 +26158,40 @@ body:has(.home-4b.ab-page) footer { display: none; }
 .home-4b.insight-article-page .insight-article-faq-item p {
   margin: 8px 0 0;
 }
+
+/* Phones: no pinned scroll stories, and the four ways to hire stack. */
+@media (max-width: 767px) {
+  .home-4b .opening-argument-section,
+  .home-4b .problem-clarifier-section {
+    min-height: 0;
+  }
+
+  .home-4b .opening-argument-grid {
+    position: relative;
+    top: auto;
+    min-height: 0;
+    padding-block: 72px 56px;
+  }
+
+  .home-4b .problem-clarifier-frame {
+    position: relative;
+    top: auto;
+    min-height: 0;
+    padding-block: 64px 48px;
+    align-items: flex-start;
+  }
+
+  .home-4b .hire-card-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    width: 100%;
+    margin-inline: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .home-4b .hire-card-slot {
+    flex: none;
+  }
+}
