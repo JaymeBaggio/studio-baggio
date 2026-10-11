@@ -388,7 +388,7 @@ export default function UkSportsLawReportPage() {
         href="/contact?intent=ai-search-audit&utm_content=sports-law-report"
         eyebrow={seoSearchPlanName}
         title="Where does your firm appear?"
-        body="The plan identifies the searches and buyer questions that matter most commercially, shows where your firm is absent or being outranked, and sets out strongest opportunities to improve your position."
+        body="The plan identifies the searches and buyer questions that matter most commercially, shows where your firm is absent or being outranked, and sets out the strongest opportunities to improve your position."
         secondBody="It covers Google, ChatGPT, Gemini and Perplexity, with a prioritised implementation plan covering the pages, content, authority and technical changes needed."
         linkLabel={seoSearchPlanName}
       />

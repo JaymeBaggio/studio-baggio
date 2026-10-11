@@ -1,4 +1,7 @@
 import { z } from "zod";
+import { enquiryTimings, enquiryTypes } from "@/content/site";
+
+const typeValues = enquiryTypes.map((option) => option.type) as [string, ...string[]];
 
 export const contactSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name."),
@@ -14,10 +17,9 @@ export const contactSchema = z.object({
     .refine((value) => !value || /^https?:\/\/.+\..+/.test(value), {
       message: "Add a valid website, for example studiobaggio.ai."
     }),
-  biggestChallenge: z.string().trim().max(1200, "Keep this under 1,200 characters.").optional(),
-  alreadyTried: z.string().trim().max(1200, "Keep this under 1,200 characters.").optional(),
-  whyNow: z.string().trim().max(1200, "Keep this under 1,200 characters.").optional(),
-  successfulOutcome: z.string().trim().max(1200, "Keep this under 1,200 characters.").optional(),
+  workTypes: z.array(z.enum(typeValues)).max(typeValues.length).optional(),
+  brief: z.string().trim().max(1500, "Keep this under 1,500 characters.").optional(),
+  timing: z.union([z.enum(enquiryTimings), z.literal("")]).optional(),
   companyUrl: z.string().max(0, "Spam check failed.").optional()
 });
 

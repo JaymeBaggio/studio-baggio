@@ -20,6 +20,7 @@ import {
 import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 import { LastWordMark } from "@/components/last-word-mark";
+import { ServiceNextStep, enquiryHref, serviceForCategory } from "@/components/service-next-step";
 
 type ArticlePageProps = {
   params: Promise<{
@@ -570,7 +571,7 @@ function ArticleQuotedBlock({ lines, accentArrows = false }: { lines: string[]; 
   );
 }
 
-function ArticleClosingCta({ heading, paragraphs }: { heading: string; paragraphs: string[] }) {
+function ArticleClosingCta({ heading, paragraphs, href = "/contact" }: { heading: string; paragraphs: string[]; href?: string }) {
   return (
     <aside className="insight-article-closing-cta">
       <h2>{heading}</h2>
@@ -578,7 +579,7 @@ function ArticleClosingCta({ heading, paragraphs }: { heading: string; paragraph
         if (paragraph.startsWith("→ ")) {
           const label = paragraph.replace(/^→\s*/, "").replace(/\*\*/g, "");
           return (
-            <Link href="/contact" key={paragraph}>
+            <Link href={href} key={paragraph}>
               <span aria-hidden="true">→</span>
               <strong>{label}</strong>
             </Link>
@@ -1309,7 +1310,15 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
           }
 
           flushCtaParagraph();
-          blocks.push(<ArticleClosingCta heading={heading} key={`cta-${index}`} paragraphs={ctaParagraphs} />);
+          const ctaArticle = getInsightBySlug(articleSlug);
+          blocks.push(
+            <ArticleClosingCta
+              heading={heading}
+              key={`cta-${index}`}
+              paragraphs={ctaParagraphs}
+              href={ctaArticle ? enquiryHref(serviceForCategory(ctaArticle.category)) : "/contact"}
+            />
+          );
           lastBlockWasQuote = false;
           continue;
         }
@@ -1610,8 +1619,12 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
         <div className="editorial-container insight-article-layout is-source-exact">
           <div className="insight-article-body">
             {article.slug === ninetyDaysSlug ? <AiLiterateBusinessArticle /> : renderSourceMarkdown(article.sourceMarkdown, article.slug)}
+            <ServiceNextStep type={serviceForCategory(article.category)} />
           </div>
-          <ArticleMoreArticles articles={moreArticles} />
+          <div className="insight-article-aside">
+            <ServiceNextStep type={serviceForCategory(article.category)} compact />
+            <ArticleMoreArticles articles={moreArticles} />
+          </div>
         </div>
       </article>
     </>

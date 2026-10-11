@@ -3,10 +3,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { identifyVisitor, postHogDistinctId } from "@/lib/posthog";
 import { Loader2, Send } from "lucide-react";
-import { useState } from "react";
-import { useForm, type FieldErrors } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { useForm, useWatch, type FieldErrors } from "react-hook-form";
 import { toast } from "sonner";
 import { contactSchema, type ContactFormValues } from "@/lib/contact-schema";
+import { enquiryTimings, enquiryTypes } from "@/content/site";
+
+// Older links use ?intent=ai-search-audit; newer ones use ?type=<enquiry type>.
+const intentToType: Record<string, string> = { "ai-search-audit": "seo-ai-search" };
 import { SubmitButton } from "@/components/ui/button";
 import { Field, FieldError, Input, Label, Textarea } from "@/components/ui/form-controls";
 
@@ -19,6 +23,8 @@ export function ContactForm() {
     register,
     handleSubmit,
     reset,
+    setValue,
+    control,
     formState: { errors, isSubmitting }
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -27,13 +33,28 @@ export function ContactForm() {
       email: "",
       business: "",
       website: "",
-      biggestChallenge: "",
-      alreadyTried: "",
-      whyNow: "",
-      successfulOutcome: "",
+      workTypes: [],
+      brief: "",
+      timing: "",
       companyUrl: ""
     }
   });
+  const workTypes = useWatch({ control, name: "workTypes" }) ?? [];
+  const timing = useWatch({ control, name: "timing" }) ?? "";
+
+  // A link from a service, article or study preselects the type of work.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get("type") ?? intentToType[params.get("intent") ?? ""];
+    if (requested && enquiryTypes.some((option) => option.type === requested)) {
+      setValue("workTypes", [requested]);
+    }
+  }, [setValue]);
+
+  function toggleWorkType(type: string) {
+    const next = workTypes.includes(type) ? workTypes.filter((value) => value !== type) : [...workTypes, type];
+    setValue("workTypes", next, { shouldDirty: true });
+  }
 
   async function onSubmit(values: ContactFormValues) {
     setFormStatus(null);
@@ -76,10 +97,7 @@ export function ContactForm() {
       fieldErrors.email?.message ||
       fieldErrors.business?.message ||
       fieldErrors.website?.message ||
-      fieldErrors.biggestChallenge?.message ||
-      fieldErrors.alreadyTried?.message ||
-      fieldErrors.whyNow?.message ||
-      fieldErrors.successfulOutcome?.message ||
+      fieldErrors.brief?.message ||
       "Please check the fields above and try again.";
 
     setFormStatus({
@@ -117,34 +135,56 @@ export function ContactForm() {
         </Field>
       </div>
 
-      <details className="contact-form-optional">
-        <summary>
-          <span className="contact-form-optional-label">Additional Details</span>
-          <span className="contact-form-optional-icon" aria-hidden="true">+</span>
-        </summary>
-        <div className="contact-form-grid contact-form-grid-briefing">
-          <Field className="contact-form-briefing-field">
-            <Label htmlFor="biggestChallenge">What is the biggest challenge you’re trying to solve right now?</Label>
-            <Textarea id="biggestChallenge" {...register("biggestChallenge")} />
-            <FieldError message={errors.biggestChallenge?.message} />
-          </Field>
-          <Field className="contact-form-briefing-field">
-            <Label htmlFor="alreadyTried">What have you already tried?</Label>
-            <Textarea id="alreadyTried" {...register("alreadyTried")} />
-            <FieldError message={errors.alreadyTried?.message} />
-          </Field>
-          <Field className="contact-form-briefing-field">
-            <Label htmlFor="whyNow">Why is now the right time to address this?</Label>
-            <Textarea id="whyNow" {...register("whyNow")} />
-            <FieldError message={errors.whyNow?.message} />
-          </Field>
-          <Field className="contact-form-briefing-field">
-            <Label htmlFor="successfulOutcome">What would success look like for your business 6 months from now?</Label>
-            <Textarea id="successfulOutcome" {...register("successfulOutcome")} />
-            <FieldError message={errors.successfulOutcome?.message} />
-          </Field>
+      <div className="contact-form-choice" role="group" aria-labelledby="contact-work-type-label">
+        <p className="contact-form-choice-label" id="contact-work-type-label">
+          Type of work <span>Choose any that apply</span>
+        </p>
+        <div className="contact-form-chips">
+          {enquiryTypes.map((option) => {
+            const selected = workTypes.includes(option.type);
+            return (
+              <button
+                key={option.type}
+                type="button"
+                className={`contact-form-chip${selected ? " is-selected" : ""}`}
+                aria-pressed={selected}
+                onClick={() => toggleWorkType(option.type)}
+              >
+                {option.label}
+              </button>
+            );
+          })}
         </div>
-      </details>
+      </div>
+
+      <Field>
+        <Label htmlFor="brief">Brief</Label>
+        <Textarea id="brief" placeholder="A few lines on what you need." {...register("brief")} />
+        <FieldError message={errors.brief?.message} />
+      </Field>
+
+      <div className="contact-form-choice" role="radiogroup" aria-labelledby="contact-timing-label">
+        <p className="contact-form-choice-label" id="contact-timing-label">
+          Timing
+        </p>
+        <div className="contact-form-chips">
+          {enquiryTimings.map((option) => {
+            const selected = timing === option;
+            return (
+              <button
+                key={option}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                className={`contact-form-chip${selected ? " is-selected" : ""}`}
+                onClick={() => setValue("timing", selected ? "" : option, { shouldDirty: true })}
+              >
+                {option}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       <div className="contact-form-actions">
         <SubmitButton disabled={isSubmitting}>

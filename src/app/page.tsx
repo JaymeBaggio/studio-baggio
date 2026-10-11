@@ -150,14 +150,21 @@ export default function HomePage() {
             {home.commercialSprint.eyebrow ? (
               <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
             ) : null}
-            <h2 className="commercial-sprint-title" data-split>
-              {home.commercialSprint.title}
-            </h2>
-            <ul className="hire-help-list" data-reveal>
-              {home.helpList.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <div className="hire-head">
+              <div className="hire-head-copy">
+                <h2 className="commercial-sprint-title" data-split>
+                  {home.commercialSprint.title}
+                </h2>
+                <ul className="hire-help-list" data-reveal>
+                  {home.helpList.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="hire-insights" data-reveal>
+                <LatestInsights items={latestInsights} allHref="/insights" />
+              </div>
+            </div>
             {home.commercialSprint.subline ? (
               <p className="commercial-sprint-subline" data-reveal>
                 {home.commercialSprint.subline}
@@ -176,9 +183,14 @@ export default function HomePage() {
                     <h3 className="hire-card-title">{card.title}</h3>
                     <p className="hire-card-summary">{card.summary}</p>
                     <p className="hire-card-example">{card.proof}</p>
-                    <a className="hire-card-link focus-ring" href={card.href}>
-                      See what&apos;s included
-                    </a>
+                    <div className="hire-card-actions">
+                      <a className="hire-card-button focus-ring" href={`/contact?type=${card.type}`}>
+                        Enquire now
+                      </a>
+                      <a className="hire-card-link focus-ring" href={card.href}>
+                        See what&apos;s included
+                      </a>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -246,18 +258,13 @@ export default function HomePage() {
         >
           <div className="editorial-container problem-clarifier-frame">
             <div className="problem-clarifier-copy">
-              <div className="gap-head">
-                <div className="problem-clarifier-opening">
-                  {home.problem.eyebrow ? (
-                    <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
-                  ) : null}
-                  <h2 className="problem-clarifier-title problem-clarifier-title-manual" aria-label={home.problem.title}>
-                    {renderProblemTitle(home.problem.title)}
-                  </h2>
-                </div>
-                <div className="gap-insights" data-motion="insights">
-                  <LatestInsights items={latestInsights} allHref="/insights" />
-                </div>
+              <div className="problem-clarifier-opening">
+                {home.problem.eyebrow ? (
+                  <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
+                ) : null}
+                <h2 className="problem-clarifier-title problem-clarifier-title-manual" aria-label={home.problem.title}>
+                  {renderProblemTitle(home.problem.title)}
+                </h2>
               </div>
               <div className="problem-clarifier-evidence">
                 <div className="problem-stat-grid" data-reveal data-motion="evidence">

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { buildEnquiryConfirmationEmail } from "@/lib/contact-emails";
 import { contactSchema } from "@/lib/contact-schema";
+import { enquiryTypes } from "@/content/site";
 
 const hits = new Map<string, { count: number; resetAt: number }>();
 const WINDOW_MS = 10 * 60 * 1000;
@@ -66,31 +67,27 @@ export async function POST(request: NextRequest) {
   }
 
   const resend = new Resend(apiKey);
-  const { name, email, business, website, biggestChallenge, alreadyTried, whyNow, successfulOutcome } = parsed.data;
+  const { name, email, business, website, workTypes, brief, timing } = parsed.data;
+  const workTypeLabels = (workTypes ?? [])
+    .map((type) => enquiryTypes.find((option) => option.type === type)?.label ?? type)
+    .join(", ");
 
   try {
     const result = await resend.emails.send({
       from,
       to,
       replyTo: email,
-      subject: `Studio Baggio enquiry - ${business}`,
+      subject: `Studio Baggio enquiry - ${business}${workTypeLabels ? ` - ${workTypeLabels}` : ""}`,
       text: [
         `Name: ${name}`,
         `Email: ${email}`,
         `Company name: ${business}`,
         `Website: ${website || "Not supplied"}`,
+        `Type of work: ${workTypeLabels || "Not supplied"}`,
+        `Timing: ${timing || "Not supplied"}`,
         "",
-        "What is the biggest challenge they are trying to solve right now?",
-        biggestChallenge || "Not supplied",
-        "",
-        "What have they already tried?",
-        alreadyTried || "Not supplied",
-        "",
-        "Why is now the right time to address this?",
-        whyNow || "Not supplied",
-        "",
-        "What would success look like for their business 6 months from now?",
-        successfulOutcome || "Not supplied"
+        "Brief:",
+        brief || "Not supplied"
       ].join("\n")
     });
 
@@ -116,10 +113,11 @@ export async function POST(request: NextRequest) {
           name,
           firm_name: business,
           website: website || undefined,
-          biggest_challenge: biggestChallenge || undefined,
-          already_tried: alreadyTried || undefined,
-          why_now: whyNow || undefined,
-          successful_outcome: successfulOutcome || undefined
+          work_type: workTypeLabels || undefined,
+          timing: timing || undefined,
+          brief: brief || undefined,
+          // Older tracker views read biggest_challenge, so the brief also lands there.
+          biggest_challenge: brief || undefined
         })
       }).catch((err) => console.error("Business Tracker ingest failed", err));
     }

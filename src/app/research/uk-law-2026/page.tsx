@@ -17,6 +17,8 @@ import { pageMetadata } from "@/lib/metadata";
 import { researchDataLicense } from "@/lib/research-schema";
 import { siteUrl } from "@/lib/utils";
 import { LastWordMark } from "@/components/last-word-mark";
+import { ResearchAuditCta } from "@/components/research";
+import { seoSearchPlanName } from "@/content/site";
 
 const h = findings.headline;
 const t1f = findings.tier1FirmsWithZeroArea;
@@ -310,6 +312,15 @@ export default function UkLawReportPage() {
       />
 
       <LawQuestionExplorer questions={questions} />
+
+      <ResearchAuditCta
+        href="/contact?type=seo-ai-search&utm_content=law-report"
+        eyebrow={seoSearchPlanName}
+        title="Where does your firm appear?"
+        body="The plan identifies the searches and buyer questions that matter most commercially, shows where your firm is absent or being outranked, and sets out the strongest opportunities to improve your position."
+        secondBody="It covers Google, ChatGPT, Gemini and Perplexity, with a prioritised implementation plan covering the pages, content, authority and technical changes needed."
+        linkLabel={seoSearchPlanName}
+      />
     </main>
   );
 }

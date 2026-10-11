@@ -36,6 +36,9 @@ export function ResearchAuditCta({
             <ArrowUpRight aria-hidden="true" />
           </ResearchActionLink>
           {supportingLine ? <small className="research-audit-cta__supporting-line">{supportingLine}</small> : null}
+          <p className="research-audit-cta__commission">
+            <a href="/contact?type=commissioned-research">Commission a study</a>: bring us the question you need answered.
+          </p>
         </div>
       </div>
     </section>

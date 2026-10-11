@@ -147,24 +147,28 @@ export const home = {
     cards: [
       {
         title: "SEO & AI Search",
+        type: "seo-ai-search",
         summary: "Be found and chosen when prospective clients search Google or ask AI who to hire. We find the questions that matter most to your business, where you appear today and who appears instead, then give you a prioritised plan within 14 days that your team, your partners or Studio Baggio can implement.",
         proof: "A chartered financial planner who had relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £103,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation.",
         href: "/services#seo-and-ai-search-opportunity-audit"
       },
       {
         title: "AI Operating Systems",
+        type: "ai-operating-systems",
         summary: "AI set up around your business: your clients, your strategic priorities, your people and what good looks like to you. Each person starts with the context for their role, and their specialist knowledge and templates become skills they use every day. It's built to grow with the business, so your team is set up to win from the outset.",
         proof: "For a London creative agency, a company-wide system gave a non-technical team the tools to use AI effectively from day one, saving an estimated 10 to 15 hours a week.",
         href: "/services#ai-operating-system-audit"
       },
       {
         title: "Tools & Client Resources",
+        type: "tools-client-resources",
         summary: "Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool. Typically two to three weeks once the brief is agreed, built into your own systems or hosted for you. Fixed fee, no subscription.",
         proof: "Studio Baggio built Last30Days, an AI research tool now used by more than 400 individual and corporate users.",
         href: "/services#bespoke-ai-software-and-systems"
       },
       {
         title: "Commissioned Research",
+        type: "commissioned-research",
         summary: "Bring us the question you need answered: what prospective clients ask before they choose an adviser, how competitors are positioned, or where demand is going unmet. We agree the scope and method, then deliver the findings with the evidence behind them and what they mean for your business.",
         proof: "Studio Baggio's studies of how AI recommends UK law firms and financial advisers have been covered by The Lawyer, FT Adviser and Professional Adviser.",
         href: "/research"
@@ -982,6 +986,43 @@ export const contactPage = {
   email: "jayme@studiobaggio.ai"
 };
 
+// The four ways to hire Studio Baggio, as the enquiry form and the
+// article and research links name them. `type` is the /contact?type= value.
+export const enquiryTypes = [
+  { type: "seo-ai-search", label: "SEO & AI Search" },
+  { type: "ai-operating-systems", label: "AI Operating Systems" },
+  { type: "tools-client-resources", label: "Tools & Client Resources" },
+  { type: "commissioned-research", label: "Commissioned Research" },
+  { type: "not-sure", label: "Not sure yet" }
+] as const;
+
+export type EnquiryType = (typeof enquiryTypes)[number]["type"];
+
+export const enquiryTimings = ["As soon as possible", "Within three months", "Three to six months", "Just exploring"] as const;
+
+export const serviceNextSteps: Record<Exclude<EnquiryType, "not-sure">, { name: string; line: string; href: string }> = {
+  "seo-ai-search": {
+    name: "SEO & AI Search",
+    line: "Be found and chosen when prospective clients search Google or ask AI who to hire.",
+    href: "/services#seo-and-ai-search-opportunity-audit"
+  },
+  "ai-operating-systems": {
+    name: "AI Operating Systems",
+    line: "AI set up around your business: your clients, your strategic priorities, your people and what good looks like to you.",
+    href: "/services#ai-operating-system-audit"
+  },
+  "tools-client-resources": {
+    name: "Tools & Client Resources",
+    line: "Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool.",
+    href: "/services#bespoke-ai-software-and-systems"
+  },
+  "commissioned-research": {
+    name: "Commissioned Research",
+    line: "Bring us the question you need answered.",
+    href: "/research"
+  }
+};
+
 export const privacyPage = {
   eyebrow: "Privacy",
   title: "Privacy notes for the Studio Baggio website.",
@@ -989,7 +1030,7 @@ export const privacyPage = {
     {
       title: "What the form collects",
       body:
-        "The contact form asks for your name, email address, company name and website. You can also add optional context about the challenge, what you have tried, why now matters and what success would look like."
+        "The contact form asks for your name, email address, company name and website. You can also tell us the type of work, a short brief and your timing."
     },
     {
       title: "Why it is collected",
@@ -1104,7 +1145,7 @@ export const researchWhyNow = {
 export const researchCommission = {
   title: "Commission a study",
   body: "Bring us the question you need answered and we will research it for you.",
-  cta: { label: "Enquire now", href: "/contact" }
+  cta: { label: "Enquire now", href: "/contact?type=commissioned-research" }
 };
 
 export const servicesPage = {
