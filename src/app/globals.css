@@ -24775,7 +24775,8 @@ body:has(.home-4b.ab-page) footer { display: none; }
 .home-4b .faq-section-title::after,
 .home-4b .commercial-sprint-title::after,
 .home-4b .proof-section-title::after,
-.home-4b .fit-section-title::after {
+.home-4b .fit-section-title::after,
+.home-4b .working-promise-title::after {
   content: "";
   display: block;
   width: clamp(36px, 3.2vw, 48px);
@@ -25468,5 +25469,313 @@ body:has(.home-4b.ab-page) footer { display: none; }
   .home-4b .hire-card {
     flex: 0 0 84%;
     scroll-snap-align: start;
+  }
+}
+
+/* The Gap: the title shares its row with the latest insights card. */
+.home-4b .gap-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+  column-gap: clamp(32px, 4vw, 64px);
+  align-items: end;
+}
+
+.home-4b .latest-insights {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(20, 20, 20, 0.15);
+  border-top: 3px solid var(--sb-accent-blue);
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(20, 20, 20, 0.06), 0 18px 44px rgba(20, 20, 20, 0.1);
+}
+
+.home-4b .latest-insights-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px 0 20px;
+}
+
+.home-4b .latest-insights-label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(20, 20, 20, 0.55);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.home-4b .latest-insights-label:hover {
+  color: var(--sb-ink);
+}
+
+.home-4b .latest-insights-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-4b .latest-insights-count {
+  margin-right: 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(20, 20, 20, 0.45);
+}
+
+.home-4b .latest-insights-count span {
+  color: var(--sb-ink);
+}
+
+.home-4b .latest-insights-controls button {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgba(20, 20, 20, 0.18);
+  background: #ffffff;
+  color: var(--sb-ink);
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.home-4b .latest-insights-controls button:hover {
+  border-color: var(--sb-ink);
+  background: var(--sb-ink);
+  color: #ffffff;
+}
+
+.home-4b .latest-insights-controls button:focus-visible,
+.home-4b .latest-insights-item:focus-visible {
+  outline: 2px solid var(--sb-accent-blue);
+  outline-offset: 2px;
+}
+
+.home-4b .latest-insights-controls svg {
+  width: 14px;
+  height: 14px;
+}
+
+.home-4b .latest-insights-stack {
+  display: grid;
+}
+
+.home-4b .latest-insights-item {
+  display: flex;
+  grid-area: 1 / 1;
+  flex-direction: column;
+  padding: 14px 20px 20px;
+  color: var(--sb-ink);
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-12px);
+  transition: opacity 280ms ease, transform 280ms ease, visibility 0s linear 280ms;
+}
+
+.home-4b .latest-insights.is-reverse .latest-insights-item {
+  transform: translateX(12px);
+}
+
+.home-4b .latest-insights .latest-insights-item.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 560ms cubic-bezier(0.23, 1, 0.32, 1) 180ms, transform 640ms cubic-bezier(0.23, 1, 0.32, 1) 180ms, visibility 0s;
+}
+
+.home-4b .latest-insights-meta {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(20, 20, 20, 0.55);
+}
+
+.home-4b .latest-insights-title {
+  display: -webkit-box;
+  min-height: calc(1.3em * 2);
+  margin-top: 8px;
+  overflow: hidden;
+  font-size: 19px;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  transition: color 160ms ease;
+}
+
+.home-4b .latest-insights-item:hover .latest-insights-title {
+  color: var(--sb-accent-blue);
+}
+
+.home-4b .latest-insights-read {
+  margin-top: 12px;
+  font-size: 14px;
+  color: rgba(20, 20, 20, 0.6);
+  text-decoration: underline;
+  text-decoration-color: rgba(20, 20, 20, 0.3);
+  text-underline-offset: 4px;
+}
+
+.home-4b .latest-insights-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(20, 20, 20, 0.08);
+}
+
+.home-4b .latest-insights-progress span {
+  position: absolute;
+  inset: 0;
+  background: var(--sb-accent-blue);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.home-4b .latest-insights:not(.is-manual) .latest-insights-progress span {
+  animation: sb-insight-progress 5s linear forwards;
+  animation-play-state: paused;
+}
+
+.home-4b .latest-insights.is-playing .latest-insights-progress span {
+  animation-play-state: running;
+}
+
+.home-4b .latest-insights.is-manual .latest-insights-progress {
+  display: none;
+}
+
+@keyframes sb-insight-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* The opportunity and how we work: three numbered steps on the same
+   three-column grid as the Gap's evidence above. */
+.home-4b .working-promise-section {
+  min-height: 0;
+}
+
+.home-4b .working-promise-title {
+  max-width: 900px;
+  margin-top: 0;
+}
+
+.home-4b .promise-steps {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: clamp(36px, 4vw, 52px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--sb-rule);
+}
+
+.home-4b .promise-step {
+  min-width: 0;
+  padding: clamp(24px, 2.8vw, 34px) clamp(22px, 3vw, 36px) 0 0;
+}
+
+.home-4b .promise-step + .promise-step {
+  padding-left: clamp(28px, 3.8vw, 46px);
+  border-left: 1px solid var(--sb-rule);
+}
+
+.home-4b .promise-step-number {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--sb-accent-blue);
+}
+
+.home-4b .promise-step-title {
+  margin: 14px 0 0;
+  font-size: clamp(24px, 1.9vw, 30px);
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--sb-ink);
+}
+
+.home-4b .promise-step-body {
+  max-width: 360px;
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--sb-body);
+}
+
+/* Who this is for: full frame width; blue squares for best fit, grey dashes for not. */
+.home-4b .fit-list-grid {
+  width: 100%;
+}
+
+.home-4b .fit-list-column.is-best .fit-ruled-list li::before {
+  width: 7px;
+  height: 7px;
+  background: var(--sb-accent-blue);
+  transform: translateY(-0.12em);
+}
+
+@media (max-width: 1099px) {
+  .home-4b .gap-head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  }
+}
+
+@media (max-width: 899px) {
+  .home-4b .problem-clarifier-copy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-4b .gap-head {
+    display: contents;
+  }
+
+  .home-4b .problem-clarifier-opening {
+    order: 1;
+  }
+
+  .home-4b .problem-clarifier-evidence {
+    order: 2;
+  }
+
+  .home-4b .gap-insights {
+    order: 3;
+    margin-top: 18px;
+  }
+
+  .home-4b .promise-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-4b .promise-step {
+    padding: 20px 0;
+  }
+
+  .home-4b .promise-step + .promise-step {
+    padding-left: 0;
+    border-top: 1px solid var(--sb-rule);
+    border-left: 0;
+  }
+
+  .home-4b .promise-step-body {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-4b .latest-insights-item,
+  .home-4b .latest-insights .latest-insights-item.is-active {
+    transform: none;
+    transition: none;
   }
 }

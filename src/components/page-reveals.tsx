@@ -461,6 +461,7 @@ export function PageReveals() {
               const evidenceGrid = section.querySelector<HTMLElement>("[data-motion='evidence']");
               const stats = Array.from(section.querySelectorAll<HTMLElement>("[data-gap-stat-card]"));
               const close = section.querySelector<HTMLElement>("[data-motion='close']");
+              const insights = section.querySelector<HTMLElement>("[data-motion='insights']");
               const titleTargets = targetsFor(title);
 
               if (label) prepareRise(label, 10);
@@ -468,6 +469,7 @@ export function PageReveals() {
               if (evidenceGrid) prepareRise(evidenceGrid, 0);
               if (stats.length) prepareRise(stats, 16);
               if (close) prepareRise(close, 12);
+              if (insights) prepareRise(insights, 14);
 
               const evidence = gsap.timeline({
                 defaults: { ease: editorialOut },
@@ -483,6 +485,7 @@ export function PageReveals() {
               });
               if (label) revealRise(evidence, label, 0, { duration: 0.9 });
               revealLines(evidence, titleTargets, label ? 0.2 : 0, 0.07);
+              if (insights) revealRise(evidence, insights, 0.42, { duration: 0.9 });
               evidence.to({}, { duration: 0.46 }, 0.92);
               if (evidenceGrid) revealRise(evidence, evidenceGrid, 1.2, { duration: 0.52 });
               if (stats.length) revealRise(evidence, stats, 1.38, { duration: 1.05, stagger: 0.12 });

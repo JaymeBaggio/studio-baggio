@@ -110,7 +110,7 @@ export const home = {
     ]
   },
   problem: {
-    eyebrow: "THE GAP",
+    eyebrow: "",
     title: "Adoption has run ahead of meaningful ROI.",
     body:
       "The UK government's 2026 AI Adoption Research found 16% of UK businesses use AI. Among those that do, 77% report no revenue change. Only 12% report a revenue increase.",
@@ -175,7 +175,7 @@ export const home = {
     moreLink: { label: "See our services", href: "/services" }
   },
   workingPromise: {
-    eyebrow: "WORKING PROMISE",
+    eyebrow: "",
     title: "Identify the opportunity. Build the solution. Embed it in the business.",
     negativeLines: [
       "Identify the opportunity.",
@@ -194,7 +194,7 @@ export const home = {
     subline: "Available to Studio Baggio clients."
   },
   fit: {
-    eyebrow: "WHO THIS IS FOR",
+    eyebrow: "",
     title: "For businesses that want AI tied to measurable commercial and operational value.",
     goodLabel: "Best for",
     badLabel: "Not for",

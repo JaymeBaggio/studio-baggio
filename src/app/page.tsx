@@ -6,11 +6,28 @@ import { FaqSchema } from "@/components/faq-schema";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProductShowcase } from "@/components/product-showcase";
+import { LatestInsights } from "@/components/latest-insights";
+import { getInsightPath, insightArticles } from "@/content/insights";
 import { hero, home, introDownload, metadata as siteMetadata, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.home, path: "/" });
+
+const insightMonths = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+const latestInsights = [...insightArticles]
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .slice(0, 6)
+  .map((article) => {
+    const [year, month] = article.date.split("-");
+    return {
+      href: getInsightPath(article),
+      title: article.title,
+      category: article.category,
+      dateLabel: `${insightMonths[Number(month) - 1]} ${year}`,
+      readTime: article.readTime
+    };
+  });
 
 function renderHeroMetaLine(line: string) {
   const phrase = "DELIVER MORE VALUE.";
@@ -229,11 +246,18 @@ export default function HomePage() {
         >
           <div className="editorial-container problem-clarifier-frame">
             <div className="problem-clarifier-copy">
-              <div className="problem-clarifier-opening">
-                <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
-                <h2 className="problem-clarifier-title problem-clarifier-title-manual" aria-label={home.problem.title}>
-                  {renderProblemTitle(home.problem.title)}
-                </h2>
+              <div className="gap-head">
+                <div className="problem-clarifier-opening">
+                  {home.problem.eyebrow ? (
+                    <p className="eyebrow" data-reveal data-motion="label">{home.problem.eyebrow}</p>
+                  ) : null}
+                  <h2 className="problem-clarifier-title problem-clarifier-title-manual" aria-label={home.problem.title}>
+                    {renderProblemTitle(home.problem.title)}
+                  </h2>
+                </div>
+                <div className="gap-insights" data-motion="insights">
+                  <LatestInsights items={latestInsights} allHref="/insights" />
+                </div>
               </div>
               <div className="problem-clarifier-evidence">
                 <div className="problem-stat-grid" data-reveal data-motion="evidence">
@@ -252,40 +276,26 @@ export default function HomePage() {
                   ))}
                 </div>
               </div>
-              <div className="problem-clarifier-takeaway">
-                <div className="section-rule" data-rule aria-hidden="true" />
-                <p className="problem-strong" data-reveal data-motion="close">
-                  {home.problem.close}
-                </p>
-              </div>
             </div>
           </div>
         </section>
 
         <section className="home-section working-promise-section" data-home-section data-motion-section="promise">
-          <div className="editorial-container working-promise-frame working-promise-grid">
-            {home.workingPromise.eyebrow ? (
-              <p className="eyebrow" data-reveal data-motion="label">{home.workingPromise.eyebrow}</p>
-            ) : null}
-            <div className="working-promise-body-grid">
-              <div className="working-promise-copy">
-                {home.workingPromise.body.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    data-reveal
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-              <div className="working-promise-negatives" aria-label={home.workingPromise.title}>
-                {home.workingPromise.negativeLines.map((line) => (
-                  <p key={line} className="working-promise-negative" data-reveal>
-                    {line}
-                  </p>
-                ))}
-              </div>
-            </div>
+          <div className="editorial-container working-promise-frame">
+            <h2 className="working-promise-title" data-split>
+              {home.problem.close}
+            </h2>
+            <ol className="promise-steps" aria-label={home.workingPromise.title}>
+              {home.workingPromise.negativeLines.map((line, index) => (
+                <li key={line} className="promise-step" data-reveal>
+                  <span className="promise-step-number">{String(index + 1).padStart(2, "0")}</span>
+                  <h3 className="promise-step-title">{line}</h3>
+                  {home.workingPromise.body[index] ? (
+                    <p className="promise-step-body">{home.workingPromise.body[index]}</p>
+                  ) : null}
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -306,13 +316,15 @@ export default function HomePage() {
 
         <section className="home-section fit-section" data-home-section data-motion-section="fit">
           <div className="editorial-container fit-section-frame">
-            <p className="eyebrow" data-reveal data-motion="label">{home.fit.eyebrow}</p>
+            {home.fit.eyebrow ? (
+              <p className="eyebrow" data-reveal data-motion="label">{home.fit.eyebrow}</p>
+            ) : null}
             <h2 className="fit-section-title" data-split>
               {home.fit.title}
             </h2>
             <div className="fit-list-grid" data-reveal>
               <FitList title={home.fit.goodLabel} items={home.fit.good} />
-              <FitList title={home.fit.badLabel} items={home.fit.bad} />
+              <FitList title={home.fit.badLabel} items={home.fit.bad} variant="not" />
             </div>
           </div>
         </section>
@@ -357,9 +369,9 @@ export default function HomePage() {
   );
 }
 
-function FitList({ title, items }: { title: string; items: string[] }) {
+function FitList({ title, items, variant = "best" }: { title: string; items: string[]; variant?: "best" | "not" }) {
   return (
-    <div className="fit-list-column">
+    <div className={`fit-list-column is-${variant}`}>
       <h3>{title}</h3>
       <ul className="fit-ruled-list">
         {items.map((item) => (
