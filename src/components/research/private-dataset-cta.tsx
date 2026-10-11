@@ -92,7 +92,7 @@ function CardBody({ onClose, id, layout = "stack", content = privateDataset }: {
        <div>
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-[12px] uppercase tracking-[0.16em] text-ink/50">{content.kicker}</p>
+            <p className="text-[12px] uppercase tracking-[0.16em] text-ink/60">{content.kicker}</p>
             <h2 id={`${id}-title`} className="mt-1.5 text-[24px] leading-[1.15] text-ink">
               {content.title}
             </h2>
@@ -116,7 +116,7 @@ function CardBody({ onClose, id, layout = "stack", content = privateDataset }: {
             <li key={stat.value} className="border-t border-ink/10 py-3 text-[17px] leading-snug text-ink">
               <strong className="mr-2 text-[28px] font-medium leading-none text-[color:var(--sb-accent-blue)]">{stat.value}</strong>
               {stat.copy}
-              <span className="mt-1.5 block text-[11px] uppercase tracking-[0.08em] text-ink/50">{stat.source}</span>
+              <span className="mt-1.5 block text-[11px] uppercase tracking-[0.08em] text-ink/60">{stat.source}</span>
             </li>
           ))}
         </ul>
@@ -154,7 +154,7 @@ function CardBody({ onClose, id, layout = "stack", content = privateDataset }: {
           })}
         </div>
 
-        <p className="mt-3 text-[14px] leading-snug text-ink/55">{content.body}</p>
+        <p className="mt-3 text-[14px] leading-snug text-ink/60">{content.body}</p>
 
         <form
           className="mt-4"

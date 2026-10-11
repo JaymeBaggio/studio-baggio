@@ -13,7 +13,7 @@
   --hero-meta-tracking: 0.1em;
   --hero-promise-size: clamp(0.88rem, 0.92vw, 1rem);
   --hero-promise-line: 1.8;
-  --hero-promise-muted: #999690;
+  --hero-promise-muted: #969696;
   --hero-promise-ink: #111111;
   --sb-accent-blue: #2563eb;
 }
@@ -3037,7 +3037,7 @@ body:has(.home-4b.contact-page) footer {
   line-height: 1.2;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: rgba(20, 20, 20, 0.58);
+  color: rgba(20, 20, 20, 0.62);
 }
 
 .hairline {
@@ -4874,8 +4874,8 @@ body:has(.home-4b.contact-page) footer {
   --sb-dark: #101010;
   --sb-rule: #d8d8d8;
   --sb-dark-rule: #303030;
-  --sb-muted: #8a8a8a;
-  --sb-faint: #c8c8c4;
+  --sb-muted: #707070;
+  --sb-faint: #c8c8c8;
   --sb-blue: var(--sb-accent-blue);
   --sb-dark-muted: #b8b8b8;
   --sb-body: #4f4f4f;
@@ -5410,7 +5410,7 @@ body:has(.home-4b.contact-page) footer {
   font-size: 12px;
   line-height: 1;
   font-weight: var(--sb-label-weight);
-  color: #c8c8c4;
+  color: #c8c8c8;
 }
 
 .home-4b .value-map-row-copy {
@@ -5453,7 +5453,7 @@ body:has(.home-4b.contact-page) footer {
   width: 14px;
   height: 14px;
   margin-top: 3px;
-  color: #c8c8c4;
+  color: #c8c8c8;
   transition:
     color 240ms cubic-bezier(0.23, 1, 0.32, 1),
     transform 360ms cubic-bezier(0.23, 1, 0.32, 1);
@@ -6025,7 +6025,7 @@ body:has(.home-4b.contact-page) footer {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  color: #c8c8c4;
+  color: #c8c8c8;
   transition: color 220ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -15435,7 +15435,7 @@ body:has(.home-4b.contact-page) footer {
 .fa3-context__stats cite {
   display: block;
   margin-top: 16px;
-  color: #667085;
+  color: #666666;
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
@@ -15507,7 +15507,7 @@ body:has(.home-4b.contact-page) footer {
 
 .fa3-context--compact .fa3-context__stats cite {
   margin: 0;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .fa3-context__inline-stat {
@@ -19442,7 +19442,7 @@ body:has(.home-4b.contact-page) footer {
   padding: 10px 12px; font-size: 14px; line-height: 1.3; color: var(--law-ink); cursor: pointer;
 }
 
-.law-select__option.is-active { background: #f2f4f7; }
+.law-select__option.is-active { background: #f2f2f2; }
 
 .law-select__option.is-selected { color: var(--law-blue); font-weight: 500; }
 

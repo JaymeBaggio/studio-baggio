@@ -63,7 +63,7 @@ export default function ResearchDataUsagePage() {
               </p>
               <p
                 id={`version-${researchDataUsageDate}`}
-                className="mt-3 text-sm uppercase tracking-[0.08em] text-ink/45"
+                className="mt-3 text-sm uppercase tracking-[0.08em] text-ink/60"
               >
                 Version {researchDataUsageVersion} · {researchDataUsageDate}
               </p>

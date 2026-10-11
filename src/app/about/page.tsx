@@ -225,7 +225,7 @@ export default function AboutPage() {
                         alt={feature.name}
                         width={feature.width}
                         height={feature.height}
-                        sizes="180px"
+                        sizes="240px"
                       />
                     </a>
                   ))}

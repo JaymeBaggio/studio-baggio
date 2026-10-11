@@ -124,7 +124,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         </Script>
         <Script
           src="https://news.google.com/swg/js/v1/publisher.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-03SJE21NJ6"

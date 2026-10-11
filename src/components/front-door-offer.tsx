@@ -69,7 +69,7 @@ function OfferBody({
           </Link>
         </div>
         <div className="mt-5 border-t border-ink/10 pt-4">
-          <p className="text-[11px] uppercase tracking-[0.08em] text-ink/50">
+          <p className="text-[11px] uppercase tracking-[0.08em] text-ink/60">
             {frontDoorOffer.featured.label}
           </p>
           <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 min-[360px]:flex-nowrap">

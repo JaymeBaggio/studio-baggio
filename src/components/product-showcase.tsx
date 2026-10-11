@@ -118,8 +118,6 @@ export function ProductShowcase() {
                   alt=""
                   fill
                   sizes={imageSizes}
-                  priority={index === 0}
-                  loading={index === 0 ? undefined : "eager"}
                 />
               ) : null}
             </div>

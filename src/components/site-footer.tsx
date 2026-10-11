@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="editorial-container grid gap-10 py-10 md:grid-cols-[1.1fr_1fr_1fr] md:py-14">
         <div>
           <p className="text-sm uppercase tracking-[0.08em]">{footer.company}</p>
-          <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink/55">
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink/60">
             {footer.summary}
           </p>
         </div>
@@ -58,7 +58,7 @@ export function SiteFooter() {
             {primaryCta.label}
           </Link>
           <p className="mt-2">© {new Date().getFullYear()} Studio Baggio Ltd</p>
-          <p className="mt-2 max-w-xs text-xs leading-relaxed text-ink/45 md:ml-auto">{footer.registration}</p>
+          <p className="mt-2 max-w-xs text-xs leading-relaxed text-ink/60 md:ml-auto">{footer.registration}</p>
         </div>
       </div>
     </footer>

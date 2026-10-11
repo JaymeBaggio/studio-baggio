@@ -207,7 +207,7 @@ export default function ServicesPage() {
                         <strong className="font-semibold text-[color:var(--sb-accent-blue)]">{offer.quote.result}</strong>.
                       </p>
                     ) : null}
-                    <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
+                    <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/60">
                       {offer.quote.attr}
                     </figcaption>
                   </figure>
@@ -269,7 +269,7 @@ export default function ServicesPage() {
                         ) : null}
                         {offer.featuredIn ? (
                           <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-4">
-                            <span className="text-xs uppercase tracking-[0.08em] text-ink/50">
+                            <span className="text-xs uppercase tracking-[0.08em] text-ink/60">
                               {offer.featuredIn.label}
                             </span>
                             <div className="flex min-w-0 max-w-full items-center gap-4 sm:gap-6">
@@ -413,7 +413,7 @@ export default function ServicesPage() {
                   <blockquote className="text-base leading-relaxed text-[color:var(--sb-accent-blue)]">
                     &ldquo;{testimonial.quote}&rdquo;
                   </blockquote>
-                  <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/50">
+                  <figcaption className="mt-3 text-xs uppercase tracking-[0.08em] text-ink/60">
                     {testimonial.name} &middot; {testimonial.role}
                   </figcaption>
                 </figure>

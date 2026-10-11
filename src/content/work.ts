@@ -110,7 +110,7 @@ export const workItems: WorkItem[] = [
       },
       sections: [
         {
-          label: "01 — The Problem",
+          label: "01 · The Problem",
           paragraphs: [
             "LinkedIn is the #1 platform for client conversions among advisers, yet of the 37,136 authorised financial advisers in the UK, fewer than 300 post consistently on LinkedIn. In a relationship business, that is a structural visibility gap.",
             "Clients trust adviser judgement in private, but prospects have no evidence the expertise your website claims actually exists. An\u00A0adviser sharing market insight, client-relevant commentary, and professional perspective starts building trust before the first meeting. Clients come in warm, not cold."
@@ -139,7 +139,7 @@ export const workItems: WorkItem[] = [
           ]
         },
         {
-          label: "02 — What is Calm Authority.",
+          label: "02 · What is Calm Authority.",
           paragraphs: [
             "Calm Authority is a tone-of-voice writing system that maps how you write, researches what's relevant, and turns ideas into publish-ready LinkedIn drafts in your own voice.",
             "What makes it different from generic AI?"
@@ -170,7 +170,7 @@ export const workItems: WorkItem[] = [
       ],
       sideSections: [
         {
-          label: "03 — Built By",
+          label: "03 · Built By",
           paragraphs: [
             "Built in 2025 by Jayme Baggio, a content and systems strategist, with founding adviser Harry Sims, a Chartered Financial Planner with eleven years in financial services. Together they identified a structural visibility gap in the UK advice market, and built a system to close it."
           ]

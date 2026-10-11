@@ -868,7 +868,7 @@ const positioningAngles = [
   {
     angle: "Secret Weapon",
     bestUsedFor: "Founder, exec & investor",
-    role: "Asymmetric advantage — you know what the market wants before competitors do"
+    role: "Asymmetric advantage: you know what the market wants before competitors do"
   },
   {
     angle: "The Expiry",

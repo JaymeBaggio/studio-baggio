@@ -789,7 +789,7 @@ export const about = {
   press: {
     title: "Press & Founder Availability",
     body: [
-      "Jayme speaks and is available for comment on Commercial AI strategy, SEO & AI search, AI in the workplace, building AI operating systems within businesses, AI in media & content, and the broader AI economy. She spoke as a panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, and will be speaking at the AI Creative Summit 2026- demonstrating how companies can use AI to build bespoke tools that save time, improve how the business runs or help win more work."
+      "Jayme speaks and is available for comment on commercial AI strategy, SEO & AI search, AI in the workplace, building AI operating systems within businesses, AI in media & content, and the broader AI economy. She spoke as a panellist at Ideas Fest 2026 for Building an AI-literate business in 90 days, and will be speaking at the AI Creative Summit 2026, demonstrating how companies can use AI to build bespoke tools that save time, improve how the business runs or help win more work."
     ]
   },
   signoffName: "AI Strategy & Implementation Specialist",

@@ -307,7 +307,7 @@ export function ProductDetailPanel({
 
             {productPage.testimonials ? (
               <div className="products-testimonials">
-                <p className="products-section-label">03 — Testimonials</p>
+                <p className="products-section-label">04 · Testimonials</p>
                 {productPage.testimonials.map((testimonial) => (
                   <figure key={testimonial.quote} className="products-testimonial">
                     <blockquote>{testimonial.quote}</blockquote>

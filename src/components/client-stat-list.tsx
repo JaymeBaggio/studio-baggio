@@ -10,7 +10,7 @@ export function ClientStatList({ ids, columns = 2 }: { ids: ClientStatId[]; colu
           <li key={id} className="border-t border-ink/15 pt-3 text-base leading-relaxed text-ink/75">
             <strong className="font-semibold tabular-nums text-[color:var(--sb-accent-blue)]">{stat.figure}</strong>{" "}
             {stat.text}
-            <span className="mt-1 block text-sm text-ink/45">{stat.source}</span>
+            <span className="mt-1 block text-sm text-ink/60">{stat.source}</span>
           </li>
         );
       })}
