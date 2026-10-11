@@ -42,7 +42,8 @@ type ServiceOffer = {
   outroStrong?: boolean;
   exampleFirst?: boolean;
   example?: { paras: string[]; highlight?: string | string[] };
-  resources?: { label: string; intro?: string; items: { name: string; href: string; text: string }[] };
+  // Named, linked examples shown in place of the generic includes list.
+  resources?: { items: { name: string; href: string; text: string }[] };
   quote?: { text: string; result?: string; attr: string };
   featuredIn?: {
     label: string;
@@ -201,9 +202,7 @@ export default function ServicesPage() {
                   </div>
                 ) : null;
                 const resources = offer.resources ? (
-                  <div className="sv-resources">
-                    <h3 className="eyebrow">{offer.resources.label}</h3>
-                    {offer.resources.intro ? <p className="mt-2 text-ink/70">{offer.resources.intro}</p> : null}
+                  <div className="sv-resources" data-sv-list>
                     <ul className="mt-3">
                       {offer.resources.items.map((item) => (
                         <li key={item.href}>
@@ -266,6 +265,7 @@ export default function ServicesPage() {
                           ))}
                         </div>
                         <h3 className="eyebrow pt-6">{offer.includesLabel}</h3>
+                        {resources ?? (
                         <ul className="mt-3 -mb-2 gap-x-6 sm:columns-2" data-sv-list>
                           {offer.includes.map((item) => (
                             <li key={item} className="mb-2 flex break-inside-avoid items-baseline gap-3 text-ink/70">
@@ -277,6 +277,7 @@ export default function ServicesPage() {
                             </li>
                           ))}
                         </ul>
+                        )}
                         {offer.outro ? (
                           <div className="mt-5 space-y-3">
                             {offer.outro.map((para) => (
@@ -306,7 +307,7 @@ export default function ServicesPage() {
                           </div>
                         ) : null}
                       </div>
-                      {quote || example || resources || offer.subSection ? (
+                      {quote || example || offer.subSection ? (
                         <div className="sv-card-side">
                           {offer.exampleFirst ? (
                             <>
@@ -319,7 +320,6 @@ export default function ServicesPage() {
                               {example}
                             </>
                           )}
-                          {resources}
                           {offer.subSection ? (
                             <div className="sv-card-sub">
                               <h3 className="eyebrow">{offer.subSection.label}</h3>

@@ -1288,8 +1288,6 @@ export const servicesPage = {
         highlight: ["over 400 individual and corporate users", "52 inbound leads in six months"]
       },
       resources: {
-        label: "Example client resources",
-        intro: "Built for firms to give their own clients.",
         items: [
           {
             name: "Pension & Inheritance Check",
