@@ -244,9 +244,10 @@ export function PrivateDatasetCard({ content = privateDataset }: { content?: Pri
   }, [content.title]);
 
   // A study can carry more than one inline copy of the card (the law study has
-  // two), so the follower steps aside while any of them is on screen.
+  // two), so the follower steps aside while any of them is on screen. It also
+  // steps aside for the report's call-to-action bands, so it never covers a link.
   useEffect(() => {
-    const boxes = Array.from(document.querySelectorAll(".fa3-dataset-box"));
+    const boxes = Array.from(document.querySelectorAll(".fa3-dataset-box, .fa3-inline-cta, [data-research-cta]"));
     if (!boxes.length || typeof IntersectionObserver === "undefined") return;
     const visible = new Set<Element>();
     const observer = new IntersectionObserver(
