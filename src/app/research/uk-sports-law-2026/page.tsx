@@ -15,6 +15,8 @@ import { researchDataLicense } from "@/lib/research-schema";
 import { siteUrl } from "@/lib/utils";
 import styles from "@/components/research/sports-law-report.module.css";
 import { LastWordMark } from "@/components/last-word-mark";
+import { PrivateDatasetCard } from "@/components/research/private-dataset-cta";
+import { privateDatasetLaw } from "@/content/private-dataset";
 
 type SportSummary = {
   sport_block: string;
@@ -215,6 +217,8 @@ export default function UkSportsLawReportPage() {
           </div>
         </div>
       </header>
+
+      <PrivateDatasetCard content={privateDatasetLaw} />
 
       <section className="fa3-section fa3-executive sports-law-report__lead-finding" aria-labelledby="sports-findings-title">
         <div className="editorial-container fa3-executive__grid">

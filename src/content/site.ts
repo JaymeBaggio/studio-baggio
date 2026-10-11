@@ -1065,6 +1065,17 @@ export const privacyPage = {
   ]
 };
 
+// Coverage strip for cards: FT Adviser, Money Marketing, Professional Adviser, The Lawyer.
+export const featuredPressStrip = {
+  label: "Featured in",
+  logos: [
+    { name: "FT Adviser", src: "/assets/logos/ft-adviser.png", width: 2222, height: 580, displayHeight: 15 },
+    { name: "Money Marketing", src: "/assets/logos/money-marketing.png", width: 440, height: 132, displayHeight: 17 },
+    { name: "Professional Adviser", src: "/assets/logos/professional-adviser-print.png", width: 2167, height: 180, displayHeight: 12 },
+    { name: "The Lawyer", src: "/assets/logos/the-lawyer.svg", width: 581, height: 64, displayHeight: 13 }
+  ]
+};
+
 export const aiSearchFeaturedPress = {
   label: "Our AI search research featured in",
   logos: [

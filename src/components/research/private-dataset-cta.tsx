@@ -233,7 +233,7 @@ export function PrivateDatasetCard({ content = privateDataset }: { content?: Pri
     const frame = window.requestAnimationFrame(() => {
       let closed = false;
       try {
-        closed = window.sessionStorage.getItem(DISMISS_KEY) === "1";
+        closed = window.sessionStorage.getItem(`${DISMISS_KEY}:${content.title}`) === "1";
       } catch {
         closed = false;
       }
@@ -241,7 +241,7 @@ export function PrivateDatasetCard({ content = privateDataset }: { content?: Pri
       setMounted(true);
     });
     return () => window.cancelAnimationFrame(frame);
-  }, []);
+  }, [content.title]);
 
   useEffect(() => {
     const box = document.querySelector(".fa3-dataset-box");
@@ -258,7 +258,7 @@ export function PrivateDatasetCard({ content = privateDataset }: { content?: Pri
     setDismissed(true);
     setOpen(false);
     try {
-      window.sessionStorage.setItem(DISMISS_KEY, "1");
+      window.sessionStorage.setItem(`${DISMISS_KEY}:${content.title}`, "1");
     } catch {
       /* storage unavailable: the pill simply closes for this render */
     }

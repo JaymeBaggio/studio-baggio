@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { FrontDoorOfferInline } from "@/components/front-door-offer";
@@ -8,7 +9,7 @@ import { PageReveals } from "@/components/page-reveals";
 import { ProductShowcase } from "@/components/product-showcase";
 import { LatestInsights } from "@/components/latest-insights";
 import { getInsightPath, insightArticles } from "@/content/insights";
-import { hero, home, introDownload, metadata as siteMetadata, primaryCta } from "@/content/site";
+import { featuredPressStrip, hero, home, introDownload, metadata as siteMetadata, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
 
@@ -177,12 +178,28 @@ export default function HomePage() {
             ) : null}
             <div className="hire-card-grid">
               {home.commercialSprint.cards.map((card) => (
-                <article key={card.title} className="hire-card" data-reveal>
+                <div key={card.title} className="hire-card-slot" data-reveal>
+                <article className="hire-card">
                   <div className="hire-card-bar" aria-hidden="true" />
                   <div className="hire-card-body">
                     <h3 className="hire-card-title">{card.title}</h3>
                     <p className="hire-card-summary">{card.summary}</p>
                     <p className="hire-card-example">{card.proof}</p>
+                    {card.type === "seo-ai-search" ? (
+                      <div className="hire-card-press" aria-label={featuredPressStrip.label}>
+                        <span>{featuredPressStrip.label}</span>
+                        {featuredPressStrip.logos.map((logo) => (
+                          <Image
+                            key={logo.name}
+                            src={logo.src}
+                            alt={logo.name}
+                            width={logo.width}
+                            height={logo.height}
+                            style={{ height: logo.displayHeight, width: "auto" }}
+                          />
+                        ))}
+                      </div>
+                    ) : null}
                     <div className="hire-card-actions">
                       <a className="hire-card-button focus-ring" href={`/contact?type=${card.type}`}>
                         Enquire now
@@ -193,6 +210,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 </article>
+                </div>
               ))}
             </div>
             <div className="commercial-sprint-cta-wrap" data-reveal>
