@@ -1290,6 +1290,16 @@ export const servicesPage = {
       resources: {
         items: [
           {
+            name: "Expertise Visibility Diagnostic",
+            href: "https://www.calmauthority.ai/diagnostic",
+            text: "Twelve questions that show an advisory firm whether its expertise is building its reputation."
+          },
+          {
+            name: "LinkedIn Playbook for Financial Advisers",
+            href: "https://www.calmauthority.ai/playbook",
+            text: "What UK advisers should post, how often, and how to stay compliant."
+          },
+          {
             name: "Pension & Inheritance Check",
             href: "https://pension-inheritance-check.vercel.app/",
             text: "What the April 2027 pension changes could mean for what a family inherits."
