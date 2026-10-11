@@ -178,7 +178,7 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
       <aside className="fa3-inline-cta" aria-label={seoSearchPlanName}>
         <div className="editorial-container">
           <p>Want to know where your firm appears in AI search?</p>
-          <Link href="/contact?intent=ai-search-audit&utm_content=research-inline-cta">
+          <Link href="/services?utm_content=research-inline-cta#seo-and-ai-search-opportunity-audit">
             See what the {seoSearchPlanName} covers →
           </Link>
         </div>
