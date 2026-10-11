@@ -61,6 +61,7 @@ export type WorkItem = {
     featuredIn?: Array<{
       label: string;
       href: string;
+      logo: { src: string; width: number; height: number };
     }>;
     ctas?: Array<{
       label: string;
@@ -197,15 +198,23 @@ export const workItems: WorkItem[] = [
       featuredIn: [
         {
           label: "FT Adviser",
-          href: "https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d"
+          href: "https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d",
+          logo: { src: "/assets/logos/ft-adviser.png", width: 2222, height: 580 }
         },
         {
           label: "Professional Adviser",
-          href: "https://www.professionaladviser.com/news/4527581/linkedin-ai-platform-financial-advisers-best-kept-secret"
+          href: "https://www.professionaladviser.com/news/4527581/linkedin-ai-platform-financial-advisers-best-kept-secret",
+          logo: { src: "/assets/logos/professional-adviser-print.png", width: 2167, height: 180 }
         },
         {
           label: "Money Marketing",
-          href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/"
+          href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/",
+          logo: { src: "/assets/logos/money-marketing.png", width: 440, height: 132 }
+        },
+        {
+          label: "The Lawyer",
+          href: "https://www.thelawyer.com/ai-doesnt-give-a-damn-about-your-seo/",
+          logo: { src: "/assets/logos/the-lawyer.svg", width: 581, height: 64 }
         }
       ],
       ctas: [{ label: "Visit live site →", href: "https://www.calmauthority.ai", external: true }]

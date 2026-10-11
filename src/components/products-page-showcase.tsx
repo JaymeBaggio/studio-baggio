@@ -342,8 +342,16 @@ export function ProductDetailPanel({
                   target="_blank"
                   rel="noreferrer"
                   className="focus-ring"
+                  data-logo={publication.label}
+                  aria-label={`Read the ${publication.label} coverage`}
                 >
-                  {publication.label}
+                  <Image
+                    src={publication.logo.src}
+                    alt={publication.label}
+                    width={publication.logo.width}
+                    height={publication.logo.height}
+                    sizes="260px"
+                  />
                 </a>
               ))}
             </div>

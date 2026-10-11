@@ -8274,6 +8274,24 @@ body:has(.home-4b.contact-page) footer {
   color: var(--sb-blue);
 }
 
+/* Publication logos, balanced by eye: the FT Adviser lettering fills under half
+   its file height and Money Marketing is stacked, so each gets its own height. */
+.home-4b.products-page .products-featured-inner a img {
+  width: auto;
+  height: 15px;
+  opacity: 0.9;
+  transition: opacity 180ms ease;
+}
+
+.home-4b.products-page .products-featured-inner a:hover img {
+  opacity: 1;
+}
+
+.home-4b.products-page .products-featured-inner a[data-logo="FT Adviser"] img { height: 24px; }
+.home-4b.products-page .products-featured-inner a[data-logo="Money Marketing"] img { height: 27px; }
+.home-4b.products-page .products-featured-inner a[data-logo="Professional Adviser"] img { height: 15px; }
+.home-4b.products-page .products-featured-inner a[data-logo="The Lawyer"] img { height: 14px; }
+
 .home-4b.products-page .products-featured-inner span:first-child,
 .home-4b.products-page .products-featured-inner a:first-child {
   border-left: 0;
@@ -8411,7 +8429,9 @@ body:has(.home-4b.contact-page) footer {
 
   .home-4b.products-page .products-featured-inner div {
     display: grid;
-    gap: 10px;
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+    gap: 16px 32px;
   }
 
   .home-4b.products-page .products-featured-inner span,
