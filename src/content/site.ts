@@ -144,6 +144,32 @@ export const home = {
     // can never drift apart. Edit the offers there, not here.
     eyebrow: "",
     title: "What you can hire us for.",
+    cards: [
+      {
+        title: "SEO & AI Search",
+        summary: "Be found and chosen when prospective clients search Google or ask AI who to hire. We find the questions that matter most to your business, where you appear today and who appears instead, then give you a prioritised plan within 14 days that your team, your partners or Studio Baggio can implement.",
+        proof: "A chartered financial planner who had relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £103,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation.",
+        href: "/services#seo-and-ai-search-opportunity-audit"
+      },
+      {
+        title: "AI Operating Systems",
+        summary: "AI set up around your business: your clients, your strategic priorities, your people and what good looks like to you. Each person starts with the context for their role, and their specialist knowledge and templates become skills they use every day. It's built to grow with the business, so your team is set up to win from the outset.",
+        proof: "For a London creative agency, a company-wide system gave a non-technical team the tools to use AI effectively from day one, saving an estimated 10 to 15 hours a week.",
+        href: "/services#ai-operating-system-audit"
+      },
+      {
+        title: "Tools & Client Resources",
+        summary: "Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool. Typically two to three weeks once the brief is agreed, built into your own systems or hosted for you. Fixed fee, no subscription.",
+        proof: "Studio Baggio built Last30Days, an AI research tool now used by more than 400 individual and corporate users.",
+        href: "/services#bespoke-ai-software-and-systems"
+      },
+      {
+        title: "Commissioned Research",
+        summary: "Bring us the question you need answered: what prospective clients ask before they choose an adviser, how competitors are positioned, or where demand is going unmet. We agree the scope and method, then deliver the findings with the evidence behind them and what they mean for your business.",
+        proof: "Studio Baggio's studies of how AI recommends UK law firms and financial advisers have been covered by The Lawyer, FT Adviser and Professional Adviser.",
+        href: "/research"
+      }
+    ],
     subline: "",
     body: "",
     moreLink: { label: "See our services", href: "/services" }

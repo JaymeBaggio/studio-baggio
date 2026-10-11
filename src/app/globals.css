@@ -5028,7 +5028,7 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b .opening-argument-section {
   background: var(--sb-paper);
-  min-height: 740svh;
+  min-height: 380svh;
   align-items: flex-start;
   padding-block: 0;
 }
@@ -6145,7 +6145,7 @@ body:has(.home-4b.contact-page) footer {
   }
 
   .home-4b .opening-argument-section {
-    min-height: 700svh;
+    min-height: 360svh;
     padding-block: 0;
   }
 

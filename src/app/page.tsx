@@ -6,7 +6,7 @@ import { FaqSchema } from "@/components/faq-schema";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
 import { ProofTiles } from "@/components/proof-tiles";
-import { hero, home, introDownload, metadata as siteMetadata, primaryCta, servicesPage } from "@/content/site";
+import { hero, home, introDownload, metadata as siteMetadata, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
 
@@ -128,6 +128,65 @@ export default function HomePage() {
       <FrontDoorOfferInline />
 
       <div className="home-4b">
+        <section className="home-section commercial-sprint-section" data-home-section data-motion-section="offer">
+          <div className="editorial-container commercial-sprint-frame">
+            {home.commercialSprint.eyebrow ? (
+              <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
+            ) : null}
+            <h2 className="commercial-sprint-title" data-split>
+              {home.commercialSprint.title}
+            </h2>
+            <ul className="hire-help-list" data-reveal>
+              {home.helpList.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            {home.commercialSprint.subline ? (
+              <p className="commercial-sprint-subline" data-reveal>
+                {home.commercialSprint.subline}
+              </p>
+            ) : null}
+            {home.commercialSprint.body ? (
+              <p className="commercial-sprint-body" data-reveal>
+                {home.commercialSprint.body}
+              </p>
+            ) : null}
+            <div className="hire-card-grid">
+              {home.commercialSprint.cards.map((card) => (
+                <article key={card.title} className="hire-card" data-reveal>
+                  <div className="hire-card-bar" aria-hidden="true" />
+                  <div className="hire-card-body">
+                    <h3 className="hire-card-title">{card.title}</h3>
+                    <p className="hire-card-summary">{card.summary}</p>
+                    <p className="hire-card-example">{card.proof}</p>
+                    <a className="hire-card-link focus-ring" href={card.href}>
+                      See what&apos;s included
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="commercial-sprint-cta-wrap" data-reveal>
+              <ButtonLink href={primaryCta.href} className="commercial-sprint-cta">
+                {primaryCta.label}
+              </ButtonLink>
+              <a
+                className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
+                href={home.commercialSprint.moreLink.href}
+              >
+                {home.commercialSprint.moreLink.label}
+              </a>
+              <a
+                className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
+                href={introDownload.href}
+                download
+              >
+                {introDownload.label}
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section className="home-section opening-argument-section" data-home-section data-motion-section="opening">
           <div className="editorial-container opening-argument-grid">
             <div className="opening-argument-top">
@@ -199,69 +258,6 @@ export default function HomePage() {
                   {home.problem.close}
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="home-section commercial-sprint-section" data-home-section data-motion-section="offer">
-          <div className="editorial-container commercial-sprint-frame">
-            {home.commercialSprint.eyebrow ? (
-              <p className="eyebrow" data-reveal data-motion="label">{home.commercialSprint.eyebrow}</p>
-            ) : null}
-            <h2 className="commercial-sprint-title" data-split>
-              {home.commercialSprint.title}
-            </h2>
-            <ul className="hire-help-list" data-reveal>
-              {home.helpList.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            {home.commercialSprint.subline ? (
-              <p className="commercial-sprint-subline" data-reveal>
-                {home.commercialSprint.subline}
-              </p>
-            ) : null}
-            {home.commercialSprint.body ? (
-              <p className="commercial-sprint-body" data-reveal>
-                {home.commercialSprint.body}
-              </p>
-            ) : null}
-            <div className="hire-card-grid">
-              {servicesPage.offers.map((offer) => (
-                <article key={offer.id} className="hire-card" data-reveal>
-                  <div className="hire-card-bar" aria-hidden="true" />
-                  <div className="hire-card-body">
-                    <h3 className="hire-card-title">{offer.name}</h3>
-                    <p className="hire-card-summary">{offer.summary}</p>
-                    {"showExampleOnHome" in offer && offer.showExampleOnHome && offer.example ? (
-                      <p className="hire-card-example">
-                        {"homeExample" in offer && offer.homeExample ? offer.homeExample : offer.example.paras[0]}
-                      </p>
-                    ) : null}
-                    <a className="hire-card-link focus-ring" href={`/services#${offer.id}`}>
-                      See what&apos;s included
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <div className="commercial-sprint-cta-wrap" data-reveal>
-              <ButtonLink href={primaryCta.href} className="commercial-sprint-cta">
-                {primaryCta.label}
-              </ButtonLink>
-              <a
-                className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
-                href={home.commercialSprint.moreLink.href}
-              >
-                {home.commercialSprint.moreLink.label}
-              </a>
-              <a
-                className="focus-ring text-sm text-ink/60 underline underline-offset-4 hover:text-ink"
-                href={introDownload.href}
-                download
-              >
-                {introDownload.label}
-              </a>
             </div>
           </div>
         </section>
