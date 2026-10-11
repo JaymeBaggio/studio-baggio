@@ -297,6 +297,9 @@ export default function HomePage() {
             <h2 className="proof-section-title" data-split>
               {home.proof.title}
             </h2>
+            {home.proof.subline ? (
+              <p className="proof-section-subline" data-reveal>{home.proof.subline}</p>
+            ) : null}
             <ProofTiles />
           </div>
         </section>

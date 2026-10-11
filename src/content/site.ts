@@ -189,8 +189,9 @@ export const home = {
     ]
   },
   proof: {
-    eyebrow: "PRODUCTS",
-    title: "Products we have built and run."
+    eyebrow: "",
+    title: "Products.",
+    subline: "Available to Studio Baggio clients."
   },
   fit: {
     eyebrow: "WHO THIS IS FOR",
