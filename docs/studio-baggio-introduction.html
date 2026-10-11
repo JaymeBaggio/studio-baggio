@@ -118,6 +118,22 @@
   .page1 .card .card-rule{ margin:6px 0 6px; }
   .page1 .card p{ font-size:12.5px; line-height:1.5; }
   .page1 .step-title{ margin-bottom:3px; }
+  /* Page 1 is the overview: one line per offer, the journey as three cards. */
+  .page1{ --sec-gap:9mm; }
+  .page1 .cards{ gap:12px; margin-top:6px; }
+  .page1 .card{ padding:14px 16px 13px; width:calc(50% - 6px); display:flex; flex-direction:column; }
+  .page1 .card .card-title{ font-size:16px; }
+  .page1 .card .card-rule{ margin:9px 0 9px; }
+  .page1 .card p{ font-size:14px; line-height:1.55; }
+  .page1 .card .card-meta{ margin-top:auto; padding-top:12px; font-size:10px; color:var(--blue); }
+  .steps{ display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-top:6px; }
+  .step-card{ border:1px solid var(--hairline); padding:14px 16px 15px; break-inside:avoid; }
+  .step-card .step-n{ font-size:11px; letter-spacing:0.12em; color:var(--blue); }
+  .step-card .step-t{ margin-top:7px; font-size:14.5px; font-weight:700; line-height:1.3; color:var(--ink); }
+  .step-card .step-rule{ width:22px; height:2px; background:var(--blue); margin:9px 0 9px; }
+  .step-card p + p{ margin-top:0; }
+  .step-card .step-rule + p{ font-size:13px; line-height:1.55; }
+  .page1-press{ margin-top:auto; margin-bottom:6mm; padding-top:5mm; border-top:1px solid var(--hairline); }
 
   footer{ margin-top:2mm; break-inside:avoid; }
   footer .rule{ height:1px; background:var(--hairline); border:0; margin-bottom:2.5mm; }
@@ -165,42 +181,61 @@
           <div class="card">
             <div class="card-title">SEO &amp; AI Search</div>
             <hr class="card-rule" />
-            <p>Be found and chosen when prospective clients search Google or ask AI who to hire. We find the questions that matter most to your business, where you appear today and who appears instead, then give you a prioritised plan within 14 days that your team, your partners or Studio Baggio can implement.</p>
+            <p>Be found and chosen when prospective clients search Google or ask AI who to hire.</p>
+            <p class="card-meta">Page 2 &rarr;</p>
           </div>
           <div class="card">
             <div class="card-title">AI Operating Systems</div>
             <hr class="card-rule" />
-            <p>AI set up around your business: your clients, your strategic priorities, your people and what good looks like to you. Each person starts with the context for their role, and their specialist knowledge and templates become skills they use every day. It&rsquo;s built to grow with the business, so your team is set up to win from the outset.</p>
+            <p>AI set up around your business: your clients, your strategic priorities, your people and what good looks like to you.</p>
+            <p class="card-meta">Page 3 &rarr;</p>
           </div>
           <div class="card">
             <div class="card-title">Tools &amp; Client Resources</div>
             <hr class="card-rule" />
-            <p>Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool. Typically two to three weeks once the brief is agreed, built into your own systems or hosted for you. Fixed fee, no subscription.</p>
+            <p>Focused internal tools and client-facing resources built around a specific problem.</p>
+            <p class="card-meta">Page 4 &rarr;</p>
           </div>
           <div class="card">
             <div class="card-title">Commissioned Research</div>
             <hr class="card-rule" />
-            <p>Bring us the question you need answered: what prospective clients ask before they choose an adviser, how competitors are positioned, or where demand is going unmet. We agree the scope and method, then deliver the findings with the evidence behind them and what they mean for your business.</p>
+            <p>Bring us the question you need answered.</p>
+            <p class="card-meta">Page 5 &rarr;</p>
           </div>
         </div>
     </section>
 
     <section>
       <h2>How an engagement works</h2>
-      <p class="step-title"><span class="step-num">01</span>Start with a brief or with discovery</p>
-      <p>A clear brief for a tool or a study goes straight to scoping. Where the opportunity is less defined, we start with two to three weeks of focused discovery, producing a prioritised plan: what to implement first, what can wait and how success is measured.</p>
-      <p class="cards-note">Discovery and planning fees are fully credited against implementation or ongoing consultation.</p>
+      <div class="steps">
+        <div class="step-card">
+          <p class="step-n">01</p>
+          <p class="step-t">Start with a brief or with discovery</p>
+          <div class="step-rule"></div>
+          <p>A clear brief goes straight to scoping. Otherwise, two to three weeks of focused discovery, credited against what follows.</p>
+        </div>
+        <div class="step-card">
+          <p class="step-n">02</p>
+          <p class="step-t">Build and implement</p>
+          <div class="step-rule"></div>
+          <p>Implement internally, with your partners, or with Studio Baggio.</p>
+        </div>
+        <div class="step-card">
+          <p class="step-n">03</p>
+          <p class="step-t">Ongoing AI partner</p>
+          <div class="step-rule"></div>
+          <p>Priority advice and support as the business grows.</p>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <p class="step-title"><span class="step-num">02</span>Build and implement</p>
-      <p>Implement the plan internally, with existing partners, or appoint Studio Baggio to design, build and embed the recommended systems, processes and client-facing resources.</p>
-    </section>
-
-    <section>
-      <p class="step-title"><span class="step-num">03</span>Ongoing AI partner</p>
-      <p>Priority advice, optimisation and practical support, developing the strategy and taking new opportunities as the business grows.</p>
-    </section>
+    <div class="press page1-press">
+      <span class="press-label">Featured in</span>
+      <a href="https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d"><img src="../public/assets/logos/financial-times.png" alt="FT Adviser" /></a>
+      <a href="https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/"><img src="../public/assets/logos/money-marketing.png" alt="Money Marketing" /></a>
+      <a href="https://www.professionaladviser.com/news/4534156/uk-advice-firms-invisible-ai-platforms-research"><img src="../public/assets/logos/professional-adviser-print.png" alt="Professional Adviser" /></a>
+      <a href="https://www.thelawyer.com/ai-doesnt-give-a-damn-about-your-seo/"><img src="../public/assets/logos/the-lawyer.svg" alt="The Lawyer" /></a>
+    </div>
     </div>
 
     <!-- PAGE 2: SEO & AI Search (starts with the AI Search Strategy & Implementation Plan) -->
