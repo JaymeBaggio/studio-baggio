@@ -1192,8 +1192,8 @@ export const servicesPage = {
       showExampleOnHome: true,
       stats: { label: "How clients choose now", ids: ["ficommReferral", "wealthtender96", "ficommAi25", "magenta66"] as ClientStatId[] },
       paras: [
-        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise. The plan identifies the highest-value demand the business is missing, then defines the pages, authority, content and technical changes needed to be found, cited and chosen more often on Google and in AI search.",
-        "Then implement it: the pages, evidence, client-facing resources, technical changes and enquiry routes the plan recommends, delivered by your team, your existing partners or Studio Baggio."
+        "For businesses that are over-reliant on referrals or are not being found when prospective clients search for their expertise.",
+        "The plan finds the highest-value demand you are missing and what it takes to be found, cited and chosen on Google and in AI search. Then implement it with your team, your existing partners or Studio Baggio."
       ],
       includesLabel: "What the plan covers",
       includes: [
@@ -1205,17 +1205,17 @@ export const servicesPage = {
         "Implementation and measurement plan"
       ],
       outro: [
-        "Delivered within 14 days. Fee fully credited against implementation of the recommendations and wider consultancy."
+        "Delivered within 14 days. Fee fully credited against implementation and wider consultancy."
       ],
       outroStrong: true,
       quote: {
-        text: "SEO & AI SEO were something we were never able to master. Jayme changed that completely: we went from page four to first on Google - above Microsoft, and we show up in AI search for the key buyer questions our customers ask. The advantage this gives us is invaluable.",
+        text: "SEO & AI SEO were something we were never able to master. Jayme changed that completely: we went from page four to first on Google - above Microsoft, and we show up in AI search for the key buyer questions our customers ask.",
         result: "more than 20 additional enquiries through AI search within two weeks",
         attr: "Emma Corbett · Product Specialist and Co-founder, Get-Planner"
       },
       example: {
         paras: [
-          "A chartered financial planner who had previously relied entirely on referrals won nine new clients in eight months, adding £5.3 million in assets under management and £103,400 in first-year revenue. Four of those client journeys began with a ChatGPT recommendation."
+          "A chartered financial planner who had relied entirely on referrals won nine new clients in eight months: £5.3 million in assets under management and £103,400 in first-year revenue. Four began with a ChatGPT recommendation."
         ],
         highlight: "£5.3 million in assets under management and £103,400 in first-year revenue"
       },
@@ -1233,25 +1233,25 @@ export const servicesPage = {
       stats: { label: "How clients use AI now", ids: ["hsbc82", "bny83"] as ClientStatId[] },
       paras: [
         "For businesses that want AI built around their strategy and set up so the whole team can win from the outset.",
-        "We start with the business constraints and opportunities, then look at the company's teams, roles, knowledge and ways of working. The system gets the shared company context, department and role context, and safeguards it needs, built on your existing infrastructure."
+        "Built on your existing infrastructure, around your teams, roles, knowledge and ways of working."
       ],
       includesLabel: "What the plan covers",
       includes: [
-        "The constraints and opportunities where AI can make the biggest measurable difference",
-        "The shared company, department and role context the system needs",
-        "How each person turns their specialist knowledge and templates into skills they use in their work",
-        "How the system retains corrections and improvements, so it gets better as the team uses it",
-        "Client experience: how advice and client outputs are delivered, and how to make them clearer, more personal and more valuable",
-        "What to implement first, a sequenced 30 and 90-day plan, and where not to invest yet"
+        "Where AI can make the biggest measurable difference",
+        "Shared company, department and role context",
+        "Each person's knowledge and templates turned into skills",
+        "Corrections retained, so it improves as the team uses it",
+        "Clearer, more personal client outputs",
+        "What to do first: a 30 and 90-day plan, and where not to invest yet"
       ],
       example: {
         paras: [
-          "Studio Baggio designed and implemented a company-wide AI system for a London creative agency. Built around the company's knowledge, clients, brand and ways of working, it gave a non-technical team the context, tools and capabilities to use AI effectively from day one, without separate training. It is estimated to save 10 to 15 hours each week."
+          "For a London creative agency, a company-wide system gave a non-technical team the tools to use AI effectively from day one, saving an estimated 10 to 15 hours a week."
         ],
-        highlight: "10 to 15 hours each week"
+        highlight: "10 to 15 hours a week"
       },
       quote: {
-        text: "Jayme spent time with people across the team individually to understand how we work, then built and implemented the system for us: our company and client knowledge, business strategy, positioning and templates built in, with each person's setup tailored to their role. Several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool, which they would never have been able to do previously.",
+        text: "Jayme spent time with people across the team individually to understand how we work, then built and implemented the system for us … with each person's setup tailored to their role. Several of the team have since developed their own tools with it, including a live client-facing reporting platform and a deal-tracking tool.",
         attr: "Joe Churchill · Founder & CEO"
       }
     },
@@ -1263,7 +1263,7 @@ export const servicesPage = {
         "Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool. Typically two to three weeks once the brief is agreed, built into your own systems or hosted for you. Fixed fee, no subscription.",
       paras: [
         "For a specific problem a focused tool can solve, for your team or for your clients.",
-        "We agree the brief, then design, build and test it. It can sit inside your own systems or be hosted for you. You pay a fixed fee and no subscription. Studio Baggio keeps the IP; your rights to use it and any hosting or running costs are agreed before work starts. Larger systems are scoped separately."
+        "Typically two to three weeks once the brief is agreed, built into your systems or hosted for you. Fixed fee, no subscription. Studio Baggio keeps the IP; your usage rights and any running costs are agreed upfront. Larger systems are scoped separately."
       ],
       includesLabel: "Examples",
       includes: [
@@ -1277,14 +1277,12 @@ export const servicesPage = {
       subSection: {
         label: "Business Tracker",
         paras: [
-          "The Business Tracker is Studio Baggio's own lead-intelligence software, and can be built in as part of any system we deliver.",
-          "It brings together engagement from guides, diagnostics, email, LinkedIn and other channels, then adds current professional and company information to show who each person is and why they may matter.",
-          "Each contact is qualified against the business's commercial priorities, with a clear rationale and recommended next action. Depending on the objective, the system can prioritise prospective clients, existing relationships, introducers, journalists or strategic partners."
+          "Studio Baggio's own lead-intelligence software, built into any system we deliver. It brings engagement from guides, email and LinkedIn together, qualifies each contact against your priorities and recommends the next action."
         ]
       },
       example: {
         paras: [
-          "Studio Baggio designed and built Last30Days, an AI research product now used by over 400 individual and corporate users to research markets, competitors, customer questions and emerging opportunities."
+          "Studio Baggio designed and built Last30Days, an AI research product now used by over 400 individual and corporate users."
         ],
         highlight: "over 400 individual and corporate users"
       }
