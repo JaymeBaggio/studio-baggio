@@ -26181,17 +26181,60 @@ body:has(.home-4b.ab-page) footer { display: none; }
     align-items: flex-start;
   }
 
-  .home-4b .hire-card-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
-    width: 100%;
-    margin-inline: 0;
-    padding: 0;
-    overflow: visible;
+  /* The four ways to hire: a swipe row, each card short enough to fit
+     on one phone screen. */
+  .home-4b .hire-card-body {
+    padding: 22px 20px 22px;
   }
 
-  .home-4b .hire-card-slot {
-    flex: none;
+  .home-4b .hire-card-title {
+    font-size: 22px;
   }
+
+  .home-4b .hire-card-summary {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .home-4b .hire-card-example {
+    margin-top: 14px;
+    padding: 12px 14px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .home-4b .hire-card-press {
+    gap: 8px 12px;
+    margin-top: 12px;
+  }
+
+  .home-4b .hire-card-press img {
+    transform: scale(0.85);
+    transform-origin: left center;
+  }
+
+  .home-4b .hire-card-actions {
+    gap: 10px 16px;
+    padding-top: 16px;
+  }
+
+  .home-4b .hire-card-button {
+    min-height: 42px;
+    padding: 0 16px;
+  }
+}
+
+/* /services header: the heading and one line, no full-screen hero. */
+.home-4b.services-page .sv-hero {
+  min-height: 0;
+  padding-block: clamp(120px, 15vh, 160px) clamp(56px, 7vh, 80px);
+}
+
+.home-4b.services-page .sv-hero > .editorial-container {
+  min-height: 0;
+}
+
+.home-4b.services-page .sv-hero-frame {
+  flex: none;
 }

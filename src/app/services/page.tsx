@@ -6,7 +6,6 @@ import { ButtonLink } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { FaqSchema } from "@/components/faq-schema";
 import { ServicesMotion } from "@/components/services-motion";
-import { ServicesOffersIndex } from "@/components/services-offers-index";
 import {
   about,
   introDownload,
@@ -165,9 +164,6 @@ export default function ServicesPage() {
                   <p key={para}>{para}</p>
                 ))}
               </div>
-            </div>
-            <div className="sv-hero-index" data-sv-hero="late">
-              <ServicesOffersIndex items={offers.map(({ id, name }) => ({ id, name }))} />
             </div>
           </div>
         </section>

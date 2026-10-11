@@ -1163,8 +1163,7 @@ export const servicesPage = {
   eyebrow: "SERVICES",
   title: "AI strategy, systems and implementation",
   intro: [
-    "Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it.",
-    "That can mean being found and chosen by more of the right clients, setting AI up around how your business works, building focused tools and client resources, or researching a question you need answered."
+    "Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it."
   ],
   offersEyebrow: "WHAT YOU CAN HIRE US FOR",
   offers: [
