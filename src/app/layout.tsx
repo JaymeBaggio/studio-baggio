@@ -97,10 +97,11 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en" className={aileron.variable}>
       <body suppressHydrationWarning>
-        <Script
+        {/* Plain JSON-LD in the server HTML: AI crawlers run no JavaScript, so a
+            next/script injection would hide the organisation from them. */}
+        <script
           id="studio-baggio-organization-schema"
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <div className="site-shell">

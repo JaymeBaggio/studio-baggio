@@ -1170,6 +1170,7 @@ export const servicesPage = {
   offers: [
     {
       id: "seo-and-ai-search-opportunity-audit",
+      legacyIds: ["growth-infrastructure-and-visibility-audit"],
       name: "SEO & AI Search",
       summary:
         "Find the client questions with the most commercial value, where your business appears across Google and AI search, and who appears instead. You receive a prioritised plan for the pages, content, authority and evidence needed to win more of that work.",
@@ -1241,6 +1242,7 @@ export const servicesPage = {
     },
     {
       id: "tools-and-client-resources",
+      legacyIds: ["bespoke-ai-software-and-systems"],
       name: "Tools & Client Resources",
       summary:
         "Focused internal tools and client-facing resources built around a specific problem, such as a diagnostic, a client guide or a reporting tool. Typically two to three weeks once the brief is agreed, built into your own systems or hosted for you. Fixed fee, no subscription.",

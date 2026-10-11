@@ -115,8 +115,10 @@ export default function HomePage() {
             </div>
           </div>
           <h1 className="home-reference-wordmark uppercase" aria-label="Studio Baggio">
-            {hero.wordmark.map((line) => (
+            {hero.wordmark.map((line, index) => (
               <span key={line} className="mask-line block">
+                {/* A real space between the lines, so crawlers read "Studio Baggio", not "STUDIOBAGGIO". */}
+                {index > 0 ? " " : null}
                 <span data-hero-line className="block">
                   {line === "BAGGIO" ? (
                     <>

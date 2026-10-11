@@ -1536,6 +1536,24 @@ function renderSourceMarkdown(markdown: string, articleSlug: string) {
   return blocks;
 }
 
+// FAQ questions declared in the article's schema, shown on the page too, so
+// the structured data never says more than the reader can see.
+function ArticleFaq({ items }: { items: Array<{ question: string; answer: string }> }) {
+  return (
+    <section className="insight-article-faq" aria-labelledby="article-faq-title">
+      <h2 id="article-faq-title" className="insight-article-section-heading">
+        Frequently asked questions
+      </h2>
+      {items.map((item) => (
+        <div className="insight-article-faq-item" key={item.question}>
+          <h3>{item.question}</h3>
+          <p>{item.answer}</p>
+        </div>
+      ))}
+    </section>
+  );
+}
+
 function ArticleMoreArticles({ articles }: { articles: InsightArticle[] }) {
   return (
     <aside className="insight-article-more" aria-label="More articles">
@@ -1619,6 +1637,9 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
         <div className="editorial-container insight-article-layout is-source-exact">
           <div className="insight-article-body">
             {article.slug === ninetyDaysSlug ? <AiLiterateBusinessArticle /> : renderSourceMarkdown(article.sourceMarkdown, article.slug)}
+            {article.slug !== ninetyDaysSlug && article.faq?.length && !article.sourceMarkdown.includes(article.faq[0].question) ? (
+              <ArticleFaq items={article.faq} />
+            ) : null}
             <ServiceNextStep type={serviceForCategory(article.category)} />
           </div>
           <div className="insight-article-aside">

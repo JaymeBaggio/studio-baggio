@@ -30,6 +30,8 @@ const pageUrl = `${siteUrl}/services`;
 
 type ServiceOffer = {
   id: string;
+  // Section addresses used before the four ways to hire, still linked from elsewhere.
+  legacyIds?: string[];
   name: string;
   summary: string;
   paras: string[];
@@ -152,8 +154,8 @@ export default function ServicesPage() {
             </p>
             <div className="sv-hero-frame">
               <h1 className="sv-hero-title" data-sv-title>
-                <span>AI strategy,</span>
-                <span>systems and</span>
+                <span>AI strategy,</span>{" "}
+                <span>systems and</span>{" "}
                 <span>
                   <LastWordMark text="implementation" />
                 </span>
@@ -172,9 +174,9 @@ export default function ServicesPage() {
 
         <section className="border-t border-ink/10 pt-10 pb-14 md:pt-12 md:pb-20">
           <div className="editorial-container">
-            <p className="eyebrow" data-sv-reveal>
+            <h2 className="eyebrow" data-sv-reveal>
               {servicesPage.howWeWork.eyebrow}
-            </p>
+            </h2>
             <div className="mt-5 max-w-3xl space-y-4" data-sv-reveal>
               {servicesPage.howWeWork.paras.map((para) => (
                 <p key={para} className="text-base leading-relaxed text-ink/70 md:text-lg">
@@ -239,6 +241,9 @@ export default function ServicesPage() {
                   className="sv-card mx-auto max-w-5xl scroll-mt-28"
                   data-sv-card
                 >
+                  {offer.legacyIds?.map((legacyId) => (
+                    <span key={legacyId} id={legacyId} className="sv-legacy-anchor" aria-hidden="true" />
+                  ))}
                   <div className="flex items-start justify-between gap-6">
                     <h2 className="text-2xl md:text-3xl">{offer.name}</h2>
                     <Link

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Plus, X } from "lucide-react";
 
@@ -10,11 +9,12 @@ type FaqItem = {
   answer: string;
 };
 
-const faqEase = [0.23, 1, 0.32, 1] as const;
-
+// Every answer is in the HTML from the first byte, closed or open, so search
+// and AI crawlers (which run no JavaScript) read the same answers the FAQ
+// schema declares. Questions are real H3 headings. Opening animates the row
+// height with CSS rather than mounting the answer.
 export function FaqAccordion({ items }: { items: FaqItem[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const shouldReduceMotion = useReducedMotion();
 
   const refreshScrollMeasurements = () => {
     window.requestAnimationFrame(() => ScrollTrigger.refresh());
@@ -26,48 +26,49 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
   return (
     <div className="faq-columns">
       {columns.map((columnItems, columnIndex) => (
-    <div className="faq-list" key={columnIndex}>
-      {columnItems.map((item, itemIndex) => {
-        const index = columnIndex * half + itemIndex;
-        const isOpen = activeIndex === index;
-        const panelId = `faq-answer-${index}`;
+        <div className="faq-list" key={columnIndex}>
+          {columnItems.map((item, itemIndex) => {
+            const index = columnIndex * half + itemIndex;
+            const isOpen = activeIndex === index;
+            const panelId = `faq-answer-${index}`;
+            const buttonId = `faq-question-${index}`;
 
-        return (
-          <div key={item.question} className={`faq-row ${isOpen ? "is-open" : ""}`} data-reveal>
-            <button
-              type="button"
-              className="faq-question-button"
-              aria-expanded={isOpen}
-              aria-controls={panelId}
-              onClick={() => setActiveIndex(isOpen ? null : index)}
-            >
-              <span>{item.question}</span>
-              <span className="faq-toggle-icon" aria-hidden="true">
-                {isOpen ? <X /> : <Plus />}
-              </span>
-            </button>
-            <AnimatePresence initial={false}>
-              {isOpen ? (
-                <motion.div
+            return (
+              <div key={item.question} className={`faq-row ${isOpen ? "is-open" : ""}`} data-reveal>
+                <h3 className="faq-question-heading">
+                  <button
+                    type="button"
+                    id={buttonId}
+                    className="faq-question-button"
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    onClick={() => setActiveIndex(isOpen ? null : index)}
+                  >
+                    <span>{item.question}</span>
+                    <span className="faq-toggle-icon" aria-hidden="true">
+                      {isOpen ? <X /> : <Plus />}
+                    </span>
+                  </button>
+                </h3>
+                <div
                   id={panelId}
-                  className="faq-answer-panel"
-                  initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                  transition={{
-                    height: { duration: shouldReduceMotion ? 0 : 0.32, ease: faqEase },
-                    opacity: { duration: shouldReduceMotion ? 0 : 0.18, ease: faqEase }
+                  role="region"
+                  aria-labelledby={buttonId}
+                  className="faq-answer-wrap"
+                  aria-hidden={!isOpen}
+                  inert={!isOpen}
+                  onTransitionEnd={(event) => {
+                    if (event.propertyName === "grid-template-rows") refreshScrollMeasurements();
                   }}
-                  onAnimationComplete={refreshScrollMeasurements}
                 >
-                  <p>{item.answer}</p>
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-          </div>
-        );
-      })}
-    </div>
+                  <div className="faq-answer-panel">
+                    <p>{item.answer}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       ))}
     </div>
   );
