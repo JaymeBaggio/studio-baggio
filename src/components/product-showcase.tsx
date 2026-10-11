@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { workItems } from "@/content/work";
 
-const productOrder = ["calm-authority", "business-tracker", "fire-source", "last30days"];
+const productOrder = ["last30days", "calm-authority", "business-tracker", "fire-source"];
 const products = productOrder
   .map((slug) => workItems.find((item) => item.slug === slug))
   .filter((item): item is (typeof workItems)[number] => Boolean(item));
