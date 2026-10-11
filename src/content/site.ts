@@ -1076,6 +1076,21 @@ export const featuredPressStrip = {
   ]
 };
 
+// The four publications, for strips not limited to the research coverage.
+export const allFeaturedPress = {
+  label: "Featured in",
+  logos: [
+    { name: "FT Adviser", src: "/assets/logos/ft-adviser.png", width: 61 },
+    { name: "Money Marketing", src: "/assets/logos/money-marketing.png", width: 53 },
+    {
+      name: "Professional Adviser",
+      src: "/assets/logos/professional-adviser-print.png",
+      width: 193
+    },
+    { name: "The Lawyer", src: "/assets/logos/the-lawyer.svg", width: 145 }
+  ]
+};
+
 export const aiSearchFeaturedPress = {
   label: "Our AI search research featured in",
   logos: [
@@ -1205,7 +1220,7 @@ export const servicesPage = {
         highlight: "£5.3 million in assets under management and £103,400 in first-year revenue"
       },
       exampleFirst: true,
-      featuredIn: aiSearchFeaturedPress
+      featuredIn: allFeaturedPress
     },
     {
       id: "ai-operating-system-audit",
