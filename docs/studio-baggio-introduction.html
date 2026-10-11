@@ -173,6 +173,20 @@
     .doc{ margin:0; padding:0 22mm; max-width:none; width:auto; box-shadow:none; }
     section{ break-inside:avoid; }
   }
+
+  /* 11 Oct: match the HNW findings PDF. Sentence-case section headings with a
+     short blue underline, grey labels and bullets, blue only on numbers,
+     figures and links. No thin blue rules. */
+  h2{ font-size:20px; font-weight:400; letter-spacing:0; text-transform:none; color:var(--ink); line-height:1.25; margin-bottom:12px; break-after:avoid; }
+  h2::after{ content:""; display:block; width:48px; height:3px; background:var(--blue); margin-top:10px; }
+  .example h2{ font-size:9.5px; letter-spacing:0.24em; text-transform:uppercase; color:var(--muted); line-height:1.4; margin-bottom:8px; }
+  .example h2::after{ content:none; display:none; }
+  li::before{ background:#9a9a9a; }
+  .step-card .step-rule{ display:none; }
+  .step-card .step-t{ margin-bottom:8px; }
+  .accent{ width:48px; height:3px; margin:12px 0 7mm; }
+  .page1 .accent{ margin:10px 0 5mm; }
+  .sub-label{ font-size:9.5px; letter-spacing:0.24em; text-transform:uppercase; color:var(--muted); line-height:1.4; margin-bottom:8px; }
 </style>
 </head>
 <body>
@@ -187,7 +201,7 @@
     </div>
 
     <h1>AI strategy, systems and implementation</h1>
-    <hr class="top-rule" />
+    <div class="accent"></div>
 
     <section>
       <p>Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it.</p>
@@ -270,8 +284,8 @@
       </section>
 
       <section>
-        <p class="step-title" style="margin-bottom:10px;">AI Search Strategy &amp; Implementation Plan</p>
-        <h2>What the plan covers</h2>
+        <h2>AI Search Strategy &amp; Implementation Plan</h2>
+        <p class="sub-label">What the plan covers</p>
         <ul class="cols">
           <li>High-value client searches and questions.</li>
           <li>Current Google and AI-search visibility.</li>
@@ -283,7 +297,7 @@
       </section>
 
       <section>
-        <h2>What the plan tells you</h2>
+        <p class="sub-label">What the plan tells you</p>
         <ul class="cols">
           <li>Your highest-value buyer questions.</li>
           <li>Where you appear today.</li>
