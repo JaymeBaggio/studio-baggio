@@ -5,7 +5,7 @@ import { FrontDoorOfferInline } from "@/components/front-door-offer";
 import { FaqSchema } from "@/components/faq-schema";
 import { OpeningOutcomeStack } from "@/components/opening-outcome-stack";
 import { PageReveals } from "@/components/page-reveals";
-import { ProofTiles } from "@/components/proof-tiles";
+import { ProductShowcase } from "@/components/product-showcase";
 import { hero, home, introDownload, metadata as siteMetadata, primaryCta } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
@@ -300,7 +300,7 @@ export default function HomePage() {
             {home.proof.subline ? (
               <p className="proof-section-subline" data-reveal>{home.proof.subline}</p>
             ) : null}
-            <ProofTiles />
+            <ProductShowcase />
           </div>
         </section>
 
