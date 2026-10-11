@@ -217,7 +217,7 @@ export const workItems: WorkItem[] = [
           logo: { src: "/assets/logos/the-lawyer.svg", width: 581, height: 64 }
         }
       ],
-      ctas: [{ label: "Visit live site →", href: "https://www.calmauthority.ai", external: true }]
+      ctas: [{ label: "Visit live site", href: "https://www.calmauthority.ai", external: true }]
     }
   },
   {
@@ -381,7 +381,7 @@ export const workItems: WorkItem[] = [
           ],
         }
       ],
-      ctas: [{ label: "Visit live site →", href: "https://last30days.app", external: true }]
+      ctas: [{ label: "Visit live site", href: "https://last30days.app", external: true }]
     }
   },
   {
