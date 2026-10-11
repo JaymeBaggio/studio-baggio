@@ -13,16 +13,22 @@ type FaqItem = {
 const faqEase = [0.23, 1, 0.32, 1] as const;
 
 export function FaqAccordion({ items }: { items: FaqItem[] }) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
   const refreshScrollMeasurements = () => {
     window.requestAnimationFrame(() => ScrollTrigger.refresh());
   };
 
+  const half = Math.ceil(items.length / 2);
+  const columns = [items.slice(0, half), items.slice(half)];
+
   return (
-    <div className="faq-list">
-      {items.map((item, index) => {
+    <div className="faq-columns">
+      {columns.map((columnItems, columnIndex) => (
+    <div className="faq-list" key={columnIndex}>
+      {columnItems.map((item, itemIndex) => {
+        const index = columnIndex * half + itemIndex;
         const isOpen = activeIndex === index;
         const panelId = `faq-answer-${index}`;
 
@@ -61,6 +67,8 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
           </div>
         );
       })}
+    </div>
+      ))}
     </div>
   );
 }

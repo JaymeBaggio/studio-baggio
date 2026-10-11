@@ -10,8 +10,7 @@ import {
   researchFranchise
 } from "@/content/research";
 import { pageMetadata } from "@/lib/metadata";
-import { aiSearchFeaturedPress, researchWhyItMatters } from "@/content/site";
-import { ClientStatList } from "@/components/client-stat-list";
+import { aiSearchFeaturedPress, clientStats, researchCommission, researchWhyNow } from "@/content/site";
 import { ButtonLink } from "@/components/ui/button";
 import { LastWordMark } from "@/components/last-word-mark";
 
@@ -40,6 +39,29 @@ function formatDate(date: string) {
 }
 
 export default function ResearchIndexPage() {
+  const editions = [
+    {
+      href: "/research/uk-sports-law-2026",
+      title: "UK Sports Law in AI Search 2026",
+      summary:
+        "Across 810 answers, the study tracked how ChatGPT, Gemini and Perplexity recommended firms and individual lawyers across nine areas of sports law.",
+      date: "2026-08-16"
+    },
+    {
+      href: "/research/uk-law-2026",
+      title: "UK Law Firms in AI Search 2026",
+      summary:
+        "The first edition of the Studio Baggio UK Law AI Search Benchmark: 90 high intent buyer questions and 1,485 AI answers mapping how ChatGPT, Gemini and Perplexity recommend firms across 15 areas of UK law, searchable by firm and practice area.",
+      date: "2026-08-15"
+    },
+    ...researchEditions.map((edition) => ({
+      href: getResearchEditionPath(edition),
+      title: edition.listingTitle ?? edition.title,
+      summary: edition.summary,
+      date: edition.preparedForReview
+    }))
+  ];
+
   return (
     <div className={`${styles.researchIndex} home-4b research-page research-index`} data-research-page>
       <header className="research-index-masthead">
@@ -66,100 +88,55 @@ export default function ResearchIndexPage() {
             </div>
           </div>
 
-          <section className="mt-14 border-t border-ink/10 pt-10" aria-labelledby="research-why-title">
-            <p className="eyebrow" id="research-why-title">
-              {researchWhyItMatters.eyebrow}
-            </p>
-            <div className="mt-6 grid gap-10 lg:grid-cols-3">
-              {researchWhyItMatters.groups.map((group) => (
-                <div key={group.title}>
-                  <h2 className="text-xl leading-snug md:text-2xl">{group.title}</h2>
-                  <ClientStatList ids={group.stats} columns={1} />
-                </div>
+          <div className={styles.editions} aria-labelledby="research-editions-title">
+            <p className="eyebrow" id="research-editions-title">Latest editions</p>
+            <ul className={styles.editionGrid}>
+              {editions.map((edition) => (
+                <li key={edition.href} className={styles.editionCard}>
+                  <div className={styles.editionBar} aria-hidden="true" />
+                  <div className={styles.editionBody}>
+                    <h2 className={styles.editionTitle}>
+                      <Link href={edition.href}>{edition.title}</Link>
+                    </h2>
+                    <p className={styles.editionSummary}>{edition.summary}</p>
+                    <p className={styles.editionDate}>Research date {formatDate(edition.date)}</p>
+                    <ResearchActionLink href={edition.href} className={styles.editionLink}>
+                      View results
+                      <ArrowRight aria-hidden="true" />
+                    </ResearchActionLink>
+                  </div>
+                </li>
               ))}
+            </ul>
+          </div>
+
+          <section className={styles.whyNow} aria-labelledby="research-why-now">
+            <div className={styles.whyHead}>
+              <h2 id="research-why-now" className={styles.whyLabel}>
+                {researchWhyNow.label}
+              </h2>
+              <p className={styles.whyStatement}>{researchWhyNow.statement}</p>
             </div>
-            <div className="mt-10 flex flex-col gap-4 border-t border-ink/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h2 className="text-xl md:text-2xl">{researchWhyItMatters.commission.title}</h2>
-                <p className="mt-1 text-base leading-relaxed text-ink/70">
-                  {researchWhyItMatters.commission.body}
-                </p>
-              </div>
-              <ButtonLink href={researchWhyItMatters.commission.cta.href}>
-                {researchWhyItMatters.commission.cta.label}
-              </ButtonLink>
-            </div>
+            <ul className={styles.whyGrid}>
+              {researchWhyNow.stats.map((id) => {
+                const stat = clientStats[id];
+                return (
+                  <li key={id}>
+                    <p className={styles.whyText}>
+                      <strong>{stat.figure}</strong> {stat.text}
+                    </p>
+                    <p className={styles.whySource}>{stat.source}</p>
+                  </li>
+                );
+              })}
+            </ul>
           </section>
 
-          <div className="research-index-editions" aria-labelledby="research-editions-title">
-            <p className="eyebrow" id="research-editions-title">Latest editions</p>
-            <ol className="research-edition-list">
-              <li className="research-edition-card">
-                <div>
-                  <h3>
-                    <Link href="/research/uk-sports-law-2026">UK Sports Law in AI Search 2026</Link>
-                  </h3>
-                  <p>
-                    Across 810 answers, the study tracked how ChatGPT, Gemini and Perplexity
-                    recommended firms and individual lawyers across nine areas of sports law.
-                  </p>
-                </div>
-                <dl>
-                  <div>
-                    <dt>Research date</dt>
-                    <dd>{formatDate("2026-08-16")}</dd>
-                  </div>
-                </dl>
-                <ResearchActionLink href="/research/uk-sports-law-2026">
-                  View results
-                  <ArrowRight aria-hidden="true" />
-                </ResearchActionLink>
-              </li>
-              <li className="research-edition-card">
-                <div>
-                  <h3>
-                    <Link href="/research/uk-law-2026">UK Law Firms in AI Search 2026</Link>
-                  </h3>
-                  <p>
-                    The first edition of the Studio Baggio UK Law AI Search Benchmark: 90 high intent
-                    buyer questions and 1,485 AI answers mapping how ChatGPT, Gemini and Perplexity
-                    recommend firms across 15 areas of UK law, searchable by firm and practice area.
-                  </p>
-                </div>
-                <dl>
-                  <div>
-                    <dt>Research date</dt>
-                    <dd>{formatDate("2026-08-15")}</dd>
-                  </div>
-                </dl>
-                <ResearchActionLink href="/research/uk-law-2026">
-                  View results
-                  <ArrowRight aria-hidden="true" />
-                </ResearchActionLink>
-              </li>
-            {researchEditions.map((edition) => (
-              <li key={edition.slug} className="research-edition-card">
-                <div>
-                  <h3>
-                    <Link href={getResearchEditionPath(edition)}>
-                      {edition.listingTitle ?? edition.title}
-                    </Link>
-                  </h3>
-                  <p>{edition.summary}</p>
-                </div>
-                <dl>
-                  <div>
-                    <dt>Research date</dt>
-                    <dd>{formatDate(edition.preparedForReview)}</dd>
-                  </div>
-                </dl>
-                <ResearchActionLink href={getResearchEditionPath(edition)}>
-                  View results
-                  <ArrowRight aria-hidden="true" />
-                </ResearchActionLink>
-              </li>
-            ))}
-            </ol>
+          <div className={styles.commission}>
+            <p>
+              <strong>{researchCommission.title}.</strong> {researchCommission.body}
+            </p>
+            <ButtonLink href={researchCommission.cta.href}>{researchCommission.cta.label}</ButtonLink>
           </div>
         </div>
       </header>

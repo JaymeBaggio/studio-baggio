@@ -215,8 +215,8 @@ export const home = {
     ]
   },
   faq: {
-    eyebrow: "FREQUENTLY ASKED QUESTIONS",
-    title: "",
+    eyebrow: "",
+    title: "Frequently asked questions.",
     items: [
       {
         question: "Is this AI training?",
@@ -1057,71 +1057,53 @@ export const frontDoorOffer = {
 export const clientStats = {
   hsbc82: {
     figure: "82%",
-    text: "of HNW investors use AI for finance and investment tasks.",
-    source: "HSBC, 2026",
-    href: "https://www.hsbc.com/-/files/hsbc/media/media-release/2026/260624-the-ai-trust-threshold.pdf"
+    text: "of HNW individuals already use AI to research their options before taking advice.",
+    source: "HSBC Global Affluent Report, 2026"
+  },
+  ficommReferral: {
+    figure: "1 in 2",
+    text: "people with $5m+ found their current adviser without a referral.",
+    source: "Ficomm / Absolute Engagement, 2026"
   },
   bny83: {
     figure: "83%",
     text: "of ultra-wealthy investors ($10m+) use AI-driven tools to inform their financial choices.",
-    source: "BNY Wealth, 2026",
-    href: "https://www.bny.com/assets/wealth/pdf-library/reports/the-intelligent-investor-insights-on-ai-forward-investing.pdf"
-  },
-  bny79: {
-    figure: "79%",
-    text: "of ultra-wealthy investors ($10m+) say firms that use AI are more attractive to them as clients.",
-    source: "BNY Wealth, The Intelligent Investor, 2026",
-    href: "https://www.bny.com/assets/wealth/pdf-library/reports/the-intelligent-investor-insights-on-ai-forward-investing.pdf"
-  },
-  ficommReferral: {
-    figure: "1 in 2",
-    text: "investors with $5m+ found their current financial adviser without a referral.",
-    source: "Ficomm / Absolute Engagement, 2026",
-    href: "https://info.ficommpartners.com/hubfs/2026/Ficomm_The-New-Growth-Equation_2026.pdf"
+    source: "BNY Wealth, The Intelligent Investor, 2026"
   },
   wealthtender96: {
     figure: "96%",
-    text: "of high-earning US households planning to hire an adviser intend to research them online, even after a referral.",
-    source: "Wealthtender, 2025",
-    href: "https://wealthtender.com/insights/how-americans-find-and-hire-financial-advisors/"
-  },
-  ficommAi25: {
-    figure: "1 in 4",
-    text: "investors under 45 used an AI tool to help find their current financial adviser.",
-    source: "Ficomm, 2026",
-    href: "https://info.ficommpartners.com/hubfs/2026/Ficomm_The-New-Growth-Equation_2026.pdf"
+    text: "of high-earning households hiring an adviser will research them online first, even after a referral.",
+    source: "Wealthtender, 2025"
   },
   magenta66: {
     figure: "66%",
     text: "of UK senior decision-makers use AI tools to find and assess suppliers.",
-    source: "Magenta Associates, 2025",
-    href: "https://www.magentaassociates.co/wp-content/uploads/2025/11/How-AI-is-shaping-the-B2B-buyer-journey_Magenta-Associates.pdf"
+    source: "Magenta Associates, 2025"
+  },
+  ficommAi25: {
+    figure: "1 in 4",
+    text: "investors under 45 worth $5m+ used an AI tool to find their current adviser.",
+    source: "Ficomm, The New Growth Equation, 2026"
+  },
+  bny79: {
+    figure: "79%",
+    text: "of ultra-wealthy investors ($10m+) say firms that use AI are more attractive to them as clients.",
+    source: "BNY Wealth, The Intelligent Investor, 2026"
   }
 };
 
 export type ClientStatId = keyof typeof clientStats;
 
-export const researchWhyItMatters = {
-  eyebrow: "Why it matters",
-  groups: [
-    {
-      title: "Wealthy clients already use AI to decide",
-      stats: ["hsbc82", "bny83", "bny79"] as ClientStatId[]
-    },
-    {
-      title: "Referrals are no longer the whole story",
-      stats: ["ficommReferral", "wealthtender96"] as ClientStatId[]
-    },
-    {
-      title: "Buyers use AI to find firms",
-      stats: ["ficommAi25", "magenta66"] as ClientStatId[]
-    }
-  ],
-  commission: {
-    title: "Commission a study",
-    body: "Bring us the question you need answered and we will research it for you.",
-    cta: { label: "Enquire now", href: "/contact" }
-  }
+export const researchWhyNow = {
+  label: "Why this matters now",
+  statement: "AI is becoming part of how wealthy clients choose who to trust for advice.",
+  stats: ["hsbc82", "ficommReferral", "bny83", "wealthtender96", "magenta66", "ficommAi25"] as ClientStatId[]
+};
+
+export const researchCommission = {
+  title: "Commission a study",
+  body: "Bring us the question you need answered and we will research it for you.",
+  cta: { label: "Enquire now", href: "/contact" }
 };
 
 export const servicesPage = {

@@ -316,7 +316,10 @@ export default function HomePage() {
 
         <section className="home-section faq-section" data-home-section data-motion-section="faq">
           <div className="editorial-container faq-section-frame">
-            <p className="eyebrow" data-reveal data-motion="label">{home.faq.eyebrow}</p>
+            {home.faq.eyebrow ? (
+              <p className="eyebrow" data-reveal data-motion="label">{home.faq.eyebrow}</p>
+            ) : null}
+            {home.faq.title ? <h2 className="faq-section-title">{home.faq.title}</h2> : null}
             <FaqAccordion items={home.faq.items} />
           </div>
         </section>

@@ -7,15 +7,9 @@ export function ClientStatList({ ids, columns = 2 }: { ids: ClientStatId[]; colu
         const stat = clientStats[id];
         return (
           <li key={id} className="border-t border-ink/15 pt-3 text-base leading-relaxed text-ink/75">
-            <strong className="font-semibold text-ink">{stat.figure}</strong> {stat.text}{" "}
-            <a
-              className="focus-ring text-xs text-ink/45 underline underline-offset-2 transition-colors hover:text-ink"
-              href={stat.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {stat.source}
-            </a>
+            <strong className="font-semibold text-[color:var(--sb-accent-blue)]">{stat.figure}</strong>{" "}
+            {stat.text}
+            <span className="mt-1 block text-sm text-ink/45">{stat.source}</span>
           </li>
         );
       })}

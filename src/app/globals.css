@@ -24772,6 +24772,7 @@ body:has(.home-4b.ab-page) footer { display: none; }
 
 /* Section titles carry the short blue rule used on /services offer titles. */
 .home-4b .problem-clarifier-title::after,
+.home-4b .faq-section-title::after,
 .home-4b .commercial-sprint-title::after,
 .home-4b .proof-section-title::after,
 .home-4b .fit-section-title::after {
@@ -24945,5 +24946,75 @@ body:has(.home-4b.ab-page) footer { display: none; }
 
 .services-page .value-map-section {
   border-top: 1px solid rgba(20, 20, 20, 0.1);
+}
+
+/* FAQ: two tight columns, sentence-case questions. */
+.home-4b .faq-section-title {
+  font-size: clamp(34px, 3.15vw, 50px);
+  line-height: 1.08;
+  font-weight: var(--sb-title-weight);
+  color: var(--sb-ink);
+}
+
+.home-4b .faq-section {
+  padding-block: clamp(56px, 5vw, 84px);
+}
+
+.home-4b .faq-columns {
+  width: min(100%, var(--sb-wide));
+  margin-top: clamp(26px, 2.8vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(32px, 4vw, 64px);
+  align-items: start;
+}
+
+.home-4b .faq-columns .faq-list {
+  width: auto;
+  margin-top: 0;
+  border-top: 1px solid var(--sb-rule);
+}
+
+.home-4b .faq-columns .faq-question-button {
+  min-height: 0;
+  padding: 16px 0;
+  gap: 16px;
+}
+
+.home-4b .faq-columns .faq-question-button > span:first-child {
+  font-size: 17px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+  color: var(--sb-ink);
+  transition: color 160ms ease;
+}
+
+.home-4b .faq-columns .faq-question-button:hover > span:first-child,
+.home-4b .faq-columns .faq-row.is-open .faq-question-button > span:first-child {
+  color: var(--sb-accent-blue);
+}
+
+.home-4b .faq-columns .faq-answer-panel p {
+  max-width: none;
+  padding: 0 28px 18px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--sb-body);
+}
+
+@media (max-width: 767px) {
+  .home-4b .faq-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-4b .faq-columns .faq-list + .faq-list {
+    border-top: 0;
+  }
+
+  .home-4b .faq-columns .faq-question-button > span:first-child {
+    font-size: 16px;
+  }
 }
 
