@@ -54,6 +54,10 @@
   p{ font-size:15px; line-height:1.6; color:var(--body); max-width:172mm; }
   p + p{ margin-top:var(--para-gap); }
   .hl{ color:var(--blue); font-weight:700; }
+  p, li{ text-wrap:pretty; }
+  .page-foot{ margin-top:auto; margin-bottom:6mm; padding-top:5mm; border-top:1px solid var(--hairline); }
+  .page-foot .press{ margin-top:0; }
+  .page-foot footer{ margin-top:5mm; }
   ul.resources{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; column-gap:34px; row-gap:0; max-width:172mm; }
   ul.resources li{ padding:7px 0 8px; border-top:1px solid var(--hairline); margin:0; }
   ul.resources a{ display:block; color:var(--ink); font-weight:700; text-decoration:none; }
@@ -94,7 +98,13 @@
   .press{ margin-top:2mm; display:flex; flex-wrap:wrap; align-items:center; gap:8px 22px; }
   .press-label{ flex-basis:100%; font-size:9.5px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); }
   .press a{ display:inline-flex; align-items:center; text-decoration:none; }
-  .press img{ height:18px; width:auto; display:block; }
+  .press img{ height:18px; width:auto; display:block; mix-blend-mode:multiply; }
+  /* Optical balance: the FT masthead and Money Marketing are stacked on two lines,
+     the other two are single-line wordmarks, so each logo gets its own height. */
+  .press img[alt="FT Adviser"]{ height:30px; }
+  .press img[alt="Money Marketing"]{ height:27px; }
+  .press img[alt="Professional Adviser"]{ height:15px; }
+  .press img[alt="The Lawyer"]{ height:14px; }
 
   .page{ margin-top:var(--part-gap); }
   .page .top{ margin-bottom:0; }
@@ -428,18 +438,17 @@
         <p>Studio Baggio&rsquo;s studies of how AI recommends UK law firms and financial advisers have been covered by <span class="hl">The Lawyer, FT Adviser and Professional Adviser</span>.</p>
       </section>
 
-      <section>
-        <div class="press">
+        <div class="page-foot"><div class="press">
           <span class="press-label">Our AI search research featured in</span>
           <img src="../public/assets/logos/financial-times.png" alt="FT Adviser" />
           <img src="../public/assets/logos/professional-adviser-print.png" alt="Professional Adviser" />
           <img src="../public/assets/logos/the-lawyer.svg" alt="The Lawyer" />
-        </div>
-      </section>
+        </div></div>
+
     </div>
 
     <!-- PAGE 6: what clients say + next step -->
-    <div class="page page-break pageflex roomy">
+    <div class="page page-break pageflex roomy-3">
       <div class="top">
         <div class="eyebrow">Services</div>
         <div class="wordmark">STUDIO BAGGIO<span class="sb-mark"></span></div>
@@ -468,6 +477,7 @@
         <p class="next-cta"><a href="mailto:jayme@studiobaggio.ai?subject=Booking%20a%20conversation%20with%20Studio%20Baggio">Book a conversation &rarr;</a></p>
       </section>
 
+      <div class="page-foot">
       <div class="press">
         <span class="press-label">Featured in</span>
         <a href="https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d"><img src="../public/assets/logos/financial-times.png" alt="FT Adviser" /></a>
@@ -477,20 +487,14 @@
       </div>
 
       <footer>
-        <hr class="rule" />
         <div class="sig">
           <div>
             <div class="sig-name">Jayme Baggio</div>
             <div class="sig-role">Founder, Studio Baggio</div>
-            <div class="sig-mark">STUDIO BAGGIO<span class="sb-mark"></span></div>
-          </div>
-          <div class="sig-contact">
-            <a href="https://www.studiobaggio.ai/">STUDIOBAGGIO.AI</a>
-            <span class="sep">&nbsp;/&nbsp;</span>
-            <a href="mailto:jayme@studiobaggio.ai">JAYME@STUDIOBAGGIO.AI</a>
           </div>
         </div>
       </footer>
+      </div>
     </div>
 
   </div>
