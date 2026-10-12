@@ -1230,7 +1230,7 @@ export const servicesPage = {
       showExampleOnHome: true,
       homeExample:
         "For a London creative agency, a company-wide system gave a non-technical team the tools to use AI effectively from day one, saving an estimated 10 to 15 hours a week.",
-      stats: { label: "How clients use AI now", ids: ["hsbc82", "bny83"] as ClientStatId[] },
+      stats: { label: "How clients use AI now", ids: ["hsbc82", "bny79"] as ClientStatId[] },
       paras: [
         "For businesses that want AI built around their strategy and set up so the whole team can win from the outset.",
         "Built on your existing infrastructure, around your teams, roles, knowledge and ways of working."
