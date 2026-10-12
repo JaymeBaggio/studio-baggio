@@ -1150,7 +1150,7 @@ export const clientStats = {
   },
   ficommAi25: {
     figure: "1 in 4",
-    text: "advised investors under 45 with $500k+ used an AI tool to help find their current adviser.",
+    text: "investors under 45 worth $5m+ used an AI tool to find their current adviser.",
     source: "Ficomm, The New Growth Equation, 2026"
   },
   bny79: {
