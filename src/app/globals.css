@@ -18069,6 +18069,13 @@ body:has(.home-4b.contact-page) footer {
   border-bottom: 1px solid var(--report-rule);
 }
 
+/* A line under every row except the last, however many stats the section holds. */
+@media (min-width: 821px) {
+  .fa3-report .fa3-context--compact .fa3-context__stats article:not(:nth-last-child(-n + 2)) {
+    border-bottom: 1px solid var(--report-rule);
+  }
+}
+
 .fa3-report .fa3-question-groups {
   border: 0;
   border-top: 1px solid var(--report-rule);
