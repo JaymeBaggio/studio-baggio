@@ -1,4 +1,4 @@
-import { seoSearchPlanName } from "@/content/site";
+import { clientStats, seoSearchPlanName, type ClientStatId } from "@/content/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -19,6 +19,9 @@ import {
 import { loadFa3ReportView } from "@/lib/fa3-report-data";
 import { siteUrl } from "@/lib/utils";
 import { LastWordMark } from "@/components/last-word-mark";
+
+// How wealthy clients now find and assess advisers, added to the report's context section.
+const adviceContextStatIds: ClientStatId[] = ["hsbc82", "ficommReferral", "wealthtender96", "ficommAi25"];
 
 type ResearchEditionPageProps = {
   params: Promise<{ edition: string }>;
@@ -379,6 +382,13 @@ export default async function ResearchEditionPage({ params }: ResearchEditionPag
               </p>
               <cite>Adobe Digital Insights, U.S. retail data</cite>
             </article>
+            {adviceContextStatIds.map((id) => (
+              <article key={id}>
+                <strong>{clientStats[id].figure}</strong>
+                <p>{clientStats[id].text}</p>
+                <cite>{clientStats[id].source}</cite>
+              </article>
+            ))}
           </div>
         </div>
       </section>
