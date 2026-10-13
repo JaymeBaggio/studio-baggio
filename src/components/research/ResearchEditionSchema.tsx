@@ -91,8 +91,33 @@ export function ResearchEditionSchema({ edition }: ResearchEditionSchemaProps) {
       "AI recommendations"
     ],
     measurementTechnique:
-      "Fifty buyer questions were run three times on OpenAI, Gemini and Perplexity with grounded web search enabled, producing 450 answers. Firms named or cited in the answers were evaluated against a frozen 150-firm UK financial-advice market panel.",
+      "Fifty buyer questions were run three times on OpenAI, Gemini and Perplexity with grounded web search enabled, producing 450 answers. Firms named or cited in the answers were evaluated against a frozen 150-firm UK financial-advice market panel. The national rank table uses the 180 answers to 20 firm-selection questions across four national advice areas; the five matched local selection questions are reported separately. Overall rank preserves the published national shortlist-share score: each answer divides a total share of one equally among its verified candidates, with zero share when no candidate is returned, averaged equally across repetitions, engines, questions and the four national advice areas. Area rank orders candidates by the number of answers in which they appeared across 45 answers to five questions. Buyer-need rank uses nine answers to one selected question. For equal appearance counts, the order is distinct questions reached descending, published overall score descending, then firm name using the table's case-insensitive numeric English collator. Each candidate is counted once per answer. Ranks are calculated before firm search filters the visible list; candidates absent from the published national overall list have no overall rank.",
     variableMeasured: [
+      {
+        "@type": "PropertyValue",
+        name: "Overall rank",
+        description: "Fixed position in the published national shortlist-share score across four advice areas and 180 firm-selection answers; excludes matched local results."
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Area rank",
+        description: "Fixed position among all candidates appearing in the selected advice area, ordered by answer appearances across 45 answers to five questions, before firm search."
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Buyer-need rank",
+        description: "Fixed position among all candidates appearing for the selected individual buyer need, ordered by answer appearances across nine answers to one question, before firm search."
+      },
+      {
+        "@type": "PropertyValue",
+        name: "AI answers",
+        description: "Number of selected firm-selection answers containing the candidate: out of 45 for one advice area or nine for one individual buyer need."
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Buyer questions",
+        description: "Number of distinct selected firm-selection questions for which the candidate appeared: out of five for one advice area."
+      },
       "financial adviser or firm named per answer",
       "firm website cited per answer",
       "buyer-question breadth",

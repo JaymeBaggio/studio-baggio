@@ -390,17 +390,11 @@ export function Fa3BreadthExplorer({
     0
   );
 
-  const visible = useMemo(() => {
-    const query = search.trim().toLocaleLowerCase("en-GB");
-    const isFiltering = Boolean(query || family !== "all");
-    const source = isFiltering ? searchEntities : entities;
-    const filtered = source.filter((entity) => {
-      const matchesSearch = !query || entity.canonical_name.toLocaleLowerCase("en-GB").includes(query);
-      const matchesFamily = family === "all" || selectionStats.has(entity.entity_id);
-      return matchesSearch && matchesFamily;
-    });
-    if (family !== "all") {
-      return filtered.sort((left, right) => {
+  // Rank the full selected scope before search narrows the displayed candidates.
+  const rankedSelectionEntities = useMemo(() => (
+    searchEntities
+      .filter((entity) => selectionStats.has(entity.entity_id))
+      .sort((left, right) => {
         const leftStats = selectionStats.get(left.entity_id);
         const rightStats = selectionStats.get(right.entity_id);
         return (
@@ -409,11 +403,23 @@ export function Fa3BreadthExplorer({
           (right.score ?? 0) - (left.score ?? 0) ||
           collator.compare(left.canonical_name, right.canonical_name)
         );
-      });
-    }
-    if (isFiltering) return filtered;
-    return filtered.slice(0, 20);
-  }, [entities, family, search, searchEntities, selectionStats]);
+      })
+  ), [searchEntities, selectionStats]);
+
+  const selectionRankByEntity = useMemo(
+    () => new Map(rankedSelectionEntities.map((entity, index) => [entity.entity_id, index + 1])),
+    [rankedSelectionEntities]
+  );
+
+  const visible = useMemo(() => {
+    const query = search.trim().toLocaleLowerCase("en-GB");
+    const isFiltering = Boolean(query || family !== "all");
+    const source = family !== "all" ? rankedSelectionEntities : isFiltering ? searchEntities : entities;
+    const filtered = source.filter((entity) => (
+      !query || entity.canonical_name.toLocaleLowerCase("en-GB").includes(query)
+    ));
+    return isFiltering ? filtered : filtered.slice(0, 20);
+  }, [entities, family, search, searchEntities, rankedSelectionEntities]);
 
   const occurrencesByEntity = useMemo(() => {
     const result = new Map<string, FirmOccurrence[]>();
@@ -552,7 +558,7 @@ export function Fa3BreadthExplorer({
               </tr>
             </thead>
             <tbody>
-              {visible.map((entity, index) => {
+              {visible.map((entity) => {
                 const stats = selectionStats.get(entity.entity_id);
                 const overallRank = overallRankByEntity.get(entity.entity_id);
                 const entityOccurrences = occurrencesByEntity.get(entity.entity_id) ?? [];
@@ -565,7 +571,7 @@ export function Fa3BreadthExplorer({
                 return (
                   <tr key={entity.entity_id}>
                     <td className="fa3-rank-value">
-                      {family === "all" ? (overallRank ?? "—") : index + 1}
+                      {family === "all" ? (overallRank ?? "—") : (selectionRankByEntity.get(entity.entity_id) ?? "—")}
                     </td>
                     {family !== "all" ? (
                       <td className="fa3-rank-value fa3-rank-value--overall">

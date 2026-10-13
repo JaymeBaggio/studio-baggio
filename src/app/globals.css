@@ -24620,6 +24620,12 @@ body:has(.home-4b.ab-page) footer { display: none; }
   gap: clamp(32px, 4vw, 64px);
 }
 
+@media (max-width: 820px) {
+  .fa3-breadth-section .fa3-section-heading--compact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .law-question-explorer .fa3-section-heading {
   grid-template-columns: minmax(0, 1fr) minmax(380px, 1.05fr);
   align-items: start;
