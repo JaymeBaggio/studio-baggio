@@ -5,7 +5,7 @@ import type { LawEntity, LawLegal500Ranking } from "./law-report-explorers";
 import { LawSelect } from "./law-select";
 import { ResearchDrawer } from "./ResearchDrawer.client";
 
-type SortKey = "rank" | "name" | "tier" | "recommended" | "cited" | "problems" | "areas" | "topArea";
+type SortKey = "overallRank" | "areaRank" | "name" | "tier" | "recommended" | "cited" | "problems" | "areas" | "topArea";
 type TierFilter = "all" | "1" | "2" | "3" | "4+" | "unranked";
 
 const compact = (value: string) => value.toLocaleLowerCase("en-GB").replace(/[^a-z0-9]+/g, "");
@@ -140,9 +140,25 @@ export function LawRankedTable({
         const tiers = tierIndex.get(entity.name);
         const tier = area === "all" ? (tiers ? Math.min(...tiers.values()) : null) : (tiers?.get(area) ?? null);
         const belongsToArea = area === "all" || active.length > 0 || tier !== null;
-        return { entity, appearances: scoped, recommended, cited, problems, areas: areaCounts.size, topArea, topQuestion, tier, website: entity.domains[0] ?? "", belongsToArea };
+        const overallRecommended = appearances.reduce((sum, item) => sum + item.namedAnswers, 0);
+        const overallCited = appearances.reduce((sum, item) => sum + item.citedAnswers, 0);
+        return { entity, overallRecommended, overallCited, appearances: scoped, recommended, cited, problems, areas: areaCounts.size, topArea, topQuestion, tier, website: entity.domains[0] ?? "", belongsToArea };
       });
   }, [searchableEntities, area, namedAnswerOverrides, tierIndex]);
+
+  // Positions come from the full benchmark, before search, tier filters or display sorting.
+  const rankMaps = useMemo(() => {
+    const overall = [...allRows]
+      .filter((row) => row.overallRecommended || row.overallCited)
+      .sort((left, right) => right.overallRecommended - left.overallRecommended || left.entity.name.localeCompare(right.entity.name, "en-GB"));
+    const scoped = [...allRows]
+      .filter((row) => row.belongsToArea && (row.recommended || row.cited))
+      .sort((left, right) => right.recommended - left.recommended || left.entity.name.localeCompare(right.entity.name, "en-GB"));
+    return {
+      overall: new Map(overall.map((row, index) => [row.entity.name, index + 1])),
+      area: new Map(scoped.map((row, index) => [row.entity.name, index + 1]))
+    };
+  }, [allRows]);
 
   const rows = useMemo(() => {
     const term = compact(query);
@@ -152,37 +168,40 @@ export function LawRankedTable({
       if (tierFilter !== "all") return row.tier === Number(tierFilter);
       return true;
     };
-    const value = (row: (typeof allRows)[number]) => {
+    const visible = allRows.filter((row) => (
+      term
+        ? compact([row.entity.name, ...row.entity.aliases, ...row.entity.domains].join(" ")).includes(term)
+        : row.belongsToArea && (row.recommended || row.cited)
+    )).filter(inSelectedTier).map((row) => ({
+      ...row,
+      overallRank: rankMaps.overall.get(row.entity.name) ?? null,
+      areaRank: rankMaps.area.get(row.entity.name) ?? null
+    }));
+    const value = (row: (typeof visible)[number]) => {
       switch (sort) {
+        case "overallRank": return row.overallRank;
+        case "areaRank": return row.areaRank;
         case "name": return row.entity.name;
-        case "tier": return row.tier ?? 99;
+        case "tier": return row.tier;
         case "recommended": return row.recommended;
         case "cited": return row.cited;
         case "problems": return row.problems;
         case "areas": return row.areas;
         case "topArea": return row.topArea;
-        default: return row.recommended;
       }
     };
-    const sortRows = (items: typeof allRows) => [...items].sort((left, right) => {
+    return visible.sort((left, right) => {
       const a = value(left); const b = value(right);
-      let cmp = typeof a === "string" && typeof b === "string" ? a.localeCompare(b, "en-GB") : Number(a) - Number(b);
-      if (cmp === 0) cmp = right.recommended - left.recommended || left.entity.name.localeCompare(right.entity.name, "en-GB");
-      return dir === "asc" ? cmp : -cmp;
+      // Missing ranks/tiers stay last in both directions.
+      if (a === null || b === null) return a === b ? left.entity.name.localeCompare(right.entity.name, "en-GB") : a === null ? 1 : -1;
+      const cmp = typeof a === "string" && typeof b === "string" ? a.localeCompare(b, "en-GB") : Number(a) - Number(b);
+      return (dir === "asc" ? cmp : -cmp) || right.recommended - left.recommended || left.entity.name.localeCompare(right.entity.name, "en-GB");
     });
-
-    const ranked = sortRows(allRows.filter((row) => row.belongsToArea && (row.recommended || row.cited)));
-    const rankByName = new Map(ranked.map((row, index) => [row.entity.name, index + 1]));
-    const visible = term
-      ? allRows.filter((row) => compact([row.entity.name, ...row.entity.aliases, ...row.entity.domains].join(" ")).includes(term))
-      : ranked;
-
-    return sortRows(visible.filter(inSelectedTier)).map((row) => ({ ...row, rank: rankByName.get(row.entity.name) ?? null }));
-  }, [allRows, query, tierFilter, sort, dir]);
+  }, [allRows, rankMaps, query, tierFilter, sort, dir]);
 
   const toggleSort = (key: SortKey) => {
     if (sort === key) setDir(dir === "desc" ? "asc" : "desc");
-    else { setSort(key); setDir(key === "name" || key === "tier" || key === "topArea" ? "asc" : "desc"); }
+    else { setSort(key); setDir(key === "overallRank" || key === "areaRank" || key === "name" || key === "tier" || key === "topArea" ? "asc" : "desc"); }
   };
   const arrow = (key: SortKey) => (sort === key ? (dir === "desc" ? " ↓" : " ↑") : "");
 
@@ -199,7 +218,7 @@ export function LawRankedTable({
           <LawSelect
             label="Practice area"
             value={area}
-            onChange={(next) => { setArea(next); setLimit(50); }}
+            onChange={(next) => { setArea(next); setLimit(50); if (next === "all" && sort === "areaRank") setSort("overallRank"); }}
             options={[{ value: "all", label: "All 15 practice areas" }, ...areas.map((item) => ({ value: item, label: item }))]}
           />
           <LawSelect
@@ -216,6 +235,8 @@ export function LawRankedTable({
             value={sort}
             onChange={(next) => toggleSort(next as SortKey)}
             options={[
+              { value: "overallRank", label: "Overall rank" },
+              ...(area === "all" ? [] : [{ value: "areaRank", label: "Area rank" }]),
               { value: "recommended", label: "Most recommended" }, { value: "cited", label: "Most cited" },
               { value: "problems", label: "Most questions" }, { value: "areas", label: "Most practice areas" },
               { value: "tier", label: "Legal 500 tier" }, { value: "name", label: "Firm A to Z" }
@@ -223,7 +244,7 @@ export function LawRankedTable({
           />
         </div>
         <p className="law-ranked__count">
-          {trackedFirmCount} firms were named or cited across the <strong>{studyAnswerCount.toLocaleString("en-GB")} AI answers analysed</strong>. Recommended = the answer named the firm; cited = the answer linked to the firm&rsquo;s website. Click a column to sort; click a firm for its full record.{" "}
+          {trackedFirmCount} firms were named or cited across the <strong>{studyAnswerCount.toLocaleString("en-GB")} AI answers analysed</strong>. Recommended = the answer named the firm; cited = the answer linked to the firm&rsquo;s website. Ranks use recommendation counts; equal counts are ordered by firm name. Search and sorting preserve each firm’s overall and area ranks. Click a column to sort; click a firm for its full record.{" "}
           <ResearchDrawer
             className="research-drawer-panel--question fa3-method-drawer"
             eyebrow="Answer counts"
@@ -269,15 +290,17 @@ export function LawRankedTable({
             Showing {rows.length} matching {rows.length === 1 ? "firm" : "firms"}{area === "all" ? "" : ` in ${area}`}.
           </p>
         ) : null}
-        <div className="law-report__legal500-table-wrap">
-          <table className="law-report__legal500-table law-ranked__table law-ranked__table--wide">
+        <div className="law-report__legal500-table-wrap" role="region" aria-label="Law firm ranks and recommendations" tabIndex={0}>
+          <table className="law-report__legal500-table law-ranked__table law-ranked__table--wide law-ranked__table--ranks">
             <colgroup>
-              {(area === "all" ? ["22%", "9%", "10%", "8%", "9%", "9%", "12%", "21%"] : ["28%", "10%", "11%", "9%", "10%", "32%"]).map((width, index) => (
+              {(area === "all" ? ["7%", "20%", "8%", "10%", "8%", "8%", "6%", "12%", "21%"] : ["7%", "7%", "23%", "9%", "11%", "9%", "9%", "25%"]).map((width, index) => (
                 <col key={index} style={{ width }} />
               ))}
             </colgroup>
             <thead>
               <tr>
+                <th scope="col" className="law-ranked__rank-heading" aria-sort={sort === "overallRank" ? (dir === "asc" ? "ascending" : "descending") : undefined}><button type="button" onClick={() => toggleSort("overallRank")}><span>Overall</span><span>rank{arrow("overallRank")}</span></button></th>
+                {area !== "all" ? <th scope="col" className="law-ranked__rank-heading" aria-sort={sort === "areaRank" ? (dir === "asc" ? "ascending" : "descending") : undefined}><button type="button" onClick={() => toggleSort("areaRank")}><span>Area</span><span>rank{arrow("areaRank")}</span></button></th> : null}
                 <th scope="col"><button type="button" onClick={() => toggleSort("name")}>Firm{arrow("name")}</button></th>
                 <th scope="col"><button type="button" onClick={() => toggleSort("tier")}>Tier{arrow("tier")}</button></th>
                 <th scope="col" title="Answers naming the firm when AI was asked which firm to instruct"><button type="button" onClick={() => toggleSort("recommended")}>Recommended{arrow("recommended")}</button></th>
@@ -291,25 +314,27 @@ export function LawRankedTable({
             <tbody>
               {rows.slice(0, limit).map((row) => (<Fragment key={row.entity.name}>
                 <tr>
+                  <td data-label="Overall rank" className={`law-ranked__rank-value${area === "all" ? "" : " law-ranked__rank-value--overall"}`}>{row.overallRank ?? "—"}</td>
+                  {area !== "all" ? <td data-label="Area rank" className="law-ranked__rank-value">{row.areaRank ?? "—"}</td> : null}
                   <th scope="row">
                     <ResearchDrawer
                       className="research-drawer-panel--question law-firm-drawer"
                       eyebrow={`${row.tier ? `Legal 500 tier ${row.tier}` : "Unranked in the mapped Legal 500 London tables"}${row.website ? ` · ${row.website}` : ""}`}
                       title={row.entity.name}
                       triggerClassName="law-ranked__firm-trigger"
-                      trigger={<><span className="law-ranked__num">{row.rank ?? "—"}</span>{row.entity.name}</>}
+                      trigger={row.entity.name}
                     >
                       <LawFirmPanel row={row} area={area} />
                     </ResearchDrawer>
                     {row.website ? <small>{row.website}</small> : null}
                   </th>
-                  <td>{row.tier ? `Tier ${row.tier}` : "Unranked"}</td>
-                  <td><strong>{row.recommended}</strong><span>of {area === "all" ? 810 : 54}</span></td>
-                  <td><strong>{row.cited}</strong><span>of {area === "all" ? 810 : 54}</span></td>
-                  <td><strong>{row.problems}</strong><span>of {area === "all" ? 90 : 6}</span></td>
-                  {area === "all" ? <td><strong>{row.areas}</strong><span>of 15</span></td> : null}
-                  {area === "all" ? <td className="law-ranked__text">{row.topArea || "—"}</td> : null}
-                  <td className="law-ranked__text">
+                  <td data-label="Legal 500 tier">{row.tier ? `Tier ${row.tier}` : "Unranked"}</td>
+                  <td data-label="Recommended"><strong>{row.recommended}</strong><span>of {area === "all" ? 810 : 54}</span></td>
+                  <td data-label="Cited"><strong>{row.cited}</strong><span>of {area === "all" ? 810 : 54}</span></td>
+                  <td data-label="Questions"><strong>{row.problems}</strong><span>of {area === "all" ? 90 : 6}</span></td>
+                  {area === "all" ? <td data-label="Areas"><strong>{row.areas}</strong><span>of 15</span></td> : null}
+                  {area === "all" ? <td data-label="Strongest" className="law-ranked__text">{row.topArea || "—"}</td> : null}
+                  <td data-label="Top question" className="law-ranked__text law-ranked__top-question">
                     {row.topQuestion ? <>{row.topQuestion.question}<small>{row.topQuestion.namedAnswers ? `Recommended ${row.topQuestion.namedAnswers}/9` : `Cited ${row.topQuestion.citedAnswers}/9`}</small></> : "No recorded appearances"}
                   </td>
                 </tr>
