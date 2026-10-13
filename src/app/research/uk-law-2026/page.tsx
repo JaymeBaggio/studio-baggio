@@ -111,7 +111,7 @@ const lawReportSchema = {
       "@id": `${siteUrl}${route}#dataset`,
       name: "Studio Baggio UK Law Firms in AI Search 2026",
       description:
-        "A dated benchmark of which UK law firms OpenAI, Gemini and Perplexity recommended across 90 buyer questions, 1,485 answers and 15 practice areas.",
+        "A dated benchmark of which UK law firms ChatGPT, Gemini and Perplexity recommended or cited across 90 buyer questions, 1,485 answers and 15 practice areas, with overall and practice-area ranks based on recommendation counts.",
       url: `${siteUrl}${route}`,
       creator: { "@type": "Organization", name: "Studio Baggio Ltd", url: siteUrl },
       publisher: { "@type": "Organization", name: "Studio Baggio Ltd", url: siteUrl },
@@ -131,11 +131,38 @@ const lawReportSchema = {
         "AI visibility"
       ],
       measurementTechnique:
-        "Studio Baggio tested 90 high-intent buyer questions across 15 UK legal practice areas using OpenAI, Gemini and Perplexity. The study reviewed 1,485 grounded answers and compared recommendations on 75 specific legal problems with Legal 500 rankings.",
+        "Studio Baggio tested 90 high-intent buyer questions across 15 UK legal practice areas using ChatGPT, Gemini and Perplexity. The study reviewed 1,485 grounded answers and compared recommendations on 75 specific legal problems with Legal 500 rankings. Recommendations count the 135 broad answers and 675 answers explicitly asking which firms to instruct. Own-website citations count the same 135 broad answers and 675 original answers to legal problems. Each measure therefore uses 810 answers overall or 54 per practice area; the two answer sets overlap in the 135 broad answers. Each firm counts once per answer for each measure. Overall and area ranks are sequential positions among firms recommended or cited in the relevant scope, ordered by recommendations descending, then firm name alphabetically for equal counts. Ranks are calculated before firm search, Legal 500 tier filtering, display sorting or pagination. Firms with no recorded recommendation or citation in a scope have no rank in that scope.",
       variableMeasured: [
-        "law firm named per answer",
-        "source link supplied per answer",
-        "question breadth",
+        {
+          "@type": "PropertyValue",
+          name: "Overall rank",
+          description: "The firm's fixed position across all 15 practice areas, ranked by recommendation counts across 810 selection answers."
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Area rank",
+          description: "The firm's position within the selected practice area, ranked by recommendation counts across 54 selection answers."
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Recommended",
+          description: "Number of AI answers naming the firm when asked which firm to instruct: out of 810 overall or 54 in one practice area."
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Cited",
+          description: "Number of AI answers linking to the firm's own website: out of 810 overall or 54 in one practice area."
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Questions",
+          description: "Number of distinct buyer questions for which the firm was recommended or cited: out of 90 overall or six in one practice area."
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Areas",
+          description: "Number of practice areas in which the firm was recommended or cited: out of 15, shown in the overall table."
+        },
         "provider breadth",
         "Legal 500 ranking comparison"
       ],
@@ -150,8 +177,9 @@ const lawReportSchema = {
       image: openGraphImage,
       author: { "@type": "Person", name: "Jayme Baggio", url: `${siteUrl}/about` },
       publisher: { "@type": "Organization", name: "Studio Baggio Ltd", url: siteUrl },
-      datePublished: "2026-08-16",
-      dateModified: "2026-08-21",
+      // Publication timestamp recorded in the original law-report commit e614765.
+      datePublished: "2026-08-16T12:12:03+01:00",
+      dateModified: "2026-10-13T06:09:25Z",
       mainEntityOfPage: `${siteUrl}${route}`,
       about: { "@id": `${siteUrl}${route}#dataset` }
     },
