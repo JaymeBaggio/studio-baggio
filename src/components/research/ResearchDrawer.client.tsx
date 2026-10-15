@@ -114,6 +114,7 @@ export function ResearchDrawer({
               {isOpen ? (
                 <motion.div
                   className="research-drawer-layer"
+                  data-lenis-prevent
                   initial={keyboardInteraction ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -167,7 +168,12 @@ export function ResearchDrawer({
                         <X aria-hidden="true" />
                       </button>
                     </header>
-                    <div className="research-drawer-content">
+                    <div
+                      className="research-drawer-content"
+                      role="region"
+                      aria-label={`${title} details`}
+                      tabIndex={0}
+                    >
                       {typeof children === "function" ? children(closeDrawer) : children}
                     </div>
                   </motion.div>
