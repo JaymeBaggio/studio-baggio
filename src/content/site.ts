@@ -843,6 +843,26 @@ export const pressPage = {
   title: "Press",
   features: [
     {
+      publication: "Money Marketing",
+      series: "At the Helm",
+      date: "19 October 2026",
+      datePublished: "2026-10-19",
+      author: "Amanda Newman Smith",
+      title: "At the Helm: Improving your firm’s visibility in AI searches",
+      description:
+        "Money Marketing covers Studio Baggio's financial-advice research and Jayme's practical advice on helping firms appear in AI-generated answers.",
+      pullout: "The practical starting point is to test the real questions prospective clients ask.",
+      pulloutIsQuotation: true,
+      href: "https://www.moneymarketing.co.uk/features/at-the-helm-improving-your-firms-visibility-in-ai-searches/",
+      researchHref: "/research/uk-financial-advice-2026",
+      researchTitle: "UK Financial Advice Firms in AI Search 2026",
+      logo: {
+        src: "/assets/logos/money-marketing.png",
+        width: 440,
+        height: 132
+      }
+    },
+    {
       publication: "The Lawyer",
       series: "Research coverage",
       date: "29 September 2026",
