@@ -1383,20 +1383,20 @@ export const servicesPage = {
       {
         name: "FT Adviser",
         href: "https://www.ftadviser.com/content/32657fc7-9f35-4f05-bc93-8e8d33ece28d",
-        logo: "/assets/logos/financial-times.png",
-        width: 55
-      },
-      {
-        name: "Money Marketing",
-        href: "https://www.moneymarketing.co.uk/features/at-the-helm-making-ai-more-than-an-efficiency-play/",
-        logo: "/assets/logos/money-marketing.png",
-        width: 53
+        logo: "/assets/logos/ft-adviser.png",
+        width: 61
       },
       {
         name: "Professional Adviser",
         href: "https://www.professionaladviser.com/news/4407649/could-linkedin-ai-platform-financial-advisers-best-kept-secret",
         logo: "/assets/logos/professional-adviser-print.png",
         width: 193
+      },
+      {
+        name: "The Lawyer",
+        href: "https://www.thelawyer.com/ai-doesnt-give-a-damn-about-your-seo/",
+        logo: "/assets/logos/the-lawyer.svg",
+        width: 145
       }
     ]
   },
