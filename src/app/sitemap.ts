@@ -18,7 +18,7 @@ const routes: Array<{
   { path: "/services", lastModified: "2026-10-11", changeFrequency: "monthly", priority: 0.85 },
   { path: "/work", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.75 },
   { path: "/last30days", lastModified: "2026-09-29", changeFrequency: "monthly", priority: 0.85 },
-  { path: "/press", lastModified: "2026-09-29", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/press", lastModified: "2026-10-19", changeFrequency: "weekly", priority: 0.8 },
   { path: "/about", lastModified: "2026-10-11", changeFrequency: "monthly", priority: 0.75 },
   { path: "/insights", lastModified: "2026-08-09", changeFrequency: "weekly", priority: 0.75 },
   { path: "/contact", lastModified: "2026-10-11", changeFrequency: "monthly", priority: 0.75 },
