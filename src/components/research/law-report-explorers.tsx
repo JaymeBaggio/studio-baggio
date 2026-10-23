@@ -328,16 +328,16 @@ export function LawQuestionExplorer({ questions }: { questions: LawQuestion[] })
                 <small aria-hidden="true" />
               </summary>
               <ol className="fa3-question-index law-question-index" aria-label={`${group.area} questions`}>
-                {group.questions.map((question) => (
+                {group.questions.map((question, questionIndex) => (
                   <li key={question.id}>
                     <ResearchDrawer
                       className="research-drawer-panel--question fa3-question-drawer law-question-drawer"
-                      eyebrow={`${question.id} · ${question.area} · ${question.type === "choice" ? "Which firm to choose" : "A legal problem, then which firm to instruct"}`}
+                      eyebrow={`${question.area} · Question ${questionIndex + 1}`}
                       title={question.type === "choice" ? question.question : `${question.question} Which UK law firms should I consider instructing?`}
                       triggerClassName="fa3-question-index__trigger law-question-index__trigger"
                       trigger={
                         <>
-                          <span>{question.id}</span>
+                          <span>{questionIndex + 1}</span>
                           <strong>
                             {question.question}
                             {question.type === "problem" ? (

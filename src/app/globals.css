@@ -24742,7 +24742,27 @@ body:has(.home-4b.ab-page) footer { display: none; }
   border-left: 2px solid var(--law-blue);
 }
 
+.law-question-explorer .law-question-index__trigger {
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  align-items: baseline;
+}
+
+.law-question-explorer .law-question-index__trigger > span {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
 @media (max-width: 540px) {
+  .law-question-explorer .law-question-index__trigger {
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .law-question-explorer .law-question-index__trigger small {
+    grid-column: 2;
+  }
+
   .law-question-explorer .law-question-group > summary {
     gap: 12px;
   }
