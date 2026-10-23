@@ -228,6 +228,18 @@ export function PrivateDatasetCard({ content = privateDataset }: { content?: Pri
   const [dismissed, setDismissed] = useState(false);
   const [open, setOpen] = useState(true);
   const [boxInView, setBoxInView] = useState(false);
+  const [questionsInView, setQuestionsInView] = useState(false);
+
+  useEffect(() => {
+    const questions = document.querySelector(".law-question-explorer");
+    if (!questions || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setQuestionsInView(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(questions);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -283,7 +295,7 @@ export function PrivateDatasetCard({ content = privateDataset }: { content?: Pri
       {/* Desktop follower: a pill that opens into the card. */}
       <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden justify-end lg:flex">
         <AnimatePresence initial={false} mode="wait">
-          {mounted && !dismissed && open && !boxInView ? (
+          {mounted && !dismissed && !questionsInView && open && !boxInView ? (
             <motion.aside
               key="card"
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 18, scale: prefersReducedMotion ? 1 : 0.98 }}
@@ -295,7 +307,7 @@ export function PrivateDatasetCard({ content = privateDataset }: { content?: Pri
             >
               <CardBody onClose={() => setOpen(false)} id={id} content={content} />
             </motion.aside>
-          ) : mounted && !dismissed ? (
+          ) : mounted && !dismissed && !questionsInView ? (
             <motion.div
               key="pill"
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}

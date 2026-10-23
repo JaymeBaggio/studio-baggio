@@ -4,8 +4,6 @@ import { Search } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ResearchDrawer } from "./ResearchDrawer.client";
-import { PrivateDatasetBox } from "./private-dataset-cta";
-import { privateDatasetLaw } from "@/content/private-dataset";
 import { LawSelect } from "./law-select";
 
 export type LawQuestion = {
@@ -264,9 +262,8 @@ export function LawQuestionExplorer({ questions }: { questions: LawQuestion[] })
   }, [area, query, questions, type]);
   const visibleGroups = useMemo(
     () => areas
-      .map((practiceArea, index) => ({
+      .map((practiceArea) => ({
         area: practiceArea,
-        number: String(index + 1).padStart(2, "0"),
         questions: visible.filter((question) => question.area === practiceArea),
       }))
       .filter((group) => group.questions.length),
@@ -278,17 +275,13 @@ export function LawQuestionExplorer({ questions }: { questions: LawQuestion[] })
       <div className="editorial-container">
         <header className="fa3-section-heading">
           <div>
-            <p className="fa3-kicker">Explore by practice area</p>
-            <h2 id="law-question-explorer-title">All 15 practice areas, every question.</h2>
+            <h2 id="law-question-explorer-title">15 Practice areas</h2>
           </div>
           <div className="law-explorer-aside">
             <p>
-              Every legal problem was asked with &ldquo;Which UK law firms should I consider
-              instructing?&rdquo; on the end, so each row shows the question exactly as a client would
-              put it. Choose a practice area or search a concern, then open a question to see the firms
-              AI suggested, the law-firm websites it cited and the other sources it used.
+              Choose a practice area or search a question to see the firms AI recommended
+              and the sources it cited.
             </p>
-            <PrivateDatasetBox content={privateDatasetLaw} />
           </div>
         </header>
 
@@ -331,12 +324,8 @@ export function LawQuestionExplorer({ questions }: { questions: LawQuestion[] })
               open={revealFilteredQuestions ? true : undefined}
             >
               <summary>
-                <span className="fa3-question-group__number">{group.number}</span>
-                <div>
-                  <span>{group.questions.length} {group.questions.length === 1 ? "question" : "questions"}</span>
-                  <strong>{group.area}</strong>
-                </div>
-                <small>View questions</small>
+                <strong>{group.area}</strong>
+                <small aria-hidden="true" />
               </summary>
               <ol className="fa3-question-index law-question-index" aria-label={`${group.area} questions`}>
                 {group.questions.map((question) => (
