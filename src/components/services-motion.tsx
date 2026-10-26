@@ -279,7 +279,10 @@ export function ServicesMotion() {
                 ease: "none",
                 force3D: true,
                 scrollTrigger: {
-                  start: () => pageTop(next) - window.innerHeight,
+                  // Start the fade when the next card reaches this card's bottom.
+                  // Compact proof cards otherwise fade while the next card
+                  // is still well below them, leaving readable proof washed out.
+                  start: () => pageTop(next) - (76 + Math.min(card.offsetHeight, window.innerHeight - 116)),
                   end: () => pageTop(next) - 76,
                   scrub: true,
                   invalidateOnRefresh: true

@@ -8,6 +8,7 @@ import { FaqSchema } from "@/components/faq-schema";
 import { ServicesMotion } from "@/components/services-motion";
 import {
   about,
+  calmAuthorityProof,
   introDownload,
   metadata as siteMetadata,
   primaryCta,
@@ -232,8 +233,8 @@ export default function ServicesPage() {
                 ) : null;
 
                 return (
+                  <Fragment key={offer.id}>
                   <article
-                    key={offer.id}
                     id={offer.id}
                     className="sv-card mx-auto max-w-5xl scroll-mt-28"
                     data-sv-card
@@ -343,6 +344,22 @@ export default function ServicesPage() {
                       <span aria-hidden="true">&rarr;</span>
                     </Link>
                   </article>
+                  {offer.id === "seo-and-ai-search-opportunity-audit" ? (
+                    <article id="calm-authority-proof" className="sv-card sv-calm-proof mx-auto max-w-5xl scroll-mt-28" data-sv-card>
+                      <div className="sv-calm-top">
+                        <Image src="/assets/logos/calm-authority.png" alt="Calm Authority" width={180} height={66} className="sv-calm-logo" />
+                        <p className="eyebrow">{calmAuthorityProof.label}</p>
+                      </div>
+                      <div className="sv-calm-copy">
+                        <p>{calmAuthorityProof.context} {calmAuthorityProof.result} <strong className="font-semibold text-[color:var(--sb-accent-blue)]">{calmAuthorityProof.highlight}</strong></p>
+                        <p>{calmAuthorityProof.shortlist}</p>
+                      </div>
+                      <Link href={calmAuthorityProof.href} className="focus-ring sv-calm-link">
+                        Read the case study <span aria-hidden="true">→</span>
+                      </Link>
+                    </article>
+                  ) : null}
+                  </Fragment>
                 );
               })}
             </div>

@@ -26755,3 +26755,29 @@ footer a.focus-ring {
 footer .md\:text-right a.focus-ring {
   margin-left: auto;
 }
+
+
+/* Calm Authority proof follows the SEO offer in the existing service stack. */
+.sv-calm-proof { background: #f4f4f4; }
+.sv-calm-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.sv-calm-logo { width: 180px; height: auto; filter: brightness(0); }
+.sv-calm-top .eyebrow { text-align: right; }
+.sv-calm-copy { max-width: 44rem; margin-top: 24px; color: #4f4f4f; }
+.sv-calm-copy p + p { margin-top: 16px; }
+.sv-calm-link { display: flex; justify-content: space-between; gap: 24px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #d8d8d8; color: var(--sb-accent-blue); font-size: 14px; }
+.sv-calm-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.calm-case { padding-block: 140px 80px; }
+.calm-case h1 { margin-top: 32px; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; }
+.calm-case .case-intro { max-width: 44rem; margin-top: 32px; color: #4f4f4f; font-size: 16px; line-height: 1.6; }
+.calm-case .case-intro p + p { margin-top: 16px; }
+.calm-case h2 { margin-block: 40px 20px; font-size: 24px; line-height: 1.3; }
+.calm-case table { width: 100%; max-width: 44rem; border-collapse: collapse; font-size: 16px; }
+.calm-case th, .calm-case td { padding: 16px 8px; border-bottom: 1px solid #d8d8d8; text-align: right; }
+.calm-case th:first-child, .calm-case td:first-child { text-align: left; }
+.calm-case th { font-size: 12px; font-weight: 400; text-transform: uppercase; color: #707070; }
+.calm-case .case-note { max-width: 44rem; margin-top: 24px; font-size: 12px; line-height: 1.5; color: #707070; }
+@media (max-width: 639px) {
+ .sv-calm-top { gap: 16px; align-items: flex-start; }
+ .sv-calm-logo { width: 140px; }
+ .sv-calm-top .eyebrow { max-width: 110px; }
+}

@@ -1472,3 +1472,13 @@ export const servicesPage = {
     ]
   }
 };
+
+
+export const calmAuthorityProof = {
+  label: "AI-search case study",
+  context: "We published three financial-adviser comparison guides and optimised them for AI search.",
+  result: "Within 30 days, selected firms featured in the guides recorded",
+  highlight: "up to 700% more shortlist appearances.",
+  shortlist: "AI reproduced our ten-firm shortlist and cited our guide as its source.",
+  href: "/work/calm-authority-ai-search"
+};

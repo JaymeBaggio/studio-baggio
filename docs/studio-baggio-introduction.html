@@ -214,6 +214,12 @@
   .closing .page-foot .sig-name, .closing .page-foot .sig-role{ display:inline; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); }
   .closing .page-foot .sig-name{ color:var(--ink); }
   .closing .page-foot .sig-name::after{ content:" \00b7 "; color:var(--muted); }
+  .proof-page { --sec-gap:3mm; }
+  .proof-pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .proof-pair .example { padding:13px 16px; }
+  .proof-pair .example p { font-size:12px; line-height:1.5; }
+  .proof-pair .example p + p { margin-top:7px; }
+  .case-link { display:block; margin-top:9px; color:var(--blue); text-decoration:none; font-size:12px; }
 </style>
 </head>
 <body>
@@ -298,7 +304,7 @@
     </div>
 
     <!-- PAGE 2: SEO & AI Search (starts with the AI Search Strategy & Implementation Plan) -->
-    <div class="page page-break pageflex roomy">
+    <div class="page page-break pageflex roomy proof-page">
       <div class="top">
         <div class="eyebrow">Services</div>
         <div class="wordmark">STUDIO BAGGIO<span class="sb-mark"></span></div>
@@ -339,10 +345,15 @@
         <p style="color:var(--ink);font-weight:700;">Delivered within 14 days. Fee fully credited against implementation of the recommendations and wider consultancy.</p>
       </section>
 
-      <section class="example">
+      <section class="proof-pair"><div class="example">
         <h2>Example</h2>
         <p>A chartered financial planner who had relied entirely on referrals won nine new clients in eight months, adding <span class="hl">&pound;5.3 million in assets under management and &pound;103,400 in first-year revenue</span>. Four of those client journeys began with a ChatGPT recommendation.</p>
-      </section>
+      </div><div class="example">
+        <h2>Example · Calm Authority</h2>
+        <p>We published three financial-adviser comparison guides and optimised them for AI search. Within 30 days, selected firms featured in the guides recorded <span class="hl">up to 700% more shortlist appearances.</span></p>
+        <p>AI reproduced our ten-firm shortlist and cited our guide as its source.</p>
+        <a class="case-link" href="https://www.studiobaggio.ai/work/calm-authority-ai-search">Read the case study →</a>
+      </div></section>
 
       <section>
         <div class="quote">
