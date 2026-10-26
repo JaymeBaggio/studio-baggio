@@ -26781,3 +26781,10 @@ footer .md\:text-right a.focus-ring {
  .sv-calm-logo { width: 140px; }
  .sv-calm-top .eyebrow { max-width: 110px; }
 }
+
+.calm-case .case-firm-logo { display:block; width:130px; height:48px; object-fit:contain; object-position:left center; }
+@media (max-width:639px) {
+ .calm-case table { font-size:14px; }
+ .calm-case th, .calm-case td { padding:12px 4px; }
+ .calm-case .case-firm-logo { width:105px; height:38px; }
+}
