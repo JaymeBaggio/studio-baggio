@@ -13,6 +13,7 @@ const results = [
 
 export default function CalmAuthoritySearchCase() {
  return <main className="editorial-container calm-case max-w-5xl">
+  <nav aria-label="Breadcrumb" className="calm-case-breadcrumb"><Link href="/services">Services</Link><span aria-hidden="true">/</span><span aria-current="page">Calm Authority case study</span></nav>
   <Image src="/assets/logos/calm-authority.png" alt="Calm Authority" width={180} height={66} className="sv-calm-logo" />
   <h1>Calm Authority: AI-search results</h1>
   <div className="case-intro">
@@ -26,6 +27,7 @@ export default function CalmAuthoritySearchCase() {
   </table>
   <p className="case-note">Firm appearances across equivalent 225-answer studies. Selected examples; observed changes rather than an isolated measure of the guides’ effect.</p>
   <div className="mt-8 flex flex-wrap gap-6 text-sm text-[color:var(--sb-accent-blue)]">
+   <Link href="/research/uk-financial-advice-2026">Read the UK financial-advice AI-search study →</Link>
    <a href="https://www.calmauthority.ai/best/financial-advisers-uk">View the published guide →</a>
    <Link href="/services">Back to services →</Link>
   </div>

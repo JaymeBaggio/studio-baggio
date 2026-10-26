@@ -26788,3 +26788,6 @@ footer .md\:text-right a.focus-ring {
  .calm-case th, .calm-case td { padding:12px 4px; }
  .calm-case .case-firm-logo { width:105px; height:38px; }
 }
+
+.calm-case-breadcrumb { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:32px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#707070; }
+.calm-case-breadcrumb a:hover { color:var(--sb-accent-blue); text-decoration:underline; text-underline-offset:3px; }
