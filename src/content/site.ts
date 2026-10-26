@@ -19,7 +19,7 @@ export const primaryCta = {
 export const introDownload = {
   label: "Or download the Studio Baggio introduction",
   footerLabel: "Studio Baggio introduction (PDF)",
-  href: "/downloads/studio-baggio-introduction.pdf"
+  href: "/downloads/studio-baggio-introduction-2026-10-26.pdf"
 };
 
 export const metadata = {

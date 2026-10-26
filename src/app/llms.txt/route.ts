@@ -1,6 +1,6 @@
 import { insightArticles, getInsightPath } from "@/content/insights";
 import { getResearchEditionPath, researchEditions } from "@/content/research";
-import { metadata as siteMetadata } from "@/content/site";
+import { introDownload, metadata as siteMetadata } from "@/content/site";
 import { siteUrl } from "@/lib/utils";
 
 // /llms.txt — the plain-text index AI systems read first (llmstxt.org).
@@ -82,7 +82,7 @@ ${line("/last30days", "Last30Days", "Free and available now. Research what peopl
 
 ## Downloads
 
-- [Studio Baggio introduction (PDF)](${siteUrl}/downloads/studio-baggio-introduction.pdf): Who Studio Baggio is and what it can be hired for.
+- [Studio Baggio introduction (PDF)](${siteUrl}${introDownload.href}): Who Studio Baggio is and what it can be hired for.
 - [How to build an AI-literate business in 90 days (PDF)](${siteUrl}/downloads/how-to-build-an-ai-literate-business-in-90-days.pdf): The full 19-answer guide as a document.
 
 ## Optional
