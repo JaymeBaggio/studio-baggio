@@ -150,11 +150,11 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{
           __html: [
             "@keyframes svHeroIn{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}",
-            "[data-sv-title],[data-sv-hero]{animation:svHeroIn 0.85s cubic-bezier(0.16,0.84,0.32,1) both}",
-            "[data-sv-title]{animation-delay:0.12s}",
-            "[data-sv-hero]{animation-delay:0.28s}",
+            "[data-sv-title],[data-sv-hero]{animation:svHeroIn 0.6s cubic-bezier(0.16,0.84,0.32,1) both}",
+            "[data-sv-title]{animation-delay:0.08s}",
+            "[data-sv-hero]{animation-delay:0.18s}",
             '[data-sv-hero="lead"]{animation-delay:0s}',
-            '[data-sv-hero="late"]{animation-delay:0.42s}',
+            '[data-sv-hero="late"]{animation-delay:0.28s}',
             "@media (prefers-reduced-motion: reduce){[data-sv-title],[data-sv-hero]{animation:none}}"
           ].join("")
         }}

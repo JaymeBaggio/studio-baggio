@@ -26791,3 +26791,188 @@ footer .md\:text-right a.focus-ring {
 
 .calm-case-breadcrumb { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:32px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#707070; }
 .calm-case-breadcrumb a:hover { color:var(--sb-accent-blue); text-decoration:underline; text-underline-offset:3px; }
+
+/* ------------------------------------------------------------------------
+   Apple-design pass, 27 October 2026.
+   Response on pointer-down, 44px hit areas on touch, chrome that recedes
+   fully, shorter pinned stories, entrances within a second, and the two
+   accessibility media queries the blurred header was missing.
+   ------------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+}
+
+/* Header: recede fully rather than ghosting at 14%. The reveal zone along
+   the top edge brings it back on hover; scrolling up brings it back too. */
+.site-header-shell {
+  animation-duration: 480ms;
+  animation-delay: 0ms;
+}
+
+.site-header-shell.site-header-soft-hidden {
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+}
+
+/* Mobile menu: a panel that fills the screen below the header. The page is
+   locked behind it while it is open. */
+.site-mobile-menu {
+  height: calc(100svh - 4rem);
+  padding-bottom: env(safe-area-inset-bottom);
+  -webkit-overflow-scrolling: touch;
+}
+
+.site-mobile-menu-link,
+.site-mobile-menu-cta {
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.site-mobile-menu-link:active {
+  background-color: rgba(20, 20, 20, 0.05);
+}
+
+.site-mobile-menu-cta:active {
+  background-color: var(--sb-ink);
+  color: var(--sb-paper);
+}
+
+/* Hero entrances: everything on screen within a second of first paint. */
+.home-reference-hero [data-hero-line] {
+  animation-duration: 900ms;
+}
+
+.home-reference-wordmark .mask-line:nth-child(1) [data-hero-line] {
+  animation-delay: 100ms;
+}
+
+.home-reference-wordmark .mask-line:nth-child(2) [data-hero-line] {
+  animation-delay: 220ms;
+}
+
+.home-reference-hero [data-hero-promise]:nth-child(1) {
+  animation-delay: 480ms;
+}
+
+.home-reference-hero [data-hero-promise]:nth-child(2) {
+  animation-delay: 540ms;
+}
+
+.home-reference-hero [data-hero-promise]:nth-child(3) {
+  animation-delay: 600ms;
+}
+
+/* Pinned stories: shorter scroll distance so the reader stays in control.
+   Phones already run these as ordinary sections. */
+@media (min-width: 768px) {
+  .home-4b .opening-argument-section {
+    min-height: 250svh;
+  }
+
+  .home-4b .problem-clarifier-section {
+    min-height: 160svh;
+  }
+}
+
+/* Hover lift at a response pace, not a drift. */
+.home-4b .hire-card {
+  transition-duration: 320ms, 320ms;
+}
+
+/* Press feedback lives on pointer-down. Buttons and links compress a
+   touch; full-width rows barely, so they read as pressed, not shrunk. */
+.home-4b :is(.hire-card-button, .contact-form-chip, .product-stage-arrows button, .latest-insights-controls button):active,
+.site-header-shell :is(nav a, .site-header-cta):active {
+  transform: scale(0.96);
+  transition: transform 80ms ease-out;
+}
+
+.home-4b :is(.hire-card-link, .product-copy-links a, .service-next-step-link, .latest-insights-read, .latest-insights-label, .problem-stat-source a, a.underline):active,
+footer a.focus-ring:active {
+  transform: scale(0.97);
+  transform-origin: left center;
+  transition: transform 80ms ease-out;
+}
+
+.home-4b :is(.faq-question-button, .value-map-row-button, .latest-insights-item):active {
+  transform: scale(0.992);
+  transition: transform 80ms ease-out;
+}
+
+.home-4b .studio-contact-panel .contact-form-chip:active {
+  background-color: rgba(20, 20, 20, 0.08);
+}
+
+/* Touch: every link and control reaches a 44px hit area without changing
+   how it looks. The padding is a pseudo-element, so layout is untouched. */
+@media (pointer: coarse) {
+  .home-4b :is(.hire-card-link, .product-copy-links a, .service-next-step-link, .latest-insights-read, .latest-insights-label, .problem-stat-source a, a.underline),
+  footer a.focus-ring,
+  .home-4b .product-stage-arrows button,
+  .home-4b .latest-insights-controls button {
+    position: relative;
+  }
+
+  .home-4b :is(.hire-card-link, .product-copy-links a, .service-next-step-link, .latest-insights-read, .latest-insights-label, .problem-stat-source a, a.underline)::before,
+  footer a.focus-ring::before {
+    content: "";
+    position: absolute;
+    inset: -12px 0;
+  }
+
+  .home-4b .latest-insights-controls button::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+  }
+
+  .home-4b .product-stage-arrows button::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+  }
+}
+
+/* Form: the field itself signals an error, not only the message. */
+.home-4b .studio-contact-panel :is(input, textarea)[aria-invalid="true"] {
+  border-bottom-color: var(--sb-ink);
+}
+
+.home-4b .studio-field-error {
+  margin-top: 8px;
+}
+
+/* Translucent chrome has solid fallbacks for people who ask for them. */
+@media (prefers-reduced-transparency: reduce) {
+  .site-header-shell:not(.site-header-dark) {
+    background-color: var(--sb-paper) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .site-header-shell.site-header-dark {
+    background-color: var(--sb-dark) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .site-header-shell:not(.site-header-dark) {
+    background-color: var(--sb-paper) !important;
+    border-bottom-color: var(--sb-ink) !important;
+  }
+
+  .site-header-shell.site-header-dark {
+    background-color: var(--sb-dark) !important;
+    border-bottom-color: var(--sb-paper) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-4b :is(.hire-card-button, .hire-card-link, .contact-form-chip, .product-stage-arrows button, .latest-insights-controls button, .product-copy-links a, .service-next-step-link, .latest-insights-read, .latest-insights-label, .problem-stat-source a, a.underline, .faq-question-button, .value-map-row-button, .latest-insights-item):active,
+  .site-header-shell :is(nav a, .site-header-cta):active,
+  footer a.focus-ring:active {
+    transform: none;
+  }
+}

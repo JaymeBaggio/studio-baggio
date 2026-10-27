@@ -56,10 +56,14 @@ export function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement
   );
 }
 
-export function FieldError({ message }: { message?: string }) {
+export function FieldError({ id, message }: { id?: string; message?: string }) {
   if (!message) {
     return null;
   }
 
-  return <p className="text-sm text-ink" role="alert">{message}</p>;
+  return (
+    <p id={id} className="studio-field-error text-sm text-ink" role="alert">
+      {message}
+    </p>
+  );
 }

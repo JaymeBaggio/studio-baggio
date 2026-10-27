@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { TrackerBeacon } from "@/components/tracker-beacon";
@@ -39,6 +39,13 @@ const aileron = localFont({
   display: "swap",
   preload: true
 });
+
+// The site is a light, monochrome system; say so, so form controls and
+// scrollbars never half-adopt a dark scheme.
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#f7f7f7"
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -28,6 +28,9 @@ export function ContactForm() {
     formState: { errors, isSubmitting }
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
+    // Validate a field once it has been left, then live while it is corrected.
+    mode: "onTouched",
+    reValidateMode: "onChange",
     defaultValues: {
       name: "",
       email: "",
@@ -92,17 +95,10 @@ export function ContactForm() {
   }
 
   function onInvalid(fieldErrors: FieldErrors<ContactFormValues>) {
-    const message =
-      fieldErrors.name?.message ||
-      fieldErrors.email?.message ||
-      fieldErrors.business?.message ||
-      fieldErrors.website?.message ||
-      fieldErrors.brief?.message ||
-      "Please check the fields above and try again.";
-
+    const count = Object.keys(fieldErrors).length;
     setFormStatus({
       tone: "error",
-      message: typeof message === "string" ? message : "Please check the fields above and try again."
+      message: count === 1 ? "One field needs attention above." : `${count} fields need attention above.`
     });
   }
 
@@ -115,23 +111,23 @@ export function ContactForm() {
       <div className="contact-form-grid">
         <Field>
           <Label htmlFor="name" required>Name</Label>
-          <Input id="name" autoComplete="name" {...register("name")} />
-          <FieldError message={errors.name?.message} />
+          <Input id="name" autoComplete="name" aria-invalid={errors.name ? true : undefined} aria-describedby={errors.name ? "name-error" : undefined} {...register("name")} />
+          <FieldError id="name-error" message={errors.name?.message} />
         </Field>
         <Field>
           <Label htmlFor="email" required>Email</Label>
-          <Input id="email" type="email" autoComplete="email" {...register("email")} />
-          <FieldError message={errors.email?.message} />
+          <Input id="email" type="email" autoComplete="email" aria-invalid={errors.email ? true : undefined} aria-describedby={errors.email ? "email-error" : undefined} {...register("email")} />
+          <FieldError id="email-error" message={errors.email?.message} />
         </Field>
         <Field>
           <Label htmlFor="business" required>Company name</Label>
-          <Input id="business" autoComplete="organization" {...register("business")} />
-          <FieldError message={errors.business?.message} />
+          <Input id="business" autoComplete="organization" aria-invalid={errors.business ? true : undefined} aria-describedby={errors.business ? "business-error" : undefined} {...register("business")} />
+          <FieldError id="business-error" message={errors.business?.message} />
         </Field>
         <Field>
           <Label htmlFor="website">Website</Label>
-          <Input id="website" type="url" placeholder="https://" {...register("website")} />
-          <FieldError message={errors.website?.message} />
+          <Input id="website" type="url" placeholder="https://" aria-invalid={errors.website ? true : undefined} aria-describedby={errors.website ? "website-error" : undefined} {...register("website")} />
+          <FieldError id="website-error" message={errors.website?.message} />
         </Field>
       </div>
 
@@ -159,8 +155,8 @@ export function ContactForm() {
 
       <Field>
         <Label htmlFor="brief">Brief</Label>
-        <Textarea id="brief" placeholder="A few lines on what you need." {...register("brief")} />
-        <FieldError message={errors.brief?.message} />
+        <Textarea id="brief" placeholder="A few lines on what you need." aria-invalid={errors.brief ? true : undefined} aria-describedby={errors.brief ? "brief-error" : undefined} {...register("brief")} />
+        <FieldError id="brief-error" message={errors.brief?.message} />
       </Field>
 
       <div className="contact-form-choice" role="radiogroup" aria-labelledby="contact-timing-label">

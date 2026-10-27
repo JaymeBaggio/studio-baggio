@@ -16,6 +16,8 @@ export function SiteHeader() {
   const [headerInteracting, setHeaderInteracting] = React.useState(false);
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
+  const menuButtonRef = React.useRef<HTMLButtonElement>(null);
+  const firstMenuLinkRef = React.useRef<HTMLAnchorElement>(null);
   const darkHeader = pathname === "/" && overDarkSection && !open;
   const quietTop = !scrolled && !open && !darkHeader;
   const softHidden = headerHidden && !open && !headerInteracting;
@@ -110,6 +112,38 @@ export function SiteHeader() {
     };
   }, [pathname]);
 
+  // The menu is a modal surface: lock the page behind it, close on Escape,
+  // and hand focus in and back out so nothing is trapped or lost.
+  React.useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const lenis = (window as Window & { __sbLenis?: { stop: () => void; start: () => void } }).__sbLenis;
+    const previousOverflow = document.body.style.overflow;
+    lenis?.stop();
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    const focusFrame = window.requestAnimationFrame(() => {
+      firstMenuLinkRef.current?.focus({ preventScroll: true });
+    });
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.cancelAnimationFrame(focusFrame);
+      document.body.style.overflow = previousOverflow;
+      lenis?.start();
+    };
+  }, [open]);
+
   React.useEffect(() => {
     if (open || headerInteracting || !scrolled) {
       return;
@@ -201,7 +235,7 @@ export function SiteHeader() {
         <Link
           href={primaryCta.href}
           className={cn(
-            "focus-ring hidden min-h-11 items-center border px-4 text-xs uppercase tracking-[0.07em] transition-colors lg:inline-flex",
+            "site-header-cta focus-ring hidden min-h-11 items-center border px-4 text-xs uppercase tracking-[0.07em] transition-colors lg:inline-flex",
             darkHeader
               ? "border-paper/75 text-paper hover:bg-paper hover:text-ink"
               : quietTop
@@ -212,9 +246,11 @@ export function SiteHeader() {
           {primaryCta.label}
         </Link>
         <motion.button
+          ref={menuButtonRef}
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="site-mobile-menu"
           onClick={() => setOpen((value) => !value)}
           whileTap={{ scale: shouldReduceMotion ? 1 : 0.97 }}
           transition={{ duration: 0.14, ease: [0.23, 1, 0.32, 1] }}
@@ -233,21 +269,26 @@ export function SiteHeader() {
       <AnimatePresence initial={false}>
         {open ? (
           <motion.nav
-            initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
+            id="site-mobile-menu"
+            // Same path in and out (drops from the header, returns to it), a
+            // critically damped spring so a second tap mid-flight just
+            // re-targets from wherever the panel is.
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.24, ease: [0.23, 1, 0.32, 1] }}
-            className={cn("border-t border-ink/10 bg-paper lg:hidden")}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
+            transition={shouldReduceMotion ? { duration: 0.16 } : { type: "spring", bounce: 0, duration: 0.32 }}
+            className={cn("site-mobile-menu absolute inset-x-0 top-full overflow-y-auto border-t border-ink/10 bg-paper lg:hidden")}
             aria-label="Mobile navigation"
           >
             <div className="editorial-container py-6">
               <div className="grid gap-1">
-                {navItems.map((item) => (
+                {navItems.map((item, index) => (
                   <Link
                     key={item.href}
+                    ref={index === 0 ? firstMenuLinkRef : undefined}
                     href={item.href}
                     onClick={item.href === "/" ? handleHomeClick : () => setOpen(false)}
-                    className="focus-ring border-b border-ink/10 py-4 text-sm uppercase leading-none tracking-[0.1em]"
+                    className="site-mobile-menu-link focus-ring border-b border-ink/10 py-4 text-sm uppercase leading-none tracking-[0.1em]"
                   >
                     {item.label}
                   </Link>
@@ -256,7 +297,7 @@ export function SiteHeader() {
               <Link
                 href={primaryCta.href}
                 onClick={() => setOpen(false)}
-                className="focus-ring mt-6 inline-flex min-h-11 border border-ink px-4 py-3 text-sm uppercase tracking-[0.06em]"
+                className="site-mobile-menu-cta focus-ring mt-6 inline-flex min-h-11 border border-ink px-4 py-3 text-sm uppercase tracking-[0.06em]"
               >
                 {primaryCta.label}
               </Link>

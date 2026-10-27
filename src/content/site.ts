@@ -91,7 +91,7 @@ export const home = {
     headline:
       "Most businesses are using AI. Few are using it to create commercial advantage.",
     qualifier: "",
-    setup: ["Studio Baggio designs and builds practical AI systems", "that make businesses:"],
+    setup: ["Studio Baggio designs and builds", "practical AI systems that make businesses:"],
     outcomes: [
       "Easier to find.",
       "Faster to act.",

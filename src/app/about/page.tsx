@@ -158,19 +158,19 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{
           __html: [
             "@keyframes abIn{from{opacity:0;transform:translate3d(0,16px,0);filter:blur(3px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}",
-            "[data-ab-enter]{animation:abIn 0.8s cubic-bezier(0.23,1,0.32,1) both}",
+            "[data-ab-enter]{animation:abIn 0.6s cubic-bezier(0.23,1,0.32,1) both}",
             '[data-ab-enter="e1"]{animation-delay:0s}',
-            '[data-ab-enter="e2"]{animation-delay:0.08s}',
-            '[data-ab-enter="e3"]{animation-delay:0.18s}',
-            '[data-ab-enter="e4"]{animation-delay:0.26s}',
-            '[data-ab-enter="e5"]{animation-delay:0.34s}',
-            '[data-ab-enter="e6"]{animation-delay:0.42s}',
-            '[data-ab-enter="e7"]{animation-delay:0.3s}',
-            '[data-ab-enter="e8"]{animation-delay:0.38s}',
-            '[data-ab-enter="e9"]{animation-delay:0.46s}',
-            '[data-ab-enter="e10"]{animation-delay:0.54s}',
-            '[data-ab-enter="e11"]{animation-delay:0.62s}',
-            '[data-ab-enter="e12"]{animation-delay:0.72s}',
+            '[data-ab-enter="e2"]{animation-delay:0.05s}',
+            '[data-ab-enter="e3"]{animation-delay:0.11s}',
+            '[data-ab-enter="e4"]{animation-delay:0.16s}',
+            '[data-ab-enter="e5"]{animation-delay:0.2s}',
+            '[data-ab-enter="e6"]{animation-delay:0.25s}',
+            '[data-ab-enter="e7"]{animation-delay:0.18s}',
+            '[data-ab-enter="e8"]{animation-delay:0.23s}',
+            '[data-ab-enter="e9"]{animation-delay:0.28s}',
+            '[data-ab-enter="e10"]{animation-delay:0.32s}',
+            '[data-ab-enter="e11"]{animation-delay:0.37s}',
+            '[data-ab-enter="e12"]{animation-delay:0.43s}',
             "@media (prefers-reduced-motion: reduce){[data-ab-enter]{animation:abIn 0.3s ease both;animation-delay:0s!important}}"
           ].join("")
         }}

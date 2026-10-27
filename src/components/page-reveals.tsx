@@ -437,7 +437,7 @@ export function PageReveals() {
                   trigger: section,
                   start: stickyStoryStart,
                   end: "bottom bottom",
-                  scrub: isDesktop ? 2.65 : 2.2,
+                  scrub: isDesktop ? 1.2 : 1.0,
                   invalidateOnRefresh: true
                 }
               });
@@ -497,7 +497,7 @@ export function PageReveals() {
                   trigger: section,
                   start: gapStoryStart,
                   end: "bottom bottom",
-                  scrub: isDesktop ? 1.02 : 0.82,
+                  scrub: isDesktop ? 0.7 : 0.6,
                   invalidateOnRefresh: true,
                   onLeave: setFinalNumbers
                 }
