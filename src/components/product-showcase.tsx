@@ -15,6 +15,28 @@ const imageSizes = "(min-width: 1100px) 760px, 100vw";
 // One product at a time: the image wipes in, the copy follows, and the tabs
 // underneath carry a progress line that advances the showcase until the
 // visitor takes control.
+// The image column is taller than a 16:9 picture, so the picture sits whole
+// inside it (contain). The ground around it takes the picture's own corner
+// colour, so dark artwork gets a dark ground and light artwork a light one
+// and no letterbox band ever shows.
+function matchGroundToImage(event: React.SyntheticEvent<HTMLImageElement>) {
+  const img = event.currentTarget;
+  const slide = img.parentElement;
+  if (!slide || !img.naturalWidth) return;
+  try {
+    const canvas = document.createElement("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
+    ctx.drawImage(img, 2, 2, 1, 1, 0, 0, 1, 1);
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+    slide.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  } catch {
+    // Cross-origin or canvas unavailable: the default dark ground stays.
+  }
+}
+
 export function ProductShowcase() {
   const [active, setActive] = useState(0);
   const [previous, setPrevious] = useState<number | null>(null);
@@ -118,6 +140,7 @@ export function ProductShowcase() {
                   alt=""
                   fill
                   sizes={imageSizes}
+                  onLoad={matchGroundToImage}
                 />
               ) : null}
             </div>

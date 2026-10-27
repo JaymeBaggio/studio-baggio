@@ -26976,3 +26976,45 @@ footer a.focus-ring:active {
     transform: none;
   }
 }
+
+/* ------------------------------------------------------------------------
+   Products carousel, desktop: one aligned block.
+   The image column fills the copy column's height so the two share a top
+   and a bottom edge; the picture sits whole inside it on the dark ground
+   (contain, never crop). The count and arrows are one group at the top
+   right, so the control sits where its effect is read.
+   ------------------------------------------------------------------------ */
+@media (min-width: 1024px) {
+  .home-4b .product-stage {
+    position: relative;
+    align-items: stretch;
+  }
+
+  .home-4b .product-stage-media {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 225px;
+  }
+
+  .home-4b .product-slide img {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .home-4b .product-stage-controls {
+    position: absolute;
+    top: clamp(22px, 2.2vw, 30px);
+    right: clamp(22px, 2.2vw, 30px);
+    justify-content: flex-end;
+    gap: 14px;
+  }
+
+  .home-4b .product-copy-stack {
+    margin-top: 0;
+  }
+
+  /* Keep the title clear of the control group. */
+  .home-4b .product-copy-title {
+    padding-right: 200px;
+  }
+}
