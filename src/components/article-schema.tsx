@@ -1,12 +1,11 @@
 import type { InsightArticle } from "@/content/insights";
-import { defaultOpenGraphImage } from "@/lib/metadata";
+import { shareImageUrls } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 
 // Absolute URLs reused across the article schema. metadataBase resolves relative
 // OG paths in the page <head>, but JSON-LD must carry fully-qualified URLs.
-const absoluteImageUrl = `${siteUrl}${defaultOpenGraphImage.url}`;
 
-// Square Organization logo for publisher markup (separate from the 16:9 OG share image above).
+// Square Organization logo for publisher markup (separate from the share-image set).
 const absoluteLogoUrl = `${siteUrl}/assets/studio-baggio-logo-square.png`;
 
 type ArticleSchemaProps = {
@@ -37,7 +36,7 @@ export function ArticleSchema({ article }: ArticleSchemaProps) {
         url: absoluteLogoUrl
       }
     },
-    image: absoluteImageUrl,
+    image: shareImageUrls,
     mainEntityOfPage: articleUrl,
     articleSection: article.category,
     keywords: article.tags.join(", ")

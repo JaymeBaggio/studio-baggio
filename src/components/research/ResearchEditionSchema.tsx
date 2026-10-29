@@ -1,5 +1,5 @@
 import type { ResearchEditionDefinition } from "@/content/research";
-import { defaultOpenGraphImage } from "@/lib/metadata";
+import { shareImageUrls } from "@/lib/metadata";
 import { researchDataLicense } from "@/lib/research-schema";
 import { siteUrl } from "@/lib/utils";
 
@@ -29,7 +29,7 @@ export function ResearchEditionSchema({ edition }: ResearchEditionSchemaProps) {
       "@type": "WebPage",
       "@id": editionUrl
     },
-    image: `${siteUrl}${defaultOpenGraphImage.url}`,
+    image: shareImageUrls,
     datePublished: edition.publishedAt ?? edition.preparedForReview,
     dateModified: edition.pageUpdatedAt,
     temporalCoverage: "2026-07-30/2026-07-31",

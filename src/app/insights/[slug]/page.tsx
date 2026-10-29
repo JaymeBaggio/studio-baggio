@@ -17,7 +17,7 @@ import {
   type InsightArticle,
   insightArticles
 } from "@/content/insights";
-import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
+import { defaultTwitterImage, shareImages } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 import { LastWordMark } from "@/components/last-word-mark";
 import { ServiceNextStep, enquiryHref, serviceForCategory } from "@/components/service-next-step";
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       publishedTime: article.date,
       modifiedTime: article.updated,
       authors: ["Jayme Baggio"],
-      images: [defaultOpenGraphImage]
+      images: shareImages
     },
     twitter: {
       card: "summary_large_image",

@@ -13,7 +13,7 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { metadata as siteMetadata } from "@/content/site";
-import { defaultOpenGraphImage, defaultTwitterImage } from "@/lib/metadata";
+import { defaultTwitterImage, shareImageUrls, shareImages } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 import "./globals.css";
 
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     siteName: "Studio Baggio",
     title: siteMetadata.home.title,
     description: siteMetadata.home.description,
-    images: [defaultOpenGraphImage]
+    images: shareImages
   },
   twitter: {
     card: "summary_large_image",
@@ -86,6 +86,7 @@ const organizationSchema = {
     "@type": "ImageObject",
     url: `${siteUrl}/assets/studio-baggio-logo-square.png`
   },
+  image: shareImageUrls,
   founder: {
     "@type": "Person",
     name: "Jayme Baggio",
