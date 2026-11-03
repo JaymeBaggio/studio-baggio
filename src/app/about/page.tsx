@@ -3,6 +3,7 @@ import Image from "next/image";
 import { about, metadata as siteMetadata, pressPage, primaryCta, seoSearchPlanName } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.about, path: "/about" });
 
@@ -146,6 +147,7 @@ function renderLinkedText(text: string) {
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "About", path: "/about" }]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}

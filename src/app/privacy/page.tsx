@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { PageReveals } from "@/components/page-reveals";
 import { metadata as siteMetadata, privacyPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.privacy, path: "/privacy" });
 
 export default function PrivacyPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Privacy", path: "/privacy" }]} />
       <PageReveals />
       <div className="home-4b studio-page">
         <section className="studio-page-hero">

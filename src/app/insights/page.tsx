@@ -5,6 +5,7 @@ import { getInsightPreviewText, insightArticles, insightCategories } from "@/con
 import { metadata as siteMetadata } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.insights, path: "/insights" });
 
@@ -34,6 +35,7 @@ const articlePreviews = [...insightArticles]
 export default function InsightsPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Insights", path: "/insights" }]} />
       <PageReveals />
       <div className="home-4b insights-page">
         <section className="insights-hero" data-home-section>

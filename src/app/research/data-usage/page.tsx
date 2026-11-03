@@ -6,6 +6,7 @@ import {
   researchDataUsageVersion
 } from "@/lib/research-schema";
 import { pageMetadata } from "@/lib/metadata";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 const title = "Research data usage | Studio Baggio";
 const description =
@@ -48,6 +49,7 @@ const usageItems = [
 export default function ResearchDataUsagePage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Research", path: "/research" }, { name: "Research data usage", path: "/research/data-usage" }]} />
       <PageReveals />
       <div className="home-4b studio-page">
         <section className="studio-page-hero">

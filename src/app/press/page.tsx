@@ -7,6 +7,7 @@ import { metadata as siteMetadata, pressPage } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { siteUrl } from "@/lib/utils";
 import { LastWordMark } from "@/components/last-word-mark";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.press, path: "/press" });
 
@@ -87,6 +88,7 @@ const pressSchema = {
 export default function PressPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Press", path: "/press" }]} />
       <script
         id="studio-baggio-press-schema"
         type="application/ld+json"

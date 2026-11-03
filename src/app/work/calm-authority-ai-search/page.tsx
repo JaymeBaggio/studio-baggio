@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { calmAuthorityProof as proof } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata = pageMetadata({ title: "Calm Authority: AI-search results", description: "Results from three financial-adviser comparison guides optimised for AI search.", path: proof.href });
 
@@ -13,6 +14,7 @@ const results = [
 
 export default function CalmAuthoritySearchCase() {
  return <main className="editorial-container calm-case max-w-5xl">
+  <BreadcrumbSchema items={[{ name: "Services", path: "/services" }, { name: "Calm Authority case study", path: "/work/calm-authority-ai-search" }]} />
   <nav aria-label="Breadcrumb" className="calm-case-breadcrumb"><Link href="/services">Services</Link><span aria-hidden="true">/</span><span aria-current="page">Calm Authority case study</span></nav>
   <Image src="/assets/logos/calm-authority.png" alt="Calm Authority" width={180} height={66} className="sv-calm-logo" />
   <h1>Calm Authority: AI-search results</h1>

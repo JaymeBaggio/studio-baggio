@@ -4,12 +4,14 @@ import { PageReveals } from "@/components/page-reveals";
 import { contactPage, metadata as siteMetadata } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = pageMetadata({ ...siteMetadata.contact, path: "/contact" });
 
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbSchema items={[{ name: "Contact", path: "/contact" }]} />
       <PageReveals />
       <div className="home-4b studio-page contact-page">
         <section className="studio-contact-section">

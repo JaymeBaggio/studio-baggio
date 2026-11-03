@@ -13,6 +13,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { aiSearchFeaturedPress, clientStats, researchCommission, researchWhyNow } from "@/content/site";
 import { ButtonLink } from "@/components/ui/button";
 import { LastWordMark } from "@/components/last-word-mark";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 const hasPublishedEdition = researchEditions.some(
   (edition) => edition.publicationStatus === "published" || edition.publicationStatus === "corrected"
@@ -64,6 +65,7 @@ export default function ResearchIndexPage() {
 
   return (
     <div className={`${styles.researchIndex} home-4b research-page research-index`} data-research-page>
+      <BreadcrumbSchema items={[{ name: "Research", path: "/research" }]} />
       <header className="research-index-masthead">
         <div className="editorial-container research-index-masthead__shell">
           <p className="eyebrow">Studio Baggio research</p>
