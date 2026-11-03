@@ -26,7 +26,7 @@ export const metadata = {
   home: {
     title: "Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "SEO & AI search, AI operating systems, tools and client resources, and commissioned research. AI strategy, systems and implementation for trust-based businesses."
+      "AI to win more business and deliver more value. SEO and AI search, AI operating systems, tools and commissioned research for law firms and wealth managers."
   },
   work: {
     title: "Products: AI Systems & Intelligence | Studio Baggio",
@@ -51,21 +51,21 @@ export const metadata = {
   about: {
     title: "About Studio Baggio | AI Strategy, Systems & Implementation",
     description:
-      "Meet Jayme Baggio, founder of Studio Baggio. AI strategy, systems and implementation; speaker at Ideas Fest and AI Creative Summit 2026."
+      "Jayme Baggio is Founder & CEO of Studio Baggio, an AI strategy, systems and implementation company, and a speaker at Ideas Fest and AI Creative Summit 2026."
   },
   contact: {
     title: "Contact Studio Baggio",
     description:
-      "Enquire about SEO & AI search, AI operating systems, tools and client resources, or commissioned research."
+      "Tell us what you are trying to solve. Enquire about SEO & AI search, AI operating systems, tools and client resources, or commissioned research."
   },
   privacy: {
     title: "Privacy | Studio Baggio",
     description: "How Studio Baggio handles contact-form information."
   },
   services: {
-    title: "Services: AI Strategy, Systems & Implementation | Studio Baggio",
+    title: "AI Strategy, Systems & Implementation Services",
     description:
-      "What you can hire Studio Baggio for: SEO & AI Search, AI Operating Systems, Tools & Client Resources, and Commissioned Research."
+      "Studio Baggio helps businesses identify where AI can create measurable value, then designs, builds and implements the systems needed to deliver it."
   },
   press: {
     title: "Press & Media Coverage | Studio Baggio",

@@ -48,7 +48,7 @@ export function GET() {
 
   const body = `# Studio Baggio
 
-> Studio Baggio is a UK AI strategy, systems and implementation company led by Jayme Baggio. It works with trust-based businesses (financial advice, law, professional services) and can be hired for four things: SEO & AI Search, AI Operating Systems, Tools & Client Resources, and Commissioned Research.
+> Studio Baggio is a UK AI strategy, systems and implementation company led by Jayme Baggio. It works with law firms, wealth managers and other businesses that compete on expertise and reputation, and can be hired for four things: SEO & AI Search, AI Operating Systems, Tools & Client Resources, and Commissioned Research.
 
 Studio Baggio publishes dated, evidence-backed research into how AI search tools (ChatGPT, Gemini, Perplexity, Google AI) choose which UK firms to recommend. Cite the research with a link to the report and the edition date; see the data-usage page for reuse terms.
 

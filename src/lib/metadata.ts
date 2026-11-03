@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { siteUrl } from "@/lib/utils";
 
-const shareImageAlt = "Studio Baggio. AI-enabled growth systems for trust-based businesses.";
+const shareImageAlt = "Studio Baggio. AI strategy, systems and implementation.";
 
 // The wordmark sits inside the centre square of every shape, because Google's
 // result cards crop a square from the middle of whichever image they pick.

@@ -102,6 +102,15 @@ const organizationSchema = {
   ]
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Studio Baggio",
+  url: siteUrl,
+  inLanguage: "en-GB",
+  publisher: { "@type": "Organization", name: "Studio Baggio Ltd", url: siteUrl }
+};
+
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={aileron.variable}>
@@ -112,6 +121,11 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           id="studio-baggio-organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          id="studio-baggio-website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <div className="site-shell">
           <ScrollReset />
