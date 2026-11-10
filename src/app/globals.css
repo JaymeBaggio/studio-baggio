@@ -10706,8 +10706,28 @@ body:has(.home-4b.contact-page) footer {
     padding-inline: 12px;
   }
 
+  /* Safari reserves space inside search fields for its own icons, which clipped
+     the placeholder; 16px also stops iOS zooming the page on focus. */
   .home-4b.insights-page .insights-search input {
     min-width: 0;
+    padding: 0;
+    font-size: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .home-4b.insights-page .insights-search input::-webkit-search-decoration,
+  .home-4b.insights-page .insights-search input::-webkit-search-results-button {
+    display: none;
+  }
+
+  .home-4b.insights-page .insights-search {
+    gap: 8px;
+    padding-inline: 10px;
+  }
+
+  .home-4b.insights-page .insights-category-trigger {
+    letter-spacing: 0.08em;
   }
 
   .home-4b.insights-page .insights-category-trigger {
