@@ -10,7 +10,7 @@ import { getInsightPath } from "@/content/insights";
 
 type InsightPreview = Pick<
   InsightArticle,
-  "slug" | "title" | "category" | "categorySlug" | "summary" | "readTime" | "date" | "tags"
+  "slug" | "title" | "category" | "categorySlug" | "summary" | "date" | "tags"
 > & {
   dateLabel: string;
   searchText: string;
@@ -220,16 +220,16 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
       <div className="insights-list">
         {filteredArticles.length ? (
           filteredArticles.map((article) => (
-            <Link key={article.slug} href={getInsightPath(article)} className="insights-row" data-reveal>
-              <span className="insights-row-meta">
-                <span className="insights-row-date">{article.dateLabel}</span>
-                <span className="insights-row-category">{article.category}</span>
+            <Link key={article.slug} href={getInsightPath(article)} className="insights-card" data-reveal>
+              <span className="insights-card-category">{article.category}</span>
+              <span className="insights-card-title">{article.title}</span>
+              <span className="insights-card-summary">{renderInlineMarkdown(article.summary)}</span>
+              <span className="insights-card-foot">
+                <span className="insights-card-date">{article.dateLabel}</span>
+                <span className="insights-card-arrow" aria-hidden="true">
+                  →
+                </span>
               </span>
-              <span className="insights-row-main">
-                <span className="insights-row-title">{article.title}</span>
-                <span className="insights-row-summary">{renderInlineMarkdown(article.summary)}</span>
-              </span>
-              <span className="insights-row-read">{article.readTime}</span>
             </Link>
           ))
         ) : (
