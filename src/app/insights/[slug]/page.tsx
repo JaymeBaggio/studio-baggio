@@ -1608,28 +1608,21 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
               )}
             </h1>
             <div className="insight-article-meta-bar" data-reveal>
-              <span className="insight-article-meta-item">
-                <span>Author</span>
-                <strong>Jayme Baggio</strong>
-              </span>
-              <span className="insight-article-meta-item">
-                <span>Published</span>
+              <p className="insight-article-byline">
+                Jayme Baggio
+                <span aria-hidden="true">·</span>
                 <time dateTime={article.date}>{formatArticleDate(article.date)}</time>
-              </span>
-              <span className="insight-article-meta-item">
-                <span>Category</span>
-                <strong>{article.category}</strong>
-              </span>
-              <span className="insight-article-meta-item">
-                <span>Read</span>
-                <strong>{article.readTime}</strong>
-              </span>
-              {article.slug === ninetyDaysSlug ? (
-                <a className="insight-article-pdf-link" href="/downloads/how-to-build-an-ai-literate-business-in-90-days.pdf" target="_blank" rel="noopener">
-                  Download the PDF <span aria-hidden="true">→</span>
-                </a>
-              ) : null}
-              <InsightShareButton title={article.title} url={`${siteUrl}${getInsightPath(article)}`} />
+                <span aria-hidden="true">·</span>
+                {article.readTime}
+              </p>
+              <div className="insight-article-actions">
+                {article.slug === ninetyDaysSlug ? (
+                  <a className="insight-article-pdf-link" href="/downloads/how-to-build-an-ai-literate-business-in-90-days.pdf" target="_blank" rel="noopener">
+                    Download the PDF <span aria-hidden="true">→</span>
+                  </a>
+                ) : null}
+                <InsightShareButton title={article.title} url={`${siteUrl}${getInsightPath(article)}`} />
+              </div>
             </div>
           </div>
         </header>

@@ -24,7 +24,6 @@ const articlePreviews = [...insightArticles]
   category: article.category,
   categorySlug: article.categorySlug,
   summary: getInsightPreviewText(article, 1),
-  preview: getInsightPreviewText(article, 2),
   readTime: article.readTime,
   date: article.date,
   dateLabel: formatMonthYear(article.date),

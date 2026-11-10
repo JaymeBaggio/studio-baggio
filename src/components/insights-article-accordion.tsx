@@ -1,18 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import type { KeyboardEvent, MouseEvent, ReactNode } from "react";
+import type { KeyboardEvent, ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Search } from "lucide-react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { InsightArticle, InsightCategory } from "@/content/insights";
 import { getInsightPath } from "@/content/insights";
 
 type InsightPreview = Pick<
   InsightArticle,
-  "slug" | "title" | "category" | "categorySlug" | "summary" | "preview" | "readTime" | "date" | "tags"
+  "slug" | "title" | "category" | "categorySlug" | "summary" | "readTime" | "date" | "tags"
 > & {
   dateLabel: string;
   searchText: string;
@@ -55,21 +53,12 @@ function renderInlineMarkdown(text: string): ReactNode[] {
   return nodes;
 }
 
-function renderPreviewParagraphs(text: string) {
-  return text
-    .split(/\n{2,}/)
-    .filter(Boolean)
-    .map((paragraph) => <p key={paragraph}>{renderInlineMarkdown(paragraph)}</p>);
-}
-
 export function InsightsArticleAccordion({ articles, categories }: InsightsArticleAccordionProps) {
   const [activeCategory, setActiveCategory] = useState("all");
   const [query, setQuery] = useState("");
-  const [activeSlug, setActiveSlug] = useState("");
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
   const categoryMenuRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  const router = useRouter();
 
   const activeCategoryLabel =
     activeCategory === "all"
@@ -134,31 +123,6 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
       return matchesCategory && (!normalisedQuery || searchable.includes(normalisedQuery));
     });
   }, [activeCategory, articles, query]);
-
-  const refreshScrollMeasurements = () => {
-    window.requestAnimationFrame(() => ScrollTrigger.refresh());
-  };
-
-  const handleRowClick = (event: MouseEvent<HTMLDivElement>, slug: string, href: string) => {
-    const target = event.target as HTMLElement;
-    if (target.closest(".insights-row-actions")) return;
-    if (window.getSelection()?.toString()) return;
-
-    if (target.closest("a")) return;
-
-    if (activeSlug !== slug) {
-      setActiveSlug(slug);
-      return;
-    }
-
-    router.push(href);
-  };
-
-  const handleTitleClick = (event: MouseEvent<HTMLAnchorElement>, slug: string) => {
-    if (activeSlug === slug) return;
-    event.preventDefault();
-    setActiveSlug(slug);
-  };
 
   return (
     <section className="insights-list-section" aria-labelledby="latest-insights-title">
@@ -249,82 +213,25 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
         </label>
       </div>
 
-      <div className="insights-list-heading" data-reveal>
-        <h2 id="latest-insights-title">Articles</h2>
-      </div>
+      <h2 id="latest-insights-title" className="sr-only">
+        Articles
+      </h2>
 
-      <div className="insights-accordion-list">
+      <div className="insights-list">
         {filteredArticles.length ? (
-          filteredArticles.map((article) => {
-            const isOpen = activeSlug === article.slug;
-            const panelId = `insight-preview-${article.slug}`;
-            const articlePath = getInsightPath(article);
-
-            return (
-              <article
-                key={article.slug}
-                className={`insights-accordion-row ${isOpen ? "is-open" : ""}`}
-                data-reveal
-              >
-                <div
-                  className="insights-accordion-row-head"
-                  onClick={(event) => handleRowClick(event, article.slug, articlePath)}
-                >
-                  <span className="insights-row-meta">
-                    <span className="insights-row-date">{article.dateLabel}</span>
-                    <span className="insights-row-category">{article.category}</span>
-                  </span>
-                  <Link
-                    href={articlePath}
-                    className="insights-row-link"
-                    onClick={(event) => handleTitleClick(event, article.slug)}
-                  >
-                    <span className="insights-row-title">{article.title}</span>
-                    <span className="insights-row-summary">{renderInlineMarkdown(article.summary)}</span>
-                  </Link>
-                  <div className="insights-row-actions">
-                    <button
-                      type="button"
-                      className="insights-icon-button"
-                      aria-label={isOpen ? `Collapse ${article.title}` : `Preview ${article.title}`}
-                      aria-expanded={isOpen}
-                      aria-controls={panelId}
-                      onClick={() => setActiveSlug(isOpen ? "" : article.slug)}
-                    >
-                      <ChevronDown aria-hidden="true" />
-                    </button>
-                  </div>
-                </div>
-                <AnimatePresence initial={false}>
-                  {isOpen ? (
-                    <motion.div
-                      id={panelId}
-                      className="insights-preview-panel"
-                      initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                      transition={{
-                        height: { duration: shouldReduceMotion ? 0 : 0.34, ease: accordionEase },
-                        opacity: { duration: shouldReduceMotion ? 0 : 0.18, ease: accordionEase }
-                      }}
-                      onAnimationComplete={refreshScrollMeasurements}
-                    >
-                      <div className="insights-preview-inner">
-                        <div className="insights-preview-copy">
-                          <p className="insights-preview-label">Preview</p>
-                          {renderPreviewParagraphs(article.preview)}
-                        </div>
-                        <div className="insights-preview-meta">
-                          <span>{article.readTime}</span>
-                          <Link href={articlePath}>Read article</Link>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </article>
-            );
-          })
+          filteredArticles.map((article) => (
+            <Link key={article.slug} href={getInsightPath(article)} className="insights-row" data-reveal>
+              <span className="insights-row-meta">
+                <span className="insights-row-date">{article.dateLabel}</span>
+                <span className="insights-row-category">{article.category}</span>
+              </span>
+              <span className="insights-row-main">
+                <span className="insights-row-title">{article.title}</span>
+                <span className="insights-row-summary">{renderInlineMarkdown(article.summary)}</span>
+              </span>
+              <span className="insights-row-read">{article.readTime}</span>
+            </Link>
+          ))
         ) : (
           <div className="insights-empty-state" data-reveal>
             <p>No articles match that search yet.</p>
