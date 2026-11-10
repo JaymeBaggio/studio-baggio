@@ -1563,6 +1563,9 @@ function ArticleMoreArticles({ articles }: { articles: InsightArticle[] }) {
           <Link className="insight-article-more-row" href={getInsightPath(related)} key={related.slug}>
             <span>{related.category}</span>
             <strong>{related.title}</strong>
+            <span className="insight-article-more-arrow" aria-hidden="true">
+              →
+            </span>
           </Link>
         ))}
       </div>

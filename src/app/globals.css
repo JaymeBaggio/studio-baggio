@@ -9524,7 +9524,7 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .home-4b.insight-article-page .insight-article-more-label {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: var(--sb-muted);
   font-size: var(--insight-article-label-size);
   font-weight: var(--sb-label-weight);
@@ -9535,20 +9535,22 @@ body:has(.home-4b.contact-page) footer {
 
 .home-4b.insight-article-page .insight-article-more-list {
   display: grid;
-  gap: 20px;
 }
 
 .home-4b.insight-article-page .insight-article-more-row {
   display: grid;
-  gap: 7px;
-  border-top: 0;
-  padding-block: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 16px;
+  align-items: center;
+  border-top: 1px solid var(--insight-article-rule);
+  padding-block: 16px;
   text-decoration: none;
   transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .home-4b.insight-article-page .insight-article-more-row span {
-  color: var(--sb-blue);
+  grid-column: 1;
+  color: var(--sb-muted);
   font-size: var(--insight-article-label-size);
   font-weight: var(--sb-label-weight);
   line-height: var(--sb-label-line);
@@ -9557,19 +9559,46 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .home-4b.insight-article-page .insight-article-more-row strong {
+  grid-column: 1;
   color: var(--sb-ink);
   font-size: var(--insight-article-copy-size);
-  font-weight: 400;
-  line-height: 1.38;
-  transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  font-weight: 700;
+  line-height: 1.32;
 }
 
-.home-4b.insight-article-page .insight-article-more-row:hover strong {
+.home-4b.insight-article-page .insight-article-more-row span.insight-article-more-arrow {
+  grid-column: 2;
+  grid-row: 1 / span 2;
   color: var(--sb-blue);
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0;
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-4b.insight-article-page .insight-article-more-row:hover strong {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .home-4b.insight-article-page .insight-article-more-row:hover .insight-article-more-arrow {
+    transform: translateX(4px);
+  }
 }
 
 .home-4b.insight-article-page .insight-article-more-row:active {
   transform: scale(0.985);
+  transition-duration: 100ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-4b.insight-article-page .insight-article-more-row,
+  .home-4b.insight-article-page .insight-article-more-row span.insight-article-more-arrow {
+    transition: none;
+    transform: none;
+  }
 }
 
 .home-4b.insight-article-page .insight-article-tags {
@@ -25947,12 +25976,19 @@ body:has(.home-4b.ab-page) footer { display: none; }
   top: 104px;
   display: grid;
   align-self: start;
-  gap: 36px;
+  gap: 24px;
   min-width: 0;
 }
 
 .home-4b.insight-article-page .insight-article-aside .insight-article-more {
   position: static;
+}
+
+/* More articles sits in a card with the same edge and inset as the offer card above it. */
+.home-4b.insight-article-page .insight-article-more {
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  padding: 20px 20px 4px;
+  background: var(--sb-paper);
 }
 
 .home-4b .service-next-step {
