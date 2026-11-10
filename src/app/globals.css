@@ -9577,12 +9577,6 @@ body:has(.home-4b.contact-page) footer {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .home-4b.insight-article-page .insight-article-more-row:hover strong {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-  }
-
   .home-4b.insight-article-page .insight-article-more-row:hover .insight-article-more-arrow {
     transform: translateX(4px);
   }
