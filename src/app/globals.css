@@ -9564,12 +9564,14 @@ body:has(.home-4b.contact-page) footer {
   font-size: var(--insight-article-copy-size);
   font-weight: 700;
   line-height: 1.32;
+  transition: color 180ms ease;
 }
 
 .home-4b.insight-article-page .insight-article-more-row span.insight-article-more-arrow {
   grid-column: 2;
   grid-row: 1 / span 2;
   color: var(--sb-blue);
+  margin-right: 8px;
   font-size: 18px;
   line-height: 1;
   letter-spacing: 0;
@@ -9577,8 +9579,12 @@ body:has(.home-4b.contact-page) footer {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .home-4b.insight-article-page .insight-article-more-row:hover strong {
+    color: var(--sb-blue);
+  }
+
   .home-4b.insight-article-page .insight-article-more-row:hover .insight-article-more-arrow {
-    transform: translateX(4px);
+    transform: translateX(8px);
   }
 }
 
