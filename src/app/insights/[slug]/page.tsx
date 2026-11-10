@@ -1598,19 +1598,19 @@ export default async function InsightArticlePage({ params }: ArticlePageProps) {
       <article className={`home-4b insight-article-page${setupStyleSlugs.has(article.slug) ? " is-setup-guide" : ""}${article.slug === ninetyDaysSlug ? " is-ninety-days" : ""}`}>
         <header className="insight-article-hero" data-home-section>
           <div className="editorial-container insight-article-hero-frame">
-            <div className="insight-article-kicker-row" data-reveal>
+            <div className="insight-article-kicker-row">
               <Link href="/insights" className="insight-article-breadcrumb">
                 Insights <span aria-hidden="true">→</span> {article.category}
               </Link>
             </div>
-            <h1 className="insight-article-hero-title" data-reveal>
+            <h1 className="insight-article-hero-title">
               {setupStyleSlugs.has(article.slug) || article.slug === ninetyDaysSlug ? (
                 <LastWordMark text={article.title} />
               ) : (
                 article.title
               )}
             </h1>
-            <div className="insight-article-meta-bar" data-reveal>
+            <div className="insight-article-meta-bar">
               <p className="insight-article-byline">
                 Jayme Baggio
                 <span aria-hidden="true">·</span>

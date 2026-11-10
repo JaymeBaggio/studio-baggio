@@ -131,6 +131,7 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
           <button
             type="button"
             className={activeCategory === "all" ? "is-active" : undefined}
+            aria-pressed={activeCategory === "all"}
             onClick={() => setActiveCategory("all")}
           >
             All
@@ -140,6 +141,7 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
               key={category.slug}
               type="button"
               className={activeCategory === category.slug ? "is-active" : undefined}
+              aria-pressed={activeCategory === category.slug}
               onClick={() => setActiveCategory(category.slug)}
             >
               {category.label}
@@ -217,10 +219,15 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
         Articles
       </h2>
 
-      <div className="insights-list">
+      <div className="insights-list" key={`${activeCategory}:${query.trim().toLowerCase()}`}>
         {filteredArticles.length ? (
-          filteredArticles.map((article) => (
-            <Link key={article.slug} href={getInsightPath(article)} className="insights-card" data-reveal>
+          filteredArticles.map((article, index) => (
+            <Link
+              key={article.slug}
+              href={getInsightPath(article)}
+              className="insights-card"
+              style={{ animationDelay: `${Math.min(index, 8) * 40}ms` }}
+            >
               <span className="insights-card-category">{article.category}</span>
               <span className="insights-card-title">{article.title}</span>
               <span className="insights-card-summary">{renderInlineMarkdown(article.summary)}</span>
@@ -233,7 +240,7 @@ export function InsightsArticleAccordion({ articles, categories }: InsightsArtic
             </Link>
           ))
         ) : (
-          <div className="insights-empty-state" data-reveal>
+          <div className="insights-empty-state">
             <p>No articles match that search yet.</p>
           </div>
         )}

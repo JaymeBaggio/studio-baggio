@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { InsightsArticleAccordion } from "@/components/insights-article-accordion";
 import { PageReveals } from "@/components/page-reveals";
-import { getInsightPreviewText, insightArticles, insightCategories } from "@/content/insights";
+import { insightArticles, insightCategories } from "@/content/insights";
 import { metadata as siteMetadata } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { LastWordMark } from "@/components/last-word-mark";
@@ -23,7 +23,7 @@ const articlePreviews = [...insightArticles]
   title: article.title,
   category: article.category,
   categorySlug: article.categorySlug,
-  summary: getInsightPreviewText(article, 1),
+  summary: article.summary,
   date: article.date,
   dateLabel: formatMonthYear(article.date),
   tags: article.tags,
@@ -39,10 +39,8 @@ export default function InsightsPage() {
         <section className="insights-hero" data-home-section>
           <div className="editorial-container insights-hero-frame">
             <div className="insights-hero-copy">
-              <p className="eyebrow" data-reveal>
-                Insights
-              </p>
-              <h1 className="insights-hero-title" data-reveal>
+              <p className="eyebrow insights-hero-eyebrow">Insights</p>
+              <h1 className="insights-hero-title">
                 <LastWordMark text="Insights" />
               </h1>
             </div>

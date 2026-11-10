@@ -76,9 +76,12 @@ export function SiteHeader() {
         setHeaderHidden(false);
       }
 
+      // Only move the reference point once a real step has been taken, so a slow
+      // scroll (a few pixels a frame) still adds up to a direction change.
+      if (scrollingDown || scrollingUp || atTop) lastScrollY = currentScrollY;
+
       if (pathname !== "/") {
         setOverDarkSection(false);
-        lastScrollY = currentScrollY;
         return;
       }
 
@@ -90,8 +93,6 @@ export function SiteHeader() {
           return rect.top <= sampleY && rect.bottom > sampleY;
         })
       );
-
-      lastScrollY = currentScrollY;
     };
 
     const requestUpdate = () => {
@@ -224,7 +225,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={cn(
-                "focus-ring text-xs uppercase tracking-[0.07em] text-current transition-colors",
+                "focus-ring -my-3.5 py-3.5 text-xs uppercase tracking-[0.07em] text-current transition-colors",
                 darkHeader ? "hover:text-paper" : "hover:text-ink"
               )}
             >

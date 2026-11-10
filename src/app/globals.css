@@ -8970,7 +8970,7 @@ body:has(.home-4b.contact-page) footer {
 }
 
 .home-4b.insights-page .insights-category-filter button {
-  min-height: 40px;
+  min-height: 44px;
   border: 1px solid var(--sb-rule);
   padding: 0 14px;
   background: transparent;
@@ -8988,6 +8988,11 @@ body:has(.home-4b.contact-page) footer {
   border-color: var(--sb-ink);
   background: var(--sb-ink);
   color: var(--sb-paper);
+}
+
+.home-4b.insights-page .insights-category-filter button:active {
+  transform: scale(0.97);
+  transition: transform 100ms ease-out;
 }
 
 .home-4b.insights-page .insights-category-filter button:focus {
@@ -9154,6 +9159,8 @@ body:has(.home-4b.contact-page) footer {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
+  align-content: start;
+  min-height: 60svh;
   padding-block: 32px 96px;
 }
 
@@ -9169,6 +9176,32 @@ body:has(.home-4b.contact-page) footer {
   color: inherit;
   text-decoration: none;
   transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 240ms cubic-bezier(0.23, 1, 0.32, 1), border-color 240ms ease;
+}
+
+/* Entrances run in CSS from first paint, so nothing is shown and then hidden by script. */
+@keyframes insights-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.home-4b.insights-page .insights-hero-copy,
+.home-4b.insight-article-page .insight-article-hero-frame {
+  animation: insights-rise 520ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+/* Cards rise in on load and again whenever the category or search changes. */
+.home-4b.insights-page .insights-card {
+  animation: insights-rise 320ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-4b.insights-page .insights-hero-copy,
+  .home-4b.insight-article-page .insight-article-hero-frame,
+  .home-4b.insights-page .insights-card {
+    animation: none;
+  }
 }
 
 /* The blue rule from the Research edition cards, drawn in on hover. */
@@ -9290,8 +9323,8 @@ body:has(.home-4b.contact-page) footer {
 @media (max-width: 639px) {
   .home-4b.insights-page .insights-list {
     grid-template-columns: 1fr;
-    gap: 14px;
-    padding-block: 20px 64px;
+    gap: 12px;
+    padding-block: 8px 64px;
   }
 
   .home-4b.insights-page .insights-card {
@@ -9351,6 +9384,8 @@ body:has(.home-4b.contact-page) footer {
   letter-spacing: 0.18em;
   text-decoration: none;
   text-transform: uppercase;
+  padding-block: 14px;
+  margin-block: -14px;
 }
 
 .home-4b.insight-article-page .insight-article-breadcrumb:hover {
@@ -10642,7 +10677,20 @@ body:has(.home-4b.contact-page) footer {
 
 
   .home-4b.insights-page .insights-hero {
-    padding-block: 96px 28px;
+    padding-block: 88px 22px;
+  }
+
+  .home-4b.insights-page .insights-hero-eyebrow {
+    display: none;
+  }
+
+  .home-4b.insights-page .insights-hero-title {
+    margin-top: 0;
+    font-size: clamp(38px, 11vw, 46px);
+  }
+
+  .home-4b.insights-page .insights-filter-strip {
+    padding-block: 12px;
   }
 
   .home-4b.insights-page .insights-filter-strip {
