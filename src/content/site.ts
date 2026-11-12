@@ -104,7 +104,6 @@ export const home = {
     items: [
       "Identify where AI creates real commercial value",
       "Win more of the right work",
-      "Get more from what your people already know",
       "Improve how your team delivers",
       "Build useful tools and software"
     ]
