@@ -295,7 +295,13 @@ export default function ServicesPage() {
                             <span className="text-xs uppercase tracking-[0.08em] text-ink/60">
                               {offer.featuredIn.label}
                             </span>
-                            <div className="flex min-w-0 max-w-full flex-wrap items-center gap-x-4 gap-y-3">
+                            <div
+                              className={
+                                offer.featuredIn.events
+                                  ? "flex min-w-0 max-w-full flex-wrap items-center gap-x-4 gap-y-3"
+                                  : "flex min-w-0 max-w-full items-center gap-4 sm:gap-6"
+                              }
+                            >
                               {offer.featuredIn.logos?.map((logo) => (
                                 <Image
                                   key={logo.name}
