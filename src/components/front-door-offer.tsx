@@ -86,7 +86,7 @@ function OfferBody({
             <li
               key={point}
               className={`border-b border-ink/10 leading-snug text-ink/70 last:border-0 ${
-                offer.compact ? "py-1.5 text-[14px]" : "py-2.5 text-[15px]"
+                offer.compact ? "py-[5px] text-[14px]" : "py-2.5 text-[15px]"
               }`}
             >
               {point}
@@ -109,14 +109,12 @@ function OfferBody({
           </Link>
         </div>
         {offer.featured.events ? (
-          // Short label and both event marks on one line.
-          <div className="mt-5 flex items-center gap-3 border-t border-ink/10 pt-4">
-            <p className="flex-none whitespace-nowrap text-[11px] uppercase tracking-[0.08em] text-ink/60">
-              {offer.featured.label}
-            </p>
-            <div className="flex min-w-0 flex-1 items-center justify-end gap-2.5">
+          // Short label, then the event marks across the card.
+          <div className="mt-5 border-t border-ink/10 pt-4">
+            <p className="text-[11px] uppercase tracking-[0.08em] text-ink/60">{offer.featured.label}</p>
+            <div className="mt-2 flex items-center justify-between">
               {offer.featured.events.map((event) => (
-                <EventLogoChip key={event.name} logo={event} size={48} />
+                <EventLogoChip key={event.name} logo={event} size={37} />
               ))}
             </div>
           </div>

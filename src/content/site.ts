@@ -1143,6 +1143,14 @@ export const aiStrategyFeaturedEvents = {
       height: 408,
       ground: "#00003a",
       fill: 0.84
+    },
+    {
+      name: "Unstereotype Alliance",
+      src: "/assets/logos/unstereotype-alliance.png",
+      width: 500,
+      height: 137,
+      ground: "#fdd835",
+      fill: 1
     }
   ]
 };
