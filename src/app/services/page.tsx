@@ -48,7 +48,7 @@ type ServiceOffer = {
   quote?: { text: string; result?: string; attr: string };
   featuredIn?: {
     label: string;
-    logos: { name: string; src: string; width: number }[];
+    logos: { name: string; src: string; width: number; height?: number; displayHeight?: number; onLight?: boolean }[];
   };
 };
 
@@ -300,8 +300,13 @@ export default function ServicesPage() {
                                   src={logo.src}
                                   alt={logo.name}
                                   width={logo.width}
-                                  height={16}
-                                  className="h-4 min-w-0 w-auto object-contain"
+                                  height={logo.height ?? 16}
+                                  className={logo.displayHeight ? "min-w-0 w-auto object-contain" : "h-4 min-w-0 w-auto object-contain"}
+                                  style={
+                                    logo.displayHeight
+                                      ? { height: logo.displayHeight, filter: logo.onLight ? "brightness(0)" : undefined }
+                                      : undefined
+                                  }
                                 />
                               ))}
                             </div>

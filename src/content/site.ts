@@ -1123,6 +1123,30 @@ export const aiSearchFeaturedPress = {
   ]
 };
 
+// Events where the AI strategy work has been presented. Both marks are supplied
+// in white, so they are shown in black on light cards.
+export const aiStrategyFeaturedEvents = {
+  label: "Our AI business strategy featured at",
+  logos: [
+    {
+      name: "AI Creative Summit 2026",
+      src: "/assets/logos/ai-creative-summit-logo-white.png",
+      width: 500,
+      height: 142,
+      displayHeight: 30,
+      onLight: true
+    },
+    {
+      name: "Ideas Fest",
+      src: "/assets/logos/ideas-fest-logo-white.png",
+      width: 720,
+      height: 408,
+      displayHeight: 40,
+      onLight: true
+    }
+  ]
+};
+
 export const frontDoorOffer = {
   pill: seoSearchPlanName,
   pillHook: "Find out more",
@@ -1249,6 +1273,7 @@ export const servicesPage = {
     {
       id: "ai-operating-system-audit",
       name: "AI Strategy & Operating Systems",
+      featuredIn: aiStrategyFeaturedEvents,
       summary:
         "Start with the business constraints and opportunities, then set up a system your team can win with from the outset: shared company context, department and role context, and each person's specialist knowledge turned into skills they use in their work. We design, build and embed it on your existing infrastructure where practical.",
       showExampleOnHome: true,
