@@ -152,7 +152,7 @@ export const home = {
         href: "/services#seo-and-ai-search-opportunity-audit"
       },
       {
-        title: "AI Operating Systems",
+        title: "AI Strategy & Operating Systems",
         type: "ai-operating-systems",
         summary: "AI set up around your business: your clients, your strategic priorities, your people and what good looks like to you. Each person starts with the context for their role, and their specialist knowledge and templates become skills they use every day. It's built to grow with the business, so your team is set up to win from the outset.",
         proof: "For a London creative agency, a company-wide system gave a non-technical team the tools to use AI effectively from day one, saving an estimated 10 to 15 hours a week.",
@@ -799,7 +799,7 @@ export const about = {
     body: "That can mean improving how a team works, turning expertise and online engagement into qualified client opportunities, increasing visibility across Google and AI platforms, building focused tools and client resources, or researching the questions you need answered.",
     services: [
       "SEO & AI Search",
-      "AI Operating Systems",
+      "AI Strategy & Operating Systems",
       "Tools & Client Resources",
       "Commissioned Research"
     ],
@@ -1009,7 +1009,7 @@ export const contactPage = {
 // article and research links name them. `type` is the /contact?type= value.
 export const enquiryTypes = [
   { type: "seo-ai-search", label: "SEO & AI Search" },
-  { type: "ai-operating-systems", label: "AI Operating Systems" },
+  { type: "ai-operating-systems", label: "AI Strategy & Operating Systems" },
   { type: "tools-client-resources", label: "Tools & Client Resources" },
   { type: "commissioned-research", label: "Commissioned Research" },
   { type: "not-sure", label: "Not sure yet" }
@@ -1026,7 +1026,7 @@ export const serviceNextSteps: Record<Exclude<EnquiryType, "not-sure">, { name: 
     href: "/services#seo-and-ai-search-opportunity-audit"
   },
   "ai-operating-systems": {
-    name: "AI Operating Systems",
+    name: "AI Strategy & Operating Systems",
     line: "AI set up around your business: your clients, your strategic priorities, your people and what good looks like to you.",
     href: "/services#ai-operating-system-audit"
   },
@@ -1248,7 +1248,7 @@ export const servicesPage = {
     },
     {
       id: "ai-operating-system-audit",
-      name: "AI Operating Systems",
+      name: "AI Strategy & Operating Systems",
       summary:
         "Start with the business constraints and opportunities, then set up a system your team can win with from the outset: shared company context, department and role context, and each person's specialist knowledge turned into skills they use in their work. We design, build and embed it on your existing infrastructure where practical.",
       showExampleOnHome: true,

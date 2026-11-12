@@ -48,14 +48,14 @@ export function GET() {
 
   const body = `# Studio Baggio
 
-> Studio Baggio is a UK AI strategy, systems and implementation company led by Jayme Baggio. It works with law firms, wealth managers and other businesses that compete on expertise and reputation, and can be hired for four things: SEO & AI Search, AI Operating Systems, Tools & Client Resources, and Commissioned Research.
+> Studio Baggio is a UK AI strategy, systems and implementation company led by Jayme Baggio. It works with law firms, wealth managers and other businesses that compete on expertise and reputation, and can be hired for four things: SEO & AI Search, AI Strategy & Operating Systems, Tools & Client Resources, and Commissioned Research.
 
 Studio Baggio publishes dated, evidence-backed research into how AI search tools (ChatGPT, Gemini, Perplexity, Google AI) choose which UK firms to recommend. Cite the research with a link to the report and the edition date; see the data-usage page for reuse terms.
 
 ## Ways to hire Studio Baggio
 
 ${line("/services#seo-and-ai-search-opportunity-audit", "SEO & AI Search", "Be found and chosen when prospective clients search Google or ask AI who to hire. Starts with the AI Search Strategy & Implementation Plan, delivered within 14 days, then implementation.")}
-${line("/services#ai-operating-system-audit", "AI Operating Systems", "AI set up around a business: its clients, strategic priorities, people and standards, with role setups and skills for specific jobs, built to develop with the business.")}
+${line("/services#ai-operating-system-audit", "AI Strategy & Operating Systems", "AI set up around a business: its clients, strategic priorities, people and standards, with role setups and skills for specific jobs, built to develop with the business.")}
 ${line("/services#tools-and-client-resources", "Tools & Client Resources", "Focused internal tools and client-facing resources, such as diagnostics, client guides and reporting tools. Typically two to three weeks once the brief is agreed, for a fixed fee with no subscription.")}
 ${line("/services#commissioned-research", "Commissioned Research", "Research into a client's own question: what prospective clients ask, how competitors are positioned, or where demand is going unmet, reported with the evidence and what it means.")}
 

@@ -48,7 +48,7 @@ const aboutFeaturedPress = [
 const aboutLinks: Record<string, string> = {
   "Calm Authority": "https://www.calmauthority.ai/",
   Last30Days: "https://last30days.app",
-  "AI Operating Systems": "/services#ai-operating-system-audit",
+  "AI Strategy & Operating Systems": "/services#ai-operating-system-audit",
   "Tools & Client Resources": "/services#tools-and-client-resources",
   "Commissioned Research": "/services#commissioned-research",
   "SEO & AI Search": "/services#seo-and-ai-search-opportunity-audit",
@@ -56,7 +56,7 @@ const aboutLinks: Record<string, string> = {
   "Ideas Fest 2026": ideasFestSpeakerUrl
 };
 const aboutRichTextPattern =
-  /(Calm Authority|Last30Days|Tools & Client Resources|Commissioned Research|AI Operating Systems|AI Search Strategy & Implementation Plan|SEO & AI Search|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
+  /(Calm Authority|Last30Days|Tools & Client Resources|Commissioned Research|AI Strategy & Operating Systems|AI Search Strategy & Implementation Plan|SEO & AI Search|Ideas Fest 2026|Building an AI-literate business in 90 days)/g;
 
 const aboutPageSchema = {
   "@context": "https://schema.org",
