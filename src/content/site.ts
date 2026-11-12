@@ -1123,26 +1123,26 @@ export const aiSearchFeaturedPress = {
   ]
 };
 
-// Events where the AI strategy work has been presented. Both marks are supplied
-// in white, so they are shown in black on light cards.
+// Events where the AI strategy work has been presented. Both events publish a
+// white mark on their own brand colour, so each is shown on that colour.
 export const aiStrategyFeaturedEvents = {
-  label: "Our AI business strategy featured at",
-  logos: [
+  label: "Speaker at",
+  events: [
     {
       name: "AI Creative Summit 2026",
       src: "/assets/logos/ai-creative-summit-logo-white.png",
       width: 500,
       height: 142,
-      displayHeight: 30,
-      onLight: true
+      ground: "#1a0340",
+      fill: 0.66
     },
     {
       name: "Ideas Fest",
       src: "/assets/logos/ideas-fest-logo-white.png",
       width: 720,
       height: 408,
-      displayHeight: 40,
-      onLight: true
+      ground: "#00003a",
+      fill: 0.84
     }
   ]
 };

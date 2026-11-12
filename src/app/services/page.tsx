@@ -1,3 +1,4 @@
+import { EventLogoChip, type EventLogo } from "@/components/event-logo-chip";
 import type { Metadata } from "next";
 import { Fragment } from "react";
 import Image from "next/image";
@@ -48,7 +49,8 @@ type ServiceOffer = {
   quote?: { text: string; result?: string; attr: string };
   featuredIn?: {
     label: string;
-    logos: { name: string; src: string; width: number; height?: number; displayHeight?: number; onLight?: boolean }[];
+    logos?: { name: string; src: string; width: number }[];
+    events?: EventLogo[];
   };
 };
 
@@ -294,20 +296,18 @@ export default function ServicesPage() {
                               {offer.featuredIn.label}
                             </span>
                             <div className="flex min-w-0 max-w-full items-center gap-4 sm:gap-6">
-                              {offer.featuredIn.logos.map((logo) => (
+                              {offer.featuredIn.logos?.map((logo) => (
                                 <Image
                                   key={logo.name}
                                   src={logo.src}
                                   alt={logo.name}
                                   width={logo.width}
-                                  height={logo.height ?? 16}
-                                  className={logo.displayHeight ? "min-w-0 w-auto object-contain" : "h-4 min-w-0 w-auto object-contain"}
-                                  style={
-                                    logo.displayHeight
-                                      ? { height: logo.displayHeight, filter: logo.onLight ? "brightness(0)" : undefined }
-                                      : undefined
-                                  }
+                                  height={16}
+                                  className="h-4 min-w-0 w-auto object-contain"
                                 />
+                              ))}
+                              {offer.featuredIn.events?.map((event) => (
+                                <EventLogoChip key={event.name} logo={event} size={52} />
                               ))}
                             </div>
                           </div>

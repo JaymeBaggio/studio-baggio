@@ -6,15 +6,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { aiStrategyFeaturedEvents, frontDoorOffer, servicesPage } from "@/content/site";
+import { EventLogoChip, type EventLogo } from "@/components/event-logo-chip";
 
-type OfferLogo = { name: string; src: string; width: number; height?: number; displayHeight?: number; onLight?: boolean };
+type OfferLogo = { name: string; src: string; width: number };
 type HeroOffer = {
   title: string;
   listTitle: string;
   points: readonly string[];
   cta: { label: string; href: string };
   more: { label: string; href: string };
-  featured: { label: string; logos: readonly OfferLogo[] };
+  featured: { label: string; logos?: readonly OfferLogo[]; events?: readonly EventLogo[] };
   // Longer list lines: set slightly tighter so the card keeps the same height.
   compact?: boolean;
 };
@@ -107,28 +108,35 @@ function OfferBody({
             {offer.more.label}
           </Link>
         </div>
-        <div className="mt-5 border-t border-ink/10 pt-4">
-          <p className="text-[11px] uppercase tracking-[0.08em] text-ink/60">
-            {offer.featured.label}
-          </p>
-          <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 min-[360px]:flex-nowrap">
-            {offer.featured.logos.map((logo: OfferLogo) => (
-              <Image
-                key={logo.name}
-                src={logo.src}
-                alt={logo.name}
-                width={logo.width}
-                height={logo.height ?? 16}
-                className={logo.displayHeight ? "min-w-0 w-auto object-contain" : "h-3.5 min-w-0 w-auto object-contain"}
-                style={
-                  logo.displayHeight
-                    ? { height: Math.round(logo.displayHeight * 0.6), filter: logo.onLight ? "brightness(0)" : undefined }
-                    : undefined
-                }
-              />
-            ))}
+        {offer.featured.events ? (
+          // Short label and both event marks on one line.
+          <div className="mt-5 flex items-center gap-3 border-t border-ink/10 pt-4">
+            <p className="flex-none whitespace-nowrap text-[11px] uppercase tracking-[0.08em] text-ink/60">
+              {offer.featured.label}
+            </p>
+            <div className="flex min-w-0 flex-1 items-center justify-end gap-2.5">
+              {offer.featured.events.map((event) => (
+                <EventLogoChip key={event.name} logo={event} size={48} />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="mt-5 border-t border-ink/10 pt-4">
+            <p className="text-[11px] uppercase tracking-[0.08em] text-ink/60">{offer.featured.label}</p>
+            <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 min-[360px]:flex-nowrap">
+              {offer.featured.logos?.map((logo: OfferLogo) => (
+                <Image
+                  key={logo.name}
+                  src={logo.src}
+                  alt={logo.name}
+                  width={logo.width}
+                  height={16}
+                  className="h-3.5 min-w-0 w-auto object-contain"
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
