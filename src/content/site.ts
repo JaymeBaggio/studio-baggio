@@ -1126,7 +1126,7 @@ export const aiSearchFeaturedPress = {
 // Events where the AI strategy work has been presented. Both events publish a
 // white mark on their own brand colour, so each is shown on that colour.
 export const aiStrategyFeaturedEvents = {
-  label: "Our AI strategy presented at",
+  label: "Our AI strategy featured by",
   events: [
     {
       name: "AI Creative Summit 2026",
