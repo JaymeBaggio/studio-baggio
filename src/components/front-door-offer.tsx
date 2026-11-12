@@ -5,15 +5,51 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { frontDoorOffer } from "@/content/site";
+import { aiStrategyFeaturedEvents, frontDoorOffer, servicesPage } from "@/content/site";
+
+type OfferLogo = { name: string; src: string; width: number; height?: number; displayHeight?: number; onLight?: boolean };
+type HeroOffer = {
+  title: string;
+  listTitle: string;
+  points: readonly string[];
+  cta: { label: string; href: string };
+  more: { label: string; href: string };
+  featured: { label: string; logos: readonly OfferLogo[] };
+  // Longer list lines: set slightly tighter so the card keeps the same height.
+  compact?: boolean;
+};
+
+// The second hero card uses the services page's own wording for this offer:
+// its name, its "What's included" list and its featured-at row. No new copy.
+const operatingSystemsService = servicesPage.offers.find((offer) => offer.id === "ai-operating-system-audit");
+const operatingSystemsOffer: HeroOffer | null =
+  operatingSystemsService && "includes" in operatingSystemsService && operatingSystemsService.includes
+    ? {
+        title: operatingSystemsService.name,
+        listTitle: operatingSystemsService.includesLabel ?? "What's included",
+        points: operatingSystemsService.includes,
+        cta: frontDoorOffer.cta,
+        more: { label: frontDoorOffer.more.label, href: `/services#${operatingSystemsService.id}` },
+        featured: aiStrategyFeaturedEvents,
+        compact: true
+      }
+    : null;
+
+const heroOffers: HeroOffer[] = operatingSystemsOffer ? [frontDoorOffer, operatingSystemsOffer] : [frontDoorOffer];
+const ROTATE_MS = 5000;
 
 const DISMISS_KEY = "sb-front-door";
 
 function OfferBody({
+  offer = frontDoorOffer,
   onClose,
   onFollow,
-  large
+  large,
+  switcher
 }: {
+  offer?: HeroOffer;
+  // Shown in place of nothing on the rotating hero card: which offer is up.
+  switcher?: React.ReactNode;
   onClose?: () => void;
   // Called when the reader follows the link: the floating card closes so
   // it never sits on top of the section they asked to see. The homepage
@@ -27,8 +63,9 @@ function OfferBody({
       <div className={large ? "p-7" : "p-6"}>
         <div className="flex items-start justify-between gap-4">
           <h2 className={`text-balance leading-snug ${large ? "text-2xl" : "text-xl"}`}>
-            {frontDoorOffer.title}
+            {offer.title}
           </h2>
+          {switcher}
           {onClose ? (
             <button
               type="button"
@@ -42,12 +79,14 @@ function OfferBody({
             </button>
           ) : null}
         </div>
-        <p className="mt-5 text-sm font-semibold text-ink">{frontDoorOffer.listTitle}</p>
+        <p className="mt-5 text-sm font-semibold text-ink">{offer.listTitle}</p>
         <ul className="mt-1">
-          {frontDoorOffer.points.map((point) => (
+          {offer.points.map((point) => (
             <li
               key={point}
-              className="border-b border-ink/10 py-2.5 text-[15px] leading-snug text-ink/70 last:border-0"
+              className={`border-b border-ink/10 leading-snug text-ink/70 last:border-0 ${
+                offer.compact ? "py-1.5 text-[14px]" : "py-2.5 text-[15px]"
+              }`}
             >
               {point}
             </li>
@@ -55,32 +94,37 @@ function OfferBody({
         </ul>
         <div className="mt-6 flex flex-col gap-3">
           <Link
-            href={frontDoorOffer.cta.href}
+            href={offer.cta.href}
             className="focus-ring inline-flex min-h-11 items-center justify-center bg-ink px-4 py-3 text-sm uppercase tracking-[0.06em] text-white transition-opacity hover:opacity-90"
           >
-            {frontDoorOffer.cta.label}
+            {offer.cta.label}
           </Link>
           <Link
-            href={frontDoorOffer.more.href}
+            href={offer.more.href}
             onClick={onFollow}
             className="focus-ring self-start text-sm text-ink/60 underline decoration-ink/30 underline-offset-4 transition-colors hover:text-ink"
           >
-            {frontDoorOffer.more.label}
+            {offer.more.label}
           </Link>
         </div>
         <div className="mt-5 border-t border-ink/10 pt-4">
           <p className="text-[11px] uppercase tracking-[0.08em] text-ink/60">
-            {frontDoorOffer.featured.label}
+            {offer.featured.label}
           </p>
           <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 min-[360px]:flex-nowrap">
-            {frontDoorOffer.featured.logos.map((logo) => (
+            {offer.featured.logos.map((logo: OfferLogo) => (
               <Image
                 key={logo.name}
                 src={logo.src}
                 alt={logo.name}
                 width={logo.width}
-                height={16}
-                className="h-3.5 min-w-0 w-auto object-contain"
+                height={logo.height ?? 16}
+                className={logo.displayHeight ? "min-w-0 w-auto object-contain" : "h-3.5 min-w-0 w-auto object-contain"}
+                style={
+                  logo.displayHeight
+                    ? { height: Math.round(logo.displayHeight * 0.6), filter: logo.onLight ? "brightness(0)" : undefined }
+                    : undefined
+                }
               />
             ))}
           </div>
@@ -102,6 +146,79 @@ export function FrontDoorOfferInline() {
         <OfferBody />
       </aside>
     </section>
+  );
+}
+
+// The homepage hero card: the offers take turns every five seconds. Both are
+// laid out in the same grid cell, so the card keeps one height and the change
+// is a cross-fade with nothing else on the page moving. It holds still while
+// the pointer or keyboard focus is on it, and while the tab is in the background.
+function RotatingOffers({ onClose, reduceMotion }: { onClose: () => void; reduceMotion: boolean }) {
+  const [active, setActive] = useState(0);
+  const [held, setHeld] = useState(false);
+
+  useEffect(() => {
+    if (held || heroOffers.length < 2) return;
+    const timer = window.setInterval(() => {
+      if (!document.hidden) setActive((current) => (current + 1) % heroOffers.length);
+    }, ROTATE_MS);
+    return () => window.clearInterval(timer);
+  }, [held, active]);
+
+  const switcher =
+    heroOffers.length > 1 ? (
+      <div className="mt-2.5 flex flex-none items-center gap-1.5" role="group" aria-label="Offers">
+        {heroOffers.map((offer, index) => (
+          <button
+            key={offer.title}
+            type="button"
+            onClick={() => setActive(index)}
+            aria-label={offer.title}
+            aria-pressed={index === active}
+            className="focus-ring flex h-6 w-5 items-center"
+          >
+            <span
+              className="block h-0.5 w-full transition-colors duration-300"
+              style={{ background: index === active ? "var(--sb-accent-blue)" : "rgba(20,20,20,0.18)" }}
+            />
+          </button>
+        ))}
+      </div>
+    ) : null;
+
+  return (
+    <div
+      className="grid"
+      onMouseEnter={() => setHeld(true)}
+      onMouseLeave={() => setHeld(false)}
+      onFocusCapture={() => setHeld(true)}
+      onBlurCapture={() => setHeld(false)}
+    >
+      {heroOffers.map((offer, index) => {
+        const shown = index === active;
+        return (
+          <div
+            key={offer.title}
+            className="hero-offer-face"
+            style={{
+              gridArea: "1 / 1",
+              opacity: shown ? 1 : 0,
+              transform: shown || reduceMotion ? "none" : "translateY(10px)",
+              pointerEvents: shown ? "auto" : "none",
+              transition: reduceMotion
+                ? "opacity 200ms ease"
+                : shown
+                  ? "opacity 520ms cubic-bezier(0.23, 1, 0.32, 1) 140ms, transform 620ms cubic-bezier(0.23, 1, 0.32, 1) 140ms"
+                  : "opacity 280ms ease, transform 280ms ease"
+            }}
+            aria-hidden={!shown}
+            inert={!shown}
+          >
+            <OfferBody offer={offer} large onClose={onClose} switcher={switcher} />
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -188,9 +305,9 @@ export function FrontDoorOffer() {
           whileHover={prefersReducedMotion ? undefined : { y: -4 }}
           className="absolute top-[208px] z-30 hidden w-[400px] border border-ink/15 bg-white shadow-[0_2px_6px_rgba(20,20,20,0.06),0_26px_60px_rgba(20,20,20,0.18)] lg:block"
           style={{ left: "max(40px, calc((100vw - 1680px) / 2))" }}
-          aria-label={frontDoorOffer.title}
+          aria-label="What you can hire us for"
         >
-          <OfferBody large onClose={dismiss} />
+          <RotatingOffers onClose={dismiss} reduceMotion={Boolean(prefersReducedMotion)} />
         </motion.aside>
       ) : null}
 
