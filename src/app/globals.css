@@ -26994,76 +26994,13 @@ footer a.focus-ring:active {
   }
 }
 
-/* AI Team Setup offer page */
-.home-4b.offer-page .offer-page-lead {
-  margin-top: 28px;
+/* /ai-team-setup: the services page system with one offer card, so the
+   card sits in normal flow instead of pinning in a stack. */
+.home-4b.services-page.offer-page .sv-card {
+  position: relative;
+  top: auto;
 }
 
-.home-4b.offer-page .studio-page-hero .service-next-step-actions {
-  margin-top: 36px;
-}
-
-.home-4b.offer-page .offer-page-quote {
-  margin: 28px 0 0;
-  border-left: 2px solid var(--sb-accent-blue);
-  padding-left: 20px;
-}
-
-.home-4b.offer-page .offer-page-quote p {
-  color: var(--sb-ink);
-  font-style: italic;
-}
-
-.home-4b.offer-page .offer-page-quote footer {
-  margin-top: 12px;
-  color: var(--sb-muted);
-  font-size: var(--sb-label-size);
-  letter-spacing: var(--sb-label-tracking);
-  text-transform: uppercase;
-}
-
-.home-4b.offer-page .offer-page-steps {
-  counter-reset: offer-step;
-}
-
-.home-4b.offer-page .offer-page-steps li {
-  counter-increment: offer-step;
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  max-width: none;
-}
-
-.home-4b.offer-page .offer-page-steps li::before {
-  content: "0" counter(offer-step);
-  color: var(--sb-muted);
-  font-size: var(--sb-label-size);
-  letter-spacing: var(--sb-label-tracking);
-  line-height: inherit;
-}
-
-.home-4b.offer-page .studio-page-hero {
-  min-height: 0;
-  padding-block: clamp(112px, 15vh, 152px) clamp(56px, 7vw, 96px);
-}
-
-.home-4b.offer-page > section:not(.studio-page-hero) {
-  padding-block: clamp(40px, 5vw, 72px);
-}
-
-.home-4b.offer-page > section:last-child {
-  padding-bottom: clamp(72px, 9vw, 128px);
-}
-
-.home-4b.offer-page .studio-page-stack {
-  gap: 28px;
-}
-
-@media (max-width: 760px) {
-  .home-4b.offer-page .offer-page-steps li {
-    grid-template-columns: 44px minmax(0, 1fr);
-  }
-}
-
-.home-4b.offer-page .offer-page-quote + p {
-  margin-top: 24px;
+.home-4b.services-page.offer-page .sv-guarantee-title {
+  max-width: 980px;
 }

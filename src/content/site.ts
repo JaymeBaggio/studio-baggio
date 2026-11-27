@@ -1517,84 +1517,109 @@ export const calmAuthorityProof = {
 
 // Booking and payment links for the AI Team Setup page. Paste the live URLs in
 // when they exist: an empty booking link falls back to the contact form, and an
-// empty deposit link hides the deposit button.
+// empty deposit link hides the deposit line.
 export const conversionLinks = {
   booking: "",
-  deposit: "",
-  caseStudy: "/downloads/fan-club-case-study.pdf"
+  deposit: ""
 };
 
 export const aiTeamSetupPage = {
   metadata: {
     title: "AI Team Setup: first 30 days | Studio Baggio",
     description:
-      "One team using one shared AI system, built around how each person works. 30 days, £6,000 fixed, with a five-hours-a-week guarantee."
+      "One shared AI system built around how your team works, in 30 days. £6,000 fixed, with a guarantee that your team saves at least five hours a week."
   },
-  eyebrow: "AI Team Setup · First 30 days",
-  title: "Get one team properly using AI in 30 days.",
-  lead: "I spend time with each person, then build one shared AI system around how your team actually works. £6,000 fixed, with a guarantee.",
-  bookLabel: "Book a 30-minute call",
-  caseStudyLabel: "Read the Fan Club case study (PDF)",
-  forWho: {
-    eyebrow: "Who it's for",
-    body: [
-      "Expert teams of up to ten people where AI already sits with a few individuals, and nobody has had the time to set it up properly for everyone.",
-      "It suits law firms, agencies, advisers and professional services teams that want their people using AI on real work, not another training day."
-    ]
+  eyebrow: "AI Team Setup",
+  titleLines: ["Your team", "working with AI", "in 30 days"],
+  intro: [
+    "I spend time with each person, then build one shared AI system around how your team actually works. £6,000 fixed, with a guarantee."
+  ],
+  cta: "Book a 30-minute call",
+  offer: {
+    eyebrow: "The first 30 days",
+    name: "AI Team Setup",
+    paras: [
+      "For expert teams where AI sits with a few individuals and nobody has had the time to set it up properly for everyone.",
+      "By day 30, your team works from one shared system with your business, clients, brand and tone of voice built in, and each person has a setup for their role."
+    ],
+    includesLabel: "What your team gets",
+    includes: [
+      "A 45-minute conversation with each person",
+      "One shared AI system on the tools you already use",
+      "A personal setup for each role",
+      "Skills for your three to five most time-consuming recurring tasks",
+      "A working session on live work in week four",
+      "Built-in onboarding and a plan for what to build next"
+    ],
+    outro: "£6,000 fixed for up to ten people. Half on signing, half at day 30.",
+    example: {
+      text: "For a London creative agency, I built a team-wide AI system with a setup for each role and 13 skills for their recurring work. It saved an estimated 10 to 15 hours a week, and several of the team have since built their own tools with it.",
+      highlight: "10 to 15 hours a week"
+    },
+    quote: {
+      text: "People picked it up quickly because it was built around their actual work.",
+      attr: "Founder and CEO, London creative agency"
+    }
   },
   weeks: {
-    eyebrow: "What your team gets",
+    eyebrow: "How the 30 days run",
     items: [
       {
-        title: "Week one: how your team works",
-        body: "A 45-minute conversation with each person about where their time goes, where work slows down and how they use AI today. I also review the tools you already have."
+        lead: "Week one: how your team works",
+        detail: "A 45-minute conversation with each person about where their time goes and how they use AI today."
       },
       {
-        title: "Weeks two and three: the shared system",
-        body: "One shared AI system on the tools your team already uses, with your business, clients, brand and tone of voice built in. Each person gets a setup for their role, and skills for the team's three to five highest-value recurring tasks. The first people are working with it in week two."
+        lead: "Weeks two and three: the build",
+        detail: "I build the shared system and each role's setup. The first people are using it in week two."
       },
       {
-        title: "Week four: in use",
-        body: "A working session with the team on live work, onboarding and support built into the system so people can rerun it at any time, and a short plan for what to build next."
-      },
-      {
-        title: "What it asks of your team",
-        body: "About an hour from each person in week one, the working session in week four, and the access and information I need to build it."
+        lead: "Week four: in use",
+        detail: "We work through live tasks together, and I leave you with a plan for what to build next."
       }
     ]
   },
-  proof: {
-    eyebrow: "Proof",
-    body: "For Fan Club, a London creative agency, I spent time with each person, then built a team-wide AI system that installs for everyone by default, with their brand, voice and client knowledge built in, a personal setup for each role, and 13 skills for their recurring work. It saved an estimated 10 to 15 hours a week, and several of the team have since built their own tools with it, including a live client reporting platform and a deal tracker.",
-    quote:
-      "Jayme spent time with people across the team individually to understand how we work, then came back with a detailed breakdown of where AI would be useful and how it should be set up across the business. She then built and implemented the system for us. People picked it up quickly because it was built around their actual work.",
-    attr: "Joe Churchill · Founder & CEO, Fan Club"
+  guarantee: {
+    eyebrow: "The guarantee",
+    title: "If your team isn't saving at least five hours a week by day 30, I keep working with them until they are, at no extra cost.",
+    body: "Measured against the time spent on the chosen tasks in week one. It covers up to four further days, where the team has attended the agreed sessions."
   },
-  terms: {
-    eyebrow: "Price and guarantee",
+  faq: {
+    eyebrow: "Questions",
     items: [
-      { title: "Fee", body: "£6,000 fixed. £3,000 on signing, before work starts, and £3,000 at day 30. Not VAT registered, so no VAT is added." },
-      { title: "Time", body: "Up to six days of my time across the 30 days." },
       {
-        title: "Guarantee",
-        body: "If the team isn't saving at least five hours a week by the end of the 30 days, I keep working with them until they are, at no extra cost, for up to four further days. This applies where the team attends the agreed sessions and provides the access and information needed."
+        question: "What does it cost?",
+        answer:
+          "£6,000 fixed for up to ten people. £3,000 is paid on signing, before work starts, and £3,000 at day 30. Studio Baggio isn't VAT registered, so there's no VAT on top."
       },
       {
-        title: "How it's measured",
-        body: "Hours spent on the chosen tasks, measured in week one and again at day 30."
+        question: "How much time does it take from my team?",
+        answer: "About an hour from each person in week one, plus the working session in week four."
       },
-      { title: "After day 30", body: "An optional retainer at £6,000 a month to keep building and measuring." }
+      {
+        question: "Which AI tools do you use?",
+        answer:
+          "Whichever your team already uses. I build in Claude and Codex, and the method works with the tools you have."
+      },
+      {
+        question: "Is this AI training?",
+        answer:
+          "No. The guidance is built into the system, so people learn on their own work rather than in a training day."
+      },
+      {
+        question: "What happens after day 30?",
+        answer:
+          "You keep everything that was built. If you want to keep building and measuring, there's an optional retainer at £6,000 a month."
+      },
+      {
+        question: "How do we start?",
+        answer:
+          "Book a 30-minute call. I'll send a proposal with the team, dates and price within 24 hours, and week one is booked once the agreement is signed and the first payment is made."
+      }
     ]
   },
-  start: {
-    eyebrow: "How to start",
-    steps: [
-      "A 30-minute call about your team and the work that takes the most time.",
-      "A proposal with the team, dates and price within 24 hours.",
-      "Sign the agreement and pay the £3,000 deposit.",
-      "Week one conversations are booked before we start."
-    ],
-    depositLabel: "Already agreed? Pay the £3,000 deposit",
-    emailLine: "Or email jayme@studiobaggio.ai"
+  close: {
+    title: "Book a 30-minute call to talk through your team and where the time goes.",
+    email: "Email: Jayme@studiobaggio.ai",
+    deposit: "Already agreed? Pay the £3,000 deposit"
   }
 };
