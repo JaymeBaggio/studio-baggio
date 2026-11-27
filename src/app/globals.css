@@ -26993,3 +26993,14 @@ footer a.focus-ring:active {
     grid-column: 1;
   }
 }
+
+/* /ai-team-setup: the services page system with one offer card, so the
+   card sits in normal flow instead of pinning in a stack. */
+.home-4b.services-page.offer-page .sv-card {
+  position: relative;
+  top: auto;
+}
+
+.home-4b.services-page.offer-page .sv-guarantee-title {
+  max-width: 980px;
+}
